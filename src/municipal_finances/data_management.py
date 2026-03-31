@@ -21,5 +21,5 @@ def combine_data(cleaned_data_path: Path, output_path: Path):
     all_fir_data = pd.concat(source_dfs)
 
     # this takes a couple minutes
-    output_path.mkdir(exist_ok=True)
+    output_path.mkdir(exist_ok=True, parents=True)
     all_fir_data.to_parquet(output_path / "fir_data_all_years.parquet")

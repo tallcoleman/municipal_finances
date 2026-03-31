@@ -87,7 +87,7 @@ def download_fir_csv(entry: FIRStatus, source_data_path: Path, delay=1):
         )
 
     zip_path = source_data_path / f"fir_data_{entry['year']}.zip"
-    source_data_path.mkdir(exist_ok=True)
+    source_data_path.mkdir(exist_ok=True, parents=True)
     with zip_path.open("wb") as f:
         f.write(r.content)
     unzipped_files = None
@@ -99,7 +99,9 @@ def download_fir_csv(entry: FIRStatus, source_data_path: Path, delay=1):
 
 @app.command()
 def get_fir_data(source_data_path: Path):
-    """Downloads and updates CSV files from https://efis.fma.csc.gov.on.ca/fir/MultiYearReport/MYCIndex.html"""
+    """Downloads and updates CSV files from https://efis.fma.csc.gov.on.ca/fir/MultiYearReport/MYCIndex.html
+
+    Checks to see if the available files are out of date using the last_updated date in fir_status.json. Out of date files will be replaced, but existing files that are up to date will not be re-downloaded."""
 
     # load saved metadata
     saved_status: Dict[str, FIRStatus] = {}
@@ -125,10 +127,11 @@ def get_fir_data(source_data_path: Path):
 
     # download datasets that need to be updated
     for entry in to_update:
-        download_fir_csv(entry)
+        print(f"Downloading data for {entry['year']}...")
+        download_fir_csv(entry, source_data_path)
 
     # save metadata
-    source_data_path.mkdir(exist_ok=True)
+    source_data_path.mkdir(exist_ok=True, parents=True)
     with status_path.open("w") as f:
         json.dump(current_status, f, indent=2)
 

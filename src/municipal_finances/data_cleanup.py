@@ -22,7 +22,7 @@ def fix_csvs(source_data_path: Path, cleaned_data_path: Path):
     """Fix known errors in the CSV files from the FIR site. This can take a while (minutes) if all the source files need to be fixed."""
 
     source_files = list(source_data_path.glob("*.csv"))
-    cleaned_data_path.mkdir(exist_ok=True)
+    cleaned_data_path.mkdir(exist_ok=True, parents=True)
 
     for source_file in source_files:
         if not (cleaned_data_path / source_file.name).exists():
