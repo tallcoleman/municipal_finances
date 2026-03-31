@@ -12,6 +12,12 @@ uv run src/municipal_finances/app.py fix-csvs data/source_data data/cleaned_data
 # combine data files into one
 uv run src/municipal_finances/app.py combine-data data/cleaned_data data/output_data
 
+# start containers (add -d for detach if you don't want to see the logs)
+docker compose up
+
+# stop and remove containers
+docker compose down
+
 # start database
 uv run src/municipal_finances/app.py init-db
 
