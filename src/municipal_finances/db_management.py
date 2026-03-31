@@ -47,7 +47,7 @@ def init_db():
 @app.command()
 def load_data(
     parquet_path: Path,
-    chunk_size: int = typer.Option(50_000, help="Rows per insert batch"),
+    chunk_size: int = typer.Option(5_000, help="Rows per insert batch"),
 ):
     """Load FIR data from parquet file into the database using DATABASE_URL from environment."""
     engine = get_engine()
