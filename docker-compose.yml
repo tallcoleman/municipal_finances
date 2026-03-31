@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: muni
+      POSTGRES_PASSWORD: muni
+      POSTGRES_DB: municipal_finances
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://muni:muni@db:5432/municipal_finances
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

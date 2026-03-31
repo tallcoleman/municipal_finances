@@ -1,4 +1,3 @@
-import json
 import time
 from datetime import datetime
 from pathlib import Path
@@ -7,8 +6,12 @@ from zipfile import ZipFile
 
 import requests
 from bs4 import BeautifulSoup
+from sqlmodel import Session, select
 
 import typer
+
+from municipal_finances.database import get_engine
+from municipal_finances.models import FIRDataSource
 
 app = typer.Typer()
 
@@ -101,16 +104,16 @@ def download_fir_csv(entry: FIRStatus, source_data_path: Path, delay=1):
 def get_fir_data(source_data_path: Path):
     """Downloads and updates CSV files from https://efis.fma.csc.gov.on.ca/fir/MultiYearReport/MYCIndex.html
 
-    Checks to see if the available files are out of date using the last_updated date in fir_status.json. Out of date files will be replaced, but existing files that are up to date will not be re-downloaded."""
+    Checks to see if the available files are out of date using the last_updated date in the FIRDataSource table. Out of date files will be replaced, but existing files that are up to date will not be re-downloaded."""
 
-    # load saved metadata
-    saved_status: Dict[str, FIRStatus] = {}
-    status_path = source_data_path / "fir_status.json"
-    if status_path.exists():
-        with status_path.open("r") as f:
-            saved_status = json.load(f)
+    engine = get_engine()
 
-    # get current metatadata
+    # load saved metadata from DB
+    with Session(engine) as session:
+        saved_sources = session.exec(select(FIRDataSource)).all()
+        saved_status: Dict[str, FIRDataSource] = {str(s.year): s for s in saved_sources}
+
+    # get current metadata
     current_status = get_fir_status_table()
     to_update: list[FIRStatus] = []
 
@@ -120,9 +123,7 @@ def get_fir_data(source_data_path: Path):
         if saved is None:
             to_update.append(entry)
             continue
-        saved_last_updated = datetime.fromisoformat(saved["last_updated"]).date()
-        current_last_updated = datetime.fromisoformat(entry["last_updated"]).date()
-        if saved_last_updated < current_last_updated:
+        if saved.last_updated < datetime.fromisoformat(entry["last_updated"]).date():
             to_update.append(entry)
 
     # download datasets that need to be updated
@@ -130,9 +131,22 @@ def get_fir_data(source_data_path: Path):
         print(f"Downloading data for {entry['year']}...")
         download_fir_csv(entry, source_data_path)
 
-    # save metadata
-    source_data_path.mkdir(exist_ok=True, parents=True)
-    with status_path.open("w") as f:
-        json.dump(current_status, f, indent=2)
+    # save metadata to DB
+    with Session(engine) as session:
+        for year, entry in current_status.items():
+            existing = session.get(FIRDataSource, entry["year"])
+            if existing:
+                existing.last_updated = datetime.fromisoformat(entry["last_updated"]).date()
+                existing.date_posted = datetime.fromisoformat(entry["date_posted"]).date()
+                existing.file_url = entry["file_url"]
+                session.add(existing)
+            else:
+                session.add(FIRDataSource(
+                    year=entry["year"],
+                    last_updated=datetime.fromisoformat(entry["last_updated"]).date(),
+                    date_posted=datetime.fromisoformat(entry["date_posted"]).date(),
+                    file_url=entry["file_url"],
+                ))
+        session.commit()
 
     return current_status
