@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.115",
     "pandas>=3.0.2",
     "psycopg[binary]>=3.2",
+    "python-dotenv>=1.0",
     "pyarrow>=23.0.1",
     "pydantic>=2.12.5",
     "requests>=2.33.1",
