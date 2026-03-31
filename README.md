@@ -19,11 +19,10 @@ The [Financial Information Return website](https://efis.fma.csc.gov.on.ca/fir/in
 ## Challenges with the FIR site
 
 * The site is primarily designed for municipalities participating in FIR reporting, not for people interested in exploring and analyzing the data.
-* The detailed instructions that provide more detail on what is included in each line are in PDF format; cross-referencing the instructions and data reports is therefore quite difficult. This increases the difficulty of understanding data that already requires users to understand the structure of municipal governments, standards for municipal accounting, and to have background knowledge on municipal finances.
+* The instructions that provide more detail on what is included in each line are in PDF format; cross-referencing the instructions and data reports is therefore quite difficult. This increases the challenge of understanding data that already requires users to understand the structure of municipal governments, standards for municipal accounting, and to have background knowledge on municipal finances.
 * There is no metadata to help analyze the data by particular themes. For example, data relating to health programs and investments may be located on multiple different schedules, requiring the user to parse through all the schedules to ensure that they have all the relevant information for a particular domain of inquiry.
 * Querying on specific areas of interest often requires compiling multiple open data files, then querying on the combined file. There is no ability (aside from the pre-provided reports and dashboards) to make custom queries directly on the full dataset, and there is no open data file for the full, multi-year dataset.
-* The full FIR dataset (or even some per-year files) are large enough that they can be hard to work with. For example, many per-year files are too large to store in version control (e.g. requiring Git Large File Storage), and analyzing the full dataset with in-memory tools such as Pandas and R may be more memory-intensive most personal computers can handle.
-* Understanding the relationships between local and regional municipal governments requires pulling in and matching on external data.
+* The full FIR dataset (or even some per-year files) are large enough that they can be hard to work with. For example, many per-year files are too large to store in version control (e.g. requiring Git Large File Storage), and analyzing the full dataset with in-memory tools such as Pandas and R may be more memory-intensive than most personal computers can handle.
 
 ## Opportunities for this project
 
