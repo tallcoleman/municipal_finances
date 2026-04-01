@@ -24,7 +24,16 @@ docker compose down
 # Create database tables (requires DATABASE_URL in env or .env)
 uv run src/municipal_finances/app.py init-db
 
-# Download FIR source data
+# Download, clean, and load all available years in one step (default workflow)
+uv run src/municipal_finances/app.py load-years
+
+# Load a specific year, or restrict by range
+uv run src/municipal_finances/app.py load-years --year 2023
+uv run src/municipal_finances/app.py load-years --min-year 2020 --max-year 2023
+
+# --- Granular pipeline steps (less common) ---
+
+# Download FIR source data (also updates firdatasource table)
 uv run src/municipal_finances/app.py get-fir-data data/source_data
 
 # Clean known CSV errors
@@ -47,7 +56,7 @@ src/municipal_finances/
     data_management.py  # Combine cleaned CSVs into a single parquet file
     models.py           # SQLModel database models
     database.py         # Engine / session factory (reads DATABASE_URL)
-    db_management.py    # CLI commands: init-db, load-data
+    db_management.py    # CLI commands: init-db, load-data, load-years
     api/
         main.py         # FastAPI app
         routes/

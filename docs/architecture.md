@@ -35,7 +35,7 @@ PostgreSQL was chosen over SQLite to better handle the scale of the dataset (~13
 
 ### Bulk inserts via SQLAlchemy Core
 
-Loading 13.5M rows via the ORM (`session.add()` in a loop) is too slow. The `load-data` command uses SQLAlchemy Core bulk inserts (`pg_insert().values(...)`) in chunks of 5,000 rows. This chunk size is constrained by PostgreSQL's limit of 65,535 bound parameters per query — with 11 columns per `FIRRecord` row, that gives a maximum of ~5,957 rows per insert.
+Loading 13.5M rows via the ORM (`session.add()` in a loop) is too slow. The `load-years` and `load-data` commands use SQLAlchemy Core bulk inserts (`pg_insert().values(...)`) in chunks of 5,000 rows. This chunk size is constrained by PostgreSQL's limit of 65,535 bound parameters per query — with 11 columns per `FIRRecord` row, that gives a maximum of ~5,957 rows per insert.
 
 ### DATABASE_URL from environment
 
@@ -48,6 +48,8 @@ Docker Compose runs two services: `db` (PostgreSQL with a named volume for persi
 ### Data pipeline runs on the host
 
 The data download, cleaning, and loading steps run on the host machine rather than inside Docker, since the raw data files live in the local `data/` directory. The pipeline connects to the Dockerized PostgreSQL via the forwarded port.
+
+The primary workflow is the `load-years` command, which runs the full pipeline (download → clean → load) in a single step and skips years that are already up to date. The individual steps (`get-fir-data`, `fix-csvs`, `combine-data`, `load-data`) remain available for working with pre-downloaded files or producing a combined parquet for analysis.
 
 ### Three-table database schema
 

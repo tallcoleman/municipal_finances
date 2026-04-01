@@ -13,26 +13,39 @@ See additional notes in the `docs/` folder
 ### Get and process data
 
 ```bash
-# download data files (also updates firdatasource table)
-uv run src/municipal_finances/app.py get-fir-data data/source_data
-
-# fix known errors in csvs
-uv run src/municipal_finances/app.py fix-csvs data/source_data data/cleaned_data
-
-# combine data files into one
-uv run src/municipal_finances/app.py combine-data data/cleaned_data data/output_data
-
-# start containers (add -d for detach if you don't want to see the logs)
-# web API will run at localhost:8000 (data needs to be loaded first - see notes below)
+# start containers (add -d to detach)
+# web API will be available at localhost:8000 once data is loaded
 docker compose up
 
 # stop and remove containers
 docker compose down
 
-# start database
+# create database tables
 uv run src/municipal_finances/app.py init-db
 
-# load data into database
+# download, clean, and load all available years in one step
+uv run src/municipal_finances/app.py load-years
+
+# load a specific year, or restrict to a year range
+uv run src/municipal_finances/app.py load-years --year 2023
+uv run src/municipal_finances/app.py load-years --min-year 2020 --max-year 2023
+```
+
+### Granular pipeline steps
+
+For less common use cases (e.g. working with pre-downloaded files or building a combined parquet for analysis), the individual pipeline steps are available separately:
+
+```bash
+# download source data files and update firdatasource table
+uv run src/municipal_finances/app.py get-fir-data data/source_data
+
+# fix known CSV formatting errors
+uv run src/municipal_finances/app.py fix-csvs data/source_data data/cleaned_data
+
+# combine cleaned CSVs into a single parquet file
+uv run src/municipal_finances/app.py combine-data data/cleaned_data data/output_data
+
+# load data from a parquet file into the database
 uv run src/municipal_finances/app.py load-data data/output_data/fir_data_all_years.parquet
 ```
 
