@@ -16,6 +16,7 @@ dependencies = [
     "sqlmodel>=0.0.22",
     "typer>=0.24.1",
     "uvicorn[standard]>=0.34",
+    "alembic>=1.14",
 ]
 
 [build-system]

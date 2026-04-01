@@ -13,7 +13,7 @@ See additional notes in the `docs/` folder
 ### Get and process data
 
 ```bash
-# download data files
+# download data files (also updates firdatasource table)
 uv run src/municipal_finances/app.py get-fir-data data/source_data
 
 # fix known errors in csvs

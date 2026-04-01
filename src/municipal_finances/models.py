@@ -8,9 +8,9 @@ class FIRDataSource(SQLModel, table=True):
     __tablename__ = "firdatasource"
 
     year: int = Field(primary_key=True)
-    last_updated: date
-    date_posted: date
-    file_url: str
+    last_updated: Optional[date] = Field(default=None)
+    date_posted: Optional[date] = Field(default=None)
+    file_url: Optional[str] = Field(default=None)
     loaded_into_db: bool = Field(default=False)
     loaded_at: Optional[datetime] = Field(default=None)
 
