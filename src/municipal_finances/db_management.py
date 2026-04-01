@@ -81,6 +81,27 @@ def init_db():
 
 
 @app.command()
+def clear_db(
+    yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompt"),
+):
+    """Delete all rows from all tables. Intended for development use.
+
+    Truncates firrecord, municipality, and firdatasource in dependency order."""
+    if not yes:
+        typer.confirm(
+            "This will permanently delete all data from the database. Continue?",
+            abort=True,
+        )
+    engine = get_engine()
+    with Session(engine) as session:
+        session.execute(FIRRecord.__table__.delete())
+        session.execute(Municipality.__table__.delete())
+        session.execute(FIRDataSource.__table__.delete())
+        session.commit()
+    typer.echo("Database cleared.")
+
+
+@app.command()
 def load_data(
     parquet_path: Path,
     chunk_size: int = typer.Option(5_000, help="Rows per insert batch"),
