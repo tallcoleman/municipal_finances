@@ -46,6 +46,9 @@ def test_get_fir_data(mocker, tmp_path):
     mock_session.__enter__ = mocker.MagicMock(return_value=mock_session)
     mock_session.__exit__ = mocker.MagicMock(return_value=False)
     mock_session.exec.return_value.all.return_value = [mock_2022, mock_2021]
+    # Upsert loop iterates mock_current_status in insertion order: 2023, 2022, 2021.
+    # 2023 has no existing DB row (None), exercising the FIRDataSource create branch.
+    mock_session.get.side_effect = [None, mocker.MagicMock(), mocker.MagicMock()]
 
     mocker.patch("municipal_finances.resources.get_engine")
     mocker.patch("municipal_finances.resources.Session", return_value=mock_session)
