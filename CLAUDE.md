@@ -1,5 +1,13 @@
 # Claude Code Guide
 
+## Documentation
+
+When making code changes, check whether any of the following need to be updated to reflect them and update as needed:
+
+- `CLAUDE.md` — common commands, project structure, database notes
+- `README.md` — user-facing usage instructions
+- `docs/architecture.md` — design decisions and technology choices
+
 ## Environment
 
 - Use `uv run` to run Python scripts and tools — do not use `python` directly.
@@ -23,6 +31,10 @@ docker compose down
 
 # Create database tables (requires DATABASE_URL in env or .env)
 uv run src/municipal_finances/app.py init-db
+
+# Delete all data from all tables (development use; prompts for confirmation)
+uv run src/municipal_finances/app.py clear-db
+uv run src/municipal_finances/app.py clear-db --yes  # skip confirmation
 
 # Download, clean, and load all available years in one step (default workflow)
 uv run src/municipal_finances/app.py load-years
@@ -56,7 +68,7 @@ src/municipal_finances/
     data_management.py  # Combine cleaned CSVs into a single parquet file
     models.py           # SQLModel database models
     database.py         # Engine / session factory (reads DATABASE_URL)
-    db_management.py    # CLI commands: init-db, load-data, load-years
+    db_management.py    # CLI commands: init-db, clear-db, load-data, load-years
     api/
         main.py         # FastAPI app
         routes/

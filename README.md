@@ -54,4 +54,8 @@ uv run src/municipal_finances/app.py load-data data/output_data/fir_data_all_yea
 ```bash
 # run tests
 uv run pytest
+
+# delete all data from all tables (prompts for confirmation)
+uv run src/municipal_finances/app.py clear-db
+uv run src/municipal_finances/app.py clear-db --yes  # skip confirmation
 ```
