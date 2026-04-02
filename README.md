@@ -59,3 +59,39 @@ uv run pytest
 uv run src/municipal_finances/app.py clear-db
 uv run src/municipal_finances/app.py clear-db --yes  # skip confirmation
 ```
+
+### Database migrations
+
+Schema migrations are managed with [Alembic](https://alembic.sqlalchemy.org/). Migration scripts live in `alembic/versions/`. The `env.py` reads `DATABASE_URL` from the environment (or `.env`) and uses `SQLModel.metadata` for autogenerate support.
+
+```bash
+# Apply all pending migrations to bring the database up to date
+uv run alembic upgrade head
+
+# Roll back the most recent migration
+uv run alembic downgrade -1
+
+# Check current migration state
+uv run alembic current
+
+# View migration history
+uv run alembic history
+```
+
+**Creating a new migration after changing models:**
+
+1. Edit the relevant model(s) in `src/municipal_finances/models.py`.
+2. Autogenerate a migration script (replace `<description>` with a short snake_case summary):
+
+   ```bash
+   uv run alembic revision --autogenerate -m "<description>"
+   ```
+
+3. Review the generated file in `alembic/versions/` — autogenerate is not perfect and may miss some changes (e.g. check constraints, custom types). Adjust as needed.
+4. Apply the migration:
+
+   ```bash
+   uv run alembic upgrade head
+   ```
+
+5. Commit both the model change and the migration script together.
