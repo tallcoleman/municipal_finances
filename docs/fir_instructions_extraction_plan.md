@@ -258,6 +258,64 @@ For an inferred deletion in year Y:
 
 ---
 
+## File-Based Persistence
+
+Extraction and auditing are expensive: they require PDF access, LLM calls, and careful human review. Once the metadata tables are validated, export them to files so the work can be shared, version-controlled, and reloaded into a fresh database without repeating any of those steps.
+
+### Export format
+
+Export each table as a CSV file, one file per table:
+
+```
+fir_instructions/
+    exports/
+        fir_schedule_meta.csv
+        fir_line_meta.csv
+        fir_column_meta.csv
+        fir_instruction_changelog.csv
+```
+
+CSV is preferred over JSON or Parquet because:
+- Human-readable and diff-friendly in version control
+- Directly loadable with `psql \copy` or pandas without transformation
+- Compatible with the project's existing data pipeline conventions
+
+Exclude the `id` (serial PK) column on export — IDs are database-internal and will be reassigned on load. All other columns should be present, including nullable fields (exported as empty strings).
+
+### Exporting from the database
+
+Add an `export-instructions` CLI command to `app.py` that dumps all four tables to the `fir_instructions/exports/` directory:
+
+```bash
+uv run src/municipal_finances/app.py export-instructions
+uv run src/municipal_finances/app.py export-instructions --output-dir path/to/dir
+```
+
+Implementation: use `COPY (SELECT ...) TO STDOUT WITH CSV HEADER` via psycopg2, or a pandas `read_sql` + `to_csv`. Export all four tables in a single command; log row counts per table on completion.
+
+### Loading from file
+
+Add a `load-instructions` CLI command that reads the exported CSVs and inserts them into the database, skipping any row that already exists (match on the natural key: `schedule_id` + `valid_from_year` + `valid_to_year` for schedule/line/column tables; all non-id columns for changelog):
+
+```bash
+uv run src/municipal_finances/app.py load-instructions
+uv run src/municipal_finances/app.py load-instructions --input-dir path/to/dir
+```
+
+Use `INSERT ... ON CONFLICT DO NOTHING` to make the load idempotent. After loading, log row counts inserted vs. skipped. The command should run `init-db` implicitly if the target tables do not yet exist.
+
+### Workflow integration
+
+The recommended workflow for a new environment:
+
+1. Run `init-db` to create all tables.
+2. Run `load-instructions` to populate metadata from the exported CSVs (fast, no PDF access needed).
+3. Run `load-years` to populate `firrecord` and related tables.
+
+Re-extraction is only needed when new FIR PDFs are published or extraction errors are found during audit. After any re-extraction and re-audit, re-run `export-instructions` and commit the updated CSVs to version control.
+
+---
+
 ## Audit Plan
 
 ### Automated checks
