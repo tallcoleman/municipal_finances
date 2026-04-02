@@ -2,7 +2,7 @@
 
 ## Documentation
 
-When making code changes, check whether any of the following need to be updated to reflect them and update as needed:
+When making code changes, make sure that all key functions have descriptive docstrings. In addition, check whether any of the following need to be updated to reflect them and update as needed:
 
 - `CLAUDE.md` — common commands, project structure, database notes
 - `README.md` — user-facing usage instructions

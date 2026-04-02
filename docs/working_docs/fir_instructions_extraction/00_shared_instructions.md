@@ -9,7 +9,6 @@ These conventions apply to all tasks in this implementation plan.
 - **ORM**: Use SQLModel for all new database models, consistent with existing `models.py`.
 - **CLI**: Use Typer for new CLI commands, registered as sub-apps on the main `app.py`.
 - **Database access**: Use `get_engine()` from `database.py`. Bulk inserts should use SQLAlchemy Core (`pg_insert`) with chunking, not ORM `.add()`.
-- **Environment**: Always use `uv run` to execute scripts. Dependencies managed via `uv sync`.
 - **Imports**: Follow existing patterns — `from municipal_finances.database import get_engine`, etc.
 
 ## Testing Conventions
@@ -20,14 +19,6 @@ These conventions apply to all tasks in this implementation plan.
 - Use session-scoped engine fixtures and function-scoped session fixtures from `conftest.py`.
 - Add seed helper functions (e.g., `seed_schedule_meta()`) following the pattern in `test_api.py`.
 - Test CLI commands via `typer.testing.CliRunner` and the app, as done in `test_db_management.py`.
-
-## Documentation Updates
-
-After each task, check whether these files need updates:
-
-- `CLAUDE.md` — Add new CLI commands to the "Common commands" section; update "Project structure" and "Database" sections as needed.
-- `README.md` — Update user-facing usage instructions if new commands are added.
-- `docs/architecture.md` — Update if design decisions or technology choices change.
 
 ## File Locations
 
