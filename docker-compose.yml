@@ -19,5 +19,14 @@ services:
     depends_on:
       - db
 
+  db-test:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: muni
+      POSTGRES_PASSWORD: muni
+      POSTGRES_DB: municipal_finances_test
+    ports:
+      - "5433:5432"
+
 volumes:
   pgdata:

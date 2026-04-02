@@ -12,5 +12,5 @@ app.add_typer(data_management_app)
 app.add_typer(db_management_app)
 app.add_typer(resources_app)
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     app()
