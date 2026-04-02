@@ -13,5 +13,8 @@ tests/.coverage
 # Secrets
 .env
 
+# System-specific
+.DS_store
+
 # Data output folders (keep local only)
 /data
