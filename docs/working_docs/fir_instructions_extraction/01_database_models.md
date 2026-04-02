@@ -1,0 +1,78 @@
+# Task 01: Database Models for Instruction Metadata
+
+## Goal
+
+Define the four new database tables (`fir_schedule_meta`, `fir_line_meta`, `fir_column_meta`, `fir_instruction_changelog`) as SQLModel models and ensure they are created by `init-db`.
+
+## Task List
+
+- [ ] Add `FIRScheduleMeta` model to `models.py` with all columns per the plan
+- [ ] Add `FIRLineMeta` model to `models.py` with all columns per the plan
+- [ ] Add `FIRColumnMeta` model to `models.py` with all columns per the plan
+- [ ] Add `FIRInstructionChangelog` model to `models.py` with all columns per the plan
+- [ ] Add unique constraints for natural keys:
+  - `fir_schedule_meta`: (`schedule_id`, `valid_from_year`, `valid_to_year`)
+  - `fir_line_meta`: (`schedule_id`, `line_id`, `valid_from_year`, `valid_to_year`)
+  - `fir_column_meta`: (`schedule_id`, `column_id`, `valid_from_year`, `valid_to_year`)
+- [ ] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
+- [ ] Add the new tables to the `clear-db` command so they are truncated alongside existing tables
+- [ ] Write tests
+- [ ] Update documentation
+
+## Implementation Details
+
+### Model Definitions
+
+Follow existing patterns in `models.py`. Key decisions:
+
+- Use `Optional[int]` for `valid_from_year` / `valid_to_year` (nullable).
+- Use `bool` with `Field(default=False)` for `is_subtotal` and `is_auto_calculated`.
+- `schedule_id` is `text` (not FK to another table — it's a natural key like `"10"`, `"51A"`).
+- `change_type` on changelog should be a plain `str` field. Validation of allowed values (`new_schedule`, `deleted_schedule`, etc.) can be done at the application level rather than as a database constraint, consistent with how the existing models handle this.
+- `source` on changelog is `str` — values are `"pdf_changelog"` or `"data_inferred"`.
+
+### Unique Constraints
+
+Use SQLModel's `__table_args__` with `UniqueConstraint`:
+
+```python
+from sqlalchemy import UniqueConstraint
+
+class FIRScheduleMeta(SQLModel, table=True):
+    __tablename__ = "fir_schedule_meta"
+    __table_args__ = (
+        UniqueConstraint("schedule_id", "valid_from_year", "valid_to_year"),
+    )
+    ...
+```
+
+### clear-db Update
+
+In `db_management.py`, the `clear_db` function truncates tables. Add the four new tables to the truncation list. Order matters for foreign keys, but these tables have no FK relationships to each other or existing tables, so order is flexible.
+
+## Tests
+
+- [ ] Test that all four models can be instantiated with valid data
+- [ ] Test that `init-db` creates the new tables (check table names exist in metadata)
+- [ ] Test that `clear-db` truncates the new tables
+- [ ] Test unique constraints by attempting duplicate inserts and verifying IntegrityError
+- [ ] Test nullable fields accept None values
+- [ ] Test default values for boolean fields
+
+## Documentation Updates
+
+- [ ] Update `CLAUDE.md` "Database" section to list the four new tables with brief descriptions
+- [ ] Update `docs/architecture.md` if it describes the database schema
+
+## Success Criteria
+
+- `uv run src/municipal_finances/app.py init-db` creates all seven tables without errors
+- `uv run src/municipal_finances/app.py clear-db --yes` truncates all seven tables
+- All tests pass with 100% coverage on new code
+- Models match the column specifications in the extraction plan exactly
+
+## Questions
+
+1. Should `fir_line_meta.schedule_id` have a formal FK relationship to `fir_schedule_meta.schedule_id`? The plan doesn't specify one, and since schedule_meta has versioned rows (multiple rows per schedule_id), a simple FK wouldn't work. Recommend: no FK, just a logical relationship.
+2. Should we add indexes beyond the unique constraints? Likely candidates: `schedule_id` on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`.
+3. The plan mentions `line_id` as a 4-digit string and `column_id` as a 2-digit string. Should we enforce `max_length` on these fields for consistency with the format validation in the audit plan?
