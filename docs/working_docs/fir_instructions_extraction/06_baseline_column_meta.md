@@ -78,5 +78,4 @@ SELECT * FROM fir_column_meta WHERE column_id !~ '^\d{2}$';
 
 ## Questions
 
-1. Some schedules may have columns that are described only by their heading (no narrative description). Should `description` be NULL in these cases, or should the column name serve as the description?
-2. Are there columns that exist in `firrecord` data but are not described in the instructions PDF? This would be caught by the audit coverage check in Task 11, but worth noting here.
+1. Some schedules may have columns that are described only by their heading (no narrative description). The `description` should be "No description provided." in these cases.

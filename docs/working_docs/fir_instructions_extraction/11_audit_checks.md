@@ -1,5 +1,7 @@
 # Task 11: Automated Audit Checks
 
+**TODO - add in checks in case there are any columns in the data that are not documented**
+
 ## Goal
 
 Implement the automated checks from the extraction plan's Audit Plan section as runnable scripts or CLI commands. These checks validate the completeness and correctness of extracted metadata.
