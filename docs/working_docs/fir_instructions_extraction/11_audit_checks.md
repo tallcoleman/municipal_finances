@@ -53,7 +53,7 @@ SELECT DISTINCT
 FROM firrecord r
 WHERE NOT EXISTS (
     SELECT 1 FROM fir_line_meta m
-    WHERE m.schedule_id = parsed_schedule
+    WHERE m.schedule = parsed_schedule
     AND m.line_id = parsed_line
     AND (m.valid_from_year IS NULL OR m.valid_from_year <= r.marsyear)
     AND (m.valid_to_year IS NULL OR m.valid_to_year >= r.marsyear)
@@ -66,10 +66,10 @@ Every `fir_line_meta` row should have corresponding `firrecord` rows in at least
 **3. Format Validation**
 - `line_id` matches `/^\d{4}$/`
 - `column_id` matches `/^\d{2}$/`
-- `schedule_id` is in the known schedule list for that year
+- `schedule` is in the known schedule list for that year
 
 **4. Non-overlapping Version Ranges**
-For each (schedule_id, line_id) pair, verify no two rows have overlapping valid year ranges. Same for (schedule_id, column_id).
+For each (schedule, line_id) pair, verify no two rows have overlapping valid year ranges. Same for (schedule, column_id).
 
 **5. SLC Cross-Reference**
 Where `carry_forward_from` is populated, verify the referenced SLC exists in the data for the relevant year.

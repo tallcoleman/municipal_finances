@@ -80,11 +80,11 @@ For schedules that were deleted (51C, 79, 80B in 2023), we need to:
 
 ## Tests
 
-- [ ] Test that version ranges don't overlap for any (schedule_id, line_id) pair
+- [ ] Test that version ranges don't overlap for any (schedule, line_id) pair
 - [ ] Test that `valid_from_year` is set correctly on updated baseline rows
 - [ ] Test that new prior-version rows have correct `valid_to_year`
 - [ ] Test that `change_notes` is populated on all versioned rows
-- [ ] Test the version range query logic: `WHERE (valid_from_year IS NULL OR valid_from_year <= Y) AND (valid_to_year IS NULL OR valid_to_year >= Y)` returns exactly one row per (schedule_id, line_id) for each year 2022–2025
+- [ ] Test the version range query logic: `WHERE (valid_from_year IS NULL OR valid_from_year <= Y) AND (valid_to_year IS NULL OR valid_to_year >= Y)` returns exactly one row per (schedule, line_id) for each year 2022–2025
 
 ## Documentation Updates
 
@@ -93,7 +93,7 @@ For schedules that were deleted (51C, 79, 80B in 2023), we need to:
 ## Success Criteria
 
 - For every changelog entry, the corresponding metadata row has been versioned
-- No overlapping version ranges for the same (schedule_id, line_id) or (schedule_id, column_id)
+- No overlapping version ranges for the same (schedule, line_id) or (schedule, column_id)
 - Deleted schedules (51C, 79, 80B) have complete metadata with `valid_to_year = 2022`
 - New schedules (71, 74E) have `valid_from_year = 2023`
 - Querying for any year 2022–2025 returns a consistent, non-overlapping set of metadata
@@ -102,18 +102,18 @@ For schedules that were deleted (51C, 79, 80B in 2023), we need to:
 
 ```sql
 -- Check for overlapping version ranges (should return 0)
-SELECT a.schedule_id, a.line_id, a.valid_from_year, a.valid_to_year,
+SELECT a.schedule, a.line_id, a.valid_from_year, a.valid_to_year,
        b.valid_from_year as b_from, b.valid_to_year as b_to
 FROM fir_line_meta a
-JOIN fir_line_meta b ON a.schedule_id = b.schedule_id AND a.line_id = b.line_id AND a.id < b.id
+JOIN fir_line_meta b ON a.schedule = b.schedule AND a.line_id = b.line_id AND a.id < b.id
 WHERE (a.valid_from_year IS NULL OR a.valid_from_year <= COALESCE(b.valid_to_year, 9999))
   AND (a.valid_to_year IS NULL OR a.valid_to_year >= COALESCE(b.valid_from_year, 0));
 
 -- Verify deleted schedules have valid_to_year
-SELECT * FROM fir_schedule_meta WHERE schedule_id IN ('51C', '79', '80B');
+SELECT * FROM fir_schedule_meta WHERE schedule IN ('51C', '79', '80B');
 
 -- Verify new schedules have valid_from_year
-SELECT * FROM fir_schedule_meta WHERE schedule_id IN ('71', '74E');
+SELECT * FROM fir_schedule_meta WHERE schedule IN ('71', '74E');
 
 -- Count versioned rows (should be > 0 for each year)
 SELECT valid_from_year, count(*) FROM fir_line_meta WHERE valid_from_year IS NOT NULL GROUP BY valid_from_year;
@@ -123,7 +123,7 @@ SELECT cl.* FROM fir_instruction_changelog cl
 WHERE cl.source = 'pdf_changelog'
 AND NOT EXISTS (
     SELECT 1 FROM fir_line_meta lm
-    WHERE lm.schedule_id = cl.schedule_id
+    WHERE lm.schedule = cl.schedule
     AND lm.valid_from_year IS NOT NULL
     AND lm.change_notes IS NOT NULL
 )

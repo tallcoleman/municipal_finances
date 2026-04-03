@@ -11,9 +11,9 @@ Define the four new database tables (`fir_schedule_meta`, `fir_line_meta`, `fir_
 - [ ] Add `FIRColumnMeta` model to `models.py` with all columns per the plan
 - [ ] Add `FIRInstructionChangelog` model to `models.py` with all columns per the plan
 - [ ] Add unique constraints for natural keys:
-  - `fir_schedule_meta`: (`schedule_id`, `valid_from_year`, `valid_to_year`)
-  - `fir_line_meta`: (`schedule_id`, `line_id`, `valid_from_year`, `valid_to_year`)
-  - `fir_column_meta`: (`schedule_id`, `column_id`, `valid_from_year`, `valid_to_year`)
+  - `fir_schedule_meta`: (`schedule`, `valid_from_year`, `valid_to_year`)
+  - `fir_line_meta`: (`schedule`, `line_id`, `valid_from_year`, `valid_to_year`)
+  - `fir_column_meta`: (`schedule`, `column_id`, `valid_from_year`, `valid_to_year`)
 - [ ] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
 - [ ] Update the `clear-db` command so that it does not need to manually specify which tables should be truncated
 - [ ] Write tests
@@ -27,7 +27,7 @@ Follow existing patterns in `models.py`. Key decisions:
 
 - Use `Optional[int]` for `valid_from_year` / `valid_to_year` (nullable).
 - Use `bool` with `Field(default=False)` for `is_subtotal` and `is_auto_calculated`.
-- `schedule_id` is `text` (not FK to another table — it's a natural key like `"10"`, `"51A"`).
+- `schedule` on `fir_schedule_meta` is `text` (natural key like `"10"`, `"51A"`). `fir_line_meta` and `fir_column_meta` each have both a `schedule_id` serial FK to `fir_schedule_meta.id` and a denormalized `schedule` text field matching the natural key. The `schedule_id` FK is database-internal and excluded from exported CSVs; it is re-derived during load by joining against `fir_schedule_meta` on the `schedule` text value.
 - `change_type` on changelog should be a plain `str` field. Validation of allowed values (`new_schedule`, `deleted_schedule`, etc.) can be done at the application level rather than as a database constraint, consistent with how the existing models handle this.
 - `source` on changelog is `str` — values are `"pdf_changelog"` or `"data_inferred"`.
 
@@ -41,7 +41,7 @@ from sqlalchemy import UniqueConstraint
 class FIRScheduleMeta(SQLModel, table=True):
     __tablename__ = "fir_schedule_meta"
     __table_args__ = (
-        UniqueConstraint("schedule_id", "valid_from_year", "valid_to_year"),
+        UniqueConstraint("schedule", "valid_from_year", "valid_to_year"),
     )
     ...
 ```
@@ -74,6 +74,5 @@ In `db_management.py`, the `clear_db` function truncates tables. Change the func
 
 ## Questions
 
-1. Should `fir_line_meta.schedule_id` have a formal FK relationship to `fir_schedule_meta.schedule_id`? The plan doesn't specify one, and since schedule_meta has versioned rows (multiple rows per schedule_id), a simple FK wouldn't work. Recommend: no FK, just a logical relationship.
-2. Should we add indexes beyond the unique constraints? Likely candidates: `schedule_id` on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`.
+1. Should we add indexes beyond the unique constraints? Likely candidates: `schedule` (text) on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`. The `schedule_id` serial FK on `fir_line_meta` and `fir_column_meta` will be indexed automatically by PostgreSQL as a FK.
 3. The plan mentions `line_id` as a 4-digit string and `column_id` as a 2-digit string. Should we enforce `max_length` on these fields for consistency with the format validation in the audit plan?

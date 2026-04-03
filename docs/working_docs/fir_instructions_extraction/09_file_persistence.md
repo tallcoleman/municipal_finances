@@ -44,6 +44,9 @@ fir_instructions/exports/
     fir_instruction_changelog.csv
 ```
 
+**Columns to exclude from export:**
+Exclude `id` (serial PK) and `schedule_id` (serial FK) from all exports. The `schedule_id` FK is database-internal — its value depends on the `id` assigned to `fir_schedule_meta` rows in a particular database instance and cannot be transferred portably. It is re-derived during load (see below).
+
 **Implementation approach:**
 Use pandas `read_sql` + `to_csv` for simplicity:
 
@@ -51,9 +54,16 @@ Use pandas `read_sql` + `to_csv` for simplicity:
 import pandas as pd
 from municipal_finances.database import get_engine
 
+EXCLUDE_COLUMNS = {
+    "fir_schedule_meta": ["id"],
+    "fir_line_meta": ["id", "schedule_id"],
+    "fir_column_meta": ["id", "schedule_id"],
+    "fir_instruction_changelog": ["id"],
+}
+
 def export_table(engine, table_name: str, output_path: Path):
     df = pd.read_sql(f"SELECT * FROM {table_name}", engine)
-    df = df.drop(columns=["id"])
+    df = df.drop(columns=EXCLUDE_COLUMNS[table_name])
     df.to_csv(output_path, index=False)
     return len(df)
 ```
@@ -68,25 +78,38 @@ uv run src/municipal_finances/app.py load-instructions --input-dir path/to/dir
 **Behavior:**
 1. Check that target tables exist; if not, run `init-db` implicitly
 2. Read each CSV file
-3. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` (match on unique constraint / natural key)
-4. Log rows inserted vs. skipped per table
-5. Load order: `fir_schedule_meta` first, then `fir_line_meta`, `fir_column_meta`, then `fir_instruction_changelog`
+3. For `fir_line_meta` and `fir_column_meta`: resolve `schedule_id` FK by joining against the newly-loaded `fir_schedule_meta` rows on the `schedule` text value
+4. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` (match on unique constraint / natural key)
+5. Log rows inserted vs. skipped per table
+6. Load order: `fir_schedule_meta` first (required before FK resolution), then `fir_line_meta`, `fir_column_meta`, then `fir_instruction_changelog`
 
 **Natural keys for conflict detection:**
-- `fir_schedule_meta`: (`schedule_id`, `valid_from_year`, `valid_to_year`)
-- `fir_line_meta`: (`schedule_id`, `line_id`, `valid_from_year`, `valid_to_year`)
-- `fir_column_meta`: (`schedule_id`, `column_id`, `valid_from_year`, `valid_to_year`)
-- `fir_instruction_changelog`: (`year`, `schedule_id`, `slc_pattern`, `change_type`, `source`) — or all non-id columns
+- `fir_schedule_meta`: (`schedule`, `valid_from_year`, `valid_to_year`)
+- `fir_line_meta`: (`schedule`, `line_id`, `valid_from_year`, `valid_to_year`)
+- `fir_column_meta`: (`schedule`, `column_id`, `valid_from_year`, `valid_to_year`)
+- `fir_instruction_changelog`: (`year`, `schedule`, `slc_pattern`, `change_type`, `source`) — or all non-id columns
 
 **Implementation approach:**
-Use pandas `read_csv` + SQLAlchemy Core `pg_insert` with `on_conflict_do_nothing`:
+Use pandas `read_csv` + SQLAlchemy Core `pg_insert` with `on_conflict_do_nothing`. For tables with a `schedule_id` FK, resolve it before inserting:
 
 ```python
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
+def resolve_schedule_ids(engine, df: pd.DataFrame) -> pd.DataFrame:
+    """Add schedule_id FK column by looking up fir_schedule_meta on the schedule text value."""
+    schedule_map = pd.read_sql(
+        "SELECT id AS schedule_id, schedule, valid_from_year, valid_to_year FROM fir_schedule_meta",
+        engine,
+    )
+    # Each (schedule, valid_from_year, valid_to_year) tuple maps to exactly one schedule_id
+    return df.merge(schedule_map, on=["schedule", "valid_from_year", "valid_to_year"], how="left")
+
 def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key_columns: list[str]):
     df = pd.read_csv(csv_path)
     df = df.where(df.notna(), None)  # Convert NaN back to None
+
+    if table_name in ("fir_line_meta", "fir_column_meta"):
+        df = resolve_schedule_ids(engine, df)
 
     records = df.to_dict(orient="records")
     stmt = pg_insert(model_class).values(records)
@@ -114,9 +137,11 @@ app.add_typer(fir_instructions_app)
 
 ## Tests
 
-- [ ] Test export writes correct CSV files with expected columns (no `id` column)
+- [ ] Test export writes correct CSV files with expected columns (no `id` or `schedule_id` columns)
 - [ ] Test export produces correct row counts
 - [ ] Test load inserts rows into all four tables
+- [ ] Test load correctly resolves `schedule_id` FK for `fir_line_meta` and `fir_column_meta` from `schedule` text value
+- [ ] Test load raises an error (or logs a warning) if `schedule` in a line/column CSV has no matching row in `fir_schedule_meta`
 - [ ] Test load is idempotent (loading same CSV twice doesn't duplicate rows)
 - [ ] Test load handles empty CSV (just headers, no data rows)
 - [ ] Test load implicitly creates tables if they don't exist
@@ -132,7 +157,7 @@ app.add_typer(fir_instructions_app)
 
 ## Success Criteria
 
-- `export-instructions` produces four CSV files with all rows, no `id` column
+- `export-instructions` produces four CSV files with all rows, no `id` or `schedule_id` columns
 - `load-instructions` loads all rows and is idempotent
 - Round-trip preserves all data (export → clear → load → export → compare: files identical)
 - CLI output logs row counts for each table

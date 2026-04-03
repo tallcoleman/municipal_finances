@@ -126,7 +126,7 @@ GROUP BY year, change_type
 ORDER BY year, change_type;
 
 -- Reconciliation: inferred changes that match PDF changelog
-SELECT ic.year, ic.schedule_id, ic.slc_pattern, ic.change_type
+SELECT ic.year, ic.schedule, ic.slc_pattern, ic.change_type
 FROM fir_instruction_changelog ic
 WHERE ic.source = 'data_inferred'
 AND ic.year BETWEEN 2022 AND 2025
@@ -134,7 +134,7 @@ AND EXISTS (
     SELECT 1 FROM fir_instruction_changelog pc
     WHERE pc.source = 'pdf_changelog'
     AND pc.year = ic.year
-    AND pc.schedule_id = ic.schedule_id
+    AND pc.schedule = ic.schedule
 );
 
 -- Inferred changes NOT in PDF changelog (potential data anomalies)
@@ -146,7 +146,7 @@ AND NOT EXISTS (
     SELECT 1 FROM fir_instruction_changelog pc
     WHERE pc.source = 'pdf_changelog'
     AND pc.year = ic.year
-    AND pc.schedule_id = ic.schedule_id
+    AND pc.schedule = ic.schedule
     AND (pc.line_id = ic.line_id OR (pc.line_id IS NULL AND ic.line_id IS NULL))
 );
 ```

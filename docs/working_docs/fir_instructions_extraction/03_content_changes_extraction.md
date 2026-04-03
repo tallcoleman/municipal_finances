@@ -32,7 +32,7 @@ The PDFs also distinguish between "Major Changes" and "Minor Changes" sections, 
 1. Read the relevant pages from each PDF using Claude's PDF reading capability
 2. For each row in the table, create a `FIRInstructionChangelog` record:
    - `year`: the FIR year (2022, 2023, 2024, or 2025)
-   - `schedule_id`: parsed from the Schedule column
+   - `schedule`: parsed from the Schedule column
    - `slc_pattern`: the raw SLC value from the PDF (may contain wildcards like `xx`)
    - `line_id`: parsed from `slc_pattern` if deterministic (not `xxxx`)
    - `column_id`: parsed from `slc_pattern` if deterministic (not `xx`)

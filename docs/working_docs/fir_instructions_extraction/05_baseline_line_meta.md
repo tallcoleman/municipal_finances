@@ -8,7 +8,7 @@ Extract line-level metadata for all schedules from the FIR2025 Instructions PDF.
 
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
-- Task 04 (schedule metadata) complete — need schedule_id values
+- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values)
 
 ## Task List
 
@@ -42,7 +42,8 @@ These need to be merged into a single `fir_line_meta` row per line.
 
 | Field | Source |
 |---|---|
-| `schedule_id` | From schedule context |
+| `schedule_id` | Serial FK to `fir_schedule_meta.id` |
+| `schedule` | Text identifier (e.g., `"10"`, `"51A"`) — denormalized from schedule context |
 | `line_id` | 4-digit code from the PDF (e.g., `"0410"`) |
 | `line_name` | Heading text (e.g., `"Fire"`) |
 | `section` | Section heading within the schedule (e.g., `"Protection Services"`) |
@@ -61,7 +62,7 @@ These need to be merged into a single `fir_line_meta` row per line.
 
 Given the volume (~26 schedules, potentially hundreds of lines each), work through the PDF in batches:
 
-1. **Functional Classifications first** (pages 43–93): Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule_id, line_id).
+1. **Functional Classifications first** (pages 43–93): Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule, line_id).
 2. **Schedule-by-schedule**: For each schedule's instruction section, extract line descriptions, subtotal flags, carry-forward references, and applicability notes.
 3. **Merge**: For Schedules 12, 40, 51 — combine the Functional Classifications data with the schedule instruction data.
 
@@ -110,28 +111,28 @@ Total: likely 500–1000+ line metadata rows.
 
 ```sql
 -- Lines per schedule
-SELECT schedule_id, count(*) FROM fir_line_meta GROUP BY schedule_id ORDER BY schedule_id;
+SELECT schedule, count(*) FROM fir_line_meta GROUP BY schedule ORDER BY schedule;
 
 -- Schedules with no lines (should be empty)
-SELECT sm.schedule_id FROM fir_schedule_meta sm
-LEFT JOIN fir_line_meta lm ON sm.schedule_id = lm.schedule_id
+SELECT sm.schedule FROM fir_schedule_meta sm
+LEFT JOIN fir_line_meta lm ON sm.schedule = lm.schedule
 WHERE lm.id IS NULL;
 
 -- Subtotal and auto-calculated counts
-SELECT schedule_id,
+SELECT schedule,
     count(*) FILTER (WHERE is_subtotal) as subtotals,
     count(*) FILTER (WHERE is_auto_calculated) as auto_calc
-FROM fir_line_meta GROUP BY schedule_id ORDER BY schedule_id;
+FROM fir_line_meta GROUP BY schedule ORDER BY schedule;
 
 -- Lines with carry_forward_from but not flagged as auto_calculated (should be empty)
 SELECT * FROM fir_line_meta WHERE carry_forward_from IS NOT NULL AND NOT is_auto_calculated;
 
 -- Functional Classifications coverage
-SELECT schedule_id,
+SELECT schedule,
     count(*) FILTER (WHERE includes IS NOT NULL) as has_includes,
     count(*) FILTER (WHERE excludes IS NOT NULL) as has_excludes
-FROM fir_line_meta WHERE schedule_id IN ('12', '40', '51A', '51B')
-GROUP BY schedule_id;
+FROM fir_line_meta WHERE schedule IN ('12', '40', '51A', '51B')
+GROUP BY schedule;
 ```
 
 ## Questions

@@ -24,24 +24,24 @@ Expose the instruction metadata tables via the FastAPI API so users can query sc
 **Schedule metadata:**
 - `GET /instructions/schedules/` — List all schedules, optionally filtered by year
   - Query params: `year` (int, optional — filters to schedules valid in that year), `category` (str, optional), `offset`, `limit`
-- `GET /instructions/schedules/{schedule_id}` — Get a specific schedule's metadata
+- `GET /instructions/schedules/{schedule}` — Get a specific schedule's metadata
   - Query params: `year` (int, optional — returns the version valid in that year)
 
 **Line metadata:**
 - `GET /instructions/lines/` — List lines, filtered by schedule and/or year
-  - Query params: `schedule_id` (required), `year` (int, optional), `section` (str, optional), `offset`, `limit`
-- `GET /instructions/lines/{schedule_id}/{line_id}` — Get a specific line's metadata
+  - Query params: `schedule` (required), `year` (int, optional), `section` (str, optional), `offset`, `limit`
+- `GET /instructions/lines/{schedule}/{line_id}` — Get a specific line's metadata
   - Query params: `year` (int, optional)
 
 **Column metadata:**
 - `GET /instructions/columns/` — List columns for a schedule
-  - Query params: `schedule_id` (required), `year` (int, optional), `offset`, `limit`
-- `GET /instructions/columns/{schedule_id}/{column_id}` — Get a specific column's metadata
+  - Query params: `schedule` (required), `year` (int, optional), `offset`, `limit`
+- `GET /instructions/columns/{schedule}/{column_id}` — Get a specific column's metadata
   - Query params: `year` (int, optional)
 
 **Changelog:**
 - `GET /instructions/changelog/` — List changelog entries
-  - Query params: `year` (int, optional), `schedule_id` (str, optional), `source` (str, optional), `change_type` (str, optional), `offset`, `limit`
+  - Query params: `year` (int, optional), `schedule` (str, optional), `source` (str, optional), `change_type` (str, optional), `offset`, `limit`
 
 **Enriched record lookup:**
 - `GET /instructions/lookup/` — Given an SLC string and year, return the matching schedule, line, and column metadata
@@ -69,9 +69,9 @@ The `/instructions/lookup/` endpoint is the primary integration point. It:
 @router.get("/instructions/lookup/")
 def lookup_instruction(slc: str, year: int, session: Session = Depends(get_session)):
     parsed = parse_slc(slc)
-    schedule = get_schedule_for_year(session, parsed["schedule_id"], year)
-    line = get_line_for_year(session, parsed["schedule_id"], parsed["line_id"], year)
-    column = get_column_for_year(session, parsed["schedule_id"], parsed["column_id"], year)
+    schedule = get_schedule_for_year(session, parsed["schedule"], year)
+    line = get_line_for_year(session, parsed["schedule"], parsed["line_id"], year)
+    column = get_column_for_year(session, parsed["schedule"], parsed["column_id"], year)
     return {"schedule": schedule, "line": line, "column": column}
 ```
 
@@ -90,12 +90,12 @@ Follow the pattern in `test_api.py`:
 - [ ] Add `seed_schedule_meta()`, `seed_line_meta()`, `seed_column_meta()`, `seed_changelog_entry()` helpers
 - [ ] Test `GET /instructions/schedules/` returns all schedules
 - [ ] Test `GET /instructions/schedules/` with `year` filter returns only valid schedules
-- [ ] Test `GET /instructions/schedules/{id}` returns correct schedule
-- [ ] Test `GET /instructions/schedules/{id}` with invalid ID returns 404
-- [ ] Test `GET /instructions/lines/` requires `schedule_id`
+- [ ] Test `GET /instructions/schedules/{schedule}` returns correct schedule
+- [ ] Test `GET /instructions/schedules/{schedule}` with invalid schedule returns 404
+- [ ] Test `GET /instructions/lines/` requires `schedule`
 - [ ] Test `GET /instructions/lines/` with year filtering
-- [ ] Test `GET /instructions/lines/{schedule_id}/{line_id}` returns correct line
-- [ ] Test `GET /instructions/columns/` with schedule_id filter
+- [ ] Test `GET /instructions/lines/{schedule}/{line_id}` returns correct line
+- [ ] Test `GET /instructions/columns/` with schedule filter
 - [ ] Test `GET /instructions/changelog/` with various filters
 - [ ] Test `GET /instructions/lookup/` with valid SLC and year
 - [ ] Test `GET /instructions/lookup/` with invalid SLC returns 422

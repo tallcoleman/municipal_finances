@@ -34,7 +34,7 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 
 ### Fields to Extract Per Schedule
 
-- `schedule_id`: From the schedule number (e.g., `"10"`, `"51A"`)
+- `schedule`: From the schedule number (e.g., `"10"`, `"51A"`)
 - `schedule_name`: Full title (e.g., `"Consolidated Statement of Operations: Revenue"`)
 - `category`: From the table above
 - `description`: The general purpose paragraph from the schedule's instruction section
@@ -57,8 +57,8 @@ Use the same insertion pattern as Task 03. Create an `insert_schedule_meta` func
 - [ ] Test insertion of schedule metadata records
 - [ ] Test that all 26 schedules are present after insertion
 - [ ] Test idempotent insertion (re-inserting same data doesn't create duplicates)
-- [ ] Test that `schedule_id` values match the known schedule list
-- [ ] Test that no required fields are NULL (schedule_id, schedule_name, category)
+- [ ] Test that `schedule` values match the known schedule list
+- [ ] Test that no required fields are NULL (schedule, schedule_name, category)
 
 ## Documentation Updates
 
@@ -68,7 +68,7 @@ Use the same insertion pattern as Task 03. Create an `insert_schedule_meta` func
 
 - `fir_schedule_meta` contains exactly 26 rows (one per schedule)
 - Every row has a non-empty `schedule_name`, `category`, and `description`
-- `schedule_id` values match the known set for 2025
+- `schedule` values match the known set for 2025
 - `valid_from_year` and `valid_to_year` are both NULL on all baseline rows
 - Spot-check 5 schedule descriptions against the PDF for accuracy
 

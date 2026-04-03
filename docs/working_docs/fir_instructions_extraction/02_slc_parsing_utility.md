@@ -19,13 +19,14 @@ def parse_slc(slc: str) -> dict:
     """Parse a database SLC string into components.
 
     Input format: 'slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}'
-    Example: 'slc.10.L9930.C01.' -> {'schedule_id': '10', 'line_id': '9930', 'column_id': '01', 'sub': ''}
+    Example: 'slc.10.L9930.C01.' -> {'schedule': '10', 'line_id': '9930', 'column_id': '01', 'sub': ''}
 
-    Returns dict with keys: schedule_id, line_id, column_id, sub
+    Returns dict with keys: schedule, line_id, column_id, sub
+    (schedule maps to fir_schedule_meta.schedule, not the serial schedule_id FK)
     Raises ValueError if format doesn't match.
     """
 
-def slc_to_pdf_format(schedule_id: str, line_id: str, column_id: str) -> str:
+def slc_to_pdf_format(schedule: str, line_id: str, column_id: str) -> str:
     """Convert components to PDF reference format.
 
     Example: ('10', '9930', '01') -> 'SLC 10 9930 01'
@@ -37,7 +38,8 @@ def pdf_slc_to_components(pdf_slc: str) -> dict:
     Input format: 'SLC 10 9930 01' or '10 9930 01' (with or without 'SLC' prefix)
     Also handles wildcard patterns like '40 xxxx 05'.
 
-    Returns dict with keys: schedule_id, line_id, column_id
+    Returns dict with keys: schedule, line_id, column_id
+    (schedule maps to fir_schedule_meta.schedule, not the serial schedule_id FK)
     Values may be None if wildcarded (e.g., 'xxxx').
     """
 ```

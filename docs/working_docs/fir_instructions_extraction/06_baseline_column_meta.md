@@ -7,7 +7,7 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 ## Prerequisites
 
 - Task 01 (database models) complete
-- Task 04 (schedule metadata) complete — need schedule_id values
+- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values)
 
 ## Task List
 
@@ -23,7 +23,8 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 
 | Field | Source |
 |---|---|
-| `schedule_id` | From schedule context |
+| `schedule_id` | Serial FK to `fir_schedule_meta.id` |
+| `schedule` | Text identifier (e.g., `"10"`, `"51A"`) — denormalized from schedule context |
 | `column_id` | 2-digit code (e.g., `"01"`, `"03"`) |
 | `column_name` | Column heading (e.g., `"Ontario Conditional Grants"`) |
 | `description` | Narrative about what the column captures |
@@ -64,11 +65,11 @@ Most schedules have 3–10 columns. Total: likely 100–200 column metadata rows
 
 ```sql
 -- Columns per schedule
-SELECT schedule_id, count(*) FROM fir_column_meta GROUP BY schedule_id ORDER BY schedule_id;
+SELECT schedule, count(*) FROM fir_column_meta GROUP BY schedule ORDER BY schedule;
 
 -- Schedules with no columns (should be empty)
-SELECT sm.schedule_id FROM fir_schedule_meta sm
-LEFT JOIN fir_column_meta cm ON sm.schedule_id = cm.schedule_id
+SELECT sm.schedule FROM fir_schedule_meta sm
+LEFT JOIN fir_column_meta cm ON sm.schedule = cm.schedule
 WHERE cm.id IS NULL;
 
 -- Validate column_id format
