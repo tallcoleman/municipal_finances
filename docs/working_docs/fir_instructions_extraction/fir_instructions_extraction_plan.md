@@ -50,71 +50,73 @@ Note: the schedule list itself changes over time. Schedule 51C and 79 were delet
 
 One row per (schedule, version). Describes a schedule as a whole.
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | serial PK | |
-| `schedule_id` | text | e.g. `"10"`, `"51A"`, `"74E"` |
-| `schedule_name` | text | e.g. `"Consolidated Statement of Operations: Revenue"` |
-| `category` | text | e.g. `"Revenue"`, `"Taxation"`, `"Expense"` |
-| `description` | text | General purpose paragraph from the instructions |
-| `valid_from_year` | int nullable | First FIR year this version applies; NULL = before our earliest PDF |
-| `valid_to_year` | int nullable | Last FIR year this version applies; NULL = still current |
-| `change_notes` | text nullable | Brief summary of what changed to create this version |
+| Column            | Type          | Notes                                                               |
+| ----------------- | ------------- | ------------------------------------------------------------------- |
+| `id`              | serial PK     |                                                                     |
+| `schedule`        | text          | e.g. `"10"`, `"51A"`, `"74E"`                                       |
+| `schedule_name`   | text          | e.g. `"Consolidated Statement of Operations: Revenue"`              |
+| `category`        | text          | e.g. `"Revenue"`, `"Taxation"`, `"Expense"`                         |
+| `description`     | text          | General purpose paragraph from the instructions                     |
+| `valid_from_year` | int nullable  | First FIR year this version applies; NULL = before our earliest PDF |
+| `valid_to_year`   | int nullable  | Last FIR year this version applies; NULL = still current            |
+| `change_notes`    | text nullable | Brief summary of what changed to create this version                |
 
 ### `fir_line_meta`
 
 One row per (schedule, line, version). The richest table — covers both Functional Classifications content and schedule-specific reporting rules.
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | serial PK | |
-| `schedule_id` | text | FK to `fir_schedule_meta.schedule_id` |
-| `line_id` | text | 4-digit string, e.g. `"0410"` |
-| `line_name` | text | e.g. `"Fire"` |
-| `section` | text nullable | Section heading within the schedule, e.g. `"Protection Services"` |
-| `description` | text nullable | Full narrative from the PDF about what to report |
-| `includes` | text nullable | Items explicitly included (from Functional Classifications or schedule instructions) |
-| `excludes` | text nullable | Items explicitly excluded |
-| `is_subtotal` | bool | Whether this is a computed subtotal row |
-| `is_auto_calculated` | bool | Whether auto-populated from another schedule |
-| `carry_forward_from` | text nullable | SLC reference if auto-populated, e.g. `"12 9910 05"` |
-| `applicability` | text nullable | Any restriction, e.g. `"Upper-tier only"`, `"City of Toronto only"` |
-| `valid_from_year` | int nullable | First FIR year this version applies; NULL = before our earliest PDF |
-| `valid_to_year` | int nullable | Last FIR year this version applies; NULL = still current |
-| `change_notes` | text nullable | Brief summary of what changed to create this version |
+| Column               | Type          | Notes                                                                                |
+| -------------------- | ------------- | ------------------------------------------------------------------------------------ |
+| `id`                 | serial PK     |                                                                                      |
+| `schedule_id`        | serial FK     | FK to `fir_schedule_meta.id`                                                         |
+| `schedule`           | text          | Corresponds to `fir_schedule_meta.schedule` but is not a FK                          |
+| `line_id`            | text          | 4-digit string, e.g. `"0410"`                                                        |
+| `line_name`          | text          | e.g. `"Fire"`                                                                        |
+| `section`            | text nullable | Section heading within the schedule, e.g. `"Protection Services"`                    |
+| `description`        | text nullable | Full narrative from the PDF about what to report                                     |
+| `includes`           | text nullable | Items explicitly included (from Functional Classifications or schedule instructions) |
+| `excludes`           | text nullable | Items explicitly excluded                                                            |
+| `is_subtotal`        | bool          | Whether this is a computed subtotal row                                              |
+| `is_auto_calculated` | bool          | Whether auto-populated from another schedule                                         |
+| `carry_forward_from` | text nullable | SLC reference if auto-populated, e.g. `"12 9910 05"`                                 |
+| `applicability`      | text nullable | Any restriction, e.g. `"Upper-tier only"`, `"City of Toronto only"`                  |
+| `valid_from_year`    | int nullable  | First FIR year this version applies; NULL = before our earliest PDF                  |
+| `valid_to_year`      | int nullable  | Last FIR year this version applies; NULL = still current                             |
+| `change_notes`       | text nullable | Brief summary of what changed to create this version                                 |
 
 ### `fir_column_meta`
 
 One row per (schedule, column, version).
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | serial PK | |
-| `schedule_id` | text | |
-| `column_id` | text | 2-digit string, e.g. `"01"` |
-| `column_name` | text | e.g. `"Ontario Conditional Grants"` |
-| `description` | text nullable | What the column captures |
-| `valid_from_year` | int nullable | First FIR year this version applies; NULL = before our earliest PDF |
-| `valid_to_year` | int nullable | Last FIR year this version applies; NULL = still current |
-| `change_notes` | text nullable | Brief summary of what changed to create this version |
+| Column            | Type          | Notes                                                               |
+| ----------------- | ------------- | ------------------------------------------------------------------- |
+| `id`              | serial PK     |                                                                     |
+| `schedule_id`     | serial FK     | FK to `fir_schedule_meta.id`                                        |
+| `schedule`        | text          | Corresponds to `fir_schedule_meta.schedule` but is not a FK         |
+| `column_id`       | text          | 2-digit string, e.g. `"01"`                                         |
+| `column_name`     | text          | e.g. `"Ontario Conditional Grants"`                                 |
+| `description`     | text nullable | What the column captures                                            |
+| `valid_from_year` | int nullable  | First FIR year this version applies; NULL = before our earliest PDF |
+| `valid_to_year`   | int nullable  | Last FIR year this version applies; NULL = still current            |
+| `change_notes`    | text nullable | Brief summary of what changed to create this version                |
 
 ### `fir_instruction_changelog`
 
 One row per documented or inferred change. Tracks all changes across all years from both PDF Content Changes sections and data-inferred differences. This table is the source of truth for populating `valid_from_year`/`valid_to_year` on the other tables.
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | serial PK | |
-| `year` | int | FIR year in which this change took effect |
-| `schedule_id` | text | Affected schedule |
-| `slc_pattern` | text nullable | SLC reference from PDF (may contain wildcards like `xx`), e.g. `"40 xxxx 05"` |
-| `line_id` | text nullable | Parsed line ID if deterministic |
-| `column_id` | text nullable | Parsed column ID if deterministic |
-| `heading` | text nullable | Line/column heading from the PDF or inferred from data |
-| `change_type` | text | One of: `new_schedule`, `deleted_schedule`, `new_line`, `deleted_line`, `updated_line`, `new_column`, `deleted_column`, `updated_column`, `inferred_new`, `inferred_deleted`, `inferred_label_change` |
-| `severity` | text nullable | `"major"` or `"minor"` (from PDF labelling); NULL for inferred |
-| `description` | text nullable | Verbatim from PDF, or auto-generated description for inferred changes |
-| `source` | text | `"pdf_changelog"` or `"data_inferred"` |
+| Column        | Type          | Notes                                                                                                                                                                                                 |
+| ------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`          | serial PK     |                                                                                                                                                                                                       |
+| `year`        | int           | FIR year in which this change took effect                                                                                                                                                             |
+| `schedule`    | text          | Affected schedule                                                                                                                                                                                     |
+| `slc_pattern` | text nullable | SLC reference from PDF (may contain wildcards like `xx`), e.g. `"40 xxxx 05"`                                                                                                                         |
+| `line_id`     | text nullable | Parsed line ID if deterministic                                                                                                                                                                       |
+| `column_id`   | text nullable | Parsed column ID if deterministic                                                                                                                                                                     |
+| `heading`     | text nullable | Line/column heading from the PDF or inferred from data                                                                                                                                                |
+| `change_type` | text          | One of: `new_schedule`, `deleted_schedule`, `new_line`, `deleted_line`, `updated_line`, `new_column`, `deleted_column`, `updated_column`, `inferred_new`, `inferred_deleted`, `inferred_label_change` |
+| `severity`    | text nullable | `"major"` or `"minor"` (from PDF labelling); NULL for inferred                                                                                                                                        |
+| `description` | text nullable | Verbatim from PDF, or auto-generated description for inferred changes                                                                                                                                 |
+| `source`      | text          | `"pdf_changelog"` or `"data_inferred"`                                                                                                                                                                |
 
 **Effective date semantics:**
 - `valid_from_year = NULL`: applies from before our earliest PDF (pre-2022)
@@ -132,7 +134,7 @@ The `slc` field on `firrecord` encodes schedule, line, and column. Parse it to j
 SELECT r.*, m.*
 FROM firrecord r
 JOIN fir_line_meta m
-  ON m.schedule_id = <parsed schedule from r.slc>
+  ON m.schedule = <parsed schedule from r.slc>
  AND m.line_id     = <parsed line from r.slc>
  AND (m.valid_from_year IS NULL OR m.valid_from_year <= r.marsyear)
  AND (m.valid_to_year   IS NULL OR m.valid_to_year   >= r.marsyear)
@@ -295,7 +297,7 @@ Implementation: use `COPY (SELECT ...) TO STDOUT WITH CSV HEADER` via psycopg2, 
 
 ### Loading from file
 
-Add a `load-instructions` CLI command that reads the exported CSVs and inserts them into the database, skipping any row that already exists (match on the natural key: `schedule_id` + `valid_from_year` + `valid_to_year` for schedule/line/column tables; all non-id columns for changelog):
+Add a `load-instructions` CLI command that reads the exported CSVs and inserts them into the database, skipping any row that already exists (match on the natural key: `schedule` + `valid_from_year` + `valid_to_year` for schedule/line/column tables; all non-id columns for changelog):
 
 ```bash
 uv run src/municipal_finances/app.py load-instructions
@@ -322,8 +324,8 @@ Re-extraction is only needed when new FIR PDFs are published or extraction error
 
 1. **Coverage check**: query `firrecord` for all distinct (schedule, line) pairs. Every pair should have at least one matching row in `fir_line_meta` for the relevant year. Flag gaps.
 2. **Orphan check**: every row in `fir_line_meta` should have corresponding `firrecord` rows in at least one year within its valid range. Flag entries with zero data matches.
-3. **Format validation**: `line_id` matches `/^\d{4}$/`; `column_id` matches `/^\d{2}$/`; `schedule_id` is in the known schedule list for that year.
-4. **Non-overlapping version ranges**: for a given (schedule_id, line_id) pair, no two rows should have overlapping valid year ranges.
+3. **Format validation**: `line_id` matches `/^\d{4}$/`; `column_id` matches `/^\d{2}$/`; `schedule` is in the known schedule list for that year.
+4. **Non-overlapping version ranges**: for a given (schedule, line_id) pair, no two rows should have overlapping valid year ranges.
 5. **SLC cross-reference**: where `carry_forward_from` is populated, verify the referenced SLC exists in the data.
 6. **Changelog completeness**: every row in `fir_instruction_changelog` with `source = "pdf_changelog"` should have produced at least one versioned row (with non-null `valid_from_year`) in the corresponding metadata table.
 
