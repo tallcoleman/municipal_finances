@@ -117,9 +117,9 @@ Follow the pattern in `test_api.py`:
 - All tests pass with 100% coverage on new code
 - API docs at `/docs` show the new endpoints with proper descriptions
 
-## Questions
+## Additional Considerations
 
-1. Should the lookup endpoint return 404 if any of the three metadata types is missing for the given SLC/year, or should it return partial results (with nulls for missing parts)?
-2. Should there be an endpoint that enriches `firrecord` results with instruction metadata inline? E.g., `GET /records/?include_instructions=true`. This would be convenient but could be expensive. Alternative: let the client make a separate lookup call.
-3. Should the changelog endpoint support filtering by `severity`?
-4. Rate limiting considerations — the lookup endpoint could be called frequently. Any caching strategy needed?
+1. The lookup endpoint should return partial results (with nulls for missing parts) if any of the three metadata types is missing for the given SLC/year.
+2. Assess whether it would be feasible to include an endpoint that enriches `firrecord` results with instruction metadata inline. E.g., `GET /records/?include_instructions=true`. This would be convenient but could be expensive. Alternative if this requires too much computation or makes the response size unreasonably large: let the client make a separate lookup call.
+3. The changelog endpoint should support filtering by `severity`.
+4. Rate limiting considerations — the lookup endpoint could be called frequently. Consider if there are any caching strategies needed.
