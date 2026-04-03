@@ -16,10 +16,10 @@ that calls `parse_slc()` against real data.
 
 ## Task List
 
-- [ ] Run format verification query and review results
-- [ ] Run sub-field verification query and review results
-- [ ] Update `slc.py` if unexpected formats or sub values are found
-- [ ] Update tests if `slc.py` changes
+- [x] Run format verification query and review results
+- [x] Run sub-field verification query and review results
+- [x] Update `slc.py` if unexpected formats or sub values are found
+- [x] Update tests if `slc.py` changes
 
 ## Verification Queries
 
@@ -100,7 +100,7 @@ Determine whether the parser should:
 
 ## Documentation Updates
 
-- [ ] Record findings (even if no changes needed) as a comment in `slc.py` near `_SLC_PATTERN`,
+- [x] Record findings (even if no changes needed) as a comment in `slc.py` near `_SLC_PATTERN`,
   citing the verification date and the data range checked.
 
 ## Success Criteria

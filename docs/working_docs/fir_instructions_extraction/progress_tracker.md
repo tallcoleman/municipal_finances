@@ -2,7 +2,7 @@
 
 - [x] 01_database_models.md (https://github.com/tallcoleman/municipal_finances/pull/4)
 - [x] 02_slc_parsing_utility.md (https://github.com/tallcoleman/municipal_finances/pull/1)
-- [ ] 02b_slc_format_verification.md
+- [x] 02b_slc_format_verification.md (https://github.com/tallcoleman/municipal_finances/pull/7)
 - [ ] 03_content_changes_extraction.md
 - [ ] 04_baseline_schedule_meta.md
 - [ ] 05_baseline_line_meta.md
