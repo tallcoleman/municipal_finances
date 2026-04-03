@@ -90,8 +90,34 @@ uv run src/municipal_finances/app.py load-instructions --input-dir path/to/dir
 - `fir_column_meta`: (`schedule`, `column_id`, `valid_from_year`, `valid_to_year`)
 - `fir_instruction_changelog`: (`year`, `schedule`, `slc_pattern`, `change_type`, `source`) — or all non-id columns
 
+**NULL values in natural keys — application-level deduplication required:**
+
+`ON CONFLICT DO NOTHING` relies on the database unique index to detect duplicates, but PostgreSQL treats `NULL != NULL` within unique indexes. This means rows where `valid_from_year` or `valid_to_year` is NULL — including all baseline rows (both fields NULL) and all "still current" rows (`valid_to_year` NULL) — will **not** be caught by `ON CONFLICT DO NOTHING`. Running `load-instructions` twice would silently insert duplicate rows for every baseline or currently-active entry.
+
+The same issue affects `fir_instruction_changelog` when `slc_pattern` is NULL (schedule-level changelog entries).
+
+Use application-level deduplication instead: before inserting, query the existing rows for matching natural keys (handling NULLs explicitly with `IS NULL` / `IS NOT DISTINCT FROM`), then filter out rows that already exist. Only pass non-duplicate rows to the bulk insert.
+
+```python
+def filter_existing_rows(engine, df: pd.DataFrame, table_name: str, natural_key_columns: list[str]) -> pd.DataFrame:
+    """Remove rows from df that already exist in the database, matched on natural key columns.
+
+    Uses IS NOT DISTINCT FROM for NULL-safe equality comparison, so rows with NULL
+    year values are correctly matched against existing NULL-year rows in the database.
+    """
+    existing = pd.read_sql(
+        f"SELECT {', '.join(natural_key_columns)} FROM {table_name}",
+        engine,
+    )
+    # pandas merge with NULL-safe matching: treat NaN as a matchable value
+    merged = df.merge(existing, on=natural_key_columns, how="left", indicator=True)
+    return df[merged["_merge"] == "left_only"].drop(columns=["_merge"], errors="ignore")
+```
+
+Note: pandas `merge` treats `NaN == NaN` (unlike SQL), so this correctly identifies matching rows with NULL year fields. Ensure NaN→None conversion happens *after* deduplication so that the merge comparison works correctly.
+
 **Implementation approach:**
-Use pandas `read_csv` + SQLAlchemy Core `pg_insert` with `on_conflict_do_nothing`. For tables with a `schedule_id` FK, resolve it before inserting:
+Use pandas `read_csv` + application-level deduplication + SQLAlchemy Core `pg_insert`. For tables with a `schedule_id` FK, resolve it before inserting:
 
 ```python
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -123,17 +149,20 @@ def resolve_schedule_ids(engine, df: pd.DataFrame) -> pd.DataFrame:
 
 def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key_columns: list[str]):
     df = pd.read_csv(csv_path)
-    df = df.where(df.notna(), None)  # Convert NaN back to None
+    # Deduplication uses pandas NaN comparison (NaN == NaN), so do it before NaN→None conversion
+    df = filter_existing_rows(engine, df, table_name, natural_key_columns)
+
+    df = df.where(df.notna(), None)  # Convert NaN back to None for database insertion
 
     if table_name in ("fir_line_meta", "fir_column_meta"):
         df = resolve_schedule_ids(engine, df)
 
-    records = df.to_dict(orient="records")
-    stmt = pg_insert(model_class).values(records)
-    stmt = stmt.on_conflict_do_nothing(index_elements=natural_key_columns)
+    if df.empty:
+        return 0
 
+    records = df.to_dict(orient="records")
     with engine.begin() as conn:
-        result = conn.execute(stmt)
+        result = conn.execute(pg_insert(model_class).values(records))
     return result.rowcount
 ```
 

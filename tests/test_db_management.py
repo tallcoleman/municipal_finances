@@ -1,6 +1,7 @@
 from datetime import date
 
 import pandas as pd
+from sqlmodel import SQLModel
 from typer.testing import CliRunner
 
 from municipal_finances.app import app
@@ -513,7 +514,7 @@ def test_init_db_calls_create_db_and_tables(mocker):
 
 
 def test_clear_db_with_yes_flag_deletes_all_tables(mocker):
-    """--yes skips the confirmation prompt and deletes all three tables."""
+    """--yes skips the confirmation prompt and deletes all registered tables."""
     mocker.patch("municipal_finances.db_management.get_engine")
     mock_session = _make_simple_session(mocker)
     mocker.patch("municipal_finances.db_management.Session", return_value=mock_session)
@@ -521,7 +522,7 @@ def test_clear_db_with_yes_flag_deletes_all_tables(mocker):
     result = runner.invoke(app, ["clear-db", "--yes"])
 
     assert result.exit_code == 0
-    assert mock_session.execute.call_count == 3
+    assert mock_session.execute.call_count == len(list(SQLModel.metadata.sorted_tables))
     mock_session.commit.assert_called_once()
 
 
@@ -534,7 +535,7 @@ def test_clear_db_prompts_and_proceeds_on_confirmation(mocker):
     result = runner.invoke(app, ["clear-db"], input="y\n")
 
     assert result.exit_code == 0
-    assert mock_session.execute.call_count == 3
+    assert mock_session.execute.call_count == len(list(SQLModel.metadata.sorted_tables))
 
 
 def test_clear_db_aborts_on_decline(mocker):

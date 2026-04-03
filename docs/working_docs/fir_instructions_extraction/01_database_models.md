@@ -6,19 +6,19 @@ Define the four new database tables (`fir_schedule_meta`, `fir_line_meta`, `fir_
 
 ## Task List
 
-- [ ] Add `FIRScheduleMeta` model to `models.py` with all columns per the plan
-- [ ] Add `FIRLineMeta` model to `models.py` with all columns per the plan
-- [ ] Add `FIRColumnMeta` model to `models.py` with all columns per the plan
-- [ ] Add `FIRInstructionChangelog` model to `models.py` with all columns per the plan
-- [ ] Add unique constraints for natural keys:
+- [x] Add `FIRScheduleMeta` model to `models.py` with all columns per the plan
+- [x] Add `FIRLineMeta` model to `models.py` with all columns per the plan
+- [x] Add `FIRColumnMeta` model to `models.py` with all columns per the plan
+- [x] Add `FIRInstructionChangelog` model to `models.py` with all columns per the plan
+- [x] Add unique constraints for natural keys:
   - `fir_schedule_meta`: (`schedule`, `valid_from_year`, `valid_to_year`)
   - `fir_line_meta`: (`schedule`, `line_id`, `valid_from_year`, `valid_to_year`)
   - `fir_column_meta`: (`schedule`, `column_id`, `valid_from_year`, `valid_to_year`)
   - `fir_instruction_changelog`: (`year`, `schedule`, `slc_pattern`, `change_type`, `source`) — needed by Task 09's `load-instructions` command for `ON CONFLICT DO NOTHING` idempotency
-- [ ] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
-- [ ] Update the `clear-db` command so that it does not need to manually specify which tables should be truncated
-- [ ] Write tests
-- [ ] Update documentation
+- [x] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
+- [x] Update the `clear-db` command so that it does not need to manually specify which tables should be truncated
+- [x] Write tests
+- [x] Update documentation
 
 ## Implementation Details
 
@@ -53,18 +53,18 @@ In `db_management.py`, the `clear_db` function truncates tables. Change the func
 
 ## Tests
 
-- [ ] Test that all four models can be instantiated with valid data
-- [ ] Test that `init-db` creates the new tables (check table names exist in metadata)
-- [ ] Test that `clear-db` truncates the new tables
-- [ ] Test unique constraints by attempting duplicate inserts and verifying IntegrityError
-- [ ] Test nullable fields accept None values
-- [ ] Test default values for boolean fields
+- [x] Test that all four models can be instantiated with valid data
+- [x] Test that `init-db` creates the new tables (check table names exist in metadata)
+- [x] Test that `clear-db` truncates the new tables
+- [x] Test unique constraints by attempting duplicate inserts and verifying IntegrityError
+- [x] Test nullable fields accept None values
+- [x] Test default values for boolean fields
 
 ## Documentation Updates
 
-- [ ] Update `CLAUDE.md` "Database" section to list the four new tables with brief descriptions
-- [ ] Update `docs/architecture.md` if it describes the database schema
-- [ ] Add code comments or a docstring to describe the purpose of each model
+- [x] Update `CLAUDE.md` "Database" section to list the four new tables with brief descriptions
+- [x] Update `docs/architecture.md` if it describes the database schema
+- [x] Add code comments or a docstring to describe the purpose of each model
 
 ## Success Criteria
 

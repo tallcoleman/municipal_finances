@@ -51,12 +51,25 @@ The data download, cleaning, and loading steps run on the host machine rather th
 
 The primary workflow is the `load-years` command, which runs the full pipeline (download → clean → load) in a single step and skips years that are already up to date. The individual steps (`get-fir-data`, `fix-csvs`, `combine-data`, `load-data`) remain available for working with pre-downloaded files or producing a combined parquet for analysis.
 
-### Three-table database schema
+### Database schema
 
-The FIR data is split across three tables:
+The database has seven tables:
+
+**Core FIR data (three tables):**
 
 - **`FIRDataSource`** — one row per FIR reporting year; tracks download metadata and whether the year's data has been loaded into the database. Replaces the earlier `fir_status.json` file.
 - **`Municipality`** — one row per unique municipality (`munid` as primary key); stores identifying fields like name, assessment code, tier, and type.
 - **`FIRRecord`** — the main fact table (~13.5M rows); stores each individual data point with a foreign key to `Municipality`.
 
 This structure avoids repeating municipality metadata on every one of the millions of data rows.
+
+**FIR instruction metadata (four tables):**
+
+Extracted from the annual FIR Instructions PDFs and versioned using `valid_from_year` / `valid_to_year` fields (NULL means "before our earliest PDF" or "still current" respectively).
+
+- **`FIRScheduleMeta`** (`fir_schedule_meta`) — one row per (schedule, version); schedule name, category, and description paragraph.
+- **`FIRLineMeta`** (`fir_line_meta`) — one row per (schedule, line, version); the richest table, covering narrative reporting rules, includes/excludes, subtotal flags, and carry-forward references.
+- **`FIRColumnMeta`** (`fir_column_meta`) — one row per (schedule, column, version); column name and description.
+- **`FIRInstructionChangelog`** (`fir_instruction_changelog`) — one row per documented or inferred change event across all years; the source of truth for setting `valid_from_year` / `valid_to_year` on the metadata tables. `source` distinguishes PDF-documented changes (`"pdf_changelog"`) from data-inferred ones (`"data_inferred"`).
+
+`FIRLineMeta` and `FIRColumnMeta` each carry a `schedule_id` FK to `fir_schedule_meta` and a denormalized `schedule` text field. The FK is database-internal and is excluded from exported CSVs; it is re-derived during load by joining on the `schedule` text value.

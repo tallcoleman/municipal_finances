@@ -85,11 +85,15 @@ docs/                   # Project documentation
 
 ## Database
 
-Three tables (defined in `models.py`):
+Seven tables (defined in `models.py`):
 
 - **`firdatasource`** — one row per FIR reporting year; tracks download metadata and load status
 - **`municipality`** — one row per unique municipality; primary key is `munid`
 - **`firrecord`** — main fact table (~13.5M rows); foreign key to `municipality`
+- **`fir_schedule_meta`** — one row per (schedule, version); describes each FIR schedule and its valid year range
+- **`fir_line_meta`** — one row per (schedule, line, version); narrative reporting rules for each line
+- **`fir_column_meta`** — one row per (schedule, column, version); describes what each column captures
+- **`fir_instruction_changelog`** — one row per documented or inferred change event; source of truth for version boundaries in the metadata tables
 
 Bulk inserts in `load-data` use SQLAlchemy Core (`pg_insert().values(...)`) in chunks of 5,000 rows. This chunk size is constrained by PostgreSQL's 65,535 bound parameter limit (11 columns × 5,000 rows = 55,000 parameters).
 
