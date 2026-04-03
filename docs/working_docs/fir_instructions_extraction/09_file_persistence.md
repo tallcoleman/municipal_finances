@@ -181,9 +181,8 @@ uv run src/municipal_finances/app.py export-instructions --output-dir /tmp/fir_e
 diff fir_instructions/exports/ /tmp/fir_exports/
 ```
 
-## Questions
+## Additional Considerations
 
-1. Should `load-instructions` use `ON CONFLICT DO NOTHING` or `ON CONFLICT DO UPDATE`? `DO NOTHING` is safer (won't overwrite manual corrections), but `DO UPDATE` is more convenient for re-extraction workflows. Recommend: `DO NOTHING` by default, with a `--overwrite` flag for `DO UPDATE`.
-2. Should the exported CSVs be committed to version control? The plan says yes. Add them to `.gitignore` exceptions or ensure they're not in `.gitignore`.
-3. Should there be a `--format` option for JSON export in addition to CSV? The plan specifies CSV only. Recommend: CSV only for now, add JSON later if needed.
-4. How should the load command handle CSV files that have columns not in the model (e.g., if the CSV was exported from an older schema)? Recommend: ignore extra columns, raise an error on missing required columns.
+1. The `load-instructions` should use use `ON CONFLICT DO NOTHING` by default with a `--overwrite` flag for `ON CONFLICT DO UPDATE`. `DO NOTHING` is safer (won't overwrite manual corrections), but `DO UPDATE` is more convenient for re-extraction workflows. 
+2. The exported CSVs should be committed to version control; make sure they're not accidentally covered by `.gitignore`.
+3. Handling CSV files that have columns not in the model (e.g., if the CSV was exported from an older schema): ignore extra columns (but raise a warning); raise an error on missing required columns.
