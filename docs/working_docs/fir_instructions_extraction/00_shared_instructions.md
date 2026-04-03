@@ -33,11 +33,10 @@ These conventions apply to all tasks in this implementation plan.
 
 Two types of CSV files are produced during this work, both stored in `fir_instructions/exports/`:
 
-1. **Intermediate extraction CSVs** (Tasks 03–07): Saved during extraction for human verification and correction. Named with a `baseline_` prefix (e.g., `baseline_schedule_meta.csv`). These are working files that may be edited by hand before the data is considered final.
+1. **Intermediate extraction CSVs** (Tasks 03–07): Saved during extraction for human verification and correction. Named with a `baseline_` prefix (e.g., `baseline_schedule_meta.csv`). These are working files that may be edited by hand before the data is considered final. They should be committed to version control so that the human edits are tracked.
 
-2. **Canonical export CSVs** (Task 09): Produced by the `export-instructions` CLI command after all extraction, versioning, and verification is complete. Named after their database tables (e.g., `fir_schedule_meta.csv`). These are the files committed to version control and used by `load-instructions`.
+2. **Canonical export CSVs** (Task 09): Produced by the `export-instructions` CLI command after all extraction, versioning, and verification is complete. Named after their database tables (e.g., `fir_schedule_meta.csv`). These files are committed to version control and used by `load-instructions`.
 
-The intermediate CSVs should not be committed to version control. Only the canonical exports (produced by Task 09) are version-controlled.
 
 ## Database Migration Strategy
 
