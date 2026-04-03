@@ -74,3 +74,4 @@ The PDF references use a different format: `SLC 10 9930 01` (space-separated).
 - Each task should be a self-contained, reviewable unit of work.
 - Once each task is done, open a pull request to merge the branch into main, with a concise, but informative description of the task and changes made.
 - Do not combine multiple tasks into a single commit.
+- Once the task has been completed and merged, update `progress_tracker.md`.
