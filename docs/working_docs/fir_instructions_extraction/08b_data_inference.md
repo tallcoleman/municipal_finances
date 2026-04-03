@@ -1,4 +1,4 @@
-# Task 08: Infer Changes from Data (Phase 3)
+# Task 08b: Infer Changes from Data (Phase 3)
 
 ## Goal
 
@@ -9,6 +9,7 @@ For FIR years without instructions PDFs, infer structural changes (new/deleted l
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
 - Task 07 (Phase 2 versioning) complete
+- Task 08a (reporting completeness) complete — provides the set of municipalities that have reported for each year, used to filter inference queries
 - `firrecord` data loaded for the years being compared
 
 ## Task List
@@ -54,11 +55,11 @@ JOIN (SELECT DISTINCT slc, schedule_line_desc FROM firrecord WHERE marsyear = :y
 
 ### Year Pairs to Process
 
-Run for all adjacent years where data exists but no PDF is available. Assuming data exists for years 2009–2025 and PDFs exist for 2022–2025:
-- 2009→2010, 2010→2011, ..., 2020→2021 (all pre-PDF years)
-- Also run 2021→2022 to catch changes at the boundary
+Run for all adjacent years where data exists but no PDF is available. Available data starts from 2000 (see `fir_data_notes.md`); PDFs exist for 2019–2025:
+- 2000→2001, 2001→2002, ..., 2017→2018 (all pre-PDF years)
+- Also run 2018→2019 to catch changes at the boundary
 
-For years where PDFs exist (2022→2023, 2023→2024, 2024→2025), inference should still run as a cross-check against the PDF changelog (reconciliation per the audit plan).
+For years where PDFs exist (2019→2020, 2020→2021, 2021→2022, 2022→2023, 2023→2024, 2024→2025), inference should still run as a cross-check against the PDF changelog (reconciliation per the audit plan).
 
 ### CLI Command
 
@@ -67,7 +68,7 @@ For years where PDFs exist (2022→2023, 2023→2024, 2024→2025), inference sh
 uv run src/municipal_finances/app.py infer-changes
 
 # Infer changes for a specific year transition
-uv run src/municipal_finances/app.py infer-changes --year 2021
+uv run src/municipal_finances/app.py infer-changes --year 2017
 
 # Include cross-check years (where PDFs also exist)
 uv run src/municipal_finances/app.py infer-changes --include-pdf-years
@@ -76,7 +77,7 @@ uv run src/municipal_finances/app.py infer-changes --include-pdf-years
 ### Handling Noise
 
 Per the plan's limitations section:
-- A line absent in year Y might have no municipalities reporting, not a real deletion. **Mitigation**: require the SLC to be present in at least N municipalities (e.g., 3) in the year it appears, to filter out single-municipality anomalies.
+- A line absent in year Y might have no municipalities reporting, not a real deletion. **Mitigation**: restrict inference queries to municipalities that have reported for year Y (per Task 08a), then require the SLC to be present in at least N of those reporting municipalities (e.g., 3) to filter out single-municipality anomalies. Using reporting municipalities as the denominator avoids false deletions caused by whole-year non-reporters.
 - Label drift in `schedule_line_desc` may be formatting changes. **Mitigation**: normalize whitespace and case before comparing. Only flag changes where the normalized text differs by more than minor formatting.
 
 ### Storing Inferred Changes
@@ -112,7 +113,7 @@ Per the plan:
 
 - Inferred changes are stored in `fir_instruction_changelog` with correct `source` and `change_type`
 - Noise filtering reduces false positives (SLC present in <3 municipalities, whitespace-only label changes)
-- For PDF-covered years (2022–2025), inferred changes can be compared against `pdf_changelog` entries for reconciliation
+- For PDF-covered years (2019–2025), inferred changes can be compared against `pdf_changelog` entries for reconciliation
 - CLI command runs successfully and reports counts
 
 ## Verification
@@ -129,7 +130,7 @@ ORDER BY year, change_type;
 SELECT ic.year, ic.schedule, ic.slc_pattern, ic.change_type
 FROM fir_instruction_changelog ic
 WHERE ic.source = 'data_inferred'
-AND ic.year BETWEEN 2022 AND 2025
+AND ic.year BETWEEN 2019 AND 2025
 AND EXISTS (
     SELECT 1 FROM fir_instruction_changelog pc
     WHERE pc.source = 'pdf_changelog'
@@ -141,7 +142,7 @@ AND EXISTS (
 SELECT ic.*
 FROM fir_instruction_changelog ic
 WHERE ic.source = 'data_inferred'
-AND ic.year BETWEEN 2022 AND 2025
+AND ic.year BETWEEN 2019 AND 2025
 AND NOT EXISTS (
     SELECT 1 FROM fir_instruction_changelog pc
     WHERE pc.source = 'pdf_changelog'
@@ -151,10 +152,10 @@ AND NOT EXISTS (
 );
 ```
 
-## Questions
+## Additional Considerations
 
-1. What municipality count threshold should be used for noise filtering? 3 is a reasonable starting point, but some legitimate lines might only be used by a few municipalities (e.g., "City of Toronto only" lines). Should the threshold be configurable?
-2. The inference queries can be expensive on 13.5M+ rows. Should we add indexes to optimize, or is the one-time cost acceptable? Likely candidates: composite index on `(marsyear, slc)`.
-3. For label changes, should we compute a similarity score (e.g., Levenshtein distance) to distinguish formatting changes from real renames? Or is simple normalization sufficient?
-4. How should inferred changes interact with existing PDF-documented version rows? If the PDF says a line was added in 2023, but inference also detects it — should the inferred entry be suppressed, or kept for completeness? Recommend: keep both and let the reconciliation audit flag duplicates.
-5. Which years of `firrecord` data are expected to be loaded? If some years are missing, the inference will produce false positives. Need to confirm the available year range.
+1. The municipality count threshold should be configurable in case it needs to be adjusted to get better results. 3 is a reasonable starting point, but some legitimate lines might only be used by a few municipalities (e.g., "City of Toronto only" lines).
+2. The inference queries can be expensive on 13.5M+ rows. Add indexes to optimize; likely candidates: composite index on `(marsyear, slc)`.
+3. For label changes, compute a similarity score (e.g., Levenshtein distance) to distinguish formatting changes from real renames. The score should be computed after normalization (e.g. removal of preceding or trailing whitespace).
+4. Interaction of inferred changes interact with existing PDF-documented version rows: if the PDF says a line was added in 2023, but inference also detects it, the inferred entry should also be kept for completeness. Duplicates should then be flagged and resolved in the reconciliation audit step.
+5. The full available year range for `firrecord` data should be loaded (2000–2025). The year pairs to process (above) should cover this full range.

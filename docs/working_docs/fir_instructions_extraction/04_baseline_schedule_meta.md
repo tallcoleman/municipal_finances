@@ -7,7 +7,8 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 ## Task List
 
 - [ ] Read the schedule list and categories from FIR2025 PDF (~pages 5–6)
-- [ ] For each schedule, read its instruction section's opening paragraph to extract the general description
+- [ ] Check that category assignments in the plan match the categories used in the PDFs; if differences exist, note them and suggest a normalization approach
+- [ ] For each schedule, read its entire general information section to extract the description
 - [ ] Create `fir_schedule_meta` rows for all 26 schedules
 - [ ] Set `valid_from_year = NULL` and `valid_to_year = NULL` on all rows (baseline = "always current")
 - [ ] Write insertion logic
@@ -37,7 +38,7 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 - `schedule`: From the schedule number (e.g., `"10"`, `"51A"`)
 - `schedule_name`: Full title (e.g., `"Consolidated Statement of Operations: Revenue"`)
 - `category`: From the table above
-- `description`: The general purpose paragraph from the schedule's instruction section
+- `description`: The entire general information section for the schedule (not just the first paragraph). For sub-schedules (e.g., 22A, 22B, 22C), the description should also reference the parent schedule's purpose and shared context.
 - `valid_from_year`: NULL (baseline)
 - `valid_to_year`: NULL (baseline)
 - `change_notes`: NULL (baseline, no changes to note)
@@ -45,12 +46,16 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 ### Extraction Approach
 
 1. Pages 5–6 of FIR2025 contain a table of contents / schedule listing with names and categories
-2. Each schedule's instruction section begins with a general description paragraph
+2. Each schedule's instruction section contains a general information section — extract the entire section, not just the first paragraph
 3. Extract both in a single pass through the PDF, section by section
 
 ### Storage
 
 Use the same insertion pattern as Task 03. Create an `insert_schedule_meta` function or reuse a generic insertion function.
+
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_schedule_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
 
 ## Tests
 
@@ -84,9 +89,3 @@ SELECT DISTINCT category FROM fir_schedule_meta ORDER BY category;
 -- No empty names or descriptions
 SELECT * FROM fir_schedule_meta WHERE schedule_name IS NULL OR schedule_name = '' OR description IS NULL OR description = '';
 ```
-
-## Additional Considerations
-
-1. Some schedules have sub-schedules (e.g., 22A, 22B, 22C are sub-schedules of 22). The `description` for sub-schedules should reference the parent schedule's description as well.
-2. Conduct a light-weight check to in case the category assignments in the plan are different than the categories used by any of the PDFs. If there are differences, suggest a method to normalize category names, especially if they appear to be functionally the same.
-3. The `description` should include the entire general information section for the schedule, not just the first paragraph.

@@ -38,10 +38,15 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 - Some schedules have very few columns (2–3), while others like Schedule 12 have many (10+)
 - Column descriptions tend to be shorter than line descriptions
 - Schedules 12 and 40 have particularly complex column structures worth extra attention
+- Some columns have no narrative description beyond their heading. Set `description = "No description provided."` for these columns rather than leaving the field NULL or empty.
 
 ### Expected Volume
 
 Most schedules have 3–10 columns. Total: likely 100–200 column metadata rows.
+
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_column_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
 
 ## Tests
 
@@ -75,8 +80,3 @@ WHERE cm.id IS NULL;
 -- Validate column_id format
 SELECT * FROM fir_column_meta WHERE column_id !~ '^\d{2}$';
 ```
-
-## Questions
-
-1. Some schedules may have columns that are described only by their heading (no narrative description). Should `description` be NULL in these cases, or should the column name serve as the description?
-2. Are there columns that exist in `firrecord` data but are not described in the instructions PDF? This would be caught by the audit coverage check in Task 11, but worth noting here.

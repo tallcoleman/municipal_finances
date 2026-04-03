@@ -14,6 +14,7 @@ Define the four new database tables (`fir_schedule_meta`, `fir_line_meta`, `fir_
   - `fir_schedule_meta`: (`schedule`, `valid_from_year`, `valid_to_year`)
   - `fir_line_meta`: (`schedule`, `line_id`, `valid_from_year`, `valid_to_year`)
   - `fir_column_meta`: (`schedule`, `column_id`, `valid_from_year`, `valid_to_year`)
+  - `fir_instruction_changelog`: (`year`, `schedule`, `slc_pattern`, `change_type`, `source`) — needed by Task 09's `load-instructions` command for `ON CONFLICT DO NOTHING` idempotency
 - [ ] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
 - [ ] Update the `clear-db` command so that it does not need to manually specify which tables should be truncated
 - [ ] Write tests
@@ -76,3 +77,4 @@ In `db_management.py`, the `clear_db` function truncates tables. Change the func
 
 1. Consider adding indexes beyond the unique constraints. Likely candidates: `schedule` (text) on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`. The `schedule_id` serial FK on `fir_line_meta` and `fir_column_meta` will be indexed automatically by PostgreSQL as a FK.
 2. The plan mentions `line_id` as a 4-digit string and `column_id` as a 2-digit string. Enforce `max_length` on these fields for consistency with the format validation in the audit plan.
+3. The `fir_instruction_changelog` unique constraint includes `slc_pattern`, which is nullable. PostgreSQL treats NULLs as distinct in unique constraints, so two rows with identical `(year, schedule, NULL, change_type, source)` would both be allowed. If schedule-level changelog entries (where `slc_pattern` is NULL) can produce duplicates, consider using a `COALESCE(slc_pattern, '')` expression in a unique index, or handle deduplication at the application level during insertion.

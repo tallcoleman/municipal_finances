@@ -48,8 +48,8 @@ These need to be merged into a single `fir_line_meta` row per line.
 | `line_name` | Heading text (e.g., `"Fire"`) |
 | `section` | Section heading within the schedule (e.g., `"Protection Services"`) |
 | `description` | Narrative text from schedule instructions |
-| `includes` | From Functional Classifications or schedule instructions |
-| `excludes` | From Functional Classifications or schedule instructions |
+| `includes` | From Functional Classifications or schedule instructions. Format as newline-separated plain text (one item per line). |
+| `excludes` | From Functional Classifications or schedule instructions. Format as newline-separated plain text (one item per line). |
 | `is_subtotal` | Whether this is a computed subtotal row (infer from context: words like "Subtotal", "Total", or lines that sum other lines) |
 | `is_auto_calculated` | Whether auto-populated from another schedule (infer from "carried forward from" language) |
 | `carry_forward_from` | SLC reference if auto-populated (e.g., `"12 9910 05"`) |
@@ -62,9 +62,9 @@ These need to be merged into a single `fir_line_meta` row per line.
 
 Given the volume (~26 schedules, potentially hundreds of lines each), work through the PDF in batches:
 
-1. **Functional Classifications first** (pages 43–93): Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule, line_id).
+1. **Functional Classifications first** (pages 43–93): Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule, line_id). Note: the Functional Classifications may reference "Schedule 51" generically rather than distinguishing 51A from 51B. When this occurs, assign the includes/excludes to all applicable sub-schedules and note the ambiguity in `change_notes`.
 2. **Schedule-by-schedule**: For each schedule's instruction section, extract line descriptions, subtotal flags, carry-forward references, and applicability notes.
-3. **Merge**: For Schedules 12, 40, 51 — combine the Functional Classifications data with the schedule instruction data.
+3. **Merge**: For Schedules 12, 40, 51 — combine the Functional Classifications data with the schedule instruction data. Where a line appears in both sources with different descriptions, use the schedule instruction text for the `description` field and Functional Classifications data only for `includes`/`excludes`.
 
 ### Handling Section Boundaries
 
@@ -73,6 +73,7 @@ Lines within a schedule are grouped into sections (e.g., "General Government", "
 ### Identifying Subtotals and Auto-Calculated Lines
 
 - **Subtotals**: Lines named "Subtotal", "Total", or that reference "sum of lines above". Set `is_subtotal = True`.
+- **9910-style lines**: Lines with a `line_id` ending in `9910` (and similar pattern lines that represent schedule-level totals) should also be marked `is_subtotal = True`, even if not explicitly labelled as subtotals in the PDF. Add a note in `change_notes` that their subtotal status was inferred from the line_id pattern.
 - **Auto-calculated**: Lines described as "carried forward from SLC X Y Z" or "auto-populated". Set `is_auto_calculated = True` and populate `carry_forward_from`.
 
 ### Expected Volume
@@ -83,6 +84,10 @@ Rough estimates per schedule category:
 - Other schedules: 5–30 lines each
 
 Total: likely 500–1000+ line metadata rows.
+
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_line_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
 
 ## Tests
 
@@ -134,11 +139,3 @@ SELECT schedule,
 FROM fir_line_meta WHERE schedule IN ('12', '40', '51A', '51B')
 GROUP BY schedule;
 ```
-
-## Questions
-
-1. How should `includes` and `excludes` be formatted? The Functional Classifications lists items as bullet points. Options: (a) newline-separated plain text, (b) semicolon-separated, (c) JSON array. Recommend: newline-separated plain text for CSV compatibility and human readability.
-2. For schedules with sub-schedules (e.g., 51A, 51B), the Functional Classifications might reference "Schedule 51" generically. How should the `includes`/`excludes` be assigned — to both 51A and 51B, or only to the matching sub-schedule?
-3. Some lines appear in both the Functional Classifications and the schedule instructions with slightly different descriptions. Which takes precedence? Recommend: use the schedule instruction `description` field for the narrative, and Functional Classifications only for `includes`/`excludes`.
-4. This task is the largest single extraction effort. Should it be split further — e.g., by schedule category — to make review more manageable? The risk is that section/format patterns established early save time later.
-5. Lines that are "9910"-style (typically totals like "Total Revenue") — should these be marked `is_subtotal = True` even if the PDF doesn't explicitly call them subtotals?

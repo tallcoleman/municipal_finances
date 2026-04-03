@@ -13,9 +13,10 @@ Add `export-instructions` and `load-instructions` CLI commands so that extracted
 
 - [ ] Create `src/municipal_finances/fir_instructions_management.py` module with export and load logic
 - [ ] Implement `export-instructions` CLI command
-- [ ] Implement `load-instructions` CLI command
+- [ ] Implement `load-instructions` CLI command (default: `ON CONFLICT DO NOTHING`; add `--overwrite` flag for `ON CONFLICT DO UPDATE`)
 - [ ] Register the new Typer sub-app in `app.py`
 - [ ] Create `fir_instructions/exports/` directory (add `.gitkeep` if needed)
+- [ ] Verify `fir_instructions/exports/` is not excluded by `.gitignore`
 - [ ] Write tests
 - [ ] Update documentation
 
@@ -79,7 +80,7 @@ uv run src/municipal_finances/app.py load-instructions --input-dir path/to/dir
 1. Check that target tables exist; if not, run `init-db` implicitly
 2. Read each CSV file
 3. For `fir_line_meta` and `fir_column_meta`: resolve `schedule_id` FK by joining against the newly-loaded `fir_schedule_meta` rows on the `schedule` text value
-4. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` (match on unique constraint / natural key)
+4. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` by default (match on unique constraint / natural key); use `ON CONFLICT DO UPDATE` when `--overwrite` flag is passed (useful for re-extraction workflows where you want to replace existing rows rather than skip them)
 5. Log rows inserted vs. skipped per table
 6. Load order: `fir_schedule_meta` first (required before FK resolution), then `fir_line_meta`, `fir_column_meta`, then `fir_instruction_changelog`
 
@@ -96,13 +97,29 @@ Use pandas `read_csv` + SQLAlchemy Core `pg_insert` with `on_conflict_do_nothing
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 def resolve_schedule_ids(engine, df: pd.DataFrame) -> pd.DataFrame:
-    """Add schedule_id FK column by looking up fir_schedule_meta on the schedule text value."""
+    """Add schedule_id FK column by matching each line/column to the correct schedule version.
+
+    A line/column's valid_from_year/valid_to_year is its OWN version range, which is
+    independent of the schedule's version range. For example, a line added in 2023
+    (valid_from_year=2023) may belong to a schedule that has existed since before 2019
+    (valid_from_year=NULL). Joining on (schedule, valid_from_year, valid_to_year) would
+    fail in this case.
+
+    Instead, match each line/column to the schedule version whose time range covers
+    the line/column's valid_from_year (or valid_to_year if valid_from is NULL). If
+    multiple schedule versions match, pick the one with the latest valid_from_year
+    (the most current version that covers the line's start).
+    """
     schedule_map = pd.read_sql(
         "SELECT id AS schedule_id, schedule, valid_from_year, valid_to_year FROM fir_schedule_meta",
         engine,
     )
-    # Each (schedule, valid_from_year, valid_to_year) tuple maps to exactly one schedule_id
-    return df.merge(schedule_map, on=["schedule", "valid_from_year", "valid_to_year"], how="left")
+    # For each row in df, find the schedule_meta row where:
+    #   1. schedule text matches
+    #   2. The schedule's valid range covers the line/column's valid_from_year
+    #      (or valid_to_year if valid_from is NULL, or any version if both are NULL)
+    # This requires a range-overlap join rather than an equality join.
+    # Implementation should handle the NULL semantics from the versioning conventions.
 
 def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key_columns: list[str]):
     df = pd.read_csv(csv_path)
@@ -119,6 +136,10 @@ def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key
         result = conn.execute(stmt)
     return result.rowcount
 ```
+
+**Schema mismatch handling:**
+- Extra columns in the CSV (not present in the model): log a warning and ignore them
+- Missing required columns in the CSV: raise an error before attempting insertion
 
 ### Default Paths
 
@@ -141,6 +162,7 @@ app.add_typer(fir_instructions_app)
 - [ ] Test export produces correct row counts
 - [ ] Test load inserts rows into all four tables
 - [ ] Test load correctly resolves `schedule_id` FK for `fir_line_meta` and `fir_column_meta` from `schedule` text value
+- [ ] Test load resolves `schedule_id` FK correctly when a line/column's version range differs from the schedule's version range (e.g., line with `valid_from_year=2023` matched to a schedule with `valid_from_year=NULL`)
 - [ ] Test load raises an error (or logs a warning) if `schedule` in a line/column CSV has no matching row in `fir_schedule_meta`
 - [ ] Test load is idempotent (loading same CSV twice doesn't duplicate rows)
 - [ ] Test load handles empty CSV (just headers, no data rows)
@@ -180,10 +202,3 @@ uv run src/municipal_finances/app.py load-instructions
 uv run src/municipal_finances/app.py export-instructions --output-dir /tmp/fir_exports
 diff fir_instructions/exports/ /tmp/fir_exports/
 ```
-
-## Questions
-
-1. Should `load-instructions` use `ON CONFLICT DO NOTHING` or `ON CONFLICT DO UPDATE`? `DO NOTHING` is safer (won't overwrite manual corrections), but `DO UPDATE` is more convenient for re-extraction workflows. Recommend: `DO NOTHING` by default, with a `--overwrite` flag for `DO UPDATE`.
-2. Should the exported CSVs be committed to version control? The plan says yes. Add them to `.gitignore` exceptions or ensure they're not in `.gitignore`.
-3. Should there be a `--format` option for JSON export in addition to CSV? The plan specifies CSV only. Recommend: CSV only for now, add JSON later if needed.
-4. How should the load command handle CSV files that have columns not in the model (e.g., if the CSV was exported from an older schema)? Recommend: ignore extra columns, raise an error on missing required columns.
