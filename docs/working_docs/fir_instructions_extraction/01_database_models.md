@@ -72,7 +72,7 @@ In `db_management.py`, the `clear_db` function truncates tables. Change the func
 - All tests pass with 100% coverage on new code
 - Models match the column specifications in the extraction plan exactly
 
-## Questions
+## Additional Details
 
-1. Should we add indexes beyond the unique constraints? Likely candidates: `schedule` (text) on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`. The `schedule_id` serial FK on `fir_line_meta` and `fir_column_meta` will be indexed automatically by PostgreSQL as a FK.
-3. The plan mentions `line_id` as a 4-digit string and `column_id` as a 2-digit string. Should we enforce `max_length` on these fields for consistency with the format validation in the audit plan?
+1. Consider adding indexes beyond the unique constraints. Likely candidates: `schedule` (text) on all three metadata tables, `year` on changelog. These would help query performance when joining to `firrecord`. The `schedule_id` serial FK on `fir_line_meta` and `fir_column_meta` will be indexed automatically by PostgreSQL as a FK.
+2. The plan mentions `line_id` as a 4-digit string and `column_id` as a 2-digit string. Enforce `max_length` on these fields for consistency with the format validation in the audit plan.
