@@ -4,7 +4,7 @@
 
 Extract structured metadata from the annual FIR Instructions PDFs and store it in the database, linked to the existing FIR data. This enables users exploring schedule/line/column data to directly call up the relevant instructions without opening a PDF.
 
-Source PDFs are in `fir_instructions/source_files/`. Currently available: FIR2022, FIR2023, FIR2024, FIR2025.
+Source PDFs are in `fir_instructions/source_files/`. Currently available: years from 2019 to 2025.
 
 ---
 
@@ -119,7 +119,7 @@ One row per documented or inferred change. Tracks all changes across all years f
 | `source`      | text          | `"pdf_changelog"` or `"data_inferred"`                                                                                                                                                                |
 
 **Effective date semantics:**
-- `valid_from_year = NULL`: applies from before our earliest PDF (pre-2022)
+- `valid_from_year = NULL`: applies from before our earliest PDF (pre-2019)
 - `valid_to_year = NULL`: still currently in effect
 - Query for year Y: `(valid_from_year IS NULL OR valid_from_year <= Y) AND (valid_to_year IS NULL OR valid_to_year >= Y)`
 
@@ -154,12 +154,16 @@ Read only the Content Changes pages from each PDF (1–3 pages per PDF, already 
 This is the fastest step and determines the full scope of versioning work before any heavy extraction begins.
 
 **Known change volumes:**
+- Change volumes have not been assessed for 2019–2021
 - FIR2022: ~40 entries (moderate — new lines/columns in Schedules 61, 72B)
 - FIR2023: ~50+ entries (major — two new schedules 71 and 74E, three deleted: 51C, 79, 80B; driven by PSAB standards PS 3280 and PS 3450)
 - FIR2024: ~10 entries (minor)
 - FIR2025: ~7 entries (minor)
 
 **Page locations in each PDF:**
+- FIR 2019: page 29
+- FIR 2020: page 29
+- FIR 2021: pages 29-30
 - FIR2022: ~pages 29–31
 - FIR2023: ~page 29
 - FIR2024: ~page 30
@@ -178,7 +182,7 @@ Expect ~2–5 PDF read passes per schedule across 26 schedules.
 
 ### Phase 2: Apply documented changes backwards to create versioned rows
 
-Using the changelog from Phase 0, identify every line/column that changed in 2024, 2023, or 2022. For each:
+Using the changelog from Phase 0, identify every line/column that changed from the parsed years. For each:
 
 1. Read the relevant section of the older PDF to extract the prior-version description
 2. Create a new row in the metadata table with the older description and appropriate `valid_from_year`/`valid_to_year`
@@ -188,7 +192,7 @@ Using the changelog from Phase 0, identify every line/column that changed in 202
 For lines that were deleted in a given year: set `valid_to_year` on the existing row.
 For lines that were added in a given year: set `valid_from_year` on the existing row.
 
-Work year by year: 2024 changes, then 2023 changes (the largest set), then 2022 changes.
+Work year by year: 2024 changes, then 2023 changes (the largest set), then 2022 changes, etc.
 
 ### Phase 3: Infer changes for years without PDFs (see below)
 
@@ -196,7 +200,7 @@ Work year by year: 2024 changes, then 2023 changes (the largest set), then 2022 
 
 ## Inferring Changes from Data for Years Without PDFs
 
-For FIR years where no instructions PDF is available (any year older than 2022, or future gaps), changes can be inferred by comparing the set of SLC values and their labels present in the actual `firrecord` data across adjacent years.
+For FIR years where no instructions PDF is available (any year older than 2019, or future gaps), changes can be inferred by comparing the set of SLC values and their labels present in the actual `firrecord` data across adjacent years.
 
 ### What can be inferred from the data
 
@@ -341,6 +345,6 @@ Re-extraction is only needed when new FIR PDFs are published or extraction error
 
 5. **Version boundary spot check**: pick 10–15 lines that appear in the changelog as having changed. Verify that the `valid_to_year` on the prior-version row and `valid_from_year` on the new row are both set correctly, and that `change_notes` accurately reflects the PDF's description of the change.
 
-6. **Inferred vs. documented reconciliation**: for years where both a PDF changelog and data-inferred changes are available (2022–2025), compare the two sets. Any inferred change that is not in the PDF changelog (or vice versa) should be investigated — it indicates either a data anomaly or a missed extraction.
+6. **Inferred vs. documented reconciliation**: for years where both a PDF changelog and data-inferred changes are available (2019–2025), compare the two sets. Any inferred change that is not in the PDF changelog (or vice versa) should be investigated — it indicates either a data anomaly or a missed extraction.
 
 7. **Year-over-year diff on new PDFs**: when a new FIR year's PDF becomes available, diff the extracted metadata against the prior year's. Flag new lines, deleted lines, and changed descriptions for human review before loading. This catches extraction errors and genuine policy changes simultaneously.

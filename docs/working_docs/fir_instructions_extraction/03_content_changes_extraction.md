@@ -2,7 +2,7 @@
 
 ## Goal
 
-Extract every row from the "Content Changes" attachment in each FIR Instructions PDF (2022–2025) and store them in the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
+Extract every row from the "Content Changes" attachment in each FIR Instructions PDF (2019–2025) and store them in the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
 
 ## Task List
 
@@ -11,6 +11,9 @@ Extract every row from the "Content Changes" attachment in each FIR Instructions
 - [ ] Extract Content Changes from FIR2024 PDF (~page 30, ~10 entries)
 - [ ] Extract Content Changes from FIR2023 PDF (~page 29, ~50+ entries)
 - [ ] Extract Content Changes from FIR2022 PDF (~pages 29–31, ~40 entries)
+- [ ] Extract Content Changes from FIR2021 PDF (pages 29-30)
+- [ ] Extract Content Changes from FIR2020 PDF (page 29)
+- [ ] Extract Content Changes from FIR2019 PDF (page 29)
 - [ ] Store all entries in `fir_instruction_changelog`
 - [ ] Verify extracted data against PDFs
 - [ ] Write tests for the storage/loading logic
@@ -25,7 +28,7 @@ The Content Changes sections are structured tables with consistent columns:
 - Heading (line or column name)
 - Description (what changed)
 
-The PDFs also distinguish between "Major Changes" and "Minor Changes" sections, which maps to the `severity` field.
+The PDFs may also distinguish between "Major Changes" and "Minor Changes" sections, which maps to the `severity` field. If the PDFs do not distinguish between "Major Changes" and "Minor Changes", infer the severity based on the data from PDFs that do make this distinction.
 
 ### Recommended Extraction Workflow
 
@@ -38,7 +41,7 @@ The PDFs also distinguish between "Major Changes" and "Minor Changes" sections, 
    - `column_id`: parsed from `slc_pattern` if deterministic (not `xx`)
    - `heading`: the Heading column from the PDF
    - `change_type`: inferred from context — `new_schedule`, `deleted_schedule`, `new_line`, `deleted_line`, `updated_line`, `new_column`, `deleted_column`, `updated_column`
-   - `severity`: `"major"` or `"minor"` based on which section it appeared in
+   - `severity`: `"major"` or `"minor"` based on which section it appeared in, or based on inference if not divided by "Major Changes" and "Minor Changes" sections or similar
    - `description`: verbatim from the Description column
    - `source`: `"pdf_changelog"`
 3. Use `pdf_slc_to_components()` from `slc.py` (Task 02) to parse the SLC patterns
@@ -55,16 +58,17 @@ def insert_changelog_entries(engine, entries: list[dict]):
 
 ### Data File Approach
 
-Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/fir_instruction_changelog.csv` as part of this task. This allows re-loading without re-extraction.
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/fir_instruction_changelog.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
 
 ### Known Change Volumes
 
+- Change volumes for 2019–2021 have not been assessed.
 - FIR2022: ~40 entries (new lines/columns in Schedules 61, 72B)
 - FIR2023: ~50+ entries (major — new schedules 71, 74E; deleted 51C, 79, 80B)
 - FIR2024: ~10 entries (minor)
 - FIR2025: ~7 entries (minor)
 
-Total: ~107+ changelog entries.
+Total: ~107+ changelog entries from assessed PDFs.
 
 ## Tests
 
@@ -76,7 +80,7 @@ Total: ~107+ changelog entries.
 
 ## Documentation Updates
 
-- [ ] None expected for this task (no new CLI commands yet)
+- [ ] Add a short description to the README about the folder structure that the output CSV files are stored in.
 
 ## Success Criteria
 
@@ -106,9 +110,9 @@ SELECT change_type, count(*) FROM fir_instruction_changelog WHERE source = 'pdf_
 SELECT * FROM fir_instruction_changelog WHERE line_id IS NULL AND slc_pattern NOT LIKE '%xxxx%';
 ```
 
-## Questions
+## Additional Considerations
 
-1. The Content Changes tables in the PDFs — are they consistently formatted across all four years, or do older PDFs use a different layout? This affects whether a single extraction template works.
-2. How should we handle entries where the description references multiple changes (e.g., "New lines 0410, 0420, 0430 added")? Split into separate rows or keep as one?
-3. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). Should these have `change_type = "updated_schedule"` even though the plan doesn't list that as an option? Or use the closest match?
-4. What's the best approach for the actual PDF text extraction — Claude reading the PDF pages directly, a Python PDF library (e.g., pdfplumber), or manual transcription? Each has different accuracy/effort tradeoffs.
+1. Assess whether the Content Changes tables in the PDFs are consistently formatted across all four years, or if there are differences in the layout between years. This affects whether a single extraction template works.
+2. Entries where the description references multiple changes (e.g., "New lines 0410, 0420, 0430 added") should be split into separate rows, not kept as one row.
+3. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). These should be reflected in the schedule versions tracked by the `fir_schedule_meta` table.
+4. Try different methods of PDF text extraction to determine what works best. First option would be to try a Python PDF library (e.g., pdfplumber), and if the success criteria are not met, then have Claude read the PDF pages directly.
