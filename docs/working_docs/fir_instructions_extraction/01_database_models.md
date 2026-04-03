@@ -15,7 +15,7 @@ Define the four new database tables (`fir_schedule_meta`, `fir_line_meta`, `fir_
   - `fir_line_meta`: (`schedule_id`, `line_id`, `valid_from_year`, `valid_to_year`)
   - `fir_column_meta`: (`schedule_id`, `column_id`, `valid_from_year`, `valid_to_year`)
 - [ ] Verify `init-db` creates the new tables (no code change needed — `create_db_and_tables()` uses `SQLModel.metadata.create_all()` which picks up all registered models)
-- [ ] Add the new tables to the `clear-db` command so they are truncated alongside existing tables
+- [ ] Update the `clear-db` command so that it does not need to manually specify which tables should be truncated
 - [ ] Write tests
 - [ ] Update documentation
 
@@ -48,7 +48,7 @@ class FIRScheduleMeta(SQLModel, table=True):
 
 ### clear-db Update
 
-In `db_management.py`, the `clear_db` function truncates tables. Add the four new tables to the truncation list. Order matters for foreign keys, but these tables have no FK relationships to each other or existing tables, so order is flexible.
+In `db_management.py`, the `clear_db` function truncates tables. Change the function so that it does not rely on manually specifying which tables should be cleared. Order matters for foreign keys, but these tables currently have no FK relationships to each other or existing tables, so order is flexible.
 
 ## Tests
 
@@ -63,6 +63,7 @@ In `db_management.py`, the `clear_db` function truncates tables. Add the four ne
 
 - [ ] Update `CLAUDE.md` "Database" section to list the four new tables with brief descriptions
 - [ ] Update `docs/architecture.md` if it describes the database schema
+- [ ] Add code comments or a docstring to describe the purpose of each model
 
 ## Success Criteria
 
