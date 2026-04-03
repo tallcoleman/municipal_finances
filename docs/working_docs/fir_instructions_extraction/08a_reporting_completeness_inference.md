@@ -118,15 +118,16 @@ uv run src/municipal_finances/app.py reporting-completeness --year 2024 --by-mun
 Output format (example, one row per municipality):
 
 ```
-munid  munname            Reported  Missing (expected)  New (not in prior n years)  Schedules Reported
-101    Ajax               18        0                   0                           10, 12, 20, ...
-102    Aurora             17        1 (Schedule 61B)    0                           10, 12, 20, ...
-103    Barrie             0         —                   —                           (not yet reported)
+munid  munname            Reported  Missing  Expected    New (not in prior n years)  Schedules Reported
+101    Ajax               18        0                    0                           10, 12, 20, ...
+102    Aurora             17        1        61B         0                           10, 12, 20, ...
+103    Barrie             0         —                    —                           (not yet reported)
 ```
 
 For each municipality × year, the breakdown includes:
 - **Schedules reported**: count and list of schedule codes reported in this year
-- **Missing (expected)**: schedules reported in all of the prior `n` years (default `n=3`) but absent in this year — likely still pending
+- **Missing**: count of schedules reported in all of the prior `n` years (default `n=3`) but absent in this year — likely still pending
+- **Expected**: list of schedules reported in all of the prior `n` years (default `n=3`) but absent in this year — likely still pending
 - **New (not in prior n years)**: schedules reported this year that were not reported in any of the prior `n` years — may indicate new activity or a structural change
 
 The `n` look-back window defaults to 3 but is configurable:
@@ -150,9 +151,9 @@ This behaviour applies equally to the CLI, the API, and the internal logic used 
 
 If added, follow the pattern in `api/routes/`. Two suggested endpoints:
 
-| Endpoint | Parameters | Returns |
-|---|---|---|
-| `GET /reporting-completeness` | `year` (optional) | Province-wide summary (Mode 1) |
+| Endpoint                                     | Parameters                                                              | Returns                             |
+| -------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------- |
+| `GET /reporting-completeness`                | `year` (optional)                                                       | Province-wide summary (Mode 1)      |
 | `GET /reporting-completeness/municipalities` | `year` (required), `munid` (optional), `lookback` (optional, default 3) | Per-municipality breakdown (Mode 2) |
 
 Both return JSON. The per-municipality endpoint should support pagination if the full result set is large.
