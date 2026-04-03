@@ -16,6 +16,8 @@ The content changes extracts are available in `fir_instructions/change_logs/`.
 - [ ] Extract Content Changes from FIR2021 Changes PDF
 - [ ] Extract Content Changes from FIR2020 Changes PDF
 - [ ] Extract Content Changes from FIR2019 Changes PDF
+- [ ] Split entries that describe multiple changes (e.g., "New lines 0410, 0420, 0430 added") into separate rows
+- [ ] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07
 - [ ] Store all entries in `fir_instruction_changelog`
 - [ ] Verify extracted data against PDFs
 - [ ] Write tests for the storage/loading logic
@@ -32,9 +34,17 @@ The Content Changes sections are structured tables with consistent columns:
 
 The PDFs may also distinguish between "Major Changes" and "Minor Changes" sections, which maps to the `severity` field. If the PDFs do not distinguish between "Major Changes" and "Minor Changes", infer the severity based on the data from PDFs that do make this distinction.
 
+### PDF Table Parsing
+
+The Content Changes pages may begin with explanatory text (instructions, notes) before the actual table rows. Skip non-table content when parsing.
+
+Column values ("Sch."/"Schedule", "SLC", "Heading") are sometimes only provided for the first row where the value changes, and left blank on subsequent rows that share the same value. When a value is blank, carry forward the most recent non-blank value for that column — but only within the same higher-level group. For example, if "Sch."/"Schedule" changes, do not carry forward the prior SLC value. An exception to this may be schedule 22C in the 2022 PDF, where a longer comment in the description column appears to span multiple rows.
+
+Try a Python PDF library (e.g., pdfplumber) first for extraction. If the structured table extraction does not meet the success criteria (accuracy, completeness), fall back to having Claude read the PDF pages directly.
+
 ### Recommended Extraction Workflow
 
-1. Read the relevant pages from each PDF using Claude's PDF reading capability
+1. Parse the Content Changes table from each PDF (see "PDF Table Parsing" above)
 2. For each row in the table, create a `FIRInstructionChangelog` record:
    - `year`: the FIR year (2019, 2020, 2021, 2022, 2023, 2024, or 2025)
    - `schedule`: parsed from the Schedule column
