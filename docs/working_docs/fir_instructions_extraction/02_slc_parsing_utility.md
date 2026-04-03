@@ -60,6 +60,7 @@ import re
 SLC_PATTERN = re.compile(r'^slc\.([^.]+)\.L(\d{4})\.C(\d{2})\.(.*)$')
 ```
 
+Named capture groups can also be added to the regex pattern to make the subsequent logic easier to understand.
 ## Tests
 
 - [ ] Test `parse_slc` with standard SLC: `"slc.10.L9930.C01."`
@@ -82,8 +83,8 @@ SLC_PATTERN = re.compile(r'^slc\.([^.]+)\.L(\d{4})\.C(\d{2})\.(.*)$')
 - Edge cases (lettered schedules, wildcards, malformed input) are covered
 - All tests pass with 100% coverage on the new module
 
-## Questions
+## Additional Considerations
 
-1. Are there SLC values in the database with a non-empty `sub` field? If so, what values does it take? This affects the parser. Verify by querying: `SELECT DISTINCT substring(slc from '[^.]+$') FROM firrecord WHERE slc IS NOT NULL LIMIT 100;`
-2. Are there SLC formats beyond the documented pattern? Verify by querying: `SELECT slc FROM firrecord WHERE slc NOT LIKE 'slc.%.L%.C%.%' LIMIT 10;`
-3. Should the parser be strict (reject anything not matching the pattern) or lenient (best-effort extraction)? Recommend strict with clear error messages, since bad SLC values indicate data issues that should be surfaced.
+1. Determine if there are SLC values in the database with a non-empty `sub` field, and if so, what values they take. This affects the parser. Verify by querying: `SELECT DISTINCT substring(slc from '[^.]+$') FROM firrecord WHERE slc IS NOT NULL LIMIT 100;`
+2. Determine if there are SLC formats beyond the documented pattern. Verify by querying: `SELECT slc FROM firrecord WHERE slc NOT LIKE 'slc.%.L%.C%.%' LIMIT 10;`
+3. The parser should be strict (reject anything not matching the pattern) with clear error messages, since bad SLC values indicate data issues or incorrect assumptions that should be surfaced.
