@@ -144,10 +144,10 @@ uv run src/municipal_finances/app.py audit-instructions
 # All 6 checks passed.
 ```
 
-## Questions
+## Additional Considerations
 
-1. Should the audit checks be blocking (stop on first failure) or run all checks and report? Recommend: run all and report, since issues are often related and seeing the full picture helps prioritize fixes.
-2. For the coverage check, should we ignore `firrecord` rows where the SLC can't be parsed (malformed data)? These would always fail the coverage check. Recommend: report them separately as "unparseable SLCs" rather than coverage gaps.
-3. Should the audit output be machine-readable (JSON) in addition to human-readable? Would support automated pipelines. Recommend: add a `--format json` flag.
-4. For the orphan check, some metadata rows may intentionally have no data matches — e.g., lines that exist in the instructions but no municipality has ever reported on them. Should there be an exclusion mechanism (e.g., an `expected_orphans.csv` file)?
-5. Should audit checks run automatically after `load-instructions` or `export-instructions`? Recommend: not automatically, but document the recommended workflow as `load-instructions` → `audit-instructions`.
+1. The audit checks should not be blocking (stop on first failure) -- they should run all checks and report. This is preferable since issues are often related and seeing the full picture helps prioritize fixes.
+2. For the coverage check, if there are `firrecord` rows where the SLC can't be parsed (malformed data), report them separately as "unparseable SLCs" rather than coverage gaps.
+3. The audit output should be machine-readable (JSON) in addition to human-readable, since this would support automated pipelines. Add a `--format json` flag to enable this.
+4. For the orphan check, some metadata rows may intentionally have no data matches — e.g., lines that exist in the instructions but no municipality has ever reported on them. If this is the case, add an exclusion mechanism (e.g., an `expected_orphans.csv` file).
+5. Audit checks should not run automatically after `load-instructions` or `export-instructions`, but the recommended workflow should be documented as `load-instructions` → `audit-instructions`.
