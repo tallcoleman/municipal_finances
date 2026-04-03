@@ -135,10 +135,9 @@ FROM fir_line_meta WHERE schedule IN ('12', '40', '51A', '51B')
 GROUP BY schedule;
 ```
 
-## Questions
+## Additional Considerations
 
-1. How should `includes` and `excludes` be formatted? The Functional Classifications lists items as bullet points. Options: (a) newline-separated plain text, (b) semicolon-separated, (c) JSON array. Recommend: newline-separated plain text for CSV compatibility and human readability.
-2. For schedules with sub-schedules (e.g., 51A, 51B), the Functional Classifications might reference "Schedule 51" generically. How should the `includes`/`excludes` be assigned — to both 51A and 51B, or only to the matching sub-schedule?
-3. Some lines appear in both the Functional Classifications and the schedule instructions with slightly different descriptions. Which takes precedence? Recommend: use the schedule instruction `description` field for the narrative, and Functional Classifications only for `includes`/`excludes`.
-4. This task is the largest single extraction effort. Should it be split further — e.g., by schedule category — to make review more manageable? The risk is that section/format patterns established early save time later.
-5. Lines that are "9910"-style (typically totals like "Total Revenue") — should these be marked `is_subtotal = True` even if the PDF doesn't explicitly call them subtotals?
+1. `includes` and `excludes` bullet points should be formatted as newline-separated plain text for CSV compatibility and human readability.
+2. For schedules with sub-schedules (e.g., 51A, 51B), the Functional Classifications might reference "Schedule 51" generically. In these cases, `includes`/`excludes` should be assigned to all matching sub-schedules, with a note that there is some ambiguity in the original instructions.
+3. Some lines appear in both the Functional Classifications and the schedule instructions with slightly different descriptions. In these cases, use the schedule instruction `description` field for the narrative, and Functional Classifications only for `includes`/`excludes`.
+4. Lines that are "9910"-style (typically totals like "Total Revenue") should be marked `is_subtotal = True` even if the PDF doesn't explicitly call them subtotals. A note should be added to indicate that their subtotal status was inferred.
