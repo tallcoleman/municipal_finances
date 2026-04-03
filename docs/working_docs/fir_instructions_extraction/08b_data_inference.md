@@ -55,8 +55,8 @@ JOIN (SELECT DISTINCT slc, schedule_line_desc FROM firrecord WHERE marsyear = :y
 
 ### Year Pairs to Process
 
-Run for all adjacent years where data exists but no PDF is available. Assuming data exists for years 2009–2025 and PDFs exist for 2019–2025:
-- 2009→2010, 2010→2011, ..., 2017→2018 (all pre-PDF years)
+Run for all adjacent years where data exists but no PDF is available. Available data starts from 2000 (see `fir_data_notes.md`); PDFs exist for 2019–2025:
+- 2000→2001, 2001→2002, ..., 2017→2018 (all pre-PDF years)
 - Also run 2018→2019 to catch changes at the boundary
 
 For years where PDFs exist (2019→2020, 2020→2021, 2021→2022, 2022→2023, 2023→2024, 2024→2025), inference should still run as a cross-check against the PDF changelog (reconciliation per the audit plan).
@@ -158,4 +158,4 @@ AND NOT EXISTS (
 2. The inference queries can be expensive on 13.5M+ rows. Add indexes to optimize; likely candidates: composite index on `(marsyear, slc)`.
 3. For label changes, compute a similarity score (e.g., Levenshtein distance) to distinguish formatting changes from real renames. The score should be computed after normalization (e.g. removal of preceding or trailing whitespace).
 4. Interaction of inferred changes interact with existing PDF-documented version rows: if the PDF says a line was added in 2023, but inference also detects it, the inferred entry should also be kept for completeness. Duplicates should then be flagged and resolved in the reconciliation audit step.
-5. The full available year range for `firrecord` data should be loaded (2000-2025)
+5. The full available year range for `firrecord` data should be loaded (2000–2025). The year pairs to process (above) should cover this full range.
