@@ -8,7 +8,7 @@ For recent FIR years (2022–2025), assess the completeness of reporting across 
 
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
-- `firrecord` data loaded for years 2022–2025
+- `firrecord` data loaded for years 2019–2025 (four years where data is still being reported plus three years prior)
 
 ## Task List
 
@@ -17,8 +17,10 @@ For recent FIR years (2022–2025), assess the completeness of reporting across 
 - [ ] For each municipality × year pair where data is present, determine which schedules were reported (schedule-level reporting status)
 - [ ] Identify schedules that are "expected but missing": if a municipality consistently reported a schedule for the three prior years, flag it as potentially pending if it is absent in the target year
 - [ ] Assess the query execution time for the above analyses to determine whether on-demand execution is feasible
-- [ ] If feasible, add a `reporting-completeness` CLI command that accepts an optional `--year` flag and prints a summary table
-- [ ] If feasible, add a corresponding API endpoint (e.g. `GET /reporting-completeness?year=2024`)
+- [ ] If feasible, add a `reporting-completeness` CLI command with the following modes (see Implementation Details):
+  - [ ] Province-wide summary table by year
+  - [ ] Per-municipality breakdown for a given year
+- [ ] If feasible, add corresponding API endpoints (see Implementation Details)
 - [ ] Write tests
 - [ ] Update documentation
 
@@ -75,51 +77,119 @@ Task 08b (data inference) uses the completeness analysis in two ways:
 
 2. **Calibrating the municipality count threshold**: the minimum number of municipalities required before counting an SLC as "present" (default: 3 in Task 08b) should be interpreted as a fraction of reporting municipalities, not total municipalities. If only 50 municipalities have reported for year Y, a threshold of 3 out of 50 (~6%) has different implications than 3 out of 400 (~0.75%). The completeness analysis provides the denominator needed to interpret the threshold correctly.
 
-### CLI Command
+### Report Modes
+
+Three report modes are supported, selectable by CLI flags and API parameters:
+
+#### Mode 1: Province-wide summary (default)
+
+Aggregated one row per year. Suitable for a quick overview across all relevant years.
 
 ```bash
-# Summary for a specific year
-uv run src/municipal_finances/app.py reporting-completeness --year 2024
-
-# Summary for all relevant years (2022–2025)
+# All relevant years (2022–2025)
 uv run src/municipal_finances/app.py reporting-completeness
+
+# Single year
+uv run src/municipal_finances/app.py reporting-completeness --year 2024
 ```
 
 Output format (example):
 
 ```
-Year  Municipalities Reported  Expected  Missing  Partial Reporters
-2022  443                      444       1        2
-2023  430                      444       14       8
-2024  386                      444       58       22
+Year  Municipalities Reported  Total  Not Yet Reported  Partial Reporters
+2022  443                      444    1                 2
+2023  430                      444    14                8
+2024  386                      444    58                22
 2025  (data not yet available)
 ```
 
-### API Endpoint
+#### Mode 2: Per-municipality breakdown
 
-If added, follow the pattern in `api/routes/`. Suggested path: `GET /reporting-completeness` with an optional `year` query parameter. Returns a JSON summary mirroring the CLI output.
+One row per (municipality, year). Shows exactly which schedules each municipality has reported and which are expected but missing or newly reported. Intended for detailed investigation of a specific year or municipality. Because this output can be large, it is most useful filtered to a single year and optionally a single municipality.
+
+```bash
+# All municipalities for a given year
+uv run src/municipal_finances/app.py reporting-completeness --year 2024 --by-municipality
+
+# Single municipality (by munid or name substring)
+uv run src/municipal_finances/app.py reporting-completeness --year 2024 --by-municipality --munid 123
+```
+
+Output format (example, one row per municipality):
+
+```
+munid  munname            Reported  Missing (expected)  New (not in prior n years)  Schedules Reported
+101    Ajax               18        0                   0                           10, 12, 20, ...
+102    Aurora             17        1 (Schedule 61B)    0                           10, 12, 20, ...
+103    Barrie             0         —                   —                           (not yet reported)
+```
+
+For each municipality × year, the breakdown includes:
+- **Schedules reported**: count and list of schedule codes reported in this year
+- **Missing (expected)**: schedules reported in all of the prior `n` years (default `n=3`) but absent in this year — likely still pending
+- **New (not in prior n years)**: schedules reported this year that were not reported in any of the prior `n` years — may indicate new activity or a structural change
+
+The `n` look-back window defaults to 3 but is configurable:
+
+```bash
+uv run src/municipal_finances/app.py reporting-completeness --year 2024 --by-municipality --lookback 5
+```
+
+#### Handling Insufficient History
+
+When fewer than `n` prior years of data are available in the database (e.g. requesting a breakdown for year 2000 with `n=3` but data only starts in 2000, or for 2001 where only one prior year exists), the schedule availability analysis degrades gracefully:
+
+- Use however many prior years are actually available (0–n-1).
+- If zero prior years are available, the "missing" and "new" columns cannot be computed; report them as `N/A` and note the limitation.
+- If 1 or 2 prior years are available, compute the columns using only those years and annotate the output with the actual look-back window used (e.g. "Lookback: 1 year (requested 3; insufficient history)").
+- The "expected" definition adjusts accordingly: a schedule is "expected" if it was reported in *all* available prior years (not necessarily all `n`). For very short histories this is a weaker signal, which the annotation makes clear.
+
+This behaviour applies equally to the CLI, the API, and the internal logic used by Task 08b.
+
+### API Endpoints
+
+If added, follow the pattern in `api/routes/`. Two suggested endpoints:
+
+| Endpoint | Parameters | Returns |
+|---|---|---|
+| `GET /reporting-completeness` | `year` (optional) | Province-wide summary (Mode 1) |
+| `GET /reporting-completeness/municipalities` | `year` (required), `munid` (optional), `lookback` (optional, default 3) | Per-municipality breakdown (Mode 2) |
+
+Both return JSON. The per-municipality endpoint should support pagination if the full result set is large.
 
 ## Tests
 
 - [ ] Test that a municipality with rows for year Y appears in the "reported" set
 - [ ] Test that a municipality with no rows for year Y but rows in Y-1 appears in the "not yet reported" set
-- [ ] Test the "expected but missing" schedule logic with controlled test data (municipality reports schedule in Y-3, Y-2, Y-1 but not Y → flagged; municipality first reports schedule in Y-1 but not Y → not flagged as expected)
+- [ ] Test the "expected but missing" schedule logic with controlled test data:
+  - Municipality reports schedule in Y-3, Y-2, Y-1 but not Y → flagged as missing
+  - Municipality first reports schedule in Y-1 but not Y → not flagged (only 1 of 3 prior years)
+  - Municipality reports schedule in Y-3 and Y-1 but not Y-2 or Y → not flagged (not present in all prior years)
+- [ ] Test the "new schedules" logic: schedule reported in Y but not in any of Y-1, Y-2, Y-3 → flagged as new
+- [ ] Test insufficient history handling:
+  - Year Y with zero prior years available → "missing" and "new" columns are N/A
+  - Year Y with one prior year available → lookback=1 is used, output annotated accordingly
+  - Year Y with two prior years available → lookback=2 is used, output annotated accordingly
+- [ ] Test that the `--lookback` flag (or `lookback` API parameter) changes the look-back window correctly
 - [ ] Test that the provincial percentage computed from the database is consistent with the CSV values (within a small tolerance to allow for data loaded since the snapshot)
-- [ ] Test CLI command with `--year` flag and without
+- [ ] Test CLI province-wide summary with `--year` flag and without
+- [ ] Test CLI per-municipality breakdown with `--by-municipality` and with `--munid` filter
 - [ ] Test idempotent execution (running twice yields the same results)
 - [ ] If a cached summary table is used, test that the cache is correctly populated and queried
 
 ## Documentation Updates
 
-- [ ] Add `reporting-completeness` command to `CLAUDE.md` "Common commands" section
-- [ ] If an API endpoint is added, update `README.md` with its path and parameters
+- [ ] Add `reporting-completeness` command (both modes) to `CLAUDE.md` "Common commands" section
+- [ ] If API endpoints are added, update `README.md` with paths, parameters, and example responses
 
 ## Success Criteria
 
 - Municipality-level reporting status for years 2022–2025 is queryable from the database
 - Database-derived percentages are consistent with the provincial summary CSV (within ±1% for fully loaded years 2022 and 2023)
 - "Expected but missing" schedule flagging produces a plausible set of candidates (no false positives for mandatory schedules, reasonable coverage of optional ones)
-- If the CLI command is added, it runs in a reasonable time and prints a clear summary
+- Per-municipality breakdown correctly identifies reported schedules, missing expected schedules, and newly reported schedules for each municipality × year combination
+- Insufficient history is handled gracefully: the analysis runs without error for any year in the database and clearly annotates when fewer than `n` prior years were available
+- If the CLI commands are added, both modes run in a reasonable time and print clear output
 - Task 08b can consume the output of this analysis to filter its inference queries
 
 ## Verification
@@ -144,9 +214,37 @@ SELECT marsyear,
        COUNT(*) AS record_count
 FROM firrecord
 WHERE munid = 1
-AND marsyear BETWEEN 2022 AND 2025
+AND marsyear BETWEEN 2019 AND 2025
 GROUP BY marsyear, schedule
 ORDER BY marsyear, schedule;
+
+-- Schedules reported in 2021–2023 but absent in 2024, for municipalities that have reported in 2024
+-- (i.e. "expected but missing" with n=3 look-back)
+WITH reported_2024 AS (
+    SELECT DISTINCT munid FROM firrecord WHERE marsyear = 2024
+),
+prior_schedules AS (
+    SELECT munid,
+           regexp_replace(slc, '^slc\.(\S+)\..*', '\1') AS schedule,
+           COUNT(DISTINCT marsyear) AS years_present
+    FROM firrecord
+    WHERE marsyear BETWEEN 2021 AND 2023
+    GROUP BY munid, schedule
+    HAVING COUNT(DISTINCT marsyear) = 3  -- present in all 3 prior years
+),
+current_schedules AS (
+    SELECT DISTINCT munid,
+           regexp_replace(slc, '^slc\.(\S+)\..*', '\1') AS schedule
+    FROM firrecord
+    WHERE marsyear = 2024
+)
+SELECT p.munid, m.munname, p.schedule
+FROM prior_schedules p
+JOIN reported_2024 r ON r.munid = p.munid
+JOIN municipality m ON m.munid = p.munid
+LEFT JOIN current_schedules c ON c.munid = p.munid AND c.schedule = p.schedule
+WHERE c.schedule IS NULL
+ORDER BY m.munname, p.schedule;
 ```
 
 ## Additional Considerations
@@ -154,3 +252,4 @@ ORDER BY marsyear, schedule;
 1. The definition of "reported" at the schedule level may need refinement. Some schedules are only required for certain municipality tiers (e.g. upper-tier only). The `applicability` field in `fir_line_meta` (once populated) could be used to filter expected-schedule checks by municipality type. For now, the three-prior-years heuristic is a reasonable approximation.
 2. For year 2025, the reporting window is still open as of the task run date. The completeness analysis should note the run date when reporting 2025 figures so users understand the numbers will change over time.
 3. If a cached summary table approach is chosen, document the recommended refresh cadence (e.g. run weekly while recent years are still partially loaded).
+4. The insufficient-history degradation logic (see "Handling Insufficient History" above) also applies when Task 08b calls this analysis internally. For inference over very early year pairs (e.g. 2000→2001), zero or one prior year may be available; the inference should treat the completeness filter as best-effort and flag results accordingly rather than refusing to run.
