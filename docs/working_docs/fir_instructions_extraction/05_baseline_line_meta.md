@@ -44,7 +44,7 @@ These need to be merged into a single `fir_line_meta` row per line.
 |---|---|
 | `schedule_id` | Serial FK to `fir_schedule_meta.id` |
 | `schedule` | Text identifier (e.g., `"10"`, `"51A"`) — denormalized from schedule context |
-| `line_id` | 4-digit code from the PDF (e.g., `"0410"`) |
+| `line_id` | 4-character alphanumeric code from the PDF (e.g., `"0410"`; `"000A"` on schedules 76X, 80C, 81X) |
 | `line_name` | Heading text (e.g., `"Fire"`) |
 | `section` | Section heading within the schedule (e.g., `"Protection Services"`) |
 | `description` | Narrative text from schedule instructions |
@@ -93,7 +93,7 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 
 - [ ] Test insertion of line metadata records
 - [ ] Test that every schedule in `fir_schedule_meta` has at least one line in `fir_line_meta`
-- [ ] Test `line_id` format validation (4-digit string)
+- [ ] Test `line_id` format validation (4-character alphanumeric: digits for most schedules, alphanumeric for 76X, 80C, 81X)
 - [ ] Test that `is_subtotal` and `is_auto_calculated` default to False
 - [ ] Test that `carry_forward_from` is populated only when `is_auto_calculated` is True
 - [ ] Test idempotent insertion
@@ -105,7 +105,7 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 ## Success Criteria
 
 - Every schedule has line metadata entries
-- `line_id` values are valid 4-digit strings
+- `line_id` values are valid 4-character alphanumeric strings
 - Schedules 12, 40, 51 have `includes`/`excludes` populated from Functional Classifications
 - Subtotal and auto-calculated lines are correctly flagged
 - `carry_forward_from` references use the PDF SLC format

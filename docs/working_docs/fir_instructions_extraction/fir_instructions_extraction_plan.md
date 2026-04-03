@@ -72,7 +72,7 @@ One row per (schedule, line, version). The richest table — covers both Functio
 | `id`                 | serial PK     |                                                                                      |
 | `schedule_id`        | serial FK     | FK to `fir_schedule_meta.id`                                                         |
 | `schedule`           | text          | Corresponds to `fir_schedule_meta.schedule` but is not a FK                          |
-| `line_id`            | text          | 4-digit string, e.g. `"0410"`                                                        |
+| `line_id`            | text          | 4-character alphanumeric string, e.g. `"0410"`; `"000A"` on schedules 76X, 80C, 81X |
 | `line_name`          | text          | e.g. `"Fire"`                                                                        |
 | `section`            | text nullable | Section heading within the schedule, e.g. `"Protection Services"`                    |
 | `description`        | text nullable | Full narrative from the PDF about what to report                                     |
@@ -143,7 +143,7 @@ JOIN fir_line_meta m
 WHERE r.marsyear = 2023
 ```
 
-A helper function or generated column to extract schedule/line/column from the SLC string will make this ergonomic. The SLC format is: `slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}`.
+A helper function or generated column to extract schedule/line/column from the SLC string will make this ergonomic. The SLC format is: `slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}`. The line ID is usually 4 digits but can be a 4-character alphanumeric code (e.g. `000A` on schedules 76X, 80C, 81X).
 
 ---
 
@@ -329,7 +329,7 @@ Re-extraction is only needed when new FIR PDFs are published or extraction error
 
 1. **Coverage check**: query `firrecord` for all distinct (schedule, line) pairs. Every pair should have at least one matching row in `fir_line_meta` for the relevant year. Flag gaps.
 2. **Orphan check**: every row in `fir_line_meta` should have corresponding `firrecord` rows in at least one year within its valid range. Flag entries with zero data matches.
-3. **Format validation**: `line_id` matches `/^\d{4}$/`; `column_id` matches `/^\d{2}$/`; `schedule` is in the known schedule list for that year.
+3. **Format validation**: `line_id` matches `/^[0-9A-Z]{4}$/` (4-digit numeric for most schedules; alphanumeric for 76X, 80C, 81X); `column_id` matches `/^\d{2}$/`; `schedule` is in the known schedule list for that year.
 4. **Non-overlapping version ranges**: for a given (schedule, line_id) pair, no two rows should have overlapping valid year ranges.
 5. **SLC cross-reference**: where `carry_forward_from` is populated, verify the referenced SLC exists in the data.
 6. **Changelog completeness**: every row in `fir_instruction_changelog` with `source = "pdf_changelog"` should have produced at least one versioned row (with non-null `valid_from_year`) in the corresponding metadata table.

@@ -69,9 +69,11 @@ Instructions documents from 2018–2021 have not yet been analyzed in detail to 
 
 ## SLC Format
 
-The `slc` field on `firrecord` encodes schedule, line, and column as: `slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}`.
+The `slc` field on `firrecord` encodes schedule, line, and column as: `slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}`.
 
-Example: `slc.10.L9930.C01.` = Schedule 10, Line 9930, Column 01.
+Example: `slc.10.L9930.C01.01` = Schedule 10, Line 9930, Column 01, Sub 01.
+
+The line ID is a 4-character alphanumeric code. It is usually 4 digits (e.g. `9930`), but schedules 76X, 80C, and 81X use codes like `000A` and `000B`. The sub field is always a non-empty 2-character alphanumeric code in practice (e.g. `01`, `0A`).
 
 The PDF references use a different format: `SLC 10 9930 01` (space-separated).
 
