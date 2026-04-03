@@ -5,7 +5,7 @@ from typing import Optional
 import pandas as pd
 import typer
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from sqlmodel import Session
+from sqlmodel import Session, SQLModel
 
 from municipal_finances.data_cleanup import _fix_csv
 from municipal_finances.database import create_db_and_tables, get_engine
@@ -86,7 +86,8 @@ def clear_db(
 ):
     """Delete all rows from all tables. Intended for development use.
 
-    Truncates firrecord, municipality, and firdatasource in dependency order."""
+    Deletes from all registered tables in reverse dependency order so that
+    child rows are removed before their referenced parent rows."""
     if not yes:
         typer.confirm(
             "This will permanently delete all data from the database. Continue?",
@@ -94,9 +95,8 @@ def clear_db(
         )
     engine = get_engine()
     with Session(engine) as session:
-        session.execute(FIRRecord.__table__.delete())
-        session.execute(Municipality.__table__.delete())
-        session.execute(FIRDataSource.__table__.delete())
+        for table in reversed(SQLModel.metadata.sorted_tables):
+            session.execute(table.delete())
         session.commit()
     typer.echo("Database cleared.")
 
