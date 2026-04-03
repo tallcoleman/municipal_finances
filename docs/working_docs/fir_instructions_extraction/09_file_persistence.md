@@ -202,7 +202,3 @@ uv run src/municipal_finances/app.py load-instructions
 uv run src/municipal_finances/app.py export-instructions --output-dir /tmp/fir_exports
 diff fir_instructions/exports/ /tmp/fir_exports/
 ```
-
-## Additional Considerations
-
-_None remaining — all considerations have been promoted into the task body._

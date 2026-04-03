@@ -89,7 +89,3 @@ SELECT DISTINCT category FROM fir_schedule_meta ORDER BY category;
 -- No empty names or descriptions
 SELECT * FROM fir_schedule_meta WHERE schedule_name IS NULL OR schedule_name = '' OR description IS NULL OR description = '';
 ```
-
-## Additional Considerations
-
-_None remaining — all considerations have been promoted into the task body._

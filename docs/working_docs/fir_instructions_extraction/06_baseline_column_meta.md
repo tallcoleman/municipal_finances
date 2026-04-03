@@ -80,7 +80,3 @@ WHERE cm.id IS NULL;
 -- Validate column_id format
 SELECT * FROM fir_column_meta WHERE column_id !~ '^\d{2}$';
 ```
-
-## Additional Considerations
-
-_None remaining — all considerations have been promoted into the task body._

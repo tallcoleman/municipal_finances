@@ -139,7 +139,3 @@ SELECT schedule,
 FROM fir_line_meta WHERE schedule IN ('12', '40', '51A', '51B')
 GROUP BY schedule;
 ```
-
-## Additional Considerations
-
-_None remaining — all considerations have been promoted into the task body._
