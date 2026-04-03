@@ -1,7 +1,6 @@
 # Progress Tracker
 
-- [ ] 00_shared_instructions.md
-- [ ] 01_database_models.md
+- [x] 01_database_models.md (https://github.com/tallcoleman/municipal_finances/pull/4)
 - [x] 02_slc_parsing_utility.md (https://github.com/tallcoleman/municipal_finances/pull/1)
 - [ ] 02b_slc_format_verification.md
 - [ ] 03_content_changes_extraction.md
