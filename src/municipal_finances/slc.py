@@ -23,7 +23,11 @@ _SLC_PATTERN = re.compile(
 )
 
 # Matches the PDF SLC format: [SLC ]<schedule> <line> <column>
-_PDF_SLC_PATTERN = re.compile(r"^(?:SLC\s+)?(\S+)\s+(\S+)\s+(\S+)$")
+# line_id must be exactly 4 digits or a wildcard (x+); column_id must be exactly 2 digits or a wildcard.
+_PDF_SLC_PATTERN = re.compile(
+    r"^(?:SLC\s+)?(?P<schedule>\S+)\s+(?P<line_id>\d{4}|x+)\s+(?P<column_id>\d{2}|x+)$",
+    re.IGNORECASE,
+)
 
 # Wildcard token used in PDF SLC patterns (e.g. "40 xxxx 05")
 _WILDCARD_RE = re.compile(r"^x+$", re.IGNORECASE)
@@ -119,7 +123,7 @@ def pdf_slc_to_components(pdf_slc: str) -> dict:
         return None if _WILDCARD_RE.match(token) else token
 
     return {
-        "schedule": _parse_token(match.group(1)),
-        "line_id": _parse_token(match.group(2)),
-        "column_id": _parse_token(match.group(3)),
+        "schedule": _parse_token(match.group("schedule")),
+        "line_id": _parse_token(match.group("line_id")),
+        "column_id": _parse_token(match.group("column_id")),
     }

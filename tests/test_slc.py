@@ -93,6 +93,22 @@ class TestPdfSlcToComponents:
         with pytest.raises(ValueError, match="Invalid PDF SLC format"):
             pdf_slc_to_components("")
 
+    def test_invalid_short_line_id(self):
+        with pytest.raises(ValueError, match="Invalid PDF SLC format"):
+            pdf_slc_to_components("40 993 05")
+
+    def test_invalid_long_line_id(self):
+        with pytest.raises(ValueError, match="Invalid PDF SLC format"):
+            pdf_slc_to_components("40 99300 05")
+
+    def test_invalid_short_column_id(self):
+        with pytest.raises(ValueError, match="Invalid PDF SLC format"):
+            pdf_slc_to_components("40 9930 5")
+
+    def test_invalid_long_column_id(self):
+        with pytest.raises(ValueError, match="Invalid PDF SLC format"):
+            pdf_slc_to_components("40 9930 005")
+
 
 class TestRoundTrip:
     def test_parse_then_to_pdf_then_parse(self):
