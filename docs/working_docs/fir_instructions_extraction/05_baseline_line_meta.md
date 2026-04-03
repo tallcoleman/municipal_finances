@@ -84,6 +84,10 @@ Rough estimates per schedule category:
 
 Total: likely 500–1000+ line metadata rows.
 
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_line_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+
 ## Tests
 
 - [ ] Test insertion of line metadata records

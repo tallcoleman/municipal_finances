@@ -52,6 +52,10 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 
 Use the same insertion pattern as Task 03. Create an `insert_schedule_meta` function or reuse a generic insertion function.
 
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_schedule_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+
 ## Tests
 
 - [ ] Test insertion of schedule metadata records

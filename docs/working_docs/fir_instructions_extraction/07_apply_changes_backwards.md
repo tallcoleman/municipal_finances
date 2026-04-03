@@ -85,6 +85,10 @@ For schedules that were deleted (51C, 79, 80B in 2023), we need to:
 2. Create rows with `valid_to_year = 2022`
 3. These lines/columns won't exist in the 2025 baseline, so they're entirely new rows
 
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as updated CSV files in `fir_instructions/exports/` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+
 ## Tests
 
 - [ ] Test that version ranges don't overlap for any (schedule, line_id) pair

@@ -43,6 +43,10 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 
 Most schedules have 3–10 columns. Total: likely 100–200 column metadata rows.
 
+### Data File Approach
+
+Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_column_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+
 ## Tests
 
 - [ ] Test insertion of column metadata records

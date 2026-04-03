@@ -2,6 +2,8 @@
 
 **TODO - add in checks in case there are any columns in the data that are not documented**
 
+TODO - Interaction of inferred changes interact with existing PDF-documented version rows: if the PDF says a line was added in 2023, but inference also detects it, the inferred entry should also be kept for completeness. Duplicates should then be flagged and resolved in the reconciliation audit step.
+
 ## Goal
 
 Implement the automated checks from the extraction plan's Audit Plan section as runnable scripts or CLI commands. These checks validate the completeness and correctness of extracted metadata.
