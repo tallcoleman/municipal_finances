@@ -9,6 +9,7 @@ For FIR years without instructions PDFs, infer structural changes (new/deleted l
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
 - Task 07 (Phase 2 versioning) complete
+- Task 08a (reporting completeness) complete — provides the set of municipalities that have reported for each year, used to filter inference queries
 - `firrecord` data loaded for the years being compared
 
 ## Task List
@@ -76,7 +77,7 @@ uv run src/municipal_finances/app.py infer-changes --include-pdf-years
 ### Handling Noise
 
 Per the plan's limitations section:
-- A line absent in year Y might have no municipalities reporting, not a real deletion. **Mitigation**: require the SLC to be present in at least N municipalities (e.g., 3) in the year it appears, to filter out single-municipality anomalies.
+- A line absent in year Y might have no municipalities reporting, not a real deletion. **Mitigation**: restrict inference queries to municipalities that have reported for year Y (per Task 08a), then require the SLC to be present in at least N of those reporting municipalities (e.g., 3) to filter out single-municipality anomalies. Using reporting municipalities as the denominator avoids false deletions caused by whole-year non-reporters.
 - Label drift in `schedule_line_desc` may be formatting changes. **Mitigation**: normalize whitespace and case before comparing. Only flag changes where the normalized text differs by more than minor formatting.
 
 ### Storing Inferred Changes

@@ -187,11 +187,19 @@ For lines that were added in a given year: set `valid_from_year` on the existing
 
 Work year by year: 2024 changes, then 2023 changes (the largest set), then 2022 changes, etc.
 
-### Phase 3: Infer changes for years without PDFs (see below)
+### Phase 3a: Assess reporting completeness (prerequisite for inference)
+
+Before running data inference, determine which municipalities have reported for each recent year (2022–2025) and which schedules each has submitted. This is necessary to avoid false positives in inference: an SLC that appears absent in year Y may simply reflect municipalities that haven't yet reported, not a genuine structural deletion.
+
+The completeness analysis cross-checks against the provincial summary CSV at `data/fir_reports/multi_year_provincial_summary/percent_of_reports_loaded_as_of_2026-04-02.csv`. If the queries are fast enough, expose the analysis as a `reporting-completeness` CLI command and/or API endpoint.
+
+### Phase 3b: Infer changes for years without PDFs (see below)
 
 ---
 
 ## Inferring Changes from Data for Years Without PDFs
+
+**Note:** Phase 3a (reporting completeness) must be completed before running inference. The completeness analysis provides the set of municipalities that have reported for each year, which is used to filter inference queries and avoid false positives from non-reporting municipalities.
 
 For FIR years where no instructions PDF is available (any year older than 2019, or future gaps), changes can be inferred by comparing the set of SLC values and their labels present in the actual `firrecord` data across adjacent years.
 
@@ -233,7 +241,7 @@ JOIN (SELECT DISTINCT slc, schedule_line_desc FROM firrecord WHERE marsyear = Y)
 Inferred changes have lower confidence than PDF-documented changes:
 
 - **Structural vs. description changes**: data differences prove that something changed structurally (line added/removed), but cannot capture changes to reporting rules or descriptions that didn't affect whether municipalities reported data on a line
-- **Noise**: a line absent in year Y might simply have no municipalities reporting on it, not necessarily a structural removal
+- **Noise**: a line absent in year Y might simply have no municipalities reporting on it, not necessarily a structural removal. Mitigated by restricting queries to municipalities that have reported for year Y (per Phase 3a) and requiring the SLC to appear in at least N of those reporting municipalities
 - **Label drift**: `schedule_line_desc` in the data is copied from the Excel template and may have minor formatting differences that aren't meaningful changes
 
 ### Distinguishing confidence levels
