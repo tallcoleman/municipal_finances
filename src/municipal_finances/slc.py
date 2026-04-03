@@ -2,9 +2,13 @@
 
 The SLC field on ``firrecord`` encodes a schedule, line, and column as:
 
-    slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}
+    slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}
 
-Example: ``slc.10.L9930.C01.`` = Schedule 10, Line 9930, Column 01.
+Example: ``slc.10.L9930.C01.01`` = Schedule 10, Line 9930, Column 01, Sub 01.
+
+The line ID is typically 4 digits (e.g. ``9930``) but some schedules (76X, 80C, 81X)
+use a 3-digit-plus-letter form (e.g. ``000A``, ``000B``). The sub field is always a
+non-empty 2-character alphanumeric code in practice (e.g. ``01``, ``0A``).
 
 The FIR Instructions PDFs use a different, space-separated format:
 
@@ -36,8 +40,17 @@ class PDFSLCComponents(TypedDict):
     column_id: str | None
 
 # Matches the database SLC format: slc.<schedule>.L<line>.C<column>.<sub>
+#
+# Verification against firrecord (2020–2024 data, checked 2026-04-03):
+#   - All SLC values match this pattern after the line_id was broadened from \d{4}
+#     to [0-9A-Z]{4}.
+#   - Schedules 76X, 80C, and 81X use alphanumeric line IDs (000A, 000B); all
+#     other schedules use purely numeric 4-digit line IDs.
+#   - The sub field is never empty in this data range; 30 distinct 2-character
+#     alphanumeric values were observed (e.g. 01–28, 0A, 0B). The pattern retains
+#     .* to stay permissive in case future data introduces other sub values.
 _SLC_PATTERN = re.compile(
-    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>\d{4})\.C(?P<column_id>\d{2})\.(?P<sub>.*)$"
+    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_id>\d{2})\.(?P<sub>.*)$"
 )
 
 # Matches the PDF SLC format: [SLC ]<schedule> <line> <column>
@@ -54,12 +67,15 @@ _WILDCARD_RE = re.compile(r"^x+$", re.IGNORECASE)
 def parse_slc(slc: str) -> SLCComponents:
     """Parse a database SLC string into its component parts.
 
-    Input format: ``slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}``
+    Input format: ``slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}``
+
+    The line ID is usually 4 digits (e.g. ``9930``) but may be a 3-digit-plus-letter
+    code such as ``000A`` on schedules 76X, 80C, and 81X.
 
     Example::
 
-        >>> parse_slc("slc.10.L9930.C01.")
-        {'schedule': '10', 'line_id': '9930', 'column_id': '01', 'sub': ''}
+        >>> parse_slc("slc.10.L9930.C01.01")
+        {'schedule': '10', 'line_id': '9930', 'column_id': '01', 'sub': '01'}
 
     Args:
         slc: A database SLC string.

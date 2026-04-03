@@ -24,6 +24,21 @@ class TestParseSlc:
         result = parse_slc("slc.10.L9930.C01.A")
         assert result == {"schedule": "10", "line_id": "9930", "column_id": "01", "sub": "A"}
 
+    def test_alphanumeric_line_id(self):
+        """Schedules 76X, 80C, and 81X use line IDs like '000A'; the parser accepts them."""
+        result = parse_slc("slc.80C.L000A.C01.0A")
+        assert result == {"schedule": "80C", "line_id": "000A", "column_id": "01", "sub": "0A"}
+
+    def test_alphanumeric_line_id_variant(self):
+        """The '000B' line ID variant found on schedules 80C and 81X is also accepted."""
+        result = parse_slc("slc.81X.L000B.C01.01")
+        assert result == {"schedule": "81X", "line_id": "000B", "column_id": "01", "sub": "01"}
+
+    def test_numeric_sub_field(self):
+        """A two-digit numeric sub field (the most common form in real data) is captured."""
+        result = parse_slc("slc.10.L9930.C01.01")
+        assert result == {"schedule": "10", "line_id": "9930", "column_id": "01", "sub": "01"}
+
     def test_invalid_missing_prefix(self):
         """A string missing the leading 'slc.' prefix raises ValueError."""
         with pytest.raises(ValueError, match="Invalid SLC format"):
