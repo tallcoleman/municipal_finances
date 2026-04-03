@@ -16,6 +16,24 @@ This module provides functions to parse both formats and convert between them.
 """
 
 import re
+from typing import TypedDict
+
+
+class SLCComponents(TypedDict):
+    """Components parsed from a database SLC string."""
+
+    schedule: str
+    line_id: str
+    column_id: str
+    sub: str
+
+
+class PDFSLCComponents(TypedDict):
+    """Components parsed from a PDF SLC reference. Fields are None where wildcarded."""
+
+    schedule: str | None
+    line_id: str | None
+    column_id: str | None
 
 # Matches the database SLC format: slc.<schedule>.L<line>.C<column>.<sub>
 _SLC_PATTERN = re.compile(
@@ -33,7 +51,7 @@ _PDF_SLC_PATTERN = re.compile(
 _WILDCARD_RE = re.compile(r"^x+$", re.IGNORECASE)
 
 
-def parse_slc(slc: str) -> dict:
+def parse_slc(slc: str) -> SLCComponents:
     """Parse a database SLC string into its component parts.
 
     Input format: ``slc.{schedule_code}.L{line_4digits}.C{column_2digits}.{sub}``
@@ -86,7 +104,7 @@ def slc_to_pdf_format(schedule: str, line_id: str, column_id: str) -> str:
     return f"SLC {schedule} {line_id} {column_id}"
 
 
-def pdf_slc_to_components(pdf_slc: str) -> dict:
+def pdf_slc_to_components(pdf_slc: str) -> PDFSLCComponents:
     """Parse a PDF-format SLC reference into its component parts.
 
     Accepts both the bare form (``"10 9930 01"``) and the prefixed form
