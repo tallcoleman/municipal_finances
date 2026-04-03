@@ -76,6 +76,6 @@ WHERE cm.id IS NULL;
 SELECT * FROM fir_column_meta WHERE column_id !~ '^\d{2}$';
 ```
 
-## Questions
+## Additional Considerations
 
 1. Some schedules may have columns that are described only by their heading (no narrative description). The `description` should be "No description provided." in these cases.

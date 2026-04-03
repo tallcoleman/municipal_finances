@@ -2,18 +2,20 @@
 
 ## Goal
 
-Extract every row from the "Content Changes" attachment in each FIR Instructions PDF (2019–2025) and store them in the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
+Extract every row from the "Content Changes" extracts for each FIR Instructions PDF (2019–2025) and store them in the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
+
+The content changes extracts are available in `fir_instructions/change_logs/`.
 
 ## Task List
 
 - [ ] Create extraction script/module at `src/municipal_finances/fir_instructions/extract_changelog.py`
-- [ ] Extract Content Changes from FIR2025 PDF (~page 43, ~7 entries)
-- [ ] Extract Content Changes from FIR2024 PDF (~page 30, ~10 entries)
-- [ ] Extract Content Changes from FIR2023 PDF (~page 29, ~50+ entries)
-- [ ] Extract Content Changes from FIR2022 PDF (~pages 29–31, ~40 entries)
-- [ ] Extract Content Changes from FIR2021 PDF (pages 29-30)
-- [ ] Extract Content Changes from FIR2020 PDF (page 29)
-- [ ] Extract Content Changes from FIR2019 PDF (page 29)
+- [ ] Extract Content Changes from FIR2025 Changes PDF (~7 entries)
+- [ ] Extract Content Changes from FIR2024 Changes PDF (~10 entries)
+- [ ] Extract Content Changes from FIR2023 Changes PDF (~50+ entries)
+- [ ] Extract Content Changes from FIR2022 Changes PDF (~40 entries)
+- [ ] Extract Content Changes from FIR2021 Changes PDF
+- [ ] Extract Content Changes from FIR2020 Changes PDF
+- [ ] Extract Content Changes from FIR2019 Changes PDF
 - [ ] Store all entries in `fir_instruction_changelog`
 - [ ] Verify extracted data against PDFs
 - [ ] Write tests for the storage/loading logic
@@ -34,14 +36,14 @@ The PDFs may also distinguish between "Major Changes" and "Minor Changes" sectio
 
 1. Read the relevant pages from each PDF using Claude's PDF reading capability
 2. For each row in the table, create a `FIRInstructionChangelog` record:
-   - `year`: the FIR year (2022, 2023, 2024, or 2025)
+   - `year`: the FIR year (2019, 2020, 2021, 2022, 2023, 2024, or 2025)
    - `schedule`: parsed from the Schedule column
    - `slc_pattern`: the raw SLC value from the PDF (may contain wildcards like `xx`)
    - `line_id`: parsed from `slc_pattern` if deterministic (not `xxxx`)
    - `column_id`: parsed from `slc_pattern` if deterministic (not `xx`)
    - `heading`: the Heading column from the PDF
    - `change_type`: inferred from context — `new_schedule`, `deleted_schedule`, `new_line`, `deleted_line`, `updated_line`, `new_column`, `deleted_column`, `updated_column`
-   - `severity`: `"major"` or `"minor"` based on which section it appeared in, or based on inference if not divided by "Major Changes" and "Minor Changes" sections or similar
+   - `severity`: `"major"` or `"minor"` based on which section it appeared in, or based on inference if not divided by "Major Changes" and "Minor Changes" sections
    - `description`: verbatim from the Description column
    - `source`: `"pdf_changelog"`
 3. Use `pdf_slc_to_components()` from `slc.py` (Task 02) to parse the SLC patterns
@@ -84,9 +86,9 @@ Total: ~107+ changelog entries from assessed PDFs.
 
 ## Success Criteria
 
-- All Content Changes entries from all four PDFs are in `fir_instruction_changelog`
+- All Content Changes entries from all seven PDFs are in `fir_instruction_changelog`
 - `source` is `"pdf_changelog"` for all entries
-- `severity` correctly reflects major vs. minor classification
+- `severity` correctly reflects major vs. minor classification (where provided)
 - `change_type` is assigned correctly based on the description context
 - SLC patterns are parsed and `line_id`/`column_id` populated where deterministic
 - Exported CSV contains all entries and can be reloaded cleanly
@@ -112,7 +114,8 @@ SELECT * FROM fir_instruction_changelog WHERE line_id IS NULL AND slc_pattern NO
 
 ## Additional Considerations
 
-1. Assess whether the Content Changes tables in the PDFs are consistently formatted across all four years, or if there are differences in the layout between years. This affects whether a single extraction template works.
-2. Entries where the description references multiple changes (e.g., "New lines 0410, 0420, 0430 added") should be split into separate rows, not kept as one row.
-3. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). These should be reflected in the schedule versions tracked by the `fir_schedule_meta` table.
-4. Try different methods of PDF text extraction to determine what works best. First option would be to try a Python PDF library (e.g., pdfplumber), and if the success criteria are not met, then have Claude read the PDF pages directly.
+1. The content changes tables in the PDFs often start with some instructions that should not be parsed into change entries.
+2. Values for the "Sch."/"Schedule", "SLC", and "Heading" columns in the PDF are sometimes only provided for the first row where the value is different from the prior rows, and not repeated for every applicable row. If the value in one of these columns is blank, it is likely meant to be the value from the first non-blank row prior. An exception to this may be schedule 22C in the 2022 PDF, where there is a much longer comment in the description column that appears to span multiple rows. The prior non-blank value for a column also does not apply in cases where a higher-level value has changed (e.g. SLC should not be inferred from the first non-blank value above when "Sch."/"Schedule" has changed).
+3. Entries where the description references multiple changes (e.g., "New lines 0410, 0420, 0430 added") should be split into separate rows, not kept as one row.
+4. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). These should be reflected in the schedule versions tracked by the `fir_schedule_meta` table.
+5. Try different methods of PDF text extraction to determine what works best. First option would be to try a Python PDF library (e.g., pdfplumber), and if the success criteria are not met, then have Claude read the PDF pages directly.

@@ -4,7 +4,9 @@
 
 Extract structured metadata from the annual FIR Instructions PDFs and store it in the database, linked to the existing FIR data. This enables users exploring schedule/line/column data to directly call up the relevant instructions without opening a PDF.
 
-Source PDFs are in `fir_instructions/source_files/`. Currently available: years from 2019 to 2025.
+PDFs for years 2019 to 2025 are available:
+* Source PDFs are in `fir_instructions/source_files/`.
+* The content change tables are pre-extracted and available in `fir_instructions/change_logs/`.
 
 ---
 
@@ -22,7 +24,7 @@ A standalone attachment defining what activities belong under each line in Sched
 One section per schedule (~26 schedules). Each section contains general information about the schedule's purpose, line-by-line descriptions (what to report, inclusion/exclusion rules, carry-forward sources), and column-by-column descriptions.
 
 **Content Changes attachment**
-A structured table (Schedule / SLC / Heading / Description) documenting exactly what changed from the prior year. The PDFs distinguish Major Changes (new/deleted schedules) from Minor Changes (new/updated/removed lines or columns). This is the key input for versioning.
+A structured table (Schedule / SLC / Heading / Description) documenting exactly what changed from the prior year. The PDFs distinguish Major Changes (new/deleted schedules) from Minor Changes (new/updated/removed lines or columns). This is the key input for versioning. These are available as pre-extracted pages in `fir_instructions/change_logs/`.
 
 ### The 26 Schedules
 
@@ -149,7 +151,7 @@ A helper function or generated column to extract schedule/line/column from the S
 
 ### Phase 0: Extract all Content Changes tables (fast, do this first)
 
-Read only the Content Changes pages from each PDF (1–3 pages per PDF, already in a structured table format). Extract every row into `fir_instruction_changelog` with `source = "pdf_changelog"`.
+Read only the Content Changes pages extracts from `fir_instructions/change_logs/`. These have about 1–3 pages each and are already in a structured table format. Extract every row into `fir_instruction_changelog` with `source = "pdf_changelog"`.
 
 This is the fastest step and determines the full scope of versioning work before any heavy extraction begins.
 
@@ -159,15 +161,6 @@ This is the fastest step and determines the full scope of versioning work before
 - FIR2023: ~50+ entries (major — two new schedules 71 and 74E, three deleted: 51C, 79, 80B; driven by PSAB standards PS 3280 and PS 3450)
 - FIR2024: ~10 entries (minor)
 - FIR2025: ~7 entries (minor)
-
-**Page locations in each PDF:**
-- FIR 2019: page 29
-- FIR 2020: page 29
-- FIR 2021: pages 29-30
-- FIR2022: ~pages 29–31
-- FIR2023: ~page 29
-- FIR2024: ~page 30
-- FIR2025: ~page 43
 
 ### Phase 1: Extract FIR2025 as the full baseline
 
@@ -249,7 +242,7 @@ Both inferred and PDF-documented changes are stored in `fir_instruction_changelo
 - `source = "pdf_changelog"`: authoritative, from official documentation
 - `source = "data_inferred"`: approximate, derived from data differences
 
-The `change_notes` field on metadata rows should also note when a version boundary was inferred rather than documented. The UI should surface this distinction to users (e.g., "instructions valid from 2021, based on data evidence").
+The `change_notes` field on metadata rows should also note when a version boundary was inferred rather than documented. The UI should surface this distinction to users (e.g., "instructions valid from 2017, based on data evidence").
 
 ### Handling inferred changes in metadata rows
 
@@ -286,7 +279,7 @@ CSV is preferred over JSON or Parquet because:
 - Directly loadable with `psql \copy` or pandas without transformation
 - Compatible with the project's existing data pipeline conventions
 
-Exclude the `id` (serial PK) column on export — IDs are database-internal and will be reassigned on load. All other columns should be present, including nullable fields (exported as empty strings).
+Exclude the `id` (serial PK) column on export (and FK references to these serial PK fields) — IDs are database-internal and will be reassigned on load. All other columns should be present, including nullable fields (exported as empty strings).
 
 ### Exporting from the database
 

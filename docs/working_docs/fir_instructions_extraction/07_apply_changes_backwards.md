@@ -12,6 +12,7 @@ Using the changelog from Task 03, create versioned rows in the metadata tables b
 
 ## Task List
 
+- [ ] Conduct a light-weight check to determine if there are format differences in the PDFs in `fir_instructions/source_files/` that need to be handled for the changes to be properly parsed and processed. Try to avoid reading and parsing whole PDFs - focus instead on the table of contents, headings, and sampling a small number of pages from each relevant section.
 - [ ] Process FIR2024 changes (~10 entries, minor)
   - [ ] For each changelog entry: read the relevant section in FIR2024 PDF
   - [ ] Create prior-version rows with old descriptions
@@ -138,7 +139,6 @@ AND cl.line_id IS NOT NULL;
 
 ## Additional Considerations
 
-1. The PDF format is relatively consistent across all years, but only 2023–2025 have the distinction between major and minor changes.
-2. When a line's description has changed but its `includes`/`excludes` did not change (or vice versa), the prior-version row can copy the unchanged fields from the current version.
-3. For changes described as "updated" in the changelog — some may be trivial (typo fixes, wording tweaks). Versioned rows should still be created for these changes, since the change is specifically noted in the change log.
-4. The overlap check query above handles NULLs in version ranges. Consider whether it would be feasible to add an application-level check to prevent overlap (adding the constraint in Postgres directly may be too complex). If an application-level check is added, make sure that it is run when the CLI is used to load or update rows.
+1. When a line's description has changed but its `includes`/`excludes` did not change (or vice versa), the prior-version row can copy the unchanged fields from the current version.
+2. For changes described as "updated" in the changelog — some may be trivial (typo fixes, wording tweaks). Versioned rows should still be created for these changes, since the change is specifically noted in the change log.
+3. The overlap check query above handles NULLs in version ranges. Consider whether it would be feasible to add an application-level check to prevent overlap (adding the constraint in Postgres directly may be too complex). If an application-level check is added, make sure that it actually runs when the CLI is used to load or update rows.
