@@ -41,7 +41,7 @@ Expose the instruction metadata tables via the FastAPI API so users can query sc
 
 **Changelog:**
 - `GET /instructions/changelog/` — List changelog entries
-  - Query params: `year` (int, optional), `schedule` (str, optional), `source` (str, optional), `change_type` (str, optional), `offset`, `limit`
+  - Query params: `year` (int, optional), `schedule` (str, optional), `source` (str, optional), `change_type` (str, optional), `severity` (str, optional), `offset`, `limit`
 
 **Enriched record lookup:**
 - `GET /instructions/lookup/` — Given an SLC string and year, return the matching schedule, line, and column metadata
@@ -63,7 +63,7 @@ query = query.where(
 The `/instructions/lookup/` endpoint is the primary integration point. It:
 1. Parses the SLC string using `parse_slc()` from Task 02
 2. Queries `fir_schedule_meta`, `fir_line_meta`, and `fir_column_meta` for the matching year
-3. Returns a combined response
+3. Returns a combined response with partial results (nulls for any missing metadata type) rather than a 404 if only some of the three types are missing for the given SLC/year
 
 ```python
 @router.get("/instructions/lookup/")
@@ -119,7 +119,5 @@ Follow the pattern in `test_api.py`:
 
 ## Additional Considerations
 
-1. The lookup endpoint should return partial results (with nulls for missing parts) if any of the three metadata types is missing for the given SLC/year.
-2. Assess whether it would be feasible to include an endpoint that enriches `firrecord` results with instruction metadata inline. E.g., `GET /records/?include_instructions=true`. This would be convenient but could be expensive. Alternative if this requires too much computation or makes the response size unreasonably large: let the client make a separate lookup call.
-3. The changelog endpoint should support filtering by `severity`.
-4. Rate limiting considerations — the lookup endpoint could be called frequently. Consider if there are any caching strategies needed.
+1. Assess whether it would be feasible to include an endpoint that enriches `firrecord` results with instruction metadata inline. E.g., `GET /records/?include_instructions=true`. This would be convenient but could be expensive. Alternative if this requires too much computation or makes the response size unreasonably large: let the client make a separate lookup call.
+2. Rate limiting considerations — the lookup endpoint could be called frequently. Consider if there are any caching strategies needed.

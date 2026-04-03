@@ -38,6 +38,7 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 - Some schedules have very few columns (2–3), while others like Schedule 12 have many (10+)
 - Column descriptions tend to be shorter than line descriptions
 - Schedules 12 and 40 have particularly complex column structures worth extra attention
+- Some columns have no narrative description beyond their heading. Set `description = "No description provided."` for these columns rather than leaving the field NULL or empty.
 
 ### Expected Volume
 
@@ -82,4 +83,4 @@ SELECT * FROM fir_column_meta WHERE column_id !~ '^\d{2}$';
 
 ## Additional Considerations
 
-1. Some schedules may have columns that are described only by their heading (no narrative description). The `description` should be "No description provided." in these cases.
+_None remaining — all considerations have been promoted into the task body._

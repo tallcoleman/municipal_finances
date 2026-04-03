@@ -13,9 +13,10 @@ Add `export-instructions` and `load-instructions` CLI commands so that extracted
 
 - [ ] Create `src/municipal_finances/fir_instructions_management.py` module with export and load logic
 - [ ] Implement `export-instructions` CLI command
-- [ ] Implement `load-instructions` CLI command
+- [ ] Implement `load-instructions` CLI command (default: `ON CONFLICT DO NOTHING`; add `--overwrite` flag for `ON CONFLICT DO UPDATE`)
 - [ ] Register the new Typer sub-app in `app.py`
 - [ ] Create `fir_instructions/exports/` directory (add `.gitkeep` if needed)
+- [ ] Verify `fir_instructions/exports/` is not excluded by `.gitignore`
 - [ ] Write tests
 - [ ] Update documentation
 
@@ -79,7 +80,7 @@ uv run src/municipal_finances/app.py load-instructions --input-dir path/to/dir
 1. Check that target tables exist; if not, run `init-db` implicitly
 2. Read each CSV file
 3. For `fir_line_meta` and `fir_column_meta`: resolve `schedule_id` FK by joining against the newly-loaded `fir_schedule_meta` rows on the `schedule` text value
-4. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` (match on unique constraint / natural key)
+4. Insert rows using `INSERT ... ON CONFLICT DO NOTHING` by default (match on unique constraint / natural key); use `ON CONFLICT DO UPDATE` when `--overwrite` flag is passed (useful for re-extraction workflows where you want to replace existing rows rather than skip them)
 5. Log rows inserted vs. skipped per table
 6. Load order: `fir_schedule_meta` first (required before FK resolution), then `fir_line_meta`, `fir_column_meta`, then `fir_instruction_changelog`
 
@@ -135,6 +136,10 @@ def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key
         result = conn.execute(stmt)
     return result.rowcount
 ```
+
+**Schema mismatch handling:**
+- Extra columns in the CSV (not present in the model): log a warning and ignore them
+- Missing required columns in the CSV: raise an error before attempting insertion
 
 ### Default Paths
 
@@ -200,6 +205,4 @@ diff fir_instructions/exports/ /tmp/fir_exports/
 
 ## Additional Considerations
 
-1. The `load-instructions` should use use `ON CONFLICT DO NOTHING` by default with a `--overwrite` flag for `ON CONFLICT DO UPDATE`. `DO NOTHING` is safer (won't overwrite manual corrections), but `DO UPDATE` is more convenient for re-extraction workflows. 
-2. The exported CSVs should be committed to version control; make sure they're not accidentally covered by `.gitignore`.
-3. Handling CSV files that have columns not in the model (e.g., if the CSV was exported from an older schema): ignore extra columns (but raise a warning); raise an error on missing required columns.
+_None remaining — all considerations have been promoted into the task body._

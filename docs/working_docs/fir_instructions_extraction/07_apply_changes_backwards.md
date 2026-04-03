@@ -28,6 +28,7 @@ Using the changelog from Task 03, create versioned rows in the metadata tables b
 - [ ] Process FIR2021 changes - assess changelog entries to determine sub-steps required
 - [ ] Process FIR2020 changes - assess changelog entries to determine sub-steps required
 - [ ] Process FIR2019 changes - assess changelog entries to determine sub-steps required
+- [ ] Implement an application-level overlap check that validates non-overlapping version ranges before inserting or updating metadata rows, and ensure it runs when the CLI is used to load or update rows
 - [ ] Set `change_notes` on all versioned rows from the changelog description
 - [ ] Export updated CSVs
 - [ ] Verify version ranges don't overlap
@@ -40,7 +41,7 @@ For each changelog entry documenting a change in year Y:
 
 **Line/column updated in year Y:**
 1. Read the prior version's PDF (year Y-1 or the most recent available) to extract the old description
-2. Create a new metadata row with the old content and `valid_to_year = Y - 1`
+2. Create a new metadata row with the old content and `valid_to_year = Y - 1`. For fields that did not change (e.g., `includes`/`excludes` when only `description` changed), copy the unchanged values from the existing current-version row rather than re-extracting them.
 3. Update the existing row's `valid_from_year = Y`
 4. Copy `change_notes` from the changelog `description` to both rows
 
@@ -143,6 +144,4 @@ AND cl.line_id IS NOT NULL;
 
 ## Additional Considerations
 
-1. When a line's description has changed but its `includes`/`excludes` did not change (or vice versa), the prior-version row can copy the unchanged fields from the current version.
-2. For changes described as "updated" in the changelog — some may be trivial (typo fixes, wording tweaks). Versioned rows should still be created for these changes, since the change is specifically noted in the change log.
-3. The overlap check query above handles NULLs in version ranges. Consider whether it would be feasible to add an application-level check to prevent overlap (adding the constraint in Postgres directly may be too complex). If an application-level check is added, make sure that it actually runs when the CLI is used to load or update rows.
+1. For changes described as "updated" in the changelog — some may be trivial (typo fixes, wording tweaks). Versioned rows should still be created for these changes, since the change is specifically noted in the change log.

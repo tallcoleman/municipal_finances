@@ -100,8 +100,10 @@ Year  Municipalities Reported  Total  Not Yet Reported  Partial Reporters
 2022  443                      444    1                 2
 2023  430                      444    14                8
 2024  386                      444    58                22
-2025  (data not yet available)
+2025  312                      444    132               8   (data still loading as of 2026-04-03)
 ```
+
+For years where the reporting window is still open (typically the current and prior year), append a note with the data extraction date so users understand the figures will change as more municipalities submit. Use the current date at query time.
 
 #### Mode 2: Per-municipality breakdown
 
@@ -251,6 +253,5 @@ ORDER BY m.munname, p.schedule;
 ## Additional Considerations
 
 1. The definition of "reported" at the schedule level may need refinement. Some schedules are only required for certain municipality tiers (e.g. upper-tier only). The `applicability` field in `fir_line_meta` (once populated) could be used to filter expected-schedule checks by municipality type. For now, the three-prior-years heuristic is a reasonable approximation.
-2. For year 2025, the reporting window is still open as of the task run date. The completeness analysis should note the run date when reporting 2025 figures so users understand the numbers will change over time.
-3. If a cached summary table approach is chosen, document the recommended refresh cadence (e.g. run weekly while recent years are still partially loaded).
-4. The insufficient-history degradation logic (see "Handling Insufficient History" above) also applies when Task 08b calls this analysis internally. For inference over very early year pairs (e.g. 2000→2001), zero or one prior year may be available; the inference should treat the completeness filter as best-effort and flag results accordingly rather than refusing to run.
+2. If a cached summary table approach is chosen, document the recommended refresh cadence (e.g. run weekly while recent years are still partially loaded).
+3. The insufficient-history degradation logic (see "Handling Insufficient History" above) also applies when Task 08b calls this analysis internally. For inference over very early year pairs (e.g. 2000→2001), zero or one prior year may be available; the inference should treat the completeness filter as best-effort and flag results accordingly rather than refusing to run.
