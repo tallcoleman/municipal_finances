@@ -37,7 +37,7 @@ New tables should be created via `SQLModel.metadata.create_all()` in the existin
 
 All metadata tables use `valid_from_year` / `valid_to_year` to express version ranges:
 
-- `valid_from_year = NULL`: applies from before our earliest PDF (pre-2022)
+- `valid_from_year = NULL`: applies from before our earliest PDF (pre-2019)
 - `valid_to_year = NULL`: still currently in effect
 - Query for year Y: `(valid_from_year IS NULL OR valid_from_year <= Y) AND (valid_to_year IS NULL OR valid_to_year >= Y)`
 
