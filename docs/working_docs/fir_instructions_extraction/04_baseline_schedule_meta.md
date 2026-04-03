@@ -85,8 +85,8 @@ SELECT DISTINCT category FROM fir_schedule_meta ORDER BY category;
 SELECT * FROM fir_schedule_meta WHERE schedule_name IS NULL OR schedule_name = '' OR description IS NULL OR description = '';
 ```
 
-## Questions
+## Additional Considerations
 
-1. Some schedules have sub-schedules (e.g., 22A, 22B, 22C are sub-schedules of 22). Should the `description` for sub-schedules reference the parent schedule's description, or be fully standalone?
-2. The category assignments in the plan — are these exactly as labeled in the PDF, or are they our own grouping? If the PDF uses different category names, which should we use?
-3. Should the `description` be the first paragraph only, or the entire general information section for the schedule? Some schedules have multi-paragraph introductions. Recommend: include the full general information section, not just the first paragraph.
+1. Some schedules have sub-schedules (e.g., 22A, 22B, 22C are sub-schedules of 22). The `description` for sub-schedules should reference the parent schedule's description as well.
+2. Conduct a light-weight check to in case the category assignments in the plan are different than the categories used by any of the PDFs. If there are differences, suggest a method to normalize category names, especially if they appear to be functionally the same.
+3. The `description` should include the entire general information section for the schedule, not just the first paragraph.
