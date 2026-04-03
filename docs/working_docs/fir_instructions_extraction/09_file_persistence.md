@@ -96,13 +96,29 @@ Use pandas `read_csv` + SQLAlchemy Core `pg_insert` with `on_conflict_do_nothing
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 def resolve_schedule_ids(engine, df: pd.DataFrame) -> pd.DataFrame:
-    """Add schedule_id FK column by looking up fir_schedule_meta on the schedule text value."""
+    """Add schedule_id FK column by matching each line/column to the correct schedule version.
+
+    A line/column's valid_from_year/valid_to_year is its OWN version range, which is
+    independent of the schedule's version range. For example, a line added in 2023
+    (valid_from_year=2023) may belong to a schedule that has existed since before 2019
+    (valid_from_year=NULL). Joining on (schedule, valid_from_year, valid_to_year) would
+    fail in this case.
+
+    Instead, match each line/column to the schedule version whose time range covers
+    the line/column's valid_from_year (or valid_to_year if valid_from is NULL). If
+    multiple schedule versions match, pick the one with the latest valid_from_year
+    (the most current version that covers the line's start).
+    """
     schedule_map = pd.read_sql(
         "SELECT id AS schedule_id, schedule, valid_from_year, valid_to_year FROM fir_schedule_meta",
         engine,
     )
-    # Each (schedule, valid_from_year, valid_to_year) tuple maps to exactly one schedule_id
-    return df.merge(schedule_map, on=["schedule", "valid_from_year", "valid_to_year"], how="left")
+    # For each row in df, find the schedule_meta row where:
+    #   1. schedule text matches
+    #   2. The schedule's valid range covers the line/column's valid_from_year
+    #      (or valid_to_year if valid_from is NULL, or any version if both are NULL)
+    # This requires a range-overlap join rather than an equality join.
+    # Implementation should handle the NULL semantics from the versioning conventions.
 
 def load_table(engine, table_name: str, model_class, csv_path: Path, natural_key_columns: list[str]):
     df = pd.read_csv(csv_path)
@@ -141,6 +157,7 @@ app.add_typer(fir_instructions_app)
 - [ ] Test export produces correct row counts
 - [ ] Test load inserts rows into all four tables
 - [ ] Test load correctly resolves `schedule_id` FK for `fir_line_meta` and `fir_column_meta` from `schedule` text value
+- [ ] Test load resolves `schedule_id` FK correctly when a line/column's version range differs from the schedule's version range (e.g., line with `valid_from_year=2023` matched to a schedule with `valid_from_year=NULL`)
 - [ ] Test load raises an error (or logs a warning) if `schedule` in a line/column CSV has no matching row in `fir_schedule_meta`
 - [ ] Test load is idempotent (loading same CSV twice doesn't duplicate rows)
 - [ ] Test load handles empty CSV (just headers, no data rows)
