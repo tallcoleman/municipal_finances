@@ -2,9 +2,37 @@ Schedule,SLC,Heading,Description,Section Description
 10,10 1815 01,Other revenue,"The amount for ""Deferred revenue earned (Community Benefit)"" on line 1815 is referenced to (SLC 60 1036 01).",
 10,10 6065 01,Continuity of GBE Equity,"Report the amount for ""Dividends paid"" on line 6065.",
 10,10 6090 01,"""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as","""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as ((SLC 60 6010 01 + SLC 60 6020 01 + 60 6060 01)) - SLC 60 6065 01).",
-22A,22 xxxx 01,Taxable GPL Info - RTC RTQ,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8,",
-22B,22 xxxx 01,LT/ST SRA Info - RTC RTQ,"Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the",
-22C,22 xxxx 01,UT SRA Info - RTC RTQ,"(O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+22A,22 xxxx 01,Taxable GPL Info - RTC RTQ,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+RTQ = 8 is for Small Business subclass :
+C8 - Commercial, Small Business with banding on lines 0975 to 0978.
+S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.
+D8 - Office Building, Small Business with banding on lines 0980 to 0983.
+X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568
+Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653.
+Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848.
+I8 - Industrial Small Business with banding on lines 0965 to 0968.
+J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168.
+RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973.
+X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563.
+I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963.
+J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163.",
+22B,22 xxxx 01,LT/ST SRA Info - RTC RTQ,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+RTQ = 8 is for Small Business subclass :
+C8 - Commercial, Small Business with banding on lines 0975 to 0978.
+S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.
+D8 - Office Building, Small Business with banding on lines 0980 to 0983.
+X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568
+Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653.
+Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848.
+I8 - Industrial Small Business with banding on lines 0965 to 0968.
+J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168.
+RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973.
+X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563.
+I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963.
+J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163.",
+22C,22 xxxx 01,UT SRA Info - RTC RTQ,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
 RTQ = 8 is for Small Business subclass :
 C8 - Commercial, Small Business with banding on lines 0975 to 0978.
 S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.

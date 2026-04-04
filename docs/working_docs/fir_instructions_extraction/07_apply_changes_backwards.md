@@ -13,6 +13,7 @@ Using the changelog from Task 03, create versioned rows in the metadata tables b
 ## Task List
 
 - [ ] Conduct a light-weight check to determine if there are format differences in the PDFs in `fir_instructions/source_files/` that need to be handled for the changes to be properly parsed and processed. Try to avoid reading and parsing whole PDFs - focus instead on the table of contents, headings, and sampling a small number of pages from each relevant section.
+- [ ] Resolve wildcard SLC patterns in `fir_instruction_changelog` (see **Wildcard Resolution** below)
 - [ ] Process FIR2024 changes (~10 entries, minor)
   - [ ] For each changelog entry: read the relevant section in FIR2024 PDF
   - [ ] Create prior-version rows with old descriptions
@@ -34,6 +35,17 @@ Using the changelog from Task 03, create versioned rows in the metadata tables b
 - [ ] Verify version ranges don't overlap
 
 ## Implementation Details
+
+### Wildcard Resolution
+
+Many `fir_instruction_changelog` entries have `line_id = NULL` or `column_id = NULL` because the source CSV used a wildcard (`xxxx` or `xx`). These must be resolved to specific line/column IDs before the versioning procedure can link them to `fir_line_meta` or `fir_column_meta` rows.
+
+Resolve wildcards by querying `firrecord` (see Task 03 **Wildcard SLC Resolution** for the full approach, including SQL query templates and edge cases). The query year depends on `change_type`:
+
+- `new_*` or `updated_*` → query `marsyear = change_year`
+- `deleted_*` → query `marsyear = change_year - 1`
+
+For each resolved (line_id, column_id) pair, either update the existing changelog row in place (if it maps to exactly one line/column) or insert additional resolved rows. Entries that cannot be resolved (e.g., `firrecord` has no data for the relevant year) should be logged and handled manually.
 
 ### Versioning Procedure
 
@@ -130,16 +142,35 @@ SELECT * FROM fir_schedule_meta WHERE schedule IN ('71', '74E');
 -- Count versioned rows (should be > 0 for each year)
 SELECT valid_from_year, count(*) FROM fir_line_meta WHERE valid_from_year IS NOT NULL GROUP BY valid_from_year;
 
--- Changelog entries without corresponding versioned rows (should be empty after this task)
+-- Line changelog entries without a corresponding versioned row (should be empty after this task)
+-- Note: excludes schedule-level entries (line_id IS NULL and column_id IS NULL) and
+-- any remaining unresolved wildcards (line_id IS NULL but slc_pattern contains 'xxxx')
 SELECT cl.* FROM fir_instruction_changelog cl
 WHERE cl.source = 'pdf_changelog'
-AND NOT EXISTS (
+  AND cl.line_id IS NOT NULL
+  AND NOT EXISTS (
     SELECT 1 FROM fir_line_meta lm
     WHERE lm.schedule = cl.schedule
-    AND lm.valid_from_year IS NOT NULL
-    AND lm.change_notes IS NOT NULL
-)
-AND cl.line_id IS NOT NULL;
+      AND lm.line_id = cl.line_id
+      AND lm.valid_from_year IS NOT NULL
+  );
+
+-- Column changelog entries without a corresponding versioned row
+SELECT cl.* FROM fir_instruction_changelog cl
+WHERE cl.source = 'pdf_changelog'
+  AND cl.column_id IS NOT NULL
+  AND NOT EXISTS (
+    SELECT 1 FROM fir_column_meta cm
+    WHERE cm.schedule = cl.schedule
+      AND cm.column_id = cl.column_id
+      AND cm.valid_from_year IS NOT NULL
+  );
+
+-- Unresolved wildcard entries (line_id or column_id still NULL after resolution step)
+SELECT * FROM fir_instruction_changelog
+WHERE source = 'pdf_changelog'
+  AND slc_pattern IS NOT NULL
+  AND (line_id IS NULL OR column_id IS NULL);
 ```
 
 ## Additional Considerations

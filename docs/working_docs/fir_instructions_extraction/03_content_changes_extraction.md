@@ -1,62 +1,138 @@
-# Task 03: Extract Content Changes Tables from PDFs (Phase 0)
+# Task 03: Load Content Changes Tables into Database (Phase 0)
 
 ## Goal
 
-Extract every row from the "Content Changes" extracts for each FIR Instructions PDF (2019–2025) and store them in the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
+Load every row from the manually-extracted Content Changes CSVs (2019–2025) into the `fir_instruction_changelog` table with `source = "pdf_changelog"`. This is the fastest extraction step and determines the full scope of versioning work.
 
-The content changes extracts are available in `fir_instructions/change_logs/`.
+The manually-extracted CSVs are available in `fir_instructions/change_logs/semantic_extraction/`, one file per year (e.g., `FIR2025 Changes.csv`).
 
 ## Task List
 
-- [ ] Create extraction script/module at `src/municipal_finances/fir_instructions/extract_changelog.py`
-- [ ] Extract Content Changes from FIR2025 Changes PDF (~7 entries)
-- [ ] Extract Content Changes from FIR2024 Changes PDF (~10 entries)
-- [ ] Extract Content Changes from FIR2023 Changes PDF (~50+ entries)
-- [ ] Extract Content Changes from FIR2022 Changes PDF (~40 entries)
-- [ ] Extract Content Changes from FIR2021 Changes PDF
-- [ ] Extract Content Changes from FIR2020 Changes PDF
-- [ ] Extract Content Changes from FIR2019 Changes PDF
-- [ ] Split entries that describe multiple changes (e.g., "New lines 0410, 0420, 0430 added") into separate rows
+- [ ] Create loading script/module at `src/municipal_finances/fir_instructions/extract_changelog.py`
+- [ ] Parse and load `FIR2019 Changes.csv`
+- [ ] Parse and load `FIR2020 Changes.csv`
+- [ ] Parse and load `FIR2021 Changes.csv`
+- [ ] Parse and load `FIR2022 Changes.csv`
+- [ ] Parse and load `FIR2023 Changes.csv`
+- [ ] Parse and load `FIR2024 Changes.csv`
+- [ ] Parse and load `FIR2025 Changes.csv`
 - [ ] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07
 - [ ] Store all entries in `fir_instruction_changelog`
-- [ ] Verify extracted data against PDFs
+- [ ] Verify loaded data against the source CSVs
 - [ ] Write tests for the storage/loading logic
 
 ## Implementation Details
 
-### Extraction Approach
+### Source Data Format
 
-The Content Changes sections are structured tables with consistent columns:
-- Schedule
-- SLC (the specific code affected)
-- Heading (line or column name)
-- Description (what changed)
+The manually-extracted CSVs in `fir_instructions/change_logs/semantic_extraction/` have the following columns:
 
-The PDFs may also distinguish between "Major Changes" and "Minor Changes" sections, which maps to the `severity` field. If the PDFs do not distinguish between "Major Changes" and "Minor Changes", infer the severity based on the data from PDFs that do make this distinction.
+- `Schedule` — the schedule code (e.g., `10`, `22A`)
+- `SLC` — the SLC pattern in PDF format (e.g., `10 6021 01`, `22 xxxx 01`)
+- `Heading` — the line or column heading
+- `Description` — what changed
+- `Section Description` — the section header from the PDF (e.g., `Major Changes:`, `Minor Changes:`); used to populate the `severity` field
 
-### PDF Table Parsing
+### Recommended Loading Workflow
 
-The Content Changes pages may begin with explanatory text (instructions, notes) before the actual table rows. Skip non-table content when parsing.
-
-Column values ("Sch."/"Schedule", "SLC", "Heading") are sometimes only provided for the first row where the value changes, and left blank on subsequent rows that share the same value. When a value is blank, carry forward the most recent non-blank value for that column — but only within the same higher-level group. For example, if "Sch."/"Schedule" changes, do not carry forward the prior SLC value. An exception to this may be schedule 22C in the 2022 PDF, where a longer comment in the description column appears to span multiple rows.
-
-Try a Python PDF library (e.g., pdfplumber) first for extraction. If the structured table extraction does not meet the success criteria (accuracy, completeness), fall back to having Claude read the PDF pages directly.
-
-### Recommended Extraction Workflow
-
-1. Parse the Content Changes table from each PDF (see "PDF Table Parsing" above)
-2. For each row in the table, create a `FIRInstructionChangelog` record:
-   - `year`: the FIR year (2019, 2020, 2021, 2022, 2023, 2024, or 2025)
-   - `schedule`: parsed from the Schedule column
-   - `slc_pattern`: the raw SLC value from the PDF (may contain wildcards like `xx`)
+1. Read each CSV from `fir_instructions/change_logs/semantic_extraction/`
+2. Infer the `year` from the filename (e.g., `FIR2025 Changes.csv` → `2025`)
+3. For each row, create a `FIRInstructionChangelog` record:
+   - `year`: the FIR year (2019–2025)
+   - `schedule`: from the `Schedule` column
+   - `slc_pattern`: the raw SLC value from the `SLC` column
    - `line_id`: parsed from `slc_pattern` if deterministic (not `xxxx`)
    - `column_id`: parsed from `slc_pattern` if deterministic (not `xx`)
-   - `heading`: the Heading column from the PDF
+   - `heading`: from the `Heading` column
    - `change_type`: inferred from context — `new_schedule`, `deleted_schedule`, `new_line`, `deleted_line`, `updated_line`, `new_column`, `deleted_column`, `updated_column`
-   - `severity`: `"major"` or `"minor"` based on which section it appeared in, or based on inference if not divided by "Major Changes" and "Minor Changes" sections
-   - `description`: verbatim from the Description column
+   - `severity`: `"major"` or `"minor"` — see **Severity Inference** below
+   - `description`: verbatim from the `Description` column
    - `source`: `"pdf_changelog"`
-3. Use `pdf_slc_to_components()` from `slc.py` (Task 02) to parse the SLC patterns
+4. Use `pdf_slc_to_components()` from `slc.py` (Task 02) to parse the SLC patterns. Entries with `xxxx` or `xx` wildcards are stored as-is with `line_id = None` or `column_id = None` respectively — see **Wildcard SLC Resolution** for how these are resolved in later tasks.
+
+### Severity Inference
+
+Only 2023–2025 have explicit major/minor labels. For 2019–2022 (and any rows in other years that lack a label), apply the following tiers in order, stopping at the first that yields a clear signal:
+
+**Tier 1 — Explicit label in `Section Description`**
+
+Scan `Section Description` (case-insensitive) for the words "major" or "minor". If found, use that label directly. This covers all 2023–2025 rows.
+
+**Tier 2 — Structural scope of `change_type`**
+
+Some change types are inherently high-impact regardless of year:
+
+- `new_schedule` or `deleted_schedule` → **major**
+- `new_line` or `deleted_line` where the SLC pattern uses `xxxx` (affects all lines on a schedule) → **major**
+- `new_column` or `deleted_column` where the SLC pattern uses `xx` (affects all columns on a schedule) → **major**
+
+**Tier 3 — Description keyword signals**
+
+Scan the `Description` and `Section Description` fields for keywords:
+
+| Signal | Severity |
+|---|---|
+| "eliminated", "new schedule", "replaced with", "adoption of new accounting standard", "new section" | major |
+| "updated language", "referenced to", "linked from", "pre-populated", "calculated as", "restated as", "report the amount for", "is reported on" | minor |
+
+Apply the stronger signal if both appear. If signals conflict, prefer **Tier 4**.
+
+**Tier 4 — Cross-year consistency**
+
+For entries where Tiers 1–3 do not resolve severity: look for entries in 2023–2025 with the same `change_type` and similar `heading` or description pattern. Use the most common label among those labeled entries as the prior. For example, if all analogous column-heading updates in 2023 are labeled minor, treat the 2022 version as minor as well.
+
+**Tier 5 — Default**
+
+If none of the above yields a clear signal, assign **minor**. The majority of changes across all years are minor (text clarifications, cross-references, pre-population notes), so this is a conservative and appropriate default.
+
+Note that 2019–2021 have no `Section Description` values at all, so these years will rely entirely on Tiers 2–5. The entries in those years are predominantly line additions for new revenue categories and wording updates — consistent with minor severity.
+
+### Wildcard SLC Resolution
+
+Many changelog entries have wildcards in either the line or column position:
+
+- **Line wildcard** (`xxxx`): specific column, all lines — e.g., `61 xxxx 17` (new column 17 added to all lines of schedule 61)
+- **Column wildcard** (`xx`): specific line, all columns — e.g., `61 0206 xx` (new line 0206 across all columns of schedule 61)
+
+No whole-schedule `xxxx xx` patterns appear in the actual data.
+
+Wildcard entries are stored in `fir_instruction_changelog` with `line_id = None` or `column_id = None` as appropriate, preserving the original `slc_pattern`. Resolving wildcards to specific line/column IDs is **deferred to Tasks 04–07** when the metadata tables are being built, because the purpose of resolution is to link changelog entries to specific `fir_line_meta` or `fir_column_meta` records.
+
+#### Resolution approach
+
+Resolution queries `firrecord` to find all distinct line or column IDs matching the wildcard. The appropriate year to query depends on the `change_type`:
+
+| `change_type` | Query year |
+|---|---|
+| `new_line`, `new_column`, `updated_line`, `updated_column` | `change_year` |
+| `deleted_line`, `deleted_column` | `change_year - 1` |
+
+Use `parse_slc()` from `slc.py` to extract components from the `slc` field when processing results.
+
+**Line wildcard** (`line_id = None, column_id = "17"`):
+```sql
+SELECT DISTINCT slc
+FROM firrecord
+WHERE slc LIKE 'slc.{schedule}.L%.C{column_id}.%'
+  AND marsyear = {query_year}
+```
+Then parse each `slc` value with `parse_slc()` to extract `line_id`.
+
+**Column wildcard** (`line_id = "0206", column_id = None`):
+```sql
+SELECT DISTINCT slc
+FROM firrecord
+WHERE slc LIKE 'slc.{schedule}.L{line_id}.C%.%'
+  AND marsyear = {query_year}
+```
+Then parse each `slc` value with `parse_slc()` to extract `column_id`.
+
+#### Edge cases
+
+- **New lines with column wildcard** (e.g., `61 0206 xx`): the line is new, so only appears in `firrecord` from `change_year` onward. Query `marsyear = change_year`.
+- **Multi-schedule columns** (e.g., `22 xxxx 01` for schedules 22A, 22B, 22C): each CSV row already names a specific schedule (22A, 22B, 22C separately), so query each schedule individually.
+- **`firrecord` not yet loaded for a year**: if `marsyear = query_year` returns no rows for a schedule, log the unresolved entry. It can be resolved manually or once the data is available (note: data for years 2000–2019 was still loading at the time Task 03 was written).
+- **Schedule-level entries** (`slc_pattern = None`): these describe whole-schedule changes and map to `fir_schedule_meta`, not individual lines/columns. Do not attempt wildcard resolution for these.
 
 ### Storage Module
 
@@ -70,7 +146,7 @@ def insert_changelog_entries(engine, entries: list[dict]):
 
 ### Data File Approach
 
-Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/fir_instruction_changelog.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+The source CSVs in `fir_instructions/change_logs/semantic_extraction/` are the authoritative input. After loading, also save a combined export at `fir_instructions/exports/fir_instruction_changelog.csv` for human verification and as a reload artifact (avoiding re-processing the per-year files).
 
 ### Known Change Volumes
 
@@ -96,17 +172,17 @@ Total: ~107+ changelog entries from assessed PDFs.
 
 ## Success Criteria
 
-- All Content Changes entries from all seven PDFs are in `fir_instruction_changelog`
+- All Content Changes entries from all seven CSVs are in `fir_instruction_changelog`
 - `source` is `"pdf_changelog"` for all entries
 - `severity` correctly reflects major vs. minor classification (where provided)
 - `change_type` is assigned correctly based on the description context
 - SLC patterns are parsed and `line_id`/`column_id` populated where deterministic
 - Exported CSV contains all entries and can be reloaded cleanly
-- Spot-check 10 entries per PDF against the actual PDF content
+- Spot-check 10 entries per year against the source CSV
 
 ## Verification
 
-After extraction, run these validation queries:
+After loading, run these validation queries:
 
 ```sql
 -- Count by year
@@ -118,14 +194,28 @@ SELECT year, severity, count(*) FROM fir_instruction_changelog WHERE source = 'p
 -- Check change_type distribution
 SELECT change_type, count(*) FROM fir_instruction_changelog WHERE source = 'pdf_changelog' GROUP BY change_type;
 
--- Look for entries with unparsed SLC patterns
-SELECT * FROM fir_instruction_changelog WHERE line_id IS NULL AND slc_pattern NOT LIKE '%xxxx%';
+-- Count wildcard entries by type (should match expectations from the source CSVs)
+SELECT
+  CASE WHEN line_id IS NULL AND column_id IS NULL THEN 'both wildcards'
+       WHEN line_id IS NULL THEN 'line wildcard (xxxx)'
+       WHEN column_id IS NULL THEN 'column wildcard (xx)'
+       ELSE 'deterministic'
+  END AS slc_type,
+  count(*)
+FROM fir_instruction_changelog
+WHERE source = 'pdf_changelog'
+GROUP BY slc_type;
+
+-- Look for entries where SLC was not parseable (neither deterministic nor a recognized wildcard)
+SELECT * FROM fir_instruction_changelog
+WHERE source = 'pdf_changelog'
+  AND slc_pattern IS NOT NULL
+  AND line_id IS NULL AND slc_pattern NOT LIKE '%xxxx%'
+  AND column_id IS NULL AND slc_pattern NOT LIKE '%xx%';
 ```
 
 ## Additional Considerations
 
-1. The content changes tables in the PDFs often start with some instructions that should not be parsed into change entries.
-2. Values for the "Sch."/"Schedule", "SLC", and "Heading" columns in the PDF are sometimes only provided for the first row where the value is different from the prior rows, and not repeated for every applicable row. If the value in one of these columns is blank, it is likely meant to be the value from the first non-blank row prior. An exception to this may be schedule 22C in the 2022 PDF, where there is a much longer comment in the description column that appears to span multiple rows. The prior non-blank value for a column also does not apply in cases where a higher-level value has changed (e.g. SLC should not be inferred from the first non-blank value above when "Sch."/"Schedule" has changed).
-3. Entries where the description references multiple changes (e.g., "New lines 0410, 0420, 0430 added") should be split into separate rows, not kept as one row.
-4. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). These should be reflected in the schedule versions tracked by the `fir_schedule_meta` table.
-5. Try different methods of PDF text extraction to determine what works best. First option would be to try a Python PDF library (e.g., pdfplumber), and if the success criteria are not met, then have Claude read the PDF pages directly.
+1. Only 2023–2025 have explicit major/minor labels in `Section Description`. Years 2019–2021 have no `Section Description` values at all; 2022 has group-level section notes (e.g., "The following are new lines added to all columns of Schedule 61:") that describe the nature of the change group but do not label severity. Apply the multi-tier **Severity Inference** approach for all rows lacking an explicit label.
+2. The manually-extracted CSVs already have one row per affected SLC (multi-line PDF table comments have been resolved). No further text-based splitting is required at load time. Wildcard patterns (`xxxx`, `xx`) are the remaining source of one-to-many relationships and are handled via the deferred **Wildcard SLC Resolution** approach.
+3. Some Content Changes entries describe changes to schedule-level properties (not specific lines/columns). These should be reflected in the schedule versions tracked by the `fir_schedule_meta` table.
