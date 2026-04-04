@@ -1,0 +1,81 @@
+Sch.,SLC,Heading,Description
+10,10 1815 01,Other revenue,"The amount for ""Deferred revenue earned (Community Benefit)"" on line 1815 is referenced to (SLC 60 1036 01)."
+10,10 6065 01,Continuity of GBE Equity,"Report the amount for ""Dividends paid"" on line 6065."
+10,10 6090 01,"""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as","""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as ((SLC 60 6010 01 + SLC 60 6020 01 + 60 6060 01)) - SLC 60 6065 01)."
+22A,22 xxxx 01,Taxable GPL Info - RTC RTQ,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8,"
+22B,22 xxxx 01,LT/ST SRA Info - RTC RTQ,"Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the"
+22C,22 xxxx 01,UT SRA Info - RTC RTQ,"(O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment."
+,,,RTQ = 8 is for Small Business subclass :
+,,,"C8 - Commercial, Small Business with banding on lines 0975 to 0978."
+,,,"S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988."
+,,,"D8 - Office Building, Small Business with banding on lines 0980 to 0983."
+,,,"X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568"
+,,,"Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653."
+,,,"Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848."
+,,,I8 - Industrial Small Business with banding on lines 0965 to 0968.
+,,,"J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168."
+,,,RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+,,,"C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973."
+,,,"X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563."
+,,,"I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963."
+,,,"J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163."
+40,40 xxxx 16,,All services(except for General Government) on Amortization(SLC 40 xxxx 16) is referenced
+,51 xxxx 08,,to Annual Amortization on (SLC 51A xxxx 08).
+53,53 1422 01,,"Report the amount for ""Prior period adjustment"" on SLC 53 1422 01."
+,53 1423 01,,"Net Financial Assets (Net Debt), beginning of year is Restated on SLC 53 1423 01 as (SLC 53 1420 01 +  SLC 53 1422 01)."
+,53 0417 01,,"""Community Benefit  Charges (SLC 60 1036 01)"" on SLC 53 0417 01 is referenced to SLC 60 1036 01."
+60,60 0312 xx,,"""Contributions from Operations"" is reported on line 0312."
+,60 0615 01,Development Charges Act,"""Net Development Charges Collected"" is reported on SLC 60 0615 01."
+,60 0616 01,Development Charges Act,"""Net Development Charges Receivable "" is reported on SLC 60 0616 01."
+,60 0699 01,Development Charges Act,Subtotal Development Charges Act is calculated as (SLC 60 0615 01 + SLC 60 0616 01).
+,60 0834 01,,"""Community Benefit Charges""is reported on SLC 60 0834 01."
+,60 0842 01,,"""Interest earned on Development Charges Receivable"" is referenced to SLC 61 0299 18."
+,60 1027 01,,"""Monies Borrowed from Development Charges Reserve Fund (SLC 61 0299 23)"" is referenced to SLC 61 0299 23."
+,60 1036 01,,"""Community Benefit Charges earned"" is reported on SLC 60 1036 01."
+,60 5635 01,Obligatory Deferred Revenue,"""Development Charges"" on SLC 60 5635 01 is referenced to SLC 61 0299 14."
+,60 5636 01,Obligatory Deferred Revenue,"""Development Charge Installments Receivable (Uncollected)"" on SLC 60 5636 01 is referenced to SLC 61 0299 13."
+,60 5655 01,Obligatory Deferred Revenue,"""Community Benefit Charges"" is reported on SLC 60 5655 01."
+,,,The following are new lines added to all coumns of Schedule 61:
+61,61 0206 xx,,"""Emergency Preparedness"" is reported on line 0206."
+,61 0207 xx,,"""Electrical Power Services"" is reported on line 0207."
+,61 0216 xx,,"""Provinces Offences Act Services"" is reported on line 0216."
+,61 0226 xx,,"""Toronto-York Subway Extension"" is reported on line 0226."
+,61 0246 xx,,"""Public Health Services"" is reported on line 0246."
+,61 0289 xx,,"""Waste Diversion Services"" is reported on line 0289."
+,,,The following are new columns added to all lines of Schedule 61:
+,61 xxxx 17,Development Charges Receivables,"""New Development Charge Installments Receivable"" is reported on column 17."
+,61 xxxx 18,,"""New Development Charges Interest Receivable"" is reported on column 18."
+,61 xxxx 19,,"""Less: Prior year Development Charges Installment Receivables and Interest collected during the year"" is reported on column 19."
+,61 xxxx 20,,"""New Development Charges Receivable"" is calculated as (SLC 61 xxxx 17 + SLC 61 xxxx 18 -  SLC 61 xxxx 19)."
+,61 xxxx 21,Development Charges Cash Collected,"""Repayment of Monies Borrowed from DC Reserve Fund and Associated Interested"" is reported on column 21."
+,61 xxxx 22,,"""Total Development Charges Inflows: Receivables and Cash Collected"" is  calculated as the sum of (SLC 61 xxxx 20 + SLC 61 xxxx 06)."
+,61 xxxx 23,Outflows/Expenditures,"""Monies Borrowed from DC Reserve Fund"" is reported on column 23."
+,61 xxxx 13,,"""Development Charge Installments Receivable and Interest Collectible"" is reported on column 13."
+,61 xxxx 14,,"""Development Charges Net of Development Charge Installments Receivable""  is calculated as (SLC 61 xxxx 12 - SLC 61 xxxx 13)."
+,61 xxxx 15,,"""Commitments for Capital Projects Approved as of December 31""  is reported on SLC 61 xxxx 15."
+,61 xxxx 16,,"""Balance Net of Development Charge Installments Receivable and Capital Commitments"" is calculated as (SLC 61 xxxx 12 - SLC 61 xxxx 13 - SLC 61 xxxx 15)."
+70,70 0852 01,Other Financial Assets,"""Development Charge Installments Receivable"" on SLC 70 0852 01 is referenced to SLC 60 5636 01."
+,70 0891 01,,"Report the amount for ""Other"" on SLC 70 0891 01."
+,70 6261 01,Non-Financial Assets,"Report the amount for ""Intangible Assets"" on SLC 70 6261 01."
+,70 6262 01,,"Report the amount for ""Other"" on SLC 70 6262 01."
+,70 6411 01,Analysis of Accumulated Surplus (Defecit),"Report the amount for ""Investment in Intangible Assets"" on SLC 70 6411 01."
+,70 6412 01,,"Report the amount for ""Other"" on SLC 70 6412 01."
+72B,,Continuity of Taxes Receivable,"The following Municipal and Assessment Act items will be pre-populated on Schedule 72B during April 2023.  Users that have started will have to first do a  ""Backup"" and later be notified to ""Restore"" their working version of the FIR 2022 template."
+,72 1000 xx,,"Taxes collected on behalf of ""other"" bodies (Mun. Act 353) on line 1000."
+,72 1010 xx,,Write-off of taxes (Mun. Act 354) on line 1010.
+,72 1020 xx,,"Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020."
+,72 1030 xx,,"Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030."
+,72 1040 xx,,"ARB decisions, Advisory Notice of Adjustment due to an ARB decisions (Assessment Act 40/19.1(7)) on line 1040."
+,72 1050 xx,,RfR (Assessment Act 39.1) on line 1050.
+,72 1060 xx,,"Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060."
+,72 1070 xx,,Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.
+,72 1080 xx,,Special Amended Notice (SAN) (Assessment Act) on line 1080.
+,72 1090 xx,,Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.
+,72 1099 xx,,Subtotal on line 1099 sums the line items from 1000 to 1090.
+,72 2899 xx,,Tax adjustments before allowances on line 2899 also includes:
+,72 2099 xx,,Rebates for Charities (Mun. Act 361) on line 2099.
+,72 2299 xx,,Vacant Unit Rebates (Mun. Act 364) on line 2299.
+,72 2301 xx,,Contaminated Property (Mun. Act  365.1) on line 2301.
+,72 2399 xx,,Reduction for Heritage Property (Mun. Act 365.2) on line 2399.
+,72 2400 xx,,Change in Assessment (Mun. Act 365.3) on line 2400.
+81,81 2256 01,,Defered revenue earned (Community Benefits) on SLC 81 2256 01 is referenced to SLC 10 1815 01.

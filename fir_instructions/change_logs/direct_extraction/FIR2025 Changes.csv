@@ -1,0 +1,11 @@
+Sch.,SLC,Heading,Description
+Minor Changes:,,,
+10,10 6021 01,PLUS:  Other Comprehensive Income for Year (SLC 76  0840 20),New line. Linked from schedule 76 0840 20.
+54B,54B 2023 01,Accretion Expense,Linked from Schedule 74E line 9910 column 5.
+70,70 6432 01,Remeasurement Gains (Losses),Linked from Schedule 71 line 9910 column 1.
+76,76 0297 01,Other,Text Box Added.
+76,76 0497 01,Other,Text Box Added.
+76,76 0830 xx,Net Income (Loss) Before Other Comprehensive Income,New Subtotal Line Added.
+76,76 0840 xx,Other Comprehensive Income,"New line. ""Other Comprehensive Income"" Added."
+76,76 9920 xx,Net Income (Loss) and Other Comprehensive Income,"Line description updated. Line 9920 calculation updated to Net Income
+(Loss) Before Other Comprehensive Income + Other Comprehensive Income."

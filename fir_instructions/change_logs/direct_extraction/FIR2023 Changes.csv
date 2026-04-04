@@ -1,0 +1,64 @@
+﻿Schedule,SLC,Heading,Description
+The following changes are due to the adoption of new accounting standards: PS 3280: Asset Retirement Obligations and PS 3450: Financial Instruments.,,,
+Data points have been streamlined.,,,
+,,,
+MAJOR CHANGES,,,
+71,New **,Statement of Remeasurement Gains & Losses,This schedule captures the portfolio gains and losses.
+74E,New **,Asset Retirement Obligation Liability,"This section, captures the Asset Retirement Obligation Liability by functional classifications."
+51C,Deleted,Construction-in-progress - detail eliminated,Replaced with one line on schedule 51B
+79,Deleted,Community Improvement Plans,This schedule has been eliminated.
+80B,Deleted,Schedule 80B - Section 7: Alternate service delivery arrangements,This schedule has been eliminated.
+,,,
+MINOR CHANGES,,,
+10,10 1888 01,Vacant Home Tax,Vacant Home Tax line added to capture Vacant Home Tax Revenue.
+10,10 2099 01,"Annual Surplus/(Deficit), Before Remeasurement Gains (Losses)",Updated language
+10,10 2060 01,"Accumulated Surplus/(Deficit), Before Remeasurement Gains (Losses) at the beginning of year",Updated language
+10,10 9950 01,"Accumulated Surplus/(Deficit), Before Remeasurement Gains (Losses) at the end of year",Updated language
+10,10 4205 01,Canada Community - Building Fund for Operating Expenses: Capacity Building,Canada Community- Building Fund (Federal Gas Tax) - now captures only these lines.
+10,10 4099 01,Canada Community - Building Fund for Capital Expenses,
+10,10 4299 01,Canada Community - Building Fund Recognized in the Year,
+12,12 0632 xx,,
+40,40 0632 xx,Transit - Accessible,"Updated language, applies to schedule 12, 40 & 51A."
+51A,51A 0632 xx,,
+12,12 1220 xx,,
+40,40 1220 xx,Assistance to Seniors,"Updated language, applies to schedule 12, 40 & 51A."
+51A,51A 1220 xx,,
+12,12 1230 xx,,
+40,40 1230 xx,Child care and early years learning,"Updated language, applies to schedule 12, 40 & 51A."
+51A,51A 1230 xx,,
+51A,51 xxxx 14,ARO Increase in TCA Cost,New line added as per PSAS.
+51B,51 2405 xx,Construction-in-progress,Consolidated the Construction-in-progress details on Schedule 51C to one line (2405) on Schedule 51B; Schedule 51C eliminated.
+53,53 1010 01,"Annual Surplus (Deficit), Before Remeasurement Gains (Losses) (SLC 10 2099 01)",Updated language as per PSAS.
+53,53 1020 01,Acquisition of tangible capital assets,This line is automatically populated from Schedule 51.
+53,53 1032 01,Change in construction-in-progress,This line is automatically populated from Schedule 51.
+53,53 1301 01,Net Change in Remeasurement Gains (Losses) for the year (SLC 71 1299 01),This line is automatically populated from the new Schedule 71.
+54B,54B 2023 01,Accretion expense,Accretion expense line added as per PSAS.
+60,60 5635 01,Development Charges Cash Collected (SLC 61B 0299 28),This line is automatically populated from Schedule 61B line 0299 column 28.
+60,,Municipal Development-Related Charges,New heading & section D added to capture Spend/Allocate Balance for this section.
+60,60 6001 xx,Development Charges: Highways (roads and structures),New line captures spend/allocate balances.
+60,60 6002 xx,"Development Charges: Wastewater services, including sewers and treatment services",New line captures spend/allocate balances.
+60,60 6003 xx,"Development Charges: Water supply services, including distribution and treatment",New line captures spend/allocate balances.
+60,60 6004 xx,Parkland Special Account,New line captures spend/allocate balances.
+60,60 6005 xx,Community Benefits Charges Special Account,New line captures spend/allocate balances.
+,,,
+Schedule 61 has been split into two tabs:,,,
+61A,New **,Development Charges Receivable,Captures New Development Charge Installments Receivable.
+61B,New **,Development Charges Cash Collected,Captures New Development Charges Cash Collected and Development Charges Earned.
+61A & 61B,New **,Updated eligible Development Charge Services list,Updated eligible development charge service lists.
+62 & 62A,New **,Updated eligible Development Charge Services list,Updated eligible development charge service lists.
+70,70 0817 01,Portfolio Investments,New lines added as per PSAS.
+,70 0818 01,Derivatives,New lines added as per PSAS.
+,70 0819 01,"Financial assets, designated to the fair value category",New lines added as per PSAS.
+,70 2271 01,Derivatives,New lines added as per PSAS.
+,70 2272 01,"Financial assets, designated to the fair value category",New lines added as per PSAS.
+,70 2920 01,Asset retirement obligation liabilities,New lines added as per PSAS.
+,70 6604 01,Unfunded Asset Retirement Obligation Costs,New lines added as per PSAS.
+70,,New section added: Accumulated Surplus (Deficit) comprised of:,
+,70 9980 01,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses) (SLC 10 9950 01)",This line is automatically populated from SLC 10 9950 01.
+,70 9981 01,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses) (SLC 10 9950 01)",This line is automatically populated from SLC 71 9910 01.
+,70 9982 01,Total Accumulated Surplus (Deficit),This line is automatically calculated.
+"77A, B, C & D",77 0660 xx,Asset Retirement Obligations,New lines added as per PSAS for DSSABs.
+,77 9960 xx,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",New lines added as per PSAS.
+,77 9970 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.
+,77A1040 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.
+80A,80 1610 01,Vacant Home Tax,New line added to capture number of properties for which vacant home tax was levied in 2023.
