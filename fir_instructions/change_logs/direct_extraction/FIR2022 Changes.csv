@@ -30,8 +30,7 @@ Sch.,SLC,Heading,Description
 ,60 0699 01,Development Charges Act,Subtotal Development Charges Act is calculated as (SLC 60 0615 01 + SLC 60 0616 01).
 ,60 0834 01,,"""Community Benefit Charges""is reported on SLC 60 0834 01."
 ,60 0842 01,,"""Interest earned on Development Charges Receivable"" is referenced to SLC 61 0299 18."
-,60 1027 01,,"""Monies Borrowed from Development Charges Reserve Fund (SLC 61 0299 23)"" is referenced to SLC"
-,,,61 0299 23.
+,60 1027 01,,"""Monies Borrowed from Development Charges Reserve Fund (SLC 61 0299 23)"" is referenced to SLC 61 0299 23."
 ,60 1036 01,,"""Community Benefit Charges earned"" is reported on SLC 60 1036 01."
 ,60 5635 01,Obligatory Deferred Revenue,"""Development Charges"" on SLC 60 5635 01 is referenced to SLC 61 0299 14."
 ,60 5636 01,Obligatory Deferred Revenue,"""Development Charge Installments Receivable (Uncollected)"" on SLC 60 5636 01 is referenced to SLC 61 0299 13."
