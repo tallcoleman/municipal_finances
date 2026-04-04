@@ -54,18 +54,23 @@ def _entry(**overrides) -> dict:
 
 class TestExpandSchedules:
     def test_single_schedule(self):
+        """A plain schedule code is returned as a one-element list."""
         assert _expand_schedules("10") == ["10"]
 
     def test_two_schedules_with_prefix(self):
+        """Two fully-qualified codes joined by '&' are split into separate schedules."""
         assert _expand_schedules("61A & 61B") == ["61A", "61B"]
 
     def test_two_schedules_mixed(self):
+        """A numeric and an alphanumeric code joined by '&' are both returned."""
         assert _expand_schedules("62 & 62A") == ["62", "62A"]
 
     def test_four_schedules_letter_suffix(self):
+        """Shorthand like '77A, B, C & D' expands by attaching each letter to the shared prefix."""
         assert _expand_schedules("77A, B, C & D") == ["77A", "77B", "77C", "77D"]
 
     def test_alphanumeric_schedule(self):
+        """A single alphanumeric schedule code is returned as a one-element list."""
         assert _expand_schedules("22A") == ["22A"]
 
 
@@ -76,34 +81,41 @@ class TestExpandSchedules:
 
 class TestParseSLCField:
     def test_normal_slc(self):
+        """A well-formed SLC with numeric line and column returns all three components."""
         slc_pattern, line_id, column_id = _parse_slc_field("10 6021 01", "10")
         assert slc_pattern == "10 6021 01"
         assert line_id == "6021"
         assert column_id == "01"
 
     def test_line_wildcard(self):
+        """An SLC with 'xxxx' in the line position returns line_id=None and a concrete column_id."""
         slc_pattern, line_id, column_id = _parse_slc_field("40 xxxx 05", "40")
         assert slc_pattern == "40 xxxx 05"
         assert line_id is None
         assert column_id == "05"
 
     def test_column_wildcard(self):
+        """An SLC with 'xx' in the column position returns a concrete line_id and column_id=None."""
         slc_pattern, line_id, column_id = _parse_slc_field("61 0206 xx", "61")
         assert slc_pattern == "61 0206 xx"
         assert line_id == "0206"
         assert column_id is None
 
     def test_new_schedule_marker(self):
+        """The sentinel value 'New **' signals a new-schedule entry; all three components are None."""
         assert _parse_slc_field("New **", "71") == (None, None, None)
 
     def test_deleted_marker(self):
+        """The sentinel value 'Deleted' signals a deleted-schedule entry; all three components are None."""
         assert _parse_slc_field("Deleted", "51C") == (None, None, None)
 
     def test_empty_slc(self):
+        """An empty SLC field (schedule-level change with no SLC) returns (None, None, None)."""
         assert _parse_slc_field("", "10") == (None, None, None)
 
     def test_malformed_slc_returns_raw(self):
-        # "77A1040 xx" has schedule+line concatenated without space — unparseable
+        """An unparseable SLC (schedule and line concatenated without space) stores the raw
+        string as slc_pattern with line_id and column_id both None."""
         slc_pattern, line_id, column_id = _parse_slc_field("77A1040 xx", "77A")
         assert slc_pattern == "77A1040 xx"
         assert line_id is None
@@ -117,41 +129,53 @@ class TestParseSLCField:
 
 class TestInferChangeType:
     def test_new_schedule(self):
+        """A 'New **' SLC marker with a description mentioning 'new schedule' is classified
+        as new_schedule."""
         ct = _infer_change_type("New **", None, None, "New schedule added.", "", "MAJOR CHANGES")
         assert ct == "new_schedule"
 
     def test_deleted_schedule(self):
+        """A 'Deleted' SLC marker with a description mentioning 'eliminated' is classified
+        as deleted_schedule."""
         ct = _infer_change_type("Deleted", None, None, "This schedule has been eliminated.", "", "")
         assert ct == "deleted_schedule"
 
     def test_empty_slc_gives_updated_line(self):
+        """A missing SLC with no keyword signals defaults to updated_line."""
         ct = _infer_change_type(None, None, None, "Some change.", "", "")
         assert ct == "updated_line"
 
     def test_new_line(self):
+        """A deterministic SLC with a description containing 'new line' is classified as new_line."""
         ct = _infer_change_type("10 1888 01", "1888", "01", "New line added.", "", "")
         assert ct == "new_line"
 
     def test_deleted_line(self):
+        """A deterministic SLC with a description containing 'removed' is classified as deleted_line."""
         ct = _infer_change_type("10 0831 01", "0831", "01", "Removed line, please refer to instructions.", "", "")
         assert ct == "deleted_line"
 
     def test_updated_line(self):
+        """A deterministic SLC with a neutral description (no add/remove keywords) is classified
+        as updated_line."""
         ct = _infer_change_type("10 1421 01", "1421", "01", "Report all building permit revenue on this line.", "", "")
         assert ct == "updated_line"
 
     def test_line_wildcard_gives_column_entity(self):
-        # xxxx in line position → column-level change
+        """'xxxx' in the line position means the change affects a whole column, so the entity
+        type is column-level (updated_column here based on the description)."""
         ct = _infer_change_type("40 xxxx 05", None, "05", "Column heading modified.", "", "")
         assert ct == "updated_column"
 
     def test_column_wildcard_gives_line_entity(self):
-        # xx in column position → line-level change
+        """'xx' in the column position means the change affects a whole line, so the entity
+        type is line-level (new_line here based on the description)."""
         ct = _infer_change_type("61 0206 xx", "0206", None, "New line added.", "", "")
         assert ct == "new_line"
 
     def test_all_change_types_valid(self):
-        """Every inferred change_type must be in VALID_CHANGE_TYPES."""
+        """Every value produced by _infer_change_type across a representative set of inputs
+        must belong to VALID_CHANGE_TYPES."""
         test_cases = [
             ("New **", None, None, "new schedule", "", "MAJOR CHANGES"),
             ("Deleted", None, None, "eliminated", "", ""),
@@ -174,42 +198,51 @@ class TestInferChangeType:
 
 class TestInferSeverity:
     def test_explicit_major_label(self):
+        """Tier 1: 'MAJOR' in section_desc → severity is major regardless of change_type."""
         assert _infer_severity("MAJOR CHANGES", "new_line", None, "") == "major"
 
     def test_explicit_minor_label(self):
+        """Tier 1: 'Minor' in section_desc → severity is minor regardless of other signals."""
         assert _infer_severity("Minor Changes:", "updated_line", "10 1421 01", "") == "minor"
 
     def test_new_schedule_is_major(self):
+        """Tier 2: new_schedule change_type → severity is major (structural scope)."""
         assert _infer_severity("", "new_schedule", None, "New schedule.") == "major"
 
     def test_deleted_schedule_is_major(self):
+        """Tier 2: deleted_schedule change_type → severity is major (structural scope)."""
         assert _infer_severity("", "deleted_schedule", None, "Eliminated.") == "major"
 
     def test_keyword_eliminated_is_major(self):
+        """Tier 3: 'eliminated' keyword in description → severity is major."""
         assert _infer_severity("", "updated_line", "10 9950 01", "This line has been eliminated.") == "major"
 
     def test_keyword_updated_language_is_minor(self):
+        """Tier 3: 'updated language' keyword in description → severity is minor."""
         assert _infer_severity("", "updated_line", "10 2099 01", "Updated language.") == "minor"
 
     def test_default_is_minor(self):
+        """Tier 5: no label, no structural scope, no keyword signals → default severity is minor."""
         assert _infer_severity("", "updated_line", "10 1421 01", "Report on this line.") == "minor"
 
     def test_tier2_new_line_with_xxxx_wildcard_is_major(self):
-        # new_line with xxxx in slc_pattern → structural major (Tier 2)
+        """Tier 2: new_line with 'xxxx' in slc_pattern (affects all lines on a schedule)
+        → severity is major due to broad structural scope."""
         assert _infer_severity("", "new_line", "40 xxxx 05", "") == "major"
 
     def test_tier2_deleted_column_with_xx_wildcard_is_major(self):
-        # deleted_column with xx in slc_pattern → structural major (Tier 2)
+        """Tier 2: deleted_column with 'xx' wildcard in slc_pattern (affects all columns
+        on a schedule) → severity is major due to broad structural scope."""
         assert _infer_severity("", "deleted_column", "74 xxxx xx", "") == "major"
 
     def test_tier2_no_match_falls_through_to_tier3(self):
-        # slc_pattern truthy but change_type is "updated_line" (not new/deleted)
-        # → Tier 2 inner checks both fail → falls through to Tier 3/5
+        """Tier 2 wildcard checks are skipped for change types other than new/deleted line/column;
+        a truthy slc_pattern with change_type='updated_line' falls through to Tier 3/5."""
         assert _infer_severity("", "updated_line", "10 6021 01", "") == "minor"
 
     def test_tier3_reached_when_slc_pattern_is_none(self):
-        # slc_pattern=None → `if slc_pattern:` is False → skips Tier 2 wildcard block,
-        # reaches Tier 3 directly
+        """When slc_pattern is None the Tier 2 wildcard block is skipped entirely and Tier 3
+        keyword matching applies; 'eliminated' in description → major."""
         assert _infer_severity("", "updated_line", None, "eliminated") == "major"
 
 
@@ -220,6 +253,8 @@ class TestInferSeverity:
 
 class TestParseChangelogRow:
     def test_single_schedule_row(self):
+        """A standard single-schedule row produces one entry with all fields correctly populated,
+        including severity inferred from an explicit 'Minor Changes:' section label."""
         row = {
             "Schedule": "10",
             "SLC": "10 6021 01",
@@ -240,6 +275,9 @@ class TestParseChangelogRow:
         assert e["change_type"] == "new_line"
 
     def test_multi_schedule_expansion(self):
+        """A row whose Schedule field lists multiple schedules (e.g. '77A, B, C & D') is
+        expanded into one entry per schedule; all non-schedule fields are identical across
+        the expanded entries."""
         row = {
             "Schedule": "77A, B, C & D",
             "SLC": "77 9960 xx",
@@ -258,6 +296,9 @@ class TestParseChangelogRow:
             assert e["column_id"] is None
 
     def test_schedule_level_new(self):
+        """A row with 'New **' as the SLC is treated as a new-schedule entry:
+        change_type=new_schedule, slc_pattern=None, and severity=major from the
+        explicit 'MAJOR CHANGES' section label."""
         row = {
             "Schedule": "71",
             "SLC": "New **",
@@ -273,6 +314,8 @@ class TestParseChangelogRow:
         assert e["severity"] == "major"
 
     def test_schedule_level_deleted(self):
+        """A row with 'Deleted' as the SLC is treated as a deleted-schedule entry:
+        change_type=deleted_schedule and slc_pattern=None."""
         row = {
             "Schedule": "79",
             "SLC": "Deleted",
@@ -287,6 +330,8 @@ class TestParseChangelogRow:
         assert e["slc_pattern"] is None
 
     def test_wildcard_slc(self):
+        """A row with 'xxxx' in the line position stores the raw SLC pattern,
+        sets line_id=None, retains a concrete column_id, and infers a column-level change_type."""
         row = {
             "Schedule": "40",
             "SLC": "40 xxxx 05",
@@ -310,6 +355,7 @@ class TestParseChangelogRow:
 
 class TestInsertChangelogEntries:
     def test_insert_valid_entries(self, engine, session):
+        """A list with one valid entry is inserted and the row is retrievable from the database."""
         entries = [_entry()]
         inserted = insert_changelog_entries(engine, entries)
         assert inserted == 1
@@ -320,6 +366,8 @@ class TestInsertChangelogEntries:
         assert rows[0].slc_pattern == "10 6021 01"
 
     def test_idempotent_insertion_non_null_slc(self, engine, session):
+        """Inserting the same non-null-SLC entry twice inserts it once and skips the duplicate,
+        leaving exactly one row in the database."""
         entries = [_entry()]
         first = insert_changelog_entries(engine, entries)
         second = insert_changelog_entries(engine, entries)
@@ -330,7 +378,8 @@ class TestInsertChangelogEntries:
         assert count == 1
 
     def test_idempotent_insertion_null_slc(self, engine, session):
-        # Schedule-level entries have slc_pattern=NULL; deduplication is app-level
+        """Schedule-level entries (slc_pattern=NULL) are deduplicated at the application layer;
+        inserting the same entry twice leaves exactly one row in the database."""
         entries = [_entry(slc_pattern=None, line_id=None, column_id=None, change_type="new_schedule")]
         first = insert_changelog_entries(engine, entries)
         second = insert_changelog_entries(engine, entries)
@@ -341,6 +390,8 @@ class TestInsertChangelogEntries:
         assert count == 1
 
     def test_insert_multiple_entries(self, engine, session):
+        """Two entries with distinct SLC patterns are both inserted and the return value
+        reflects the count of newly inserted rows."""
         entries = [
             _entry(slc_pattern="10 6021 01", line_id="6021", column_id="01"),
             _entry(slc_pattern="10 1888 01", line_id="1888", column_id="01"),
@@ -349,9 +400,12 @@ class TestInsertChangelogEntries:
         assert inserted == 2
 
     def test_insert_empty_list(self, engine, session):
+        """Passing an empty list inserts nothing and returns 0."""
         assert insert_changelog_entries(engine, []) == 0
 
     def test_insert_mix_of_null_and_non_null_slc(self, engine, session):
+        """A batch containing both a non-null-SLC entry and a null-SLC entry inserts both rows
+        and returns 2."""
         entries = [
             _entry(slc_pattern="10 6021 01", line_id="6021", column_id="01"),
             _entry(slc_pattern=None, line_id=None, column_id=None, change_type="new_schedule"),
@@ -367,6 +421,9 @@ class TestInsertChangelogEntries:
 
 class TestCSVRoundtrip:
     def test_save_and_load(self, tmp_path):
+        """Entries saved with save_to_csv and reloaded with load_from_csv match the originals:
+        year is cast to int, and None values for nullable fields (line_id, slc_pattern) are
+        preserved rather than converted to empty strings."""
         entries = [
             _entry(slc_pattern="10 6021 01", line_id="6021", column_id="01"),
             _entry(slc_pattern="40 xxxx 05", line_id=None, column_id="05"),
@@ -386,6 +443,8 @@ class TestCSVRoundtrip:
         assert loaded[2]["line_id"] is None
 
     def test_load_from_csv_and_insert(self, engine, session, tmp_path):
+        """An entry saved to CSV, reloaded with load_from_csv, and passed to
+        insert_changelog_entries is inserted successfully into the database."""
         entries = [_entry()]
         csv_path = tmp_path / "changelog.csv"
         save_to_csv(entries, csv_path)
@@ -394,6 +453,7 @@ class TestCSVRoundtrip:
         assert inserted == 1
 
     def test_save_creates_parent_dirs(self, tmp_path):
+        """save_to_csv creates any missing parent directories before writing the file."""
         nested = tmp_path / "a" / "b" / "test.csv"
         save_to_csv([_entry()], nested)
         assert nested.exists()
@@ -406,6 +466,8 @@ class TestCSVRoundtrip:
 
 class TestCLI:
     def test_load_changelogs_missing_dir(self, tmp_path, mocker):
+        """Passing a csv-dir that does not exist causes the command to exit with a non-zero
+        status code."""
         mocker.patch("municipal_finances.fir_instructions.extract_changelog.get_engine")
         result = runner.invoke(
             app,
@@ -414,6 +476,8 @@ class TestCLI:
         assert result.exit_code != 0
 
     def test_load_changelogs_empty_dir(self, tmp_path, mocker):
+        """A csv-dir that exists but contains no 'FIR* Changes.csv' files causes the command
+        to exit with a non-zero status code."""
         mocker.patch("municipal_finances.fir_instructions.extract_changelog.get_engine")
         result = runner.invoke(
             app,
@@ -422,12 +486,13 @@ class TestCLI:
         assert result.exit_code != 0
 
     def test_load_changelogs_skips_unrecognised_filename(self, tmp_path, engine, session, mocker):
-        """Files matching 'FIR* Changes.csv' glob but without a 4-digit year are skipped."""
+        """A file that matches the 'FIR* Changes.csv' glob but lacks a 4-digit year (e.g.
+        'FIRabc Changes.csv') is logged and skipped; a valid file in the same directory is
+        still processed and the command exits successfully."""
         mocker.patch(
             "municipal_finances.fir_instructions.extract_changelog.get_engine",
             return_value=engine,
         )
-        # Matches glob "FIR* Changes.csv" but has no 4-digit year — triggers lines 622-623
         bad_csv = tmp_path / "FIRabc Changes.csv"
         bad_csv.write_text("Schedule,SLC,Heading,Description,Section Description\n")
         valid_csv = tmp_path / "FIR2025 Changes.csv"
@@ -450,11 +515,12 @@ class TestCLI:
         assert result.exit_code == 0, result.output
 
     def test_load_changelogs_with_csv(self, tmp_path, engine, session, mocker):
+        """A valid 'FIR{year} Changes.csv' file is parsed, inserted into the database, and
+        a combined export CSV is written to the export directory; the command exits with 0."""
         mocker.patch(
             "municipal_finances.fir_instructions.extract_changelog.get_engine",
             return_value=engine,
         )
-        # Write a minimal CSV file
         csv_path = tmp_path / "FIR2025 Changes.csv"
         with open(csv_path, "w", newline="") as f:
             writer = csv.DictWriter(
@@ -487,12 +553,12 @@ class TestCLI:
         assert rows[0].year == 2025
 
     def test_load_changelogs_no_parseable_entries(self, tmp_path, engine, session, mocker):
-        """A header-only CSV yields zero entries and the command exits with error."""
+        """A header-only CSV produces zero parsed entries; the command exits with a non-zero
+        status code and writes an error message."""
         mocker.patch(
             "municipal_finances.fir_instructions.extract_changelog.get_engine",
             return_value=engine,
         )
-        # Header-only CSV → load_changelog_csv returns []
         csv_path = tmp_path / "FIR2025 Changes.csv"
         csv_path.write_text("Schedule,SLC,Heading,Description,Section Description\n")
 
@@ -503,7 +569,8 @@ class TestCLI:
         assert result.exit_code != 0
 
     def test_export_changelog(self, tmp_path, engine, session, mocker):
-        """export-changelog queries DB and writes a CSV."""
+        """export-changelog queries all pdf_changelog rows from the database and writes them
+        to a CSV in the specified export directory; the exported file can be reloaded cleanly."""
         mocker.patch(
             "municipal_finances.fir_instructions.extract_changelog.get_engine",
             return_value=engine,
