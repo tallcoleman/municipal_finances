@@ -17,7 +17,6 @@ dependencies = [
     "typer>=0.24.1",
     "uvicorn[standard]>=0.34",
     "alembic>=1.14",
-    "pdfplumber>=0.11",
 ]
 
 [build-system]
