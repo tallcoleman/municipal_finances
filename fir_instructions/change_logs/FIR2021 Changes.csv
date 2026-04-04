@@ -1,0 +1,31 @@
+Sch.,SLC,Heading,Description
+10,10 0629 01,Own Purpose Revenue,"Report the amount for ""Provincial COVID-19 Recovery Funding"" on line 0629."
+,10 0831 01,,"SLC 10 0831 01 restated as ""Deferred revenue earned (Canada Community - Building Fund) (Federal Gas Tax) (SLC 60 1047 01 + SLC 60 1048 01)""."
+,10 4099 01,,"SLC 10 4099 01 is restated as ""Canada Community - Building Fund used for Capital Investments""."
+,10 4205 01,,"SLC 10 4205 01 restated as ""Canada Community - Building Fund for Operating expenses: Capacity Building""."
+,10 4299 01,,"SLC 10 4299 01 is restated as ""Canada Community - Building Fund Recognized in the year""."
+42,42 6009 01,,"SLC 42 6009 01 is restated as ""Total COVID-19 Expenses as reported on SLC 40 9910 11""."
+53,53 0406 01,Financing from Dedicated Revenue,Reserves and Reserve funds on SLC 53 0406 01 is calculated as (SLC 60 1012 02 + SLC 60 1012 03).
+,53 0440 01,Government Transfers,"SLC 53 0440 01 is restated as ""Canada Community - Building Fund - AMO (SLC 10 4099 01)""."
+60,60 0862 01,"Obligatory Reserve Funds, Deferred Revenue","SLC 60 0862 01 restated as ""Canada Community - Building Fund (Federal Gas Tax)""."
+,60 1047 01,,"SLC 60 1047 01 restated as ""Deferred revenue earned (Canada Community - Building Fund) (Federal Gas Tax)""."
+,60 1048 01,,"SLC 60 1048 01 restated as ""Deferred revenue earned (Canada Community - Building Fund for Capacity Building)""."
+,60 5691 01,,"SLC 60 5691 01 restated as ""Canada Community - Building Fund (Federal Gas Tax)""."
+72B,,Continuity of Taxes Receivable,"The following Municipal and Assessment Act items will be pre-populated on Schedule 72B during April 2022.  Users that have started will be notified to ""Backup"" and  ""Restore"" to their working version of the FIR 2021 template."
+,72 1000 xx,,"Taxes collected on behalf of ""other"" bodies (Mun. Act 353) on line 1000."
+,72 1010 xx,,Write-off of taxes (Mun. Act 354) on line 1010.
+,72 1020 xx,,"Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020."
+,72 1030 xx,,"Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030."
+,72 1040 xx,,"ARB decisions, Advisory Notice of Adjustment due to an ARB decisions (Assessment Act 40/19.1(7)) on line 1040."
+,72 1050 xx,,RfR (Assessment Act 39.1) on line 1050.
+,72 1060 xx,,"Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060."
+,72 1070 xx,,Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.
+,72 1080 xx,,Special Amended Notice (SAN) (Assessment Act) on line 1080.
+,72 1090 xx,,Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.
+,72 1099 xx,,Subtotal on line 1099 sums the line items from 1000 to 1090.
+,72 2899 xx,,Tax adjustments before allowances on line 2899 also includes:
+,72 2099 xx,,Rebates for Charities (Mun. Act 361) on line 2099.
+,72 2299 xx,,Vacant Unit Rebates (Mun. Act 364) on line 2299.
+,72 2301 xx,,Contaminated Property (Mun. Act  365.1) on line 2301.
+,72 2399 xx,,Reduction for Heritage Property (Mun. Act 365.2) on line 2399.
+,72 2400 xx,,Change in Assessment (Mun. Act 365.3) on line 2400.

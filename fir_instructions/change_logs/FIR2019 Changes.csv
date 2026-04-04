@@ -1,0 +1,11 @@
+Sch.,SLC,Heading,Description
+10,10 1886 01,Own Purpose Revenue,"For 2019, report the Transient Accommodation Tax on line 1886 of Schedule 10."
+,10 2063 01,Own Purpose Revenue,"On schedule 10, report Other comprehensive income (loss) on SLC 10 2063 01. This amount will be added to the Accumulated surplus/(deficit) at the end of year on SLC 10 9950 01."
+22A,22 xxxx 08,General Purpose,"Taxrates(LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10"
+,22 xxxx 09,Levy Information,of Schedule 22A.
+,22 xxxx 10,,
+24A,24 xxxx 08,General Purpose,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10"
+,24 xxxx 09,Payments-In-Lieu,of Schedule 24A.
+,24 xxxx 10,Information,
+53,53 1421 01,Consolidated Statement of Change In Net Financial Assets,"On schedule 53, report Other comprehensive income (loss) on SLC 53 1421 01. This amount will be added to the Net financial assets (net debt), end of year on SLC 53 9910 01."
+81,81 2255 01,Annual Debt Repayment Limit,Other Revenue is automatically calculated on line 2255 of Schedule 81 and is the sum of (SLC 10 1890 01 + SLC 10 1891 01 + SLC 10 1892 01 + SLC 10 1893 01 + SLC 10 1894 01 + SLC 10 1895 01 + SLC 10 1896 01 + SLC 10 1897 01 + SLC 10 1898 01). This amount will be added to the Subtotal on SLC 81 2299  01.
