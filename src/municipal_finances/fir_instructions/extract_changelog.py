@@ -1,32 +1,27 @@
-"""Extract Content Changes tables from FIR Instructions PDF changelogs.
+"""Load FIR instruction changelog entries from manually-extracted CSVs.
 
-Each FIR year ships a "Changes" PDF with a Content Changes table listing every
-schedule/line/column that was added, removed, or modified.  This module parses
-those tables with pdfplumber and stores the results in
-``fir_instruction_changelog``.
+Source files are per-year CSVs in
+``fir_instructions/change_logs/semantic_extraction/``, one file per year
+(e.g. ``FIR2025 Changes.csv``). Each CSV has columns:
 
-PDF table structure
--------------------
-The tables have four columns: Schedule, SLC, Heading, Description.  Column
-x-positions vary across years but the relative layout is consistent:
+- ``Schedule``        — schedule code (e.g. ``10``, ``22A``)
+- ``SLC``             — SLC in PDF format (e.g. ``10 6021 01``), or ``New **``
+                        / ``Deleted`` for schedule-level changes
+- ``Heading``         — line or column heading
+- ``Description``     — what changed
+- ``Section Description`` — section header from the PDF (used for severity)
 
-- **Schedule zone**: ``[sch_x - 15, sch_x + 35]``
-- **SLC zone**: ``[sch_x + 35, slc_x + 30]``  (slc_x = header "SLC" label x-pos)
-- **Heading + Description**: everything to the right of slc_x + 30, split at the
-  largest inter-word gap.
+This module:
 
-Key parsing behaviours
-----------------------
-- Words are grouped into rows via sequential y-position comparison with a 4-pt
-  tolerance, which handles rows whose words span a couple of points vertically.
-- Section headers ("MAJOR CHANGES", "MINOR CHANGES") reset the current severity.
-- Cells for Schedule, SLC, and Heading are only populated on the first row where
-  the value changes; blank cells carry forward the previous value.  However, SLC
-  and Heading carry-forward resets when Schedule changes.
-- Entries that describe multiple changes in one row (e.g. "New lines 0410, 0420,
-  0430 added") are split into separate records.
-- Schedule-level entries ("New **", "Deleted") produce ``new_schedule`` /
-  ``deleted_schedule`` change_type records with slc_pattern=None.
+- Expands multi-schedule entries (e.g. ``"77A, B, C & D"``) into one record
+  per schedule.
+- Parses the SLC field, handling wildcards (``xxxx``, ``xx``), schedule-level
+  markers (``"New **"``, ``"Deleted"``), and malformed values.
+- Infers ``change_type`` from SLC structure and description keywords.
+- Infers ``severity`` using a multi-tier approach (explicit label → structural
+  scope → keyword signals → default minor).
+- Inserts records into ``fir_instruction_changelog`` with duplicate-safe logic.
+- Exports a combined CSV for human verification.
 """
 
 from __future__ import annotations
@@ -36,644 +31,440 @@ import re
 from pathlib import Path
 from typing import Any
 
-import pdfplumber
+import pandas as pd
+import typer
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from sqlmodel import Session
+from sqlmodel import Session, select
 
+from municipal_finances.database import get_engine
 from municipal_finances.models import FIRInstructionChangelog
 from municipal_finances.slc import pdf_slc_to_components
+
+app = typer.Typer()
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-_VALID_CHANGE_TYPES = frozenset(
-    [
-        "new_schedule",
-        "deleted_schedule",
-        "new_line",
-        "deleted_line",
-        "updated_line",
-        "new_column",
-        "deleted_column",
-        "updated_column",
-        "updated_schedule",
-    ]
-)
+VALID_CHANGE_TYPES = frozenset({
+    "new_schedule",
+    "deleted_schedule",
+    "new_line",
+    "deleted_line",
+    "updated_line",
+    "new_column",
+    "deleted_column",
+    "updated_column",
+})
 
-# Words that indicate a "New **" schedule-level marker in the SLC zone.
-_NEW_SCHEDULE_TOKEN = "**"
-_DELETED_TOKEN_RE = re.compile(r"^deleted$", re.IGNORECASE)
+_SOURCE_TAG = "pdf_changelog"
 
-# Section header patterns.
-_MAJOR_RE = re.compile(r"major\s+change", re.IGNORECASE)
-_MINOR_RE = re.compile(r"minor\s+change", re.IGNORECASE)
+# Default paths (relative to the project working directory)
+_DEFAULT_CSV_DIR = Path("fir_instructions/change_logs/semantic_extraction")
+_DEFAULT_EXPORT_DIR = Path("fir_instructions/exports")
+_EXPORT_FILENAME = "fir_instruction_changelog.csv"
 
-# Regex to split concatenated SLC tokens like "77A1040" → ("77A", "1040").
-_SPLIT_SCHED_LINE_RE = re.compile(r"^(.+?)(\d{4})$")
+# Year extraction from filename like "FIR2025 Changes.csv"
+_YEAR_FROM_FILENAME_RE = re.compile(r"FIR(\d{4})\s+Changes\.csv$")
 
-# Regex for multi-entry rows, e.g. "New lines 0410, 0420, 0430 added".
-_MULTI_LINE_RE = re.compile(r"\b(\d{4})\b")
+# Keywords for change action classification (checked in description + heading +
+# section_desc, case-insensitive)
+_DELETE_KEYWORDS = [
+    "removed line",
+    "deleted",
+    "eliminated",
+    "no longer",
+    "has been eliminated",
+]
+_NEW_KEYWORDS = [
+    "new line",
+    "line added",
+    "new lines added",
+    "new column",
+    "column added",
+    "new columns added",
+    "added as per",
+    "new subtotal",
+    "new section",
+    " added.",
+    "added to capture",
+]
+
+# Tier-3 severity signal keywords
+_MAJOR_DESC_KEYWORDS = [
+    "eliminated",
+    "new schedule",
+    "replaced with",
+    "adoption of new accounting standard",
+    "new section",
+]
+_MINOR_DESC_KEYWORDS = [
+    "updated language",
+    "referenced to",
+    "linked from",
+    "pre-populated",
+    "calculated as",
+    "restated as",
+    "report the amount for",
+    "is reported on",
+]
+
+# CSV field order for export files
+_CSV_FIELDS = [
+    "year",
+    "schedule",
+    "slc_pattern",
+    "line_id",
+    "column_id",
+    "heading",
+    "change_type",
+    "severity",
+    "description",
+    "source",
+]
+
 
 # ---------------------------------------------------------------------------
-# Row grouping
+# Schedule expansion
 # ---------------------------------------------------------------------------
 
 
-def _group_words_into_rows(
-    words: list[dict[str, Any]], y_tolerance: float = 4.0
-) -> list[list[dict[str, Any]]]:
-    """Group pdfplumber word dicts into rows by y-position proximity.
+def _expand_schedules(schedule_str: str) -> list[str]:
+    """Expand a multi-schedule string into individual schedule codes.
 
-    Words are sorted top-to-bottom then left-to-right.  A new row starts when
-    the word's ``top`` value exceeds the current row's running maximum ``bottom``
-    by more than *y_tolerance* points.
+    Handles patterns such as:
+
+    - ``"77A, B, C & D"`` → ``["77A", "77B", "77C", "77D"]``
+    - ``"61A & 61B"``      → ``["61A", "61B"]``
+    - ``"62 & 62A"``       → ``["62", "62A"]``
+    - ``"10"``             → ``["10"]``
+
+    For multi-part strings where later parts consist only of letters (no
+    leading digits), the numeric prefix from the first part is prepended.
 
     Args:
-        words: List of word dicts from ``pdfplumber.Page.extract_words()``.
-        y_tolerance: Maximum gap (in points) between a word's ``top`` and the
-            current row's maximum ``bottom`` before starting a new row.
+        schedule_str: Raw value from the ``Schedule`` column.
 
     Returns:
-        List of rows, each row being a list of word dicts sorted by ``x0``.
+        List of individual schedule code strings (one or more).
     """
-    if not words:
-        return []
+    parts = [p.strip() for p in re.split(r"[,&]", schedule_str) if p.strip()]
+    if len(parts) <= 1:
+        return parts
 
-    sorted_words = sorted(words, key=lambda w: (w["top"], w["x0"]))
-    rows: list[list[dict[str, Any]]] = []
-    current_row: list[dict[str, Any]] = [sorted_words[0]]
-    row_max_bottom: float = sorted_words[0]["bottom"]
+    # Extract numeric prefix from the first part (e.g. "77" from "77A")
+    prefix_match = re.match(r"^(\d+)", parts[0])
+    prefix = prefix_match.group(1) if prefix_match else ""
 
-    for w in sorted_words[1:]:
-        if w["top"] > row_max_bottom + y_tolerance:
-            rows.append(sorted(current_row, key=lambda x: x["x0"]))
-            current_row = [w]
-            row_max_bottom = w["bottom"]
-        else:
-            current_row.append(w)
-            row_max_bottom = max(row_max_bottom, w["bottom"])
-
-    rows.append(sorted(current_row, key=lambda x: x["x0"]))
-    return rows
-
-
-# ---------------------------------------------------------------------------
-# Header detection
-# ---------------------------------------------------------------------------
-
-
-def _find_header_row(
-    rows: list[list[dict[str, Any]]],
-) -> tuple[float, float, float, float] | None:
-    """Locate the Content Changes table header and return column x-positions.
-
-    Scans rows for one containing the tokens "SLC", "Heading" (or "Sch."),
-    and "Description".
-
-    Args:
-        rows: Rows produced by :func:`_group_words_into_rows`.
-
-    Returns:
-        ``(sch_x, slc_x, heading_x, desc_x)`` — the ``x0`` of the first word
-        in each column header cell — or ``None`` if no header row is found.
-    """
-    for row in rows:
-        texts = [w["text"].lower() for w in row]
-        joined = " ".join(texts)
-        if "slc" in texts and ("heading" in texts or "description" in joined):
-            sch_x: float | None = None
-            slc_x: float | None = None
-            heading_x: float | None = None
-            desc_x: float | None = None
-            for w in row:
-                t = w["text"].lower()
-                if t in ("sch.", "schedule") and sch_x is None:
-                    sch_x = w["x0"]
-                elif t == "slc" and slc_x is None:
-                    slc_x = w["x0"]
-                elif t in ("heading", "head.", "head") and heading_x is None:
-                    heading_x = w["x0"]
-                elif t in ("description", "desc.", "desc") and desc_x is None:
-                    desc_x = w["x0"]
-            if slc_x is not None and desc_x is not None:
-                if sch_x is None:
-                    sch_x = slc_x - 40.0  # fallback estimate
-                if heading_x is None:
-                    heading_x = slc_x + 30.0
-                return (sch_x, slc_x, heading_x, desc_x)
-    return None
-
-
-# ---------------------------------------------------------------------------
-# Row classification helpers
-# ---------------------------------------------------------------------------
-
-
-def _is_section_header(row_words: list[dict[str, Any]]) -> str | None:
-    """Return 'major', 'minor', or None based on row text content.
-
-    Args:
-        row_words: Words in a single row.
-
-    Returns:
-        ``'major'``, ``'minor'``, or ``None``.
-    """
-    text = " ".join(w["text"] for w in row_words)
-    if _MAJOR_RE.search(text):
-        return "major"
-    if _MINOR_RE.search(text):
-        return "minor"
-    return None
-
-
-def _is_header_row(row_words: list[dict[str, Any]]) -> bool:
-    """Return True if this row is the Content Changes table header.
-
-    Args:
-        row_words: Words in the row.
-
-    Returns:
-        True when the row looks like a column-header row (contains "SLC" and
-        "Heading" or "Description").
-    """
-    texts_lower = {w["text"].lower() for w in row_words}
-    return "slc" in texts_lower and (
-        "heading" in texts_lower or "description" in texts_lower
-    )
-
-
-# Valid schedule token: alphanumeric characters only (no colon, slash, etc.)
-_VALID_SCHEDULE_TOKEN_RE = re.compile(r"^[A-Za-z0-9]+$")
-
-
-def _classify_row(
-    row_words: list[dict[str, Any]],
-    sch_x: float,
-    slc_x: float,
-) -> str:
-    """Classify a data row as 'data', 'blank_schedule', 'continuation', or 'other'.
-
-    Args:
-        row_words: Words in the row, sorted by x0.
-        sch_x: x-position of the Schedule header column.
-        slc_x: x-position of the SLC header column.
-
-    Returns:
-        Row type string.
-    """
-    if not row_words:
-        return "other"
-
-    # Header rows (Sch./SLC/Heading/Description) are never data
-    if _is_header_row(row_words):
-        return "other"
-
-    first = row_words[0]
-    sched_lo = sch_x - 15
-    sched_hi = sch_x + 35
-    slc_lo = sch_x + 35
-    slc_hi = slc_x + 30
-
-    if sched_lo <= first["x0"] < sched_hi:
-        # First word is in schedule zone — data row only if it starts with alnum
-        if first["text"] and first["text"][0].isalnum():
-            return "data"
-        return "other"
-    elif slc_lo <= first["x0"] < slc_hi:
-        # blank_schedule row: first SLC-zone word must look like a valid schedule
-        # or SLC token (pure alphanumeric — no colon, slash, etc.)
-        if _VALID_SCHEDULE_TOKEN_RE.match(first["text"]):
-            return "blank_schedule"
-        return "other"
-    elif first["x0"] >= slc_hi:
-        return "continuation"
-    return "other"
-
-
-# ---------------------------------------------------------------------------
-# SLC token parsing
-# ---------------------------------------------------------------------------
-
-
-def _extract_slc_info(
-    slc_tokens: list[str],
-) -> tuple[str | None, str | None, str | None, bool, bool]:
-    """Parse SLC zone tokens into components.
-
-    SLC zone tokens typically follow one of:
-    - ``[schedule_dup, line_id, col_id]`` — normal line/column entry
-    - ``[schedule, "New", "**"]`` — new schedule marker
-    - ``[schedule, "Deleted"]`` — deleted schedule marker
-
-    Tokens may also be concatenated, e.g. ``"77A1040"`` → ``("77A", "1040")``.
-
-    Args:
-        slc_tokens: Text of words in the SLC zone, in left-to-right order.
-
-    Returns:
-        ``(slc_pattern, line_id, column_id, is_new_schedule, is_deleted_schedule)``
-        where ``slc_pattern`` is the raw SLC string (e.g. ``"61 0206 xx"``),
-        ``line_id`` and ``column_id`` are ``None`` for wildcards, and the two
-        boolean flags indicate schedule-level changes.
-    """
-    if not slc_tokens:
-        return None, None, None, False, False
-
-    # Detect "New **" → new_schedule
-    if _NEW_SCHEDULE_TOKEN in slc_tokens:
-        return None, None, None, True, False
-
-    # Detect "Deleted" → deleted_schedule
-    if any(_DELETED_TOKEN_RE.match(t) for t in slc_tokens):
-        return None, None, None, False, True
-
-    # Try to split concatenated tokens so we end up with [schedule, line, col]
     expanded: list[str] = []
-    for token in slc_tokens:
-        m = _SPLIT_SCHED_LINE_RE.match(token)
-        if m and len(expanded) == 0:
-            # First token may be schedule+line glued together
-            expanded.append(m.group(1))
-            expanded.append(m.group(2))
+    for part in parts:
+        # Pure-letter parts (e.g. "B", "C") take the numeric prefix
+        if re.match(r"^[A-Za-z]+$", part) and prefix:
+            expanded.append(prefix + part)
         else:
-            expanded.append(token)
+            expanded.append(part)
 
-    if len(expanded) < 3:
-        # Insufficient tokens — can't form a full SLC pattern
-        return None, None, None, False, False
+    return expanded
 
-    schedule_dup = expanded[0]
-    line_tok = expanded[1]
-    col_tok = expanded[2]
-    slc_pattern = f"{schedule_dup} {line_tok} {col_tok}"
+
+# ---------------------------------------------------------------------------
+# SLC parsing
+# ---------------------------------------------------------------------------
+
+
+def _parse_slc_field(
+    slc_str: str,
+    schedule: str,
+) -> tuple[str | None, str | None, str | None]:
+    """Parse the SLC field from a CSV row into (slc_pattern, line_id, column_id).
+
+    Handles:
+
+    - Normal PDF SLC format: ``"10 6021 01"`` → ``("10 6021 01", "6021", "01")``
+    - Line wildcard: ``"40 xxxx 05"``        → ``("40 xxxx 05", None, "05")``
+    - Column wildcard: ``"61 0206 xx"``      → ``("61 0206 xx", "0206", None)``
+    - New-schedule marker: ``"New **"``       → ``(None, None, None)``
+    - Deleted-schedule marker: ``"Deleted"`` → ``(None, None, None)``
+    - Empty / missing SLC                    → ``(None, None, None)``
+    - Malformed SLC (parse failure)          → ``(raw_str, None, None)``
+
+    A warning is printed for malformed SLC values that are not recognized
+    schedule-level markers.
+
+    Args:
+        slc_str: Raw value from the ``SLC`` column.
+        schedule: The schedule code from the same row (used only in warnings).
+
+    Returns:
+        ``(slc_pattern, line_id, column_id)`` where ``slc_pattern`` is the
+        value stored in the DB and ``None`` is used for wildcards / missing.
+    """
+    if not slc_str or not slc_str.strip():
+        return None, None, None
+
+    stripped = slc_str.strip()
+    stripped_lower = stripped.lower()
+
+    # Schedule-level markers
+    if "new" in stripped_lower and "**" in stripped:
+        return None, None, None
+    if stripped_lower == "deleted":
+        return None, None, None
 
     try:
-        components = pdf_slc_to_components(slc_pattern)
-        return slc_pattern, components["line_id"], components["column_id"], False, False
+        components = pdf_slc_to_components(stripped)
+        return stripped, components["line_id"], components["column_id"]
     except ValueError:
-        # Pattern didn't parse — return raw with no components
-        return slc_pattern, None, None, False, False
+        typer.echo(
+            f"  Warning: could not parse SLC {stripped!r} for schedule {schedule!r}",
+            err=True,
+        )
+        return stripped, None, None
 
 
 # ---------------------------------------------------------------------------
-# Heading / description split
+# change_type inference
 # ---------------------------------------------------------------------------
 
 
-def _split_heading_description(
-    words: list[dict[str, Any]],
-) -> tuple[str, str | None]:
-    """Split remaining (heading + description) words at the largest inter-word gap.
+def _classify_action(description: str, heading: str, section_desc: str) -> str:
+    """Return ``'new'``, ``'deleted'``, or ``'updated'`` from keyword signals.
+
+    Checks the combined text of *description*, *heading*, and *section_desc*
+    (case-insensitive). Delete keywords are checked first; new keywords second.
+    Falls back to ``'updated'`` if no clear signal is found.
 
     Args:
-        words: Words to the right of the SLC zone, sorted by x0.
+        description: Change description text.
+        heading:     Line or column heading.
+        section_desc: Section description text from the source CSV.
 
     Returns:
-        ``(heading, description)`` where ``description`` is ``None`` if there
-        is only one cluster of words.
+        One of ``'new'``, ``'deleted'``, or ``'updated'``.
     """
-    if not words:
-        return "", None
-    if len(words) == 1:
-        return words[0]["text"], None
+    all_text = f"{description} {heading} {section_desc}".lower()
 
-    # Compute gaps between consecutive words
-    gaps: list[tuple[float, int]] = []
-    for i in range(1, len(words)):
-        gap = words[i]["x0"] - words[i - 1]["x1"]
-        gaps.append((gap, i))
+    for kw in _DELETE_KEYWORDS:
+        if kw in all_text:
+            return "deleted"
 
-    max_gap, split_idx = max(gaps, key=lambda g: g[0])
+    for kw in _NEW_KEYWORDS:
+        if kw in all_text:
+            return "new"
 
-    # Only split if the gap is substantial (> 10 pts)
-    if max_gap < 10:
-        return " ".join(w["text"] for w in words), None
-
-    heading = " ".join(w["text"] for w in words[:split_idx])
-    description = " ".join(w["text"] for w in words[split_idx:])
-    return heading, description
-
-
-# ---------------------------------------------------------------------------
-# Change type inference
-# ---------------------------------------------------------------------------
+    return "updated"
 
 
 def _infer_change_type(
-    description: str | None,
-    heading: str | None,
-    slc_pattern: str | None,
+    slc_str: str | None,
     line_id: str | None,
     column_id: str | None,
-    is_new_schedule: bool,
-    is_deleted_schedule: bool,
+    description: str,
+    heading: str,
+    section_desc: str,
 ) -> str:
-    """Infer change_type from context clues.
+    """Infer the ``change_type`` value for a changelog entry.
+
+    Schedule-level special values in ``slc_str`` (``"New **"``, ``"Deleted"``,
+    or empty/``None``) map directly to ``new_schedule``, ``deleted_schedule``,
+    or ``updated_line``. For regular SLC entries the entity type (line vs
+    column) is determined by which SLC position is wildcarded:
+
+    - Line wildcard (``xxxx``, i.e. ``line_id is None``) → column-level change.
+    - Column wildcard (``xx``, i.e. ``column_id is None``) or fully specified
+      SLC → line-level change.
+
+    The action (new / deleted / updated) is inferred from description keywords
+    via :func:`_classify_action`.
 
     Args:
-        description: Description cell text (may be None).
-        heading: Heading cell text (may be None).
-        slc_pattern: Raw SLC pattern string (may be None or contain wildcards).
-        line_id: Parsed line ID (None for wildcards).
-        column_id: Parsed column ID (None for wildcards).
-        is_new_schedule: True if a "New **" marker was detected.
-        is_deleted_schedule: True if a "Deleted" marker was detected.
+        slc_str:     Raw SLC field value (may be ``None`` or a special marker).
+        line_id:     Parsed line ID (``None`` for wildcards).
+        column_id:   Parsed column ID (``None`` for wildcards).
+        description: Change description.
+        heading:     Line or column heading.
+        section_desc: Section description from the source CSV.
 
     Returns:
-        A change_type string from the allowed set.
+        A valid ``change_type`` string.
     """
-    if is_new_schedule:
-        return "new_schedule"
-    if is_deleted_schedule:
-        return "deleted_schedule"
-
-    text = " ".join(filter(None, [description, heading])).lower()
-
-    # Check for new/deleted/updated at column level
-    has_col = column_id is not None or (
-        slc_pattern is not None and not slc_pattern.endswith("xx")
-    )
-    # Determine if this is a column-level or line-level entry.
-    # Column-level: column_id is deterministic (not wildcard)
-    col_deterministic = column_id is not None
-    line_wildcard = line_id is None and slc_pattern is not None
-
-    if col_deterministic:
-        if re.search(r"\b(new|added)\b", text):
-            return "new_column"
-        if re.search(r"\b(deleted?|removed?)\b", text):
-            return "deleted_column"
-        return "updated_column"
-
-    if line_wildcard:
-        # Line wildcarded — change applies to a whole set of lines/columns
-        if re.search(r"\b(new|added)\b", text):
-            return "new_line"
-        if re.search(r"\b(deleted?|removed?)\b", text):
-            return "deleted_line"
+    if not slc_str:
         return "updated_line"
 
-    # line_id is deterministic
-    if re.search(r"\b(new|added)\b", text):
-        return "new_line"
-    if re.search(r"\b(deleted?|removed?)\b", text):
-        return "deleted_line"
-    return "updated_line"
+    slc_lower = slc_str.lower().strip()
+
+    if "new" in slc_lower and "**" in slc_str:
+        return "new_schedule"
+    if slc_lower == "deleted":
+        return "deleted_schedule"
+
+    action = _classify_action(description, heading, section_desc)
+
+    # Line wildcard (xxxx) → column-level change
+    if line_id is None:
+        entity = "column"
+    else:
+        entity = "line"
+
+    return f"{action}_{entity}"
 
 
 # ---------------------------------------------------------------------------
-# Multi-entry splitting
+# Severity inference
 # ---------------------------------------------------------------------------
 
 
-def _split_multi_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
-    """Split a single entry that references multiple line IDs into separate entries.
+def _infer_severity(
+    section_desc: str,
+    change_type: str,
+    slc_pattern: str | None,
+    description: str,
+) -> str:
+    """Infer severity using a multi-tier approach.
 
-    For example, a description like "New lines 0410, 0420, 0430 added" with a
-    wildcard line_id becomes three entries, one per line ID.
+    **Tier 1** — explicit label in ``section_desc``:
+        If the text (case-insensitive) contains ``"major"`` → ``"major"``;
+        ``"minor"`` → ``"minor"``.
+
+    **Tier 2** — structural scope of ``change_type``:
+        - ``new_schedule`` or ``deleted_schedule`` → ``"major"``.
+        - ``new_line`` or ``deleted_line`` with ``xxxx`` in ``slc_pattern``
+          (affects all lines on a schedule) → ``"major"``.
+        - ``new_column`` or ``deleted_column`` with ``xx`` in ``slc_pattern``
+          (affects all columns on a line) → ``"major"``.
+
+    **Tier 3** — description keyword signals:
+        Counts major and minor keyword matches in ``description`` +
+        ``section_desc``; uses the stronger signal.
+
+    **Tier 5** — default: ``"minor"``.
 
     Args:
-        entry: A single changelog entry dict.
+        section_desc: Section description from the source CSV.
+        change_type:  Inferred change type string.
+        slc_pattern:  Raw SLC pattern (may contain wildcards).
+        description:  Change description text.
 
     Returns:
-        List of one or more entry dicts.
+        ``"major"`` or ``"minor"``.
     """
-    # Only split when the SLC is fully wildcarded at line level
-    if entry.get("line_id") is not None:
-        return [entry]
-    desc = entry.get("description") or ""
-    heading = entry.get("heading") or ""
-    combined = f"{heading} {desc}"
-    line_ids = _MULTI_LINE_RE.findall(combined)
-    if len(line_ids) <= 1:
-        return [entry]
+    # Tier 1: explicit label
+    section_lower = (section_desc or "").lower()
+    if "major" in section_lower:
+        return "major"
+    if "minor" in section_lower:
+        return "minor"
 
-    schedule = entry.get("schedule", "")
-    col_id = entry.get("column_id")
-    results = []
-    for lid in line_ids:
-        col_part = col_id if col_id else "xx"
-        slc_pattern = f"{schedule} {lid} {col_part}"
-        try:
-            components = pdf_slc_to_components(slc_pattern)
-            parsed_col = components["column_id"]
-        except ValueError:
-            parsed_col = None
-        new_entry = dict(entry)
-        new_entry["slc_pattern"] = slc_pattern
-        new_entry["line_id"] = lid
-        new_entry["column_id"] = parsed_col
-        results.append(new_entry)
-    return results
+    # Tier 2: structural scope
+    if change_type in ("new_schedule", "deleted_schedule"):
+        return "major"
+
+    if slc_pattern:
+        slc_lower = slc_pattern.lower()
+        if change_type in ("new_line", "deleted_line") and "xxxx" in slc_lower:
+            return "major"
+        if change_type in ("new_column", "deleted_column") and re.search(
+            r"\bxx\b", slc_lower
+        ):
+            return "major"
+
+    # Tier 3: keyword signals
+    combined = (description + " " + (section_desc or "")).lower()
+    major_score = sum(1 for kw in _MAJOR_DESC_KEYWORDS if kw in combined)
+    minor_score = sum(1 for kw in _MINOR_DESC_KEYWORDS if kw in combined)
+
+    if major_score > minor_score:
+        return "major"
+    if minor_score > major_score:
+        return "minor"
+
+    # Tier 5: default
+    return "minor"
 
 
 # ---------------------------------------------------------------------------
-# Carry-forward
+# Row parsing
 # ---------------------------------------------------------------------------
 
 
-def _apply_carry_forward(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Fill blank heading values by carrying forward from the previous row.
+def parse_changelog_row(row: dict[str, Any], year: int) -> list[dict[str, Any]]:
+    """Parse a CSV row dict into one or more changelog entry dicts.
 
-    Carry-forward rules:
-    - ``heading`` is carried forward within the same ``schedule`` + ``slc_pattern``
-      group (stops when either changes).
-    - ``schedule`` is NOT carried forward; it is always extracted from the row or
-      from the SLC schedule_dup token.
+    Multi-schedule entries (e.g. ``Schedule = "77A, B, C & D"``) are expanded
+    into one entry per schedule; all other fields are identical across the
+    expanded entries.
 
     Args:
-        entries: List of raw entry dicts (in order).
+        row:  Dict of column names to values (from ``pandas.DataFrame.iterrows``
+              or a ``csv.DictReader``).
+        year: FIR reporting year (e.g. 2025).
 
     Returns:
-        Same list with heading gaps filled in-place.
+        A list of one or more entry dicts suitable for
+        :func:`insert_changelog_entries`.
     """
-    prev_heading: str | None = None
-    prev_schedule: str | None = None
-    prev_slc: str | None = None
+    schedule_raw = str(row.get("Schedule", "") or "").strip()
+    slc_raw = str(row.get("SLC", "") or "").strip()
+    heading = str(row.get("Heading", "") or "").strip()
+    description = str(row.get("Description", "") or "").strip()
+    section_desc = str(row.get("Section Description", "") or "").strip()
 
-    for entry in entries:
-        sched = entry.get("schedule")
-        slc = entry.get("slc_pattern")
+    schedules = _expand_schedules(schedule_raw) if schedule_raw else [schedule_raw]
 
-        # Reset carry-forward if schedule or SLC changes
-        if sched != prev_schedule or slc != prev_slc:
-            prev_heading = None
+    slc_pattern, line_id, column_id = _parse_slc_field(slc_raw, schedule_raw)
 
-        heading = entry.get("heading")
-        if not heading and prev_heading:
-            entry["heading"] = prev_heading
-        elif heading:
-            prev_heading = heading
+    change_type = _infer_change_type(
+        slc_raw if slc_raw else None,
+        line_id,
+        column_id,
+        description,
+        heading,
+        section_desc,
+    )
+    severity = _infer_severity(section_desc, change_type, slc_pattern, description)
 
-        prev_schedule = sched
-        prev_slc = slc
+    entries: list[dict[str, Any]] = []
+    for schedule in schedules:
+        entries.append(
+            {
+                "year": year,
+                "schedule": schedule,
+                "slc_pattern": slc_pattern,
+                "line_id": line_id,
+                "column_id": column_id,
+                "heading": heading or None,
+                "change_type": change_type,
+                "severity": severity,
+                "description": description or None,
+                "source": _SOURCE_TAG,
+            }
+        )
 
     return entries
 
 
-# ---------------------------------------------------------------------------
-# Core extraction
-# ---------------------------------------------------------------------------
+def load_changelog_csv(csv_path: Path, year: int) -> list[dict[str, Any]]:
+    """Load a single per-year changelog CSV and return parsed entry dicts.
 
-
-def _parse_content_changes_page(
-    page: Any,
-    sch_x: float,
-    slc_x: float,
-    current_severity: str | None,
-) -> tuple[list[dict[str, Any]], str | None]:
-    """Extract changelog entries from a single PDF page.
+    Reads with UTF-8-sig encoding to strip any BOM characters that appear in
+    some source files (e.g. FIR2023 Changes.csv).
 
     Args:
-        page: A ``pdfplumber.Page`` object.
-        sch_x: x-position of the Schedule column header.
-        slc_x: x-position of the SLC column header.
-        current_severity: Severity carried in from the previous page ('major',
-            'minor', or None).
+        csv_path: Path to a ``FIR{year} Changes.csv`` file.
+        year:     FIR reporting year.
 
     Returns:
-        ``(entries, new_severity)`` — list of raw entry dicts and the severity
-        state at the end of the page.
+        List of entry dicts produced by :func:`parse_changelog_row`.
     """
-    slc_zone_end = slc_x + 30
-    sched_lo = sch_x - 15
-    sched_hi = sch_x + 35
-
-    words = page.extract_words()
-    rows = _group_words_into_rows(words)
+    df = pd.read_csv(csv_path, encoding="utf-8-sig", dtype=str, keep_default_na=False)
     entries: list[dict[str, Any]] = []
-
-    for row in rows:
-        # Section header check
-        severity_hit = _is_section_header(row)
-        if severity_hit:
-            current_severity = severity_hit
-            continue
-
-        row_type = _classify_row(row, sch_x, slc_x)
-        if row_type not in ("data", "blank_schedule"):
-            continue
-
-        # Partition words into schedule zone, SLC zone, remainder
-        sched_zone_words = [w for w in row if sched_lo <= w["x0"] < sched_hi]
-        slc_zone_words = [w for w in row if sched_hi <= w["x0"] < slc_zone_end]
-        remainder_words = [w for w in row if w["x0"] >= slc_zone_end]
-
-        # --- Schedule ---
-        if row_type == "data":
-            # All tokens in schedule zone; handle multi-token ("77A, B, C & D")
-            schedule = " ".join(w["text"] for w in sched_zone_words).strip()
-        else:
-            # blank_schedule: extract schedule from SLC schedule_dup (first token
-            # that isn't a 4-digit number or wildcard)
-            schedule = ""
-            for w in slc_zone_words:
-                t = w["text"]
-                if not re.match(r"^\d{4}$", t) and not re.match(r"^x+$", t, re.I):
-                    schedule = t
-                    break
-
-        # --- SLC tokens ---
-        slc_tokens = [w["text"] for w in slc_zone_words]
-        slc_pattern, line_id, column_id, is_new, is_deleted = _extract_slc_info(
-            slc_tokens
-        )
-
-        # --- Heading / description ---
-        heading, description = _split_heading_description(remainder_words)
-
-        change_type = _infer_change_type(
-            description, heading, slc_pattern, line_id, column_id, is_new, is_deleted
-        )
-
-        entry: dict[str, Any] = {
-            "schedule": schedule,
-            "slc_pattern": slc_pattern,
-            "line_id": line_id,
-            "column_id": column_id,
-            "heading": heading or None,
-            "change_type": change_type,
-            "severity": current_severity,
-            "description": description or None,
-        }
-        entries.append(entry)
-
-    return entries, current_severity
-
-
-def extract_changelog_from_pdf(
-    pdf_path: Path, year: int
-) -> list[dict[str, Any]]:
-    """Extract all Content Changes entries from a single FIR changelog PDF.
-
-    Scans every page for the Content Changes table header, then extracts rows
-    until all pages are processed.  Applies carry-forward logic and multi-entry
-    splitting before returning.
-
-    Args:
-        pdf_path: Path to the FIR Changes PDF file.
-        year: FIR reporting year (e.g. 2025).
-
-    Returns:
-        List of entry dicts ready for insertion into ``fir_instruction_changelog``.
-        Each dict has keys: ``year``, ``schedule``, ``slc_pattern``, ``line_id``,
-        ``column_id``, ``heading``, ``change_type``, ``severity``, ``description``,
-        ``source``.
-
-    Raises:
-        ValueError: If no Content Changes header row is found in the PDF.
-    """
-    entries: list[dict[str, Any]] = []
-    sch_x: float | None = None
-    slc_x: float | None = None
-    current_severity: str | None = None
-    header_found = False
-
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            words = page.extract_words()
-            rows = _group_words_into_rows(words)
-
-            # Look for (or re-find) the header on this page
-            header = _find_header_row(rows)
-            if header is not None:
-                sch_x, slc_x, _, _ = header
-                header_found = True
-                # Skip the header row itself when extracting
-                # (handled by _parse_content_changes_page classification)
-
-            if not header_found or sch_x is None or slc_x is None:
-                continue
-
-            page_entries, current_severity = _parse_content_changes_page(
-                page, sch_x, slc_x, current_severity
-            )
-            entries.extend(page_entries)
-
-    if not header_found:
-        raise ValueError(
-            f"No Content Changes table header found in {pdf_path.name}"
-        )
-
-    # Apply carry-forward to fill blank heading cells
-    entries = _apply_carry_forward(entries)
-
-    # Split multi-entry rows
-    split_entries: list[dict[str, Any]] = []
-    for entry in entries:
-        split_entries.extend(_split_multi_entry(entry))
-
-    # Stamp year and source
-    for entry in split_entries:
-        entry["year"] = year
-        entry["source"] = "pdf_changelog"
-
-    return split_entries
+    for _, row in df.iterrows():
+        entries.extend(parse_changelog_row(row.to_dict(), year))
+    return entries
 
 
 # ---------------------------------------------------------------------------
-# Storage
+# Database storage
 # ---------------------------------------------------------------------------
 
 
@@ -682,48 +473,50 @@ def insert_changelog_entries(
 ) -> int:
     """Insert changelog entries into ``fir_instruction_changelog``, skipping duplicates.
 
-    Uses ``INSERT ... ON CONFLICT DO NOTHING`` for entries whose ``slc_pattern``
-    is not NULL (those can be matched by the unique constraint on the table).
-    For entries where ``slc_pattern`` IS NULL, deduplication is handled at the
-    application level because PostgreSQL treats NULLs as distinct in unique
-    constraints.
+    Entries with a non-NULL ``slc_pattern`` use ``INSERT … ON CONFLICT DO
+    NOTHING`` against the table's unique constraint on
+    ``(year, schedule, slc_pattern, change_type, source)``.
+
+    Entries with ``slc_pattern = NULL`` (schedule-level changes) are
+    deduplicated at the application level, because PostgreSQL treats NULLs as
+    distinct in unique constraints.
 
     Args:
-        engine: SQLAlchemy engine (from :func:`~municipal_finances.database.get_engine`).
-        entries: List of dicts produced by :func:`extract_changelog_from_pdf`.
+        engine:  SQLAlchemy engine (from
+                 :func:`~municipal_finances.database.get_engine`).
+        entries: List of entry dicts produced by :func:`parse_changelog_row`
+                 or :func:`load_from_csv`.
 
     Returns:
-        Number of rows actually inserted.
+        Number of rows actually inserted (may be less than ``len(entries)``
+        if some already exist).
     """
     if not entries:
         return 0
 
-    required_keys = {"year", "schedule", "change_type", "source"}
-    for entry in entries:
-        missing = required_keys - entry.keys()
-        if missing:
-            raise ValueError(f"Entry missing required keys: {missing}. Entry: {entry}")
+    non_null = [e for e in entries if e.get("slc_pattern") is not None]
+    null_slc = [e for e in entries if e.get("slc_pattern") is None]
 
     inserted = 0
 
     with Session(engine) as session:
-        # Separate null-slc_pattern entries (schedule-level) from the rest
-        null_slc = [e for e in entries if e.get("slc_pattern") is None]
-        non_null_slc = [e for e in entries if e.get("slc_pattern") is not None]
-
-        # Non-null: bulk insert with ON CONFLICT DO NOTHING
-        if non_null_slc:
-            stmt = pg_insert(FIRInstructionChangelog).values(non_null_slc)
-            stmt = stmt.on_conflict_do_nothing()
+        # Non-null: bulk insert with ON CONFLICT DO NOTHING.
+        # psycopg3 returns rowcount=-1 for this statement type, so use
+        # RETURNING to count only the rows that were actually inserted.
+        if non_null:
+            stmt = (
+                pg_insert(FIRInstructionChangelog)
+                .values(non_null)
+                .on_conflict_do_nothing()
+                .returning(FIRInstructionChangelog.id)
+            )
             result = session.execute(stmt)
-            inserted += result.rowcount
+            inserted += len(result.fetchall())
 
-        # Null slc_pattern: app-level dedup before inserting
+        # NULL slc_pattern: deduplicate in application layer
         for entry in null_slc:
-            exists = session.exec(  # type: ignore[call-overload]
-                __import__("sqlmodel", fromlist=["select"]).select(
-                    FIRInstructionChangelog
-                ).where(
+            exists = session.exec(
+                select(FIRInstructionChangelog).where(
                     FIRInstructionChangelog.year == entry["year"],
                     FIRInstructionChangelog.schedule == entry["schedule"],
                     FIRInstructionChangelog.slc_pattern.is_(None),  # type: ignore[union-attr]
@@ -744,29 +537,16 @@ def insert_changelog_entries(
 # CSV export / import
 # ---------------------------------------------------------------------------
 
-_CSV_FIELDS = [
-    "year",
-    "schedule",
-    "slc_pattern",
-    "line_id",
-    "column_id",
-    "heading",
-    "change_type",
-    "severity",
-    "description",
-    "source",
-]
-
 
 def save_to_csv(entries: list[dict[str, Any]], csv_path: Path) -> None:
-    """Save extracted changelog entries to a CSV file.
+    """Save changelog entries to a CSV file.
 
-    The file uses the column order defined by ``_CSV_FIELDS``.  Existing content
-    is overwritten.
+    The file uses the column order defined by ``_CSV_FIELDS``. Any existing
+    content is overwritten. Parent directories are created if needed.
 
     Args:
-        entries: List of entry dicts.
-        csv_path: Destination path (parent directory must exist).
+        entries:  List of entry dicts.
+        csv_path: Destination path.
     """
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
@@ -776,7 +556,7 @@ def save_to_csv(entries: list[dict[str, Any]], csv_path: Path) -> None:
 
 
 def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
-    """Load changelog entries from a previously saved CSV file.
+    """Load changelog entries from a previously saved export CSV.
 
     Empty strings are converted to ``None`` for nullable fields
     (``slc_pattern``, ``line_id``, ``column_id``, ``heading``,
@@ -786,9 +566,11 @@ def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
         csv_path: Path to a CSV file written by :func:`save_to_csv`.
 
     Returns:
-        List of entry dicts with integer ``year`` and typed fields.
+        List of entry dicts with an integer ``year`` field.
     """
-    nullable = {"slc_pattern", "line_id", "column_id", "heading", "severity", "description"}
+    nullable = {
+        "slc_pattern", "line_id", "column_id", "heading", "severity", "description"
+    }
     entries: list[dict[str, Any]] = []
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -800,3 +582,106 @@ def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
                     entry[key] = None
             entries.append(entry)
     return entries
+
+
+# ---------------------------------------------------------------------------
+# CLI commands
+# ---------------------------------------------------------------------------
+
+
+@app.command()
+def load_changelogs(
+    csv_dir: Path = typer.Option(
+        _DEFAULT_CSV_DIR,
+        help="Directory containing per-year 'FIR{year} Changes.csv' files",
+    ),
+    export_dir: Path = typer.Option(
+        _DEFAULT_EXPORT_DIR,
+        help="Directory for the combined export CSV",
+    ),
+) -> None:
+    """Load FIR instruction changelog CSVs into the database.
+
+    Reads all ``FIR{year} Changes.csv`` files from *csv_dir*, parses each row
+    into a :class:`~municipal_finances.models.FIRInstructionChangelog` record,
+    inserts them into the database (skipping duplicates), and saves a combined
+    export CSV to ``{export_dir}/fir_instruction_changelog.csv`` for human
+    verification.
+    """
+    engine = get_engine()
+
+    csv_files = sorted(csv_dir.glob("FIR* Changes.csv"))
+    if not csv_files:
+        typer.echo(f"No changelog CSVs found in {csv_dir}", err=True)
+        raise typer.Exit(code=1)
+
+    all_entries: list[dict[str, Any]] = []
+    for csv_path in csv_files:
+        match = _YEAR_FROM_FILENAME_RE.search(csv_path.name)
+        if not match:
+            typer.echo(f"Skipping {csv_path.name}: cannot extract year from filename.")
+            continue
+        year = int(match.group(1))
+        typer.echo(f"Loading {csv_path.name}...")
+        entries = load_changelog_csv(csv_path, year)
+        typer.echo(f"  {len(entries)} entries parsed.")
+        all_entries.extend(entries)
+
+    if not all_entries:
+        typer.echo("No entries parsed from any CSV.", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(f"Inserting {len(all_entries)} entries into database...")
+    inserted = insert_changelog_entries(engine, all_entries)
+    typer.echo(f"  {inserted} new rows inserted.")
+
+    export_path = export_dir / _EXPORT_FILENAME
+    export_dir.mkdir(parents=True, exist_ok=True)
+    save_to_csv(all_entries, export_path)
+    typer.echo(f"Exported {len(all_entries)} entries to {export_path}.")
+
+
+@app.command()
+def export_changelog(
+    export_dir: Path = typer.Option(
+        _DEFAULT_EXPORT_DIR,
+        help="Directory for the export CSV",
+    ),
+) -> None:
+    """Re-export the fir_instruction_changelog table to a CSV file.
+
+    Queries all ``pdf_changelog`` entries from the database and writes them to
+    ``{export_dir}/fir_instruction_changelog.csv``, ordered by year, schedule,
+    and SLC pattern.
+    """
+    engine = get_engine()
+    with Session(engine) as session:
+        rows = session.exec(
+            select(FIRInstructionChangelog)
+            .where(FIRInstructionChangelog.source == _SOURCE_TAG)
+            .order_by(
+                FIRInstructionChangelog.year,
+                FIRInstructionChangelog.schedule,
+                FIRInstructionChangelog.slc_pattern,
+            )
+        ).all()
+
+    records = [
+        {
+            "year": r.year,
+            "schedule": r.schedule,
+            "slc_pattern": r.slc_pattern,
+            "line_id": r.line_id,
+            "column_id": r.column_id,
+            "heading": r.heading,
+            "change_type": r.change_type,
+            "severity": r.severity,
+            "description": r.description,
+            "source": r.source,
+        }
+        for r in rows
+    ]
+
+    export_path = export_dir / _EXPORT_FILENAME
+    save_to_csv(records, export_path)
+    typer.echo(f"Exported {len(records)} rows to {export_path}.")
