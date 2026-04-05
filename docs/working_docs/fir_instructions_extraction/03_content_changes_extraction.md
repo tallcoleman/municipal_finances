@@ -8,18 +8,18 @@ The manually-extracted CSVs are available in `fir_instructions/change_logs/seman
 
 ## Task List
 
-- [ ] Create loading script/module at `src/municipal_finances/fir_instructions/extract_changelog.py`
-- [ ] Parse and load `FIR2019 Changes.csv`
-- [ ] Parse and load `FIR2020 Changes.csv`
-- [ ] Parse and load `FIR2021 Changes.csv`
-- [ ] Parse and load `FIR2022 Changes.csv`
-- [ ] Parse and load `FIR2023 Changes.csv`
-- [ ] Parse and load `FIR2024 Changes.csv`
-- [ ] Parse and load `FIR2025 Changes.csv`
-- [ ] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07
-- [ ] Store all entries in `fir_instruction_changelog`
-- [ ] Verify loaded data against the source CSVs
-- [ ] Write tests for the storage/loading logic
+- [x] Create loading script/module at `src/municipal_finances/fir_instructions/extract_changelog.py`
+- [x] Parse and load `FIR2019 Changes.csv`
+- [x] Parse and load `FIR2020 Changes.csv`
+- [x] Parse and load `FIR2021 Changes.csv`
+- [x] Parse and load `FIR2022 Changes.csv`
+- [x] Parse and load `FIR2023 Changes.csv`
+- [x] Parse and load `FIR2024 Changes.csv`
+- [x] Parse and load `FIR2025 Changes.csv`
+- [x] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07
+- [x] Store all entries in `fir_instruction_changelog`
+- [x] Verify loaded data against the source CSVs
+- [x] Write tests for the storage/loading logic
 
 ## Implementation Details
 
@@ -160,15 +160,15 @@ Total: ~107+ changelog entries from assessed PDFs.
 
 ## Tests
 
-- [ ] Test `insert_changelog_entries` with valid data
-- [ ] Test idempotent insertion (inserting same data twice doesn't create duplicates)
-- [ ] Test that `change_type` values are all from the allowed set
-- [ ] Test SLC pattern parsing for wildcard patterns (e.g., `"40 xxxx 05"`)
-- [ ] Test loading from exported CSV
+- [x] Test `insert_changelog_entries` with valid data
+- [x] Test idempotent insertion (inserting same data twice doesn't create duplicates)
+- [x] Test that `change_type` values are all from the allowed set
+- [x] Test SLC pattern parsing for wildcard patterns (e.g., `"40 xxxx 05"`)
+- [x] Test loading from exported CSV
 
 ## Documentation Updates
 
-- [ ] Add a short description to the README about the folder structure that the output CSV files are stored in.
+- [x] Add a short description to the README about the folder structure that the output CSV files are stored in.
 
 ## Success Criteria
 
