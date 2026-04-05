@@ -8,11 +8,11 @@ Extract line-level metadata for all schedules from the FIR2025 Instructions PDF.
 
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
-- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values)
+- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values), and the PDF-to-text conversion and offset maps from Task 04's prerequisite step must already exist (`fir_instructions/source_files/FIR2025 Instructions.txt` and `FIR2025 Instructions.offsets.json`)
 
 ## Task List
 
-- [ ] Extract Functional Classifications from FIR2025 PDF (~pages 43–93)
+- [ ] Extract Functional Classifications from `FIR2025 Instructions.txt` using the offset map (section between Introduction and Schedule 02)
   - [ ] Schedule 12 lines (Grants/User Fees)
   - [ ] Schedule 40 lines (Expenses)
   - [ ] Schedule 51 lines (Tangible Capital Assets)
@@ -60,10 +60,10 @@ These need to be merged into a single `fir_line_meta` row per line.
 
 ### Extraction Strategy
 
-Given the volume (~26 schedules, potentially hundreds of lines each), work through the PDF in batches:
+Given the volume (~26 schedules, potentially hundreds of lines each), work in two passes through `FIR2025 Instructions.txt` using the offset map from Task 04:
 
-1. **Functional Classifications first** (pages 43–93): Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule, line_id). Note: the Functional Classifications may reference "Schedule 51" generically rather than distinguishing 51A from 51B. When this occurs, assign the includes/excludes to all applicable sub-schedules and note the ambiguity in `change_notes`.
-2. **Schedule-by-schedule**: For each schedule's instruction section, extract line descriptions, subtotal flags, carry-forward references, and applicability notes.
+1. **Functional Classifications first**: The Functional Classifications section sits between the Introduction and Schedule 02 in the text file. Use the offset map to locate this region (it will not have a schedule-number key — find it as the text between the end of the Introduction and the first schedule offset). Extract all includes/excludes for Schedules 12, 40, 51. Store in a temporary structure keyed by (schedule, line_id). Note: the Functional Classifications may reference "Schedule 51" generically rather than distinguishing 51A from 51B. When this occurs, assign the includes/excludes to all applicable sub-schedules and note the ambiguity in `change_notes`.
+2. **Schedule-by-schedule**: For each schedule, use its line offset from the offset map to seek directly to that section. Read forward to the next schedule's offset (or EOF). Within that slice, extract line descriptions, subtotal flags, carry-forward references, and applicability notes.
 3. **Merge**: For Schedules 12, 40, 51 — combine the Functional Classifications data with the schedule instruction data. Where a line appears in both sources with different descriptions, use the schedule instruction text for the `description` field and Functional Classifications data only for `includes`/`excludes`.
 
 ### Handling Section Boundaries
@@ -87,7 +87,7 @@ Total: likely 500–1000+ line metadata rows.
 
 ### Data File Approach
 
-Since PDF extraction is expensive and non-deterministic, the extracted data should also be saved as a CSV file at `fir_instructions/exports/baseline_line_meta.csv` as part of this task. This allows re-loading without re-extraction as well as human verification and editing to make corrections.
+Even with the pre-converted text files, extraction logic involves parsing heuristics that may need manual correction. Save the extracted data as a CSV at `fir_instructions/exports/baseline_line_meta.csv`. This allows re-loading without re-parsing and serves as the human-editable source of truth before DB insertion.
 
 ## Tests
 
