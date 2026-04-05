@@ -96,7 +96,7 @@ Source PDFs available: 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 
 Use the same insertion pattern as Task 03. Create an `insert_schedule_meta` function or reuse a generic insertion function.
 
-The `.txt` and `.offsets.json` files produced by the prerequisite step are shared artifacts — do not regenerate them per-task. Add them to `.gitignore` (they are large and fully reproducible from the source PDFs).
+The `.txt` and `.offsets.json` files produced by the prerequisite step are shared artifacts — do not regenerate them per-task. They are committed to version control in `fir_instructions/source_files/` (small enough to track; avoids requiring `pdftotext` on every machine).
 
 ### Data File Approach
 
