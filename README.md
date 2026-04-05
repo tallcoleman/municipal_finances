@@ -49,6 +49,25 @@ uv run src/municipal_finances/app.py combine-data data/cleaned_data data/output_
 uv run src/municipal_finances/app.py load-data data/output_data/fir_data_all_years.parquet
 ```
 
+### FIR instruction changelog
+
+Load the manually-extracted Content Changes CSVs (one per year, in `fir_instructions/change_logs/semantic_extraction/`) into the `fir_instruction_changelog` table:
+
+```bash
+# Load all per-year CSVs and export a combined CSV to fir_instructions/exports/
+uv run src/municipal_finances/app.py load-changelogs
+
+# Load from a custom directory or write the export to a different location
+uv run src/municipal_finances/app.py load-changelogs --csv-dir path/to/csvs --export-dir path/to/exports
+```
+
+Re-export the table from the database (e.g. after manual edits):
+
+```bash
+uv run src/municipal_finances/app.py export-changelog
+uv run src/municipal_finances/app.py export-changelog --export-dir path/to/exports
+```
+
 ## Development
 
 ```bash

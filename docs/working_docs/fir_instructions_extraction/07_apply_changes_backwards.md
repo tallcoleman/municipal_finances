@@ -7,6 +7,7 @@ Using the changelog from Task 03, create versioned rows in the metadata tables b
 ## Prerequisites
 
 - Task 03 (changelog extraction) complete — provides the list of what changed each year
+- Human verification of the changelog extraction from Task 03 needs to be complete
 - Tasks 04–06 (FIR2025 baseline) complete — provides the current-version rows to version
 - Task 02 (SLC parsing) complete
 

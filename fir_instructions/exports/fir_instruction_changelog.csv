@@ -1,0 +1,257 @@
+year,schedule,slc_pattern,line_id,column_id,heading,change_type,severity,description,source
+2019,10,10 1886 01,1886,01,Own Purpose Revenue,updated_line,minor,"For 2019, report the Transient Accommodation Tax on line 1886 of Schedule 10.",pdf_changelog
+2019,10,10 2063 01,2063,01,Own Purpose Revenue,updated_line,minor,"On schedule 10, report Other comprehensive income (loss) on SLC 10 2063 01. This amount will be added to the Accumulated surplus/(deficit) at the end of year on SLC 10 9950 01.",pdf_changelog
+2019,22A,22 xxxx 08,,08,General Purpose Levy Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 22A.",pdf_changelog
+2019,22A,22 xxxx 09,,09,General Purpose Levy Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 22A.",pdf_changelog
+2019,22A,22 xxxx 10,,10,General Purpose Levy Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 22A.",pdf_changelog
+2019,24A,24 xxxx 08,,08,General Purpose Payments-In-Lieu Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 24A.",pdf_changelog
+2019,24A,24 xxxx 09,,09,General Purpose Payments-In-Lieu Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 24A.",pdf_changelog
+2019,24A,24 xxxx 10,,10,General Purpose Payments-In-Lieu Information,updated_column,minor,"Taxrates (LT/ST, UT, EDUC) are preloaded for municipalities on columns 08, 09 and 10 of Schedule 24A.",pdf_changelog
+2019,53,53 1421 01,1421,01,Consolidated Statement of Change In Net Financial Assets,updated_line,minor,"On schedule 53, report Other comprehensive income (loss) on SLC 53 1421 01. This amount will be added to the Net financial assets (net debt), end of year on SLC 53 9910 01.",pdf_changelog
+2019,81,81 2255 01,2255,01,Annual Debt Repayment Limit,updated_line,minor,Other Revenue is automatically calculated on line 2255 of Schedule 81 and is the sum of (SLC 10 1890 01 + SLC 10 1891 01 + SLC 10 1892 01 + SLC 10 1893 01 + SLC 10 1894 01 + SLC 10 1895 01 + SLC 10 1896 01 + SLC 10 1897 01 + SLC 10 1898 01). This amount will be added to the Subtotal on SLC 81 2299  01.,pdf_changelog
+2020,10,10 0626 01,0626,01,Own Purpose Revenue,updated_line,minor,Report the Safe Restart Agreement: Municipal Operating Funding on line 0626.,pdf_changelog
+2020,10,10 0627 01,0627,01,Own Purpose Revenue,updated_line,minor,Input Safe Restart Agreement: Public Transit Funding on line 0627.,pdf_changelog
+2020,10,10 0628 01,0628,01,Own Purpose Revenue,updated_line,minor,Report amount for Social Services Relief Fund on line 0628.,pdf_changelog
+2020,10,10 4047 01,4047,01,Own Purpose Revenue,updated_line,minor,Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the transportation service items: Short-Line Rail(line 4047) and Short-Sea Shipping(line 4048).,pdf_changelog
+2020,10,10 4048 01,4048,01,Own Purpose Revenue,updated_line,minor,Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the transportation service items: Short-Line Rail(line 4047) and Short-Sea Shipping(line 4048).,pdf_changelog
+2020,10,10 4081 01,4081,01,Own Purpose Revenue,updated_line,minor,"Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the new items: Broadband Connectivity(line 4081), Tourism Infrastructure(line 4082), Brownfield Redevelopment(line 4083) and Other(line 4084).",pdf_changelog
+2020,10,10 4082 01,4082,01,Own Purpose Revenue,updated_line,minor,"Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the new items: Broadband Connectivity(line 4081), Tourism Infrastructure(line 4082), Brownfield Redevelopment(line 4083) and Other(line 4084).",pdf_changelog
+2020,10,10 4083 01,4083,01,Own Purpose Revenue,updated_line,minor,"Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the new items: Broadband Connectivity(line 4081), Tourism Infrastructure(line 4082), Brownfield Redevelopment(line 4083) and Other(line 4084).",pdf_changelog
+2020,10,10 4084 01,4084,01,Own Purpose Revenue,updated_line,minor,"Canada Gas Tax used for Capital Investments on SLC 10 4099 01 includes the new items: Broadband Connectivity(line 4081), Tourism Infrastructure(line 4082), Brownfield Redevelopment(line 4083) and Other(line 4084).",pdf_changelog
+2020,10,10 4205 01,4205,01,Own Purpose Revenue,updated_line,minor,Input Federal Gas Tax for Operating expenses: Capacity Building on SLC 10 4205 01.,pdf_changelog
+2020,10,10 4299 01,4299,01,Own Purpose Revenue,updated_line,minor,Canada Gas Tax Recognized in the year on SLC 10 4299 01 is automatically calculated as the sum of (SLC 10 4099 01 + SLC 10 4205 01).,pdf_changelog
+2020,42,42 6009 01,6009,01,,updated_line,minor,Input amounts for Total COVID-19 Expenses as reported on SLC 40 0450 11 on SLC 42 6009 01.,pdf_changelog
+2020,60,60 1048 01,1048,01,"Obligatory Reserve Funds, Deferred Revenue",updated_line,minor,Report Deferred revenue earned (Canada Gas Tax for Operating - Capacity Building) on  SLC 60 1048 01.,pdf_changelog
+2020,72B,72 1000 xx,1000,,Continuity of Taxes Receivable,updated_line,minor,"Taxes collected on behalf of ""other"" bodies (Mun. Act 353) on line 1000.",pdf_changelog
+2020,72B,72 1010 xx,1010,,Continuity of Taxes Receivable,updated_line,minor,Write-off of taxes (Mun. Act 354) on line 1010.,pdf_changelog
+2020,72B,72 1020 xx,1020,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020.",pdf_changelog
+2020,72B,72 1030 xx,1030,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030.",pdf_changelog
+2020,72B,72 1040 xx,1040,,Continuity of Taxes Receivable,updated_line,minor,Canada Gas Tax Recognized in the year on SLC 10 4299 01 is automatically calculated as the sum of (SLC 10 4099 01 + SLC 10 4205 01).,pdf_changelog
+2020,72B,72 1050 xx,1050,,Continuity of Taxes Receivable,updated_line,minor,RfR (Assessment Act 39.1) on line 1050.,pdf_changelog
+2020,72B,72 1060 xx,1060,,Continuity of Taxes Receivable,updated_line,minor,"Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060.",pdf_changelog
+2020,72B,72 1070 xx,1070,,Continuity of Taxes Receivable,updated_line,minor,Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.,pdf_changelog
+2020,72B,72 1080 xx,1080,,Continuity of Taxes Receivable,updated_line,minor,Special Amended Notice (SAN) (Assessment Act) on line 1080.,pdf_changelog
+2020,72B,72 1090 xx,1090,,Continuity of Taxes Receivable,updated_line,minor,Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.,pdf_changelog
+2020,72B,72 1099 xx,1099,,Continuity of Taxes Receivable,updated_line,minor,Subtotal on line 1099 sums the line items in 1000 to 1090.,pdf_changelog
+2020,72B,72 2301 xx,2301,,Continuity of Taxes Receivable,updated_line,minor,Contaminated Property (Mun. Act  365.1) on line 2301.,pdf_changelog
+2020,72B,72 2400 xx,2400,,Continuity of Taxes Receivable,updated_line,minor,Change in Assessment (Mun. Act 365.3) on line 2400.,pdf_changelog
+2020,72B,72 2899 xx,2899,,Continuity of Taxes Receivable,updated_line,minor,Tax adjustments before allowances on line 2899 also includes:,pdf_changelog
+2021,10,10 0629 01,0629,01,Own Purpose Revenue,updated_line,minor,"Report the amount for ""Provincial COVID-19 Recovery Funding"" on line 0629.",pdf_changelog
+2021,10,10 0831 01,0831,01,,updated_line,minor,"SLC 10 0831 01 restated as ""Deferred revenue earned (Canada Community - Building Fund) (Federal Gas Tax) (SLC 60 1047 01 + SLC 60 1048 01)"".",pdf_changelog
+2021,10,10 4099 01,4099,01,,updated_line,minor,"SLC 10 4099 01 is restated as ""Canada Community - Building Fund used for Capital Investments"".",pdf_changelog
+2021,10,10 4205 01,4205,01,,updated_line,minor,"SLC 10 4205 01 restated as ""Canada Community - Building Fund for Operating expenses: Capacity Building"".",pdf_changelog
+2021,10,10 4299 01,4299,01,,updated_line,minor,"SLC 10 4299 01 is restated as ""Canada Community - Building Fund Recognized in the year"".",pdf_changelog
+2021,42,42 6009 01,6009,01,,updated_line,minor,"SLC 42 6009 01 is restated as ""Total COVID-19 Expenses as reported on SLC 40 9910 11"".",pdf_changelog
+2021,53,53 0406 01,0406,01,Financing from Dedicated Revenue,updated_line,minor,Reserves and Reserve funds on SLC 53 0406 01 is calculated as (SLC 60 1012 02 + SLC 60 1012 03).,pdf_changelog
+2021,53,53 0440 01,0440,01,Government Transfers,updated_line,minor,"SLC 53 0440 01 is restated as ""Canada Community - Building Fund - AMO (SLC 10 4099 01)"".",pdf_changelog
+2021,60,60 0862 01,0862,01,"Obligatory Reserve Funds, Deferred Revenue",updated_line,minor,"SLC 60 0862 01 restated as ""Canada Community - Building Fund (Federal Gas Tax)"".",pdf_changelog
+2021,60,60 1047 01,1047,01,"Obligatory Reserve Funds, Deferred Revenue",updated_line,minor,"SLC 60 1047 01 restated as ""Deferred revenue earned (Canada Community - Building Fund) (Federal Gas Tax)"".",pdf_changelog
+2021,60,60 1048 01,1048,01,"Obligatory Reserve Funds, Deferred Revenue",updated_line,minor,"SLC 60 1048 01 restated as ""Deferred revenue earned (Canada Community - Building Fund for Capacity Building)"".",pdf_changelog
+2021,60,60 5691 01,5691,01,"Obligatory Reserve Funds, Deferred Revenue",updated_line,minor,"SLC 60 5691 01 restated as ""Canada Community - Building Fund (Federal Gas Tax)"".",pdf_changelog
+2021,72B,72 1000 xx,1000,,Continuity of Taxes Receivable,updated_line,minor,"Taxes collected on behalf of ""other"" bodies (Mun. Act 353) on line 1000.",pdf_changelog
+2021,72B,72 1010 xx,1010,,Continuity of Taxes Receivable,updated_line,minor,Write-off of taxes (Mun. Act 354) on line 1010.,pdf_changelog
+2021,72B,72 1020 xx,1020,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020.",pdf_changelog
+2021,72B,72 1030 xx,1030,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030.",pdf_changelog
+2021,72B,72 1040 xx,1040,,Continuity of Taxes Receivable,updated_line,minor,"ARB decisions, Advisory Notice of Adjustment due to an ARB decisions (Assessment Act 40/19.1(7)) on line 1040.",pdf_changelog
+2021,72B,72 1050 xx,1050,,Continuity of Taxes Receivable,updated_line,minor,RfR (Assessment Act 39.1) on line 1050.,pdf_changelog
+2021,72B,72 1060 xx,1060,,Continuity of Taxes Receivable,updated_line,minor,"Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060.",pdf_changelog
+2021,72B,72 1070 xx,1070,,Continuity of Taxes Receivable,updated_line,minor,Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.,pdf_changelog
+2021,72B,72 1080 xx,1080,,Continuity of Taxes Receivable,updated_line,minor,Special Amended Notice (SAN) (Assessment Act) on line 1080.,pdf_changelog
+2021,72B,72 1090 xx,1090,,Continuity of Taxes Receivable,updated_line,minor,Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.,pdf_changelog
+2021,72B,72 1099 xx,1099,,Continuity of Taxes Receivable,updated_line,minor,Subtotal on line 1099 sums the line items from 1000 to 1090.,pdf_changelog
+2021,72B,72 2099 xx,2099,,Continuity of Taxes Receivable,updated_line,minor,Rebates for Charities (Mun. Act 361) on line 2099.,pdf_changelog
+2021,72B,72 2299 xx,2299,,Continuity of Taxes Receivable,updated_line,minor,Vacant Unit Rebates (Mun. Act 364) on line 2299.,pdf_changelog
+2021,72B,72 2301 xx,2301,,Continuity of Taxes Receivable,updated_line,minor,Contaminated Property (Mun. Act  365.1) on line 2301.,pdf_changelog
+2021,72B,72 2399 xx,2399,,Continuity of Taxes Receivable,updated_line,minor,Reduction for Heritage Property (Mun. Act 365.2) on line 2399.,pdf_changelog
+2021,72B,72 2400 xx,2400,,Continuity of Taxes Receivable,updated_line,minor,Change in Assessment (Mun. Act 365.3) on line 2400.,pdf_changelog
+2021,72B,72 2899 xx,2899,,Continuity of Taxes Receivable,updated_line,minor,Tax adjustments before allowances on line 2899 also includes:,pdf_changelog
+2022,10,10 1815 01,1815,01,Other revenue,updated_line,minor,"The amount for ""Deferred revenue earned (Community Benefit)"" on line 1815 is referenced to (SLC 60 1036 01).",pdf_changelog
+2022,10,10 6065 01,6065,01,Continuity of GBE Equity,updated_line,minor,"Report the amount for ""Dividends paid"" on line 6065.",pdf_changelog
+2022,10,10 6090 01,6090,01,"""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as",updated_line,minor,"""Government Business Enterprises Equity, end of year"" on SLC 60 6090 01 is calculated as ((SLC 60 6010 01 + SLC 60 6020 01 + 60 6060 01)) - SLC 60 6065 01).",pdf_changelog
+2022,22A,22 xxxx 01,,01,Taxable GPL Info - RTC RTQ,updated_column,minor,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+RTQ = 8 is for Small Business subclass :
+C8 - Commercial, Small Business with banding on lines 0975 to 0978.
+S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.
+D8 - Office Building, Small Business with banding on lines 0980 to 0983.
+X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568
+Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653.
+Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848.
+I8 - Industrial Small Business with banding on lines 0965 to 0968.
+J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168.
+RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973.
+X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563.
+I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963.
+J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163.",pdf_changelog
+2022,22B,22 xxxx 01,,01,LT/ST SRA Info - RTC RTQ,updated_column,minor,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+RTQ = 8 is for Small Business subclass :
+C8 - Commercial, Small Business with banding on lines 0975 to 0978.
+S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.
+D8 - Office Building, Small Business with banding on lines 0980 to 0983.
+X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568
+Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653.
+Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848.
+I8 - Industrial Small Business with banding on lines 0965 to 0968.
+J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168.
+RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973.
+X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563.
+I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963.
+J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163.",pdf_changelog
+2022,22C,22 xxxx 01,,01,UT SRA Info - RTC RTQ,updated_column,minor,"New RTC/RTQ codes for Taxable Schedules 22A, 22B, 22C includes (C8, S8, D8, X8, Y8, Z8, I8, J8, C0, X0, I0, J0).  All the RTC RTQ codes listed here is associated with the (O, L, M, H) taxband. No new PIL property subclasses added to Schedule 24 at the moment.
+RTQ = 8 is for Small Business subclass :
+C8 - Commercial, Small Business with banding on lines 0975 to 0978.
+S8 - Shopping Centre, Small Business with banding on lines 0985 to 0988.
+D8 - Office Building, Small Business with banding on lines 0980 to 0983.
+X8 - Commercial New Construction, Small Business with banding on lines 2565 to 2568
+Y8 - Office Building New Construction, Small Business with banding on lines 2650 to 2653.
+Z8 - Shopping Centre New Construction, Small Business with banding on lines 2845 to 2848.
+I8 - Industrial Small Business with banding on lines 0965 to 0968.
+J8 - Industrial New Construction, Small Business with banding on lines 2165 to 2168.
+RTQ = 0 is for Small Scale on-Farm Business Discounted subclass :
+C0 - Commercial, Small Scale on-Farm Business Discounted with banding on lines 0970 to 0973.
+X0 - Commercial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2560 to 2563.
+I0 - Industrial, Small Scale on-Farm Business Discounted with banding on lines 0960 to 0963.
+J0 - Industrial New Construction, Small Scale on-Farm Business Discounted with banding on lines 2160 to 2163.",pdf_changelog
+2022,40,40 xxxx 16,,16,,updated_column,minor,All services(except for General Government) on Amortization(SLC 40 xxxx 16) is referenced to Annual Amortization on (SLC 51A xxxx 08).,pdf_changelog
+2022,40,51 xxxx 08,,08,,updated_column,minor,All services(except for General Government) on Amortization(SLC 40 xxxx 16) is referenced to Annual Amortization on (SLC 51A xxxx 08).,pdf_changelog
+2022,53,53 0417 01,0417,01,,updated_line,minor,"""Community Benefit  Charges (SLC 60 1036 01)"" on SLC 53 0417 01 is referenced to SLC 60 1036 01.",pdf_changelog
+2022,53,53 1422 01,1422,01,,updated_line,minor,"Report the amount for ""Prior period adjustment"" on SLC 53 1422 01.",pdf_changelog
+2022,53,53 1423 01,1423,01,,updated_line,minor,"Net Financial Assets (Net Debt), beginning of year is Restated on SLC 53 1423 01 as (SLC 53 1420 01 +  SLC 53 1422 01).",pdf_changelog
+2022,60,60 0312 xx,0312,,,updated_line,minor,"""Contributions from Operations"" is reported on line 0312.",pdf_changelog
+2022,60,60 0615 01,0615,01,Development Charges Act,updated_line,minor,"""Net Development Charges Collected"" is reported on SLC 60 0615 01.",pdf_changelog
+2022,60,60 0616 01,0616,01,Development Charges Act,updated_line,minor,"""Net Development Charges Receivable "" is reported on SLC 60 0616 01.",pdf_changelog
+2022,60,60 0699 01,0699,01,Development Charges Act,updated_line,minor,Subtotal Development Charges Act is calculated as (SLC 60 0615 01 + SLC 60 0616 01).,pdf_changelog
+2022,60,60 0834 01,0834,01,,updated_line,minor,"""Community Benefit Charges""is reported on SLC 60 0834 01.",pdf_changelog
+2022,60,60 0842 01,0842,01,,updated_line,minor,"""Interest earned on Development Charges Receivable"" is referenced to SLC 61 0299 18.",pdf_changelog
+2022,60,60 1027 01,1027,01,,updated_line,minor,"""Monies Borrowed from Development Charges Reserve Fund (SLC 61 0299 23)"" is referenced to SLC 61 0299 23.",pdf_changelog
+2022,60,60 1036 01,1036,01,,updated_line,minor,"""Community Benefit Charges earned"" is reported on SLC 60 1036 01.",pdf_changelog
+2022,60,60 5635 01,5635,01,Obligatory Deferred Revenue,updated_line,minor,"""Development Charges"" on SLC 60 5635 01 is referenced to SLC 61 0299 14.",pdf_changelog
+2022,60,60 5636 01,5636,01,Obligatory Deferred Revenue,updated_line,minor,"""Development Charge Installments Receivable (Uncollected)"" on SLC 60 5636 01 is referenced to SLC 61 0299 13.",pdf_changelog
+2022,60,60 5655 01,5655,01,Obligatory Deferred Revenue,updated_line,minor,"""Community Benefit Charges"" is reported on SLC 60 5655 01.",pdf_changelog
+2022,61,61 0206 xx,0206,,,new_line,minor,"""Emergency Preparedness"" is reported on line 0206.",pdf_changelog
+2022,61,61 0207 xx,0207,,,new_line,minor,"""Electrical Power Services"" is reported on line 0207.",pdf_changelog
+2022,61,61 0216 xx,0216,,,new_line,minor,"""Provinces Offences Act Services"" is reported on line 0216.",pdf_changelog
+2022,61,61 0226 xx,0226,,,new_line,minor,"""Toronto-York Subway Extension"" is reported on line 0226.",pdf_changelog
+2022,61,61 0246 xx,0246,,,new_line,minor,"""Public Health Services"" is reported on line 0246.",pdf_changelog
+2022,61,61 0289 xx,0289,,,new_line,minor,"""Waste Diversion Services"" is reported on line 0289.",pdf_changelog
+2022,61,61 xxxx 13,,13,,new_column,minor,"""Development Charge Installments Receivable and Interest Collectible"" is reported on column 13.",pdf_changelog
+2022,61,61 xxxx 14,,14,,new_column,minor,"""Development Charges Net of Development Charge Installments Receivable""  is calculated as (SLC 61 xxxx 12 - SLC 61 xxxx 13).",pdf_changelog
+2022,61,61 xxxx 15,,15,,new_column,minor,"""Commitments for Capital Projects Approved as of December 31""  is reported on SLC 61 xxxx 15.",pdf_changelog
+2022,61,61 xxxx 16,,16,,new_column,minor,"""Balance Net of Development Charge Installments Receivable and Capital Commitments"" is calculated as (SLC 61 xxxx 12 - SLC 61 xxxx 13 - SLC 61 xxxx 15).",pdf_changelog
+2022,61,61 xxxx 17,,17,Development Charges Receivables,new_column,minor,"""New Development Charge Installments Receivable"" is reported on column 17.",pdf_changelog
+2022,61,61 xxxx 18,,18,Development Charges Receivables,new_column,minor,"""New Development Charges Interest Receivable"" is reported on column 18.",pdf_changelog
+2022,61,61 xxxx 19,,19,Development Charges Receivables,new_column,minor,"""Less: Prior year Development Charges Installment Receivables and Interest collected during the year"" is reported on column 19.",pdf_changelog
+2022,61,61 xxxx 20,,20,Development Charges Receivables,new_column,minor,"""New Development Charges Receivable"" is calculated as (SLC 61 xxxx 17 + SLC 61 xxxx 18 -  SLC 61 xxxx 19).",pdf_changelog
+2022,61,61 xxxx 21,,21,Development Charges Cash Collected,new_column,minor,"""Repayment of Monies Borrowed from DC Reserve Fund and Associated Interested"" is reported on column 21.",pdf_changelog
+2022,61,61 xxxx 22,,22,,new_column,minor,"""Total Development Charges Inflows: Receivables and Cash Collected"" is  calculated as the sum of (SLC 61 xxxx 20 + SLC 61 xxxx 06).",pdf_changelog
+2022,61,61 xxxx 23,,23,Outflows/Expenditures,new_column,minor,"""Monies Borrowed from DC Reserve Fund"" is reported on column 23.",pdf_changelog
+2022,70,70 0852 01,0852,01,Other Financial Assets,updated_line,minor,"""Development Charge Installments Receivable"" on SLC 70 0852 01 is referenced to SLC 60 5636 01.",pdf_changelog
+2022,70,70 0891 01,0891,01,Other Financial Assets,updated_line,minor,"Report the amount for ""Other"" on SLC 70 0891 01.",pdf_changelog
+2022,70,70 6261 01,6261,01,Non-Financial Assets,updated_line,minor,"Report the amount for ""Intangible Assets"" on SLC 70 6261 01.",pdf_changelog
+2022,70,70 6262 01,6262,01,Non-Financial Assets,updated_line,minor,"Report the amount for ""Other"" on SLC 70 6262 01.",pdf_changelog
+2022,70,70 6411 01,6411,01,Analysis of Accumulated Surplus (Deficit),updated_line,minor,"Report the amount for ""Investment in Intangible Assets"" on SLC 70 6411 01.",pdf_changelog
+2022,70,70 6412 01,6412,01,Analysis of Accumulated Surplus (Deficit),updated_line,minor,"Report the amount for ""Other"" on SLC 70 6412 01.",pdf_changelog
+2022,72B,72 1000 xx,1000,,Continuity of Taxes Receivable,updated_line,minor,"Taxes collected on behalf of ""other"" bodies (Mun. Act 353) on line 1000.",pdf_changelog
+2022,72B,72 1010 xx,1010,,Continuity of Taxes Receivable,updated_line,minor,Write-off of taxes (Mun. Act 354) on line 1010.,pdf_changelog
+2022,72B,72 1020 xx,1020,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020.",pdf_changelog
+2022,72B,72 1030 xx,1030,,Continuity of Taxes Receivable,updated_line,minor,"Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030.",pdf_changelog
+2022,72B,72 1040 xx,1040,,Continuity of Taxes Receivable,updated_line,minor,"ARB decisions, Advisory Notice of Adjustment due to an ARB decisions (Assessment Act 40/19.1(7)) on line 1040.",pdf_changelog
+2022,72B,72 1050 xx,1050,,Continuity of Taxes Receivable,updated_line,minor,RfR (Assessment Act 39.1) on line 1050.,pdf_changelog
+2022,72B,72 1060 xx,1060,,Continuity of Taxes Receivable,updated_line,minor,"Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060.",pdf_changelog
+2022,72B,72 1070 xx,1070,,Continuity of Taxes Receivable,updated_line,minor,Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.,pdf_changelog
+2022,72B,72 1080 xx,1080,,Continuity of Taxes Receivable,updated_line,minor,Special Amended Notice (SAN) (Assessment Act) on line 1080.,pdf_changelog
+2022,72B,72 1090 xx,1090,,Continuity of Taxes Receivable,updated_line,minor,Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.,pdf_changelog
+2022,72B,72 1099 xx,1099,,Continuity of Taxes Receivable,updated_line,minor,Subtotal on line 1099 sums the line items from 1000 to 1090.,pdf_changelog
+2022,72B,72 2099 xx,2099,,Continuity of Taxes Receivable,updated_line,minor,Rebates for Charities (Mun. Act 361) on line 2099.,pdf_changelog
+2022,72B,72 2299 xx,2299,,Continuity of Taxes Receivable,updated_line,minor,Vacant Unit Rebates (Mun. Act 364) on line 2299.,pdf_changelog
+2022,72B,72 2301 xx,2301,,Continuity of Taxes Receivable,updated_line,minor,Contaminated Property (Mun. Act  365.1) on line 2301.,pdf_changelog
+2022,72B,72 2399 xx,2399,,Continuity of Taxes Receivable,updated_line,minor,Reduction for Heritage Property (Mun. Act 365.2) on line 2399.,pdf_changelog
+2022,72B,72 2400 xx,2400,,Continuity of Taxes Receivable,updated_line,minor,Change in Assessment (Mun. Act 365.3) on line 2400.,pdf_changelog
+2022,72B,72 2899 xx,2899,,Continuity of Taxes Receivable,updated_line,minor,Tax adjustments before allowances on line 2899 also includes:,pdf_changelog
+2022,81,81 2256 01,2256,01,,updated_line,minor,Defered revenue earned (Community Benefits) on SLC 81 2256 01 is referenced to SLC 10 1815 01.,pdf_changelog
+2023,10,10 1888 01,1888,01,Vacant Home Tax,new_line,minor,Vacant Home Tax line added to capture Vacant Home Tax Revenue.,pdf_changelog
+2023,10,10 2060 01,2060,01,"Accumulated Surplus/(Deficit), Before Remeasurement Gains (Losses) at the beginning of year",updated_line,minor,Updated language,pdf_changelog
+2023,10,10 2099 01,2099,01,"Annual Surplus/(Deficit), Before Remeasurement Gains (Losses)",updated_line,minor,Updated language,pdf_changelog
+2023,10,10 4099 01,4099,01,Canada Community - Building Fund for Capital Expenses,updated_line,minor,Canada Community- Building Fund (Federal Gas Tax) - now captures only these lines.,pdf_changelog
+2023,10,10 4205 01,4205,01,Canada Community - Building Fund for Operating Expenses: Capacity Building,updated_line,minor,Canada Community- Building Fund (Federal Gas Tax) - now captures only these lines.,pdf_changelog
+2023,10,10 4299 01,4299,01,Canada Community - Building Fund Recognized in the Year,updated_line,minor,Canada Community- Building Fund (Federal Gas Tax) - now captures only these lines.,pdf_changelog
+2023,10,10 9950 01,9950,01,"Accumulated Surplus/(Deficit), Before Remeasurement Gains (Losses) at the end of year",updated_line,minor,Updated language,pdf_changelog
+2023,12,12 0632 xx,0632,,Transit - Accessible,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,12,12 1220 xx,1220,,Assistance to Seniors,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,12,12 1230 xx,1230,,Child care and early years learning,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,40,40 0632 xx,0632,,Transit - Accessible,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,40,40 1220 xx,1220,,Assistance to Seniors,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,40,40 1230 xx,1230,,Child care and early years learning,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,51A,51A 0632 xx,0632,,Transit - Accessible,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,51A,51A 1220 xx,1220,,Assistance to Seniors,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,51A,51A 1230 xx,1230,,Child care and early years learning,updated_line,minor,"Updated language, applies to schedule 12, 40 & 51A.",pdf_changelog
+2023,51A,51 xxxx 14,,14,ARO Increase in TCA Cost,new_column,minor,New line added as per PSAS.,pdf_changelog
+2023,51B,51 2405 xx,2405,,Construction-in-progress,deleted_line,minor,Consolidated the Construction-in-progress details on Schedule 51C to one line (2405) on Schedule 51B; Schedule 51C eliminated.,pdf_changelog
+2023,51C,,,,Construction-in-progress - detail eliminated,deleted_schedule,major,Replaced with one line on schedule 51B,pdf_changelog
+2023,53,53 1010 01,1010,01,"Annual Surplus (Deficit), Before Remeasurement Gains (Losses) (SLC 10 2099 01)",updated_line,minor,Updated language as per PSAS.,pdf_changelog
+2023,53,53 1020 01,1020,01,Acquisition of tangible capital assets,updated_line,minor,This line is automatically populated from Schedule 51.,pdf_changelog
+2023,53,53 1032 01,1032,01,Change in construction-in-progress,updated_line,minor,This line is automatically populated from Schedule 51.,pdf_changelog
+2023,53,53 1301 01,1301,01,Net Change in Remeasurement Gains (Losses) for the year (SLC 71 1299 01),updated_line,minor,This line is automatically populated from the new Schedule 71.,pdf_changelog
+2023,54B,54B 2023 01,2023,01,Accretion expense,new_line,minor,Accretion expense line added as per PSAS.,pdf_changelog
+2023,60,60 5635 01,5635,01,Development Charges Cash Collected (SLC 61B 0299 28),updated_line,minor,This line is automatically populated from Schedule 61B line 0299 column 28.,pdf_changelog
+2023,60,60 6001 xx,6001,,Development Charges: Highways (roads and structures),new_line,minor,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,pdf_changelog
+2023,60,60 6002 xx,6002,,"Development Charges: Wastewater services, including sewers and treatment services",new_line,minor,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,pdf_changelog
+2023,60,60 6003 xx,6003,,"Development Charges: Water supply services, including distribution and treatment",new_line,minor,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,pdf_changelog
+2023,60,60 6004 xx,6004,,Parkland Special Account,new_line,minor,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,pdf_changelog
+2023,60,60 6005 xx,6005,,Community Benefits Charges Special Account,new_line,minor,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,pdf_changelog
+2023,61A,,,,Development Charges Receivable,new_schedule,major,Captures New Development Charge Installments Receivable. Updated eligible development charge service lists.,pdf_changelog
+2023,61B,,,,Development Charges Cash Collected,new_schedule,major,Captures New Development Charges Cash Collected and Development Charges Earned. Updated eligible development charge service lists.,pdf_changelog
+2023,62,,,,Updated eligible Development Charge Services list,new_schedule,major,Updated eligible development charge service lists.,pdf_changelog
+2023,62A,,,,Updated eligible Development Charge Services list,new_schedule,major,Updated eligible development charge service lists.,pdf_changelog
+2023,70,70 0817 01,0817,01,Portfolio Investments,new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 0818 01,0818,01,Derivatives,new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 0819 01,0819,01,"Financial assets, designated to the fair value category",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 2271 01,2271,01,Derivatives,new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 2272 01,2272,01,"Financial assets, designated to the fair value category",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 2920 01,2920,01,Asset retirement obligation liabilities,new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 6604 01,6604,01,Unfunded Asset Retirement Obligation Costs,new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,70,70 9980 01,9980,01,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses) (SLC 10 9950 01)",new_line,major,This line is automatically populated from SLC 10 9950 01.,pdf_changelog
+2023,70,70 9981 01,9981,01,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses) (SLC 10 9950 01)",new_line,major,This line is automatically populated from SLC 71 9910 01.,pdf_changelog
+2023,70,70 9982 01,9982,01,Total Accumulated Surplus (Deficit),new_line,major,This line is automatically calculated.,pdf_changelog
+2023,71,,,,Statement of Remeasurement Gains & Losses,new_schedule,major,This schedule captures the portfolio gains and losses.,pdf_changelog
+2023,74E,,,,Asset Retirement Obligation Liability,new_schedule,major,"This section, captures the Asset Retirement Obligation Liability by functional classifications.",pdf_changelog
+2023,77A,77 0660 xx,0660,,Asset Retirement Obligations,new_line,minor,New lines added as per PSAS for DSSABs.,pdf_changelog
+2023,77A,77 9960 xx,9960,,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77A,77 9970 xx,9970,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77A,77A 1040 xx,1040,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77B,77 0660 xx,0660,,Asset Retirement Obligations,new_line,minor,New lines added as per PSAS for DSSABs.,pdf_changelog
+2023,77B,77 9960 xx,9960,,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77B,77 9970 xx,9970,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77B,77A 1040 xx,1040,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77C,77 0660 xx,0660,,Asset Retirement Obligations,new_line,minor,New lines added as per PSAS for DSSABs.,pdf_changelog
+2023,77C,77 9960 xx,9960,,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77C,77 9970 xx,9970,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77C,77A 1040 xx,1040,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77D,77 0660 xx,0660,,Asset Retirement Obligations,new_line,minor,New lines added as per PSAS for DSSABs.,pdf_changelog
+2023,77D,77 9960 xx,9960,,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77D,77 9970 xx,9970,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,77D,77A 1040 xx,1040,,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",new_line,minor,New lines added as per PSAS.,pdf_changelog
+2023,79,,,,Community Improvement Plans,deleted_schedule,major,This schedule has been eliminated.,pdf_changelog
+2023,80A,80 1610 01,1610,01,Vacant Home Tax,new_line,minor,New line added to capture number of properties for which vacant home tax was levied in 2023.,pdf_changelog
+2023,80B,,,,Schedule 80B - Section 7: Alternate service delivery arrangements,deleted_schedule,major,This schedule has been eliminated.,pdf_changelog
+2024,10,10 0831 01,0831,01,Deferred Revenue Earned (Canada Community - Building Fund) (Federal Gas Tax),deleted_line,minor,"Removed line, please refer to FIR Instructions",pdf_changelog
+2024,10,10 1421 01,1421,01,Building Permits,updated_line,minor,Report all building permit revenue on this line.,pdf_changelog
+2024,12,12 0460 07,0460,07,Provincial Offences Act (POA),updated_line,minor,Report POA used for tangible capital asset acquisitions.,pdf_changelog
+2024,40,40 xxxx 05,,05,Rents and Financial Expenses & Accretion Expense,updated_column,minor,Column heading modified to include accretion/ARO expense.,pdf_changelog
+2024,60,60 1047 01,1047,01,Deferred Revenue Earned (Canada Community - Building Fund) (Federal Gas Tax),deleted_line,minor,"Removed line, please refer to FIR Instructions",pdf_changelog
+2024,60,60 1048 01,1048,01,Deferred Revenue Earned (Canada Community - Building Fund For Capacity Building),deleted_line,minor,"Removed line, please refer to FIR Instructions",pdf_changelog
+2024,70,70 2411 01,2411,01,Prepaid Property Taxes,updated_line,minor,Report prepaid property taxes on this line.,pdf_changelog
+2024,70,70 6432 01,6432,01,Accumulated Remeasurement Gains (Losses),updated_line,minor,Report accumulated remeasurement gains (losses) on this line.,pdf_changelog
+2024,74C,74 3021 xx,3021,,Recovered from Development Charges,updated_line,minor,Report debt charges paid from development charges,pdf_changelog
+2024,74E,74 xxxx 02,,02,Transfer of Solid Waste Landfill Liability,deleted_column,minor,Transfer of Solid Waste Landfill Liability column no longer is required.,pdf_changelog
+2024,80A,80 1510 01,1510,01,"Losses Due to Structural Fires, Averaged Over 3 Yrs. (2022 -2024)",updated_line,minor,"Removed data line, eliminate duplicate reporting.",pdf_changelog
+2025,10,10 6021 01,6021,01,PLUS:  Other Comprehensive Income for Year (SLC 76  0840 20),new_line,minor,New line. Linked from schedule 76 0840 20.,pdf_changelog
+2025,54B,54B 2023 01,2023,01,Accretion Expense,updated_line,minor,Linked from Schedule 74E line 9910 column 5.,pdf_changelog
+2025,70,70 6432 01,6432,01,Remeasurement Gains (Losses),updated_line,minor,Linked from Schedule 71 line 9910 column 1.,pdf_changelog
+2025,76,76 0297 01,0297,01,Other,new_line,minor,Text Box Added.,pdf_changelog
+2025,76,76 0497 01,0497,01,Other,new_line,minor,Text Box Added.,pdf_changelog
+2025,76,76 0830 xx,0830,,Net Income (Loss) Before Other Comprehensive Income,new_line,minor,New Subtotal Line Added.,pdf_changelog
+2025,76,76 0840 xx,0840,,Other Comprehensive Income,new_line,minor,"New line. ""Other Comprehensive Income"" Added.",pdf_changelog
+2025,76,76 9920 xx,9920,,Net Income (Loss) and Other Comprehensive Income,updated_line,minor,"Line description updated. Line 9920 calculation updated to Net Income
+(Loss) Before Other Comprehensive Income + Other Comprehensive Income.",pdf_changelog

@@ -33,9 +33,8 @@
 60,60 6003 xx,"Development Charges: Water supply services, including distribution and treatment",Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,The following changes are due to the adoption of new accounting standards: PS 3280: Asset Retirement Obligations and PS 3450: Financial Instruments. Data points have been streamlined. MINOR CHANGES
 60,60 6004 xx,Parkland Special Account,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,The following changes are due to the adoption of new accounting standards: PS 3280: Asset Retirement Obligations and PS 3450: Financial Instruments. Data points have been streamlined. MINOR CHANGES
 60,60 6005 xx,Community Benefits Charges Special Account,Municipal Development-Related Charges: New heading & section D added to capture Spend/Allocate Balance for this section. New line captures spend/allocate balances.,The following changes are due to the adoption of new accounting standards: PS 3280: Asset Retirement Obligations and PS 3450: Financial Instruments. Data points have been streamlined. MINOR CHANGES
-61A,New **,Development Charges Receivable,Captures New Development Charge Installments Receivable.,Schedule 61 has been split into two tabs:
-61B,New **,Development Charges Cash Collected,Captures New Development Charges Cash Collected and Development Charges Earned.,Schedule 61 has been split into two tabs:
-61A & 61B,New **,Updated eligible Development Charge Services list,Updated eligible development charge service lists.,Schedule 61 has been split into two tabs:
+61A,New **,Development Charges Receivable,Captures New Development Charge Installments Receivable. Updated eligible development charge service lists.,Schedule 61 has been split into two tabs:
+61B,New **,Development Charges Cash Collected,Captures New Development Charges Cash Collected and Development Charges Earned. Updated eligible development charge service lists.,Schedule 61 has been split into two tabs:
 62 & 62A,New **,Updated eligible Development Charge Services list,Updated eligible development charge service lists.,Schedule 61 has been split into two tabs:
 70,70 0817 01,Portfolio Investments,New lines added as per PSAS.,
 70,70 0818 01,Derivatives,New lines added as per PSAS.,
@@ -50,5 +49,5 @@
 "77A, B, C & D",77 0660 xx,Asset Retirement Obligations,New lines added as per PSAS for DSSABs.,
 "77A, B, C & D",77 9960 xx,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",New lines added as per PSAS.,
 "77A, B, C & D",77 9970 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
-"77A, B, C & D",77A1040 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
+"77A, B, C & D",77A 1040 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
 80A,80 1610 01,Vacant Home Tax,New line added to capture number of properties for which vacant home tax was levied in 2023.,
