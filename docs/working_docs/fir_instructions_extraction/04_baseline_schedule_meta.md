@@ -118,7 +118,7 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 ## Tests
 
 **Prerequisite: PDF text conversion and offset maps**
-- [ ] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
+- [x] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
 - [ ] Test that `build_schedule_offsets` returns all expected schedule keys for FIR2025 (no missing, no unexpected extras); note sub-schedules 22A/B/C, 51A/B, 61A/61B are absent from the offset map by design
 - [ ] Test that spot-checked offsets (Schedules 10, 40, 74) point to lines containing the expected schedule cover text
 
