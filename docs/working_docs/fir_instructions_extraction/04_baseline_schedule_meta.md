@@ -1,4 +1,4 @@
-# Task 04: Extract FIR2025 Baseline — Schedule Metadata (Phase 1a)
+# Task 04: Extract FIR2025 Baseline — Schedule Metadata
 
 ## Goal
 
@@ -10,7 +10,7 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 - [ ] Build page-offset maps for all source PDFs (see Prerequisite below)
 - [ ] Check that category assignments in the plan match the categories used in the PDFs; if differences exist, note them and suggest a normalization approach
 - [ ] For each schedule, locate and extract the entire General Instructions section using the text file + offset map
-- [ ] Create `fir_schedule_meta` rows for all 26 schedules
+- [ ] Create `fir_schedule_meta` rows for all 31 schedule codes
 - [ ] Set `valid_from_year = NULL` and `valid_to_year = NULL` on all rows (baseline = "always current")
 - [ ] Write insertion logic
 - [ ] Export to CSV
@@ -18,7 +18,12 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 
 ## Implementation Details
 
-### The 26 Schedules to Extract
+### Schedules to Extract
+
+The FIR system has 31 distinct schedule codes that warrant a row in `fir_schedule_meta`.
+Some codes (22A, 22B, 22C, 51A, 51B, 61A, 61B) are sub-schedules that share a PDF section
+with their parent; they have no independent page-offset entry but are tracked as separate
+metadata rows because municipalities report on them separately.
 
 | Category | Schedules |
 |---|---|
@@ -32,7 +37,15 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 | Financial Position | 70 |
 | Remeasurement Gains & Losses | 71 |
 | Long Term Liabilities | 74, 74E |
-| Other Information | 76, 77, 80, 81, 83 |
+| Other Information | 76, 77, 80, 80D, 81, 83 |
+
+> **Note on sub-schedules**: 22A/22B/22C, 51A/51B, and 61A/61B do not have their own
+> cover pages or `Page |1` headers in the PDF. Their instructions appear within the parent
+> schedule's section (22, 51, and 61 respectively). Extraction for these codes must read
+> within the parent's offset range rather than seeking to a dedicated offset.
+>
+> **Note on 80D**: Schedule 80D has its own `Page |1` section in FIR2025 and is treated
+> as a first-class schedule with its own offset.
 
 ### Fields to Extract Per Schedule
 
@@ -87,7 +100,7 @@ Source PDFs available: 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 ### Extraction Approach
 
 1. Open `FIR2025 Instructions.txt` and load `FIR2025 Instructions.offsets.json`
-2. For each of the 26 schedules, seek to the offset for that schedule and read forward until the next schedule's offset (or a fixed lookahead)
+2. For each schedule that has its own offset (all except 22A/22B/22C, 51A/51B, 61A/61B), seek to that offset and read forward until the next schedule's offset (or a fixed lookahead). For sub-schedules without a dedicated offset, read within the parent schedule's offset range and locate the sub-schedule's section heading (e.g., "Schedule 22A") within that slice.
 3. Within that slice, extract the text between `General Instructions` and the next major section heading — this is the `description` field
 4. The schedule name is on the cover page (2–3 lines after the schedule number)
 5. Spot-check 5 schedule descriptions against the original PDF for accuracy
@@ -106,12 +119,12 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 
 **Prerequisite: PDF text conversion and offset maps**
 - [ ] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
-- [ ] Test that `build_schedule_offsets` returns all 26 expected schedule keys for FIR2025 (no missing, no unexpected extras)
+- [ ] Test that `build_schedule_offsets` returns all expected schedule keys for FIR2025 (no missing, no unexpected extras); note sub-schedules 22A/B/C, 51A/B, 61A/61B are absent from the offset map by design
 - [ ] Test that spot-checked offsets (Schedules 10, 40, 74) point to lines containing the expected schedule cover text
 
 **Schedule metadata insertion**
 - [ ] Test insertion of schedule metadata records
-- [ ] Test that all 26 schedules are present after insertion
+- [ ] Test that all 31 schedule codes are present after insertion
 - [ ] Test idempotent insertion (re-inserting same data doesn't create duplicates)
 - [ ] Test that `schedule` values match the known schedule list
 - [ ] Test that no required fields are NULL (schedule, schedule_name, category)
@@ -122,16 +135,16 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 
 ## Success Criteria
 
-- `fir_schedule_meta` contains exactly 26 rows (one per schedule)
+- `fir_schedule_meta` contains exactly 31 rows (one per schedule code)
 - Every row has a non-empty `schedule_name`, `category`, and `description`
-- `schedule` values match the known set for 2025
+- `schedule` values match the known set of 31 codes for 2025
 - `valid_from_year` and `valid_to_year` are both NULL on all baseline rows
-- Spot-check 5 schedule descriptions against the PDF for accuracy
+- Spot-check 5 schedule descriptions against the PDF for accuracy, including at least one sub-schedule (e.g., 22A)
 
 ## Verification
 
 ```sql
--- Should return 26
+-- Should return 31
 SELECT count(*) FROM fir_schedule_meta;
 
 -- All categories should match expected set
