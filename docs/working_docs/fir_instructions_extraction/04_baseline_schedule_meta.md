@@ -6,15 +6,15 @@ Extract schedule-level metadata from the FIR2025 Instructions PDF and populate `
 
 ## Task List
 
-- [ ] Pre-convert all source PDFs to text (see Prerequisite below)
-- [ ] Build page-offset maps for all source PDFs (see Prerequisite below)
-- [ ] Check that category assignments in the plan match the categories used in the PDFs; if differences exist, note them and suggest a normalization approach
-- [ ] For each schedule, locate and extract the entire General Instructions section using the text file + offset map
-- [ ] Create `fir_schedule_meta` rows for all 31 schedule codes
-- [ ] Set `valid_from_year = NULL` and `valid_to_year = NULL` on all rows (baseline = "always current")
-- [ ] Write insertion logic
-- [ ] Export to CSV
-- [ ] Verify against PDF
+- [x] Pre-convert all source PDFs to text (see Prerequisite below)
+- [x] Build page-offset maps for all source PDFs (see Prerequisite below)
+- [x] Check that category assignments in the plan match the categories used in the PDFs; if differences exist, note them and suggest a normalization approach
+- [x] For each schedule, locate and extract the entire General Instructions section using the text file + offset map
+- [x] Create `fir_schedule_meta` rows for all 31 schedule codes
+- [x] Set `valid_from_year = NULL` and `valid_to_year = NULL` on all rows (baseline = "always current")
+- [x] Write insertion logic
+- [x] Export to CSV
+- [x] Verify against PDF
 
 ## Implementation Details
 
@@ -118,20 +118,20 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 ## Tests
 
 **Prerequisite: PDF text conversion and offset maps**
-- [ ] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
-- [ ] Test that `build_schedule_offsets` returns all expected schedule keys for FIR2025 (no missing, no unexpected extras); note sub-schedules 22A/B/C, 51A/B, 61A/61B are absent from the offset map by design
-- [ ] Test that spot-checked offsets (Schedules 10, 40, 74) point to lines containing the expected schedule cover text
+- [x] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
+- [x] Test that `build_schedule_offsets` returns all expected schedule keys for FIR2025 (no missing, no unexpected extras); note sub-schedules 22A/B/C, 51A/B, 61A/61B are absent from the offset map by design
+- [x] Test that spot-checked offsets (Schedules 10, 40, 74) point to lines containing the expected schedule cover text
 
 **Schedule metadata insertion**
-- [ ] Test insertion of schedule metadata records
-- [ ] Test that all 31 schedule codes are present after insertion
-- [ ] Test idempotent insertion (re-inserting same data doesn't create duplicates)
-- [ ] Test that `schedule` values match the known schedule list
-- [ ] Test that no required fields are NULL (schedule, schedule_name, category)
+- [x] Test insertion of schedule metadata records
+- [x] Test that all 31 schedule codes are present after insertion
+- [x] Test idempotent insertion (re-inserting same data doesn't create duplicates)
+- [x] Test that `schedule` values match the known schedule list
+- [x] Test that no required fields are NULL (schedule, schedule_name, category)
 
 ## Documentation Updates
 
-- [ ] None expected (no new CLI commands)
+- [x] None expected (no new CLI commands)
 
 ## Success Criteria
 
