@@ -21,3 +21,7 @@ tests/.coverage
 
 # Data output folders (keep local only)
 /data
+
+# Generated PDF extraction artifacts (reproducible from source PDFs)
+fir_instructions/source_files/*.txt
+fir_instructions/source_files/*.offsets.json
