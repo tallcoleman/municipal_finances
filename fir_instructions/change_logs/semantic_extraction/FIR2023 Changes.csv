@@ -49,5 +49,5 @@
 "77A, B, C & D",77 0660 xx,Asset Retirement Obligations,New lines added as per PSAS for DSSABs.,
 "77A, B, C & D",77 9960 xx,"Accumulated Surplus (Deficit), Before Remeasurement Gains (Losses)",New lines added as per PSAS.,
 "77A, B, C & D",77 9970 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
-"77A, B, C & D",77A1040 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
+"77A, B, C & D",77A 1040 xx,"Accumulated Surplus (Deficit), Remeasurement Gains (Losses)",New lines added as per PSAS.,
 80A,80 1610 01,Vacant Home Tax,New line added to capture number of properties for which vacant home tax was levied in 2023.,
