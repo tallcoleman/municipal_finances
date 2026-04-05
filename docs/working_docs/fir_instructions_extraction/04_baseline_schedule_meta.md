@@ -104,6 +104,12 @@ Since PDF extraction is expensive and non-deterministic, the extracted data shou
 
 ## Tests
 
+**Prerequisite: PDF text conversion and offset maps**
+- [ ] Test that `pdftotext` produces a non-empty `.txt` file for each of the 7 source PDFs
+- [ ] Test that `build_schedule_offsets` returns all 26 expected schedule keys for FIR2025 (no missing, no unexpected extras)
+- [ ] Test that spot-checked offsets (Schedules 10, 40, 74) point to lines containing the expected schedule cover text
+
+**Schedule metadata insertion**
 - [ ] Test insertion of schedule metadata records
 - [ ] Test that all 26 schedules are present after insertion
 - [ ] Test idempotent insertion (re-inserting same data doesn't create duplicates)
