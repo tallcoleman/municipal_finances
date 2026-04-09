@@ -9,7 +9,7 @@ app = typer.Typer()
 
 @app.command()
 def convert_folder(path: Path, output_folder: str = "markdown"):
-    """Converts all PDF documents in the specified folder to markdown files using pymupdf4llm.
+    """Converts all PDF documents in the specified folder to markdown files using pymupdf4llm. Does not convert any PDFs in sub-folders.
 
     By default, will save the markdown files in a subdirectory `markdown/`, but this can be changed with the `--output-folder` option. (Add `--output-folder=""` to save in same directory.)
     """
