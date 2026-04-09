@@ -39,7 +39,3 @@ def convert_pdf(pdf_path: Path, output_folder: str = "markdown"):
     output_path.parent.mkdir(exist_ok=True, parents=True)
     with output_path.open("w") as f:
         f.write(result)
-
-
-if __name__ == "__main__":
-    convert_folder(Path("fir_instructions/source_files/2025"))
