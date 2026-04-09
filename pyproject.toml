@@ -17,7 +17,6 @@ dependencies = [
     "typer>=0.24.1",
     "uvicorn[standard]>=0.34",
     "alembic>=1.14",
-    "markitdown[pdf,xls,xlsx]>=0.1.5",
     "pymupdf4llm>=1.27.2.2",
 ]
 
