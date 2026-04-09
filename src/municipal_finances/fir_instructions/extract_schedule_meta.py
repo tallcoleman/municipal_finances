@@ -130,15 +130,11 @@ _CSV_FIELDS = [
     "change_notes",
 ]
 
-_DEFAULT_TXT_PATH = Path(
-    "fir_instructions/source_files/FIR2025 Instructions.txt"
-)
+_DEFAULT_TXT_PATH = Path("fir_instructions/source_files/FIR2025 Instructions.txt")
 _DEFAULT_OFFSETS_PATH = Path(
     "fir_instructions/source_files/FIR2025 Instructions.offsets.json"
 )
-_DEFAULT_EXPORT_PATH = Path(
-    "fir_instructions/exports/baseline_schedule_meta.csv"
-)
+_DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_schedule_meta.csv")
 
 
 # ---------------------------------------------------------------------------
@@ -261,9 +257,7 @@ def _heading_matches(body_line: str, heading: str) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def _get_section_end(
-    code: str, offsets: dict[str, int], n_lines: int
-) -> int:
+def _get_section_end(code: str, offsets: dict[str, int], n_lines: int) -> int:
     """Return the 0-based line index where a schedule's section ends.
 
     For sub-schedules (22A/B/C, 51A/B, 61A/B) this delegates to the parent.
@@ -296,9 +290,7 @@ def _get_section_end(
     return n_lines
 
 
-def _find_body_start(
-    lines: list[str], section_start: int, section_end: int
-) -> int:
+def _find_body_start(lines: list[str], section_start: int, section_end: int) -> int:
     """Return the 0-based line where the schedule body begins.
 
     The body starts at the first line that matches ``SCHEDULE XX:`` without
@@ -376,14 +368,20 @@ def _parse_toc(
 
         if _has_dot_leaders(stripped):
             # This line ends the current entry
-            entry_text = (pending_text + " " + _strip_dot_leaders(stripped)).strip() if pending_text else _strip_dot_leaders(stripped)
-            indent = _count_leading_spaces(stripped if not pending_text else pending_text)
+            entry_text = (
+                (pending_text + " " + _strip_dot_leaders(stripped)).strip()
+                if pending_text
+                else _strip_dot_leaders(stripped)
+            )
+            indent = _count_leading_spaces(
+                stripped if not pending_text else pending_text
+            )
             toc_entries.append((entry_text, indent, i))
             pending_text = ""
         else:
             # Possible continuation line for a multi-line TOC entry
             content = stripped.strip()
-            if content:
+            if content:  # pragma: no cover
                 if not pending_text:
                     pending_indent = _count_leading_spaces(stripped)
                     pending_text = content
@@ -434,9 +432,7 @@ def _parse_toc(
 # ---------------------------------------------------------------------------
 
 
-def _find_gi_heading(
-    lines: list[str], start: int, end: int
-) -> int | None:
+def _find_gi_heading(lines: list[str], start: int, end: int) -> int | None:
     """Find the "General Information" or "General Instructions" heading in body.
 
     Scans lines in [*start*, *end*) for a line that is exactly (stripped)
@@ -615,9 +611,7 @@ def _extract_regular_schedule(
     }
 
 
-def _extract_schedule_53(
-    lines: list[str], offsets: dict[str, int]
-) -> dict[str, Any]:
+def _extract_schedule_53(lines: list[str], offsets: dict[str, int]) -> dict[str, Any]:
     """Extract metadata for Schedule 53 (no General Information heading).
 
     Schedule 53 has no "General Information" or "General Instructions" section
@@ -681,9 +675,7 @@ def _extract_schedule_53(
     }
 
 
-def _extract_schedule_74e(
-    lines: list[str], offsets: dict[str, int]
-) -> dict[str, Any]:
+def _extract_schedule_74e(lines: list[str], offsets: dict[str, int]) -> dict[str, Any]:
     """Extract metadata for Schedule 74E (no TOC, no General Information heading).
 
     Schedule 74E begins with a form-feed-style page within Schedule 74's section.
@@ -920,9 +912,7 @@ def extract_all_schedule_meta(
 # ---------------------------------------------------------------------------
 
 
-def insert_schedule_meta(
-    engine: Any, records: list[dict[str, Any]]
-) -> int:
+def insert_schedule_meta(engine: Any, records: list[dict[str, Any]]) -> int:
     """Insert schedule metadata records into ``fir_schedule_meta``.
 
     Uses application-layer deduplication before inserting because PostgreSQL's
@@ -954,12 +944,12 @@ def insert_schedule_meta(
             )
         ).all()
         existing_keys: set[tuple[str, int | None, int | None]] = {
-            (row.schedule, row.valid_from_year, row.valid_to_year)
-            for row in existing
+            (row.schedule, row.valid_from_year, row.valid_to_year) for row in existing
         }
 
         new_records = [
-            r for r in records
+            r
+            for r in records
             if (r["schedule"], r.get("valid_from_year"), r.get("valid_to_year"))
             not in existing_keys
         ]

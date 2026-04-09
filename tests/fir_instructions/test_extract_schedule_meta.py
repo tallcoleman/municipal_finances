@@ -9,9 +9,11 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 from typing import Any
+from unittest.mock import MagicMock, patch
 
 import pytest
 from sqlmodel import Session, select
+from typer.testing import CliRunner
 
 from municipal_finances.fir_instructions.extract_schedule_meta import (
     SCHEDULE_CATEGORIES,
@@ -22,7 +24,11 @@ from municipal_finances.fir_instructions.extract_schedule_meta import (
     _clean_text,
     _count_leading_spaces,
     _extract_description_two_pass,
+    _extract_regular_schedule,
+    _extract_schedule_53,
+    _extract_schedule_74e,
     _extract_schedule_name_from_body,
+    _extract_sub_schedule,
     _extract_sub_schedule_name,
     _find_body_start,
     _find_gi_heading,
@@ -32,6 +38,8 @@ from municipal_finances.fir_instructions.extract_schedule_meta import (
     _is_page_header,
     _parse_toc,
     _strip_dot_leaders,
+    app,
+    extract_all_schedule_meta,
     extract_schedule_record,
     insert_schedule_meta,
     load_from_csv,
@@ -669,6 +677,22 @@ class TestParseToc:
         assert name is not None
         assert "Revenue" in name
 
+    def test_three_continuation_lines_joined(self) -> None:
+        """A TOC entry spanning three text lines (two continuations) is fully joined."""
+        # Line 1: first fragment — starts pending_text
+        # Line 2: second fragment — hits the 'else: pending_text += " " + content' branch
+        # Line 3: dot-leader line — finalises the entry from accumulated pending_text
+        lines = self._lines(
+            "SCHEDULE 10: Consolidated Statement of\n"
+            "  Operations:\n"
+            "  Revenue ........ 1\n"
+            "  General Information ........ 2\n"
+        )
+        name, _ = _parse_toc(lines, 0, len(lines))
+        assert name is not None
+        assert "Operations" in name
+        assert "Revenue" in name
+
 
 # ---------------------------------------------------------------------------
 # 7. GI heading finder and description extractor
@@ -774,6 +798,55 @@ class TestExtractDescriptionTwoPass:
         assert "paragraph text" in result
         assert "more text" in result
 
+    def test_pass1_resets_when_post_header_content_does_not_match(self) -> None:
+        """Pass 1 resets pending_header when the line after a page header is not next_section.
+
+        When a page header is followed by a non-blank line that does NOT match
+        next_section, pending_header is reset to None (line 509) so extraction
+        continues.  A subsequent page header + matching line correctly triggers
+        the stop.
+        """
+        lines = self._lines(
+            f"General Information\n"
+            f"good content line\n"
+            f"{_FIR2025_PAGE_HEADER}\n"
+            f"Different Heading\n"        # not next_section → pending_header reset
+            f"more good content\n"
+            f"{_FIR2025_PAGE_HEADER}\n"
+            f"Carry Forwards\n"           # IS next_section → stop at second page header
+            f"excluded content"
+        )
+        gi_line = 0
+        result = _extract_description_two_pass(lines, gi_line, "Carry Forwards", len(lines))
+        assert "good content line" in result
+        assert "more good content" in result
+        assert "excluded content" not in result
+
+    def test_pass2_skips_page_headers(self) -> None:
+        """Pass 2 skips page-header lines when scanning for next_section.
+
+        When pass 1 finds no stop point (because neither page header is
+        immediately followed by next_section), pass 2 runs and must skip
+        the embedded page headers rather than treating them as content stops.
+        """
+        lines = self._lines(
+            f"General Information\n"
+            f"good content\n"
+            f"{_FIR2025_PAGE_HEADER}\n"  # pass 1: sets pending; pass 2: skips (line 517)
+            f"Different Heading\n"        # pass 1: resets pending (not next_section)
+            f"{_FIR2025_PAGE_HEADER}\n"  # pass 1: sets pending again; pass 2: skips
+            f"more content\n"            # pass 1: resets pending again
+            f"Carry Forwards\n"          # pass 2: stops here
+            f"excluded"
+        )
+        gi_line = 0
+        result = _extract_description_two_pass(lines, gi_line, "Carry Forwards", len(lines))
+        assert "good content" in result
+        assert "more content" in result
+        assert "Carry Forwards" not in result
+        assert "excluded" not in result
+        assert "Page |1" not in result
+
 
 # ---------------------------------------------------------------------------
 # 8. Schedule name extraction helpers
@@ -826,6 +899,28 @@ class TestExtractScheduleNameFromBody:
         lines = self._lines("schedule 10: Revenue\n\nbody text")
         result = _extract_schedule_name_from_body(lines, 0, len(lines))
         assert result == "Revenue"
+
+    def test_stops_at_page_header_in_continuation(self) -> None:
+        """Title collection stops when a page header is encountered in the continuation."""
+        lines = [
+            "SCHEDULE 10: Part One\n",
+            f"{_FIR2025_PAGE_HEADER}\n",  # page header mid-title → stop (line 556)
+            "Part Two\n",
+        ]
+        result = _extract_schedule_name_from_body(lines, 0, len(lines))
+        assert result == "Part One"
+        assert "Part Two" not in result
+
+    def test_stops_at_second_schedule_title_in_continuation(self) -> None:
+        """Title collection stops when a second SCHEDULE XX: line is encountered."""
+        lines = [
+            "SCHEDULE 10: Part One\n",
+            "SCHEDULE 10: Part Two\n",  # second SCHEDULE line → stop (line 558)
+            "Part Three\n",
+        ]
+        result = _extract_schedule_name_from_body(lines, 0, len(lines))
+        assert result == "Part One"
+        assert "Part Two" not in result
 
 
 class TestExtractSubScheduleName:
@@ -970,3 +1065,429 @@ class TestExtractScheduleRecordDispatcher:
             "description", "valid_from_year", "valid_to_year", "change_notes",
         }
         return required.issubset(result.keys())
+
+
+# ---------------------------------------------------------------------------
+# 10. _extract_regular_schedule — fallback branches
+# ---------------------------------------------------------------------------
+
+
+class TestExtractRegularSchedule:
+    """Tests for fallback branches in _extract_regular_schedule."""
+
+    def test_falls_back_to_toc_name_when_body_gives_no_name(self) -> None:
+        """When the body title line has nothing after the colon, the TOC name is used.
+
+        A body line like 'SCHEDULE 10:' (colon at end, nothing after) yields an
+        empty name from _extract_schedule_name_from_body.  The fallback on line 597
+        then assigns the TOC-derived name.
+        """
+        lines = [
+            "SCHEDULE 10: Some Schedule Name ........ 1\n",  # TOC entry
+            "  General Information ........ 2\n",            # TOC entry
+            "SCHEDULE 10:\n",                                # body start — no text after colon
+            "\n",
+            "General Information\n",
+            "Description text.\n",
+        ]
+        offsets = {"10": 0}
+        result = _extract_regular_schedule(lines, offsets, "10")
+        assert result["schedule"] == "10"
+        assert result["schedule_name"] == "Some Schedule Name"
+
+    def test_empty_description_when_no_gi_heading(self) -> None:
+        """When no General Information heading exists in the body, description is empty.
+
+        _find_gi_heading returns None, which causes the gi_line is None branch
+        (line 600-601) to set description = ''.
+        """
+        lines = [
+            "SCHEDULE 10: Revenue ........ 1\n",  # TOC
+            "SCHEDULE 10: Revenue\n",              # body start
+            "\n",
+            "Content without any GI heading.\n",
+        ]
+        offsets = {"10": 0}
+        result = _extract_regular_schedule(lines, offsets, "10")
+        assert result["schedule"] == "10"
+        assert result["description"] == ""
+        assert result["schedule_name"] == "Revenue"
+
+
+# ---------------------------------------------------------------------------
+# 11. _extract_schedule_53 — page-header skip
+# ---------------------------------------------------------------------------
+
+
+class TestExtractSchedule53:
+    """Tests for _extract_schedule_53."""
+
+    def test_skips_page_headers(self) -> None:
+        """Page headers embedded in Schedule 53's section are skipped (line 651)."""
+        lines = [
+            "SCHEDULE 53: Consolidated Statement\n",
+            "\n",
+            f"{_FIR2025_PAGE_HEADER}\n",   # page header — must be skipped
+            "Paragraph text here.\n",
+            "Line 0220 some line detail\n",
+        ]
+        offsets = {"53": 0}
+        result = _extract_schedule_53(lines, offsets)
+        assert result["schedule"] == "53"
+        assert "Paragraph text here." in result["description"]
+        assert "Page |1" not in result["description"]
+
+
+# ---------------------------------------------------------------------------
+# 12. _extract_schedule_74e — early-exit and page-header skip
+# ---------------------------------------------------------------------------
+
+
+class TestExtractSchedule74E:
+    """Tests for _extract_schedule_74e."""
+
+    def test_empty_description_when_aro_heading_absent(self) -> None:
+        """Returns empty description when 'Asset Retirement Obligation Liability' is not found.
+
+        Exercises the aro_line is None early-return branch (lines 715-724).
+        """
+        lines = [
+            "FIR2025   Page |1   Schedule 74E\n",
+            "Some content without the ARO heading\n",
+            "Column 1 - description\n",
+        ]
+        offsets = {"74E": 0}
+        result = _extract_schedule_74e(lines, offsets)
+        assert result["schedule"] == "74E"
+        assert result["description"] == ""
+        assert result["schedule_name"] == "Asset Retirement Obligation Liability"
+        assert result["valid_from_year"] is None
+        assert result["valid_to_year"] is None
+
+    def test_skips_page_headers_in_column_collection(self) -> None:
+        """Page headers in the description collection loop are skipped (line 731)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 74E\n",
+            "Asset Retirement Obligation Liability\n",  # aro_line
+            "First description paragraph.\n",
+            f"{_FIR2025_PAGE_HEADER}\n",               # page header — must be skipped
+            "Second description paragraph.\n",
+            "Column 1 - column description\n",
+        ]
+        offsets = {"74E": 0}
+        result = _extract_schedule_74e(lines, offsets)
+        assert result["schedule"] == "74E"
+        assert "First description paragraph." in result["description"]
+        assert "Second description paragraph." in result["description"]
+        assert "Page |1" not in result["description"]
+
+
+# ---------------------------------------------------------------------------
+# 13. _extract_sub_schedule — heading-search and stop-line branches
+# ---------------------------------------------------------------------------
+
+
+class TestExtractSubSchedule:
+    """Tests for _extract_sub_schedule."""
+
+    def test_skips_page_headers_when_searching_for_heading(self) -> None:
+        """Page headers in the parent body are skipped when locating the sub-heading (line 780)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 22\n",
+            "SCHEDULE 22: Taxation\n",
+            "\n",
+            f"{_FIR2025_PAGE_HEADER}\n",                         # page header before sub-heading
+            "General Purpose Levy Information (22A)\n",           # sub-heading
+            "22A description text.\n",
+            "Lower-Tier / Single-Tier Special Area Levy Information (22B)\n",
+        ]
+        offsets = {"22": 0}
+        result = _extract_sub_schedule(lines, offsets, "22A")
+        assert result["schedule"] == "22A"
+        assert "22A description text." in result["description"]
+
+    def test_empty_result_when_sub_heading_absent(self) -> None:
+        """Returns empty description when the sub-schedule heading is not found (lines 786-794)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 22\n",
+            "SCHEDULE 22: Taxation\n",
+            "\n",
+            "Some content with no sub-schedule heading.\n",
+        ]
+        offsets = {"22": 0}
+        result = _extract_sub_schedule(lines, offsets, "22A")
+        assert result["schedule"] == "22A"
+        assert result["description"] == ""
+        assert result["valid_from_year"] is None
+        assert result["valid_to_year"] is None
+
+    def test_sub_schedule_with_none_next_heading(self) -> None:
+        """When next_heading is None (e.g. 51B, 61B), content runs to section end (line 802 False branch)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 51\n",
+            "SCHEDULE 51: Tangible Capital Assets\n",
+            "\n",
+            "Schedule 51A: Prior Year\n",
+            "51A description.\n",
+            "Schedule 51B: Current Year\n",  # 51B heading
+            "51B description.\n",
+            "More 51B content.\n",
+        ]
+        offsets = {"51": 0}
+        result = _extract_sub_schedule(lines, offsets, "51B")
+        assert result["schedule"] == "51B"
+        assert "51B description." in result["description"]
+        assert "More 51B content." in result["description"]
+
+    def test_skips_page_headers_in_stop_line_search(self) -> None:
+        """Page headers in the stop-line search loop are skipped (line 805)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 22\n",
+            "SCHEDULE 22: Taxation\n",
+            "\n",
+            "General Purpose Levy Information (22A)\n",   # heading_line
+            "22A content.\n",
+            f"{_FIR2025_PAGE_HEADER}\n",                  # page header in stop search
+            "more 22A content.\n",
+            "Lower-Tier / Single-Tier Special Area Levy Information (22B)\n",
+        ]
+        offsets = {"22": 0}
+        result = _extract_sub_schedule(lines, offsets, "22A")
+        assert result["schedule"] == "22A"
+        assert "22A content." in result["description"]
+        assert "more 22A content." in result["description"]
+        assert "Lower-Tier" not in result["description"]
+
+
+# ---------------------------------------------------------------------------
+# 14. extract_all_schedule_meta — integration with real files
+# ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Loop-exhaustion branch tests
+# ---------------------------------------------------------------------------
+
+
+class TestFindBodyStartLoopExhaustion:
+    """Test the inner lookahead loop exhausting in _find_body_start (branch 321->327)."""
+
+    def test_all_lookahead_lines_blank_still_returns_body_start(self) -> None:
+        """When all 4 lookahead lines are blank, the inner loop exhausts and the
+        SCHEDULE XX: line is still correctly identified as the body start.
+
+        This exercises the path where the inner `for j` loop at line 321 runs
+        through all candidates without finding a non-blank line (321->327).
+        """
+        lines = [
+            "SCHEDULE 10: Revenue\n",
+            "\n",
+            "\n",
+            "\n",
+            "\n",
+            "\n",   # 5 blank lines (lookahead window = 4, all blank → loop exhausts)
+            "General Information\n",
+            "description\n",
+        ]
+        result = _find_body_start(lines, 0, len(lines))
+        # Loop exhausts: is_toc_entry stays False → returns 0
+        assert result == 0
+
+
+class TestExtractScheduleNameFromBodyLoopExhaustion:
+    """Test _extract_schedule_name_from_body when title fills the entire section (branch 550->564)."""
+
+    def test_title_runs_to_section_end_no_break(self) -> None:
+        """When continuation lines fill the section with no blank/header/GI, loop exhausts.
+
+        This exercises the for-loop-exhaustion path at line 550->564 where the
+        loop ends naturally rather than hitting a break statement.
+        """
+        lines = [
+            "SCHEDULE 10: Part One\n",
+            "Part Two\n",
+            "Part Three\n",
+        ]
+        result = _extract_schedule_name_from_body(lines, 0, len(lines))
+        assert "Part One" in result
+        assert "Part Two" in result
+        assert "Part Three" in result
+
+
+class TestExtractSchedule53LoopBranches:
+    """Test loop-exhaustion and empty-desc-lines branches in _extract_schedule_53."""
+
+    def test_loop_exhausts_when_no_line_heading_found(self) -> None:
+        """When no 'Line XXXX' heading appears, the for loop runs to section end (648->671)."""
+        lines = [
+            "SCHEDULE 53: Consolidated Statement\n",
+            "\n",
+            "Description with no line headings.\n",
+            "More description text.\n",
+        ]
+        offsets = {"53": 0}
+        result = _extract_schedule_53(lines, offsets)
+        assert result["schedule"] == "53"
+        assert "Description with no line headings." in result["description"]
+        assert "More description text." in result["description"]
+
+    def test_blank_line_before_any_desc_content_not_appended(self) -> None:
+        """A blank line encountered before any description is collected is not appended (666->668).
+
+        When `desc_lines` is empty and a blank line is encountered, the
+        `if desc_lines:` branch on line 666 evaluates to False, so the empty
+        string is not added to desc_lines.
+        """
+        lines = [
+            "SCHEDULE 53: Consolidated Statement\n",
+            "\n",        # ends title block
+            "\n",        # blank before any content — desc_lines empty → not appended
+            "Actual description paragraph.\n",
+            "Line 0220 some detail\n",
+        ]
+        offsets = {"53": 0}
+        result = _extract_schedule_53(lines, offsets)
+        assert result["schedule"] == "53"
+        assert "Actual description paragraph." in result["description"]
+        # Result should not start with a blank line (empty string was not prepended)
+        assert not result["description"].startswith("\n")
+
+
+class TestExtractSchedule74ELoopExhaustion:
+    """Test _extract_schedule_74e when no Column heading terminates the loop (728->737)."""
+
+    def test_loop_exhausts_when_no_column_heading_found(self) -> None:
+        """When no 'Column N -' heading appears, the for loop runs to section end (728->737)."""
+        lines = [
+            "FIR2025   Page |1   Schedule 74E\n",
+            "Asset Retirement Obligation Liability\n",
+            "Description paragraph one.\n",
+            "Description paragraph two.\n",
+            # no Column heading
+        ]
+        offsets = {"74E": 0}
+        result = _extract_schedule_74e(lines, offsets)
+        assert result["schedule"] == "74E"
+        assert "Description paragraph one." in result["description"]
+        assert "Description paragraph two." in result["description"]
+
+
+class TestExtractSubScheduleStopLineExhaustion:
+    """Test _extract_sub_schedule when the next_heading is not found (803->810)."""
+
+    def test_stop_line_loop_exhausts_when_next_heading_absent(self) -> None:
+        """When next_heading is not found in the section, stop_line stays at section_end (803->810).
+
+        Schedule 22C looks for 'Adjustments to Taxation (22D)' as its stop marker.
+        When that heading is absent, the stop-line for loop exhausts and all content
+        from the 22C heading to the end of the section is included.
+        """
+        lines = [
+            "SCHEDULE 22: Taxation\n",
+            "\n",
+            "Upper-Tier Special Area Levy Information (22C)\n",  # 22C heading
+            "22C description text.\n",
+            "More 22C content.\n",
+            # no "Adjustments to Taxation (22D)" → loop exhausts
+        ]
+        offsets = {"22": 0}
+        result = _extract_sub_schedule(lines, offsets, "22C")
+        assert result["schedule"] == "22C"
+        assert "22C description text." in result["description"]
+        assert "More 22C content." in result["description"]
+
+
+class TestExtractAllScheduleMeta:
+    """Tests for extract_all_schedule_meta."""
+
+    def test_returns_31_records_from_real_files(self) -> None:
+        """extract_all_schedule_meta returns exactly 31 records when the real source files exist."""
+        txt_path = Path("fir_instructions/source_files/FIR2025 Instructions.txt")
+        offsets_path = Path("fir_instructions/source_files/FIR2025 Instructions.offsets.json")
+        if not txt_path.exists() or not offsets_path.exists():
+            pytest.skip("Real FIR2025 source files not found")
+        records = extract_all_schedule_meta(txt_path, offsets_path)
+        assert len(records) == 31
+        codes = {r["schedule"] for r in records}
+        assert codes == set(SCHEDULE_CATEGORIES.keys())
+
+
+# ---------------------------------------------------------------------------
+# 15. CSV round-trip — non-null string field branch
+# ---------------------------------------------------------------------------
+
+
+class TestCSVRoundTripNonNullChangeNotes:
+    """Additional CSV round-trip test for the non-empty string branch of load_from_csv."""
+
+    def test_non_null_change_notes_survive_round_trip(self, tmp_path: Path) -> None:
+        """A non-empty change_notes value is preserved as a string after CSV round-trip.
+
+        Exercises the False branch of 'if record.get(field) == ""' (line 1033)
+        when change_notes already has a non-empty value.
+        """
+        records = [_minimal_record(change_notes="Added new line 9999.")]
+        csv_path = tmp_path / "change_notes_non_null.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["change_notes"] == "Added new line 9999."
+
+
+# ---------------------------------------------------------------------------
+# 16. CLI commands
+# ---------------------------------------------------------------------------
+
+
+class TestCLICommands:
+    """Tests for the Typer CLI commands using CliRunner and mocks."""
+
+    def test_extract_baseline_schedule_meta_cmd(self) -> None:
+        """extract-baseline-schedule-meta calls extract_all_schedule_meta, save_to_csv, and inserts to DB."""
+        runner = CliRunner()
+        fake_records = [_minimal_record()]
+        module = "municipal_finances.fir_instructions.extract_schedule_meta"
+
+        with (
+            patch(f"{module}.extract_all_schedule_meta", return_value=fake_records),
+            patch(f"{module}.save_to_csv"),
+            patch(f"{module}.get_engine", return_value=MagicMock()),
+            patch(f"{module}.insert_schedule_meta", return_value=1),
+        ):
+            result = runner.invoke(app, ["extract-baseline-schedule-meta"])
+
+        assert result.exit_code == 0
+        assert "1 records extracted" in result.output
+        assert "Inserted 1 new rows" in result.output
+
+    def test_extract_baseline_schedule_meta_cmd_no_db(self) -> None:
+        """extract-baseline-schedule-meta with --no-load-db skips the DB insertion step."""
+        runner = CliRunner()
+        fake_records = [_minimal_record()]
+        module = "municipal_finances.fir_instructions.extract_schedule_meta"
+
+        with (
+            patch(f"{module}.extract_all_schedule_meta", return_value=fake_records),
+            patch(f"{module}.save_to_csv"),
+            patch(f"{module}.insert_schedule_meta") as mock_insert,
+        ):
+            result = runner.invoke(app, ["extract-baseline-schedule-meta", "--no-load-db"])
+
+        assert result.exit_code == 0
+        mock_insert.assert_not_called()
+
+    def test_load_baseline_schedule_meta_cmd(self) -> None:
+        """load-baseline-schedule-meta reads the CSV and inserts records into the DB."""
+        runner = CliRunner()
+        fake_records = [_minimal_record()]
+        module = "municipal_finances.fir_instructions.extract_schedule_meta"
+
+        with (
+            patch(f"{module}.load_from_csv", return_value=fake_records),
+            patch(f"{module}.get_engine", return_value=MagicMock()),
+            patch(f"{module}.insert_schedule_meta", return_value=1),
+        ):
+            result = runner.invoke(app, ["load-baseline-schedule-meta"])
+
+        assert result.exit_code == 0
+        assert "1 records loaded from CSV" in result.output
+        assert "Inserted 1 new rows" in result.output

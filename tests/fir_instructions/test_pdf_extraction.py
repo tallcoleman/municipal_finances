@@ -394,6 +394,17 @@ class TestBuildScheduleOffsetsSynthetic:
         offsets = build_schedule_offsets(str(p))
         assert offsets["10"] == 0
 
+    def test_old_year_first_occurrence_wins(self, tmp_path: Path) -> None:
+        """When a code appears twice via old-year footers, the first line wins."""
+        content = (
+            "FIR2022   Schedule 10   Revenue   10 - 1\n"
+            "content line\n"
+            "FIR2022   Schedule 10   Revenue   10 - 1\n"  # duplicate — should be ignored
+        )
+        p = self._write(tmp_path, "FIR2022 Instructions.txt", content)
+        offsets = build_schedule_offsets(str(p))
+        assert offsets["10"] == 0
+
     def test_unknown_year_filename_uses_old_format(self, tmp_path: Path) -> None:
         """A filename with no FIR-year pattern falls back to the old footer path."""
         content = "FIR2022   Schedule 10   Revenue   10 - 1\n"
