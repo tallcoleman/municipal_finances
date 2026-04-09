@@ -6,7 +6,7 @@ from markitdown import MarkItDown
 def convert_pdf(pdf_path: Path):
     md = MarkItDown()
     result = md.convert(pdf_path)
-    output_path = pdf_path.with_suffix(".txt")
+    output_path = pdf_path.with_suffix(".md")
     with output_path.open("w") as f:
         f.write(result.text_content)
 
