@@ -1,0 +1,262 @@
+schedule,schedule_name,category,description,valid_from_year,valid_to_year,change_notes
+10,Revenues,Revenue,"Schedule 10 is divided into four sections. The first section reports total revenues of the municipality.
+
+The second section presents the continuity of accumulated surplus/deficit for the current year and the accumulated surplus or deficit at the beginning of the year and at the end of the year.
+
+The third section, Continuity of Government Business Enterprise Equity, is a continuity section which presents the government business enterprise equity at the beginning and end of the year.
+
+The fourth section captures the provincial and federal gas tax (now called Canada Community Building fund) reported in Schedule 12.
+
+Schedule 10 is a summary schedule. It is completed after Schedules 20 to 28, 72 and 12, schedules that report taxes, taxes receivable and current revenue for specific functions.  Data from those schedules automatically populates several lines in Schedule 10.  Where data is carried forward, an SLC (schedule, line, and column) reference appears after the caption for the line, indicating the source of the data.",,,
+12,"Grants, User Fees, and Service Charges",Revenue,"Schedule 12 collects information on three types of non-tax revenues: operating grants from Ontario and Canada, revenue from other municipalities and user fees and service charges. Grants for tangible capital assets from Ontario, Canada and other municipalities are also to be reported on this schedule.  This information is reported under the appropriate functional category.
+
+Other types of non-tax revenue which do not lend themselves to functional categories are reported on Schedule 10, Total Revenues.  These include:
+
+**Licences, permits, rent, etc. (Schedule 10, lines 1410 to 1499) Fines and penalties (Schedule 10, lines 1605 to 1699) Other revenue (Schedule 10, lines 1805 to 1899)**
+
+Note that other revenue includes investment income, donations, sale of publications, equipment, etc., contributions from non-consolidated entities, government business enterprises and other.",,,
+20,Taxation Information,Taxation,"This schedule collects information on the property tax policies in effect in the municipality for the year.  These include:
+
+**1. Optional Property Classes**
+
+**2. Capping Parameters and Results**
+
+**3. Graduated Taxation (Tax Bands)**
+
+**4. Phase-In Program in Effect**
+
+**5. Rebates for Eligible Charities**
+
+**6. Property Tax Due Dates for Current Year**
+
+Property tax policy is determined by upper-tier and single-tiers municipalities, but all municipalities must complete these sections.  Lower tiers should consult the upper tier for the information if necessary.  Only single tier and lower-tier municipalities are required to complete the property tax due date table.
+
+Further information to that provided in the instructions below is also available in the OPTA Manual at the On-Line Property Tax Analysis (OPTA) website: hhtp://opta.reamined.on.ca",,,
+22,Municipal and School Board Taxation,Taxation,"All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 22.
+
+Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities.
+
+This schedule collects taxation information on Taxable properties.  It is simply, a line-byline report showing the assessment for each property class in the municipality, the tax rates applicable to each class, and the taxation generated from each class.
+
+Municipal and Education taxation information in this schedule is organized by dividing the Schedule into the following nine sections:
+
+**1. General Purpose Levy**
+
+**2. Special Area Levies (Lower-tier/Single-tier)**
+
+**3. Special Area Levies (Upper tier)**
+
+**4. Adjustments to Taxation**
+
+**5. Supplementary Taxes**
+
+**6. Amount Levied by Tax Rate**
+
+**7. Amounts Added to Tax Bill**
+
+**8. Other Taxation Amounts**
+
+**9. Total Amount Levied**
+
+Also, the schedule contains several columns, which can be summarized into the following 3 categories:
+
+- **A. Property Class Description (Columns 1 to 4)**
+
+- **B. Assessment and Tax Rates (Columns 5 to 11) C. Taxes Levied (Columns 12 to 15)**
+
+Before explaining each of the sections and columns, the reporting treatment of several unique property types will be explained below.  Following this will be a description of each of the columns, and then a description of information reported in each section.",,,
+22A,General Purpose Levy Information,Taxation,"This section contains all General-Purpose tax rates by property class for municipal and education purposes.  For each property class in the municipality, the total taxable assessment is also shown here, and is used to calculate the taxes levied for that property class.",,,
+22B,Lower-Tier / Single-Tier Special Area Levy Information,Taxation,"For lower-tier and single tier municipalities, completion of Schedule 22B is required where any special area tax rates for lower-tier / single-tier purpose have been applied within the municipality.
+
+Upper-tier municipalities should not enter any information into this schedule.",,,
+22C,Upper-Tier Special Area Levy Information,Taxation,"Only lower-tier and upper-tier municipalities should enter information in Schedule 22C.
+
+For lower-tier and upper-tier municipalities, completion of this section is required where any special area tax rates for upper-tier purpose have been applied within the municipality.",,,
+24,In-Lieu of Taxation,Taxation,"All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 24.
+
+Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities.
+
+This schedule is very similar to Schedule 22, except this schedule collects information on Payment-In-Lieu properties only.  This schedule is a comprehensive report of Payment-In-Lieu (PIL) properties, with line-by-line details of the assessment for each property class in the municipality, the tax rates applicable to each class, and the Payment-In-Lieu amounts levied against each property class.
+
+In completing this schedule, it is important to notice that this schedule only captures the PILS Levied (i.e., The PIL amount that is calculated from Tax Rate multiplied by Assessment).  Also recognize that amounts generated from Payment-In-Lieu properties are different from amounts generated from Taxable properties.
+
+First, the amount of “PIL levied” on a property; is not necessarily the amount received by the municipality.  Second, in some cases the PIL amounts received for Education purposes are retained by the Municipality.
+
+Both unique situations are captured in Part 3 of Schedule 26, where the final PIL amount retained by the Municipality and PIL amounts distributed to School Boards is reported.  Since the final PIL entitlement is reported on Schedule 26, this total PIL amount will be carried-forward onto Schedule 10, Revenue Fund Revenues.",,,
+26,In-Lieu Summary,Taxation,"This schedule is used for reporting the final distribution of Education Taxes and Education PIL amounts by School Board.  To arrive at the final breakdown of Education amounts by School Board, the schedule has been set up with a summary of Property Tax and Payment-In-Lieu amounts reported on Schedules 22 and 24.
+
+Municipal and Education totals are automatically calculated and summarized from the information entered on Schedule 22 and 24.  Education Totals are then distributed by School Board.
+
+Since Taxation and PIL are treated differently, the schedule has been divided into the following sections:",,,
+28,Tier Entitlements,Taxation,This schedule outlines the upper-tier Municipalities entitlements from each lower-tier municipality.,,,
+72,Continuity of Taxes Receivable,Taxation,"This series of schedules is **only completed by Single Tier or Lower Tier municipalities** .  In a two-tier system, even though the Upper Tier municipality sets an upper tier tax rate, the Upper Tier municipality does not complete this schedule because taxes are collected by lower tier municipalities.
+
+This schedule provides information on adjustments to the statement of financial position item, taxes receivable, in SLC 70 0699 01.
+
+This schedule consists of the following sections:
+
+- **72A   Continuity of Taxes Receivable**
+
+- **72A   Cash Collections**
+
+- **72B – Tax Adjustments Applied to Taxation**
+
+- **72B   Tax Adjustments Not Applied to Taxation**
+
+**72B   Additional Information**",,,
+40,Expenses,Expense,"Schedule 40 consists of operating expenses reported by object and function. This is supported by Schedule 42, Additional Operating Information. Schedule 42 isolates specific expenses for services which were reported as part of a total in Schedule 40.
+
+Expenses are grouped by object and by function as per PS1201 Financial statement presentation. Object expenses are presented in columns 1 through 7:
+
+**Column 1 Salaries, wages, and employee benefits**
+
+**Column 2 Interest on Long term debt**
+
+**Column 3 Materials**
+
+**Column 4 Contracted services**
+
+**Column 5 Rents, financial expenses, &Accretion Expense Column 6 External transfers Column 16 Amortization Column 7 Total Expenses before adjustments**
+
+The following additional columns contain information used for analytical purposes:
+
+**Column 12 Inter functional adjustments. Column 13 Allocation of program support Column 11 Total expenses**
+
+Please note that column 11, Total Expenses, equals the sum of columns 7, 12, and 13.",,,
+42,Additional Information,Expense,"Schedule 42 analyzes information reported in Schedule 40, Statement of Operations: Expenses.
+
+This schedule isolates amounts which are included in a column total or row total.",,,
+51A,Tangible Capital Assets by Function,Tangible Capital Assets,"The Schedule 51 series collects the net book value of tangible capital assets by function (51A) and asset class (51B).
+
+Refer to the FIR Instructions section on functional categories for definitions of specific functions.
+
+**==> picture [37 x 37] intentionally omitted <==**
+
+**Ensure tangible capital assets are included in the appropriate functional categories. Ministries use information from the FIR, including Schedule 51, to determine eligibility and allocations for certain grants and programs.**
+
+**Municipalities that do not fill out Schedule 51 properly may be deemed ineligible for certain grants. If you require assistance classifying tangible capital assets, contact:** FIR@Ontario.ca",,,
+51B,Segmented by Asset Class,Tangible Capital Assets,**Please ensure tangible capital assets are segmented by asset class only** .,,,
+53,Consolidated Statement of Change in Net Financial Assets (Net Debt) and Tangible Capital Asset Acquisition / Donations,Net Financial Assets / Net Debt,The statement of change in net financial assets (net debt) explains the difference between a municipality’s surplus or deficit and its change in net financial assets or net debt in the same reporting year.  This statement provides for the reporting of the acquisition of tangible capital assets and other significant items that have an impact on the difference between the annual surplus or deficit and the change in net financial assets or net debt.,,,
+54,Consolidated Statement of Cash Flows,Cash Flow,"The consolidated statement of cash flows reflects the effects of a municipality’s activities on its cash resources.  The statement of cash flows shows how a municipality generated and used cash in the reporting year and the change in cash and cash equivalents at the beginning and end of the reporting year.
+
+The statement of cash flows reports cash flows classified by operating, capital, investing and financing activities.
+
+PSA Section 1202 Financial Statement Presentation allows a municipality to use either the direct or indirect method to report cash activities in municipal financial statements.
+
+**Please utilize the method in the FIR that was used in the municipal financial statements** .
+
+**The information provided in the statement of cash flows for the FIR should be the same as reported in the municipal financial statement.**",,,
+60,Continuity of Reserves and Reserve Funds,Reserves & Reserve Funds,"Reserves and reserve funds are comprised of funds set aside for specific purposes by Council and funds set aside for specific purposes by legislation, regulation, or agreement. For financial reporting purposes, reserve funds set aside by legislation, regulation or agreement are categorized as Obligatory Reserve Funds and are reported as deferred revenue, a liability, on the Consolidated Statement of Financial Position. Other reserve funds and reserves are balances within the accumulated surplus.
+
+Schedule 60 contains a continuity section (lines 0299 to 2099) and an analysis section (lines 5010 to 9930).
+
+Three columns have been created to distinguish Obligatory reserve funds/Deferred revenues from Discretionary reserve funds and Reserves.
+
+All schedules of the FIR should be prepared in conjunction with the audited financial statements. Obligatory reserve funds are reported as part of deferred revenue.  The reason is that such funds, by their nature, involve restrictions on their use and are not available for the discretionary use of Council.",,,
+61A,Development Charges Receivable,Reserves & Reserve Funds,"Schedule 61A drills deeper than Schedule 60 and collects information on development charge receivable transactions which occurred during the year segmented by service category.
+
+For financial reporting purposes, development charges reserve funds are reported as obligatory reserve funds/deferred revenue on the Consolidated Statement of Financial Position.",,,
+61B,Development Charges Cash Collected and Amounts Earned (DC Inflows / Outflows),Reserves & Reserve Funds,"Schedule 61A drills deeper than Schedule 60 and collects information on development charge receivable transactions which occurred during the year segmented by service category.
+
+For financial reporting purposes, development charges reserve funds are reported as obligatory reserve funds/deferred revenue on the Consolidated Statement of Financial Position.",,,
+62,Development Charges Rates,Reserves & Reserve Funds,"Schedules 62 and 62A require municipalities to report their development charge rate information.
+
+**Schedule 62** is the main schedule used to report the current year’s municipal wide development charges rates, both residential and non-residential. Under this schedule, please enter development charges by the type of service and by type of development / dwelling that were in place as of December 31, 2024.
+
+**Schedule 62A** – is used in cases where the municipality has special area-specific development charge rates that are not the same as the municipal-wide rates and are applied only to specific areas of the municipality.
+
+Enter the development charge rates that were in place as of December 31, 2024.",,,
+70,Consolidated Financial Position,Financial Position,"This schedule reports financial assets, liabilities, non-financial assets, and the accumulated surplus.
+
+**Please note** : Accumulated surplus is now broken out into two components: Accumulated Surplus (Deficit) **before** remeasurement gains (losses), and Accumulated Surplus (Deficit), remeasurement gains (losses).
+
+Report the assets and liabilities of the revenue fund, capital fund, obligatory reserves/deferred revenue, discretionary reserve funds and reserve funds of the municipality and all the consolidated local boards that make up the reporting entity as defined in PS 1300 of the PSAB Handbook.
+
+Report all municipal investments in government business enterprises using the modified equity basis of accounting, as set out in PS 1300, paragraphs .28 to .36 of the PSAB Handbook.
+
+**All inter fund receivables and liabilities are to be eliminated.** The exception is a long-term loan from own reserve funds.  These loans should be reported on Schedule 70 - line 2610 - column 1.
+
+**Assets** are divided into financial assets (cash and cash equivalents, accounts receivable, taxes receivable, investments, debt recoverable from others, and other financial assets) and non-financial assets.
+
+**Liabilities** are categorized as temporary loans, accounts payable and accrued liabilities, estimated tax liabilities, deferred revenue, long term liabilities, postemployment benefits, liability for contaminated sites, and liability for asset retirement obligations.
+
+**The accumulated surplus / (deficit)** is divided into equity in tangible capital assets (TCA), investment in intangible assets, reserve and reserve funds, general surplus/(deficit), unexpended capital financing, local boards, equity in government business enterprises, and unfunded liabilities (post-employment benefits, remediation costs relating to contaminated sites and asset retirement obligations).",,,
+71,Statement of Remeasurement Gains and Losses,Remeasurement Gains & Losses,"According to PS 1201 Financial Statement Presentation, municipal financial statements may include a statement of remeasurement gains and losses (this statement is only prepared when the municipality has unrealized gains or losses to report). Remeasurement gains and losses result from changes in the value of financial assets and liabilities arising from:
+
+1. Remeasurement of financial assets to fair value. Public sector accounting standards state that the value of specific financial assets and liabilities should be updated at the financial statement reporting date using current fair value.  This includes derivatives and equity instruments.  The annual change in the fair value of these assets and liabilities should be reported in the FIR on the statement of remeasurement gains and losses until the assets are sold or the liabilities are paid.
+
+2. Foreign currency exchange rate fluctuations. All financial assets or liabilities held in foreign currency should be converted to Canadian dollars at the financial statement reporting date. The annual fluctuations in exchange rates are reported in the FIR in the statement of remeasurement gains or losses.
+
+Once the asset is sold or liability paid, unrealized gains or losses become recognized, and the realized gain or loss is reallocated from the accumulated remeasurement gains and losses to the statement of operations.",,,
+74,Long Term Liabilities and Commitments,Long Term Liabilities,"Schedule 74 consists of 5 separate worksheets (74A, B, C, D, and E) and 12 sections. The worksheets and the sections within each are detailed below:",,,
+74E,Asset Retirement Obligation Liability,Long Term Liabilities,"PS 3280 Standard AROs guides municipalities to determine if a retirement or remediation obligation relating to an existing tangible capital asset should be recognized.   An asset retirement obligation is a legal obligation that arises from the retirement of a tangible capital asset, including solid waste or landfill liabilities.
+
+PS 3280.63 (d) states that a public sector entity should disclose a reconciliation of the beginning and ending aggregate carrying amount of the liability, showing separately the changes attributable to:
+
+- The liability incurred in the current period.
+
+- The liability settled in the current period.
+
+-
+
+   - The change resulting from the passage of time (i.e., accretion expense); and
+
+- Any revisions in estimated cash flows.",,,
+76,Government Business Enterprises (GBE),Other Information,"Please report the requested financial data that pertains to all entities deemed to be Government Business Enterprises (GBEs) as defined by Section 1300 of the Public Sector Accounting Handbook.  These include entities established under Ontario Regulation 599/06, Municipal Services Corporations, or the Municipal Act, 2001.",,,
+77,"Other Entities (DSSABs, Health Units, etc.)",Other Information,"In the Schedule 77 series, report financial data that pertains to entities that were previously fully or proportionally consolidated in the FIR but not fully or proportionally consolidated in municipal financial statements.   This type of entity includes District Social Services Administration Boards (77A), Health Units (77B), and other entities (77C).
+
+In Schedules 77A through 77C, please complete column 1 and then enter the municipality’s share as a percent on column 3. Column 2 is automatically calculated by multiplying total expenses (Column 1) by % of municipality’s share (Column 3).
+
+Data entered in Schedules 77A through 77C is carried forward and consolidated in Schedule 77D.",,,
+80,Statistical Information,Other Information,"The Schedule 80 series collects statistical information that is not collected elsewhere. This schedule series consists of sections 1 through 8.
+
+**1. Municipal Workforce Profile**
+
+**2. Selected Investments of Own Sinking Funds as of December 31**
+
+**3. Municipal Procurement this Year**
+
+**4. Building Permit Information**
+
+**5. Insured Value of Physical Assets**
+
+**7. Vacant Home Tax**
+
+**8. Consolidated Local Boards Including Joint Local Boards and All Local Entities Set Up by the Municipality**
+
+   - **(I) Proportionally Consolidated Joint Local Boards**
+
+   - **(II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality**
+
+In Schedule 80, the number of columns and column headings change with each section to accommodate the information collected.",,,
+80D,Municipal Performance Statistical Information,Other Information,"Schedule 80D collects statistical information. Municipalities report the data when they are responsible for the service, whether provided by municipal staff or contracted out. This schedule consists of section 9 through 14.
+
+**9. Building Permit Information (Performance Measures)**
+
+**10. Planning and Development**
+
+**11. Transportation Services**
+
+**12. Environmental Services**
+
+**13. Recreation Services**
+
+**14. Other Revenue (Used for the Calculation of Operating Cost).**
+
+In Schedule 80D the number of columns and column headings change with each section to accommodate the information collected.",,,
+81,Annual Debt Repayment Limit (ARL),Other Information,"The annual debt and financial obligation limit for municipalities is determined under **ONTARIO REGULATION 403/02: Debt and Financial Obligation Limits.**
+
+Under the above-mentioned regulation:
+
+The Ministry shall inform the treasurer of the municipality in writing of the limit.
+
+Before authorizing any specific work or class of work or any increase in expenditure for a previously authorized specific work or class of work that would require a long-term debt or financial obligation described in section 2, the council of the municipality shall have its treasurer calculate an updated limit using the most recent debt and financial obligation limit determined by the Ministry.
+
+All the rows in this schedule except for line 2410 are automatically populated from the schedules, rows and columns indicated in the ARL schedule.
+
+Please complete line 2410: Fees and Revenue for Joint Local Boards for Homes for the Aged.
+
+Please understand that the Ministry of Municipal Affairs will review the ARL schedule and send out a confirmation of the Annual Repayment Limit as required by Ontario Regulation 403/02.",,,
+83,Notes,Other Information,"This schedule is to be used for additional notes on the various schedules in the 2024 FIR.
+
+Notes should be used to provide information about variances between municipal audited financial statements and Financial Information Return balances, as well as other transactions, circumstances or events as needed.",,,
