@@ -181,7 +181,13 @@ Report all municipal investments in government business enterprises using the mo
 **Liabilities** are categorized as temporary loans, accounts payable and accrued liabilities, estimated tax liabilities, deferred revenue, long term liabilities, postemployment benefits, liability for contaminated sites, and liability for asset retirement obligations.
 
 **The accumulated surplus / (deficit)** is divided into equity in tangible capital assets (TCA), investment in intangible assets, reserve and reserve funds, general surplus/(deficit), unexpended capital financing, local boards, equity in government business enterprises, and unfunded liabilities (post-employment benefits, remediation costs relating to contaminated sites and asset retirement obligations).",,,
-71,,Remeasurement Gains & Losses,,,,
+71,Statement of Remeasurement Gains and Losses,Remeasurement Gains & Losses,"According to PS 1201 Financial Statement Presentation, municipal financial statements may include a statement of remeasurement gains and losses (this statement is only prepared when the municipality has unrealized gains or losses to report). Remeasurement gains and losses result from changes in the value of financial assets and liabilities arising from:
+
+1. Remeasurement of financial assets to fair value. Public sector accounting standards state that the value of specific financial assets and liabilities should be updated at the financial statement reporting date using current fair value.  This includes derivatives and equity instruments.  The annual change in the fair value of these assets and liabilities should be reported in the FIR on the statement of remeasurement gains and losses until the assets are sold or the liabilities are paid.
+
+2. Foreign currency exchange rate fluctuations. All financial assets or liabilities held in foreign currency should be converted to Canadian dollars at the financial statement reporting date. The annual fluctuations in exchange rates are reported in the FIR in the statement of remeasurement gains or losses.
+
+Once the asset is sold or liability paid, unrealized gains or losses become recognized, and the realized gain or loss is reallocated from the accumulated remeasurement gains and losses to the statement of operations.",,,
 74,Long Term Liabilities and Commitments,Long Term Liabilities,"Schedule 74 consists of 5 separate worksheets (74A, B, C, D, and E) and 12 sections. The worksheets and the sections within each are detailed below:",,,
 74E,Asset Retirement Obligation Liability,Long Term Liabilities,"PS 3280 Standard AROs guides municipalities to determine if a retirement or remediation obligation relating to an existing tangible capital asset should be recognized.   An asset retirement obligation is a legal obligation that arises from the retirement of a tangible capital asset, including solid waste or landfill liabilities.
 
