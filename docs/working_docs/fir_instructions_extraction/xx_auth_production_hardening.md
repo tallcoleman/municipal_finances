@@ -10,7 +10,7 @@
 ## Keycloak Configuration
 
 - **Switch to a persistent database**: replace `KC_DB=dev-mem` with a real PostgreSQL-backed Keycloak instance. The in-memory store loses all user data on container restart.
-- **Restrict redirect URIs**: the dev realm uses `*`. Lock this down to the actual frontend origin(s).
+- **Restrict redirect URIs**: the dev realm uses `*`. Lock this down to the actual frontend origin(s). For the Coolify-hosted editor (Task 04b), add the production Coolify domain to the `municipal-finances-api` client's `redirectUris` and `webOrigins` in `keycloak/realm-export.json` before the first production deploy — or set them via the Keycloak admin console and re-export the realm.
 - **Disable Direct Access Grants**: the `password` grant type (used for dev token fetching via curl) should be disabled in production — it exposes credentials directly to the client. Use authorization code flow with PKCE instead.
 - **Set a strong admin password**: `KEYCLOAK_ADMIN_PASSWORD` should come from a secret manager, not a hardcoded env var.
 - **Realm hardening**: review Keycloak's production hardening checklist (brute-force protection, password policies, session limits, email verification).
@@ -26,7 +26,7 @@
 ## API Security
 
 - **Rate limiting on auth-related endpoints**: protect the Keycloak token endpoint against brute-force with rate limiting at the proxy layer.
-- **CORS configuration**: `api/main.py` currently has no CORS middleware. Add `CORSMiddleware` with explicit `allow_origins` before any browser-based client is added.
+- **CORS configuration**: Task 04b adds `CORSMiddleware` to `api/main.py` with origins read from `CORS_ALLOWED_ORIGINS`. Set this env var to the production Coolify frontend URL (e.g., `https://editor.example.com`) — do not leave it at the dev default (`http://localhost:5173`) in production.
 - **HTTPS on the API**: uvicorn currently serves HTTP. Terminate TLS at a reverse proxy in production.
 - **Audit logging**: log authentication events (successful logins, 401/403 responses) with enough context (IP, user sub, endpoint) to support incident investigation.
 
