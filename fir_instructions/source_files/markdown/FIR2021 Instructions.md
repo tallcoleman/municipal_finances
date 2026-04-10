@@ -1,0 +1,9748 @@
+**==> picture [251 x 63] intentionally omitted <==**
+
+**2021 Financial Information Return Instructions** 
+
+**Ministry of Municipal Affairs and Housing Municipal Finance Policy Branch** 
+
+## **Table of Contents:** 
+
+|1.|<br>Introduction............................................................................................................... 4|
+|---|---|
+|2.|Municipal Services Offices ………………………………………………………………. 5|
+|3.|<br>Preparation and Submission of the FIR.................................................................... 6|
+|4.|<br>Declaration of the Municipal Treasurer..................................................................... 6|
+|5.|Recommended Order for Completion of Schedules ................................................. 7|
+|6.|<br>Consolidation............................................................................................................ 8|
+|7.|Accounting and Reporting Requirements ................................................................. 9|
+|8.|Social Housing Consolidation Issues...................................................................... 14|
+|9.|Municipal Electric Utilities & Municipal Business Corporations............................... 15|
+|10.|Tangible Capital Assets .......................................................................................... 16|
+|11.|Treatment of Solid Waste Landfill Closure and Post-Closure ................................. 16|
+|12.|Capital Leases........................................................................................................ 16|
+|13.|Inter-functional Adjustments ................................................................................... 17|
+|14.|Allocation of Indirect Costs (reported on the line for Program Support).................. 18|
+|15.|Debt Burden of the Municipality .............................................................................. 27|
+|16.|Coding of Data points (SLC Number) ..................................................................... 28|
+
+
+
+## **Attached:** 
+
+- **Content Changes for FIR2021 - What’s New** 
+
+- **Functional Classification of Revenues and Expenses** 
+
+- **FIR Bulletin 1 - Tile drainage** 
+
+## **FINANCIAL INFORMATION RETURN (FIR) SCHEDULES:** 
+
+## **Revenue Schedules:** 
+
+Schedule 10: Consolidated Statement of Operations: Revenue Schedule 12: Grants & User fees and service charges 
+
+## **Taxation Schedules:** 
+
+Schedule 20: Taxation Information Schedule 22: Municipal and School Board Taxation Schedule 24: Payments-in-Lieu of Taxation Schedule 26: Taxation and Payments-in-Lieu Summary Schedule 28: Upper-Tier Entitlements (Upper-Tier Only) Schedule 72: Continuity of Taxes Receivable 
+
+## **Expense Schedules:** 
+
+Schedule 40: Consolidated Statement of Operations: Expenses Schedule 42: Additional Information 
+
+## **Tangible Capital Assets Schedule:** 
+
+Schedule 51A: Consolidated Schedule of Tangible Capital Assets by Function Schedule 51B: Consolidated Schedule of Tangible Capital Assets by Asset Class Schedule 51C: Construction-in-progress by function 
+
+## **Net Financial Assets/Net debt Schedule:** 
+
+Schedule 53: Consolidated Statement of Change in Net Financial Assets (Net Debt) And Tangible Capital Asset Acquisition Financing/Donations 
+
+## **Cash Flow Schedule:** 
+
+Schedule 54: Consolidated Statement of Cash Flows - Direct & Indirect method 
+
+## **Reserves and Reserve Funds Schedule:** 
+
+Schedule 60: Continuity of Reserves and Reserve Funds Schedule 61: Development Charges Reserve Funds Schedule 62: Development Charge Rates 
+
+## **Financial Position:** 
+
+Schedule 70: Consolidated Statement of Financial Position 
+
+## **Long term liabilities:** 
+
+Schedule 74: Long Term Liabilities and Commitments 
+
+## **Other Information Schedules:** 
+
+Schedule 76: Government Business Enterprises (GBE) Schedule 77: Other Entities (DSSAB, Health Units, Homes for the aged, etc.) Schedule 79: Community Improvement Plans (CIP) Schedule 80: Statistical Information Schedule 81: Annual Debt Repayment Limit (ARL) Schedule 83: Notes 
+
+## **1. Introduction** 
+
+## **Role of the Ministry of Municipal Affairs and Housing** 
+
+The Ministry of Municipal Affairs and Housing is responsible for establishing requirements for municipal accounting, financial reporting, municipal auditing and other matters related to the financial health of municipalities as set out in Section 3 of the Municipal Affairs Act. 
+
+Section 294(1) of the Municipal Act specifically states that each municipality will annually report on its financial affairs, accounts and transactions. This takes the form of the annual Financial Information Return (FIR). 
+
+## **Purpose of the Financial Information Return** 
+
+Information reported in the Financial Information Return is extracted and stored in the Ministry’s database. The data is available to ministries, municipalities, other local government agencies and municipal associations for the following purposes: 
+
+- Developing provincial fiscal policy 
+
+- Developing municipal finance policy 
+
+- Monitoring local sector performance 
+
+- Examining the financial status of municipalities 
+
+- Municipal debt limit reports 
+
+- Forecasting and budgeting 
+
+- Financial and statistical data requests 
+
+- Municipal management tool/comparative tool 
+
+- Local economic profiles and information on local services and service levels for use by industry 
+
+## **Users** 
+
+The Ministry of Municipal Affairs and Housing and other ministries are major users of the information collected in the Financial Information Return and use the information for policy development, evaluation, and monitoring. Other users include the Local Planning Appeal Tribunal, municipalities, municipal associations, Statistics Canada, other provinces, the investment and banking communities, debenture holders, the academic community, consultants, and others interested in the municipal sector. 
+
+Because of the wide range of users and the provincial programs that make use of the data in the FIR, it is imperative that the Return be prepared accurately and completed promptly. 
+
+## **Intent** 
+
+**The information included in the Financial Information Return should reflect the audited financial statements of the municipality (PSAB Standards).** 
+
+## **Whom to Contact for Assistance:** 
+
+If your municipality does not have access to the internet or if you require advice or assistance regarding these instructions or the return, please call the FIR Co-ordinator at (437) 833-9995 in the Municipal Finance Policy Branch, email **Fir.mah@ontario.** ca or contact a Municipal Services Office of the Ministry of Municipal Affairs and Housing, listed below. 
+
+## **2. Municipal Services Offices - Ministry of Municipal Affairs and Housing** 
+
+|**Municipal Service Office**|**Municipalities Served**|
+|---|---|
+|**Central Municipal Services Office**<br>777 Bay St, 12th Floor<br>Toronto, ON M5G 2E5<br>(416) 585-6226<br>1-800-668-0230<br>Fax: (416) 585-6882|<br>City of Toronto, City of Hamilton, Regional<br>Municipalities of: Durham, Halton, Niagara,<br>Peel, York, District Municipality of Muskoka,<br>Simcoe|
+|**Eastern Municipal Services Office**<br>Rockwood House<br>8 Estate Lane<br>Kingston, ON K7M 9A8<br>(613) 545-2100<br>1-800-267-9438<br>Fax: (613) 548-6822|City of Ottawa, City of Kawartha Lakes,<br>Counties of Frontenac, Haliburton, Hastings,<br>Lanark, Leeds and Grenville, Lennox and<br>Addington, Northumberland, Peterborough,<br>Prescott and Russell, Prince Edward,<br>Renfrew, Stormont, Dundas and Glengarry|
+|**Municipal Services Office North (Sudbury)**<br>159 Cedar Street, Suite 401<br>Sudbury, ON P3E 6A5<br>(705) 564-0120<br>1-800-461-1193<br>Fax: (705) 564-6863|City of Greater Sudbury, Districts of Algoma,<br>Cochrane, Manitoulin, Nipissing, Parry Sound,<br>Sudbury, Timiskaming|
+|<br>**Municipal Services Office North (Thunder Bay)**<br>435 James Street South, Suite 223<br>Thunder Bay, ON P7E 6S7<br>(807) 475 1651<br>1-800-465-5027<br>Fax: (807) 475-1196|Districts of Kenora, Rainy River, Thunder Bay|
+|**Western Municipal Services Office**<br>659 Exeter Road, 2nd Floor<br>London, ON N6E 1L3<br>(519) 873-4020<br>1-800-265-4736<br>Fax: (519) 873-4018|Municipality of Chatham-Kent, Region of<br>Waterloo, Counties of Brant, Bruce, Dufferin<br>Elgin, Essex, Grey, Haldimand, Huron,<br>Lambton, Middlesex, Norfolk, Oxford, Perth,<br>Wellington|
+
+
+
+## **3. Preparation and Submission of the FIR** 
+
+## **Deadline for Completion:   May 31, 2022** 
+
+## **Completion Requirements:** 
+
+Data is entered in an Excel file which contains worksheets for each FIR schedule. 
+
+## **Municipalities can net file their 2021 FIR by using the Smart FIR2021 template.** 
+
+A list of submission requirements is shown on the FIR website for each reporting year _._ 
+
+## **4. Declaration of the Municipal Treasurer** 
+
+The Declaration affirms that all schedules agree with the books and records of the municipality and its consolidated entities and that the schedules have been completed in accordance with the instructions. 
+
+All schedules should be prepared in conjunction with the audited financial statements. Any material deviation should be explained on Schedule 83. 
+
+The Declaration of the Municipal Treasurer is labelled Schedule 02 in the FIR. 
+
+**Municipalities will be providing this electronically once you’re ready to submit your return electronically (net file). Please see page 17 of the Smart FIR Municipal User Guide.** 
+
+## **– Smart FIR options attaching files when submitting your return** 
+
+**With the Smart FIR2021, you will be able to attach the financial statements when you are ready to submit. (Please refer to the Smart FIR Municipal User Guide)** 
+
+Every municipality is also responsible for submitting their Financial Statements to the Ministry. Financial Statements, including a signed Auditor’s Report can now be submitted electronically to: **Fir.mah@ontario.ca** 
+
+It is preferred that Municipalities submit a PDF (Portable Document Format) version of the Financial Statements, although other formats such as Word or Excel would also be acceptable. 
+
+Municipalities that choose to submit their Financial Statements electronically are no longer required to send hard copies to their local Municipal Services Office.  Those Municipalities unable to submit electronically should continue to mail a hard-copy of their Financial Statements to their local Municipal Support Office. The addresses of the Municipal Support Offices are shown in section 2 of this Introduction. 
+
+Please note that the Ministry no longer requires a report from the Municipal Auditor on the FIR since the FIR is not audited. **Nevertheless** , **the information provided in all schedules should be derived from and be able to trace back to the audited financial statements.** 
+
+Municipalities retain the option to involve their auditor in the preparation of the FIR if they so desire. 
+
+On the Declaration, Schedule 02, Municipalities should enter the name and details of a contact person for the information contained in the FIR. Also, the date the schedules are completed should be entered (note that the date is automatically displayed but can be overwritten). 
+
+## **5. Recommended Order for Completion of Schedules** 
+
+It is recommended that municipalities complete the FIR schedules in the order given below. Within each schedule, the sections should be completed sequentially, unless otherwise noted. 
+
+Tax schedules should be completed first.  Please note that while all municipalities complete Schedules 20, 22, 24, 26, only upper-tiers complete Schedule 28. Only lower-tiers and single-tiers complete Schedule 72, Continuity of Taxes Receivable. 
+
+Certain schedules (10, 70) are completed after others because they contain data points which are automatically updated from other schedules. 
+
+|**Suggested**<br>**Order**|**Schedule**|
+|---|---|
+|**1**|**Schedule 20:  Taxation Information**|
+|**2**|<br>**Schedule 22: Municipal and School Board Taxation**|
+|**3**|<br>**Schedule 24: Payments-in-Lieu of Taxation**|
+|**4**|**Schedule 26:  Taxation and Payments-in-Lieu Summary**|
+|**5**|**Schedule 28: Upper-Tier Entitlements (Upper-Tiers only)**|
+|**6**|**Schedule 72:  Continuity of Taxes Receivable**|
+|**7**|**Schedule 12: Grants & User fees and service charges**|
+|**8**|**Schedule 10: Consolidated Statement of Operations: Revenue**<br>Schedule 10 cannot be completed until the above schedules are completed since many data<br>points are automatically carried-forward from other schedules.  The continuity section of<br>schedule 10 should be completed after Schedule 40 is completed since data is carried-forward<br>from Schedule 40.|
+|**9**|<br>**Schedule 40: Consolidated Statement of Operations: Expenses**<br>Columns in Schedule 40 can be completed sequentially.|
+
+
+
+|**10**|**Schedule 51: Consolidated Schedule of Tangible Capital Assets**<br>**Schedule 53: Consolidated Statement of Change in Net Financial Assets (Net Debt)**<br>**And Tangible Capital Asset Acquisition Financing/Donations**|
+|---|---|
+|**11**|**Schedule 54: Consolidated Statement of Cash Flows – Choose either the Direct or**<br>**Indirect Method.**|
+|**12**|**Schedule 60: Continuity of Reserves and Reserve Funds**<br>**Schedule 61: Development Charges Reserve Funds**<br>**Schedule 62: Development Charge Rates**|
+|**13**|**Schedule 74: Long Term Liabilities and Commitments**|
+|**14**|**Schedule 70: Consolidated Statement of Financial Position**|
+|**15**|**Schedule 76: Government Business Enterprises**<br>**Schedule 77: Other Entities (DDSABs, Health Units, Homes for the aged, etc)**|
+|**16**|<br> <br>**Schedule 80:  Statistical Information**<br>**Schedule 81: Annual Debt Repayment Limit**<br>**Schedule 83: Notes**|
+
+
+
+## **6. Consolidation** 
+
+Subject to the exceptions noted below, all local boards of the municipality and all entities established by the municipality are to be consolidated.  All joint local boards are to be proportionally consolidated **if the boards are controlled by the municipality per PS 1300 or if a government partnership exists whereby the municipality has shared control over the board per PS3060.** (Please refer to the section on proportional consolidation) 
+
+Please note that PSAB section 1300.07 indicates that an organization is to be consolidated if it is controlled by the municipality. (Section 1300.7: “The government reporting entity should comprise the organizations that are controlled by the government.”) **In addition, PS 3060.29 indicates that government partnerships should be proportionately consolidated. (Section 3060.29: “Government financial statements should recognize the government’s interest in government partnerships, except for government business partnerships, using the proportionate consolidation method.”)** 
+
+Municipalities have the authority under Ontario Regulation **599/06** of the Municipal Act, 2001 to establish business corporations.  For FIR purposes, these corporations will be fully consolidated and reported in the appropriate functional category if they are not deemed to be government business enterprises. If deemed to be government business enterprises, they will be reported in the same manner as Municipal Electric Utilities. 
+
+Notwithstanding the instructions above, the following types of local boards **are not** to be consolidated in the FIR: 
+
+- **Children’s Aid Societies** 
+
+- **Conservation Authorities** 
+
+- **Harbour Commissions** 
+
+- **Humane Societies** 
+
+- **Municipal Hospitals** 
+
+- **Provincial Area Library Boards** 
+
+- **School Boards** 
+
+## **Gas and Telephone Utilities *** 
+
+If gas and telephone utilities are deemed to be government business enterprises, then they are to be consolidated in the same manner as a municipal electric utility.  They are to be consolidated using the modified equity method. If deemed to be a local board or a department of a municipality then they are fully consolidated. Please contact the FIR Co-ordinator by e-mail at Fir.mah@ontario.ca for further information. 
+
+Further, the following funds are not consolidated because they **are not deemed to be assets or revenues of the municipality.** 
+
+- **Ontario Home Renewal Plan (OHRP) funds** 
+
+- **Pension funds** 
+
+- **Trust funds, including perpetual care funds for cemeteries** 
+
+Municipalities will report **sinking funds** in Schedule 70 of the FIR.  Please do not report the annual revenue of sinking funds on Schedule 10 and the payment of principal and interest on Schedule 40. 
+
+## **7. Accounting and Financial Reporting Requirements** 
+
+Enter all amounts to the nearest dollar. 
+
+## **Full Accrual Basis of Accounting** 
+
+Accrual basis of accounting recognizes the financial effects of transactions in the period(s) in which they occur irrespective of when the cash has been received or paid. It requires that tangible capital assets be reported on the balance sheet (Statement of Financial Position) at historical cost and expensed (amortized) in the annual results of operations over their estimated useful lives. 
+
+## **Reporting of Loans from Reserve Funds in the Financial Information Return (FIR)** 
+
+Loans from reserve funds are not included in the totals for schedules 70 and 74. 
+
+Section 2500.08 of the PSA Handbook requires that financial transactions in individual 
+
+funds are to be combined and any inter-fund balances and transactions eliminated. 
+
+## **Reporting of Capital Grants** 
+
+Capital grants are reported directly in the consolidated statement of operations on Schedule 12 columns 5 & 6. 
+
+## **Reporting of Provincial Gasoline Tax Revenue** 
+
+Provincial gasoline tax revenues are reported in the consolidated statement of operations: revenue, as a **Conditional grant** for **Transit services** if the gasoline tax revenues were utilized during the Year. Report Provincial Gas Tax revenue on Schedule 12 under the transit sub-function, except for deferred revenue earned which should be reported in Schedule 60. 
+
+**Reserve Funds established to retain provincial gasoline tax revenues are reported as deferred revenue on Schedule 60 (Schedule 60 lines 0860 & 5690 column 1).** 
+
+## **Reporting of Canada Community-Building Fund (CCBF) (formally known as Federal Gasoline Tax) Revenue** 
+
+Canada Community-Building Fund (formerly known as Federal gasoline tax) revenues are reported in the consolidated statement of operations: revenue, on Schedule 12 column 6 as a conditional grant if the CCBM revenues were utilized during the year, except for deferred revenue earned which should be reported in Schedule 60. The Federal grants are to be used across several project categories to address local priorities. Information on the eligible project categories can be found at Infrastructure Canada - The Canada Community-Building Fund. 
+
+**Reserve Funds established to retain Canada Community-Building Fund (Federal gasoline tax) revenues are reported as deferred revenue on Schedule 60 (Schedule 60 lines 0862 & 5691 column 1).** 
+
+## **Reserves, Reserve Funds, and Deferred Revenue** 
+
+Reserves and reserve funds are comprised of funds set aside for specific purposes by Council and funds set aside for specific purposes by legislation, regulation or agreement. For financial reporting purposes, reserve funds set aside by legislation, regulation or agreement are reported as deferred revenue, a liability, on the Consolidated Statement of Financial Position. Other reserve funds and reserves are balances within the accumulated surplus. 
+
+## **Reserve Fund:** 
+
+Monies set aside for a specific purpose as required by provincial legislation, a municipal by-law, or agreement. 
+
+## **Obligatory Reserve Fund** : 
+
+Monies set aside and legally restricted by provincial legislation, a municipal by-law, or agreement. The funds are raised for a specific purpose and cannot be used for any other purpose. The main Obligatory Reserve Funds are the Development Charges Reserve Funds that are regulated by the _Development Charges Act, 1997_ . 
+
+Recent changes have been made to the Development Charges Act, 1997. Section 26.1 of the Development Charges Act has allowed for deferred payments for builders of rental housing, non-profit housing and institutional development. If there are changes made to the financial statements resulting from the recent updates to the Development Charges Act, 1997, these changes should be reflected in the FIR. The Notes section in Schedule 83 (Line 0070) can be used to provide any additional information. This is a temporary measure until changes to Schedule 61 are finalized to reflect these recent updates. 
+
+## **Discretionary Reserve Fund:** 
+
+Monies set aside for a specific purpose by Council and legislated by municipal by-law. If council should decide to spend the money for purposes other than what it was originally intended for, then a new by-law must be passed under section 417(4) of the Municipal Act. 
+
+## **Reserve:** 
+
+Monies set aside by approval of Council and not restricted by legislation. Reserves can be related to projects that are of a nature prescribed and managed by approval of Council. Reserves make no reference to any specific asset and do not require the physical segregation of money or assets. 
+
+Generally, all revenues should be recorded in the statement of operations with the exception of deferred revenue (obligatory reserve funds). 
+
+Schedule 60: Continuity of Reserves and Reserve Funds, is provided to record allocation of surplus to reserves and reserve funds. 
+
+Deferred revenue is reported as revenue in Schedule 60, column 1 (Obligatory reserve funds and deferred revenue) and as a liability in Schedule 70, SLC 70 2410 01. 
+
+## **Netting of Revenues and Expenses** 
+
+Generally, there is **no** netting of revenue against expenses with the following exceptions: 
+
+- **Insurance recoveries** 
+
+- **Retail sales tax refunds** 
+
+In all other circumstances, transactions are to be reported on a gross basis.  The issue of debt instruments by upper-tier municipalities on behalf of lower-tier governments and lower-tier agencies, boards and commissions, and for school boards are to be reported on the appropriate receivable line in Schedule 70 and as part of the upper-tier debt in Schedule 70. Debt charges pertaining to these debt instruments are however not to be reported on the upper-tier municipality's schedule 10 and 40. 
+
+## **Transactions Involving Other Municipalities** 
+
+Generally, all transactions involving other municipalities are to be reported on a gross basis.  For example, where a municipality provides firefighting services to a neighbouring municipality, the expenditure would be shown gross on Schedule 40, Consolidated Statement of Operations: expenses, and the amounts recovered would be reported in Schedule 12, Grants, User fees and service charges, column 3 (Other municipalities). 
+
+There has been some confusion with respect to the reporting of water/wastewater revenues and expenditures between lower and upper-tier municipalities.  As a general rule, you should determine which municipality has the statutory responsibility to provide the service in question; the reporting method follows accordingly. 
+
+Where a particular function is a statutory responsibility of the upper-tier municipality, then all amounts raised for the function by a lower-tier through upper-tier tax rates, or as amounts added to tax bills, are to be treated as amounts raised for upper-tier purposes and reported on Schedule 22, Municipal and School Board Taxation.  In the case where revenues are raised through user fees or service charges, the lower-tier reports the revenue in Schedule 12, Grants & user fees and service charges, column 4 (User fees and service charges). The upper-tier reports the revenue in Schedule 12, column 3 (Other municipalities). 
+
+## **Consolidated Municipal Service Managers (CMSMs) and District Social Services Administration Boards (DSSABs)** 
+
+If the municipality designated as a Consolidated Municipal Service Manager is an upper-tier which provides CMSM services to its lower-tiers only, the upper-tier consolidates the operations of the CMSM in its FIR. 
+
+If the cost of CMSM services is included in the upper-tier tax rate, the lower-tiers do not report expenditures for CMSM services in Schedule 40.  Note that Upper-Tier tax rates are reported in Schedules 22 and 24.  If the upper-tier recovers some or all of its costs through an invoice, the payment to the upper-tier is reported in Schedule 40 as contracted services (column 4). 
+
+Where the CMSM consists of a county and a single-tier or two upper-tiers, reporting will reflect the nature of the consolidation agreement between the parties. 
+
+If the municipality designated as a CMSM has a purchase of service agreement with the other party, the CMSM reports CMSM operations in its FIR.  The municipality (i.e. county or single-tier) which purchases services will report expenditures for CMSM services as contracted services in Schedule 40. 
+
+If the Consolidated Municipal Service Manager is organized as a joint local board, the operations of the CMSM are proportionally consolidated among the municipalities which are a party to the consolidation agreement. 
+
+## **District Social Services Administration Boards (DSSABs)** 
+
+**District Social Services Administration Boards are not fully or proportionally consolidated** . 
+
+Schedule 77 captures the financial position and operations of the District Social Services Administration Board. 
+
+**Proportional Consolidation** 
+
+**Joint local boards and home for the aged are proportionally consolidated if the entities are controlled by the municipality per PS 1300 or if a government partnership exists whereby the municipality has shared control over the entity per PS 3060.** 
+
+Proportional consolidation is a method of accounting and reporting whereby a municipality’s pro rata share of each of the assets, liabilities, revenues and expenses that are subject to joint control is combined on a line-by-line basis with similar items in the municipality’s Financial Information Return.  This method of accounting differs from full consolidation in that only the municipality’s share of assets, liabilities, revenues and expenses is reported. 
+
+## **Transactions** 
+
+Material transactions between the municipality and its consolidated local entities must be eliminated on consolidation. 
+
+Where proportional consolidation of a local board is applicable, the municipality is to reflect its proportional share of the gross revenues and the gross expenses of the local board. 
+
+In addition, exclude all programs which receive one hundred per cent financing from the Province. In these cases, the municipality acts simply as a conduit for flowing provincial funds. 
+
+## **8. Social Housing Consolidation Issues** 
+
+Please refer to the MAH Social Housing Treatment Document posted on the FIR website for further information. 
+
+## **Local Housing Corporations** 
+
+Local Housing Corporations (LHC) should be fully consolidated in the FIR of the municipal service manager.  The Ministry of Municipal Affairs and Housing commissioned KPMG to report on the transfer of social housing to Local Housing Corporations in November 2000. The KPMG report, entitled, Financial Reporting Guidance: Social Housing Transfer to Local Housing Corporations concluded: 
+
+LHCs are Government Not-For-Profit Organizations for financial reporting purposes. Accordingly, they should apply the CPA Canada Public Sector Accounting Handbook accounting guidelines for government not-for-profit organizations in maintaining their accounts and preparing their financial statements. The service manager in preparing their own financial statements should consolidate the LHC line by line on a uniform basis of accounting after eliminating inter-governmental unit transactions and balances. Mortgages transferred to Local Housing Corporations (LHCs) should be reported in the financial statements of the LHCs. The municipal service manager will, therefore, reflect LHC debt obligations through the consolidation of the LHC in the FIR. 
+
+Ontario Housing Corporation debentures which were not transferred to Local Housing Corporations should not be reflected as debt of municipalities in the FIR.  As the debentures are not assignable, the Ontario Housing Corporation will continue to hold the debentures. 
+
+## **Municipal Non-Profit Housing Corporations** 
+
+Municipal Non-Profit Housing Corporations should be fully consolidated in the FIR if the municipality acts as the service manager, effectively controlling the strategic financial and operating policies, and the municipality controls a majority of the appointments to the Board of Directors of the Municipal Non-Profit Corporation. 
+
+The November 2000 report by KPMG indicated that municipal financial statement preparers will need to examine the structure of any existing municipal non-profit housing corporations that are part of the municipal reporting entity to determine whether they are accountable to the service manager and are owned or controlled by it.  It is expected, given that the service manager will have authority over the municipal non-profit’s strategic financial and operating policies, either directly or through its control of the members appointed to serve as directors, that many of these organizations would be part of the reporting entity of their respective service manager and as such be consolidated with it. 
+
+## **Private Non-Profits and Co-operative Housing Corporations** 
+
+The financial activities of Private Non-Profits and Co-operative Housing Corporations should not be consolidated in the Financial Information Return. 
+
+The November 2000 KPMG report also did not make a recommendation regarding Private Non-Profits. In most cases, these bodies are not deemed to be local boards, i.e. part of the Municipal Service Manager, and municipalities do not control or hold ownership in the organizations.  It should be pointed out; however, that municipalities do provide funding to these organizations. 
+
+## **9. Municipal Electric Utilities & Municipal Business Corporations (Ontario Reg 599/06)** 
+
+The Energy Competition Act, 1998, requires municipalities choosing to continue providing hydro-electric services beyond November 7, 2000, to do so through an entity incorporated under the Ontario Business Corporations Act. 
+
+In the Financial Information Return, municipalities are to account for their ownership interests in municipal electric utilities as government business enterprises, regardless of the method used to report municipal electric utilities in the annual Financial Statements. To provide for consistent financial reporting in the FIR, municipalities are to account for ownership using the modified equity method. (Please see the CPA PSA Handbook, Government Reporting Entity, paragraph PSAB 1300.35). The modified equity method reports the net assets of the municipal electric utility as a one-line investment in the Financial Information Return. 
+
+## **Reporting Municipal Electric Utilities & Municipal Business Corporations in the FIR** 
+
+The annual net income (deficit) for the municipal electric utility is reported in Schedule 10 on SLC 10 6020 01 (Net Income for Business Government Enterprise for year). Please note, Government Business Enterprise Equity at the end of the year in SLC 10 6090 01 will equal Government Business Enterprise Equity at the beginning of the year, plus Net Income for Government Business Enterprise for the year, plus any adjustments. This can be expressed as: SLC 10 6090 01 = 10 6010 01 + 10 6020 01 + 10 6060 01 
+
+Government Business Enterprise Equity from SLC 10 6090 01 is carried forward to SLC 70 5080 01 in the Accumulated Surplus (Deficit) section.  Government Business Enterprise Equity or net assets are also reported by the municipality in the “other financial assets” section on SLC 70 0820 01. 
+
+For further information please refer to Accounting for Electric Utilities by Municipalities in Ontario, dated April 2000. 
+
+## **10. Tangible Capital Assets** 
+
+Please follow the same accounting and financial reporting standards contained in the PSA Handbook: PS 3150 for tangible capital assets that are utilized to produce the annual financial statements.  PS 3150 provides the standards for recognizing tangible capital assets, the measurement of these assets and the requirement to amortize tangible capital assets. The cost of tangible capital assets less their accumulated amortization is reported under non-financial assets on the Consolidated Statement of Financial Position (Schedule 70 of the FIR).  In addition, tangible capital assets are reported on Schedule 51 of the FIR. 
+
+## **11. Treatment of Solid Waste Landfill Closure and Post-Closure** 
+
+Account for a solid waste landfill closure and post-closure liability as per PS 3270 in the PSA Handbook. 
+
+In Schedule 70, Consolidated Financial Position, report the liability in SLC 70 2799 01 (Solid waste landfill closure and post-closure). 
+
+New section PS 3280 Asset Retirement Obligations is effective for annual financial statements relating to fiscal years beginning after April 1, 2022 and will replace PS 3270 Solid Waste Closure and Post-closure Liability standard. The FIR will be updated to reflect changes with the new standard. 
+
+## **12. Capital Leases** 
+
+Capital leases can be categorized as lease purchase agreements which are deemed leased tangible capital assets. 
+
+For further details, please refer to PSAB guideline PSG-2, Leased Tangible Capital Assets, and to PSG-5, Sale-leaseback transactions. 
+
+For information on financing leases beyond the life of Council, please see Ontario Regulation 46/94. 
+
+## **Lease Purchase Agreement (Tangible Capital Lease)** 
+
+A leased tangible capital asset is defined as a lease that, from the point of view of the lessee, transfers substantially all the benefits and risks incident to ownership of a tangible capital asset to the lessee. A leased tangible capital asset is a non-financial asset that has physical substance and a useful life extending beyond an accounting period, and is held under lease for use, on a continuing basis, in the production or supply of goods and services. Under the terms and conditions of the lease, substantially all of the benefits and risks incident to ownership are, in substance, transferred to the 
+
+government without necessarily transferring legal ownership. 
+
+A leased tangible capital asset is reported in the following schedules: 
+
+## **Schedule 74, Long Term Liabilities and Commitments** 
+
+Report the leased tangible capital asset in the section - Debt burden of the municipality: Analysed by debt instrument, in SLC 74 1240 01 (Lease purchase agreements /Tangible capital assets). 
+
+## **Schedule 51, Statement of Tangible Capital Assets** 
+
+Report the value of leased tangible capital assets under the appropriate function and sub-function. 
+
+## **Schedule 40, Consolidated Statement of Operations: Expenses** 
+
+Annual lease payments for the tangible capital asset are allocated between repayments of the liability, interest expense and any related executory costs. 
+
+The annual interest payments are functionalised in Schedule 40 in column 2 (Long Term Debt Charges - Interest). 
+
+## **Sale-Leaseback Transaction** 
+
+A Sale-Leaseback Transaction involves the sale of property by a government and the leasing of the same property, or a portion thereof, back to the government. The transaction may be affected through a series of concurrent sale transactions involving more than one external party or organization within the government reporting entity, with the end result being that the government retains the use of the property, or a portion thereof. 
+
+In substance a sale-leaseback transaction that results in a Leased Tangible Capital Asset is a financing arrangement as the government still retains substantially all the benefits and risks incidental to ownership of the property. When this is the case, follow the procedures for leased tangible capital assets. 
+
+## **13. Inter-functional Adjustments** 
+
+Beginning with the FIR2002, separate columns are provided in Schedule 40 for the reporting of Inter-Functional Adjustments and the Allocation of General Government: 
+
+## **Column 12 Inter-functional adjustments** 
+
+## **Column 13 Allocation of program suppor** t 
+
+By providing two separate columns it is possible to identify the amounts reported for each purpose. 
+
+## **Interdepartmental Transfers** 
+
+The inter-functional adjustments column in Schedule 40, column 12 is used to report the transfer of expenses between departments (sub-functions). 
+
+As an example, an interdepartmental transfer may be made if the waterworks department provides hydrant service for fire protection purposes and initially reports the expenditure.  The waterworks department should allocate the expenditure for hydrant services to fire services using column 12 (inter-functional adjustments).  On the line for the waterworks system, a negative amount is entered in column 12 or added to the existing balance in the column.  An equal positive amount should be added to the balance in column 12 on the line for fire services. Municipalities should report inter-functional adjustments if all the following conditions are met: 
+
+- A service is provided by one sub-function to one or more other sub-functions 
+
+- Expenditures incurred in providing the service to another sub-function can be 
+
+- easily identified 
+
+- A consistent method is used to determine the amount to be transferred 
+
+- between sub-functions 
+
+- The method used to determine the amount to be transferred is easily explainable 
+
+## **Column Total for Inter-Functional Adjustments** 
+
+The column total for inter-functional adjustments in SLC 40 9910 12 will always be zero because each interdepartmental transfer entered as a negative amount in column 12 for one sub-function has a corresponding positive interdepartmental transfer entered for another sub-function. 
+
+## **14. Allocation of Indirect Costs (reported on the line for Program Support)** 
+
+Municipalities are required to allocate indirect costs reported on the line for Program Support in Schedule 40 to other sub-functions, including Governance and Corporate Management.  In contrast, the line for Corporate Management is used to report indirect costs that would be difficult to allocate to sub-functions. Expenses reported as 
+
+Corporate Management are not allocated to other sub-functions. Please see the chapter entitled “Functional Classifications” for definitions of Program Support and Corporate Management.  Please note that the line for Program Support is not intended for “adjustments”. 
+
+Column 13, Allocation of Program Support, records the amount to be allocated in SLC 40 0260 13 as a negative value.  The amounts allocated to other sub-functions are recorded as positive amounts in column 13: SLC 40 xxxx 13. 
+
+In contrast, the column for Inter-Functional Adjustments is used to record 
+
+interdepartmental transfer between services other than general government. It is asked that municipalities not use SLC 40 0240 12 (Governance line, Inter-functional Adjustments column) or SLC 40 050 12 (Corporate Management line, Inter-functional Adjustments column) to record indirect costs to be allocated downwards in Schedule 40 to other sub-functions.  Generally, any negative values entered on the governance and corporate management lines in column 12 would represent amounts to be allocated to other sub-functions. 
+
+When the Inter-Functional Adjustments column is used to record interdepartmental transfers and the allocation of indirect costs, neither type of transaction can be isolated. We do not know which entries represent interdepartmental transfers and which entries represent the allocation of indirect costs.  This works against the objective of transparency in financial reporting. 
+
+Please note that the Inter-Functional Adjustments column does not contain a formula for summing expenses for salaries, wages and employee benefits; materials; and contracted services.  It is a standalone column separate from those expense categories. Therefore, the content of expenses reported as Inter-Functional Adjustments for Governance in SLC 40 0240 12 and for Corporate Management in SLC 40 0250 12 is unknown. 
+
+In addition, there is no standardized method for allocating Inter-Functional Adjustments reported on the Governance and Corporate Management lines to sub-functions.  Note that Inter-Functional Adjustments reported on the Program Support Line in SLC 40 0260 12 do form part of the total to be allocated to other sub-functions in SLC 40 0260 13. 
+
+To sum up, standardized reporting of indirect costs in Schedule 40 using line 0260 (Program Support) and column 13 (Allocation of Program Support) is essential for the comparability of FIR data and the MPMP efficiency measures based on that data. 
+
+## **Amount of Program Support Allocated to Other Sub-functions** 
+
+The amount of Program Support to be allocated in SLC 40 0260 13 equals the sum of the following cells times -1: 
+
+**Salaries, wages and employee benefits SLC 40 xxxx 01 Materials SLC 40 xxxx 03 Contracted services SLC 40 xxxx 04 Rents and financial expenses SLC 40 xxxx 05 Inter-functional adjustments SLC 40 xxxx 12** 
+
+The amount to be allocated is shown as a negative value in SLC 40 0260 13 while the amounts allocated to other sub-functions are shown as positive values. The total for column 13 will be zero since the sum of the amounts allocated to individual subfunctions is a positive number which is equal to the negative number in SLC 40 0260 13. 
+
+## **Allocation Methods for Municipalities of Different Sizes** 
+
+Municipalities are asked to use a standardized method of allocation for Program Support, based on population.  The municipality must indicate the allocation method used in SLC 94 0201 03. 
+
+|**Population**|**Method of Allocation**||
+|---|---|---|
+|**100,000+**|**MBN Canada (OMBI method)**|**Required**|
+|**Under 100,000**|**Percentage of Total Expenses**<br>**OR**<br>**Modified Percentage of Total Expenses**|**Required**<br>**Required**|
+
+
+
+## **ALLOCATION METHOD:  Percentage of Total Expenses** 
+
+## **Summary of Method:** 
+
+This method is used by municipalities with populations under 100,000. Expenses for each service listed in Schedule 40, i.e. sub-function, are expressed as a percentage of Total Expenses. 
+
+Only 5 object categories of expenses are used in determining Total Expenses: salaries, wages & employee benefits; materials; contracted services; rents and financial expenses; and inter-functional adjustments. 
+
+Expenses for each sub-function are divided by Total Expenses to determine a percentage of Total Expenses.  The amount to be allocated equals the percentage of Total Expenses times the amount of Program Support in (SLC 40 0260 13) times (-1). 
+
+Total Expenses for the columns used from Schedule 40 are expressed net of Program Support. 
+
+## **Steps:** 
+
+## **1. The amount of Program Support to be allocated equals (SLC 40 0260 13) times (-1).** 
+
+Since Program Support is shown as a negative value in Schedule 40, it is necessary to multiply Program Support in (SLC 40 0260 13) by (-1) to convert it to a positive number. 
+
+## **2. Determine expenses for each sub-function.** 
+
+For each sub-function, expenses equal: 
+
+Sum of: 
+
+**Salaries, wages and employee benefits SLC 40 xxxx 01 Materials SLC 40 xxxx 03 Contracted services SLC 40 xxxx 04 Rents and financial expenses SLC 40 xxxx 05 Inter-functional adjustments SLC 40 xxxx 12** 
+
+## **3. Determine Total Expenses.** 
+
+Sum: 
+
+**Salaries, wages and employee benefits SLC 40 9910 01 less SLC 40 0260 01 Materials SLC 40 9910 03 less SLC 40 0260 03 Contracted services SLC 40 9910 04 less SLC 40 0260 04 Rents and financial expenses SLC 40 9910 05 less SLC 40 0260 05 Inter-functional adjustments SLC 40 9910 12 less SLC 40 0260 12** 
+
+Note that the amount of Program Support in each column (SLC 40 0260 xx) is subtracted from the column Total in line 9910. 
+
+## **4. Calculate expenses for each sub-function as a % of Total Expenses.** 
+
+For each sub-function, divide expenses by Total Expenses and multiply by -1. Convert to a percentage by multiplying by 100 or formatting as a percentage. 
+
+## **5. Determine the amount of Program Support allocated to each sub-function.** 
+
+For each sub-function, multiply the amount of Program Support in (SLC 40 0260 01) by (-1) and multiply by the percentage of Total Expenses. 
+
+**6. For each sub-function, enter the amount of Program Support as a positive value in column 13 (Allocation of Program Support). TIP: Copy Schedule 40 to a new workbook and add columns to calculate the percentage of total expenses.** (See Table 1) 
+
+## **Table 1. Allocation Method: Percentage of Total Expenses** 
+
+Calculating the amount of Program Support to be allocated to each sub-function. Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example. 
+
+|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|<br> <br>**Table 1. Allocation Method: Percentage of Total Expenses**<br>Calculating the amount of Program Support to be allocated to each sub-function.<br>Method: Copy Schedule 40 and add columns A, B, C. Note: dummy data is used in this example.|
+|---|---|---|---|---|---|---|---|---|---|---|
+|||<br>Salaries, wages<br>& employee<br>benefits|Materials|Contracted<br>services|Rents &<br>Financial<br>Expenses|Inter-<br>functional<br>Adjustments|Program<br>Support|SUBTOTAL|<br> <br>% of Total<br>Expenses<br>From Col. A:<br>SUBTOTAL /<br>TOTAL<br>Expenses<br>Less Program<br>Support|<br>Amount of<br>Program Support<br>to be Allocated in<br>SLC<br>40 xxxx 13<br>(Col. 13<br>times -1<br>times Col. B)|
+|||(1)|(3)|(4)|(5)|(12)|(13)|Col. A|Col. B|Col. C.|
+|Line<br>0240|Governance|500,000|100,000|0|100,000|0||700,000|2.62%|10,487|
+|0250|Corp. Management|200,000|100,000|100,000|100,000|0||500,000|1.87%|7,491|
+|0260|Program Support|100,000|100,000|100,000|100,000|0|-400,000|NA|||
+|0299|Subtotal|800,000|300,000|200,000|300,000|0||NA|||
+|0410|Fire|600,000|300,000|100,000|100,000|100,000||1,200,000|4.49%|17,978|
+|0420|Police|800,000|300,000|100,000|100,000|0||1,300,000|4.87%|19,476|
+|||!|!|!|!|!|||!|!|
+|**9910**|<br>**TOTAL**|10,000,000|10,000,000|2,000,000|5,000,000|100,000||27,100,000|||
+||**TOTAL Expenses**<br>**Less Program**<br>**Support**|9,900,000|9,900,000|1,900,000|4,900,000|100,000||26,700,000|||
+|||||||||**Total**|**100.0%**|**400,000**|
+|<br> <br> <br>The total amount of Program Support to be allocated to all other sub-functions equals (SLC 40 0260 13) times (-1). This amount will equal the Total in Column C, “Amount of Program Support to be Allocated in<br>SLC 40 xxxx 13”.<br>The three vertical dots indicate continuation of the worksheet, so that all sub-functions are listed.<br>Subtotals for service areas, such as the Subtotal for General Government, are not allocated Program Support since Program Support is allocated only to individual sub-functions. Subtotal lines end in xx99.  In<br>this example, the Subtotal for General Government is SLC 40 0299 xx.|||||||||||
+
+
+
+## **ALLOCATION METHOD:  Modified Percentage of Total Expenses** 
+
+## **Summary of Method:** 
+
+This method may be used by municipalities with populations under 100,000. 
+
+This method is used when a municipality has already allocated to sub-functions a substantial amount of indirect costs that would otherwise be reported as Program Support. Program Support is not allocated to these sub-functions in this method. In the Modified Percentage of Total Expenses method, Program Support will be allocated only to sub-functions which have not been directly allocated indirect costs. 
+
+## **Steps:** 
+
+This method is similar to the Percentage of Total Expenses method: 
+
+## **1. The amount of Program Support to be allocated equals (SLC 40 0260 13) times (-1).** 
+
+Since Program Support is shown as a negative value in Schedule 40, it is necessary to multiply Program Support in (SLC 40 0260 13) times (-1) to convert to a positive number. 
+
+## **2. Determine expenses for each sub-function which will be allocated Program Support.** 
+
+For each sub-function, expenses equal: 
+
+## **Sum of:** 
+
+|**:**||
+|---|---|
+|<br>**Salaries, wages and employee benefits**|**SLC 40 xxxx 01**|
+|**Materials**|**SLC 40 xxxx 03**|
+|<br>**Contracted services**|**SLC 40 xxxx 04**|
+|<br>**Rents and financial expenses**|**SLC 40 xxxx 05**|
+|**Inter-functional adjustments**|**SLC 40 xxxx 12**|
+
+
+
+## **3. Determine Modified Total Expenses.** 
+
+In this method, Modified Total Expenses does not include sub-functions which have been directly allocated indirect costs which would otherwise be reported on the line for Program Support. As in the Percentage of Total Expenses method, Program Support is netted from expenses. 
+
+Modified Total Expenses equals: 
+
+**Salaries, wages & Employee benefits SLC 40 9910 01 less SLC 40 0260 01 less excluded sub-functions in SLC 40 xxxx 01 Materials SLC 40 9910 03 less SLC 40 0260 03 less excluded sub-functions in SLC 40 xxxx 03 Contracted services SLC 40 9910 04 less SLC 40 0260 04 less excluded sub-functions in SLC 40 xxxx 04 Rents & financial expenses SLC 40 9910 05 less SLC 40 0260 05 less excluded sub-functions in SLC 40 xxxx 05 Inter-functional adjustments SLC 40 9910 12 less SLC 40 0260 12 less excluded sub-functions in SLC 40 xxxx 12** 
+
+## **4. Calculate sub-function expenses as a % of Modified Total Expenses.** 
+
+For each sub-function, divide expenses by Modified Total Expenses and multiply by -1. Convert to a percentage by multiplying by 100 or formatting as a percentage. 
+
+**5. Determine the amount of Program Support allocated to each sub-function.** 
+
+For each sub-function, multiply the amount of Program Support in (SLC 40 0260 01) by (-1) and multiply by the percentage of Modified Total Expenses Less Program Support. 
+
+**6. For each sub-function, enter the amount of Program Support as a positive value in column 13 (Allocation of Program Support).** 
+
+## **ALLOCATION METHOD:  MBN Canada (OMBI) Method** 
+
+## **Summary of Method:** 
+
+This method is used by municipalities with populations of 100,000 or more. 
+
+As for the other allocation methods, the amount of Program Support to be allocated equals (SLC 40 0260 13) times (-1). 
+
+The MBN Canada (OMBI) method of allocation divides Program Support expenses into 23 categories: 
+
+Accounts payable, accounts receivable, budgeting, compensation management, facilities and property management, fleet, health and safety, HR counselling, IT Application delivery & data management, Infrastructure tool access (Data and Voice), insurance/risk management administration, labour and employee relations, mailroom, payroll, printing and graphics, program accounting, program specific communication, program legal support, purchasing, records management, staffing. 
+
+Each Program Support category is assigned a type of unit or “driver” to measure consumption of Program Support services by each sub-function in Schedule 40. Consumption is the basis of allocating Program Support expenses for each category of Program Support. 
+
+For each sub-function and category of Program Support, the percentage of driver units consumed is determined.  The percentage of driver units is multiplied by the total dollar amount assigned to the Program Support category. 
+
+For each sub-function, add the amount of Program Support to be allocated for all categories of Program Support.  Record the total in Schedule 40, column 14 (Allocation of Program Support). 
+
+## **Example:  Driver Units for Printing and Graphics** 
+
+In this example, expenses are allocated for **printing and graphics** , one of the 23 categories of Program Support. 
+
+The “ **driver”** or **type of unit** specified for printing and graphics is the _number of_ 
+
+_impressions_ . In this example, $350,000 in printing and graphics expenses are to be allocated, representing salaries, wages and employee benefits; materials; contracted services; rents and financial expenses; and inter-functional adjustments. If the roadways sub-function consumes 10% of impressions, it is allocated 10% of printing and graphics expenses or $35,000. 
+
+## **Steps: MBN Canada (OMBI) Method** 
+
+## **1. Total Program Support to be allocated equals (SLC 40 0260 13) times (-1).** 
+
+**2. Divide Program Support in (SLC 40 0260 13) times (-1) among all Program Support categories.** 
+
+In the Excel workbook, enter expenses for each Program Support category in column “a” in the Total line. 
+
+**3. For each Program Support category, determine the number of “driver” units consumed by each sub-function.** 
+
+This information is entered by hand in column “b” of the Excel workbook for every category of Program Support and every sub-function. 
+
+**4. For each Program Support category, calculate the total number of driver units.** 
+
+In the Excel workbook, the total number of driver units in column “b” in summed and entered in line 9999 of column “b”. 
+
+**5. For each sub-function and category of Program Support, calculate “driver” units as percentage of total “driver” units.** 
+
+The percentage is automatically calculated in the Excel workbook and entered in column “c”. 
+
+## **6. For each sub-function and category of Program Support, determine the amount of Program Support to be allocated.** 
+
+In this step, the percentage of driver units is multiplied by the amount of Program Support. 
+
+The amount allocated is automatically calculated in the Excel workbook in column “d” and equals Program Support in column “a” times the percentage of total “driver” units in column “c”. 
+
+## **7. For each sub-function, add the amounts of Program Support to be allocated** 
+
+## **for all categories of Program Support.** 
+
+In the Excel workbook this is done automatically. For every sub-function, the amounts allocated for every Program Support category are summed.  The total is automatically entered in the last tab of the workbook, titled “Total Program Support”. 
+
+## **8. Enter Total Program Support for each sub-function in Schedule 40 in column 13.** 
+
+The municipality enters data from the Excel workbook in Schedule 40, by subfunction. 
+
+**Program Support Categories and related “driver” units** 
+
+|**Program Support service area**<br>(Please see the chapter on Functional Classifications<br>for definitions)|<br>**Allocation “Driver” (type of units)**<br>**used to track usage by each sub-function**|
+|---|---|
+|Accounts payable|Number of invoices paid / Transactions processed|
+|Accounts receivable|Number of transactions|
+|Budgeting|Estimated time|
+|Compensation management|Average head count (full-time, part-time, casual)|
+|Facilities and property management|Floor space (on a facility by facility basis) or Average head<br>count (full-time, part-time and casual) in each building|
+|Fleet|Time and material|
+|Health and Safety|Average headcount (full-time, part-time and casual)|
+|HR Counselling|Average headcount (full-time, part-time and casual)|
+|IT Application delivery & data management|Estimated time|
+|Infrastructure tool access (Data and Voice)|Number of PC`=`s or Phone lines|
+|Insurance/risk management administration|Insurance premiums or Claims|
+|Labour and employee relations|Number of grievances or Average headcount of employees<br>(full-time, part-time and casual)|
+|Mailroom|Program cost|
+|Payroll|Number of cheques / direct deposits|
+|Printing and graphics|Number of impressions, including photocopies|
+|Program accounting|Estimated time|
+|Program specific communication|Estimated time|
+|||
+
+
+
+|Program legal support|Estimated time|
+|---|---|
+|Purchasing|Volume of transactions|
+|Records management|Number of records|
+|Staffing|Number of job postings (both internal and external)|
+|Stores & commodity management|Value of goods processed, or Number of stores<br>requisitions processed|
+|Training and development|Average headcount (full-time, part-time and casual)|
+
+
+
+## **15. Debt Burden of the Municipality** 
+
+- A) Schedule 70: Consolidated Financial Position, reflects all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities and all debt assumed from others including debt retirement funds and own sinking funds in SLC 70 2610 01, 70 2620 01 and 70 2630 01. 
+
+If long term debt has been specifically issued on behalf of a Government Business Enterprise, the amount is reported in SLC 70 2660 01.  Long term debt issued on behalf of other municipalities, school boards and others ( **includes tile drain loans)** and will be recovered from these organizations and others is reported in the appropriate line:  SLC 70 0861 to 0868. 
+
+## **Debt retirement funds and sinking fund debt is to be reported in SLC 70 0863 and 0864 respectively.** 
+
+- B) Schedule 74: Long Term Liabilities and Commitments, reflects the gross and net debt burden of the municipality. 
+
+To arrive at the net debt burden of the municipality, debt issued by the municipality, including debt issued on behalf of consolidated entities, is added to debt assumed by the municipality from others.  From this amount is subtracted debt assumed by others, debt retirement funds and own sinking funds. 
+
+The debt burden includes all types of debentures, mortgages, and leasing agreements where there is an obligation or clear intention to acquire the asset at the end of the lease period.  In addition, bank loans are considered as long-term liabilities if: 
+
+- (a) The loan is made for capital purposes, and 
+
+- (b) The bank cannot demand payment before maturity of the loan. 
+
+Municipalities may assume debt issued by other municipalities as a result of a municipal reorganization (annexation or amalgamation), debt issued on behalf of a 
+
+joint project or board, or debt issued on behalf of other bodies, such as a public utilities commission. 
+
+Where debt is assumed by another municipality, it is reported by the municipality which assumed the debt and the municipality that issued the debt reflects the debt as debt assumed by others. 
+
+**Given that Tile Drainage loans were issued in the name of the municipality, the obligations to repay the loans reside with the municipality. Tile Drainage loans are not loan guarantees – they are loans issued by Ministry of Agriculture, Food and Rural Affairs (OMAFRA). Municipalities are obliged to repay the monies to OMAFRA whether or not the farmers fulfil their repayment obligations to respective municipalities. Tile Drainage Loans should be included in the calculation of the debt burden of the municipality.** 
+
+## **16. Coding of Data points (SLC Number)** 
+
+In the FIR, each data point is identified by a unique SLC Number.  The SLC Number identifies the Schedule, Line and Column where a data point is located. SLC means “Schedule-Line-Column”. 
+
+For example, SLC 10 9930 01 refers to Schedule 10, Line 9930, Column 1. 
+
+Each Schedule is identified with a 2-Digit Number, which is displayed in the top righthand corner of each Schedule. 
+
+Each Line is identified with a 4-Digit Line ID, which is displayed in the left margin beside every line on every Schedule. 
+
+Each Column is identified with a 2-Digit Column Number, which is displayed in every column heading. 
+
+In the FIR, there are several cases where amounts are automatically carried-forward from one schedule to another.  On these lines, the SLC Number where an amount is carried-forward from will be shown in the Line Description. 
+
+For example, Schedule 10, Line 0810 for Ontario conditional grants is automatically carried-forward from Schedule 12, Line 9910, Column 1.  Thus SLC 12 9910 01 is displayed on this Line, identifying the source of the carry-forward amount. 
+
+## **F I R 2 0 2 1   C o n t e n t   C h a n g e s** 
+
+|**Sch.**||**SLC**|**Heading**|**Description**|
+|---|---|---|---|---|
+|||**IMPORTANT:   a) Please do not setup the SMARTFIR Template in shared mode.**|||
+||||**b) In Excel, please ensure SmartView is installed and macros enabled.**||
+||||**c) During setup, please reset your password when prompted with the message**||
+||||**"Fail to configure to Planning".**||
+||||**d) After initialization and before you begin, contact MFPB should there be no preloaded data.**||
+||||**e) When entering text data, please avoid using single(') or double(") quotes.  For example,**||
+||||**Property Class 'C' or "C" should be entered as Property Class C.**||
+||||**f) From the USER_CONTROL Tab please remember to "Backup" your working copy to the server.**||
+||||**This copy can be "Restored" should you need to recover your work.**||
+||||**g) Please save your file as anFI21xxxxMunicipality.xlsm, not as FI21xxxxMunicipality.xlxs before**||
+||||**sending to Muncipal Finance Policy Branch for assistance.**||
+|**10**|**10**|**0629 01**|**Own Purpose Revenue**|**Report the amount for "Provincial COVID-19 Recovery Funding" on line 0629.**|
+||**10**|**0831 01**||**SLC 10 0831 01 restated as "Deferred revenue earned (Canada Community - Building Fund)**|
+|||||**(Federal Gas Tax) (SLC 60 1047 01 + SLC 60 1048 01)".**|
+||**10**|**4099 01**||**SLC 10 4099 01 is restated as "Canada Community - Building Fund used for Capital**|
+|||||**Investments".**|
+||**10**|**4205 01**||**SLC 10 4205 01 restated as "Canada Community - Building Fund for Operating expenses:**|
+|||||**Capacity Building".**|
+||**10**|**4299 01**||**SLC 10 4299 01 is restated as "Canada Community - Building Fund Recognized in the year".**|
+|**42**|**42**|**6009 01**||**SLC 42 6009 01 is restated as "Total COVID-19 Expenses as reported on SLC 40 9910 11".**|
+|**53**|**53**|**0406 01**|**Financing from**|**Reserves and Reserve funds on SLC 53 0406 01 is calculated as (SLC 60 1012 02 +**|
+||||**Dedicated Revenue**|**SLC 60 1012 03).**|
+||**53**|**0440 01**|**Government Transfers **|**SLC 53 0440 01 is restated as "Canada Community - Building Fund - AMO (SLC 10 4099 01)".**|
+|**60**|**60**|**0862 01**|**Obligatory Reserve**|**SLC 60 0862 01 restated as "Canada Community - Building Fund (Federal Gas Tax)".**|
+||||**Funds, Deferred**||
+||||**Revenue**||
+||**60**|**1047 01**||**SLC 60 1047 01 restated as "Deferred revenue earned (Canada Community - Building Fund) (Federal**|
+|||||**Gas Tax)".**|
+||**60**|**1048 01**||**SLC 60 1048 01 restated as "Deferred revenue earned (Canada Community - Building Fund**|
+|||||**for Capacity Building)".**|
+||**60**|**5691 01**||**SLC 60 5691 01 restated as "Canada Community - Building Fund (Federal Gas Tax)".**|
+|**72B**|||**Continuity of Taxes**|**The following Municipal and Assessment Act items will be pre-populated on Schedule 72B during**|
+||||**Receivable**|**April 2022.  Users that have started will be notified to "Backup" and  "Restore" to their working**|
+|||||**version of the FIR 2021 template.**|
+||**72**|**1000 xx**||**Taxes collected on behalf of "other" bodies (Mun. Act 353) on line 1000.**|
+||**72**|**1010 xx**||**Write-off of taxes (Mun. Act 354) on line 1010.**|
+||**72**|**1020 xx**||**Cancellation, reduction, refund of taxes, overcharges (Mun. Act 357/358) on line 1020.**|
+||**72**|**1030 xx**||**Cancellation, reduction or refund of taxes (Mun. Act 365) on line 1030.**|
+||**72**|**1040 xx**||**ARB decisions, Advisory Notice of Adjustment due to an ARB decisions**|
+|||||**(Assessment Act 40/19.1(7)) on line 1040.**|
+||**72**|**1050 xx**||**RfR (Assessment Act 39.1) on line 1050.**|
+||**72**|**1060 xx**||**Increase of taxes, error in calculating taxes (Mun. Act 359/359.1) on line 1060.**|
+||**72**|**1070 xx**||**Post Roll Amended Notice (PRAN) (Assessment Act Section 32) on line 1070.**|
+||**72**|**1080 xx**||**Special Amended Notice (SAN) (Assessment Act) on line 1080.**|
+||**72**|**1090 xx**||**Tax Incentive Adjustment (TIA) (Assessment Act) on line 1090.**|
+||**72**|**1099 xx**||**Subtotal on line 1099 sums the line items from 1000 to 1090.**|
+||**72**|**2899 xx**||**Tax adjustments before allowances on line 2899 also includes:**|
+||**72**|**2099 xx**||**Rebates for Charities (Mun. Act 361) on line 2099.**|
+
+
+
+## **F I R 2 0 2 1   C o n t e n t   C h a n g e s** 
+
+|**Sch.**||**SLC**|**Heading**|**Description**|
+|---|---|---|---|---|
+||**72**|**2299 xx**||**Vacant Unit Rebates (Mun. Act 364) on line 2299.**|
+||**72**|**2301 xx**||**Contaminated Property (Mun. Act  365.1) on line 2301.**|
+||**72**|**2399 xx**||**Reduction for Heritage Property (Mun. Act 365.2) on line 2399.**|
+||**72**|**2400 xx**||**Change in Assessment (Mun. Act 365.3) on line 2400.**|
+
+
+
+## **Functional Classification of Expenses and Revenues** 
+
+## **The functional categories described below are used in the following schedules** : 
+
+- **Schedule 12: Grants, User Fees and Service Charges** 
+
+- **Schedule 40: Statement of Operations: Expenses** 
+
+- • **Schedule 51: Schedule of Tangible Capital Assets** 
+
+## **FUNCTIONS:** 
+
+## **GENERAL GOVERNMENT** 
+
+General government in Schedule 40 consists of three categories: governance, corporate management and program support.  Note that the general government function appears as a single line in Schedule 12, Grants, User Fees and Service Charges for Specific Functions and in Schedule 51, Schedule of Tangible Capital Assets. 
+
+**Line 0240 Governance** 
+
+## **Election management** 
+
+Election night management Registration 
+
+## **Council** 
+
+Council members Administrative staff directly supporting Council members 
+
+**Council support** Agenda preparation Minute taking Council protocol A/V services Research for Council members 
+
+## **Office of the Mayor/Chair** 
+
+Mayor/Chair Administrative support 
+
+**Line 0250 Corporate Management CAO/City Manager** CAO/City Manager Direct administrative support Corporate strategic planning 
+
+## **Corporate accounting** 
+
+Financial statement preparation Preparation of FIR Statistics Canada and other general returns 
+
+## **Corporate budgeting** 
+
+Budget coordination Design of budget documents, guidelines and templates 
+
+## **Corporate communication** 
+
+Website management Large mail outs General information telephone lines Switchboard Brand management Corporate news releases 
+
+## **Corporate financial policy and analysis** 
+
+Creating purchasing policies Developing overall financial direction for the municipality 
+
+## **Corporate legal support** 
+
+Lawsuits of general or large-scale nature Legal support to changes to the overall nature of the municipality 
+
+## **Debt management** 
+
+Debt payment Debt registration Sinking fund management Issuing agent negotiations 
+
+## **Development charge administration** 
+
+By-law development Determination of charge Collection of charge Administration of DC reserves 
+
+## **Emergency planning** 
+
+Emergency planning coordinator Disaster recovery assets Planning exercises 
+
+## **Internal audit** 
+
+Value for money audits Compliance audits Systems audits Monetary processing audits 
+
+## **Investments** 
+
+Portfolio management Investment dealer negotiations Cash flow forecasting 
+
+## **Protocol and special events** 
+
+Visits of foreign dignitaries Large community events Parades 
+
+## **Real estate** 
+
+Acquisition and disposal of land Lease negotiations Encroachment agreements and administration of expropriations 
+
+## **Taxation** 
+
+Property class shortfalls Property tax policy development Property tax bill generation Payments/receipts processing Payments to Municipal Property Assessment Corporation (MPAC) are to be reported in SLC 40 0250 04 Tax write-offs which cannot be reported in Schedule 72 Increases to allowances for tax write-offs 
+
+## **Line 0260 Program Support** 
+
+All municipalities report program support. Information on allocation drivers is provided for municipalities with populations of 100,000 or more which use the OMBI method of allocating program support to other functions.  Municipalities with populations under 100,000 use the percentage of total Expenses method or modified percentage of total Expenses method. 
+
+In the OMBI method, an allocation driver is specified for each area of program support.  The allocation driver is the type of unit that will be used to allocate Expenses for each area of program support to other sub functions in Schedule 40.  For each sub function, the number of driver units is calculated as a percentage of total driver units.  The amount allocated to a sub function for one program support area equals the percentage of total driver units’ times the amount to be allocated for that program support area.  The allocation process is repeated for each area of program support. The total amount of program support allocated to a sub function equals the sum of the amounts allocated for each area of program support. 
+
+## **For more information on allocation methods, please see section 15 in the Introduction to the FIR instructions entitled, Allocation of Indirect Costs.** 
+
+|<br>**Program support**<br>**service area**|**Allocation driver (type of units)**<br>**used to track usage by each sub function**|
+|---|---|
+|**Accounts payable**|**Number of invoices paid/transactions processed**<br>Creating regular cheques, express cheques and EFTs<br>Reconciling overdue vendor statements<br>Monitoring the performance of accounts payable|
+|**Accounts**<br>**receivable**|**Number of transactions**<br>Water billing<br>Local improvement billing<br>Special assessment billing<br>Processing bill payments and collections<br>Monitoring the performance of accounts receivable|
+|**Budgeting**|**Estimated time**<br>Design and preparation of budget documents, guidelines, templates<br>Support for creation of budgets within each business unit & service<br>Monitoring, reporting, analyzing budget variances|
+|**Compensation**<br>**management**|**Average Head count (full-time, part-time, casual)**<br>Average head count refers to the average annual number of actual employees (NOT<br>FTE) employed by a business unit.<br>Job analysis and evaluation<br>Benefits management<br>Pension management<br>Pay equity maintenance|
+|||
+|**Facilities and**<br>**property**<br>**management**|**Floor space (on a facility by facility basis) or Average head count (full-time,**<br>**part-time and casual) in each building**<br>Average head count refers to the average annual number of actual employees (NOT<br>FTE) employed by a business unit.<br>Asset preservation and coordination of facilities and property<br>Building operations including caretaking, security and maintenance<br>Rental facilities<br>Utilities and other building costs<br>Note: Operating costs for municipal facilities which are leased to third parties should<br>be reported as corporate management and not program support.  These costs are<br>not allocated to other functions.|
+|**Fleet**|**Time and material**<br>Administration of vehicle and rolling stock replacement program<br>Inspection, testing, maintenance of vehicles and rolling stock<br>Training and licensing of operators<br>Maintaining operating and maintenance records for vehicles and rolling stock|
+
+
+
+|**Health and Safety**|**Average headcount (full-time, part-time and casual)**<br>Average head count refers to the average annual number of actual employees (not<br>FTEs) employed by a business unit.<br>Wellness program development and promotion<br>WSIB claims management<br>Occupational health counselling<br>Investigation of complaints<br>Return to work program|
+|---|---|
+|**HR Counselling**|<br>**Average headcount (full-time, part-time and casual)**<br>Average head count refers to the average annual number of actual employees (not<br>FTEs) employed by a business unit.<br>Career counselling advisory and referral<br>EAP<br>Retirement counselling<br>Conflict resolution<br>Harassment advisory|
+|**IT Application**<br>**delivery & data**<br>**management**|<br>**Estimated time**<br>Developing requirements for business applications<br>Design, development, acquisition and implementation of applications<br>Operations of applications such as hardware and software management, capacity<br>and performance monitoring and planning, security and access monitoring, system<br>backup and jobs scheduling<br>Maintenance and support`B`the ongoing sustainment of applications including<br>application security, user-support, application fixes and updates, maintenance of<br>source code and documentation.|
+|||
+|**Infrastructure tool**<br>**access (Data and**<br>**Voice)**|**Number of PC’s or Phone lines**<br>Telephone installations<br>Network configuration<br>Hardware installation of PCs, servers and peripherals<br>Maintenance, support and provision of upgrades to current releases of operating<br>system software<br>Support of office automation tools/ software such as spreadsheets, word processing<br>and e-mail products<br>Information and technology training for corporate standard desktop and web-based<br>applications<br>Planning, design, implementation and management of network connections (LAN,<br>WAN)<br>Systems management and maintenance of end-to-end connectivity between the<br>desktops, network and back-end server|
+|**Insurance/risk**<br>**management**<br>**administration**|**Insurance premiums or Claims**<br>Determining insurance needs<br>Processing insurance claims<br>Insurance adjusting|
+
+
+
+|||
+|---|---|
+|<br>**Labour and**<br>**employee relations**|**Number of grievances or Average head count of employees (full-time, part-**<br>**time and casual)**<br>Collective bargaining<br>Grievances & arbitration administration<br>Employee relations<br>Dispute resolution<br>Municipalities may use the number of union employees in a business unit as the<br>driver if activities are predominantly related to unionized employees.<br>It may be appropriate to use all employees as the driver if activities are directed to all<br>employees.<br>For better precision, the number of grievances per program may be used to allocate<br>the costs of grievances and arbitration administration.|
+|**Mailroom**|**Program cost**<br>Receiving and sorting incoming mail/courier deliveries<br>Routing mail from internal and external sources within the organization<br>Coordinating the municipality`=`s outgoing mail with Canada Post, courier services|
+|**Payroll**|**Number of cheques / direct deposits**<br>Processing time and attendance reports<br>Producing pay cheques, processing EFT’s<br>Distributing pay cheques, pay statements<br>Remitting source deductions; producing T4's, etc|
+|**Printing and**<br>**graphics**|**Number of impressions, including photocopies**<br>Document setup<br>Reproduction services<br>Collating and binding<br>Sorting for distribution|
+|||
+|**Program**<br>**accounting**|**Estimated time**<br>Internal financial reporting<br>Account reconciliations<br>Variance analysis|
+|**Program specific**<br>**communication**|**Estimated time**<br>Program specific advertising or mail outs<br>Detailed website information<br>Program specific phone lines|
+|**Program legal**<br>**support**|**Estimated time**<br>Contract review<br>Program specific lawsuit support<br>Advice and council specific to one program|
+|**Purchasing**|**Volume of transactions**<br>Updating policies, procedures and by-laws<br>Processing purchasing documents<br>Approving and enacting the procurementmethod|
+
+
+
+||Awarding the contract|
+|---|---|
+|**Records**<br>**management**|**Number of records**<br>Register, classify and file documents<br>Establishing document handling policies<br>Location and retrieval of documents|
+|**Staffing**|**Number of job postings (both internal and external)**<br>Consultation/advice<br>Redeployment<br>Recruitment<br>Position control|
+|**Stores &**<br>**commodity**<br>**management**|**Value of goods processed, or Number of stores requisitions processed**<br>Developing commodity management policies, procedures and standards<br>Receiving, storing and distributing the commodity<br>Ensuring that adequate commodity stores are available|
+|**Training and**<br>**development**|**Average headcount (full-time, part-time and casual)**<br>Course needs analysis<br>Course design<br>Facilitation of training sessions<br>Core competencies identification<br>Course evaluation|
+
+
+
+## **Line 0299 Subtotal** 
+
+The subtotal equals the sum of lines 0240, 0250 and 0260. 
+
+## **PROTECTION SERVICES** 
+
+**Line 0410 Fire** 
+
+Administration Alarm system Auxiliary services Equipment Fire fighting force (regular and volunteer) Fire halls Fire prevention and inspection Hydrant rental OTHER fire protection expenses 
+
+**Line 0420 Police** 
+
+Administration Police services boards Equipment Garages Lock ups Offices Payments for OPP services Police animals Police communication systems Police service OTHER police protection expenses 
+
+## **Line 0421 Court security** 
+
+Perimeter Security – Costs associated with external and or/internal police presence during regular hours to secure the perimeter of the facility, to respond to a specific threat or for high profile matters. 
+
+Courtroom Security – Costs associated with the presence of police staff in the courtroom to ensure the safety and security of the proceedings and attendees. 
+
+General Courthouse Security Presence – Costs associated with the use of screening stations staffed by police services to screen all public visitors to the courthouse, including the use of magnetometers and x-ray machines, and police staff assigned to perform roving patrols of the court facility. 
+
+Prisoner Movement in Courthouse – Costs associated with monitoring the movement of prisoners between holding cells and other areas within the courthouse. 
+
+Prisoner Guarding in Holding Cells – Costs associated with guarding and monitoring of prisoners brought to court for trial and held in courthouse holding cells (where applicable). 
+
+Prisoner Feeding – Costs associated with the provision of meals to prisoners while in the custody of local police services for the purpose of attending court. 
+
+Training that is relevant to court security only. 
+
+Equipment that is unique to the member’s deployment within court security and does not include equipment that would be utilized if the member was deployed in any other capacity within the police service. 
+
+Recruiting that is relevant to the staffing of court security. Costs may include advertising for applicants, physical fitness and/or psychological testing, applicant screening, interviews or any other related human resources expense. 
+
+## **Line 0422 Prisoner transportation** 
+
+Prisoner Transport – Costs associated with the movement of prisoners between correctional institutions and court locations for the purposes of attending trial. 
+
+Prisoner Transport – Youth – Costs associated with the movement of custodial minors (i.e. 1217 years old) between correctional and/or custodial facilities and court locations for the purposes of attending trial. 
+
+Training that is relevant to prisoner transportation only. 
+
+Equipment that is unique to prisoner transportation only. 
+
+Recruiting that is relevant to the staffing of prisoner transportation only. Costs may include advertising for applicants, physical fitness and/or psychological testing, applicant screening, interviews or any other related human resources expense. 
+
+## **Line 0430 Conservation Authority** 
+
+Requisition of a Conservation Authority 
+
+## **Line 0440 Protective inspection and control** 
+
+Administration, if applicable Animal control Dog pounds Fence viewing Licensing commissions Pest control SPCA Weigh scales 
+
+Humane societies:  contributions to humane societies OTHER by law enforcement (where not a public health function) expenses 
+
+## **Line 0445 Building permit and inspection services** 
+
+Building permit and inspection services include activities undertaken by the building department that relate to the issuance of permits for the construction, renovation or demolition of buildings under Subsection 8(1) of the _Building Code Act, 1992._ 
+
+Administration Assessment of applicable law compliance Enforcement activities including issuing orders Permits: processing/screening of permit applications, issuing permits Prosecutions Plans review Record keeping and reporting obligations Site inspections Staff training OTHER building permits and inspection services 
+
+## **Line 0450 Emergency measures** 
+
+Administration, if applicable Flood control, Flood damage repairs Ice storm damage repairs 911 SERVICE COVID-19 Pandemic expenses 
+
+## OTHER emergency measures expenses 
+
+## **Line 0460 Provincial Offences Act (POA)** 
+
+Report expenses incurred for Provincial Offences Act (POA) purposes on this line. 
+
+## **Line 0498 Other** 
+
+Please specify expenses for protection services which are not reported on lines 0410 to 0460. 
+
+## **Line 0499 Subtotal** 
+
+The subtotal for protection services is equal to the sum of lines 0410 through 0498. 
+
+## **TRANSPORTATION SERVICES** 
+
+## - **Line 0611 Roads Paved** 
+
+Paved (hard top) roads are defined as roads with an asphalt surface, concrete surface, composite pavement, portland cement or surface treatment. 
+
+## **Maintenance includes:** 
+
+Cold mix patching Frost heave/base/utility cut repair Hot mix patching Median barrier maintenance Pavement inspection/inventory Road patrol 
+
+Shoulder dust control/shoulder grading/shoulder graveling Surface maintenance/surface sweeping/surface flushing Surface maintenance activities include crack sealing, spray patching, and slurry 
+
+## **The following activities are considered capital items:** 
+
+Hot mix patching greater than municipal capitalization threshold Hot mix overlay Surface treatment and double surface treatment Include administration and direct overhead 
+
+## **Line 0612 Roads - Unpaved** 
+
+Unpaved (loose top) roads are defined as roads with a gravel, stone or other loose travelling surface. 
+
+## **Maintenance includes:** 
+
+Dust suppression Loose top grading/loose top gravelling Road patrol Spot base repair Surface inspection/Inventory Wash-out repair 
+
+## **The following activities are considered capital items:** 
+
+Gravel patching greater than municipal capitalization threshold Loose top gravelling greater than municipal capitalization threshold Surface treatment 
+
+Include administration and direct overhead 
+
+## - **Line 0613 Roads Bridges and Culverts** 
+
+## **Bridges** 
+
+A bridge is a structure which provides a roadway or walkway for the passage of vehicles, pedestrians or cyclists across an obstruction, gap or facility and which is greater than or equal to three metres in span. 
+
+## **Causeways** 
+
+Culverts, including concrete and steel 
+
+A culvert is defined as an opening through soil with a span equal to or greater than three metres. Include adjacent multiple cell culverts separated by soil with individual spans greater than or equal to three metres. 
+
+## **Pedestrian bridges** 
+
+A bridge is a structure which provides a walkway for pedestrians or cyclists across an obstruction, gap or facility and which is greater than or equal to three metres in span. 
+
+Include administration and direct overhead 
+
+## **Maintenance includes:** 
+
+Bridge deck repairs Bridge inspection/inventory Damage repair to barriers Maintain coatings on structural steel Maintain concrete on all surfaces Remove obstructions upstream Replace expansion joint seal Sidewalk discontinuity repair Wash all surfaces of a bridge Wash barrel of culvert 
+
+Expansion joint - maintain expansion joint, replace expansion joint seal Repair de-lamination of exposed concrete deck 
+
+## **Line 0614 Roads - Traffic Operations & Roadside Maintenance The following activities are considered traffic operations** : 
+
+Administration and direct overhead Bike path maintenance Child crossing patrols Illumination 
+
+Pavement markings lane and special markings PXO/Pedestrian priority signal maintenance Railroad crossings and signals maintenance Remove lane and special markings Signals, signs, safety devices maintenance Street name maintenance Traffic sign inspection Traffic signal/detection system inspection Traffic studies and data reports Other traffic control Expenses 
+
+**The following activities are considered roadside maintenance** : 
+
+Administration and direct overhead 
+
+Curb & gutter maintenance Debris collection including leaves 
+
+Drainage work: portion of drainage work done under the Drainage Act which benefits municipal roads Fence maintenance, Graffiti removal Guide posts, guard rails and barricades maintenance Noise wall maintenance Sidewalk maintenance 
+
+Vegetation management including roadside mowing, weed control, tree planting & removal, tree trimming 
+
+**Line 0621 Winter Control - except Sidewalks, Parking Lots** 
+
+**Exclude** the clearing of sidewalks and parking lots 
+
+## **Include:** 
+
+Administration and direct overhead 
+
+Brine making 
+
+Continuous and spot: snow plowing,ice control, combination plowing/salting/sanding, winging back snow, 
+
+Ice blading Receiving/piling/loading sand and salt Salting Sanding and spot sanding Snow fencing Snow dump operations Snow removal Spring clean-up Winter drainage Winter patrol, winter standby, other winter control expenses 
+
+## **Line 0621 Winter Control - Sidewalks, Parking Lots only** 
+
+Report only the expenses for clearing sidewalks and parking lots on this line. 
+
+Include administration and direct overhead. 
+
+## **Maintenance includes:** 
+
+Bus stop plowing 
+
+Combination parking lot plowing/sanding/salting 
+
+Continuous and spot sidewalk plowing 
+
+Continuous and spot side sidewalk sanding/salting 
+
+Continuous and spot combination sidewalk plowing/sanding/salting Parking lot plowing Parking lot sanding/salting 
+
+## **Line 0631 Transit - Conventional** 
+
+Conventional transit is defined as all regular public transport services as opposed to specialized transit services for persons with disabilities who are unable to access regular public transport services. 
+
+**Exclude** expenses for disabled and special needs transit 
+
+## **Include:** 
+
+Administration, direct overhead and general expenses, including: advertising and promotion; offices and departments, including general manager’s office, finance, human resources, marketing, planning; office supplies and telephone; liability expenses other than fleet premiums. Charters - local 
+
+Contract transportation services, including contracted services to school boards 
+
+Fuel for vehicles: diesel, electric power, gasoline, propane, natural gas 
+
+Maintenance - vehicles: materials, parts, purchased services, supplies 
+
+Maintenance - plant: materials, municipal fees and property taxes, parts, purchased services, shelter maintenance, and utilities 
+
+Operations of transit commissions 
+
+Payments to GT Transit (Province took back responsibility effective January 1, 2002) 
+
+Salaries, wages and benefits 
+
+Transit debt charges met from taxation 
+
+Transportation operations: insurance premiums for fleet, purchased services including services purchased by private contract operators or other municipalities, uniforms, vehicle licenses and registration 
+
+OTHER transit expenses 
+
+**Line 0632 Transit - Disabled and special needs transit** 
+
+Report only Expenses for disabled and special needs transit on this line. 
+
+## **Include:** 
+
+Administration and direct overhead 
+
+Transit services for disabled and special needs passengers, including contract transportation services 
+
+OTHER transit expenses 
+
+## **Line 0640 Parking** 
+
+Administration, if applicable Parking control officers Operations of parking authorities OTHER parking expenses 
+
+## **Line 0650 Street Lighting** 
+
+Lighting of: streets; roadways, bridges, underpasses, etc. 
+
+Street light maintenance, including the luminaries, mounting bracket, pole and base 
+
+## **Line 0660 Air transportation** 
+
+Administration Airport commissions Landing strips and airports OTHER air transportation expenses 
+
+**Line 0698 Other** 
+
+Please specify other functions related to transportation services.  Marinas are included under Recreation and cultural services. 
+
+## **Line 0699 Subtotal** 
+
+The subtotal for transportation services is equal to the sum of lines 0611 through 0698. 
+
+## **ENVIRONMENTAL SERVICES** 
+
+## **Line 0811 Wastewater Collection/Conveyance** 
+
+Report separate sanitary sewer systems and combined sanitary/storm sewer systems on this line. Do not include separate storm sewer systems. 
+
+## **Include:** 
+
+Administration and direct overhead Cleaning and maintenance of pipes Connections Emergency operations Pumping stations Sewage forcements Trunk sewers 
+
+## **Line 0812 Wastewater Treatment and Disposal** 
+
+This measure applies to separated sanitary systems and to combined sanitary/storm sewer systems. Separate storm sewer systems are not included. 
+
+## **Include:** 
+
+Administration and direct overhead Discharge/effluent system Sludge disposal Treatment 
+
+Service operating agreements with the Ontario Clean Water Agency and other contractors/suppliers 
+
+## **Line 0821 Urban Storm Sewer System** 
+
+An urban storm sewer system is one where storm sewer is conveyed primarily through closed conduits located in roadways with an urban cross section (curb and gutter) which are located, in areas defined as urban in municipal official plans. An urban storm sewer system consists primarily of closed drains but may include ditches, especially where the urban area has grown up around a rural area. 
+
+## **Urban storm sewer management includes:** 
+
+Administration and direct overhead Catch basins, including cleaning Hydraulic modelling Inspections: manual and CCTV Leads and lateral (storm connections) repairs, including open cut or relining Maintenance holes: adjustments, repairs, cleaning Monitoring programs for quantity and quality Open channels: maintenance, including grass cutting, erosion control, bio-remediation and slope stabilization Sewer cleaning Storm inlet and outlet structure maintenance Storm pump station: operations and repairs 
+
+Wetland, wet and dry pond maintenance, cleaning, repairs 
+
+## **Line 0822 Rural Storm Sewer System** 
+
+A rural storm sewer system is one where storm sewer is conveyed primarily along side of roadways with a rural cross section (open ditches) located in areas defined as rural in municipal official plans. A rural system may include covered drains. 
+
+## **Include:** 
+
+Beavers: beaver control, beaver dam maintenance and removal Brushing: light brushing, heavy brushing/cleaning Canals: dredging Clean-out: catch basins, ditches, sediment traps, etc. Culverts: maintain/repair culverts, endwalls Catch basins, including clean-out, repairs Ditching (roadside), including clean-out Erosion control, including bank repair Level spoil Maintenance holes: maintenance and cleaning Pumps: operation, maintenance/repairs Repairs: banks, catch basins, endwalls, dykes, maintenance holes, outlets, tiles, pumps, rip Sediment trap: maintenance, clean-out Tiles: flush tile, repair tile including cave in, wrap joints, tile inspection (video) Vegetation management: seeding, spraying 
+
+**Line 0831 Water Treatment** 
+
+Treatment of drinking water is defined as all activities from supply source(s) to the completion of treatment (the point where water leaves the treatment plant) 
+
+Include administration and direct overhead 
+
+Include operating agreements with the Ontario Clean Water Agency and other contractors/suppliers 
+
+Include other waterworks system expenses that pertain to the treatment of drinking water 
+
+## **Line 0832 Water Distribution/Transmission** 
+
+Distribution is defined as all activities from the point where water leaves the treatment plant and reaches private property lines 
+
+Include administration and direct overhead 
+
+Include the cost of connections and hydrant leads included in the denominator 
+
+## **Line 0840 Solid waste collection** 
+
+Administration and direct overhead Pickup of garbage Excludes pick-up for diversion and recycling Includes collection of garbage from all property classes OTHER waste collection expenses 
+
+## **Line 0850 Solid waste disposal** 
+
+Administration and direct overhead 
+
+Deposit of garbage from all property classes into a transfer station, landfill site, incineration facility or energy from waste facility Hauling Perpetual care of active and closed sites Solid waste landfill closure and post-closure Transfer station OTHER waste disposal expenses 
+
+(See section in Introduction entitled, ‘Treatment of solid waste landfill closure and post-closure’) 
+
+## **Line 0860 Waste diversion (Recycling)** 
+
+Administration and direct overhead Backyard composting programs Centralized facility 
+
+Collection and processing of material collected from all property classes which are diverted for recycling including: 
+
+Blue Box Bulky items, such as refrigerators, stoves, etc. Christmas tree Gardening waste Household hazardous waste Source separated household organics 
+
+Promotional expenses Purchase and delivery of blue boxes and source separated organic bins OTHER recycling expenses 
+
+**Line 0898 Other** 
+
+Please specify other functions related to environmental services, including services previously reported as pollution control services: 
+
+Derelict motor vehicle program Pollution control expenses OTHER environmental expenses 
+
+## **Line 0899 Subtotal** 
+
+The subtotal for environmental services is equal to the sum of lines 0810 through 0898. 
+
+## **HEALTH SERVICES** 
+
+## **Line 1010 Public health services** 
+
+A public health service combines public health services and public health inspections and control. 
+
+Administration Care of indigents, including medical attention out of hospital, drugs, etc. Communicable disease control, including immunization and vaccination Consolidated health unit costs Contributions to district health councils Disinfestations’ of premises Grants to voluntary health organizations Maternal care Medical centres Physician recruitment Requisition of an unconsolidated health unit School dental care Sexually transmitted infection services Water, food, public eating places and other public health inspections OTHER public health expenses 
+
+## **Line 1020 Hospitals** 
+
+Contributions to municipally owned hospitals Grants to public hospitals Hospital debt met from municipal revenues OTHER hospital expenses 
+
+## **Line 1030 Ambulance services** 
+
+Administration Amounts billed by the Province or upper-tier Contributions to privately operated ambulance services Municipally operated ambulance services OTHER ambulance service expenses 
+
+## **Line 1035 Ambulance dispatch** 
+
+This is a provincial responsibility.  However, for those municipalities that provides this service on 
+
+behalf of the province, please report all Expenses related to this service in line 1035 and in the appropriate object of expense. 
+
+Revenues pertaining to this service are reported on Schedule 12, line 1035 column 1. 
+
+## **Line 1040 Cemeteries** 
+
+Administration and direct overhead; Cemetery boards; Cemetery maintenance; Contributions to private cemeteries; Morgues; OTHER cemetery expenses 
+
+**Line 1098 Other** 
+
+Please specify other functions related to health services. 
+
+## **Line 1099 Subtotal** 
+
+The subtotal for health services is equal to the sum of lines 1010 through 1098. 
+
+## **SOCIAL AND FAMILY SERVICES** 
+
+**Line 1210 General assistance** 
+
+Administration and direct overhead Aid to incapacitated persons (homemaking and nursing) Aid to indigents (emergency dental treatment and burial) Aid to unemployed and unemployable persons (living allowances, care of dependents, transportation and rehabilitation) Domiciliary hostels Ontario dental benefits Ontario disability support program Ontario Works municipal contributions Requisitions of District Social Services Administration Boards Supportive housing OTHER general assistance expenses 
+
+## **Line 1220 Assistance to aged persons** 
+
+Administration Grants to voluntary organizations assisting the aged Grants under the Municipal Elderly Residents' Assistance Act Homes for the aged Housing for elderly persons Seniors drop-in centres Social and recreational activities Transit subsidies for elderly persons OTHER expenses for assistance to the aged 
+
+## **Line 1230 Childcare** 
+
+## Administration 
+
+Contributions to privately operated day nurseries Day nurseries Grants to voluntary organizations Requisitions of District Social Services Administration Boards OTHER Expenses for assistance to children 
+
+## **Line 1298 Other** 
+
+Please specify other functions related to social and family services. 
+
+## **Line 1299 Subtotal** 
+
+The subtotal for social and family services is equal to the sum of lines 1210 through lines 1298. 
+
+## **SOCIAL HOUSING** 
+
+## **Line 1410 Public Housing** 
+
+Local Housing Corporations (LHC) – A new corporation created by the legislation and controlled by the Service Manager as sole shareholder, to take over the ownership and other responsibilities of Local Housing Authorities (LHAs). 
+
+## **Line 1420 Non-Profit/Cooperative Housing** 
+
+Municipal Non-Profit Housing Corporations (MNP): This is a non-profit housing corporation that was established at the initiative of a municipality. 
+
+Co-operative housing is a different form of social housing. It is not rental housing. The households who live in the project are all members of the cooperative corporation that owns and manages the building. 
+
+Grants to non-profit housing corporations 
+
+Grants to co-op housing corporations 
+
+Grants to private non-profit housing corporations 
+
+## **Line 1430 Rent Supplement Programs** 
+
+Rent supplements paid to a landlord to bridge the gap between a tenant’s rent geared-to-income and the market rent ceiling set by the municipality, to fill units in their building with applicants from social housing waiting list. Other rent supplement programs 
+
+## **Line 1497 Other** 
+
+Please specify other functions related to social housing. 
+
+## **Line 1498 Other** 
+
+Please specify other functions related to social housing 
+
+## **Line 1499 Subtotal** 
+
+The subtotal for social housing is equal to the sum of lines 1410 through lines 1498. 
+
+## **RECREATION AND CULTURAL SERVICES** 
+
+Parks and recreation are divided into four lines: parks, recreation programs and recreation facilities (2 lines). 
+
+## **Line 1610 Parks** 
+
+Administration and direct overhead; Allotments (community gardens) Boards of Parks Management Flower gardens and floral displays Horticultural areas (including shrub beds) Natural areas (including ravines, woodlots) Parks and parkettes Playgrounds Public squares Skateboard parks Skating rinks - outdoor natural rinks 
+
+Sports fields (baseball diamonds, basketball play pads, soccer pitches) 
+
+Storm water management buffer areas (lands surrounding ponds and rivers) if these areas are part of the trail system or open space system 
+
+Trails 
+
+## OTHER parks expenses 
+
+Include leased lands if there is a formal lease agreement and the lands are managed and controlled by the municipality and made available for public use. 
+
+## **Line 1620 Recreation programs** 
+
+Administration and direct overhead Assistance to sport teams Community and recreation programs Exhibitions and fairs Grants to voluntary organizations Public celebrations OTHER recreation program expenses 
+
+## **Line 1631 Recreation facilities - Golf Course, Marina, Ski Hill** 
+
+Golf Courses, Marinas and Ski Hills are reported separately from recreation facilities since only some municipalities have these facilities. 
+
+Contributions to Harbour commissions Docks Golf courses Harbours Marinas (includes waterfront maintenance costs) Ski Hills 
+
+## **Line 1634 Recreation facilities - Other** 
+
+Administration and direct overhead Arenas Community centres and halls Gymnasiums and fitness centres Skating rinks (except outdoor natural rinks) Splash pools and wading pools Stadiums Swimming pools (indoor and outdoor) Tennis courts Tourist camps Youth centres OTHER recreation facilities expenses 
+
+Include joint use facilities if there is a joint use agreement and the facilities are open to the public the majority of the time and are managed and controlled by the municipality. 
+
+## **Line 1640 Libraries** 
+
+Administration and direct overhead Contributions to regional library boards Library boards OTHER library expenses 
+
+## **Line 1645 Museums** 
+
+Local museums are reported on this line. A local museum is an organization that is partly or wholly funded by a municipality that has the following characteristics: 
+
+- (a) is established for the purpose of acquiring, conserving, studying, interpreting, assembling and exhibiting to the public for its instruction and enjoyment a collection of artefacts of local historical interest; 
+
+- (b) maintains a bookkeeping system for the exclusive use of the museum's revenues and expenses; 
+
+- (c) has a statement of purpose; 
+
+- (d) owns a catalogued collection of artefacts; 
+
+- (e) has an appointed or elected governing body that is solely responsible for the management of the museum; 
+
+- (f) has an appointed curator; 
+
+- (g) is open to the public; and 
+
+- (h) is exempt from the payment of tax under the _Income Tax Act_ and the _Income Tax Act_ (Canada). 
+
+The following institutions should be reported on the line for Cultural services and are not reported on the line for Museums: 
+
+- (a) an art museum or art gallery (eg. McMaster Art Gallery, Art Galley of Ontario). 
+
+- (b) an organization established primarily for conducting temporary exhibitions. 
+
+- (c) a community centre as defined in the Community Recreation Centres Act. 
+
+- (d) a specialized museum as designated by the National Museums Corporation of Canada (e.g. Museum of Civilization, Canadian War Museum). 
+
+- (e) a provincial agency of the Government of Ontario (e.g. the Royal Ontario Museum, Science North, Ontario Science Centre). 
+
+With regard to museums that fall under the authority of a larger body such as a Conservation Authority: 
+
+- (a) Expenses may be reported on another line in the FIR, such as “Conservation Authority”, “Cultural Services” or “Recreation and Cultural Services: Other”. 
+
+- (b) Or the local museum component may be reported on the Museums line in Schedule 40 with the residual amount reported on another line in the FIR. 
+
+An example is Black Creek Pioneer Village which is governed by the Toronto Regional Conservation Authority (TRCA). 
+
+## **Line 1650 Cultural services** 
+
+Administration Art galleries Auditoriums Concert halls Contributions to ethnic groups and celebrations Entities incorporated to provide cultural services Grants to universities and colleges Grants to voluntary organizations Historical boards Historic sites Historical studies Horticultural societies Museum boards Museums and archives Scholarships and student awards Theatres Zoos OTHER cultural service expenses 
+
+**Line 1698 Other** 
+
+Please specify other functions related to recreation and culture. 
+
+**Line 1699 Subtotal** 
+
+The subtotal for recreation and cultural services is equal to the sum of lines 1610 through 1698. 
+
+## **PLANNING AND DEVELOPMENT Line 18 10 Planning and zoning** 
+
+Administration and direct overhead Judges’ plans Official plan Planning department Urban renewal surveys and studies OTHER planning and zoning expenses 
+
+Committees of adjustment Land division committees Planning boards Subdivision control Zoning by law 
+
+## **Line 18 20 Commercial and industrial** 
+
+Administration and direct overhead Business improvement areas Commercial and industrial portion of urban renewal program Grants to boards of trade and chambers of commerce Industrial or development commissions and committees Industrial parks and land assembly for commercial and industrial purposes Markets Tourist information and promotion OTHER industrial and commercial development expenses 
+
+## **Line 18 30 Residential development** 
+
+Administration and direct overhead Housing studies Land assembly for residential purposes Other residential developments Residential portion of urban renewal program Trailer parks OTHER residential development expenses 
+
+## **Line 18 40 Agricultural and reforestation** 
+
+Administration and direct overhead Advancement of agriculture Grants to agricultural societies Portion of drainage work done under the Drainage Act which benefits landowners Reforestation Weed control and tree cutting OTHER agricultural and reforestation expenses 
+
+## **Line 18 50 Tile drainage/shoreline assistance** 
+
+Programs under the Shoreline Property Assistance Act Tile drainage carried out under the Tile Drainage Act 
+
+## **Line 1898 Other** 
+
+Please specify other functions related to planning and development. 
+
+## **Line 1899 Subtotal** 
+
+The subtotal for planning and development is equal to the sum of lines 1810 through 1898. 
+
+## **Line 1910 Other** 
+
+This line is for those municipalities that have gas or telephone utilities and are deemed to be a local board or a department of the municipality. 
+
+## **Line 9910 TOTAL** 
+
+Total operating expense for each column is equal to the sum of the subtotals for all functional categories. 
+
+## **FIR INFORMATION: BULLETIN #1** 
+
+## _**Tile Drainage Loans**_ 
+
+## **Issue** 
+
+Tile drainage loans shown on Schedule 70 in the FIR should also appear on the audited financial statements. (Tile drainage loans being netted out of Long term liabilities) 
+
+## **BACKGROUND** 
+
+Given that Tile Drainage loans were issued in the name of the municipality, the obligations to repay the loans reside with the municipality.  The loans also satisfy the criteria of liability recognition under PS 3200 – Liabilities. 
+
+Tile Drainage loans are not loan guarantees – they are loans issued by Ministry of Agriculture, Food and Rural Affairs (OMAFRA).  Municipalities are obliged to repay the monies to OMAFRA whether or not the farmers fulfill their repayment obligations to respective municipalities. 
+
+PSAB standards always emphasize the needs to present information in gross versus net method, except in the case where “the legal right of offset was in place.” The Gross/Net method does not affect the Annual Repayment Limit (ARL) calculation, but it does affect the consistency in the FIR. 
+
+Tile Drainage Loans should be reported as liabilities, and report the gross amount respectively on Schedules 70 and 74. 
+
+Tile Drainage interest charges should be reported on line 1850 Schedule 40 Column 2. The principal repayment of the tile drain loans should be shown 1096 column 1. 
+
+These loans should not be considered as loan guarantees or contingent liabilities. 
+
+## **FIR INSTRUCTIONS** 
+
+Please refer to page 28 of the FIR Introduction instructions for more information. 
+
+## **CONTACT US** 
+
+Please email us at **FIR.MAH@ontario.ca** for more information. 
+
+## **NOTE:** 
+
+Please consult with your municipal auditor with respect to your annual financial statement presentation on this issue and legal right of offset. 
+
+## **SCHEDULE 02: Declaration of the Municipal Treasurer** 
+
+## **General Instructions** 
+
+The Declaration affirms that all schedules agree with the books and records of the municipality and its consolidated entities and that the schedules have been completed in accordance with the instructions. 
+
+The Declaration of the Municipal Treasurer is labelled Schedule 02 in the FIR workbook. 
+
+Once you’re ready to submit the return, you will be asked to tick two boxes: 
+
+The Declaration of the Municipal Treasurer will be displayed, check the boxes to _**acknowledge that:**_ and select  _**OK**_ 
+
+**==> picture [369 x 340] intentionally omitted <==**
+
+## **Description of Lines** 
+
+Lines 0020 to 0028 should contain the name, phone number, fax and email address of a contact person who can answer questions regarding information in the FIR. 
+
+Questions regarding the information contained in the Schedules should be addressed to: 
+
+|<br>to:|||
+|---|---|---|
+|**Line**|<br>**0020**|**Name**|
+|**Line**|<br>**0022**|**Telephone**|
+|**Line**|<br>**0024**|**Fax**|
+|**Line**|<br>**0028**|**Email (Required)**|
+
+
+
+The following lines contain information on the Municipal Website, Auditor, Audit Firm and Treasurer: 
+
+|**Line**|<br>**0030**|**Website address of municipality**|
+|---|---|---|
+|**Line**|<br>**0091**|**Municipal Auditor**|
+|**Line**|<br>**0092**|**Municipal Audit Firm**|
+|**Line**|<br>**0095**|**Municipal Audit’s email**|
+|**Line**|<br>**0090**|**Municipal Treasurer**|
+|**Line**|<br>**0093**|**Municipal Treasurer Email (Required)**|
+|**Line**|<br>**0094**|**Date**|
+|||<br>Enter the date the schedules are completed.|
+|||The date automatically displays the current date.|
+
+
+
+**Signature of Municipal Treasurer The signature of the municipal treasurer has been replaced by an electronic signature** . 
+
+Please see the general instructions above. 
+
+## **Line 0077 Method used to allocate Program Support to other functions in Schedule** 
+
+Select one of the methods from the pull-down menu. If this is not completed a critical error will be triggered. If “other method” is selected, please describe method for allocating Program Support in line 0078. 
+
+If “other method is selected in line 0077, the cell in line 0078 will turn white indicating text can be entered. Space will expand as text is entered. 
+
+## **Municipal Data** 
+
+Municipalities enter data on households, population and youth population in the following lines. 
+
+## **Line 0040 Households** 
+
+Households, refers to common households and include residential units, residential farm units, recreational dwelling units and Ontario Housing Corporation units. 
+
+Households should consist of the number of households on the assessment roll which was used to set taxes in the reporting year. The data originates in the year-end Summary of Assessment provided by the Municipal Property Assessment Corporation (MPAC) and used for taxation in the following year. 
+
+Households for the **2021** reporting year should be based on the 2020 year-end assessment roll which was used to set property taxes for 2021. 
+
+**Data Source: Please enter source of data: MPAC, Stats Can, Municipal Sources or other. Line 0041 Population** 
+
+Population should be based on the municipal enumeration conducted in the municipal election year and should reflect the boundaries that are in place when the new council assumes office. Since municipal elections occur every four years, the enumerated population is frozen between elections. In the ministry database, the enumerated population traditionally lags a year since municipal elections occur near the year end. 
+
+Enumerated population includes persons on military bases but does not include seasonal residents. 
+
+**Data Source: Please enter source of data: MPAC, Stats Can, Municipal Sources or other.** 
+
+## **Line 0042 Youth Population** 
+
+Enter the number of youths aged 12 to 17 (up to the 18[th ] birthday). 
+
+Youth population is based on 2016 Census of Canada data and may be updated if there have been material changes. The next census will be in 2021. 
+
+## **Data Source: Please select source of data** 
+
+## **SCHEDULE 10: Consolidated Statement of Operations: Revenue** 
+
+## **General Instructions** 
+
+Schedule 10 is divided into four sections. The first section reports total revenues of the municipality. 
+
+The second section presents the continuity of accumulated surplus/deficit for the current year and the accumulated surplus or deficit at the beginning of the year and at the end of the year. 
+
+The third section, Continuity of Government Business Enterprise Equity, is a continuity section which presents the government business enterprise equity at the beginning and end of the year. 
+
+The fourth section captures the provincial and federal gas tax reported in Schedule 12. 
+
+Schedule 10 is a summary schedule. It is completed after Schedules 20 to 28, 72 and 12, schedules that report taxes, taxes receivable and current revenue for specific functions. Data from those schedules automatically populates several lines in Schedule 10. Where data is carried forward, an SLC (schedule, line, and column) reference appears after the caption for the line, indicating the source of the data. 
+
+The following items are automatically carried forward from other schedules: 
+
+**Property Tax: Taxation - Own purposes Payments-in-lieu of taxation Estimated tax revenue** 
+
+**Government Transfers: Ontario conditional grants Ontario Grants for Tangible Capital Assets Canada conditional grants Canada Grants for Tangible Capital Assets Deferred revenue earned (Provincial Gas Tax) Deferred revenue earned (Canada Community – Building Fund)** 
+
+**Other Revenue: Revenue from other municipalities Revenue from other municipalities for Tangible Capital Assets User fees and service charges Deferred revenue earned (Development charges) Deferred revenue earned (Recreation land (The Planning Act)) Donated Tangible Capital Assets Other Revenue Transient Accommodation Tax Increase/Decrease in Government Business Enterprise Equity** 
+
+**Total Revenues** 
+
+## **REVENUE: PROPERTY TAX** 
+
+**Line 0299 Taxation - Own Purposes (SLC 26 9199 04 - 72 2899 07 for LT/ST, and 28 0299 12 - 28 0299 08 for UT)** 
+
+For lower-tier and single-tier municipalities, Taxation - Own purposes is automatically calculated and consists of total taxes before adjustments in Schedule 26 less tax adjustments before allowances in Schedule 72 (SLC 26 9199 04 less SLC 72 2899 07). 
+
+Total taxes before adjustments consist of the total levied by tax rate plus amounts added to the tax bill.  Total taxes before adjustments are carried forward from Schedule 26, Taxation and Payments-in-Lieu Summary (SLC 26 9199 04). 
+
+Tax adjustments before allowances are also used in the equation and are carried forward from Schedule 72, Continuity of Taxes Receivable (SLC 72 2899 07). 
+
+For an upper-tier, Taxation - Own purpose is automatically calculated from data in Schedule 28, Upper-tier Entitlements, and represents total upper-tier entitlements less payments-in-in-lieu (SLC 28 0299 12 less SLC 28 0299 08). 
+
+Note that total upper-tier entitlements reported in column 12 (Total) are net of upper-tier tax adjustments. 
+
+**Line 0499 Payments-In-Lieu of Taxes (SLC 26 9599 08 for LT/ST, or SLC 28 0299 08 for UT)** 
+
+For a lower-tier or single-tier municipality, payments-in-lieu of taxes are automatically carried forward from total payments-in-lieu of taxes in Schedule 26, Taxation and Payments-in-Lieu of Summary (SLC 26 9599 08). 
+
+For an upper-tier municipality, payments-in-lieu of taxes are automatically carried forward from total payments-in-lieu of taxes in Schedule 28, Upper -tier Entitlements (SLC 28 0299 08). 
+
+**Line 9940 Subtotal** 
+
+Total of lines 0299 Taxation own purpose plus 0499 Payments-In-Lieu. 
+
+**Line 0510 Estimated tax revenue** 
+
+Estimated tax revenue includes amounts recognized using management’s best estimate according to Section _PS 3510 Tax Revenue_ , which are not included in lines 0299 and 0499. PS 3510 guides municipalities that taxes should be recognized as revenue when they are authorized, and the taxable event has occurred. In other words, municipalities are guided to accrue taxes in the current period if taxes will eventually be billed which will cover the current period. Municipalities would only recognize tax revenue that it expects to collect in accordance with the general recognition criteria in PS 1000.55. 
+
+PS3510 also guides municipalities to evaluate the likelihood of having to repay taxes collected and recognize a liability when required in accordance with Section PS 3200. 
+
+## **Ontario Unconditional Grants** 
+
+**Line 0620 Ontario Municipal Partnership Fund (OMPF)** 
+
+Please report your municipality's Ontario Municipal Partnership Fund entitlement. 
+
+**Line 0625 Ontario Cannabis Legalization Implementation Fund (OCLIF)** 
+
+Please report your municipality’s cannabis legalization entitlement. 
+
+**Line 0626 Safe Restart Agreement: Municipal Operating Funding** 
+
+Please report your municipality’s Safe Restart Agreement funding for municipal operating funding. 
+
+**Line 0627 Safe Restart Agreement: Public Transit Funding** 
+
+Please report your municipality’s Public Transit Funding under the Safe Restart Agreement for public transit operating funding. 
+
+**Line 0628 Social Services Relief Fund (SSRF)** 
+
+Please report your municipality’s Social Services Relief funding **.** 
+
+**Line 0629 Provincial COVID-19 Recovery Funding** 
+
+**Please report your municipality’s Provincial Covid-19 Recovery Funding.** 
+
+**Line 0695 Other** 
+
+Please report any advances received under the Ontario Municipal Partnership Fund. 
+
+**Line 0696 Other:** Please identify any other unconditional grants received. **Line 0697 Other:** Please identify any other unconditional grants received. **Line 0698 Other** : Please identify any other unconditional grants received. **Line 0699 Subtotal** 
+
+The subtotal for Ontario unconditional grants is equal to the sum of lines 0620 through 0698. 
+
+## **Conditional Grants** 
+
+**Line 0810 Ontario conditional grants** 
+
+The total for Ontario conditional grants is automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 01). 
+
+**Line 0815 Ontario grants for tangible capital assets** 
+
+The total for Ontario grants for tangible capital assets is automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 05) 
+
+**Line 0820 Canada conditional grants** 
+
+The total for Canada conditional grants is automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 02). 
+
+**Line 0825 Canada grants for tangible capital assets** 
+
+The total for Canada grants for tangible capital assets is automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 06). 
+
+**Line 0830 Deferred revenue earned (Provincial Gas Tax)** 
+
+This line is automatically populated from schedule 60 line 1042 column 1 + Schedule 60 Line 1045 Column 1. 
+
+**Line 0831 Deferred revenue earned (Canada Community – Building Fund) (Federal Gas Tax)** 
+
+This line is automatically populated from schedule 60 Line 1047 column 1 + Schedule 60 Line 1048 column1. 
+
+**Line 0899 Subtotal** 
+
+The subtotal for conditional grants equals the sum of lines 0810 through 0831. 
+
+**Line 1098 Revenue from Other Municipalities for tangible capital assets (SLC 12 9910 07)** 
+
+Total revenue received from other municipalities for tangible capital asset automatically carried forward from Schedule 12, Grants & User Fees and Service Charges **(SLC 12 9910 07)** 
+
+**Line 1099 Revenue from Other Municipalities (SLC 12 9910 03)** 
+
+Total revenue received from other municipalities is automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 03). 
+
+Note that revenue from other municipalities includes direct water billings and sewer surcharges raised from other municipalities. 
+
+**Line 1299 User Fees and Service Charges (SLC 12 9910 04)** 
+
+This line represents total user fees and service charges, generated within your municipality and includes direct water billings and sewer surcharges. 
+
+Total user fees and service charges are automatically carried forward from Schedule 12, Grants & User Fees and Service Charges (SLC 12 9910 04).  Please see the instructions to Schedule 
+
+12 for a definition of user fees and service charges. 
+
+Development charges are not reported as revenue in Schedule 10. These contributions should be entered as deferred revenue in Schedule 60, Continuity of Reserves and Reserve Funds, lines 0610 through 0630, column 1 (Obligatory reserve funds/deferred revenue). 
+
+## **Licences, Permits, Rents, Etc.** 
+
+Report revenue in this section which is not reported as user fees and service charges in Schedule 12, column 4 (User fees and service charges). 
+
+**Line 1410 Trailer revenue and permits** 
+
+Include licenses, permits and other fees which pertain to trailers. 
+
+**Line 1420 Licenses and permits** 
+
+Include licenses and permits issued by the municipality. Examples: taxi licenses, vendor licenses, building permits. 
+
+**Line 1430 Rents, concessions and franchises** 
+
+All rents, concessions and franchises should be reported on this line. 
+
+Do not report these items in Schedule 12, Grants & User Fees and Service Charges. 
+
+Rentals are amounts received or receivable for the letting of municipally owned property. Rentals should not be confused with a sale of service.  In the sale of a service, the vendor is actively engaged in providing a service to another party.  In a rental situation, the owner permits another party to use municipal assets, such as: 
+
+1. Engineering structures, includes a broad range of physical structures owned by a municipality. 
+
+2. Buildings and land, Includes the rental of land, living accommodation, office, storage or other building space. 
+
+3. Machinery and equipment 
+
+Concessions and franchises are privileges or rights granted in respect of municipal functions, activities or responsibilities.  Concessions and franchises are similar and may be hard to distinguish from one another.  Franchises tend to be essential services of a general nature. Concessions tend to be service conveniences and the public generally has alternative choices. 
+
+A fairly common feature of franchise agreements especially, is the provision for payments over and above the agreed upon franchise fee.  Any such payment which is clearly not a business tax or licence fee should be recorded here. 
+
+Examples: concessions and franchises from private fairs, circuses, cafeterias in municipal buildings, electric and natural gas utilities, etc. 
+
+**Line 1431 Royalties** 
+
+Enter royalty revenues on this line. For example, aggregate resources revenues. 
+
+**Line 1432 Green Energy** 
+
+Enter green energy revenues on this line. For example, solar and wind power revenues. 
+
+**Line 1498 Other** 
+
+Enter the amount and description of other sources of other revenues from licences, permits, rents etc. 
+
+**Line 1499 Subtotal** 
+
+The subtotal for licenses, permits, rents, etc. is equal to the sum of lines 1410 through 1498. 
+
+## **Fines and Penalties** 
+
+**Line 1605 Provincial Offences Act (POA)** 
+
+Municipalities which administer the Provincial Offences Act, report fines collected on line 1605. POA expenses are reported in Schedule 40 in SCL 40 0460 xx. 
+
+Municipalities which do not administer the Provincial Offences Act but receive a share of POA revenues from other municipalities, report the revenue in SLC 12 0460 03. 
+
+**Line 1610 Other Fines** 
+
+Report other fines collected by the municipality. 
+
+**Line 1620 Penalties and interest on taxes** 
+
+Enter penalties and interest on late payment of taxes. 
+
+**Line 1698 Other** 
+
+Enter other fines collected by the municipality. 
+
+**Line 1699 Subtotal** 
+
+The subtotal for fines and penalties is the sum of lines 1605, 1610, 1620 and 1698. 
+
+## **Other Revenue** 
+
+This section refers to other revenue, including investment income, donations, sale of publications and equipment, contributions from non-consolidated entities, revenue from government business enterprises, revenue from the Ontario Lottery and Gaming Corporation, 
+
+revenue related to ambulance dispatch and other. Revenue reported in this section is not reported in Schedule 12, Grants, User Fees and Service Charges. 
+
+## **Line 1805 Investment income** 
+
+This line refers to interest income generated on all fund balances from all sources such as bank deposits, promissory notes, etc. 
+
+Include investment income from consolidated local boards. 
+
+**Line 1806 Interest earned on reserves and reserve funds** 
+
+This line refers to interest income generated from reserves and reserve funds. 
+
+**Line 1811 Gain/Loss on sale of land & capital assets** 
+
+Enter the gain on the sale of land and other capital assets on this line. OR 
+
+Enter the loss on the sale of land and other capital assets on Schedule 40 column 5 (Rents and Financial Expenses) 
+
+**Line 1812 Deferred revenue earned (Development charges)** 
+
+This line is automatically populated from Schedule 60-line 1025 column 1 + schedule 60-line 1035 column 1. 
+
+**Line 1813 Deferred revenue earned (Recreational land (The Planning Act))** 
+
+This line is automatically populated from Schedule 60-line 1032 column 1 + Schedule 60-line 1035 column 1. 
+
+**Line 1814 Other: Deferred revenue earned** 
+
+Please specify. Enter other deferred revenue earned. 
+
+**Line 1830 Donations** 
+
+Enter donations on this line. 
+
+Do not report donated Tangible Capital Assets on this line. 
+
+**Line 1831 Donated Tangible Capital Assets (SLC 53 0610 01)** 
+
+Donated Tangible Capital Assets are automatically populated from Schedule 53-line 0610 column 1. 
+
+**Line 1840 Sale of publications, equipment, etc.** 
+
+Enter amounts from the sale of publications, etc. 
+
+Where significantly high cost items are purchased for resale, report the selling price here and 
+
+the cost of goods sold in Schedule 40, Statement of Operations: Expenses, column 3 (Materials). 
+
+Note that the FIR will not balance if the cost of goods sold is reported in Schedule 40 and the selling price is not reported here. 
+
+**Line 1850 Contributions from non-consolidated entities** 
+
+Enter contributions from non-consolidated entities on this line. For example, trusts. 
+
+**Line 1865 Other revenues from government business enterprise (i.e. Dividends, etc.)** 
+
+Report revenue received from the municipality's business government enterprises including dividends, interest income, etc. 
+
+Report the net income from business government enterprise in SLC 10 6020 01 in the section labelled, Continuity of Government Business Enterprise Equity. 
+
+**Line 1870 Gaming and Casino Revenues** 
+
+Report any Gaming or Casino revenues from the Ontario Lottery and Gaming Corporation on this line. 
+
+**Line 1890 Other** 
+
+Enter the amount and description of other sources of operating revenue that are not reported as user fees, service charges or grants in Schedule 12. Include amounts from the sale of other products, including forestry products. 
+
+**Line 1891-1898 Other:** 
+
+Refer to the description for Line 1890 Other. 
+
+**Line 1899 Subtotal** 
+
+The subtotal for other revenue equals the sum of lines 1805 through 1898. 
+
+**Line 1880 Municipal Land Transfer Tax (City of Toronto Act, 2006)** 
+
+This line only applies to the City of Toronto. Please enter the Municipal Land Transfer tax revenue on this line. 
+
+**Line 1886 Transient Accommodation Tax** 
+
+Enter the total amount of transient accommodation tax revenue on this line. 
+
+Amounts transferred to eligible tourism organizations should be entered on Schedule 40, line 1820 column 6; please use schedule 42 lines 5991 to 5993 to enter the name of the tourism organization and the amount of the Transient Accommodation Tax received. 
+
+## **Line 1905 Increase/Decrease in Government Business Enterprise equity** 
+
+Enter the increase or decrease in government business enterprise equity. 
+
+## **Line 9910 TOTAL Revenues** 
+
+## **Total Revenues - line 9910 equals:** 
+
+Taxation-Own Purpose & Payments-In-Lieu of taxation subtotal – Line 9940 
+
+PLUS: Subtotal, Ontario unconditional grants - Line 0699 PLUS: Subtotal, Conditional grants - Line 0899 PLUS: Revenue from other municipalities for Tangible Capital Assets – Line 1098 PLUS:  Revenue from other municipalities - Line 1099 PLUS: Total User fees and service charges - Line 1299 PLUS: Subtotal, Licences, permits, rents, etc. - Line 1499 PLUS:  Subtotal, Fines and penalties - Line 1699 PLUS: Subtotal, Other revenue - Line 1899 PLUS: Municipal Land Transfer Tax - Line 1880 PLUS: Transient Accomodation Tax - Line 1886 PLUS: Increase in Government Business Enterprise equity – line 1905 
+
+## **CONTINUITY OF ACCUMULATED SURPLUS/(DEFICIT)** 
+
+**Line 2010 PLUS: Total Revenues** 
+
+This amount is automatically carried forward from line 9910 of this schedule (SLC 10 9910 01). 
+
+**Line 2020 LESS: Total Expenses** 
+
+This amount is automatically carried forward from line 9910 column 11 of Schedule 40 (SLC 40 9910 11). 
+
+**Line 2030 PLUS: Other:** Use this line for any adjustments. 
+
+**Line 2040 PLUS: Other:** Use this line for any adjustments **. Line 2045 PLUS: PSAB Adjustments:** Use this line for any PSAB adjustments. **Line 2099 Annual Surplus/Deficit: This amount is automatically calculated.** 
+
+**Line 2060 Accumulated surplus/ (deficit) at beginning of year** 
+
+The accumulated surplus or deficit at the beginning of the year is equal to the accumulated surplus or deficit at the end of the previous year. 
+
+This line is pre-populated. 
+
+## **Line 2061 Prior period adjustments** 
+
+Please use this line to record any prior year adjustments to the opening accumulated surplus balance. 
+
+**Line 2062 Restated accumulated surplus/ (deficit) at the beginning of year** 
+
+This line is automatically calculated. 
+
+## **Line 2063 Other comprehensive income (loss)** 
+
+Enter comprehensive income or (loss) from the statement of remeasurement gains and losses. 
+
+**Line 9950 Accumulated surplus/ (deficit) at end of year** 
+
+## **– Accumulated surplus/ (deficit) end of year (SLC 10 line 9950 01) equals:** 
+
+**Accumulated surplus/ (deficit), beginning of year – (SLC 10 2060 01)** 
+
+**Plus: Prior Period Adjustments (SLC 10 2062 01)** 
+
+**Plus: Other comprehensive income (loss) (SLC 10 2063 01)** 
+
+**Plus: Annual Surplus/Deficit (SLC 10 2099 01)** 
+
+The accumulated surplus (deficit) at the end of the year should equal the total accumulated surplus/ (deficit) balance in Schedule 70, Consolidated Statement of Financial Position (SLC 10 9950 01 = SLC 70 9970 01). 
+
+## **CONTINUITY OF GOVERNMENT BUSINESS ENTERPRISE EQUITY** 
+
+According to the CPA Canada, Public Sector Accounting Handbook, PS 1300.28, a government business enterprise has the following characteristics: 
+
+- (a) It is a separate legal entity with the power to contract in its own name and that can sue and be sued; 
+
+- (b) It has been delegated the financial and operational authority to carry on a business; 
+
+- (c) It sells goods and services to individuals and organizations outside of the government reporting entity as its principal activity; and 
+
+- (d) It can, in the normal course of its operations, maintain its operations and meet its liabilities from revenues received from sources outside of the government reporting entity. 
+
+Municipalities report business government entities on a modified equity basis.  This avoids line by line consolidation of the enterprise's operations with the municipality and its local boards. At the same time, reporting on a modified equity basis provides summary information on net assets and net income. 
+
+**Line 6010 Government business enterprise, beginning of year** 
+
+This is equal to SLC 70 5080 01 for the previous year. 
+
+**Line 6020 PLUS: Net income for government business enterprise for year** 
+
+This refers to the reporting year.  This amount refers to net income of the government business enterprise as reported in the financial statements of the enterprise. 
+
+**Line 6060 PLUS:  Other** 
+
+On this line report any other transactions not reflected in line 6020 that impact the equity of the government business enterprise. 
+
+If the municipality is reporting an investment in a government business enterprise for the first time, the net assets of the government business enterprise are reflected on this line as well. 
+
+**Line 6090 Government business enterprise equity, end of year** 
+
+This line is equal to the sum of lines 6010, 6020 and 6060. 
+
+Also note that this amount is carried forward to SLC 70 5080 01. 
+
+## **Please complete Schedule 76: GOVERNMENT BUSINESS ENTRPRISES.** 
+
+## **Total of line 0899 includes:** 
+
+**PROVINCIAL GAS TAX FUNDING** : 
+
+Please report the Provincial Gas Tax revenues that are included on Schedule 10-line 0899 column 1 for transit services on the following lines: 
+
+**Line 4018 Provincial Gas Tax for Transit – Operating expenses** 
+
+Please report the Provincial Gas Tax revenue that was used for transit operating expenses. 
+
+**Line 4019 Provincial Gas Tax for Transit – Capital expenses** 
+
+Please report the Provincial Gas Tax revenue that was used for transit capital expenses **.** 
+
+**Line 4020 Provincial Gas Tax** : This line is automatically calculated. 
+
+## **- Canada Community Building Fund (Federal Gas Tax)** 
+
+**Lines 4025 to 4084** 
+
+Please functionalize the Canada Community-Building Fund (Federal Gas Tax) revenues that are included on Schedule 12-line 9910 column 6 on line 4025 to line 4080 **,** of schedule 10. 
+
+Also, please functionalize deferred revenue earned Canada Community-Building Fund (Federal Gas tax) on Schedule 10-line 0831 column 1 on line 4025 to line 4080 **,** of schedule 10. 
+
+**Line 4099 Canada Community – Building Fund (Federal Gas Tax) used for Capital Investments** 
+
+Total Canada Community – Building Fund (Federal Gas Tax) grant revenues used for Capital Investments for the year are shown on this line. 
+
+This line is automatically carry-forward to Schedule 53 Line 0440 column 1. 
+
+**Line 4205 Canada Community – Building Fund (Federal Gas Tax) for Operating expenses: Capacity Building** 
+
+Please report Canada Community – Building Fund (Federal Gas Tax) funds used for capacity building. 
+
+**Line 4299 Canada Community – Building Fund (Federal Gas Tax) Recognized in the year:** 
+
+Total Canada Community – Building Fund (Federal Gas Tax) funding recognized as revenue for the year. 
+
+## _**This line is automatically calculated.**_ 
+
+## **SCHEDULE 12: Grants & User Fees and Service Charges** 
+
+## **General Information** 
+
+Schedule 12 collects information on three types of non-tax revenues: operating grants from Ontario and Canada, revenue from other municipalities and user fees and service charges. Grants for tangible capital assets from Ontario, Canada and other municipalities are to be reported on this schedule. This information is reported under the appropriate functional category. 
+
+Other types of non-tax revenue which do not lend themselves to functional categories are reported on Schedule 10, Total Revenues.  These include: 
+
+**Licences, permits, rent, etc. (Schedule 10, lines 1410 to 1499) Fines and penalties (Schedule 10, lines 1605 to 1699) Other revenue (Schedule 10, lines 1805 to 1899)** 
+
+Note that other revenue includes investment income, donations, sale of publications, equipment, etc., contributions from non-consolidated entities, government business enterprises and other. 
+
+## **Description of Lines** 
+
+Schedule 40 uses the same functional categories as Schedule 12 but uses additional lines to capture greater detail on general government expenses.  Schedule 40 also includes a line for expenses related to the Provincial Offences Act under the protection services function. 
+
+Note that Schedule 51A uses the same functional categories as Schedule 12 with an additional line for tangible capital assets related to the Provincial Offences Act. 
+
+Line 1035 Ambulance dispatch is provided to ensure uniformity with Schedules 40 and 51A. 
+
+Please report all revenues pertaining to Ambulance dispatch on Schedule 10 under other revenue. 
+
+## **Description of Columns:** 
+
+## **Column 1 Ontario conditional grants** 
+
+All conditional operating grants received or receivable from the Province, including those from Ontario enterprises, are reported here. 
+
+Please note that unconditional operating grants are reported on Schedule 10, Total Revenues, because they are not related to a specific municipal function or service. 
+
+In this column, include operating grants from the Ontario Lottery Corporation. 
+
+Include grants for fully or proportionally consolidated local boards. 
+
+In this column, include the Provincial Gas Tax revenue if used for transit operations. 
+
+Include costs recovered from the Province.  Example: costs recovered from the Province in respect of a hearing. 
+
+**For other municipalities that provide ambulance dispatch on behalf of the Province, please report all revenues pertaining to ambulance dispatch on line 1035 column 1. This only applies to the following municipalities: City of Toronto, Region of Niagara, City of Ottawa, and City of Timmins. Line 1035 will be greyed out for all other municipalities.** 
+
+If Ontario conditional operating grants have been overpaid as of December 31st, the amount reported should not include the amount of the overpayment.  The overpaid portion should be recorded as a liability and included in the amount reported in Schedule 70, Consolidated Financial Position, line 2220 (Accounts Payable and accrued liabilities - Ontario). 
+
+An example is overpayment for general welfare assistance. 
+
+The total for Ontario unconditional grants is automatically carried forward to Schedule 10 (SLC 10 0810 01). 
+
+Provincial grants for tangible capital assets are reported on column 5. 
+
+## **Column 2 Canada conditional grants** 
+
+Enter conditional operating grants received or receivable from the federal government or its agencies. 
+
+Include grants for fully or proportionally consolidated local boards. 
+
+If Canada conditional operating grants have been overpaid as of December 31st, the amount reported should not include the overpaid portion. The overpaid portion should be recorded as a liability and included in the amount reported in Schedule 70, Consolidated Financial Position, line 2210, (Accounts payable and accrued liabilities - Canada). 
+
+**The total for Canada conditional grants is automatically carried forward to Schedule 10 (SLC 10 0820 01).** 
+
+Federal grants for tangible capital assets are reported on column 6. 
+
+## **Column 3 Other Municipalities** 
+
+Include revenue received or receivable from other municipalities, including amounts recovered from the upper tier. 
+
+Include amounts recovered from neighbouring municipalities for services provided. Include amounts pertaining to agreements for joint services and fees for professional services provided. 
+
+Examples include revenue received from other municipalities for firefighting services or for work done on the roads of another municipality. Include fees received from other municipalities. Include the sale of water to another municipality. 
+
+Include contributions to recreation centres. 
+
+Include county contributions towards roads under section 41 (5) of the Public Transportation and Highway Improvement Act. 
+
+Revenue received from a Band Council for fire protection services is to be reported as revenue from other municipalities in Schedule 12, column 3, rather than revenue from user fees in Schedule 12, column 4. 
+
+The total for revenue from other municipalities is automatically carried forward to Schedule 10 (SLC 10 1099 01). 
+
+## **Provincial Offences Act (POA) Revenue** 
+
+Municipalities who administer the Provincial Offences Act, please report POA revenue in SLC 10 1605 01 in the section for Fines and Penalties. 
+
+POA expenses are reported in Schedule 40, line 0450, in the appropriate column. 
+
+Municipalities which do not administer the Provincial Offences Act but receive a share of POA revenues from other municipalities, report the revenue in column 3 in SLC 12 0460 03. 
+
+## **Library Boards** 
+
+When a library board this is fully or partially consolidated bills the library board of another municipality, the revenue received is reported in column 3 as revenue from other municipalities. 
+
+**Column 4 User Fees and Service Charges** 
+
+In column 4, report user fees. User fees are fees and service charges imposed by the municipality which are directly associated with a particular municipal function. 
+
+## **Examples include, but are not limited to the following:** 
+
+Day nursery charges Committee of Adjustment fees Contributions from residents in Homes for the Aged Incidental services to individuals or tax-exempt properties, such as surfacing or snow plowing, driveways Garbage collection fees Parking revenues Permit parking Photocopies of municipal documents Planning Act fees Recreation programs Road closures for special events Tile drainage and shoreline property assistance collections Transit fares 
+
+Transit revenues from contract services and charters 
+
+Waste management 
+
+Water: direct water billings on ratepayers and sewer surcharges billed to ratepayers 
+
+Include fees and service charges received from fully and proportionally consolidated local boards and municipal enterprises. 
+
+Include user charges paid by First Nations with the exception that revenue for fire protection services should be reported in column 3 as revenue from other municipalities. Report revenue received from the federal government for the provision of policing services to an airport as user fees and service charges. 
+
+Report revenue from the rental of recreational facilities, such as arenas, baseball diamonds and soccer fields on line 1634 (recreational facilities – all other); do not report amounts under rents, concessions, and franchises in Schedule 10. 
+
+Report revenue for fire protection services provided to an armed services base as user fees and service charges. 
+
+**Note that revenue pertaining to trailers and revenue from licenses and permits, rents, concessions and franchises, fines, penalties and interest on taxes, donations, sale of publications, equipment, etc., and contributions from non-consolidated entities are reported on Schedule 10.** 
+
+Please read the section on "Netting of Revenues and Expenses" in the Introduction. 
+
+The total for user fees and service charges is automatically carried forward to Schedule 10 in SLC 10 1299 01. 
+
+## **Direct water billings and sewer surcharges** 
+
+Direct water billings on ratepayers include all charges for water which are not on the tax bill. 
+
+These may be flat rate and metered charges, metered service charges, minimum charges, connection and frontage charges, meter reading charges, meter rental and meter service charges.  Direct water billings include special charges for double size of pipe, private fire hydrants and sprinklers, irrigation, bulk usage, water cooling, etc. 
+
+Direct water billings and wastewater surcharges are considered user fees and service charges and are reported in Schedule 12 under the environmental services function in column 4 (User fees and services charges) or in column 3 (Other municipalities). Direct water billings and wastewater surcharges raised within municipality or from other municipalities. 
+
+For reporting purposes, a distinction is made between direct water billings and sewer surcharges raised within the municipality and raised from other municipalities: 
+
+Revenues from direct water billings and wastewater surcharges on direct water billings raised within the municipality should be reported in Schedule 12 in column 4 (User fees and service charges). Revenue from direct water billings is reported on either line 0831 or 0832 and revenue from wastewater surcharges on direct water billings is reported on line 0811 or 0812. 
+
+Revenues from direct water billings and sewer surcharges on direct water billings raised from other municipalities should be reported in **Schedule 12 in column 3 (Other municipalities)** . Revenue from direct water billings is reported on line 0831 or 0832 and revenue from sewer surcharges on direct water billings is reported on line 0811 or 0812. 
+
+## **Responsibility for water services and wastewater services split between lower-tier and upper-tier** 
+
+In a two-tier system, responsibility for water treatment and distribution may be split between the upper-tier and lower-tiers. Similarly, responsibility for wastewater collection and treatment may be split between the upper-tier and lower tiers. 
+
+Where the lower-tier imposes a direct bill for water services and wastewater surcharges which includes the cost of both upper-tier and lower-tier services, please report as follows: 
+
+The lower-tier reports the lower-tier portion of water billings and wastewater surcharges in column 4 (User fees and service charges) in its FIR. Water billings are reported on line 0831 or 0832 and wastewater surcharges are reported on line 0811 or 0812. 
+
+The upper-tier reports only the upper-tier portion of water billings and wastewater surcharges in column 4 in its FIR. Water billings are reported on line 0831 or 0832 and wastewater surcharges are reported on line 0811 or 0812. 
+
+## **Column 5 Ontario Grants – Tangible Capital Assets** 
+
+## **Report all Ontario grants for tangible capital assets on this column under the appropriate functional category.** 
+
+Report OCIF deferred revenue under the appropriate functional category. 
+
+Report the Provincial Gas Tax grants received and applied for capital improvements for transit. 
+
+If the Provincial Gas tax was not utilized during the year, then these funds should be directly reported on Schedule 60 Column 1 under the provincial gas tax line. 
+
+Report all deferred revenue earned, such as Ontario bus replacement grant, etc., except for deferred revenue earned (Provincial Gas Tax) for Transit (Capital). 
+
+**Deferred revenue earned (Provincial Gas Tax) for Transit (Capital) should be entered in Schedule 60 line 1045 column 1. Schedule 10 line 0830 column 1 automatically draws the amounts entered in schedule 60 line 1042 column 1 + schedule 60 line 1045 column 1.** 
+
+**The total in column 5 in SLC 12 9910 05 is carried forward to SLC 10 0815 01.** 
+
+## **Column 6 Canada Grants – Tangible Capital Assets** 
+
+## **Report all Federal grants for tangible capital assets on this column under the appropriate functional category.** 
+
+Report the Federal Gas Tax grant received and applied to the applicable program. 
+
+Please complete Schedule 10 – section for the Canada Gas Tax funding allocation to the various functional areas. 
+
+If the Federal Gas Tax was not utilized during the year, then these funds should be directly reported on Schedule 60 Column 1 under the Federal gas tax line. 
+
+Report all deferred revenue earned, such as Federal public transit, Canada Building Fund, etc., except for deferred revenue earned (Canada Gas Tax). 
+
+## **Deferred revenue earned Canada Gas Tax should be entered in schedule 60-line 1047 column 1. Schedule 10-line 0831 column 1 automatically draws the amount entered in Schedule 60-line 1047 column 1.** 
+
+The total in column 6 in SLC 12 9910 06 is carried forward to SLC 10 825 01. 
+
+## **Column 7 Other Municipalities – Tangible Capital Assets** 
+
+Include amounts received from other municipalities for their share of capital projects. For example, include amounts received from other municipalities for joint wastewater and water projects. 
+
+## **The total in column 7 in SLC 12 9910 07 is carried forward to SLC 10 1098 01.** 
+
+## **SCHEDULE 20: Taxation Information** 
+
+## **General Information** 
+
+This schedule collects information on the property tax policies in effect in the municipality for the year.  These include: 
+
+**1. Optional Property Classes** 
+
+**2. Capping Parameters and Results** 
+
+**3. Graduated Taxation (Tax Bands)** 
+
+**4. Phase-In Program in Effect** 
+
+**5. Rebates for Eligible Charities** 
+
+**6. Property Tax Due Dates for Current Year** 
+
+Property tax policy is determined by upper-tier and single-tiers municipalities, but all municipalities must complete these sections.  Lower tiers should consult the upper tier for the information if necessary.  Only single tier and lower-tier municipalities are required to complete the property tax due date table. 
+
+Further information to that provided in the instructions below is also available in the OPTA Manual at the On-Line Property Tax Analysis (OPTA) website: **http://opta.reamined.on.ca** 
+
+## **1. OPTIONAL PROPERTY CLASSES** 
+
+Upper tier and single tier municipalities have the option under Regulation 282/98 of the Assessment Act of selecting various ‘optional property classes’ within the multiresidential, commercial, and industrial property classes. 
+
+Optional property classes for Commercial include Parking Lots (G), Office Buildings (D), and Shopping Centres (S). The optional property class for Industrial is Large Industrial (L).  The New Multi-Residential class is also considered an optional property. Municipalities which have selected the Resort Condominium class, or the Sports Facility class should identify it in the “Other” box. 
+
+Parking Lot on line 0205 includes two additional classes, CJ and CR for the Optional Property Classes in Effect. 
+
+Please indicate which of these optional property classes have been implemented in the municipality by entering Y for Yes and N for No in column 2. 
+
+## **2. CAPPING PARAMETERS AND RESULTS** 
+
+Beginning in 1998, municipalities were required to limit assessment reform related property tax increases for Commercial, Industrial, and Multi-residential property classes to 10% in 1998, a further 5% in 1999, and a further 5% in 2000.  For 2001 and onwards, the Capping Limit Program was continued by limiting assessment reform related property tax increases by a further 5% in 2001, and an additional 5% each year thereafter (Bill 140). 
+
+Commencing in 2005, municipalities have the option of selecting additional capping parameters to move properties to CVA taxation more quickly.  More specifically, municipalities can increase the 5% capping limit to up to 10%, establish a minimum capping increase set at up to 5% of the CVA taxes of the previous year, and move properties to CVA if they fall within $250 of CVA taxes after the application of the previously mentioned capping parameters.  See section 329.1 of the Municipal Act _._ 
+
+Municipalities can opt to fund all of the protection costs within the class by limiting tax decreases or choose to fund all or a portion of the protection costs by other means. Upper tier and single tier municipalities must pass a by-law under section 330 of the Municipal Act to establish the percentage to which tax decreases will be limited (Decrease Percentage Retained). 
+
+The values to be entered in this section can be found in the capping reports prepared by the municipality, or in the OPTA data base system for those municipalities that use it. 
+
+## **Column 1 Exit Capping immediately** 
+
+Enter Yes (Y) if your municipality exited the Capping Limit Program. 
+
+Enter No (Y) if your municipality did not exit the Capping Limit Program. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 2 Decrease- Percentage Retained** 
+
+Enter the Percentage Decrease Retained value for properties that would have experienced a decrease in taxes. 
+
+If the total cost of protection of the capping program has been funded by the municipality, the decrease-percentage retained should equal 100%. 
+
+If the cost of protection has been totally funded by minimizing the property tax decreases, (i.e. Revenue Neutral approach), the decrease percentage share should be between 0% and 100%. 
+
+**This section will be automatically pre-populated from OPTA.** 
+
+## **Column 3 Tax Adjustment - Increasers** 
+
+Tax Adjustment - Increasers refers to the dollar amount refunded or credited to the capped properties _(increasing properties)_ .  This amount is the difference between the Current Value Assessment (CVA) taxes on these properties for the year, and the capped taxes raised from these properties. 
+
+For municipalities that use the OPTA system, these amounts are displayed on the summary lines of the frozen capping reports. Upper tier municipalities must report the total cost of protection for all capped properties across the upper tier. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 4 Net Class Impact** 
+
+The Net Class Impact is the difference between the total taxes raised from the class after the capping adjustments, and the CVA taxes that would be levied on the class in the absence of capping.  For lower tier municipalities, the amount can be positive or negative and should be inserted as such. 
+
+For municipalities that use the OPTA system, these amounts are displayed in the net class impact line of the capping summary analysis report or the tax adjustment column of the capping summary report. 
+
+Upper tier municipalities must report the total net tax impact across the upper tier (generally this amount is zero unless the upper tier has selected a non-revenue neutral capping policy or if there is a shortfall in the capping calculation). 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 5 Annualized Tax Limit** 
+
+The minimum percentage of annualized tax limit that can be entered is 5%. Municipalities can increase this amount to up to 10%.  Enter the value included in the by-law up to two decimal places for each of the multi-residential, commercial and industrial classes. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 6 CVA Tax limit** 
+
+If the municipality has adopted the CVA tax limit parameter of between 0 and 5% of the previous year’s CVA taxes, enter the percentage amount to two decimal places. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 7 CVA Threshold Value for Protected Properties** 
+
+If the municipality has elected to move increasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 8 CVA Threshold Value for Clawed Back Properties** 
+
+If the municipality has elected to move decreasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 9 Exclude Properties Previously at CVA Tax** 
+
+Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 9. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 10 Exclude Properties that go from capped to clawed back** 
+
+Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 10. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **Column 11 Exclude Properties that go from clawed back to capped** 
+
+Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 11. 
+
+## **This section will be automatically pre-populated from OPTA.** 
+
+## **3. GRADUATED TAXATION (TAX BANDS)** 
+
+Municipalities have been provided with the option under section 314 of the Municipal Act to apply lower tax rates to lower-valued Commercial and Industrial properties. Commencing in 2005, municipalities can establish graduated tax rates for any commercial and industrial optional classes as well. 
+
+Municipalities can establish two or three bands of tax rates and assessment. 
+
+Municipalities with two tax bands will be shown in the taxation schedules of the FIR as: 
+
+|h two tax bands|will be shown in the taxation schedule|
+|---|---|
+|L<br>H|Low Tax Band|
+||High Tax Band|
+
+
+
+Municipalities with three tax bands will be shown in the taxation schedules of the FIR as: 
+
+|L<br>M<br>H|Low Tax Band|
+|---|---|
+||Middle Tax Band|
+||High Tax Band|
+
+
+
+**Example 1:Municipality sets two CVA tax bands, with a CVA Boundary of $400,000, and the low tax band rate set at 75% of the high tax band rate** 
+
+|**Tax Bands**|**CVA Range**|**Tax Rate**|
+|---|---|---|
+|Low tax band (L)|$0 to 400,000|3.000000%|
+|High tax band (H)|$400,000 +|4.000000%|
+
+
+
+The Low tax band rate of 3.0% is applied to $400,000 of CVA on all properties in the banded class. If the CVA for a property is greater than $400,000, the Low tax band rate of 3.0% is applied to the first $400,000 of CVA, and the High tax band rate of 4.0% is applied to the remaining CVA. 
+
+You will notice that the Low tax band rate is 75% of the High tax band rate (i.e. 3.0% / 4.0% x 100), and the CVA Boundary between the 2 tax bands is $400,000. 
+
+**Example 2:Municipality sets three CVA tax bands, with CVA Boundaries of $500,000 and $800,000, along with the low tax band rate set at 60% of the high tax band rate, and the middle tax band rate set at 80% of the high tax band rate** 
+
+|**Tax Bands**|**CVA Range**|**Tax Rate**|
+|---|---|---|
+|Low tax band (L)|$0 to 500,000|3.000000%|
+|Middle tax band (M)|$500,000 to 800,000|4.000000%|
+|High tax band (H)|$800,000 +|5.000000%|
+
+
+
+Like example 1, the tax rates for each tax band are applied to CVA within the specified Ranges. Properties with lower CVA values will experience lower tax rates compared to higher valued properties in the class. 
+
+The Low tax band rate of 3.0% is applied to $500,000 of CVA on all properties in the banded class. 
+
+If the CVA for a property is between $500,000 and $800,000 the Low tax band rate of 3.0% is applied to the first $500,000 of CVA, while the Middle tax band rate of 4.0% is applied to the remaining CVA. 
+
+If the CVA for a property is greater than $800,000 the Low tax band rate of 3.0% is applied to the first $500,000 of CVA, the Middle tax band rate of 4.0% is applied to the next $300,000 of CVA, and the High tax band rate of 5.0% is applied to the remaining CVA. 
+
+The Low tax band rate is 60% of the High tax band rate (3.0% / 5.0% x 100), and the Middle tax band rate is 80% of the High tax band rate (4.0% / 5.0% x 100). The Low tax band CVA boundary is $500,000 and the Middle tax band CVA boundary is $800,000. 
+
+## **Column 2 Yes or No** 
+
+Indicate whether graduated tax rates are in effect for each of the classes shown by entering a Y for Yes or N for No. 
+
+## **Column 3 Number of Tax Bands** 
+
+If Graduated Tax Rates (Tax Bands) exist in the class, enter the number of tax bands which apply to the class. 
+
+## **Column 4 Low Band- CVA Boundary** 
+
+This column should be completed if a municipality has opted for either two (Low and High) or three (Low, Middle, and High), taxation bands. 
+
+For two taxation bands, report the assessment value that separates the Low band from the High band in column 4, CVA Boundary. 
+
+For three taxation bands, report the assessment value that separates the Low band from the Middle band in column 4, CVA Boundary. 
+
+## **Column 5 Low Band - Percent of Highest Band Rate** 
+
+This column should be completed if a municipality has opted for either two (Low and High) or three (Low, Middle, and High), taxation bands. 
+
+For two taxation bands, report the Low band tax rate as a percentage of the High band tax rate. (i.e. Low band rate / High band rate x 100) in column 5. 
+
+For three taxation bands, report the Low band tax rate as a percentage of the High band tax rate. (i.e. Low band rate / High band rate x 100) in column 5. 
+
+## **Column 6 Middle Band- CVA Boundary** 
+
+This column should only be completed if a municipality opted for three taxation bands in the respective classes. 
+
+Report the assessment value that separates the Middle band from the High band in column 6, CVA Boundary. 
+
+## **Column 7 Middle Band - Percent of Highest Band Rate** 
+
+This column should only be completed if a municipality opted for three taxation bands in the respective classes. Report the Middle band tax rate as a percentage of the High band tax rate. (i.e. Middle band rate / High band rate x 100). 
+
+## **4. PHASE-IN PROGRAM IN EFFECT** 
+
+Under section 318 of the Municipal Act, Upper tier and single tier municipalities have the option of phasing-in property tax increases and decreases resulting from province-wide reassessments. 
+
+Please indicate whether a Phase-In program is in effect for any of the property classes listed in this section as shown below: 
+
+|**Line**|**Property Class**|
+|---|---|
+|0805|R Residential|
+|0810|M Multi-Residential|
+|0815|N New Multi-Residential|
+|0820|<br>  <br>C Commercial<br>Includes: G - Parking Lot<br>D - Office Building<br>S - Shopping Centres|
+|0840|<br>I Industrial<br>Includes<br>L - Large Industrial|
+|0850|F Farmland|
+|0855|T   Managed Forest|
+|0860|P   Pipeline|
+
+
+
+Municipalities should only report phase-in information of the Phase-In program that is currently in effect. 
+
+## **Column 2 Phase-In Program in Effect** 
+
+For each property class, enter a Y for Yes, if a Phase-In program is in effect in the municipality.  Enter N for No, if a Phase-In program is not in effect in the municipality. 
+
+## **Column 3 Year Current Phase-In Initiated** 
+
+For each property class with a Phase-In program in effect, enter the year when the Phase-In program began.  Municipalities could have opted for a Phase-In program in 1998, 2001, 2003 _and/or 2016_ (i.e. during any reassessment year). 
+
+## **Column 4 Term of Current Phase-In** 
+
+For each property class with a Phase-In program in effect, enter the total number of 
+
+years the Phase-In program is in effect. 
+
+## **5. REBATE PERCENTAGE FOR ELIGIBLE CHARITIES (%)** 
+
+This section refers to the rebate percentage for eligible charities set by the municipality under Section 361 of the new Municipal Act, 2001. The rebate program must provide rebates of at least 40% of the property tax paid by eligible charities occupying property in the Commercial or Industrial property classes. Municipalities have the option to increase the rebate to a maximum of 100%, expand the rebate to other property classes, and apply the rebate to other organizations that are like charities. 
+
+Please enter the rebate percentage that is applied in the municipality. 
+
+NOTE:  In Schedule 72, Continuity of Taxes Receivable, this rebate percentage is used to determine the adjustments on line 2099. 
+
+## **6. PROPERTY TAX DUE DATES FOR CURRENT YEAR** 
+
+This part applies to Lower-tier/Single-tier municipalities only.  Information related to Interim and Final property tax billings, including the number of instalments, and due dates for the first and last instalment is captured in this part. 
+
+All due dates should be entered as eight-digit numbers (YYYYMMDD).  The first four digits represent the year.  The second two digits represent the month and the last two digits represent the day.  No spaces or slashes should be used. For example, _**June 30, 2021**_ would be reported as _**20210630**_ **.** 
+
+Report property tax billings by the following property classes: 
+
+|**Line**|**Property Class**|
+|---|---|
+|1210|R Residential|
+|1220|M Multi-Residential|
+|1230|F Farmland|
+|1240|T   Managed Forest|
+|1250|C Commercial|
+|1260|I Industrial|
+|1270|P   Pipeline|
+|1298|Other (Please provide a description)|
+
+
+
+## **Column 2 INTERIM BILLING - Instalments** 
+
+Enter the number of installments for Interim property tax billings of each property class which is applicable in the municipality. 
+
+## **Column 3 INTERIM BILLING - First Due Date** 
+
+Enter the due date for the first installment of the Interim property tax bill in column 3. Due dates should be entered as eight-digit numbers (YYYYMMDD). 
+
+## **Column 4 INTERIM BILLING - Last Due Date** 
+
+Enter the due date for the last installment of the Interim property tax bill in column 4. Due dates should be entered as eight-digit numbers (YYYYMMDD). 
+
+## **Column 5 FINAL BILLING - Installments** 
+
+Enter the number of installments for Final property tax billings of each property class which is applicable in the municipality. 
+
+## **Column 6 FINAL BILLING - First Due Date** 
+
+Enter the due date for the first installment of the Final property tax bill in column 6.  Due dates should be entered as eight-digit numbers (YYYYMMDD). 
+
+## **Column 7 FINAL BILLING - Last Due Date** 
+
+Enter the due date for the last installment of the Final property tax bill in column 7.  Due dates should be entered as eight-digit numbers (YYYYMMDD). 
+
+## **SCHEDULE 22: Municipal and School Board Taxation** 
+
+## **General Information** 
+
+All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 22. 
+
+Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities. 
+
+This schedule collects taxation information on Taxable properties.  It is simply, a line by line report showing the assessment for each property class in the municipality, the tax rates applicable to each class, and the taxation generated from each class. 
+
+Municipal and Education taxation information in this schedule is organized by dividing the Schedule into the following nine sections: 
+
+**1. General Purpose Levy** 
+
+**2. Special Area Levies (Lower-tier/Single-tier)** 
+
+**3. Special Area Levies (Upper-tier)** 
+
+**4. Adjustments to Taxation** 
+
+**5. Supplementary Taxes** 
+
+**6. Amount Levied by Tax Rate** 
+
+**7. Amounts Added to Tax Bill** 
+
+**8. Other Taxation Amounts** 
+
+**9. Total Amount Levied** 
+
+Also, the Schedule contains several columns, which can be summarized into the following 3 categories: 
+
+- **A. Property Class Description (Columns 1 to 4)** 
+
+- **B. Assessment and Tax Rates (Columns 5 to 11)** 
+
+- **C. Taxes Levied (Columns 12 to 15)** 
+
+Before explaining each of the Sections and Columns, the reporting treatment of several unique property types will be explained below.  Following this will be a description of each of the Columns, and then a description of information reported in each Section. 
+
+## **Unique Property Types** 
+
+## **Hydro Properties (RTQ = H, J, K)** 
+
+Unique RTC / RTQ descriptions are available for Hydro properties owned by Ontario Power Generation Corporation and Hydro One or their subsidiaries.  Hydro properties are described as “Taxable, shared as if Payment-In-Lieu” represented by RTQ’s of H, J, 
+
+or K.  The full property assessment and applicable tax rates for these properties should be reported in Sections 1, 2 and 3 of this Schedule. 
+
+Since, the education portion of the payment from the Commercial or Industrial Hydro properties should be retained by the municipality, an adjustment is necessary to the amounts shown in Part 1. Part 4, Adjustment to Taxation, has been added to account for this.  In Part 4, Line 7010 Municipalities should report the amount of education taxes that are retained by the Municipality as a negative adjustment to Education Taxes in column 14, and a positive adjustment to Municipal Taxes in column 12.  The total of Line 7010 shown in column 15 should then equal 0. 
+
+Reporting the adjustments for Hydro Properties on Line 7010 will balance the Total Municipal Taxes and Total Education Taxes on Line 9990. 
+
+## **Taxable Tenants of the Province (RTQ = P, Q)** 
+
+Unique RTC / RTQ descriptions are available for taxable tenants of provincially owned properties.  These properties described as “Taxable Tenant of Province” are represented by RTQ’s of P, Q. 
+
+These properties are unique since they are described as Payments-In-Lieu of Taxation (PIL), while being treated as Taxable.  Unlike many other PIL properties, the Education amounts from these properties should be distributed to the School Boards and should not be retained by the Municipality. 
+
+Although these properties are treated as taxable properties, because they are described as “Payment-In-Lieu of Taxation”, they should be reported on Schedule 24, PaymentsIn-Lieu of Taxation. 
+
+## **Hydro-Electric Power Dams** 
+
+As of 2001, Power Dams were exempted from property taxation. Municipalities no longer receive amounts from these properties based on a Tax Rate multiplied by Assessment.  To compensate for the loss of this tax revenue, the Province is making payments to municipalities based on the Municipal taxes these properties generated in 2000. 
+
+These amounts are paid directly to each lower-tier and each upper-tier municipality affected by the exemption.  Since the amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, on Line 8060 under Part 7, “Other Payment-In-Lieu Amounts”. 
+
+## **Railway Rights - of- way (RTC = W)** 
+
+Unique RTC / RTQ descriptions are available for Railway Rights-of-way properties. Railway Rights-of-way properties are represented by RTC of W. 
+
+Municipalities receive amounts from Railway Rights-of-way properties based on applying a Rate to the Acreage of the property. 
+
+A Railway Rights-of-way property can be classed as either Taxable or PIL.  If the amount is derived from a Railway Right-of-way property which is classed as “Taxable”, the amount should be reported in Schedule 22 on Line 8045. If the amount is derived from a Railway Right-of-way property which is classed as “PIL”, then the amount should be reported in Schedule 24 on line 8045. 
+
+In some instances, the municipality receives an additional amount in respect of Railway Rights-of-way properties from the Province. This is because Rates for Railway Rightsof-way are being phased-in to the mature geographical rates.  Municipalities receive an amount as compensation for the loss of tax revenue resulting from the phase-in. 
+
+Unlike the compensation related to the Power Dams, these compensation amounts are paid directly to the lower-tier and single-tier municipality.  Lower-tier Municipalities have been advised to share the compensation amounts they receive with the Upper-tier according to the sharing arrangements for Railway Rights-of-way revenues. 
+
+Since the compensation amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, under Part 7, “Other Payment-InLieu Amounts”.  Line 8046 has been added specifically for reporting this amount. 
+
+## **Utility Corridors (RTC = U)** 
+
+Unique RTC / RTQ descriptions are available for Utility Corridor properties. Utility Corridor properties are represented by RTC of U.  Municipalities receive amounts from Utility Corridor properties based on applying a Rate to the Acreage of the property. 
+
+A Utility Corridor property can be classed as either Taxable or PIL. If the amount is derived from a Utility Corridor property which is classed as “Taxable”, the amount should be reported in Schedule 22 on Line 8050.  If the amount is derived from a Utility Corridor property which is classed as “PIL”, then the amount should be reported in Schedule 24 on line 8050. 
+
+In some instances, the municipality receives an additional amount in respect of Utility Corridor properties from the Province.  This is because Rates for Utility Corridors are being phased-in to the mature geographical rates.  Municipalities receive an amount as compensation for the loss of tax revenue resulting from the phase-in. 
+
+Unlike the compensation related to the Power Dams, these compensation amounts are paid directly to the lower-tier and single-tier municipality.  Lower-tier Municipalities have been advised to share the compensation amounts they receive with the Upper-tier. 
+
+_**Since the compensation amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, under Part 7, “Other Payment-In-Lieu Amounts”.**_ 
+
+## _**Line 8051 has been added specifically for reporting this amount.**_ 
+
+## **DESCRIPTION OF COLUMNS** 
+
+The following table displays a list of all the columns in this schedule: 
+
+|**Column**|**Description**|
+|---|---|
+|**1**|<br>**RTC / RTQ**|
+|**2**|**Tax Band**|
+|**3**|**Property Class**|
+|**4**|**Tax Rate Description**|
+|**5**|**Tax Ratio**|
+|**6**|**Percent of Full Rate**|
+|**7**|**CVA Taxable Assessment**|
+|**16**|**Phase-In Taxable Assessment**|
+|**8**|**Tax Rates:  LT / ST**|
+|**9**|**Tax Rates:  UT**|
+|**10**|**Tax Rates:  EDUC**|
+|**11**|**Tax Rates:  TOTAL**|
+|**12**|**Municipal Taxes:  LT / ST**|
+|**13**|**Municipal Taxes:  UT**|
+|**14**|**Education Taxes**|
+|**15**|**TOTAL Taxes**|
+
+
+
+## _**Columns 1,3,4,5,7,16,8,9,10, are pre-populated for the user in the taxable general-purpose levy schedule.**_ 
+
+## **To complete the schedule, the user must select the tax band (column 2), input the percent of full rate (column 6) and the rest of the schedule will be automatically calculated.** 
+
+## **A. Property Class Description (Columns 1 to 4)** 
+
+The first 4 columns display information related to the property classes that exist in the municipality. The information contained in these columns determines the information that should appear in the remaining columns. 
+
+## **Column 1 RTC / RTQ** 
+
+This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property. 
+
+The RTQ describes which of the following ways the Tax Rate is applied: 
+
+**1. Full tax rate** 
+
+**2. Discounted tax rate** 
+
+   - **i. Excess Land** 
+
+   - **ii. Vacant Land** 
+
+   - **iii. Farmland Awaiting Development** 
+
+**3. Education tax rate only** 
+
+**4. General tax rate only** 
+
+For RTC / RTQ codes that refer to optional property classes, municipalities should report these whether the class is ‘in effect’ or not.  They should not be aggregated with the ‘broad’ Commercial or Industrial class.  This allows the optional property class properties to be identified regardless of whether the optional class is in effect. 
+
+Please refer to the **FIR2021Tables** document for a complete list of applicable RTC / RTQ combinations. New Construction classes have been formed under the Commercial and Industrial property class.  RTC codes and RTQ codes available at the FIR website: 
+
+https://efis.fma.csc.gov.on.ca/fir/index.php/municipal-reporting/additional-information/ 
+
+## **Column 2 Tax Band** 
+
+Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class. Please refer to Section 3 of Schedule 20 in these instructions, for further information on Tax Bands. 
+
+Municipalities must enter 0, L, M, or H in this column as explained in the instructions below: 
+
+For municipalities who have NOT adopted tax banding in a property class, a zero, ‘0', should be reported on each line in this column. An entry of ‘0' represents an ‘ **Unbanded’** tax rate. 
+
+For municipalities who have adopted tax banding, by either creating 2 or 3 Tax Bands of assessment value (CVA) to which different tax rates are applied, the following tables outline the entries available for this column: 
+
+|<br>~~1~~<br>**No Tax Bands**:<br>**Tax Band**<br>**Enter**<br>Un-banded<br>0|**2 Tax Bands:**|**2 Tax Bands:**|**2 Tax Bands:**|~~---~~<br>**3 Tax Bands:**<br>**Tax Band**<br>**Enter**<br>Low tax band<br>L<br>Middle tax band<br>M<br>High tax band<br>H|~~---~~<br>**3 Tax Bands:**<br>**Tax Band**<br>**Enter**<br>Low tax band<br>L<br>Middle tax band<br>M<br>High tax band<br>H|
+|---|---|---|---|---|---|
+||~~1~~<br>**Tax Band**|**Enter**||**Tax Band**|**Enter**|
+||Low tax band|~~-~~<br>L||~~--~~<br>Low tax band|~~-~~<br>L|
+||High tax band|H||Middle tax band|M|
+|||||High tax band|H|
+
+
+
+**Note** : If an optional Commercial or Industrial property class is in effect in the municipality, Tax Banding only applies to the residual Commercial or Industrial assessment.  In other words, Tax banding does not apply to optional property classes that are in effect. 
+
+Please refer to the **FIR2021** document for a complete list of applicable RTC / RTQ combinations, RTC Codes, and RTQ codes available at the FIR website: 
+
+**https://efis.fma.csc.gov.on.ca/fir/index.php/municipal-reporting/additional-information/** 
+
+## **Column 3 Property Class** 
+
+The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1.  (See **FIR2021 Tables** ) 
+
+## **Column 4 Tax Rate Description** 
+
+This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See **FIR2021 tables** ) 
+
+**B. Assessment and Tax Rates (Columns 5 to 11)** 
+
+Current Value Assessment (CVA) totals and Tax Rate information, including Tax Ratios, Discount Percentages of the Full Tax Rate, and Tax Rates that are applicable to the property classes outlined in columns 1 to 4 must be reported in these columns. 
+
+It is important to notice that EVERY tax rate is determined by the following relationship with the Residential (RT) tax rate: 
+
+**Tax Rate =    RT Tax Rate  x  Tax Ratio x Percent of Full Rate** 
+
+## **Example:** 
+
+The Commercial vacant land tax rate (CX) is usually discounted to 70% of the Commercial full occupied tax rate (CT).  If the RT Tax Rate is 0.12% and the Commercial Tax Ratio is 2.5000, the CX rate is determined from the residential tax rate as follows (assuming a 70% Vacant Land discount): 
+
+|**CX tax rate**|**=   RT rate x CT Tax Ratio x Percent of Full CT Rate**|
+|---|---|
+||<br>=   0.120000% x<br>2.5000 x 70%|
+||=   0.210000%|
+
+
+
+## **Column 5 Tax Ratio** 
+
+The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RT).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CT) is 4% twice that of the Residential tax rate, then the Commercial tax ratio is 2.0000: 
+
+|**Commercial Tax Ratio**|<br>**=   CT Tax Rate   ÷**<br>**RT Tax Rate**|
+|---|---|
+||<br>= 4%<br>÷<br>2%|
+||= 2.0000|
+
+
+
+All Tax Ratios are now expressed as a decimal to 6 decimal places. The tax ratio for the Residential (RTC = R) property class is always 1.0000, and the tax ratio for the Farmland (RTC = F), and Managed Forest (RTC = T) property classes is always 0.2500. 
+
+Each property class, and similarly, each RTC code, must have a tax ratio associated with it.  It is also worth noting that the Tax Ratio remains constant within a property class. For example, a Commercial Tax Ratio of 2.0000 applies to CT, CU and CX (CU, and CX usually have a 70% discount as described in column 6). Please refer to the **FIR2021Tables** document for a complete list of RTC Codes which shows the relationship between the RTC Code (or property class) and the tax ratio. Please note the exceptions that exist when optional classes are in effect. 
+
+## **Column 6 Percent of Full Rate** 
+
+This column captures information relating to discounted tax rates, and tax banding of the tax rates. These can be summarized into the following 3 cases: 
+
+|**Types of Tax Rate Discounts**|**Options**|
+|---|---|
+|Vacant Land or Excess Land|Excess Land Rate (RTQ = U)<br>Vacant Land Rate (RTQ = X)|
+
+
+
+|Farmland Awaiting Development|Phase I (RTQ = 1)<br>Phase II (RTQ = 4)|
+|---|---|
+|Tax Banding (Percent of Full Un-Banded Rate)|Low tax band (Tax Band = L)<br>Middle tax band (Tax Band = M)<br>High tax band (Tax Band = H)|
+
+
+
+Notice that the first 2 cases relate to the RTQ of a property, while the 3[rd ] case refers to the Tax Band.  For municipalities who have opted for tax banding of tax rates, it may be possible to have case 1 and 3 occurring at the same time (i.e. RTQ = U, X and Tax Band = L, M, H). 
+
+Remember, every tax rate is determined by the following relationship with the Residential tax rate: 
+
+## **Tax Rate =   RT Tax Rate x Tax Ratio x Percent of Full Rate** 
+
+This formula can be rearranged as follows to enable us to calculate the Percent of Full Rate: 
+
+|**Percent of Full Rate  =**|<br>**Tax Rate**|<br>**Tax Rate**|
+|---|---|---|
+||**RT Tax Rate x Tax Ratio**||
+
+
+
+Please refer to the **FIR2021Tables** document for a complete list of RTQ Codes which shows the relationship between the RTQ Code and the Percent of Full Rate.  Please note the exceptions that exist when optional classes are in effect. 
+
+**Example 1: The following table outlines a sample of property classes, with the tax ratio, percent of full rate, and tax rate columns.** 
+
+|**RTC /**<br>**RTQ**<br>**1**|**Tax**<br>**Band**<br>**2**|**Tax Ratio**<br>**5**|**Percent of Full**<br>**Rate**<br>**6**|**Tax Rate**<br>**8**|
+|---|---|---|---|---|
+|RT|0|1.0000|100%|**2.000000%**|
+|FT|0|0.2500|100%|0.500000%|
+|CT|0|2.0000|100%|4.000000%|
+|CU|0|2.0000|70%|2.800000%|
+|CX|0|2.0000|70%|2.800000%|
+|IT|0|3.0000|100%|6.000000%|
+|IU|0|3.0000|65%|3.900000%|
+|I1|0|3.0000|40%|2.400000%|
+||||||
+
+
+
+|**RTC /**<br>**RTQ**<br>**1**|**Tax**<br>**Band**<br>**2**|**Tax Ratio**<br>**5**|**Percent of Full**<br>**Rate**<br>**6**|**Tax Rate**<br>**8**|
+|---|---|---|---|---|
+|I4|0|3.0000|55%|3.300000%|
+
+
+
+In this table, notice that any tax rate can be determined using the formula mentioned earlier.  Multiplying the Residential tax rate (RT Rate) of 2.0% by the Tax Ratio and then by the Percent of Full Rate on any line will provide the resulting Tax Rate for that RTC / RTQ code. 
+
+This is shown below for CU: 
+
+|<br>**CU Rate**|<br> <br>**=   RT Rate**<br>**x   CT Tax Ratio  x**<br>**Percent of Full CT Rate**|
+|---|---|
+||<br>=   2.0% x   2.0000  x<br>70%|
+||<br>=   2.0% x<br>1.4000|
+||=   2.8%|
+
+
+
+Also, notice that working backwards with the second formula mentioned earlier, the Percent of Full Rate for any line can be determined as shown below for RTC / RTQ of I4: 
+
+|**Percent of Full Rate**|<br> <br>**=   I4 Rate**<br>**÷ (RT Tax Rate  x IT Tax Ratio)**|
+|---|---|
+||=   3.3% ÷ (2.0% x 3.0000)|
+||= 3.3% ÷ (6.0%)|
+||= 55%|
+
+
+
+For municipalities which have implemented Tax Banding in the commercial or industrial property classes, the ‘Percent of Full Rate’ column is slightly more complicated. 
+
+In dealing with tax rates which are ‘Banded’, the percent of Full Rate is determined as a discount percent of the Full _Un-Banded_ Rate. This column would thus be more appropriately named, ‘Percent of Full _Un-Banded_ Rate’ in this case. 
+
+When Tax Banding exists, the Percent of Full Rate is a combination of the Tax Banding discount, and the Vacant or Excess Land discount. 
+
+## Example 2: 
+
+**The following table outlines a simple case where 2 commercial tax bands (Low and High) are in effect in a municipality:** 
+
+|**RTC /**<br>**RTQ**<br>**1**|**Tax**<br>**Band**<br>**2**|**Tax Ratio**<br>**5**|**Percent of Full Rate**<br>**6**|**Tax Rate**<br>**8**|
+|---|---|---|---|---|
+|RT|0|1.0000|100%|2.000000%|
+|FT|0|0.2500|100%|0.500000%|
+|CT|0|2.0000|100%|4.000000%|
+|CT|L|2.0000|90%|3.600000%|
+|CT|H|2.0000|120%|4.800000%|
+|CU|L|2.0000|63%|2.520000%|
+|CU|H|2.0000|84%|3.360000%|
+|CX|L|2.0000|63%|2.520000%|
+|CX|H|2.0000|84%|3.360000%|
+
+
+
+In this example, we have included the un-banded commercial rate for illustration purposes. You will notice that CT, CU, and CX have each been divided into 2 parts, a Low band (L) and a High band (H). 
+
+Notice that working backwards with the second formula mentioned earlier, the Percent of Full Rate column for RTC / RTQ and Tax Band of CU L (Low Band) is as follows: **Percent of Full Rate =   CU Low Rate ÷ [RT Rate x CT Tax Ratio]** =   2.52% ÷ (2.0% x   2.0000) =   2.52% ÷ (4.0%) = 63% 
+
+Further examination of this calculation shows that the Percent of Full Rate for CU L - (Low Band) can be determined by simply dividing by the CT 0 (Un banded) Rate: **Percent of Full Rate =   CU Low Rate  ÷ CT Un-Banded Rate** 
+
+A closer look at the tax rate for CU Low Band shows that the 63% Discount is made up of 2 parts.  First, it includes a Discounted to 70% of the full commercial tax rate because it is a Vacant Land rate (i.e. RTQ = U), and second, it is further discounted by 90% because it is the Low Tax Band rate (Tax Band = L). 
+
+|**CU Low Rate**|<br>**=   RT Rate x CT Tax Ratio x (Vacant disc. x Low band disc.)**|
+|---|---|
+||=   RT Rate x CT Tax Ratio x (Percent of Full Rate)|
+||=   2.0% x   2.0000  x (70% x 90%)|
+||<br>=<br>2.0% x   2.0000  x (63%)|
+||=   2.52%|
+
+
+
+The Percent of Full Rate column for CT is 90% for the Low band and 120% for the High band.  For CU and CX the Percent of Full Rate is 63% for the Low band, and 84% for the High band. 
+
+The Percent of Full Rate for CU and CX are lower because they combine the Vacant Land or Excess Land discount of 70%, along with the Tax Banding discounts of 90% and 120%. 
+
+The table below outlines how to calculate the Percent of Full Rate, when tax banding exists in the Municipality. 
+
+|**RTQ**|**Tax**<br>**Band**|**Description**|**Percent of Full ‘Un-banded’ Rate**|
+|---|---|---|---|
+|T|0|“Full” Un-banded|100%|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+||M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||H|High tax band|High band Tax Rate ÷ Full Un-Banded Rate|
+|U|0|Un-banded|nU Rate ÷ (RT Rate x nT Tax Ratio)|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+||M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||H|High tax band|High band Tax Rate ÷ Full Un-Banded Rate|
+|X|0|Un-banded|<br>nX Rate ÷ (RT Rate x nT Tax Ratio)|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+||M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||H|High tax band|High band Tax Rate ÷ Full Un-Banded Rate|
+
+
+
+* n is a variable representing the RTC Code 
+
+## **Column 7 CVA Assessment** 
+
+The total current value assessment (CVA) associated with each property class is entered in this column. 
+
+**Column 7 is pre-populated** for the user in this taxable general-purpose levy schedule. If the CVA assessment is incorrect, please delete the pre-populated amount and enter the correct information. 
+
+For those municipalities that have multiple general levy areas, you will enter the 2021 Base CVA at 2016 Roll Return **. (CVA assessment has been frozen till 2023)** 
+
+Each taxable RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule. 
+
+**Please note that Hydro properties represented by RTQ = H, J, or K are reported in this column as Taxable Assessment.** 
+
+## **Upper-tier municipalities** 
+
+For an upper-tier municipality, this column should contain the sum of the taxable assessment in all the lower-tier municipalities.  This total aggregated assessment for all lower-tier taxable properties will be used to calculate the amount of upper-tier taxation. 
+
+## **Column 16 Phase-In Taxable Assessment** 
+
+The **phase-in taxable assessment** associated with each property class is entered in this column.  Each taxable RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule. 
+
+**Column 16 is pre-populated** for the user in the taxable general-purpose levy schedule. The information has been pre-populated from OPTA. If the phase-in taxable assessment is incorrect, please delete the pre-populated amount and enter the correct information. 
+
+The **phase-in taxable assessment** amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Taxation amounts in columns 12 to 15 in this schedule. 
+
+## **Please note that Hydro properties represented by RTQ = H, J, or K are reported in this column as Taxable Assessment.** 
+
+## **Upper-tier municipalities** 
+
+For an upper-tier municipality, this column should contain the sum of the phase-in taxable assessment in all the lower-tier municipalities.  This total aggregated assessment for all lower-tier taxable properties will be used to calculate the amount of upper-tier taxation. 
+
+## **Column 8 TAX RATES:  Lower-Tier / Single-Tier** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. 
+
+## **Column 8 is pre-populated for the user in this taxable general-purpose levy schedule** 
+
+All tax rates that have been applied in the municipality for Lower-tier or Single-tier purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+## **Column 9 TAX RATES:  Upper-Tier** 
+
+All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column. 
+
+## **Column 9 is pre-populated for the user in this taxable general-purpose levy schedule** 
+
+All Tax rates that have been applied in the municipality for Upper-tier purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+## **Column 10 TAX RATES: Education** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column.  Upper-Tier (UT) municipalities should NOT enter tax rates in this column. 
+
+## **Column 10 is pre-populated for the user in this taxable general-purpose levy schedule** 
+
+All Tax rates that have been applied in the municipality for Education purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+## **Column 11 TAX RATES:  TOTAL** 
+
+This column displays the total municipal and education tax rates. 
+
+The total tax rate in each line is automatically calculated from the sum of columns 8, 9, and 10. 
+
+**C. Taxes Levied (Columns 12 to 15)** 
+
+The remaining columns display the taxes levied for Municipal, and Education purposes on each line of the schedule. 
+
+In sections 1 to 3 of this schedule, the taxes levied columns 12 to 15 are automatically calculated from the assessment and tax rate information entered in previous columns. 
+
+The taxes levied are calculated based on the following formula: 
+
+**Taxes Levied = Assessment x Tax Rate** 
+
+In sections 4 to 8, these amounts must be entered manually since they are not calculated by applying a tax rate to an assessment.  Total amounts are automatically calculated. 
+
+## **Column 12 MUNICIPAL TAXES: Lower-Tier / Single-Tier** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column. 
+
+This column is automatically calculated by multiplying the Assessment in column 7 by the LT / ST Tax Rate in column 8. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 13 MUNICIPAL TAXES:  Upper-Tier** 
+
+All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column. 
+
+This column is automatically calculated by multiplying the Assessment in column 7 by the UT Tax Rate in column 9. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 14 Education Taxes** 
+
+All Lower-tier (LT) or Single-tier (ST) municipalities should have values in this column. 
+
+This column is automatically calculated by multiplying the Assessment in column 7 by the Education Tax Rate in column 10. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 15 TOTAL Taxes** 
+
+This column displays the total municipal and education taxes. 
+
+This column is automatically calculated by adding the Taxes in columns 12 to 14. 
+
+## **DESCRIPTION OF SECTIONS** 
+
+Now that we have discussed the information contained in each of the Columns across the schedule, we shall proceed with discussing the following Sections that appear as you work down through the schedule: 
+
+**1. General Purpose Levy** 
+
+**2. Special Area Levies (Lower-tier / Single-tier)** 
+
+**3. Special Area Levies (Upper-tier)** 
+
+**4. Adjustments to Taxation** 
+
+**5. Supplementary Taxes** 
+
+**6. Amount Levied by Tax Rate** 
+
+**7. Amounts Added to Tax Bill** 
+
+**8. Other Taxation Amounts** 
+
+**9. Total Amount Levied** 
+
+This schedule is separated into sections to allow for simpler presentation of complicated tax scenarios that may exist in a municipality.  It is important for municipalities to recognize which tax rates and levies should be reported in each section. 
+
+Municipalities should report all General-purpose tax rates in section 1.  If a Lower-tier or Single-tier municipality strikes a Special Area tax rate, this should be reported in part 2. If an Upper-tier municipality strikes a Special Area tax rate, this should be reported in part 3. Municipalities should not add a Special Area tax rate to a General-purpose tax rate and report the sum as a General-purpose tax rate in section 1. 
+
+If a municipality does not enter tax rates in the appropriate sections, numerous _**miscalculations**_ will occur in several parts of the FIR.  Municipalities should ensure tax rates are reported accurately to prevent this compounding of errors from occurring. 
+
+In any section, if a municipality has more than one set of tax rates, then each set of tax rates should be reported separately within the section. It is important to realize that the RTC / RTQ and Tax Band combination representing the property class can be shown only once within any set of tax rates.  That is, the property class, or RTC / RTQ and Tax Band combination is unique within each set of tax rates. 
+
+In some instances, a Municipality may have more than one set of General Purpose tax rates.  This scenario is referred to as ‘Levy Areas’ and requires a custom FIR to be setup. A custom FIR is created which contains additional tables in section 1, for each set of General purpose tax rates, or each ‘Levy Area’.  This allows the Municipality to report all General-Purpose Tax Rates in Section 1.  Municipalities can contact the Ministry by email at FIR.mah@ontario.ca to arrange for this to be set-up. 
+
+Please refer to the **Levy Areas** document for a description of Levy Areas. 
+
+Throughout the FIR, data points are referenced using the Schedule-Line-Column (SLC) numbering system.  For example, SLC 60 0410 02 refers to the data in Schedule 60, Line 0410, and Column 2. 
+
+In this Schedule, every RTC / RTQ combination has a unique Line number associated with it.  For example, the Line number for RT is always 0010, and will repeat for every entry of RT throughout the Schedule.  Referencing a data point in section 1 of this schedule therefore, involves a ‘Levy Area’ code in conjunction with the SLC Number. Similarly, in sections 2 and 3, a ‘Levy Type’ code in conjunction with the SLC Number references a data point.  For sections 4 to 8, the SLC Number alone identifies a data point. 
+
+Please refer to the **FIR2021Tables** document for a complete list of applicable Levy Types and Codes. 
+
+## **1. General Purpose Levy Information (22A)** 
+
+This section contains all General-Purpose tax rates by property class for municipal and education purposes.  For each property class in the municipality, the total taxable assessment is also shown here, and is used to calculate the taxes levied for that property class. 
+
+**The RTC/RTQ (column 1) codes, CVA Assessment (column 7) and Phase-In Taxable Assessment (column 16), LT/ST Tax rate (column 08), UT Tax rate (column 09) and Education Tax rate (column 10) is pre-populated for the user in this taxable general-purpose levy schedule. To complete the schedule, the user must select the tax band (column 2), input the tax ratio (column 5), percent of full rate (column 6) and the rest of the schedule will be automatically calculated.** 
+
+It is important that ALL General-purpose tax rates and levies are reported in this section.  General purpose tax rates should not be shown in the Special area tax rate sections. 
+
+In cases where municipalities have a Special Budgetary Levy that is applied to all classes except those over the threshold, a Special Area Rate should be entered on 22B or C.  The Levy Type of “Special Budgetary Levy” has been made available on the list of Levy Types. 
+
+Most municipalities will have one set of uniform General-purpose tax rates that applies to every property in the municipality. In this situation, the set of tax rates are reported in the table in this section. 
+
+In some instances, Municipalities may have more than one set of General Purpose Tax Rates. In this scenario, a number of tables must be added to this section, and the concept of ‘Levy Area’ is introduced to accomplish this.  The Municipality is split into separate parts called ‘Levy Areas’, where the sum of the parts makes up the entire municipality.  Each Levy Area has a corresponding table set-up in this section, and the Municipality can then report separate sets of tax rates within each Levy Area. 
+
+Municipalities with one set of uniform General-purpose tax rates that applies to every property in the municipality will report tax rates in the Levy Area of ‘0’.  Municipalities with more than one set of General purpose tax rates will be assigned a unique code for each Levy Area. 
+
+**If a municipality has more than one set of General Purpose tax rates** , **a custom FIR must be set-up that includes ‘Levy Areas’ for each set of General purpose tax rates. Municipalities can contact the Ministry by email at FIR.mah@ontario.ca to arrange for this to be set-up.** 
+
+The need for multiple sets of general purpose tax rates usually occurs in Municipalities which have recently amalgamated. In this situation, each of the former Municipalities that make up the newly amalgamated Municipality may have different General-purpose tax rates.  This accommodates the different service levels and needs that exist initially in an amalgamated Municipality.  Eventually, the former municipalities will phase-in to a uniform General-purpose tax rate. 
+
+Each property class, or RTC / RTQ and Tax Band combination can only be reported once within a Levy Area.  This means that each RTC / RTQ and Tax Band combination is unique within each set of General Purpose tax rates. 
+
+If a municipality has more than one General purpose tax rate for an RTC / RTQ and Tax Band combination, then multiple General-purpose levies exist within the municipality, and separate sets of tax rates must be entered into separate Levy Areas. 
+
+Please recall that data points in this part of the FIR are referenced by Levy Area + SLC Number. It is also important to notice that each RTC / RTQ and Tax Band combination is associated with a unique Line Number. 
+
+Subtotals are numbered sequentially based on the number of Levy Areas.  For example, if one Levy Area exists, the Subtotal line is 9201. If 2 Levy Areas exist, Subtotal lines are 9201, and 9202. 
+
+## **2. Lower-Tier / Single-Tier Special Area Levy Information (22B)** 
+
+This section contains all Lower-tier or Single-tier special area tax rates by property class.  For each property class in the municipality, the assessment that is within the “special area” is also shown and is used to calculate the special area taxes levied for that property class. 
+
+Upper-tier municipalities should not enter any information into this section. 
+
+For Lower-tier and Single tier municipalities, completion of this section is required where any special area tax rates for Lower-tier / Single-tier purpose have been applied within the municipality. 
+
+In general, a special area levy only applies to a unique area within the Municipality (which is not usually the entire municipality). Also, a special area levy is usually a specific Type, for example, Fire or Transit, which is separate from the General-purpose levy. 
+
+A list of Levy Types is available to allow municipalities to identify each Special Area Rate. Please refer to the **FIR2021Tables** file for a complete list of Levy Types available to select. 
+
+Special area tax rates that are separately identified in a Municipality’s tax rate By-law should be reported here, and should NOT be shown in section 1, for General purpose levy information. _**Miscalculations**_ will occur in several parts of the FIR if tax rates are not reported in the correct section. 
+
+## **To enter a special area levy:** 
+
+This section contains the following 2 items which should be completed for each Special Area Levy: 
+
+**1. Levy Type 2. RTC / RTQ and Tax Band combinations** 
+
+First, notice how this section is divided into the top and bottom parts.  In the top part, different types of special area levies that exist in the Municipality are shown. Even though only a few can be seen at one time, a large number of different special area levies can be accommodated.  The bottom part shows the tax rates that are applicable to the Levy Type which is ‘highlighted’ in the top part. All the individual tax rates that apply to the ‘highlighted’ Special Area Levy are reported by RTC / RTQ and Tax Band combination here. 
+
+To enter a Special Area Levy, first identify the type of levy that exists in the municipality. In the top of this section Municipalities can add a Special Area Levy by clicking the ‘ _Add a Special Area Levy_ ’ button at the top. 
+
+Select the appropriate Levy Type from the table that is shown. Please refer to the **FIR2021 Tables** document for a complete list of Levy Types that are available. Once a Levy Type has been chosen, municipalities can also add their own custom description of the Special Area Levy in the blank area provided.  The Levy Type is then shown at the top, and on one of the tables in the bottom part. 
+
+To enter another Special Area Levy, simply repeat this step.  Also notice that if a Municipality has more than one set of tax rates applicable to a single specific levy type such as Transit, then multiple sets of tax rates can be entered for this Levy Type.  A ‘Levy Sequence’ is assigned to each set of tax rates. For example, Transit 01, and Transit 02 are 2 sets of Transit tax rates.  The following table outlines a sample of a series of Levy Types that could appear: 
+
+|**Levy Code**|**Levy Type**|**Description**|
+|---|---|---|
+|320 01|TRANSIT|Hamilton Street Railway – East|
+|320 02|TRANSIT|Hamilton Street Railway – West|
+|450 01|RECYCLING|Recycling - North Ward Only|
+
+
+
+Notice that the Levy Type can be repeated, in which case the Levy Sequence identifies each of the records as 01 and 02. 
+
+Next, Municipalities should enter Tax rates and Assessment amounts in the bottom part of this section.  It is important to remember that tax rates are entered into the Levy Type that is ‘highlighted’ in the top part. 
+
+Like the General-purpose levy section, Municipalities can report all taxable RTC / RTQ and Tax Band combinations.  Notice that each property class can be reported only once within a Levy Type. 
+
+Remember:  Numbering of data points in this part of the FIR is by Levy Code + SLC Number.  Also notice that each RTC / RTQ and Tax Band combination is associated with a unique Line Number. 
+
+## **3. Upper-Tier Special Area Levy Information (22C)** 
+
+This section contains all Upper-tier Special area tax rates by property class.  For each property class in the municipality, the assessment that is within the ‘special area’ is also shown and is used to calculate the special area taxes levied for that property class. 
+
+Only Lower-tier and Upper-tier municipalities should enter information in this section. 
+
+For lower-tier and Upper-tier municipalities, completion of this section is required where any special area tax rates for Upper-tier purpose have been applied within the municipality. 
+
+In general, a special area levy only applies to a unique area within the Municipality (which is not usually the entire Municipality), but as mentioned above, can apply to the entire Municipality. Also, a special area levy is a specific Type, for example, Fire or Transit, which is separate from the General-purpose levy. 
+
+A list of Levy Types is available to allow municipalities to identify each Special Area Rate. Please refer to the **FIR2021Tables** file for a complete list of Levy Types available to select. 
+
+Special area tax rates that are separately identified in a municipality’s tax rate By-law must be reported here, and should NOT be shown in section 1, for General purpose levy information. _**Miscalculations**_ will occur in several parts of the FIR if tax rates are not reported in the correct section. 
+
+Lower-tier municipalities reporting Upper-tier special area tax rates must be careful entering these tax rates. In some Lower-tier municipalities, an Upper-tier special area tax rate may be applicable to the entire Lower-tier municipality.  This tax rate must still be treated as a special area levy and should be reported in this section.  This tax rate should not be added to the General-purpose tax rate reported in section 1. 
+
+## **To enter a special area levy:** 
+
+Like the lower-tier / single-tier special area levy section, this section contains the following 2 items which should be completed for each Special Area Levy: 
+
+## **1. Levy Type 2. RTC / RTQ and Tax Band combinations** 
+
+First, notice how this section is divided into the top and bottom parts.  In the top part, different types of special area levies that exist in the Municipality are shown.  Even though only a few can be seen at one time, a large number of different special area levies can be accommodated. The bottom part shows the tax rates that are applicable to the Levy Type which is ‘highlighted’ in the top part. All the individual tax rates that apply to the ‘highlighted’ special area levy is reported by RTC / RTQ and Tax Band combination here. 
+
+To enter a Special Area Levy, first identify the type of levy that exists in the Municipality. In the top of this section, Municipalities can add a Special Area Levy by clicking the ‘ _Add a Special Area Levy’_ button at the top. 
+
+Select the appropriate Levy Type from the table that is shown. Please refer to the **FIR2021Tables** document for a complete list of Levy Types that are available. 
+
+Once a Levy Type has been chosen, municipalities can also add their own custom description of the Special Area Levy in the blank area provided.  The Levy Type is then shown at the top, and on one of the tables in the bottom part. 
+
+To enter another Special Area Levy, simply repeat this step.  Also notice that if a Municipality has more than one set of tax rates applicable to a single specific levy type such as Transit, then multiple sets of tax rates can be entered for this Levy Type. A ‘Levy Sequence’ is assigned to each set of tax rates. For example, Transit 01, and Transit 02 are 2 sets of Transit tax rates. The following table outlines a sample of a series of Levy Types that could appear: 
+
+|**Levy Code**|**Levy Type**|**Description**|
+|---|---|---|
+|320 01|TRANSIT|Hamilton Street Railway – East|
+|320 02|TRANSIT|Hamilton Street Railway – West|
+|450 01|RECYCLING|Recycling - North Ward Only|
+
+
+
+Notice that the Levy Type can be repeated, in which case a Levy Sequence identifies each of the records as 01 and 02. 
+
+Next, Municipalities should enter Tax rates and Assessment amounts in the bottom part 
+
+of this section.  It is important to remember that tax rates are entered into the Levy Type that is ‘highlighted’ in the top part. 
+
+Like the General-purpose levy section, Municipalities can report all taxable RTC / RTQ and Tax Band combinations.  Notice that each property class can be reported only once within a Levy Type. 
+
+Remember:  Numbering of data points in this part of the FIR is by Levy Code + SLC Number. Also notice that each RTC / RTQ and Tax Band combination is associated with a unique Line Number. 
+
+## **4. Adjustments to Taxation (22D)** 
+
+This section allows municipalities to enter adjustments for properties that are “Taxable yet shared as if Payment-In-Lieu”.  Hydro Properties represented by RTQ = H, J, K are included in this description. 
+
+## **Line 7010 Adjustment for Properties Shared as if Payment-In-Lieu** 
+
+## **Hydro Properties are described as “Taxable, shared as if Payment-In-Lieu” represented by RTQs of H, J, and K.** 
+
+This line is available to reconcile the Education portion of the amount from Commercial or Industrial Hydro properties, which is retained by the municipality. 
+
+No other adjustments should be included on this line, and thus should NOT include cancellation, reduction, refund, or rebate adjustments of taxation levied in the year. These ‘negative’ adjustments should be reported on Schedule 72, Continuity of Taxes Receivable.  The overall impact of these ‘negative’ adjustments will be carried forward to Schedule 10, Revenue Fund Receipts. 
+
+Previous Ontario Hydro properties are unique since the assessment is Taxable, while the taxes are shared in the same manner as a Payment-In-Lieu property.  For Commercial and Industrial classes, the Lower-tier (or Single-tier) retains the School Board share of the tax. 
+
+First, Municipalities should report all properties with RTQ of H, J, and K in sections 1 to 3 of Schedule 22 with all corresponding Municipal and Education Tax Rates. Remember, in sections 1 to 3, each property class is reported with the respective RTC / RTQ and Tax Band combination.  The taxable assessment and applicable tax rates are reported, which automatically calculate a Municipal, Education, and Total Tax amount for the property class. 
+
+Next, when the Education tax amount is retained by the Lower-tier (Single-tier) Municipality, the Education amount that is automatically shown in column 14 of sections 
+
+- 1 to 3 is overstated.  Municipalities should use line 7010, to adjust for the difference. 
+
+In effect, Taxes need to be shifted from the Education Taxes shown in column 14, to the LT / ST Taxes shown in column 12.  To accomplish this, Municipalities should use line 7010 to report the **negative** adjustment to Education Taxes in column 14, and the **positive** adjustment to the LT / ST Taxes in column 12.  This will result in the Total of line 7010 in column 15 equalling 0. 
+
+The adjustment results in the Education share of the Taxes on these properties being subtracted from the Total Education Taxes and added to the Total Lower-tier (Singletier) Taxes. 
+
+## **5. Supplementary Taxes (22D)** 
+
+This section allows municipalities to enter supplementary taxes for Lower-tier (or Singletier), Upper-tier, and Education purposes. 
+
+**Line 9799 Total of All Supplementary Taxes** 
+
+This line is for reporting all additional taxes raised, because of re-billing, subsequent to the Final tax bills being issued on properties. 
+
+This line should NOT include cancellation, reduction, refund, or rebate adjustments of taxation levied in the year.  These ‘negative’ adjustments should be reported on Schedule 72, Continuity of Taxes Receivable.  The overall impact of these ‘negative’ adjustments will be carried forward to Schedule 10. 
+
+Items that should be included in this line are amounts in respect of the Assessment Act, and Municipal Act: 
+
+## **Assessment Act** 
+
+## **Section 33 (OMIT):** 
+
+Assessment Omitted from collector’s roll for the current year, or for any part or all of either or both of the next two preceding years. 
+
+## **Section 34 (SUPP):** 
+
+After notices of assessment have been given, and before the last day of the taxation year, further assessment necessary to reflect a change to a property. 
+
+## **Municipal Act** 
+
+## **Section 359:** 
+
+Upon application made by the treasurer of the local municipality, a local municipality may increase the taxes levied on land in the year in which the application is made to the extent of any undercharge caused by a gross or manifest error that is a clerical or factual error, including the transposition of figures, a typographical error or similar error, but not an error in judgement in assessing the land. 
+
+## **6. Amount Levied by Tax Rate (22D)** 
+
+This subtotal equals the Total amount of taxation levied by the application of a tax rate to an assessment value. 
+
+## **Line 9910 Amount Levied by Tax Rate** 
+
+This line automatically calculates the sum of the General-Purpose Levy total, all Special Area Levy totals, Adjustments to Taxation, and Supplementary Taxes reported in the previous sections of this schedule. 
+
+In other words, this line equals the sum of the totals of Sections 1 to 5. 
+
+The following table outlines the calculation of the amount in this line: 
+
+|<br>**Amount Levied by Tax Rate**|**=**|<br>**Total General-Purpose Levy**|
+|---|---|---|
+||**+**|<br>**Total LT/ST Special Area Levies**|
+||**+**|<br>**Total UT Special Area Levies**|
+||**+**|<br>**Adjustments to Taxation**|
+||**+**|<br>**Total Supplementary Taxes**|
+
+
+
+## **7. Amounts Added to Tax Bill (22D)** 
+
+This section contains all amounts added to tax bills which are NOT levied by applying a tax rate to an assessment value. 
+
+Examples of amounts charged by means other than applying a tax rate to an assessment are Rates per Acre, Rates per Amount of Frontage, Flat rates, etc. 
+
+All amounts reported in this section must include any related supplementary taxes raised. 
+
+The following list of items should **not be included** in this section: 
+
+|The following list of items should**not be included**in this section|:|
+|---|---|
+|**Do Not Include in this Section**|**Where to Report**|
+|Payment-In-Lieu (PIL) amounts|**Schedules 24 and 26**<br>**(Amounts are then carried forward**<br>**onto Schedule 10)**|
+|Tile drainage and shoreline assistance collections|**SLC  12 1850 04**|
+|Direct water billings and sewer surcharges|**SLC  12 0810 04 to**<br>**SLC  12 0830 04**|
+|Charges for collection of Education taxes in Unorganized territories|**SLC  12 0299 04**|
+|All other User Fees and Service Charges which are NOT levied on tax bills|**SLC  12 xxxx 04**|
+|Utility rate arrears and Federation of Agriculture collection fees on tax bills|**SLC  70 0699 01 as Taxes Receivable**|
+
+
+
+The following lines are provided in this section for reporting typical additions to tax bills: 
+
+## **Line 8005 Local improvements** 
+
+## **Include amounts for local improvements which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees in Schedule 12, Current revenue for specific functions.** 
+
+## **Line 8010 Sewer and water service charges** 
+
+Include amounts for sewer or water services which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+Direct water billings and Sewer surcharges should not be reported on this line. 
+
+**Line 8015 Sewer and water connection charges** 
+
+Include amounts for sewer and water connection charges which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+Direct water billings and Sewer surcharges should not be reported on this line. 
+
+Include connections on public property up to the municipality’s lot line. 
+
+## **Line 8020 Fire service charges** 
+
+Include amounts for fire service charges which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+## **Line 8025 Minimum tax (differential only)** 
+
+If the sum of taxes for Municipal, Education, and other purposes that is charged to a property owner is ‘less than’ the ‘Minimum Tax’ amount as provided for under section 388 of the Municipal Act, the difference between these amounts must be reported in this line. 
+
+**Differential   = Minimum Tax Amount - Sum of Taxes** 
+
+## **Line 8030 Municipal drainage charges** 
+
+Include billings for municipal drainage charges which appear on the tax bill as a separate charge and are not reported as user fees and service charges on Schedule 12. 
+
+## **Line 8035 Waste management collection charges** 
+
+Include all charges relating to the collection and disposal of garbage and recyclable materials which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+## **Line 8040 Business improvement area** 
+
+Include all charges related to any Business Improvement Areas which appear on the tax bill as a separate charge. These amounts are typically charged by applying a rate to the Amount of Frontage of a property. 
+
+## **Line 8097 Other** 
+
+In addition to the lines mentioned above, line 8097 has been provided to allow municipalities to specify other items that have been added as a separate charge to the tax bill.  Municipalities can enter amounts which appear on the tax bill for purposes other than those mentioned above. 
+
+A short description of the charge should also be included on this line by typing in the space provided. 
+
+An example of an amount that should be entered here are amounts generated when a local improvement is prepaid after a debenture is issued by a municipality. A portion of the prepayment is applied to the annual debt charges. 
+
+## **Line 9890 Subtotal - Amounts Added to Tax Bills** 
+
+This amount is equal to the sum of lines 8005 through 8040 and 8097. 
+
+## **8. Other Taxation Amounts (22D)** 
+
+This section contains all other taxation amounts which are NOT levied by applying a tax rate to an assessment value.  These amounts are not added to the tax bill as in section 7. 
+
+Examples of amounts charged by means other than applying a tax rate to an assessment are Rates per Acre, Rates per Amount of Frontage, Flat rates, etc. 
+
+All amounts reported in this section must include any related supplementary taxes raised. The following list of items should **not be included** in this section: 
+
+|**Do Not Include in this Section**|**Where to Report**|
+|---|---|
+|**Payment-In-Lieu (PIL) amounts**|**Schedules 24 and 26**<br>**(Amounts are then carried forward**<br>**onto Schedule 10)**|
+|**Tile drainage and shoreline assistance collections**|**SLC  12 1850 04**|
+|**Direct water billings and sewer surcharges**|**SLC  12 0810 04 to SLC  12 0830 04**|
+|**Charges for collection of Education taxes in Unorganized**<br>**territories**|**SLC  12 0299 04**|
+|**All other User Fees and Service Charges which are NOT**<br>**levied on tax bills**|**SLC  12 xxxx 04**|
+|**Utility rate arrears and Federation of Agriculture**<br>**collection fees on tax bills**|**SLC 70 0699 01 as Taxes Receivable**|
+
+
+
+The following lines are provided in this section for reporting typical additions to tax bills: 
+
+## **Line 8045 Railway Rights-of-way (RTC = W)** 
+
+Include amounts related to Taxable properties within the Railway Right-of-Way property class (RTC = W).  These amounts are charged by applying a rate to the Acreage of such properties. 
+
+**Note** :  Amounts that are in respect of portions of the property which are regarded as Payment-In-Lieu (PIL) or Exempt from taxation should be reported on Schedule 24, line 8045. Also, compensation amounts received from the Province in respect of phasing-in 
+
+Railway Rights-of-way rates should be reported in Schedule 24, line 8046. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8050 Utility transmission and utility corridors (RTC = U)** 
+
+Include amounts related to Taxable properties within the Utility Transmission and Distribution Corridor property class (RTC = U).  These amounts are charged by applying a rate to the Acreage of such properties. 
+
+**Note** :   Amounts that are in respect of portions of the property which are regarded as Payment-In-Lieu (PIL) or Exempt from taxation should be reported on Schedule 24, line 8045.  Also, compensation amounts received from the Province in respect of phasing-in Utility Corridor rates should be reported in Schedule 24, line 8046. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8098 Other** 
+
+In addition to the lines mentioned above, line 8098 has been provided to allow municipalities to specify other taxation amounts which have not been shown above. Municipalities can enter other taxation amounts which have not been added to the tax bill. 
+
+A short description of the amount should also be included on this line by typing in the space provided. 
+
+## **Line 9892 Subtotal - Other Taxation Amounts** 
+
+This amount is equal to the sum of lines 8045 through 8050 and 8098. 
+
+## **9. Total Amount Levied (22D)** 
+
+This section is simply a total of all taxable amounts levied in the municipality. 
+
+## **Line 9990 Total Levied** 
+
+This amount is equal to the sum of the totals in section 6, Amounts Levied by Tax Rate, section 7, Amounts Added to Tax Bill, and section 8 Other Taxation Amounts. 
+
+**Total Amount Levied = Amount Levied by Tax Rate Line 9910 + Amounts Added to Tax Bill Line 9890 + Other Taxation Amounts Line 9892** 
+
+## **SCHEDULE 24: Payments-In-Lieu of Taxation** 
+
+## **General Information** 
+
+All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 24. 
+
+Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities. 
+
+This schedule is very similar to Schedule 22, except this schedule collects information on Payment-In-Lieu properties only. This schedule is a comprehensive report of Payment-In-Lieu (PIL) properties, with line by line details of the assessment for each property class in the municipality, the tax rates applicable to each class, and the Payment-In-Lieu amounts levied against each property class. 
+
+In completing this schedule, it is important to notice that this schedule only captures the PILS Levied (i.e. The PIL amount that is calculated from Tax Rate multiplied by Assessment).  Also recognize that amounts generated from Payment-In-Lieu properties are different from amounts generated from Taxable properties. 
+
+First, the amount of “PIL levied” on a property; is not necessarily the amount received by the municipality.  Second, in some cases the PIL amounts received for Education purposes are retained by the Municipality. 
+
+Both of these unique situations are captured in Part 3 of Schedule 26, where the final PIL amount retained by the Municipality and PIL amounts distributed to School Boards is reported.  Since the final PIL entitlement is reported on Schedule 26, this total PIL amount will be carried-forward onto Schedule 10, Revenue Fund Revenues. 
+
+## **IMPORTANT: This schedule only captures the PILS Levied, which is not necessarily the total amount of PIL retained by the Municipality and distributed for Education purposes.** 
+
+Municipal and Education PIL information in this schedule is organized by dividing the Schedule into the following eight sections: 
+
+**1. General Purpose PILS** 
+
+**2. Special Area PILS (Lower-Tier / Single-Tier)** 
+
+**3. Special Area PILS (Upper-Tier)** 
+
+**4. Supplementary PILS** 
+
+**5. PILS Levied by Tax Rate** 
+
+**6. Amounts Added to PILS** 
+
+**7. Other PILS Amounts** 
+
+**8. Total PILS Levied** 
+
+Also, the schedule contains several columns, which can be summarized into the following 3 categories: 
+
+- **A. Property Class Description (columns 1 to 4) B. Assessment and Tax Rates (columns 5 to 11) C. PILS Levied (columns 12 to 15)** 
+
+Before explaining each of the Sections and Columns, the reporting treatment of several unique property types will be explained below.  Following this will be a description of each of the Columns, and then a description of information reported in each Section. 
+
+## **Unique Property Types** 
+
+## **Hydro Properties (RTQ = H, J, K)** 
+
+Unique RTC / RTQ descriptions are available for Hydro properties owned by Ontario Power Generation Corporation and Hydro One or their subsidiaries.  Hydro properties `=` are described as “Taxable, shared as if Payment-In-Lieu” represented by RTQ s of H, J, or K.  The full property assessment and applicable tax rates for these properties should not be reported on this Schedule, but should be reported in Parts 1, 2 and 3 of Schedule 22. 
+
+## **Taxable Tenants of the Province (RTQ = P, Q)** 
+
+Unique RTC / RTQ descriptions are available for taxable tenants of provincially owned properties.  These properties described as “Taxable Tenant of Province” are represented by RTQ’s of P, Q. 
+
+These properties are unique since they are described as Payments-In-Lieu of Taxation (PIL), while being treated as Taxable.  Unlike many other PIL properties, the Education amounts from these properties should be distributed to the School Boards and should not be retained by the Municipality. 
+
+Although these properties are treated as taxable properties, because they are described as “Payment-In-Lieu of Taxation”, they should be reported on Schedule 24, PaymentsIn-Lieu of Taxation. 
+
+## **Hydro-Electric Power Dams** 
+
+As of 2001, Power Dams were exempted from property taxation. Municipalities no longer receive amounts from these properties based on a Tax Rate multiplied by Assessment.  To compensate for the loss of this tax revenue, the Province is making payments to municipalities based on the Municipal taxes these properties generated in 2000. 
+
+These amounts are paid directly to each lower-tier and each upper-tier municipality 
+
+affected by the exemption.  Since the amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, on line 8060 under Part 7, “Other Payment-In-Lieu Amounts”. 
+
+## **Railway Rights-of-way (RTC = W)** 
+
+Unique RTC / RTQ descriptions are available for Railway Rights-of-way properties. Railway Rights-of-way properties are represented by RTC of W.  Municipalities receive amounts from Railway Rights-of-way properties based on applying a Rate to the Acreage of the property. 
+
+A Railway Rights-of-way property can be classed as either Taxable or PIL.  If the amount is derived from a Railway Right-of-way property which is classed as “Taxable”, the amount should be reported in Schedule 22 on Line 8045.  If the amount is derived from a Railway Right-of-way property which is classed as “PIL”, then the amount should be reported in Schedule 24 on line 8045. 
+
+In some instances, the municipality receives an additional amount in respect of Railway Rights-of-way properties from the Province. This is because Rates for Railway Rightsof-way are being phased-in to the mature geographical rates.  Municipalities receive an amount as compensation for the loss of revenue resulting from the phase-in. 
+
+Unlike the compensation related to the Power Dams, these compensation amounts are paid directly to the lower-tier and single-tier municipality.  Lower-tier Municipalities have been advised to share the compensation amounts they receive with the Upper-tier according to the sharing arrangements for Railway Rights-of-way revenues. 
+
+Since the compensation amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, under Part 7, “Other Payment-InLieu Amounts”.  Line 8046 has been added specifically for reporting this amount. 
+
+## **Utility Corridors (RTC = U)** 
+
+Unique RTC / RTQ descriptions are available for Utility Corridor properties.  Utility Corridor properties are represented by RTC of U.  Municipalities receive amounts from Utility Corridor properties based on applying a Rate to the Acreage of the property. 
+
+A Utility Corridor property can be classed as either Taxable or PIL.  If the amount is derived from a Utility Corridor property which is classed as “Taxable”, the amount should be reported in Schedule 22 on Line 8050. If the amount is derived from a Utility Corridor property which is classed as “PIL”, then the amount should be reported in Schedule 24 on line 8050. 
+
+In some instances, the municipality receives an additional amount in respect of Utility Corridor properties from the Province.  This is because Rates for Utility Corridors are 
+
+being phased-in to the mature geographical rates.  Municipalities receive an amount as compensation for the loss of revenue resulting from the phase-in. 
+
+Unlike the compensation related to the Power Dams, these compensation amounts are paid directly to the lower-tier and single-tier municipality.  Lower-tier Municipalities have been advised to share the compensation amounts they receive with the Upper-tier. Since the compensation amount is a payment from the Province, it should be reported as a Payment-In-Lieu of Taxation on Schedule 24, under Part 7, “Other Payment-InLieu Amounts”.  Line 8051 has been added specifically for reporting this amount. 
+
+## **DESCRIPTION OF COLUMNS** 
+
+The following table displays a list of all of the columns in this schedule: 
+
+|**Column**|**Description**|
+|---|---|
+|**1**|<br>**RTC / RTQ**|
+|**2**|**Tax Band**|
+|**3**|**Property Class**|
+|**4**|**Tax Rate Description**|
+|**5**|**Tax Ratio**|
+|**6**|**Percent of Full Rate**|
+|**7**|**PIL Assessment**|
+|**16**|**Phase-in PIL Assessment**|
+|**8**|**Tax Rates:  LT / ST**|
+|**9**|**Tax Rates:  UT**|
+|**10**|**Tax Rates:  EDUC**|
+|**11**|**Tax Rates:  TOTAL**|
+|**12**|**Municipal PILS:  LT / ST**|
+|**13**|**Municipal PILS:  UT**|
+|**14**|**Education PILS**|
+|**15**|**TOTAL PILS**|
+
+
+
+**To complete the schedule, the user must select the tax band (column 2), input the percent of full rate (column 6) and the rest of the schedule will be automatically calculated.** 
+
+## **A. Property Class Description (Columns 1 to 4)** 
+
+These first 4 columns display information related to the property classes that exist in the municipality. The information contained in these columns determines the information that should appear in the remaining columns. 
+
+## **Column 1 RTC / RTQ** 
+
+This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property. 
+
+The RTQ describes which of the following ways the Tax Rate is applied: 
+
+**1. Full tax rate** 
+
+**2. Discounted tax rate** 
+
+   - **i. Excess Land** 
+
+## **ii. Vacant Land iii. Farmland Awaiting Development 3. Education tax rate only 4. General tax rate only** 
+
+For RTC / RTQ codes that refer to optional property classes, municipalities should report these whether or not the class is ‘in effect’ or not.  They should not be aggregated with the ‘broad’ Commercial or Industrial class.  This allows the optional property class properties to be identified regardless of whether the optional class is in effect. 
+
+Please refer to the **FIR2021 Tables** document for a complete list of applicable RTC / RTQ combinations. New Construction RTC and RTQ codes have been added. RTC Codes and RTQ codes available at the FIR website: 
+
+**https://efis.fma.csc.gov.on.ca/fir/index.php/municipal-reporting/additional-information/** 
+
+## **Column 2 Tax Band** 
+
+Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class. Please refer to Section 3 of Schedule 20 in these instructions, for further information on Tax Bands. 
+
+Municipalities must enter **0, L, M, or H** in this column as explained in the instructions below: 
+
+For municipalities who have NOT adopted tax banding in a property class, a zero, ‘0', should be reported on each line in this column.  An entry of ‘0' represents an ‘Un- 
+
+banded’ tax rate. For 
+
+|<br>**No Tax Bands:**<br>**Tax Band**<br>**Enter**<br>Un-banded<br>0|**2 Tax Bands:**<br>**Tax Band**<br>**Enter**<br>Low tax band<br>L<br>High tax band<br>H|**3 Tax Bands:**||
+|---|---|---|---|
+|||**Tax Band**|**Enter**|
+|||Low tax band|L|
+|||Middle tax band|M|
+|||High tax band|H|
+
+
+
+municipalities who have adopted tax banding, by either creating 2 or 3 Tax Bands of assessment value (CVA) to which different tax rates are applied, the following tables outline the entries available for this column: 
+
+**Note:** If an optional Commercial or Industrial property class is in effect in the municipality, Tax Banding only applies to the residual Commercial or Industrial assessment.  In other words, Tax banding does not apply to optional property classes that are in effect. 
+
+Please refer to the **FIR2021Tables** document for a complete list of applicable RTC / RTQ combinations, RTC Codes, and RTQ codes available at the FIR website: **https://efis.fma.csc.gov.on.ca/fir/index.php/municipal-reporting/additional-information/** 
+
+## **Column 3 Property Class** 
+
+The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1. (See **FIR2021 Tables)** 
+
+## **Column 4 Tax Rate Description** 
+
+This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See **FIR2021 Tables** ) 
+
+## **B. Assessment and Tax Rates (Columns 5 to 11)** 
+
+Current Value Assessment (CVA) totals and Tax Rate information, including Tax Ratios, Discount Percentages of the Full Tax Rate, and Tax Rates that are applicable to the property classes outlined in columns 1 to 4 must be reported in these columns. 
+
+It is important to notice that EVERY tax rate is determined by the following relationship with the Residential (RT) tax rate: 
+
+## **Example:** 
+
+The Commercial PIL vacant land tax rate (CY) is usually discounted to 70% of the Commercial full occupied tax rate (CF).  If the RF Tax Rate is 0.12% and the Commercial Tax Ratio is 2.5000, the CY rate is determined from the residential tax rate as follows (assuming a 70% Vacant Land discount): 
+
+|**CY tax rate**|**=   RF rate x CF Tax Ratio x Percent of Full CF Rate**|
+|---|---|
+||<br>=   0.120000% x<br>2.5000 x 70%|
+||=   0.210000%|
+
+
+
+## **Column 5 Tax Ratio** 
+
+The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RF).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CF) is 4%, twice that of the residential tax rate, then the Commercial tax ratio is 2.0000: 
+
+|**Commercial Tax Ratio**|<br>**=   CF Tax Rate   ÷**<br>**RF Tax Rate**|
+|---|---|
+||<br>= 4%<br>÷<br>2%|
+||=   2.0000|
+
+
+
+All Tax Ratios are now expressed as a decimal to 6 decimal places. The tax ratio for the Residential (RTC = R) property class is always 1.0000, and the tax ratio for the Farmland (RTC = F), and Managed Forest (RTC = T) property classes is always 0.2500. 
+
+Each property class, and similarly, each RTC code, must have a tax ratio associated with it.  It is also worth noting that the Tax Ratio remains constant within a property class.  For example, a Commercial Tax Ratio of 2.0000 applies to CF, CV and CY (CV, and CY usually have a 70% discount as described in column 6). 
+
+Please refer to the **FIR2021Tables** document for a complete list of RTC Codes which shows the relationship between the RTC Code (or property class) and the tax ratio. Please note the exceptions that exist when optional classes are in effect. 
+
+## **Column 6 Percent of Full Rate** 
+
+This column captures information relating to discounted tax rates, and tax banding of the tax rates. 
+
+These can be summarized into the following 3 cases: 
+
+|**Types of Tax Rate Discounts**|**Options**|
+|---|---|
+|Vacant Land or Excess Land|Excess Land Rate (RTQ = V, W)<br>Vacant Land Rate (RTQ = Y, Z)|
+|Farmland Awaiting Development|Phase I (RTQ = 2, 3)<br>Phase II (RTQ = 5, 6)|
+|Tax Banding (Percent of Full Un-<br>banded Rate)|Low tax band (Tax Band = L)<br>Middle tax band (Tax Band = M)<br>High tax band (Tax Band = H)|
+
+
+
+Notice that the first 2 cases relate to the RTQ of a property, while the 3[rd ] case refers to the Tax Band. 
+
+For municipalities who have opted for tax banding of tax rates, it may be possible to have case 1 and 3 occurring at the same time (i.e. RTQ = V, W, Y, Z and Tax Band = L, M, H). 
+
+Remember, every tax rate is determined by the following relationship with the Residential tax rate: 
+
+**Tax Rate =   RF Tax Rate x Tax Ratio x Percent of Full Rate** 
+
+This formula can be rearranged as follows to enable us to calculate the Percent of Full Rate: 
+
+|||**Tax Rate**|
+|---|---|---|
+|||**RF Tax Rate x Tax Ratio**|
+|<br>**Percent of Full Rate**<br>**=**|||
+
+
+
+Please refer to the **FIR2021Tables** document for a complete list of RTQ Codes which shows the relationship between the RTQ Code and the Percent of Full Rate.  Please note the exceptions that exist when optional classes are in effect. 
+
+## **Example 1:** 
+
+The following table outlines a sample of property classes, with the tax ratio, percent of full rate, and tax rate columns: 
+
+|**RTC / RTQ**<br>**1**|**Tax Band**<br>**2**|**Tax Ratio**<br>**5**|**Percent of Full**<br>**Rate 6**|**Tax Rate**<br>**8**|
+|---|---|---|---|---|
+|RF|0|1.0000|100%|2.000000%|
+|FF|0|0.2500|100%|0.500000%|
+|CF|0|2.0000|100%|4.000000%|
+|CV|0|2.0000|70%|2.800000%|
+|CY|0|2.0000|70%|2.800000%|
+|IF|0|3.0000|100%|6.000000%|
+|IV|0|3.0000|65%|3.900000%|
+|I2|0|3.0000|40%|2.400000%|
+|I5|0|3.0000|55%|3.300000%|
+
+
+
+In this table, notice that any tax rate can be determined using the formula mentioned earlier.  Multiplying the Residential tax rate (RF Rate) of 2.0% by the Tax Ratio and then by the Percent of Full Rate on any line will provide the resulting Tax Rate for that RTC / RTQ code. 
+
+This is shown below for CV: 
+
+|**CV Rate**|<br>**=   RF Rate   x CF Tax Ratio**<br>**X**<br>**Percent of Full CF Rate**|
+|---|---|
+||<br>=   2.0% x   2.0000  x<br>70%|
+||=   2.0% x   1.4000|
+||=   2.8%|
+
+
+
+Also, notice that working backwards with the second formula mentioned earlier, the Percent of Full Rate for any line can be determined as shown below for RTC / RTQ of I5: 
+
+|**Percent of Full**<br>**Rate**|<br>**=   I5 Rate**<br>**÷ (RF Tax Rate  x  IF Tax Ratio)**|
+|---|---|
+||=   3.3% ÷ (2.0% x 3.0000)|
+||=   3.3% ÷ (6.0%)|
+||= 55%|
+
+
+
+For municipalities which have implemented Tax Banding in the commercial or industrial property classes, the ‘Percent of Full Rate’ column is slightly more complicated. 
+
+In dealing with tax rates which are ‘Banded’, the Percent of Full Rate is determined as a discount percent of the Full Un-Banded Rate.  This column would thus be more appropriately named, ‘Percent of Full Un-Banded Rate’ in this case. 
+
+When Tax Banding exists, the Percent of Full Rate is a combination of the Tax Banding discount, and the Vacant or Excess Land discount. 
+
+## **Example 2:** 
+
+The following table outlines a simple case where 2 commercial tax bands (Low and High) are in effect in a municipality: 
+
+|**RTC / RTQ**<br>**1**|**Tax Band**<br>**2**|**Tax Ratio**<br>**5**|**Percent of Full Rate**<br>**6**|**Tax Rate**<br>**8**|
+|---|---|---|---|---|
+|RF|0|1.0000|100%|2.000000%|
+|FF|0|0.2500|100%|0.500000%|
+|CF|0|2.0000|100%|4.000000%|
+|CF|L|2.0000|90%|3.600000%|
+|CF|H|2.0000|120%|4.800000%|
+|CV|L|2.0000|63%|2.520000%|
+|CV|H|2.0000|84%|3.360000%|
+|CY|L|2.0000|63%|2.520000%|
+|CY|H|2.0000|84%|3.360000%|
+
+
+
+In this example, we have included the Un-banded commercial rate for illustration purposes. You will notice that CF, CV, and CY have each been divided into 2 parts, a Low band (L) and a High band (H). 
+
+Notice that working backwards with the second formula mentioned earlier, the Percent of Full Rate column for RTC / RTQ and Tax Band of CV L (Low Band) is as follows: 
+
+|**Percent of Full Rate**|**=   CV Low Rate ÷ [RF Rate x CF Tax Ratio]**|
+|---|---|
+||<br>= 2.52%<br>÷ (2.0% x   2.0000)|
+||<br>=   2.52%<br>÷ (4.0%)|
+||= 63%|
+
+
+
+Further examination of this calculation shows that the Percent of Full Rate for CV L (Low Band), can be determined by simply dividing by the CF  0 (Un-banded) Rate: 
+
+## **Percent of Full Rate =   CV Low Rate ÷ CF Un-Banded Rate** 
+
+A closer look at the tax rate for CU Low Band, shows that the 63% Discount is made up of 2 parts.  First, it includes a Discounted to 70% of the full commercial tax rate because it is a Vacant Land rate (i.e. RTQ = V), and second, it is further discounted by 90% because it is the Low Tax Band rate (Tax Band = L). 
+
+|**CV Low Rate**|<br>**=   RF Rate x CF Tax Ratio x (Vacant disc. x Low band disc.)**|
+|---|---|
+||= RF Rate x CF Tax Ratio x (Percent of Full Rate)|
+||<br>=   2.0% x   2.0000  x (70% x<br>90%)|
+||=   2.0% x   2.0000  x (63%)|
+||=   2.52%|
+
+
+
+The Percent of Full Rate column for CF is 90% for the Low band and 120% for the High band. For CV and CY, the Percent of Full Rate is 63% for the Low band, and 84% for the High band. 
+
+The Percent of Full Rate for CV and CY are lower because they combine the Vacant Land or Excess Land discount of 70%, along with the Tax Banding discounts of 90% and 120%. 
+
+The table below outlines how to calculate the Percent of Full Rate, when tax banding exists in the municipality. 
+
+|**RTQ**|**Tax Band**|**Description**|**Percent of Full ‘Un-banded’ Rate**|
+|---|---|---|---|
+|F|0|‘Full’ Un-banded|100%|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+||M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||H|High tax band|High band Tax Rate ÷ Full Un-Banded Rate|
+|V, W|0|Un-banded|nV Rate ÷ (RF Rate x nF Tax Ratio)|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+||M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||H|High tax band|High band Tax Rate ÷ Full Un-Banded Rate|
+|Y, Z|0|Un-banded|<br>nY Rate ÷ (RF Rate x nF Tax Ratio)|
+||L|Low tax band|Low band Tax Rate ÷ Full Un-Banded Rate|
+|||||
+
+
+
+|**RTQ**|**Tax Band**|**Description**|**Percent of Full ‘Un-banded’ Rate**|
+|---|---|---|---|
+|I|~~t1~~<br>M|Middle tax band|Middle band Tax Rate ÷ Full Un-Banded Rate|
+||~~----~~<br>H|~~----~~<br>High tax band|~~--------1~~<br>High band Tax Rate ÷ Full Un-Banded Rate|
+
+
+
+* n is a variable representing the RTC Code 
+
+## **Column 7 PIL CVA Assessment** 
+
+The total current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule. 
+
+The CVA amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Total PIL Levied amounts in columns 12 to 15 in this schedule. 
+
+## **Column 7 is pre-populated for the user in this schedule.** 
+
+**Please note that Hydro properties represented by RTQ = H, J, or K are reported on Schedule 22, Municipal and School Board Taxation.** 
+
+## **Upper-tier municipalities** 
+
+For an upper-tier municipality, this column should contain the sum of the PIL assessment in all the lower-tier municipalities.  This total aggregated assessment for all lower-tier PIL properties will be used to calculate the amount of upper-tier PILS. 
+
+## **Column 16 PIL Phased-In Assessment** 
+
+The total phased-in current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule. 
+
+The CVA amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Total PIL Levied amounts in columns 12 to 15 in this schedule. 
+
+**Please note that Hydro properties represented by RTQ = H, J, or K are reported on Schedule 22, Municipal and School Board Taxation.** 
+
+## **Column 8 TAX RATES:  Lower-Tier / Single-Tier** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Lower-tier or Singletier purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+**Column 9 TAX RATES:  Upper-Tier** 
+
+All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Upper-tier purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+## **Column 10 TAX RATES: Education** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Education purposes should appear in this column. 
+
+The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate. 
+
+|**Decimal**|**Equals**|**Percentage**|
+|---|---|---|
+|**0.00123456**|**=**|**0.123456 %**|
+
+
+
+**NOTE** :  Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only. 
+
+## **Column 11 TAX RATES: Total** 
+
+This column displays the total municipal and education tax rates. The total tax rate in each line is automatically calculated from the sum of columns 8, 9, and 10. 
+
+## **C.  PILS Levied (Columns 12 to 15)** 
+
+The remaining columns display the PILS Levied for Municipal, and Education purposes on each line of the schedule. 
+
+In sections 1 to 3 of this schedule, the PILS Levied columns 12 to 15 are automatically calculated from the assessment and tax rate information entered in previous columns. 
+
+The PILS Levied are calculated based on the following formula: 
+
+## **PILS Levied = Assessment x Tax Rate** 
+
+In sections 4 to 8, these amounts must be entered manually since they are not calculated by applying a tax rate to an assessment.  Total amounts are automatically calculated. 
+
+## **Column 12 MUNICIPAL PILS:  Lower-Tier / Single-Tier** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column. 
+
+This column is automatically calculated by multiplying the Assessment in column 7 by the LT / ST Tax Rate in column 8. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 13 MUNICIPAL PILS:  Upper-Tier** 
+
+All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column. This column is automatically calculated by multiplying the Assessment in column 7 by the UT Tax Rate in column 9. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 14 Education PILS** 
+
+All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column. 
+
+This column is automatically calculated by multiplying the Assessment in column 7 by the Education Tax Rate in column 10. 
+
+In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added. 
+
+## **Column 15 TOTAL PILS** 
+
+This column displays the total municipal and education PILS Levied. Remember, this may not be the total amount of PILS actually received and retained by the Municipality. 
+
+This column is automatically calculated by adding the PILS in columns 12 to 14. 
+
+## **DESCRIPTION OF SECTIONS** 
+
+Now that we have discussed the information contained in each of the columns across the schedule, we shall proceed with discussing the following Sections that appear as you work down through the schedule: 
+
+**1. General Purpose PILS** 
+
+**2. Special Area PILS (Lower-tier / Single-tier)** 
+
+**3. Special Area PILS (Upper-tier)** 
+
+**4. Supplementary PILS** 
+
+**5. PILS Levied by Tax Rate** 
+
+**6. Amounts Added to PILS** 
+
+**7. Other PIL Amounts** 
+
+**8. Total PILS Levied** 
+
+This schedule is separated into sections to allow for simpler presentation of complicated tax scenarios that may exist in a municipality.  It is important for municipalities to recognize which tax rates and levies should be reported in each section. Municipalities should report all General-purpose tax rates in section 1. 
+
+If a Lower-tier or Single-tier municipality strikes a Special Area tax rate, this should be reported in part 2.  If an Upper-tier municipality strikes a Special Area tax rate, this should be reported in part 3. 
+
+Municipalities should not add a Special Area tax rate to a General-purpose tax rate and report the sum as a General-purpose tax rate in section 1. 
+
+If a municipality does not enter tax rates in the appropriate sections, numerous miscalculations will occur in several parts of the FIR.  Municipalities should ensure tax rates are reported accurately to prevent this compounding of errors from occurring. 
+
+In any section, if a municipality has more than one set of tax rates, then each set of tax 
+
+rates should be reported separately within the section. It is important to realize that the RTC / RTQ and Tax Band combination representing the property class can be shown only once within any set of tax rates.  That is, the property class, or RTC / RTQ and Tax Band combination is unique within each set of tax rates. 
+
+**In some instances, a Municipality may have more than one set of General purpose tax rates. This scenario is referred to as ‘Levy Areas’ and requires a custom FIR to be set-up.  A custom FIR is created which contains additional tables in section 1, for each set of general purpose tax rates, or each ‘Levy Area’. This allows the Municipality to report all General-Purpose Tax Rates in Section 1. Municipalities can contact the Ministry by email at FIR.mah@ontario.ca to arrange for this to be set-up.** 
+
+Please refer to the **Levy Areas** document for a description of Levy Areas. 
+
+Throughout the FIR, data points are referenced using the Schedule-Line-Column (SLC) numbering system.  For example, SLC 60 0410 02 refers to the data in Schedule 60, Line 0410, and Column 2. 
+
+In this Schedule, every RTC / RTQ combination has a unique Line number associated with it. For example, the Line number for RF is always 1010, and will repeat for every entry of RF throughout the Schedule. Referencing a data point in section 1 of this Schedule therefore, involves a ‘Levy Area’ code in conjunction with the SLC Number. Similarly, in sections 2 and 3, a ‘Levy Type’ code in conjunction with the SLC Number references a data point.  For sections 4 to 8, the SLC Number alone identifies a data point. 
+
+Please refer to the **FIR2021 Tables** document for a complete list of applicable Levy Types and Codes. 
+
+## **1. General Purpose Payments-In-Lieu (24A)** 
+
+This section contains individual sets of ‘actual’ General Purpose tax rates and PILS Levied.  This section contains all General-Purpose tax rates by property class for municipal and education purposes.  For each property class in the municipality, the total PIL assessment is also shown here, and is used to calculate the PILS levied for that property class. 
+
+**The RTC/RTQ (column 1) codes, PIL CVA Taxable Assessment (column 7) and PIL Phase-In Taxable Assessment (column 16), LT/ST Tax rate (column 08), UT Tax rate (column 09) and Education Tax rate (column 10) is pre-populated for the user in the general purpose PIL schedule.** 
+
+**To complete the schedule, the user must select the tax band (column 2), input the tax ratio (column 5), percent of full rate (column 6) and the rest of the schedule will be automatically calculated.** 
+
+It is important that ALL General-purpose tax rates and General purpose PILS levied are reported in this section.  General purpose tax rates should not be shown in the Special Area PILS sections. 
+
+In cases where municipalities have a Special Budgetary Levy that is applied to all classes except those over the threshold, a Special Area Rate should be entered on 24B or C.  The Levy Type of “Special Budgetary Levy” has been made available on the list of Levy Types. 
+
+Most municipalities will have one set of uniform General-purpose tax rates that applies to every property in the municipality. In this situation, the set of tax rates are reported in the table in this section. 
+
+In some instances, Municipalities may have more than one set of General Purpose Tax Rates. In this scenario, a number of tables must be added to this section, and the concept of ‘Levy Area’ is introduced to accomplish this.  The Municipality is split into separate parts called ‘Levy Areas’, where the sum of the parts makes up the entire municipality.  Each Levy Area has a corresponding table set-up in this section, and the Municipality can then report separate sets of tax rates within each Levy Area. 
+
+Municipalities with one set of uniform General-purpose tax rates that applies to every property in the municipality will report tax rates in the Levy Area of “0”.  Municipalities with more than one set of general purpose tax rates will be assigned a unique code for each Levy Area. 
+
+If a municipality has more than one set of General purpose tax rates, a custom FIR must be set-up that includes ‘Levy Areas’ for each set of General purpose tax rates. Municipalities can contact the Ministry by email at FIR.mah@ontario.ca to arrange for this to be set-up. 
+
+The need for multiple sets of General Purpose tax rates usually occurs in Municipalities which have recently amalgamated. In this situation, each of the former Municipalities that make up the newly amalgamated Municipality may have different General-purpose tax rates.  This accommodates the different service levels and needs that exist initially in an amalgamated Municipality. Eventually, the former municipalities will phase-in to a uniform General-purpose tax rate. 
+
+Each property class, or RTC / RTQ and Tax Band combination can only be reported once within a Levy Area.  This means that each RTC / RTQ and Tax Band combination is unique within each set of General purpose tax rates. 
+
+If a municipality has more than one General purpose tax rate for an RTC / RTQ and Tax Band combination, then multiple General-purpose levies exist within the municipality, and separate sets of tax rates must be entered separate Levy Areas. 
+
+Please recall: Data points in this part of the FIR are referenced by Levy Area + SLC Number.  It is also important to notice that each RTC / RTQ and Tax Band combination 
+
+is associated with a unique Line Number. 
+
+Subtotals are numbered sequentially based on the number of Levy Areas.  For example, if one Levy Area exists, the Subtotal line is 9201.  If 2 Levy Areas exist, Subtotal lines are 9201, and 9202. 
+
+## **2. Lower-Tier / Single-Tier Special Area Payments-In-Lieu (24B)** 
+
+This section contains all Lower-tier or Single-tier special area tax rates by property class.  For each property class in the municipality, the assessment that is within the ‘special area’ is also shown and is used to calculate the special area taxes levied for that property class. 
+
+Upper-tier municipalities should not enter any information into this section. 
+
+For Lower-tier and Single tier municipalities, completion of this section is required where any special area tax rates for Lower-tier / Single-tier purpose have been applied within the municipality. 
+
+In general, a special area levy only applies to a unique area within the Municipality (which is not usually the entire municipality). Also, a special area levy is usually a specific Type, for example, Fire or Transit, which is separate from the General-purpose levy. 
+
+A list of Levy Types is available to allow municipalities to identify each Special Area Rate. Please refer to the **FIR2021 Tables** file for a complete list of Levy Types available to select. 
+
+Special area tax rates that are separately identified in a Municipality’s tax rate By-law should be reported here, and should NOT be shown in section 1, for General purpose PIL information. **Miscalculations** will occur in several parts of the FIR if tax rates are not reported in the correct section. 
+
+## **To enter a Special Area PIL Levy:** 
+
+This section contains the following 2 items which should be completed for each Special Area PIL Levy: 
+
+## **1. Levy Type** 
+
+## **2. RTC / RTQ and Tax Band combinations** 
+
+First, notice how this section is divided into the top and bottom parts.  In the top part, different types of special area PIL levies that exist in the Municipality are shown.  Even though only a few can be seen at one time, many different special area PIL levies can be accommodated.  The bottom part shows the tax rates that are applicable to the Levy Type which is ‘highlighted’ in the top part. All the individual tax rates that apply to the 
+
+‘highlighted’ Special Area PIL Levy are reported by RTC / RTQ and Tax Band combination here. 
+
+To enter a Special Area PIL Levy, first identify the type of levy that exists in the municipality.  In the top of this section Municipalities can add a Special Area PIL by clicking the ‘Add a Special Area PIL’ button at the top. 
+
+Select the appropriate Levy Type from the table that is shown. Please refer to the **FIR2021 Tables** document for a complete list of Levy Types that are available. 
+
+Once a Levy Type has been chosen, municipalities can also add their own custom description of the Special Area PIL Levy in the blank area provided.  The Levy Type is then shown at the top, and on one of the tables in the bottom part. 
+
+To enter another Special Area PIL Levy, simply repeat this step.  Also notice that if a Municipality has more than one set of tax rates applicable to a single specific levy type such as Transit, then multiple sets of tax rates can be entered for this Levy Type.  A ‘Levy Sequence’ is assigned to each set of tax rates.  For example, Transit 01, and Transit 02 are 2 sets of Transit tax rates.  The following table outlines a sample of a series of Levy Types that could appear: 
+
+|**Levy Code**|**Levy Type**|**Description**|
+|---|---|---|
+|320 01|TRANSIT|Hamilton Street Railway – East|
+|320 02|TRANSIT|Hamilton Street Railway – West|
+|450 01|RECYCLING|Recycling - North Ward Only|
+
+
+
+Notice that the Levy Type can be repeated, in which case the Levy Sequence identifies each of the records as 01 and 02. 
+
+Next, Municipalities should enter Tax rates and Assessment amounts in the bottom part of this section.  It is important to remember that tax rates are entered into the Levy Type that is ‘highlighted’ in the top part. Like the General purpose PIL section, Municipalities can report all PIL RTC / RTQ and Tax Band combinations.  Notice that each property class can be reported only once within a Levy Type. 
+
+Remember:  Numbering of data points in this part of the FIR is by Levy Code + SLC Number.  Also notice that each RTC / RTQ and Tax Band combination is associated with a unique Line Number. 
+
+## **3. Upper-Tier Special Area Payments-In-Lieu (24C)** 
+
+This section contains all Upper-tier Special area tax rates by property class.  For each property class in the municipality, the assessment that is within the ‘special area’ is also shown and is used to calculate the special area PILS levied for that property class. 
+
+Only Lower-tier and Upper-tier municipalities should enter information in this section. For lower-tier and Upper-tier municipalities, completion of this section is required where any special area tax rates for Upper-tier purpose have been applied within the municipality. 
+
+In general, a special area levy only applies to a unique area within the Municipality (which is not usually the entire Municipality), but as mentioned above, can apply to the entire Municipality. Also, a special area levy is a specific Type, for example, Fire or Transit, which is separate from the General-purpose levy. 
+
+A list of Levy Types is available to allow municipalities to identify each Special Area Rate.  Please refer to the **FIR2021 Tables** file for a complete list of Levy Types available to select. 
+
+Special area tax rates that are separately identified in a municipality’s tax rate By-law must be reported here, and should NOT be shown in section 1, for General purpose levy information. **Miscalculations** will occur in several parts of the FIR if tax rates are not reported in the correct section. 
+
+Lower-tier municipalities reporting Upper-tier special area tax rates must be careful entering these tax rates.  In some Lower-tier municipalities, an Upper-tier special area tax rate may be applicable to the entire Lower-tier municipality. This tax rate should still be treated as a Special Area PIL Levy and should be reported in this section.  This tax rate should not be added to the General-purpose tax rate reported in section 1. 
+
+## **To enter a Special Area PIL levy:** 
+
+Like the lower-tier / single-tier Special Area PIL Levy section, this section contains the following 2 items which should be completed for each Special Area PIL Levy: 
+
+## **1. Levy Type 2. RTC / RTQ and Tax Band combinations** 
+
+First, notice how this section is divided into the top and bottom parts.  In the top part, different types of special area PIL levies that exist in the Municipality are shown. Even though only a few can be seen at one time, a large number of different special area PIL levies can be accommodated.  The bottom part shows the tax rates that are applicable to the Levy Type which is ‘highlighted’ in the top part. All the individual tax rates that apply to the ‘highlighted’ special area levy is reported by RTC / RTQ and Tax Band combination here. 
+
+To enter a Special Area PIL Levy, first identify the type of levy that exists in the Municipality.  In the top of this section, Municipalities can add a Special Area PIL Levy by clicking the ‘Add a Special Area PIL Levy’ button at the top. Select the appropriate Levy Type from the table that is shown. Please refer to the **FIR2021 Tables** document for a complete list of Levy Types that are available. 
+
+Once a Levy Type has been chosen, municipalities can also add their own custom description of the Special Area PIL Levy in the blank area provided.  The Levy Type is then shown at the top, and on one of the tables in the bottom part. 
+
+To enter another Special Area PIL Levy, simply repeat this step.  Also notice that if a Municipality has more than one set of tax rates applicable to a single specific levy type such as Transit, then multiple sets of tax rates can be entered for this Levy Type.  A ‘Levy Sequence’ is assigned to each set of tax rates.  For example, Transit 01, and Transit 02 are 2 sets of Transit tax rates.  The following table outlines a sample of a series of Levy Types that could appear: 
+
+|**Levy Code**|**Levy Type**|**Description**|
+|---|---|---|
+|320 01|TRANSIT|Hamilton Street Railway – East|
+|320 02|TRANSIT|Hamilton Street Railway – West|
+|450 01|RECYCLING|Recycling - North Ward Only|
+
+
+
+Notice that the Levy Type can be repeated, in which case a Levy Sequence identifies each of the records as 01 and 02. 
+
+Next, Municipalities should enter Tax rates and Assessment amounts in the bottom part of this section.  It is important to remember that tax rates are entered into the Levy Type that is ‘highlighted’ in the top part. 
+
+Like the General purpose PIL section, Municipalities can report all PIL RTC / RTQ and Tax Band combinations.  Notice that each property class can be reported only once within a Levy Type. 
+
+Remember:  Numbering of data points in this part of the FIR is by Levy Code + SLC Number.  Also notice that each RTC / RTQ and Tax Band combination is associated with a unique Line Number. 
+
+## **4. Supplementary Payments-In-Lieu (24D)** 
+
+This section consists of a single line, line 9799, which allows municipalities to enter supplementary PIL amounts for Lower-tier (or Single-tier), Upper-tier, and Education purposes. 
+
+## **Line 9799 Total of All Supplementary PILS** 
+
+This line is meant to capture all additional PIL amounts raised as a result of rebilling, subsequent to the Final tax bills being issued on properties. 
+
+This line should not be used to report any adjustments to PILS levied.  All adjustments to PIL amounts should be reported in Section 3 of Schedule 26. 
+
+This line should NOT include cancellation, reduction, refund, or rebate adjustments of taxation levied in the year.  These ‘negative’ adjustments should be reported on Schedule 72, Continuity of Taxes Receivable.  The overall impact of these ‘negative’ adjustments will be carried forward to Schedule 10, Statement of Operations: Revenues. 
+
+Items that should be included in this line are amounts in respect of the Assessment Act, and Municipal Act: 
+
+## **Assessment Act** 
+
+**Section 33 (OMIT):** Assessment Omitted from collector’s roll for the current year, or for any part or all of either or both of the next two preceding years. **Section 34 (SUPP):** After notices of assessment have been given, and before the last day of the taxation year, further assessment necessary to reflect a change to a property. 
+
+## **Municipal Act** 
+
+**Section 359:** Upon application made by the treasurer of the local municipality, a local municipality may increase the taxes levied on land in the year in which the application is made to the extent of any undercharge caused by a gross or manifest error that is a clerical or factual error, including the transposition of figures, a typographical error or similar error, but not an error in judgement in assessing the land. 
+
+## **5. Payments-In-Lieu Levied by Tax Rate (24D)** 
+
+This subtotal equals the Total amount of PILS levied by the application of a tax rate to an assessment value. 
+
+## **Line 9910 Amount Levied by Tax Rate** 
+
+This line automatically calculates the sum of the General Purpose PIL total, all Special Area PIL totals and Supplementary PILS reported in the previous sections of this schedule. In other words, this line equals the sum of the totals of Sections 1 to 4. 
+
+The following table outlines the calculation of the amount in this line: 
+
+|<br>**PILS Levied by Tax Rate**|**=**|<br>**Total General Purpose PILS**|
+|---|---|---|
+||**+**|<br>**Total LT/ST Special Area PILS**|
+||**+**|<br>**Total UT Special Area PILS**|
+||**+**|<br>**Total Supplementary PILS**|
+
+
+
+## **6. Amounts Added to Payments-In-Lieu (24D)** 
+
+This section contains all amounts added to tax bills which are NOT levied by applying a tax rate to an assessment value. 
+
+Examples of amounts charged by means other than applying a tax rate to an assessment are Rates per Acre, Rates per Amount of Frontage, Flat rates, etc. 
+
+All amounts reported in this section must include any related supplementary PILS raised. 
+
+The following list of items should **not be included** in this section: 
+
+|**Do Not Include in this Section**|**Where to Report**|
+|---|---|
+|Taxation amounts (and Adjustments to Taxation)|Schedules 22, 72|
+|Tile drainage and shoreline assistance collections|SLC  12 1850 04|
+|Direct water billings and sewer surcharges|<br>SLC 12 0810 04 to SLC  12 0830 04|
+|Charges for collection of Education taxes in Unorganized territories|<br>SLC 12 0299 04|
+|All other User Fees and Service Charges which are NOT levied on tax<br>bills|<br>SLC 12 xxxx 04|
+|Utility rate arrears and Federation of Agriculture collection fees on tax bills|<br>SLC 70 0699 01 as Taxes<br>Receivable|
+
+
+
+The following lines are provided in this section for reporting typical additions to tax bills: 
+
+## **Line 8005 Local improvements** 
+
+Include amounts for local improvements which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees in Schedule 12, Current revenue for specific functions. 
+
+## **Line 8010 Sewer and water service charges** 
+
+Include amounts for sewer or water services which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+Direct water billings and Sewer surcharges should not be reported on this line. 
+
+## **Line 8015 Sewer and water connection charges** 
+
+Include amounts for sewer and water connection charges which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+Direct water billings and Sewer surcharges should not be reported on this line. 
+
+Include connections on public property up to the municipality’s lot line. 
+
+## **Line 8020 Fire service charges** 
+
+Include amounts for fire service charges which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+## **Line 8030 Municipal drainage charges** 
+
+Include billings for municipal drainage charges which appear on the tax bill as a separate charge and are not reported as user fees and service charges on Schedule 12. 
+
+## **Line 8035 Waste management collection charges** 
+
+Include all charges relating to the collection and disposal of garbage and recyclable materials which appear on the tax bill as a separate charge and are not reported as operating revenue from user fees and service charges on Schedule 12. 
+
+## **Line 8040 Business improvement area** 
+
+Include all charges related to any Business Improvement Areas which appear on the tax bill as a separate charge. These amounts are typically charged by applying a rate to the 
+
+## Amount of Frontage of a property. 
+
+## **Line 8097 Other** 
+
+In addition to the lines mentioned above, line 8097 has been provided to allow municipalities to specify other items that have been added as a separate charge to the tax bill.  Municipalities can enter amounts which appear on the tax bill for purposes other than those mentioned above. 
+
+A short description of the charge should also be included on this line by typing in the space provided. 
+
+Amounts added as a separate charge that are in respect of portions of a property which are regarded as Exempt from Taxation should be reported in this section. 
+
+Examples of amounts that should be entered here are: 
+
+Charges on Exempt properties such as schools and churches for which no payment-inlieu of taxes are received; (This amount should be included here even though it may be determined by applying a tax rate to an assessment). 
+
+Amounts generated when a local improvement is prepaid after a debenture is issued by a municipality. A portion of the prepayment is applied to the annual debt charges. 
+
+**Line 9890 Subtotal - Amounts Added to PILS** 
+
+This amount is equal to the sum of lines 8005 through 8040 and 8097. 
+
+## **7. Other Payment-In-Lieu Amounts (24D)** 
+
+This section contains all other taxation amounts which are NOT levied by applying a tax rate to an assessment value.  These amounts are not added to the tax bill as in section 6. 
+
+Examples of amounts charged by means other than applying a tax rate to an 
+
+assessment are Rates per Acre, Rates per Amount of Frontage, Flat rates, Passenger Volume (Airport Authority), etc. 
+
+All amounts reported in this section must include any related supplementary PILS raised. 
+
+The following list of items should **not be included** in this section: 
+
+|**Do Not Include in this Section**|**Where to Report**|
+|---|---|
+|Taxation amounts (and Adjustments to Taxation)|Schedules 22, 72|
+|Tile drainage and shoreline assistance collections|<br>SLC 12 1850 04|
+|Direct water billings and sewer surcharges|<br>SLC 12 0810 04 to<br>SLC  12 0830 04|
+|Charges for collection of Education taxes in Unorganized territories|<br>SLC 12 0299 04|
+|All other User Fees and Service Charges which are NOT levied on tax bills|<br>SLC 12 xxxx 04|
+|Utility rate arrears and Federation of Agriculture collection fees on tax bills|<br>SLC 70 0699 01 as<br>Taxes Receivable|
+
+
+
+The following lines are provided in this section for reporting typical additions to tax bills: 
+
+## **Line 8045 Railway Rights-of-way (RTC = W) - from Ontario Enterprises** 
+
+Include amounts related to PIL properties within the Railway Right-of-Way property class (RTC = W).  These amounts are derived from applying a rate to the Acreage of such properties. 
+
+**Note** :   Amounts in respect of portions of the property which are regarded as Taxable should be reported on Schedule 22, Municipal and School Board Taxation, line 8045. Also, compensation amounts received from the Province in respect of phasing-in Railway Rights-of-way rates should be reported in Schedule 24, line 8046. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+**Line 8046 Railway Rights-of-way (RTC = W) - from Province** 
+
+Rates for Railway Rights-of-way properties are being phased-in across the Province. Municipalities receive an amount from the Province as compensation for the loss of revenues resulting from the phase-in. 
+
+The compensation amounts received from the Province in respect of phasing-in Railway Rights-of-way rates should be reported on this line. 
+
+**Note** :   Amounts related to Taxable properties within the Railway Right-of-Way property class (RTC = W) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 22, line 8045.  Amounts related to PIL properties within the Railway Right-of-Way property class (RTC = W) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 24, line 8045. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8050 Utility transmission and utility corridors (RTC = U) - from Ontario Enterprises** 
+
+Include amounts related to PIL or Exempt properties within the Utility Transmission and Distribution Corridor property class (RTC = U).  These amounts are charged by applying a rate to the Acreage of such properties. 
+
+**Note** :   Amounts in respect of portions of the property which are regarded as Taxable should be reported on Schedule 22, line 8050.  Also, compensation amounts received from the Province in respect of phasing-in Utility Corridor rates should be reported in Schedule 24, line 8051. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8051 Utility transmission and utility corridors (RTC = U) - from Province** 
+
+Rates for Utility Corridor properties are being phased-in across the Province. Municipalities receive an amount from the Province as compensation for the loss of revenues resulting from the phase-in. 
+
+The compensation amounts received from the Province in respect of phasing-in Utility Corridor rates should be reported on this line. 
+
+**Note** : Amounts related to Taxable properties within the Utility Corridor property class (RTC = U) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 22, line 8050.  Amounts related to PIL properties within the Utility Corridor property class (RTC = U) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 24, line 8050. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8055 Institutional Payments - Heads and Beds** 
+
+Amounts in respect of Section 323 and 324 (Formerly 157 and 158) of the Municipal Act should be reported on this line.  These amounts are often referred to as the “Heads and Beds” amount. 
+
+## **Municipal Act:** 
+
+**Section 323:** Annual levy amounts in respect of Post-Secondary Institutions (Universities and Colleges), Correctional Institutions, Public Hospitals, Facilities, for the Developmentally Disabled, Provincial Education Institutions, etc. 
+
+**Section 324:** Annual levy amounts in respect of a non-profit hospital service corporation. 
+
+## **Line 8060 Hydro-electric Power Dams - from Province** 
+
+Power Dams are now exempt from Taxation.  Municipalities no longer receive amounts from these properties based on a Tax Rate multiplied by Assessment. 
+
+To compensate for the loss of this revenue, the Province is making payments to municipalities based on the municipal taxes these properties generated in 2000. The compensation amounts received from the Province in respect of Power Dam exemptions should be reported on this line. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 8098 Other** 
+
+In addition to the lines mentioned above, line 8098 has been provided to allow municipalities to specify other PIL amounts which have not been shown above. 
+
+Municipalities can enter other PIL amounts which have not been added to the tax bill. 
+
+An example of “Other PIL amounts” that should be included on this line, are amounts received from Airport Authority’s based on passenger volume (per passenger). 
+
+A short description of the amount should also be included on this line by typing in the space provided. 
+
+**Line 9892 Subtotal - Other Taxation Amounts** 
+
+This amount is equal to the sum of lines 8045 through 8060 and 8098. 
+
+## **8. Total Payments-In-Lieu Levied (24D)** 
+
+This section is simply a total of all PIL amounts levied in the Municipality.  Remember, this may not be the total amount of PILS actually received and retained by the Municipality. 
+
+## **Line 9990 Total PILS Levied** 
+
+This amount is equal to the sum of the totals in section 5, PILS Levied by Tax Rate, section 6, Amounts Added to PILS, and section 7 Other PIL Amounts. 
+
+|**Total PILS Levied**|<br>**=**|**PILS Levied by Tax Rate**|**Line 9910**|
+|---|---|---|---|
+||**+**|**Amounts Added to PILS**|**Line 9890**|
+||<br>**+**|**Other PIL Amounts**|**Line 9892**|
+
+
+
+## **SCHEDULE 26: Taxation and Payments-In-Lieu Summary** 
+
+## **General Information** 
+
+This schedule is used for reporting the final distribution of Education Taxes and Education PIL amounts by School Board.  To arrive at the final breakdown of Education amounts by School Board, the schedule has been set up with a summary of Property Tax and Payment-In-Lieu amounts reported on Schedules 22 and 24. 
+
+Municipal and Education totals are automatically calculated and summarized from the information entered on Schedule 22 and 24.  Education Totals are then distributed by School Board. 
+
+Since Taxation and PIL are treated differently, the schedule has been divided into the following sections: 
+
+**1. Municipal and School Board Taxation** 
+
+**2. Payments-In-Lieu of Taxation** 
+
+**3. Payments-In-Lieu of Taxation - Distribution of Entitlements** 
+
+Each of these sections facilitates the reporting of Education taxes by school board. Also, these sections provide a summary of the Property Taxation and Payment-In-lieu amounts levied in the municipality. 
+
+Section 1 contains a summary of the Taxable properties within the municipality, and further, allows the municipalities to report the Education taxes by School Board. 
+
+Section 2 contains a summary of the Payment-in-lieu amounts levied in the municipality. Remember, this PIL Levied amount, is not necessarily the amount received by the municipality.  Also, in some cases the PIL amounts received for Education purposes are retained by the Municipality.  Adjustments for both of these unique situations occur in Section 3. 
+
+Section 3 first captures the PILS Levied by Source of the PIL.  Because the Municipality may not necessarily receive this “Levied” amount, a column is available to make any adjustments. After making adjustments, the total PIL Entitlement, or final PIL received by the Municipality is shown, with amounts for Municipal and Education purposes reported. Lastly, the Education portion is shown distributed by School Board. 
+
+In summary, Schedule 24 and similarly Section 2 of Schedule 26 capture the PIL Levied, which may or may not equal the PIL amount received or retained by the Municipality.  The final PIL amount received and retained is reported in Section 3 of Schedule 26, Columns 8 to10.  For Lower-tier and Single-tier Municipalities, this amount will be carried-forward onto Schedule 10, Revenue Fund Revenues. 
+
+## **1. MUNICIPAL AND SCHOOL BOARD TAXATION** 
+
+The Municipal and Education Property Taxation reported in Schedule 22 is automatically calculated and summarized by property class in this Section.  The Education tax amounts can then be shown distributed by school board. 
+
+Section 1 of this schedule compliments Schedule 22, Municipal and School Board Taxation. Section 1 contains the following columns: 
+
+|**Column**|**Description**|
+|---|---|
+|**1**|**Property Class Group**|
+|**16**|**Taxable Assessment (CVA)**|
+|**2**|**Taxable Assessment (Weighted and Discounted CVA)**|
+|**3**|**Total Taxes**|
+|**4**|**Municipal Taxes:  Lower-Tier (Single-Tier)**|
+|**5**|**Municipal Taxes:  Upper-Tier**|
+|**6**|**Education Taxes**|
+|**7**|<br>**Taxes by School Board:  English - Public**|
+|**8**|<br>**Taxes by School Board:  French - Public**|
+|**9**|<br>**Taxes by School Board:  English - Separate**|
+|**10**|<br>**Taxes by School Board:  French - Separate**|
+|**11**|**Taxes by School Board:  Other**|
+
+
+
+The following is a description of each of the columns contained in Section 1: 
+
+## **Description of Columns** 
+
+Column 1 represents a grouping of property classes, while columns 2 to 6 are automatically calculated from information entered on Schedule 22, Municipal and School Board Taxation. Columns 7 to 11 contain Taxes by School Board which should be entered manually.  In some cases, these amounts are automatically calculated. 
+
+## **Column 1 Property Class Group** 
+
+In this column, every property class, or RTC / RTQ combination has been ‘categorized’ into Property Class Groups.  The Realty Tax Class (RTC) determines which Property Class belongs to which Group.  Amounts for each property class on Schedule 22 will be aggregated for each Group. 
+
+The Construction class has been reflected by the RTC codes for the Commercial and Industrial property class group. 
+
+The following table outlines the RTC codes that are included in each Property Class Group 
+
+|**Property Class Group**|**RTC Included**|
+|---|---|
+|Residential|**R**|
+|Multi-Residential|**M, N**|
+|Farmland|**F**|
+|Managed Forest|**T**|
+|Commercial|**C, A, X**|
+|Parking Lot|**G**|
+|Office Building|**D, Y**|
+|Shopping Centre|**S, Z**|
+|Industrial|**I, J**|
+|Large Industrial<br>Landfill|**L, K**<br>**HA**|
+|Pipeline|**P**|
+|Other Property Classes|**O**|
+
+
+
+Subtotals exist for Residential and Farmland property classes (Line 9110), Commercial property classes (Line 9120), and Industrial property classes (Line 9130). 
+
+It should be noted that these property class groups do not include Supplementary Taxes, and Amounts Added to Tax Bills. Like Schedule 22, individual lines are made available for reporting Supplementary Taxes, and Amounts Added to Tax Bills. 
+
+## **Column 16 Taxable Assessment (CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation. 
+
+Assessment values reported in column 7 of Schedule 22 are summed by Property Class Group as discussed in column 1 of this Schedule. 
+
+## **Column 2 Taxable Assessment (Weighted and Discounted CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation. 
+
+Assessment values reported in column 7 of Schedule 22 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage 
+
+of Full Rate in column 6. 
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class. 
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding. 
+
+For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows: 
+
+**Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Assessment = Column 5 x Column 6 x Column 7** 
+
+Weighted and Discounted Assessment is summed by property class groups as discussed in column 1 of this schedule. 
+
+This Weighted and Discounted Assessment information can be used to compare the Total Assessments of municipalities with different mixes of property classes, and historical tax burdens. 
+
+**Column 18 Phase-In Taxable Assessment (CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation. 
+
+Phase-in taxable assessment values reported in column 16 of Schedule 22 are summed by Property Class Group as discussed in column 1 of this Schedule. 
+
+## **Column 17 Phase-In Taxable Assessment (Weighted and Discounted CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation. 
+
+Assessment values reported in column 16 of Schedule 22 are converted to a ‘Weighted’ and 
+
+‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6. 
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class. 
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding. 
+
+For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Phase-In Taxable Assessment is calculated as follows: 
+
+**Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Phase-In Taxable Assessment = Column 5 x Column 6 x Column 16** 
+
+Weighted and Discounted Assessment is summed by property class groups as discussed in column 1 of this schedule. 
+
+This Weighted and Discounted Assessment (Phase-In) information can be used to compare the Total Assessments of municipalities with different mixes of property classes, and historical tax burdens. 
+
+## **Column 3 Total Taxes** 
+
+The Total Taxes shown in this column are equal to the sum of Municipal Taxes, and Education taxes.  This column is automatically calculated by adding amounts in columns 4 to 6 of this Section. 
+
+Unlike other parts of the FIR, the Total Taxes column has been placed to the left of Municipal and Education taxes in order for the Education taxes, column 6, to appear beside the Distribution of Education Taxes by School Board, columns 7 to 11. 
+
+## **Column 4 Municipal Taxes: Lower-Tier (Single-Tier)** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+This column shows automatically calculated Municipal Taxes for Lower-Tier (or Single-Tier) purposes from information reported in Schedule 22, Municipal and School Board Taxation. Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+## **Column 5 Municipal Taxes: Upper-Tier** 
+
+Only Upper-tier or Lower-tier municipalities should have values in this column. 
+
+Upper-tier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column. 
+
+This column shows automatically calculated Municipal Taxes for Upper-tier purposes from information reported in Schedule 22, Municipal and School Board Taxation.  Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+## **Column 6 Education Taxes** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+This column shows automatically calculated Education Taxes from information reported in Schedule 22, Municipal and School Board Taxation.  Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+## **Distribution of Education Taxes in Column 6 by School Board** 
+
+Only Lower-tier or Single-tier municipalities should have values in the following columns. 
+
+Education Taxes shown in column 6 of this schedule must be shown distributed by each school board that is applicable in the municipality. The following columns are available for reporting of Education Taxes distributed to School Boards: 
+
+## **Column 7 Education Taxes by School Board:  English - Public** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+The portion of Education Taxes in column 6 which are distributed to the English - Public School Boards should be reported in this column. 
+
+For all commercial, industrial, and pipeline properties, the amount shown in this column is derived from the fixed Legislated Percentage for each school board shown on Line 9010 of this schedule.   The Legislated Percentages applicable in each Municipality is shown. 
+
+## **Column 8 Education Taxes by School Board:  French - Public** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+The portion of Education Taxes in column 6 which are distributed to the French - Public School Boards should be reported in this column. 
+
+For all commercial, industrial, and pipeline properties, the amount shown in this column is derived from the fixed Legislated Percentage for each school board shown on Line 9010 of this schedule.   The Legislated Percentages applicable in each Municipality is shown. 
+
+## **Column 9 Education Taxes by School Board:  English - Separate** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+The portion of Education Taxes in column 6 which are distributed to the English - Separate School Boards should be reported in this column. 
+
+For all commercial, industrial, and pipeline properties, the amount shown in this column 
+
+is derived from the fixed Legislated Percentage for each school board shown on Line 9010 of this schedule.   The Legislated Percentages applicable in each Municipality is shown. 
+
+## **Column 10 Education Taxes by School Board:  French - Separate** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+The portion of Education Taxes in column 6 which are distributed to the French - Separate School Boards should be reported in this column. 
+
+For all commercial, industrial, and pipeline properties, the amount shown in this column is derived from the fixed Legislated Percentage for each school board shown on Line 9010 of this schedule. The Legislated Percentages applicable in each Municipality is shown. 
+
+## **Column 11 Education Taxes by School Board:  Other** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. The portion of Education Taxes in column 6 which are distributed to Other School Boards should be reported in this column. 
+
+For all commercial, industrial, and pipeline properties, the amount shown in this column is derived from the fixed Legislated Percentage for each school board shown on Line 9010 of this schedule. The Legislated Percentages applicable in each Municipality is shown. 
+
+## **Description of Lines** 
+
+Since Education taxes for Commercial, Industrial and Pipeline property classes are distributed based on a fixed percentage which is legislated by the Province, this section begins with a line displaying the percentages as prescribed by the Ministry of Education. 
+
+## **Line 9010 Legislated Percent of Education Taxes Distributed to each School Board** 
+
+Each year, the Ministry of Education legislate percentages which are used to determine the distribution of Education taxes to the school boards for Commercial, Industrial and Pipeline property classes. The Ministry of Education legislates, a unique set of percentages for each municipality. 
+
+For each Municipality, the Legislated Percentage of Education Taxes distributed to each School Board for Commercial, Industrial and Pipeline property classes is automatically displayed on this line.  If there are any discrepancies with these percentages, please email: FIR.mah@ontario.ca 
+
+The Legislated Percentages are arrived at based on student enrolment in each of the school boards which are applicable in the municipality.  Also, notice that percentages shown in columns 7 to 11 should add to 100%. 
+
+For each municipality, this legislated set of percentages is used to automatically calculate the Education taxes for the commercial, industrial and pipeline property classes by each School Board.  Thus, amounts distributed to each school board are automatically calculated in columns 7 to 11 for Commercial, Industrial, and Pipeline property classes shown on lines 0210 to 0710. 
+
+The schedule allows for one set of Legislated Percentages to be shown for each Municipality. For municipalities with more than one set of Legislated Percentages, the percentages cannot be shown, and the calculation of commercial, industrial and pipeline education taxes by school board will not occur automatically.  In these cases, the word “Multiple” will be displayed in each column and a custom FIR is required from the Ministry. 
+
+Municipalities with multiple sets of legislated percentages should email FIR.mah@ontario.ca to arrange for a custom FIR.  The custom FIR file will allow the municipality to manually enter the commercial, industrial and pipeline education taxes by school board. The remaining lines for Residential, Multi-residential, Farmland, Managed Forest, and Other property classes, must be manually entered by municipalities.  These values must be entered in this way because Education taxes for properties shown on these lines are not distributed by any fixed legislated percentage. 
+
+Lines 9160, 9170, 9190 and 9192 for must also be manually entered by the municipality in columns 7 to 11. 
+
+## **Line 0010 Residential** 
+
+This line displays information for the Residential property classes.  This refers to all properties with the Realty Tax Class (RTC) of R as described in the instruction for column 1 of this schedule. 
+
+## **Line 0050 Multi-Residential** 
+
+This line displays information for the Multi-Residential (Including New Multi-Residential) property classes.  This refers to all properties with the Realty Tax Class (RTC) of M and N as described in the instruction for column 1 of this schedule. 
+
+## **Line 0110 Farmland** 
+
+This line displays information for the Farmland property classes.  This refers to all properties with the Realty Tax Class (RTC) of F as described in the instruction for column 1 of this schedule. 
+
+**Line 0140 Managed Forests** 
+
+This line displays information for the Managed Forests property classes.  This refers to all properties with the Realty Tax Class (RTC) of T as described in the instruction for column 1 of this schedule. 
+
+**Line 9110 Subtotal** 
+
+This subtotal line represents the Residential/Farmland/Managed Forest subtotal and is automatically calculated by adding the amounts in lines 0010 to 0140. 
+
+## **Line 0210 Commercial** 
+
+This line displays information for the Commercial property classes. This refers to all properties with the Realty Tax Class (RTC) of C as described in the instruction for column 1 of this schedule. 
+
+## **Line 0215 Commercial (New Construction)** 
+
+This line displays information for the **Commercial (New Construction)** property classes. This refers to all properties with the **Realty Tax Class (RTC) of X** as described in the instruction for column 1 of this schedule. 
+
+## **Line 0310 Parking Lot** 
+
+This line displays information for the Parking Lot optional commercial property classes.  This refers to all properties with the Realty Tax Class (RTC) of G, as described in the instruction for column 1 of this schedule. 
+
+## **Line 0320 Office Building** 
+
+This line displays information for the Office Building optional commercial property classes. This refers to all properties with the Realty Tax Class (RTC) of D as described in the instruction for column 1 of this schedule. 
+
+## **Line 0325 Office Building (New Construction)** 
+
+This line displays information for the **Office Building (New Construction)** property classes. This refers to all properties with the **Realty Tax Class (RTC) of Y** as described in the instruction for column 1 of this schedule. 
+
+## **Line 0340 Shopping Centre** 
+
+This line displays information for the Shopping Centres optional commercial property classes. This refers to all properties with the Realty Tax Class (RTC) of S as described in the instruction for column 1 of this schedule. 
+
+## **Line 0345 Shopping Centre (New Construction)** 
+
+This line displays information for the **Shopping Centre (New Construction)** property classes. This refers to all properties with the **Realty Tax Class (RTC) of Z** as described in the instruction for column 1 of this schedule. 
+
+## **Line 9120 Subtotal** 
+
+This subtotal line represents the Commercial subtotal and is automatically calculated by adding the amounts in lines 0210 to 0345. 
+
+## **Line 0510 Industrial** 
+
+This line displays information for the Industrial property classes.  This refers to all properties with the Realty Tax Class (RTC) of I as described in the instruction for column 1 of this schedule. 
+
+## **Line 0515 Industrial (New Construction)** 
+
+This line displays information for the **Industrial (New Construction)** property classes. This refers to all properties with the **Realty Tax Class (RTC) of J** as described in the instruction for column 1 of this schedule. 
+
+## **Line 0610 Large Industrial** 
+
+This line displays information for the Large Industrial optional industrial property classes. This refers to all properties with the Realty Tax Class (RTC) of L as described in the instruction for column 1 of this schedule. 
+
+## **Line 0615 Large Industrial (New Construction)** 
+
+This line displays information for the **Large Industrial (New Construction)** property classes. This refers to all properties with the **Realty Tax Class (RTC) of K** as described in the instruction for column 1 of this schedule. 
+
+## **Line 9130 Subtotal** 
+
+This subtotal line represents the Industrial subtotal and is automatically calculated by adding the amounts in lines 0510 to 0615. 
+
+## **Line 0705 Landfill** 
+
+This line displays information for the **Landfill** property classes. This refers to all properties with the **Realty Tax Class (RTC) of H** as described in the instruction for column 1 of this schedule. 
+
+## **Line 0710 Pipelines** 
+
+This line displays information for the **Pipeline** property classes.  This refers to all properties with the Realty Tax Class (RTC) of P as described in the instruction for column 1 of this schedule. 
+
+## **Line 0810 Other Property Classes** 
+
+This line displays information for the other property classes.  This refers to all properties with the Realty Tax Class (RTC) of O as described in the instruction for column 1 of this schedule. 
+
+## **Line 9160 Adjustment for Properties Shared as if PIL** 
+
+This line displays the adjustments for properties which are shared as if Payment-In-Lieu.  This refers to Hydro properties which are described as `A` Taxable”, shared as if Payment-In-Lieu `@` and represented by Realty Tax Qualifier (RTQ) of H, J and K. 
+
+Since the Education portion of the payment from the commercial and industrial Hydro properties 
+
+is retained by the Municipality, an adjustment is necessary to balance the Municipal and Education taxes on Schedule 22, Line 7010. 
+
+Education amounts should be shown distributed by School Boards in columns 7 to 11. 
+
+## **Line 9170 Supplementary Taxes** 
+
+This line displays the Supplementary Taxes as shown on Schedule 22, Municipal and School Board Taxation, line 9799, Total of all Supplementary Taxes. 
+
+Education amounts should be shown distributed by School Boards in columns 7 to 11. 
+
+## **Line 9180 TOTAL LEVIED BY TAX RATE** 
+
+This line is automatically calculated by adding the amounts in lines 9110, 9120, 9130, 0710, 0810, 9160 and 9170 of this Schedule. 
+
+The amounts shown on this line should equal the corresponding amounts on line 9910, Amount Levied by Tax Rate, on Schedule 22, Municipal and School Board Taxation. 
+
+**Line 9190 Amounts Added to Tax Bills** 
+
+This line displays the Amounts Added to Tax Bills as shown on Schedule 22, Municipal and School Board Taxation, subtotal line 9890. 
+
+Education amounts should be shown distributed by School Boards in columns 7 to 11. 
+
+## **Line 9192 Other Taxation Amounts** 
+
+This line displays the Other Taxation Amounts as shown on Schedule 22, Municipal and School Board Taxation, subtotal line 9892. 
+
+Education amounts should be shown distributed by School Boards in columns 7 to 11. 
+
+## **Line 9199 TOTAL BEFORE ADJUSTMENTS** 
+
+This line equals the Total Taxes Levied by Tax Rate, line 9180, plus the Amounts Added to Tax Bills, line 9190 and Other Taxation Amounts, line 9192. 
+
+|**The amount is automatically calculated by adding the**<br>**amounts in lines 9180, 9190, and 9192.**<br>**Total Before Adjustments**<br>**=**<br>**Total Levied by Tax Rate**<br>**+**<br>**Amounts Added to Tax Bill**<br>**+**<br>**Other Taxation Amounts**|**Line 9199**<br>**=**<br>**Line 9180**<br>**+**<br>**Line 9190**<br>**+**<br>**Line 9192**|
+|---|---|
+
+
+
+The amounts shown on this line should equal the corresponding amounts on line 9990, Total 
+
+## **2. PAYMENTS-IN-LIEU OF TAXATION** 
+
+All information in this section is automatically generated from PIL information that is entered on Schedule 24, Payments-In-Lieu of Taxation. 
+
+This Section displays information on Payment-in-lieu properties.  It is important to notice that this Section displays the PILS Levied, which refers to the PIL amount that is arrived at by applying a tax rate to the assessment.  Remember, this PIL Levied amount is not necessarily the amount received by the municipality.  Also, in some cases the PIL amounts received for Education purposes are retained by the Municipality. 
+
+In section 3 of this Schedule, municipalities will be able to report any adjustments to the PILS Levied, to arrive at a Total PIL entitlement amount, or Final PIL amount. 
+
+Supplementary PILS, Amounts Added to PILS and Other PIL amounts are also shown in this section. 
+
+Remember, Hydro properties owned by Ontario Power Generation Corporation and Hydro One or their subsidiaries are reported as Taxable properties in the FIR, even though they are treated as PIL properties. Since the education portion of the payment from these properties is retained by the municipality, Line 7010 on Schedule 22 allows municipalities to shift education amounts into the Municipal totals. 
+
+PIL Assessments and Municipal and Education PIL information in this Section is organized into Property Class Groups as mentioned in the column 1 instructions below. 
+
+This Section compliments Schedule 24, Payments-In-Lieu of Taxation. Section 2 contains the following columns: 
+
+|**Column**|**Description**|
+|---|---|
+|1|Property Class Group|
+|16|PIL Assessment (CVA)|
+|2|PIL Assessment (Weighted and Discounted CVA)|
+|3|Total PILS Levied|
+|4|<br>Municipal PILS: Lower-tier (Single-tier)|
+|5|<br>Municipal PILS: Upper-tier|
+|6|Education PILS|
+
+
+
+This section is very similar to Section 1 of this schedule, except that the Distribution of Education PILS to School Boards in columns 7 to 11 is not shown. This Distribution of Education PILS to School Boards is shown in Section 3, after any adjustments to the PILS Levied have been taken into account. 
+
+## **Description of Columns** 
+
+Column 1 represents a grouping of property classes, while columns 2 to 6 are automatically calculated from information entered on Schedule 24, Payments-In-Lieu of Taxation. 
+
+## **Column 1 Property Class Group** 
+
+In this column, every property class, or RTC / RTQ combination has been ‘categorized’ into Property Class Groups.  The Realty Tax Class (RTC) determines which Property Class Group belongs to which Group.  Amounts for each property class on Schedule 24 will aggregated for each Group. 
+
+## **The New Construction class has been reflected by the new RTC codes for the Commercial and Industrial property class group.** 
+
+The following table outlines the RTC codes that are included in each Property Class Group shown in column 1: 
+
+|**Property Class Group**|**RTC Included**|
+|---|---|
+|Residential|R|
+|Multi-Residential|M, N|
+|Commercial|C, A,**X**|
+|Parking Lot|G|
+|Office Building|<br>D,**Y**|
+|Shopping Centre|<br>S,**Z**|
+|Industrial|I,**J**|
+|Large Industrial|<br>L,**K**|
+|Pipeline|P|
+|Other Property Classes|O|
+
+
+
+Subtotals exist for Residential property classes (Line 9210), Commercial property classes (Line 9220), and Industrial property classes (Line 9230). 
+
+It should be noted that these property class groups do not include Supplementary PILS, and Amounts Added to PILS. Like schedule 24, individual lines are made available for reporting Supplementary PILS, Amounts Added to PILS and Other PIL Amounts. 
+
+## **Column 16 PIL Assessment (CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation. 
+
+Assessment values reported in **column 7 of Schedule 24** are summed by Property Class Group as discussed in column 1 of this schedule. 
+
+## **Column 2 PIL Assessment (Weighted and Discounted CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation. 
+
+Assessment values reported in column 7 of Schedule 24 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6. 
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class. 
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding. For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows: 
+
+**Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate x PIL Assessment = Column 5 x Column 6 x Column 7** 
+
+Weighted and Discounted Assessment is summed by property class groups as discussed in column 1 of this schedule. 
+
+This Weighted and Discounted Assessment information can be used to compare the Total Assessments of municipalities with different mixes of property classes, and historical tax burdens. 
+
+## **Column 18 Phase-In PIL Assessment (CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation. 
+
+Assessment values reported in **column 16 of Schedule 24** are summed by Property Class Group as discussed in column 1 of this schedule. 
+
+## **Column 17 PIL Phase-In Assessment (Weighted and Discounted CVA)** 
+
+Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation. 
+
+Assessment values reported in column 16 of Schedule 24 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6. 
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class. 
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding. 
+
+For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows: 
+
+**Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate x PIL Phase-in Assessment = Column 5 x Column 6 x Column 16** 
+
+Weighted and Discounted Assessment is summed by property class groups as discussed in column 1 of this schedule. 
+
+This Weighted and Discounted Assessment information can be used to compare the Total Assessments of municipalities with different mixes of property classes, and historical tax burdens. 
+
+## **Column 3 Total PILS Levied** 
+
+The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS.  This column is automatically calculated by adding amounts in columns 4 to 6 of this Section. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion. Thus, the Final PIL Entitlement is shown in Section 3. 
+
+## **Column 4 Municipal PILS:  Lower-Tier (Single-Tier)** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+This column shows automatically calculated Municipal PILS for Lower-tier (or Single-tier) purposes from information reported in Schedule 24, Payments-In-Lieu of Taxation.  Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion. Thus, the Final PIL Entitlement is shown in Section 3. 
+
+## **Column 5 Municipal PILS:  Upper-Tier** 
+
+Only Upper-tier or Lower-tier municipalities should have values in this column. Upper-tier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column. 
+
+This column shows automatically calculated Municipal PILS for Upper-tier purposes from information reported in Schedule 24, Payments-In-Lieu of Taxation. Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion. Thus, the Final PIL Entitlement is shown in Section 3. 
+
+## **Column 6 Education PILS** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+This column shows automatically calculated Education PILS from information reported in Schedule 24, Payments-In-Lieu of Taxation. Amounts are summed by property class groups as discussed in column 1 of this schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion. Thus, the Final PIL Entitlement is shown in Section 3. 
+
+## **Description of Lines** 
+
+In Section 2, municipalities are provided with a summary of Assessments, Weighted and Discounted Assessments, Municipal and Education Taxes for Payments-In-Lieu properties reported on Schedule 24. 
+
+Amounts in columns 2 to 6 are automatically generated from information that is entered on Schedule 24, Payments-In-Lieu of Taxation. 
+
+Like Section 1, this section summarizes all properties into several Property Class Groups as outlined in the instructions for column 1 of this Section. 
+
+Distribution of Education Taxes by the English-Public, French-Public, English-Catholic, FrenchCatholic, and Other School Boards is not shown in this Section since Education PILS shown in column 6 are PILS Levied, and not necessarily the PIL amounts that are received and distributed to School Boards.  The PILS Levied will be adjusted for this and the Final PIL Entitlement will be shown in Section 3 of this Schedule. 
+
+## **Line 1010 Residential** 
+
+This line displays information for the Residential property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of R as described in the instruction for column 1 of this schedule. 
+
+## **Line 1050 Multi-Residential** 
+
+This line displays information for the Multi-Residential (Including New Multi-Residential) property classes.  This refers to all PIL properties with the Realty Tax Class (RTC) of M and N as described in the instruction for column 1 of this schedule. 
+
+## **Line 1110 Farmland** 
+
+This line displays information for the Farmland property classes.  This refers to all PIL properties with the Realty Tax Class (RTC) of F as described in the instruction for column 1 of this schedule. 
+
+## **Line 1140 Managed Forests** 
+
+This line displays information for the Managed Forests property classes.  This refers to all properties with the Realty Tax Class (RTC) of T as described in the instruction for column 1 of this schedule. 
+
+## **Line 9210 Subtotal** 
+
+This subtotal line represents the Residential/Farmland/Managed Forest subtotal and is automatically calculated by adding the amounts in lines 1010 to 1140. 
+
+## **Line 1210 Commercial** 
+
+This line displays information for the Commercial property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of C as described in the instruction for column 1 of this schedule. 
+
+## **Line 1215 Commercial (New Construction)** 
+
+This line displays information for the **Commercial (New Construction)** property classes.  This refers to all PIL properties with the **Realty Tax Class (RTC) of X** as described in the instruction for column 1 of this schedule. **Line 1310 Parking Lot** 
+
+This line displays information for the Parking Lot optional commercial property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of G as described in the instruction for column 1 of this schedule. 
+
+This line displays information for the Office Building optional commercial property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of D as described in the instruction for column 1 of this schedule. 
+
+## **Line 1325 Office Building (New Construction)** 
+
+This line displays information for the **Office Building (New Construction)** optional commercial property classes.  This refers to all PIL properties with the **Realty Tax Class (RTC) of Y** as described in the instruction for column 1 of this schedule. 
+
+## **Line 1340 Shopping Centre** 
+
+This line displays information for the Shopping Centres optional commercial property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of S as described in the instruction for column 1 of this schedule. 
+
+## **Line 1345 Shopping Centre (New Construction)** 
+
+This line displays information for the **Shopping Centres (New Construction)** optional commercial property classes.  This refers to all PIL properties with the **Realty Tax Class (RTC) of Z** as described in the instruction for column 1 of this schedule. 
+
+**Line 9220 Subtotal** 
+
+This subtotal line represents the Commercial subtotal and is automatically calculated by adding the amounts in lines 1210 to 1345. 
+
+## **Line 1510 Industrial** 
+
+This line displays information for the Industrial property classes.  This refers to all PIL properties with the Realty Tax Class (RTC) of I as described in the instruction for column 1 of this schedule. 
+
+**Line 1515 Industrial (New Construction)** 
+
+This line displays information for the **Industrial (New Construction)** property classes.  This refers to all PIL properties with the **Realty Tax Class (RTC) of J** as described in the instruction for column 1 of this schedule. 
+
+## **Line 1610 Large Industrial** 
+
+This line displays information for the Large Industrial optional industrial property classes. This refers to all PIL properties with the Realty Tax Class (RTC) of L as described in the instruction for column 1 of this schedule. 
+
+## **Line 1615 Large Industrial (New Construction)** 
+
+This line displays information for the **Large Industrial (New Construction)** optional industrial property classes. This refers to all PIL properties with the **Realty Tax Class (RTC) of K** as described in the instruction for column 1 of this schedule. 
+
+## **Line 9230 Subtotal** 
+
+This subtotal line represents the Industrial subtotal and is automatically calculated by adding the amounts in lines 1510 to 1615. 
+
+## **Line 1718 Pipelines** 
+
+This line displays information for the Pipeline property classes.  This refers to all PIL properties with the Realty Tax Class (RTC) of P as described in the instruction for column 1 of this schedule. 
+
+## **Line 1705 Landfill** 
+
+This line displays information for the **Landfill** property classes. This refers to all PIL properties with the **Realty Tax Class (RTC) of H** as described in the instruction for column 1 of this schedule. 
+
+**Line 1810 Other Property Classes** 
+
+This line displays information for the other property classes.  This refers to all PIL properties with the Realty Tax Class (RTC) of O as described in the instruction for column 1 of this schedule. 
+
+## **Line 9270 Supplementary PILS** 
+
+This line displays the Supplementary PILS as shown on Schedule 24, Payments-In-Lieu of Taxation, line 9799, Total of all Supplementary PILS. **Line 9280 TOTAL LEVIED BY TAX RATE** 
+
+This line is automatically calculated by adding the amounts in lines 9210, 9220, 9230, 1718, 1810, and 9270 of this Schedule. 
+
+The amounts shown on this line should equal the corresponding amounts on line 9910 **,** Total PILS Levied by Tax Rate, on Schedule 24, Payments-In-Lieu of Taxation. 
+
+## **Line 9290 Amounts Added to PILS** 
+
+This line displays the Amounts Added to PILS as shown on Schedule 24, Payments-In-Lieu of Taxation, subtotal line 9890. 
+
+**Line 9292 Other PIL Amounts** 
+
+This line displays the Other PIL Amounts as shown on Schedule 24, Payments-In-Lieu of Taxation, subtotal line 9892. 
+
+## **Line 9299 TOTAL BEFORE ADJUSTMENTS** 
+
+This line equals the Total Levied by Tax Rate, line 9280, plus the Amounts Added to PILS, line 9290 and Other PIL Amounts, line 9292.  The amount is automatically calculated by adding the amounts in lines 9280, 9290, and 9292. 
+
+**Total Before Adjustments Line 9299 = = Total Levied by Tax Rate Line 9280 + + Amounts Added to PILS Line 9290 + + Other PIL Amounts Line 9292** 
+
+The amounts shown on this line should equal the corresponding amounts on line 9990, Total PILS Levied, on Schedule 24, Payments-In-Lieu of Taxation. 
+
+## **3. PAYMENTS-IN-LIEU OF TAXATION - DISTRIBUTION OF ENTITLEMENTS** 
+
+This Section differs from Section 2, since the Payment-In-Lieu amounts are reported by Source of the PIL, rather than by Property Class Groups. 
+
+This Section allows Municipalities to report PIL Levied amounts by Source, and then show adjustments for PIL amounts not received, and then report the Final PIL Entitlement. Lastly, the Education PILS are then shown distributed by School Board. 
+
+The PILS Levied refers to the PIL amount that is arrived at by applying a tax rate to the assessment. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. This section captures adjustments for cases when the municipality does not receive the full amount of the PIL (column 6), and cases where the Municipality retains the Education portion (Columns 8 and 10). 
+
+This Section is divided into the following categories: 
+
+- **A. PILS Levied (Columns 2 to 5)** 
+
+- **B. Adjustments to PILS Levied (Column 6)** 
+
+- **C. PIL Entitlement after Adjustments (Columns 7 to 10)** 
+
+## **D. Distribution of Education PILS by School Board (Columns 11 to 15)** 
+
+The PILS Levied columns will coincide with the amounts shown in Section 2 of this Schedule (which were automatically calculated from information entered on Schedule 24, Payments-InLieu of Taxation).  Following across the schedule, column 6 has been provided to account for any Adjustments that are made to the PILS Levied.  Adjustments can be reported in cases 
+
+where the Municipality does not receive the full amount of the PIL.  The difference between the PILS Levied and the Adjustments will result in the Final PIL Entitlement (After Adjustments). The Total PIL Entitlement amount is also shown by Lower-Tier (Single-Tier), Upper-Tier and Education.  In cases where the Education amounts are retained by the Municipality, the amount should be reported in Columns 8 (or 9) as opposed to 10.  This effectively shifts the Education amounts to the Municipal Totals. 
+
+The final columns of this section allow for reporting the Education PIL Entitlements after Adjustments by School Board. 
+
+## The following box outlines the relationship between the amounts shown in this section: 
+
+**PILS Levied + Adjustments to PILS Levied = PIL Entitlements After Adjustments Column 2 + Column 6 = Column 7** 
+
+**Note:** Adjustments to PILS Levied can be either **Positive or Negative.** Remember, Hydro properties owned by Ontario Power Generation Corporation and Hydro One or their subsidiaries which are coded as Taxable properties, must be treated as PIL properties in the FIR. These properties should be included in amounts in this section. These properties must be treated in this manner because the education portion of the payment from these properties is retained by the municipality. 
+
+## **Description of Columns** 
+
+The following table displays a list of all the columns in this section: 
+
+|**Col**<br>**umn**|**Description**|
+|---|---|
+|**1**|**Source of PILS**|
+|3|PILS Levied:  Lower-Tier (Single-Tier)|
+|4|PILS Levied:  Upper-Tier|
+|5|PILS Levied:  Education PILS|
+|2|TOTAL PILS Levied|
+|6|Adjustments to PILS Levied|
+|7|TOTAL PIL Entitlement (After Adjustments)|
+|8|<br>PIL Entitlement: Lower-Tier (Single-Tier)|
+|9|PIL Entitlement:  Upper-Tier|
+|10|<br>PIL Entitlement: Education PILS|
+
+
+
+|**Col**<br>**umn**|**Description**|
+|---|---|
+|11|School Board:  English - Public|
+|12|School Board:  French - Public|
+|13|School Board:  English - Catholic|
+|14|School Board:  French - Catholic|
+|15|School Board:  Other|
+
+
+
+## The following is a description of the columns in this section **.** 
+
+## **Column 1 Source of PILS** 
+
+This column displays the Payment-In-Lieu of Taxation amounts by Source of the PIL. The following table outlines the Sources of Payment-In-Lieu amounts available for reporting: 
+
+|**Line**|**Source of PIL**|
+|---|---|
+|**5010**|**Canada**|
+|**5020**|**Canada Enterprises**|
+|**5210**|<br>**Ontario:  Municipal Tax Assistance Act - Previously Exempt Properties**|
+|**5220**|<br>**Ontario:  Municipal Tax Assistance Act - Other PILS**|
+|**5230**|<br>**Ontario:  Institutional Payments - Heads and Beds**|
+|**5232**|**Ontario:  Railway Rights-Of-Way**|
+|**5234**|**Ontario:  Utility Corridors/Transmission**|
+|**5236**|**Ontario:  Hydro-Electric Power Dams**|
+|**5240**|**Ontario:  Other**|
+|**5410**|**Ontario Enterprises:  Ontario Housing Corporation**|
+|**5430**|**Ontario Enterprises:  Liquor Control Board of Ontario**|
+|**5432**|**Ontario Enterprises:  Railway Rights-Of-Way**|
+|**5434**|**Ontario Enterprises:  Utility Corridor/Transmission**|
+|**5437**|**Ontario Enterprises:  Ontario Lottery and Gaming Corporation**|
+|**5460**|**Ontario Enterprises:  Other**|
+|**5610**|**Municipal Enterprises**|
+|**5910**|**Other Municipalities, Other Enterprises**|
+|**5950**|**Amounts Added to PIL**|
+|**9599**|**TOTAL**|
+
+
+
+Line 9599 automatically calculates the Total of lines 5010 to 5950 in this Section.  Notice that the Totals on Line 9599 from Columns 2 to 5 should match the Totals shown on Line 9299 of 
+
+## **A. PILS Levied** 
+
+Amounts in these columns must coincide with PILS Levied amounts shown in Section 2 of this Schedule. 
+
+The PILS Levied refers to the PIL amount that is arrived at by applying a tax rate to the assessment.  It should be noted that these amounts must include Supplementary PILS, and Amounts Added to PILS to ensure that Totals shown on line 9299 from Section 2 of this Schedule equal those shown on line 9599 of this Section. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3. 
+
+## **Column 3 PILS Levied:  Lower-Tier (Single-Tier)** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+Municipalities must enter PILS Levied for Lower-tier (or Single-tier) purposes in this column.  The Total in line 9599 must equal the Total Lower-tier (or Single-tier) PILS Levied in column 4, line 9299 of Section 2 in this Schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3. 
+
+## **Column 4 PILS Levied:  Upper-Tier** 
+
+Only Upper-tier or Lower-tier municipalities should have values in this column. 
+
+Upper-tier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column. 
+
+Municipalities must enter PILS Levied for Upper-tier purposes in this column.  The Total in line 9599 must equal the Total Upper-tier PILS Levied in column 5, line 9299 of Section 2 in this Schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3. 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. Municipalities must enter PILS Levied for Education purposes in this column. The Total in line 9599 must equal the Total Education PILS Levied in column 6, line 9299 of Section 2 in this Schedule. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3. 
+
+## **Column 2 PILS Levied:  TOTAL** 
+
+The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS.  This column is automatically calculated by adding amounts in columns 3 to 5 of this section. 
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality. Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion. The Final PIL Entitlement is shown in columns 7 to 10 of Section 3. 
+
+## **B.  Adjustments** 
+
+## **Column 6 Adjustments to PILS Levied** 
+
+In this column, municipalities will be able to report any adjustments to the PILS Levied. 
+
+In some cases, the PIL amount received and distributed is not equal to the PIL amount levied. This column allows municipalities to account for the difference between the PILS that are levied in columns 2 to 5, with the PILS that are actually received in columns 7 to 10. 
+
+## **C. PIL Entitlement after Adjustments (Columns 7 to 10)** 
+
+Amounts in these columns represent the PIL amounts actually received and distributed.  A total PIL entitlement after Adjustments have been made should be shown in columns 7 to 10. 
+
+The PIL amounts in columns 7 to 10 may differ from the amounts shown in columns 2 to 5 in the following 2 ways: 
+
+## **1.  PILS Levied does not equal PILS Received** 
+
+The PIL amount received and distributed may not equal the PIL amount levied.  In cases where the Municipality does not receive the calculated amount of the PIL, the totals will differ.  The difference is reflected in the Adjustments to PILS Levied in Column 6. 
+
+## **2.  Municipality Retains Education portion of PIL** 
+
+The PIL amount retained by the Municipality may include the Education portion of the PIL.  In this case, the calculated PIL amounts shown in columns 3 to 5 will be distributed differently amongst the School Boards and Municipalities involved than the amounts shown in Columns 8 to 10.  The final distribution of the PILS should be reflected in columns 7 to 10. 
+
+An Adjustment to PILS Levied in column 6 is 0, since the Totals in columns 2 and 7 would remain the same. 
+
+## **Column 7 PIL Entitlement after Adjustments:  TOTAL** 
+
+The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS, net of Adjustments to PILS Levied reported in Column 6. 
+
+This column is automatically calculated by adding amounts in columns 2 and 6. 
+
+**Column 8 PIL Entitlement after Adjustments:  Lower-Tier (Single-Tier)** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+Municipalities must enter PIL amounts retained for Lower-tier (or Single-tier) purposes in this column.  This amount should include any education PIL amounts retained by the lower-tier or single-tier municipality. 
+
+The Total in line 9599 will be automatically carried forward into line 0499, Payments-In-Lieu of Taxation, of Schedule 10, Revenue Fund Receipts, for all Lower-tier, or Single-tier municipalities (For further details, please refer to the Carry Forward Operations table in the **FIR2021** Tables file). 
+
+## **Column 9 PIL Entitlement after Adjustments:  Upper-Tier** 
+
+Only Upper-tier or Lower-tier municipalities should have values in this column. 
+
+Upper-tier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column. 
+
+Municipalities must enter PIL amounts retained for Upper-tier purposes in this column. This amount should include any education PIL amounts shared with the upper-tier municipality. 
+
+## **Column 10 PIL Entitlement after Adjustments:  Education PILS** 
+
+Only Lower-tier or Single-tier municipalities should have values in this column. 
+
+Municipalities must enter PIL amounts received and distributed for Education purposes in this column. 
+
+## **D. Distribution of Education PILS by School Board (Columns 11 to 15)** 
+
+Only Lower-tier or Single-tier municipalities should have values in these columns. 
+
+Education PILS shown in column 10 of this Section are distributed by each school board applicable to the Municipality in columns 11 to 15 where school boards are shown as EnglishPublic, French-Public, English-Catholic, French-Catholic, and Other School Boards. 
+
+Remember, column 5 shows Education PILS Levied, which are then adjusted to reflect the final Education PIL Entitlement in column 10.  The Education amounts in column 10 are the final amount passed onto School Boards. 
+
+The following columns are available for reporting of Education PILS distributed to School Boards: 
+
+## **Column 11 English - Public** 
+
+The portion of Education PIL amounts that are passed onto the English-Public school board should be reported in this column. 
+
+## **Column 12 French - Public** 
+
+The portion of Education PIL amounts that are passed onto the French-Public school board should be reported in this column. 
+
+## **Column 13 English - Separate** 
+
+The portion of Education PIL amounts that are passed onto the English-Separate school board should be reported in this column. 
+
+## **Column 14 French - Separate** 
+
+The portion of Education PIL amounts that are passed onto the French-Separate school board should be reported in this column. 
+
+## **Column 15 Other** 
+
+The portion of Education PIL amounts that are passed onto any other school boards other than the English-Public, French-Public, English-Separate or French-Separate school boards should be reported in this column. 
+
+## **Description of Lines** 
+
+In this section, PIL amounts are shown by Source of the PIL.  The following is a description of the lines available. 
+
+## **Line 5010 Canada** 
+
+Payment-In-Lieu of Taxes paid by the Federal Government of Canada is categorized into Canada, and Canada Enterprises.  PIL Amounts which are paid by the Federal Government, 
+
+## **Line 5020 Canada Enterprises** 
+
+Payment-In-Lieu of Taxes paid by the Federal Government of Canada is categorized into Canada, and Canada Enterprises.  PIL Amounts which are paid by any Federal Government Enterprise should be reported on this line. 
+
+**Line 5210 Ontario:  Municipal Tax Assistance Act - Previously Exempt Properties** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario is categorized into Ontario, and Ontario Enterprises. 
+
+Amounts for Previously Exempt Properties under the Municipal Tax Assistance Act refers to payments made by the Province or Crown agency for property it occupies and leases from tax exempt bodies such as Municipalities and the Federal Government.  Prior to 1998 no payments were made on these properties.  This does not apply to provincial property. 
+
+**Line 5220 Ontario:  Municipal Tax Assistance Act - Other** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario is categorized into Ontario, and Ontario Enterprises. 
+
+Other amounts under the Municipal Tax Assistance Act refer to payments on provincial property owned and occupied by the Province or Crown agency. 
+
+**Line 5230 Ontario:  Institutional Payments (Heads and Beds)** 
+
+Amounts in respect of Section 323 and 324 (Formerly 157 and 158) of the Municipal Act should be reported on this line.  These amounts are often referred to as the ’Heads and Beds’ amount. 
+
+Several amounts on this line are carried-forward from SLC 24 8055 xx. 
+
+## **Line 5232 Ontario: Railway Rights-Of-Way** 
+
+Rates for Railway Rights-of-way properties are being phased-in across the Province. Municipalities receive an amount from the Province as compensation for the loss of revenues resulting from the phase-in. 
+
+The compensation amounts received from the Province in respect of phasing-in Railway Rightsof-way rates should be reported on Schedule 24, Line 8046, which are then carried-forward to this line. 
+
+Note: Amounts related to Taxable properties within the Railway Right-of-Way property class (RTC = W) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 22, line 8045.  Amounts related to PIL properties within the Railway Rightof-Way property class (RTC = W) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 24, line 8045. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 5234 Ontario:  Utility Corridors, Utility Transmission** 
+
+Rates for Utility Corridor properties are being phased-in across the Province. Municipalities receive an amount from the Province as compensation for the loss of revenues resulting from the phase-in. 
+
+The compensation amounts received from the Province in respect of phasing-in Utility Corridor rates should be reported on Schedule 24, Line 8051, which are then carried-forward to this line. 
+
+Note: Amounts related to Taxable properties within the Utility Corridor property class (RTC = U) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 22, line 8050.  Amounts related to PIL properties within the Utility Corridor property class (RTC = U) which are charged by applying a rate to the Acreage of such properties should be reported on Schedule 24, line 8050. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 5236 Ontario:  Hydro-Electric Power Dams** 
+
+Power Dams are now exempt from Taxation.  Municipalities no longer receive amounts from these properties based on a Tax Rate multiplied by Assessment. 
+
+To compensate for the loss of this revenue, the Province is making payments to municipalities based on the municipal taxes these properties generated in 2000. 
+
+The compensation amounts received from the Province in respect of Power Dam exemptions should be reported on Schedule 24, Line 8060, which are then carried-forward to this line. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 5240 Ontario: Other** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario which are not from Ontario Enterprises, and are not included in the lines above should be included on this line. 
+
+**Line 5410 Ontario Enterprises: Ontario Housing Corporation** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario is categorized into Ontario, and Ontario Enterprises. 
+
+Under Ontario Enterprises, any PIL Amounts which are paid by the Ontario Housing Corporation should be reported on this line. 
+
+## **Line 5430 Ontario Enterprises: Liquor Control Board of Ontario** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario is categorized into Ontario, and Ontario Enterprises. 
+
+Under Ontario Enterprises, any PIL Amounts which are paid by the Liquor Control Board of 
+
+## **Line 5432 Ontario Enterprises: Railway Rights-Of-Way** 
+
+Amounts related to PIL properties within the Railway Right-of-Way property class (RTC = W) are derived from applying a rate to the Acreage of such properties.  These amounts are reported on Schedule 24, Line 8045, which are then carried-forward to this line. 
+
+Note: Amounts in respect of portions of the property which are regarded as Taxable should be reported on Schedule 22, Municipal and School Board Taxation, line 8045.  Also, compensation amounts received from the Province in respect of phasing-in Railway Rights-of-way rates should be reported in Schedule 24, line 8046. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+## **Line 5434 Ontario Enterprises: Utility Corridors, Utility Transmission** 
+
+Amounts related to PIL or Exempt properties within the Utility Transmission and Distribution Corridor property class (RTC = U) are charged by applying a rate to the Acreage of such properties.  These amounts are reported on Schedule 24, Line 8050, which are then carriedforward to this line. 
+
+Note: Amounts in respect of portions of the property which are regarded as Taxable should be reported on Schedule 22, line 8050. Also, compensation amounts received from the Province in respect of phasing-in Utility Corridor rates should be reported in Schedule 24, line 8051. 
+
+Please refer to the details at the beginning of the Instructions for this Schedule. 
+
+**Line 5437 Ontario Enterprises: Ontario Lottery and Gaming Corporation** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario is categorized into Ontario, and Ontario Enterprises. 
+
+Under Ontario Enterprises, any PIL Amounts which are paid by the Ontario Lottery and Gaming Corporation should be reported on this line. 
+
+However, notice that Gaming and Casino revenues received by the Municipality should be reported on Schedule 10, Line 1870. 
+
+## **Line 5460 Ontario Enterprises: Other** 
+
+Payment-In-Lieu of Taxes paid by the Provincial Government of Ontario which are from any Ontario Enterprises not listed above, should be included on this line. 
+
+Payment-In-Lieu of Taxes paid by any Municipal Enterprise should be reported on this line. 
+
+However, Payment-In-Lieu of Taxes paid by other Municipalities, or other Enterprises not considered Federal, Provincial or Municipal Enterprises should be reported on line 5910. 
+
+## **Line 5910 Other Municipalities, Other Enterprises** 
+
+Payment-In-Lieu of Taxes paid by other Municipalities, or other Enterprises not considered Federal, Provincial or Municipal Enterprises should be reported on this line. 
+
+## **Line 5950 Amounts Added to PIL** 
+
+PIL Amounts added to tax bills which are NOT levied by applying a tax rate to an assessment value are shown in Part 6 of Schedule 24.  The subtotal for Amounts Added to PIL on Line 9890 of Schedule 24 is carried forward onto this line. 
+
+All amounts reported in this section include any related supplementary PILS raised. 
+
+Examples of amounts charged by means other than applying a tax rate to an assessment are Rates per Acre, Rates per Amount of Frontage, Flat rates, etc.  The following items of this nature are listed on Schedule 24: Local improvements, Sewer and water service charges, Sewer and water connection charges, Fire service charges, Municipal drainage charges, Waste management collection charges, Business improvement area, and other. 
+
+## **Line 9599 TOTAL** 
+
+The Total Amounts shown on this Line are automatically calculated by the sum of Lines 5010 through 5950. 
+
+## **SCHEDULE 28: Upper-Tier Entitlements** 
+
+## **General Information** 
+
+This schedule outlines the upper-tier Municipalities entitlements from each lower-tier municipality. 
+
+## **This schedule must be completed by Upper-tier municipalities only.** 
+
+Information contained in this schedule should be obtained from each lower-tier municipality within the upper-tier municipality.  Column 11, Upper-tier tax adjustments recovered from allowances, should be available from the upper-tier Municipalities records. 
+
+Each line in the schedule is reserved for an individual lower-tier municipality.  The columns that appear across this schedule can be summarized into the following three categories: 
+
+**1. Lower-tier Municipality Description (Columns 1 to 3)** 
+
+**2. Taxation and Payments-In-Lieu (Columns 4 to 8, 13)** 
+
+**3. Adjustments (Columns 9 to 11)** 
+
+The following is a description of each of the columns that appear across this schedule: 
+
+## **A.  LOWER-TIER MUNICIPALITY DESCRIPTION** 
+
+Information displayed in these columns will automatically appear when the upper-tier municipality enters this schedule.  All lower-tier municipalities that exist within the uppertier municipality should be shown. 
+
+## **Column 1 Lower-tier Municipalities** 
+
+This column displays the name of each of the lower-tier municipalities within the uppertier municipality. 
+
+## **Column 2 MAH Code** 
+
+This column displays the Municipal Affairs and Housing Code (MAH Code) which is associated with the municipality.  The MAH Code is a five-digit code which is unique to each municipality in the province. 
+
+The five-digit MAH Code is divided into three parts. 
+
+First two digits: Code which identifies the Region, County, or District where the municipality is located. 
+
+Third digit: Code which identifies the Municipalities status according to the following table: 
+
+|Digit|Municipal Status|Abbreviation|
+|---|---|---|
+|1|City|C|
+|2|Borough|B|
+|3|Separated Town|ST|
+|4|Town|T|
+|5|Village|V|
+|6|Township|Tp|
+|7|Development Area Board|DB|
+|8|Improvement District|ID|
+|9|District School Area|DSA|
+
+
+
+Last two digits: Represent a sequential ordering of Municipalities of the same status in the same Geographic region, county, or district. 
+
+## **Example: 27401 Town of Aurora (in York Region)** 
+
+27 Represents York Region 4 Represents Town 01 Identifies Aurora as Town 1 in the Region 
+
+|First two digits<br>XX<br>Geographic Region, County, or<br>District|Middle digit<br>X<br>Municipal Status|Last two digits<br>XX<br>Sequence|
+|---|---|---|
+
+
+
+## **Column 3 Municipal Assessment Code** 
+
+This column displays the Municipal Assessment Code (Asmt Code) which is associated with the municipality. The Municipal Assessment Code is a four-digit code which is unique to each municipality in the province. 
+
+The Municipal Assessment Code is used by the Municipal Property Assessment Corporation (MPAC) to identify properties in the assessment roll.  The first four digits of properties roll number begins with this code. 
+
+The four-digit code is divided into two parts: 
+
+First two digits: Identifies the Region, County, or District where the municipality is located. 
+
+Last two digits: Identifies each Municipality 
+
+## **Example: 1946 Town of Aurora (in York Region)** 
+
+19 Represents York R 
+
+46 Represents Aurora T 
+
+**==> picture [416 x 46] intentionally omitted <==**
+
+**----- Start of picture text -----**<br>
+First two digits Last two digits<br>XX XX<br>Geographic Region, County, or District Municipality<br>**----- End of picture text -----**<br>
+
+
+## **B.  TAXATION and PAYMENTS-IN-LIEU** 
+
+## **Column 4 General Purpose Levy** 
+
+For each lower-tier municipality, the General-Purpose Levy for upper-tier purposes should be reported in this column. 
+
+This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9299 (Total General-Purpose Levy), column 13 (Municipal Taxes:  Upper-tier). 
+
+## **Column 5 Upper-tier Special Area Levies** 
+
+For each lower-tier municipality, the total of all Upper-tier Special Area Levies should be reported in this column. 
+
+This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9699 (Total Upper-tier Special Area Levies), column 13 (Municipal Taxes:  Upper-tier). 
+
+This amount equals the sum of all subtotals for upper-tier special area levies that are reported (Lines 9601, 9602, 9603…). 
+
+## **Column 6 Supplementary Taxes** 
+
+For each lower-tier municipality, the Supplementary Taxes should be reported in this column. 
+
+This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9799 (Total of all Supplementary Taxes), column 13 (Municipal Taxes:  Upper-tier). 
+
+## **Column 7 Amounts Added to Tax Bills** 
+
+For each lower-tier municipality, the Amounts Added to Tax Bills should be reported in this column. 
+
+This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9890 (Subtotal: Amounts Added to Tax Bills), column 13 (Municipal Taxes: Upper-tier). 
+
+## **Column 13 Other Taxation Amounts** 
+
+For each lower-tier municipality, the Other Taxation Amounts should be reported in this column. 
+
+This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9892 (Subtotal: Other Taxation Amounts), column 13 (Municipal Taxes:  Upper-tier). 
+
+## **Column 8 Payments-In-Lieu** 
+
+For each lower-tier municipality, the total Payments-In-Lieu of Taxation should be reported in this column. 
+
+## **Please Report Hydro-Electric Power Dam PIL on Schedule 28-line 0222 column 8.** 
+
+This amount is reported by each lower-tier municipality, in Schedule 26, Taxation and Payments-In-Lieu, line 9599 (Total:  PIL Entitlement after Adjustments), column 9 (Municipal PILS:  Upper-tier). 
+
+## **C.  ADJUSTMENTS** 
+
+## **Column 9 5% Capping Limit Adjustment** 
+
+For each lower-tier municipality, the surplus or deficit of taxation for upper-tier purposes which occurs because of the 5% Capping Limit program should be reported (Refer to Instructions for Section 2 of Schedule 20 for further information). 
+
+The School Tax Recovery amount should be included in the amounts shown for each lower-tier municipality. 
+
+The sum of this column should equal 0. 
+
+## **Column 10 PLUS:  UT Tax Adjustment Applied to Taxation** 
+
+For each lower-tier municipality, the Total Tax Adjustments Applied to Taxation should be reported. 
+
+This amount is reported by each lower-tier municipality in Schedule 72, Continuity of Taxes Receivable, on line 2899 (TOTAL Tax Adjustments before Adjustments) in column 8 (Upper-tier). 
+
+## **Column 11 LESS:  UT Tax Adjustment Recovered from Allowances** 
+
+## **Upper-tier municipalities should enter amounts in respect of allowance for doubtful accounts that pertain to each lower-tier municipality.** 
+
+**Column 12 TOTAL** 
+
+This automatically calculated amount is equal to the sum of the amounts in columns 4 to 10 and 13, less the amounts in column 11. 
+
+For each lower-tier municipality shown on this schedule, the TOTAL can be described by the following: 
+
+## **Total Upper-Tier Entitlement - Column 12** 
+
+**Equals: Taxes Levied (for Upper-Tier Purposes) - Columns 4, 5** 
+
+**PLUS: Supplementary Taxes (for Upper-Tier Purposes) – Column 6** 
+
+**PLUS:  Amounts Added to Tax Bills (for Upper-Tier Purposes) - Column 7** 
+
+**PLUS:  Other Taxation Amounts (for Upper-Tier Purposes) - Column 13** 
+
+**PLUS:  PILS Raised (for Upper-Tier Purposes) - Column 8** 
+
+**PLUS:  Upper-Tier Tax Adjustments for 5% Capping Limit Program - Column 9 PLUS:  Upper-Tier Tax Adjustments Applied to Taxation - Column 10 LESS:  Upper-Tier Tax Adjustments Recovered from Allowances - Column 11** 
+
+## **SCHEDULE 40: Consolidated Statement of Operations: Expenses** 
+
+## **General Information** 
+
+Schedule 40 consists of operating expenses reported by object and function. This is supported by Schedule 42, Additional Operating Information. Schedule 42 isolates specific expenses for services which were reported as part of a total in Schedule 40. 
+
+Expenses are grouped by object and by function as per _PS1201 Financial statement presentation_ . Object expenses are presented in columns 1 through 7: 
+
+**Column 1 Salaries, wages and employee benefits Column 2 Interest on Long term debt Column 3 Materials Column 4 Contracted services Column 5 Rents and financial expenses Column 6 External transfers Column 16 Amortization Column 7 Total Expenses before adjustments** 
+
+The following additional columns contain information used for analytical purposes: 
+
+**Column 12 Inter-functional adjustments Column 13 Allocation of program support Column 11 Total expenses** 
+
+Please note that column 11, TOTAL expenses, equals the sum of columns 7, 12, and 13. 
+
+## **Municipal Business Corporations** 
+
+Please note that municipalities have the authority under Ontario Regulation 168/03 of the Municipal Act, 2001; to establish business corporations. These corporations should be fully consolidated and reported in the appropriate functional category if they are not deemed to be government business enterprises and if this treatment is consistent with the municipality’s consolidated financial statements. If deemed to be government business enterprises, they will be reported in the same manner as Municipal Electric Utilities. 
+
+## **Suggested order of completion for columns:** 
+
+|**Column**|**1**|<br>**Salaries, wages and employee benefits**|
+|---|---|---|
+|**Column**|**2**|**Long-term debt charges (Interest)**|
+|**Column**|**3**|**Materials**|
+|**Column**|**4**|**Contracted services**|
+|**Column**|**5**|**Rents and financial expenses**|
+|**Column**|**6**|**External transfers**|
+|**Column**|<br>**16**|**Amortization**|
+|**Column**|<br>**12**|**Inter-functional adjustments**|
+|**Column**|<br>**13**|**Allocation of program support**|
+
+
+
+## **Description of Lines:** 
+
+Schedule 40 uses the same functional categories as Schedule 12 with additional lines provided for greater detail on general government expenses and Provincial Offences Act expenses. 
+
+While in Schedule 12 - Statement of Operations: Revenue - revenue for general government is reported on a single line (line 0299), three lines are provided for reporting general government expenses in Schedule 40: 
+
+**0240 Governance 0250 Corporate management 0260 Program support** 
+
+Please see the instructions on Functional categories for a detailed description of general government sub functions. 
+
+Please note that the FIR includes a line for reporting expenses related to the Provincial Offences Act (line 0460) as part of the protection services function. 
+
+## **Description of Columns:** 
+
+## **Column 1 Salaries, wages and employee benefits** 
+
+Salaries, wages and employee benefits include expenses incurred for the following purposes: full-time, part-time and temporary salaries and wages including, regular, overtime, shift premiums and other remuneration to employees. 
+
+Benefits include employer’s contribution payments to Canada Pension Plan (CPP), Ontario Municipal Employee Retirement System (OMERS), Employer’s Health Tax, Employment Insurance (EI), Workplace Safety and Insurance Board (WSIB) and any other insurance plans, such as supplementary health and dental. 
+
+Include clothing, moving, tuition, housing and other employee benefits and allowances paid. 
+
+## **Include funded and unfunded post-employment benefits in the amount for salaries, wages and employee benefits for each sub function.** 
+
+## **Column 2 Interest on long-term debt** 
+
+This column records interest incurred on long term liabilities and for leased tangible capital assets. 
+
+Exclude interest payments made by unconsolidated entities. 
+
+Exclude interest payments made from reserve funds. 
+
+For tile drainage/shoreline assistance, only interest on long-term debt is reported in Schedule 40. Corresponding revenue is reported in SLC 12 1850 04.  Principal repayments are not reported in Schedule 40 and the corresponding revenue is not reported in Schedule 12.  Note that the long-term receivable and long-term debt are reduced by the principal repayment in the year. 
+
+## **Column 3 Materials (and all other expenses not reported in other columns)** 
+
+This column is used to report materials purchased by a municipality for its own uses and/or disposal or resale.  Materials purchased by the municipality which are subsequently provided to a third party are also included in this column. 
+
+Please note that the purchase of hydro services and utilities including cell phone service are reported in column 3 as materials. 
+
+Include all other expenses not reported in other columns as materials. For example, include expenses for insurance, travel, reimbursement of mileage, and photocopying. 
+
+## **Tax write-offs** 
+
+**All tax write-offs should be reported on Schedule 72** .  The exception to reporting tax write-offs on Schedule 72, are amounts determined to be property class shortfalls. These amounts are reported as corporate management - materials in SLC 40 0250 03.  Please refer to the instructions for Schedule 72 line 4420: net impact of 5 % capping limit program. 
+
+Please note that any increase in the allowance for uncollectible taxes is reported as corporate management - materials in SLC 40 0250 03.  If, for any reason, a tax-write cannot be reported on Schedule 72, please report it as corporate management - materials in SLC 40 0250 03 (this should be an exception). 
+
+## **Column 4 Contracted services** 
+
+When a municipality is responsible for providing a service and contracts out service delivery; in part or in whole, to an arms length service provider, use column 4 to report payments to the service provider. 
+
+The arm’s length service provider may be a private contractor, another municipality or another level of government. 
+
+If services are provided in part by an arms length service provider and in part by municipal staff, column 4 is used to report services provided by the contractor. Services provided by municipal staff are not reported in column 4 but are reported using other object categories of expenses. 
+
+If a municipality is invoiced by a Consolidated Municipal Service Manager (CMSM) for services, the amount invoiced is reported as contracted services. 
+
+If a CMSM decides to meet its service responsibilities (e.g. ambulance and child care) through a purchase of service agreement with an arms length service provider, the CMSM reports the purchased service as a contracted service. 
+
+If a municipality is legislated to provide a service and the service is provided through a legislated body, such as a conservation authority, the payment is reported as an External transfer in column 6. 
+
+For contracts which extend beyond the current fiscal year, report only that portion of the contract that relates to the current fiscal year. 
+
+Examples of services that may be provided by way of a contract with an arms length service provider: 
+
+Communications planning and research activities 
+
+Consulting:  Information technology consulting and professional services (services related to electronic data processing, telecommunications or office automation) 
+
+Consulting:  Management consulting and professional services (services related to planning, organizing, directing and controlling activities to assist managers in analysing management problems and recommending solutions) 
+
+Consulting:  Technical consulting and professional services (services related to accounting actuarial sciences, architecture, appraisal, community planning, employment/placement, engineering, health science, surveys) 
+
+Data processing services Fence viewing Legal services Medical and other professional services provided by the municipality but contracted with providers such as doctors, dentists, veterinarians, and nursing services. Research and development services, e.g. research services provided by a university Solid waste:  collection, disposal Snow removal services Weed cutting MPAC Services 
+
+## **Property assessment services provided by MPAC should be reported on line 0250 (corporate management).** 
+
+## **Column 5 Rents and financial expenses** 
+
+Rents and financial expenses paid to external parties are recorded in column 5. Include the rental of buildings, land, machinery, equipment, and engineering structures. 
+
+Where a contracted service reported in column 4 (Contracted services) includes a separate and easily identifiable rental component, report the rental component in this column. 
+
+Financial expenses include short-term borrowing costs, bank and credit card service charges, annual payments associated with financing leases not deemed to be capital tangible lease and any other financial costs from external sources. Include losses on disposal of tangible capital assets. 
+
+Do not include interest paid on long term liabilities since interest should be reported in column 2 (Long term debt charges - Interest). 
+
+Do not include interdepartmental rents and financial expenses in column 5 since these are captured in column 10 (Inter-functional adjustments). 
+
+## **Column 6 External transfers** 
+
+## **Include transfers to:** 
+
+- **Charitable organizations, colleges, cultural or recreation organizations, hospitals, universities** 
+
+- **Conservation authorities** 
+
+- **Individuals, i.e. social assistance** 
+
+- **Unconsolidated local boards** 
+
+## **Please report the amount of transient accommodation tax revenue transferred to tourism organization(s). Please use line 1820 to record this transfer.** 
+
+Amounts billed by the Province for social housing are reported as external transfers. 
+
+Transfers to organizations should be reported as contracted services instead of external transfers if there is a formal agreement that the organization will provide services to the municipality. 
+
+Where land ambulance has not been devolved and a municipality receives a bill from the province for land ambulance services, the expenditure is reported as an external transfer. 
+
+Tax write-offs that do not meet the reporting requirements of Schedule 72, should not be reported in the column for external transfers; they should be reported in the column for materials in SLC 40 0250 03.  These expenses will be backed out of the efficiency measure formula for operating costs. 
+
+The Treasurers Group of the Ontario Municipal CAO’s Benchmarking Association (OMBI) asks that municipalities review any external transfers reported as program support in SLC 40 0260 06. External transfers related to program areas should not be reported on any line for general government. If external transfers are not related to a specific program, they should be reported on the line for corporate management in SLC 40 0250 06. 
+
+## **Column 16 Amortization** 
+
+This column records the annual amortization expense for tangible capital assets. 
+
+## **Column 7 Total Expenses before adjustments** 
+
+The subtotal is equal to the sum of columns one through six plus column 16. 
+
+## **Column 12 Inter-functional adjustments** 
+
+For a complete discussion of the allocation of program support, please see section 14, Allocation of Indirect Costs, in the Introduction to the FIR instructions. 
+
+Column 12 is used only to record transfers between sub-functions below general government. A separate column, column 13, is provided for the allocation of program support to other subfunctions. 
+
+Municipalities should not use SLC 40 0240 12 (governance line, inter-functional adjustments column) or SLC 40 050 12 (corporate management line, interfunctional adjustments column) to record indirect costs to be allocated downwards in Schedule 40 to other sub-functions. Generally, any negative values entered on the governance and corporate management lines in column 12 would represent amounts to be allocated to other sub-functions. 
+
+When the interfunctional adjustments column is used to record both inter departmental transfers and the allocation of indirect costs, neither type of transaction can be isolated. We do not know which entries represent interdepartmental transfers and which entries represent the allocation of indirect costs.  This works against the objective of transparency in financial reporting. 
+
+Please note that the interfunctional adjustments column does not contain a formula for summing expenses for salaries, wages and employee benefits; materials; and contracted services.  It is a stand-alone column separate from those expense categories.  Therefore, the content of expenses reported as inter-functional adjustments for governance in SLC 40 0240 12 and for corporate management in SLC 40 0250 12 is unknown. 
+
+In addition, there is no standardized method for allocating interfunctional adjustments reported on the governance and corporate management lines to sub-functions.  Note that interfunctional adjustments reported on the program support line in SLC 40 0260 12 do form part of the total to be allocated to other sub-functions in SLC 40 0260 13. 
+
+## **Using column 12** 
+
+The department or sub-function which provides a service reports a negative value in column 12. The department which receives the service reports a positive value in column 12. 
+
+## **Total in column 12** 
+
+The total in SLC 40 9910 12 will always be zero because each negative amount entered in column 12 as an interdepartmental transfer has a corresponding positive amount. 
+
+## **Column 13 Allocation of program support** 
+
+The program support line in Schedule 40, line 0260, is used to report indirect costs that can be easily allocated to other sub-functions. In comparison, the corporate management line, line 0250, is used to record indirect costs that are not easily allocated to other sub-functions. Please see the chapter on Functional Categories for a discussion of the differences between these two lines. 
+
+Municipalities report the amount of program support to be allocated to other sub-functions in column 13. 
+
+Please see section 14 on the Allocation of Indirect Costs in the Introduction to the FIR instructions for further details. 
+
+## **Determining the amount of Program Support to be allocated to other functions** 
+
+The following object categories of expenses are automatically summed and entered as a negative value in SLC 40 0260 13: 
+
+**Column 1 Salaries, wages and employee benefits Column 3 Materials Column 4 Contracted services Column 5 Rents and financial expenses Column 12 Inter-functional adjustments** 
+
+Program support is allocated to other sub-functions and entered as positive values in column 13.  The column total for column 13 is always zero since the sum of the amounts allocated to other functions is a positive value which equals the amount in SLC 40 0260 13, a negative value. 
+
+The method of allocating program support to other sub-functions depends on the population of the municipality. Municipalities with populations of 100,000 or more are required to use the Ontario Municipal CAO’s Benchmarking Initiative (OMBI) method of allocation. 
+
+Municipalities with populations under 100,000 are required to allocate program support using the percentage of total expenses method. Municipalities with populations under 100,000 may also use the modified percentage of total expenses method. 
+
+**Column 11 Total expenses after Adjustments Total expenses are equal to the sum of:** 
+
+**Column 7 Total Expenses before adjustments + Column 12 Inter functional adjustments + Column 13 Allocation of program support** 
+
+## **SCHEDULE 42: Additional Information** 
+
+This section analyses information contained in **Schedule 40, Statement of Operations: Expenses.** 
+
+This schedule isolates amounts which are included in a column total or row total. 
+
+## **TOTAL OF COLUMN 1 AND 14 INCLUDES:** 
+
+In Schedule 40, column 1 is entitled, Salaries, Wages and Employee Benefits. Please identify the following amounts contained in the total on line 9910: 
+
+## **Line 5010 Salaries and wages** 
+
+Enter the amount spent on salaries and wages included in total salaries, wages and employee benefits in SLC 40 9910 01. 
+
+## **Line 5020 Employee benefits** 
+
+Enter the total cost of employee benefits included in total salaries, wages and employee benefits in SLC 40 9910 01. 
+
+## **Line 5099 Subtotal** 
+
+This line automatically calculates the total salaries, wages and employee benefits (not including line 5050). (Subtotal is equal to the sum of lines 5010 to 5020) 
+
+## **Line 5050 Salaries, Wages and Employee benefits capitalized on Schedule 51** 
+
+Enter the total salaries, wages and employee benefits capitalized on schedule 51. 
+
+## **Line 5098 Subtotal** 
+
+This line is automatically calculated, and it captures the total salaries, wages and employee benefits (subtotal is equal to the sum of lines 5099 and 5050). 
+
+## **TOTAL OF COLUMN 3 INCLUDES:** 
+
+## **Line 5110 Amounts for tax write-offs reported in SLC 40 0250 03** 
+
+Enter increases to allowances for tax write-offs and tax write-offs reported in Schedule 40 which were not reported in Schedule 72. 
+
+## **TOTAL OF COLUMN 4 INCLUDES:** 
+
+## **Line 5210 Municipal Property Assessment Corporation (MPAC)** 
+
+In Schedule 40, column 4 is entitled, Contracted Services. 
+
+Enter the amount for assessment services provided by the Municipal Property Assessment Corporation which is included in the total for contracted services in SLC 40 0250 04. 
+
+## **TOTAL OF COLUMN 5 INCLUDES:** 
+
+## **Line 5610 Short-term interest costs** 
+
+In Schedule 40, column 5 is entitled, Rents and Financial Expenses. 
+
+Report short-term interest costs reflected in the total of the column for rents and financial expenses in SLC 40 9910 05. 
+
+## **TOTAL OF COLUMN 6 INCLUDES:** 
+
+## **In Schedule 40, column 6 is entitled, External Transfers.** 
+
+Please identify amounts for the programs listed below which are included in the total for external transfers in SLC 40 9910 06. 
+
+**Line 5810 Grants to charitable and non-profit organizations Line 5820 Grants to universities and colleges** 
+
+## **Contributions to UNCONSOLIDATED joint local boards** 
+
+It is expected that most local boards will be fully or proportionally consolidated.  However, the following lines are provided to identify external transfers to local boards which are not consolidated by your municipality. 
+
+If an unconsolidated local board does not fit one of the categories provided, please specify the name of the board on line 5895 to line 5898. 
+
+**Line 5840 Health unit Line 5850 District Social Services Administration Board (DSSAB) Line 5860 Consolidated Municipal Service Manager (CMSM) Line 5870 Homes for the Aged Line 5880 Recreation boards Line 5890 Fire area boards Line 5895 Other: Please describe Line 5896 Other: Please describe Line 5897 Other: Please describe Line 5898 Other: Please describe** 
+
+## **Tourism** 
+
+**Line 5991 Specify:** 
+
+**Please enter tourism organization receiving transient accommodation revenue.** 
+
+**Line 5992 Specify:** 
+
+**Please enter tourism organization receiving transient accommodation revenue.** 
+
+**Line 5993 Specify:** 
+
+**Please enter tourism organization receiving transient accommodation revenue.** 
+
+**TOTAL OF COLUMN 11 INCLUDES:** 
+
+**Line 6090 Total COVID-19 Expenses as reported in Schedule 40 line 9910 column 11.** 
+
+## **Please enter the direct costs of COVID-19 expenses on this line.** 
+
+**Covid-19 expenses will vary by municipality. Examples of costs include: cleaning costs, personal protective equipment (PPE), additional costs for remote working arrangements, additional staff, overtime, additional mileage and fleet costs (less staff per vehicle), and advertising/signage, among other expenses.** 
+
+## **PLEASE DO NOT INCLUDE LOSS OF REVENUE.** 
+
+**Line 6010 Payments for long term financial commitments, liabilities and contractual obligations financed from the Consolidated Statement of Operations, excluding long term debt charges reported in Column 2** 
+
+**The intent of line 6010 is to capture expenses related to other capital long term financial commitments, liabilities, and contractual obligations entered in Schedule 40.** 
+
+**The amount in line 6010 flows to Schedule 81 to calculate the Annual Debt Repayment Limit. Long term debt charges reported in Column 2 of Schedule 40 are not included in line 6010 because these charges flow from Schedule 74C to Schedule 81.** 
+
+Line 6010 could include, among other expenses, capital lease payments and financial commitments to hospitals and universities. Note that some payments to institutions will also be reported on line 5810 (Grants to charitable and non-profit organizations) of this schedule or on line 5820 (Grants to universities and colleges). 
+
+The costs associated with operating contracts such as garbage disposal, snow removal, office cleaning, etc., should be reported in Schedule 40 as contracted services and do not require disclosure here. 
+
+## **Schedule 51: Consolidated Schedule of Tangible Capital Assets** 
+
+The Schedule 51 series collects the net book value of tangible capital assets by function (51A) and asset class (51B), and construction-in-process by function (51C) 
+
+Refer to the FIR Instructions section on functional categories for definitions of specific functions. 
+
+**==> picture [38 x 38] intentionally omitted <==**
+
+## **Ensure tangible capital assets are included in the appropriate functional categories. Ministries use information from the FIR, including Schedule 51, to determine eligibility for certain grants and programs.** 
+
+## **Municipalities that do not fill out Schedule 51 properly may be deemed ineligible for certain grants. If you require assistance classifying tangible capital assets, contact: Fir.mah@ontario.ca** 
+
+## **Transfers between functional categories:** 
+
+Transfers between functional categories may be recorded by: 
+
+## **(a) Adjusting opening balances** 
+
+- Decrease the opening cost balance (column 2) of the previous functional classification by the original cost of the asset 
+
+- Increase the opening cost balance (column 2) of the new functional classification by the original cost of the asset (the same amount as the previous step) 
+
+- Decrease the opening amortization balance (column 7) of the previous functional classification by the total accumulated amortization balance of the asset as at the end of the prior year 
+
+- Increase the opening amortization balance (column 7) of the new functional classification by the total accumulated amortization balance of the asset as at the end of the prior year (the same amount as the previous step) 
+
+## **(b) In-year adjustments** 
+
+- Record the original cost of the asset as a positive amount in the disposal’s column (column 4) of the previous functional classification 
+
+- Record the original cost of the asset as a negative amount in the disposal’s column (column 4) of the new functional classification 
+
+- Record the total accumulated amortization balance of the asset at the end of the prior year as a positive amount in the amortization disposal column (column 9) of the previous functional classification 
+
+- Record the total accumulated amortization balance of the asset at the end of the prior year as a negative amount in the amortization disposal column (column 9) of the new functional classification 
+
+## **Schedule 51A: Tangible Capital Assets by Function** 
+
+## **Column 1: Opening Net Book Value of tangible capital assets** 
+
+This column is automatically populated from the previous year’s closing Net Book Value of tangible capital assets. 
+
+## **Cost of Tangible Capital Assets:** 
+
+## **Column 2: Opening Cost Balance** 
+
+Column 2 includes the opening balance of the cost of assets.  This column is automatically prepopulated from the previous year’s closing cost balance. 
+
+## **Column 3: Additions and Betterments** 
+
+Column 3 includes all costs related to the purchase, construction, and development of tangible capital assets as per _PS 3150 Tangible capital assets_ . This also includes donated/contributed tangible capital assets and betterments. 
+
+## **Column 4: Disposals** 
+
+In Column 4, record the cost for assets that were sold, traded-in, destroyed, lost, or abandoned. 
+
+## **Column 5: Write downs** 
+
+In Column 5, record the permanent decline in the value of tangible capital assets. 
+
+## **Column 6: Closing Cost Balance** 
+
+The year-end closing cost balance is automatically calculated as follows: 
+
+|<br> <br>**Closing Cost Balance**<br>**=**<br>**+**<br>**-**<br>**-**|**Opening Cost Balance**<br>**Additions and Betterments**<br>**Disposals**<br>**Write Downs**|**Column 2**<br>**Column 3**<br>**Column 4**<br>**Column 5**|
+|---|---|---|
+
+
+
+## **Amortization** 
+
+## **Column 7: Opening Amortization Balance** 
+
+Column 7 includes the opening accumulated amortization balance. This column is automatically pre-populated from the previous year’s closing accumulated amortization balance. Accumulated amortization is the cumulative amortization of assets up to a certain point in time. 
+
+## **Column 8: Annual amortization** 
+
+In Column 8, record the cost reported as an amortization expense in schedule 40 on column 16. 
+
+## **Column 9: Amortization Disposal** 
+
+In Column 9, report the sum of the accumulated amortization applicable to disposals or write downs. 
+
+## **Column 10: Closing Amortization Balance** 
+
+The year-end closing accumulated amortization balance is automatically calculated as follows: 
+
+|<br>**Closing Amortization**<br>**Balance**<br>**=**<br>**+**<br>**-**|**Opening Amortization Balance**<br>**Annual Amortization**<br>**Amortization Disposal**|**Column 7**<br>**Column 8**<br>**Column 9**|
+|---|---|---|
+
+
+
+## **Column 11: Closing Net Book Value** 
+
+The year-end closing net book value is automatically calculated as follows: 
+
+**Closing Cost Balance - Closing Amortization Balance = Closing Net Book Value Column 6 – Column 10 = Column 11 NOTE:  SCHEDULE 51A: NET BOOK VALUE (NBV) SHOULD NEVER BE NEGATIVE!** 
+
+## **Schedule 51B: Segmented by Asset Class** 
+
+## **Please ensure tangible capital assets are segmented by asset class only.** 
+
+## **General Capital Assets** 
+
+General capital assets include tangible capital assets (TCA) that are not considered part of the Infrastructure Asset class. Refer to the definition of Infrastructure Class for more details. 
+
+General capital assets include, TCAs in the following classes: Parks, Recreation facilities, Fire, EMS, Police, Waste Collection and Disposal, and Landfills. Lists of examples provided in the FIR instructions for Schedule 51B are not exhaustive. 
+
+## **Line 2005 Land** 
+
+Land consists of real property in the form of a plot, lot, or area. 
+
+Include all expenditures made to acquire land and ready it for use, where improvements are considered permanent in nature. Examples of expenditures include: purchase price, closing costs, grading, filling, draining, clearing, and removal of old buildings (net of salvage), assumption of liens or mortgages, and any additional land improvements that have an indefinite life. 
+
+## **Line 2010 Land Improvements** 
+
+Land improvements consist of betterments, site preparation and site improvements (other than buildings) that ready land for its intended use, which generally decay or break down over time. 
+
+Land improvements that are removable and can degrade or deplete over the course of time through use or due to the elements, should be separately capitalized and their value amortized over the useful life of the improvement. 
+
+General capital land improvement examples include: landfill site development, construction of driveways, parking lots, retaining walls, bike paths in parks, drop off locations, sidewalks, fencing, patios, water fountains, outdoor swimming or wading pools, ball diamonds, soccer fields, irrigation systems, and tennis courts. 
+
+## **Line 2020 Buildings** 
+
+General capital buildings include all structures that provide shelter from the elements which function independent of an infrastructure network. 
+
+Examples include: EMS stations, bus transit facilities, sport and recreation facilities, office buildings, fire/police stations, libraries, pavilions, change rooms, park washrooms & concession buildings, band shells, ticket kiosks, crematoriums, chapels, mausoleums, waste depots, recycling facilities 
+
+## **Line 2030 Machinery & Equipment** 
+
+General capital machinery and equipment include apparatuses, tools, devices, implements or instruments that likely use energy (for ex. human, electrical, hydraulic fuel, or thermal) to facilitate a process, function or completion of a task. 
+
+Machinery and equipment may also include furniture and fixtures. It may be installed within a building but is generally capable of being moved and reinstalled at a different location (it is not permanently affixed to or integrated into the building or structure in which it resides). 
+
+## **Line 2040 Vehicles** 
+
+General capital vehicles include means of transportation, usually having wheels, used for transporting persons or things, or for towing purposes. 
+
+Vehicles include automobiles, trucks, trailers, motorcycle, and boats. 
+
+**Line 2097 Other** Please enter description **Line 2098 Other** Please enter description 
+
+**Line 2099 Total General Capital Assets** 
+
+This line is automatically calculated. It is the sum of lines 2005 through 2098. 
+
+## **Infrastructure Assets** 
+
+Tangible capital assets are classified as ‘Infrastructure Assets’ if the assets are linear in nature. Linear assets and their associated components are generally constructed or arranged in a continuous and connected network. 
+
+Infrastructure assets include: Transportation Infrastructure (Roads –including cycling lanes, bridges, tunnels, public transit rail line portion only, drainage systems), Utilities (telephone, gas and electrical), and Environmental Infrastructure (water delivery systems, waste water treatment, storm drainage systems). 
+
+## **Line 2205 Land** 
+
+Land for line 2205 consists of real property in the form of a plot, lot, or area that is associated with infrastructure. 
+
+Line 2205 land includes land under roads and land associated with road allowances, sewage treatment plant sites, and pump station properties. 
+
+## **Line 2210 Land Improvements** 
+
+Report land improvements as defined in the General Capital asset class that is associated with infrastructure. 
+
+Examples include: parking lots and driveways for water/waste water sites, and site improvements such as grading at works yards whose purpose is to serve as a base for maintaining Infrastructure. 
+
+## **Line 2220 Buildings** 
+
+Reports buildings as defined in the "General Capital" asset class associated with infrastructure. 
+
+Examples include: wastewater treatment control buildings, water supply buildings, buildings in works yards dedicated to Infrastructure maintenance, and rail transit facilities. 
+
+## **Line 2230 Machinery & Equipment** 
+
+Report machinery and equipment as defined in the General Capital asset class that is associated with infrastructure. 
+
+## **Line 2240 Vehicles** 
+
+Reports vehicles as defined in the General Capital asset class associated with infrastructure. 
+
+## **Line 2250 Linear Assets** 
+
+The Linear assets sub class applies only to “Infrastructure assets.” It has no “General Capital” counterpart. 
+
+Linear assets are assets generally constructed or arranged in a continuous and connected network. 
+
+This Includes connected: 
+
+1. Surface systems such as roads, sidewalks, bridges, drainage ditches, streetlights, and transit rail lines; and 
+
+2. Underground systems such as water distribution pipe systems, wastewater collection pipe systems, manholes, catch basins, and storm drainage collection systems and tunnels 
+
+**Line 2297 Other** Please enter description **Line 2298 Other** Please enter description **Line 2299 Total Infrastructure Assets** 
+
+**This line is automatically calculated. It is the sum of lines 2205 through 2298.** 
+
+**Line 9920 Total Capital Assets This line is automatically calculated. It is the sum of lines 2099 and 2299** . 
+
+## **Line 2405 Construction-in-progress (51 9910 04)** 
+
+**This line automatically carried forward from Schedule 51C line 9910 column 4.** 
+
+**Line 9921 Total Tangible Capital Assets and Construction-in-progress** 
+
+**This line automatically calculated. It is the sum of lines 9920 and 2405** . **NOTE:  SCHEDULE 51A & 51B:  NET BOOK VALUE (NBV) SHOULD NEVER BE NEGATIVE!** 
+
+## **Schedule 51C: Construction-in-progress** 
+
+This schedule captures construction-in-progress by function. 
+
+## **Column 1: Opening Balance** 
+
+This column is automatically populated by the ending construction-in-progress balance from the previous year. 
+
+## **Column 2: Expenditures in Current Year** 
+
+In Column 2, enter by function the costs incurred in the current year for capital work not yet completed. 
+
+## **Column 3: Less: Assets Capitalized** 
+
+In Column 3, enter by function the tangible capital assets capitalized in the current year. 
+
+## **Column 4: Closing Balance** 
+
+This column is automatically calculated as follows: 
+
+|**Closing Construction-in-Progress Balance**<br>**=**<br>**+**<br>**-**|**Opening Balance**<br>**Expenditures in year**<br>**Assets Capitalized**|**Column 1**<br>**Column 2**<br>**Column 3**|
+|---|---|---|
+
+
+
+## **Schedule 53: Consolidated Statement of Change in Net Financial Assets (Net Debt) and Sources of Financing for Tangible Capital Asset Acquisition Financing/Donations** 
+
+## **Consolidated Statement of Change in Net Financial Assets (Net Debt)** 
+
+The statement of change in net financial assets (net debt) explains the difference between a municipality’s surplus or deficit and its change in net debt in the same reporting year.  This statement provides for the reporting of the acquisition of tangible capital assets and other significant items that have an impact on the difference between the annual surplus or deficit and the change in net financial assets or net debt. 
+
+## **Line 1010 Annual Surplus (Deficit)** 
+
+This line is automatically populated from line 2099, Schedule 10, Consolidated Statement of Operations: Revenue. 
+
+## **Line 1020 Acquisition of tangible capital assets** 
+
+Report the acquisition of tangible capital assets. 
+
+## **Line 1030 Amortization of tangible capital assets** 
+
+Amortization of tangible capital assets is automatically populated from Schedule 51-line 9910 column 8. 
+
+## **Line 1031 Contributed (Donated) tangible capital assets** 
+
+Report the contribution/donation of tangible capital assets from developers, etc. 
+
+## **Line 1032 Change in construction-in-progress** 
+
+Report the change in construction-in-progress of tangible capital assets **.** 
+
+## **Line 1040 (Gain)/Loss on sale of tangible capital assets** 
+
+Report the excess or deficiency of proceeds from the disposal/and or sale of tangible capital assets over net book value. 
+
+## **Line 1050** 
+
+## **Proceeds on sale of tangible capital assets** 
+
+Report the proceeds on sale of tangible capital assets. 
+
+## **Line 1060 Write-downs of tangible capital assets** 
+
+Report the write-downs of tangible capital assets. 
+
+## **Line 1070 Other:** 
+
+Please describe other. 
+
+## **Line 1071 Other** 
+
+Please describe other. 
+
+## **Line 1099 Subtotal:** 
+
+The subtotal is automatically calculated. It is the sum of lines 1020 through 1071. 
+
+## **Line 1210 Change in supplies inventories** 
+
+Report the difference between the cost of acquiring and consuming supplies inventories. 
+
+## **Line 1220 Change in prepaid expenses** 
+
+Report the difference between costs that are prepaid during the year and prepaid costs that are expensed. 
+
+## **Line 1230 Other:** Please describe other. 
+
+## **Line 1299** 
+
+## **Subtotal:** 
+
+The subtotal is automatically calculated. It is the sum of lines 1220 through 1230. 
+
+## **Line 1410 (Increase) decrease in net financial assets (net debt** 
+
+The (increase) decrease in net financial assets (net debt) is automatically calculated. It is the sum of lines 10, 1099, and 1299. 
+
+## **Line 1420 Net financial assets (net debt), beginning of year** 
+
+This line is automatically populated from the previous year’s ending net financial assets (net debt). 
+
+## **Line 1421 Other Comprehensive income or (loss)** 
+
+Report other comprehensive income or losses from the Statement of Remeasurement Gains and Losses. 
+
+## **Line 9910 Net financial assets (net debt), end of year** 
+
+The ending net financial assets (net debt) is automatically calculated as the sum of lines 1410 and 1420. 
+
+## **Sources of Financing for TCA Acquisitions/Donations:** 
+
+**This section captures the method of financing of the acquisition of tangible capital assets as shown on Schedule 53-line 1020 column 01.** 
+
+## **LONG TERM LIABILITIES INCURRED** 
+
+## **On the following lines report long term liabilities issued under the following programs:** 
+
+**Line 0205          Canada Mortgage and Housing Corporation (CMHC) Line 0210          Ontario Financing Authority Line 0215          Commercial Area Improvement Program Line 0220          Other Ontario housing programs** 
+
+**On the following lines, report debt by type where it has not been listed under any of the programs listed on lines 0205 through 0230:** 
+
+**Line 0235          Serial debentures Line 0240          Sinking fund debentures Line 0245          Long term bank loans Line 0250         Long term reserve fund loans Line 0255          Lease purchase agreements (Tangible capital leases) Line 0260          Construction financing debentures Line 0265          Infrastructure Ontario Line 0297          Other:  Please enter description Line 0298          Other:  Please enter description** 
+
+**Line 0299          Subtotal: The subtotal of long-term liabilities incurred is the sum of lines 0205 through 0298.** 
+
+## **FINANCING FROM DEDICATED REVENUE** 
+
+## **Line 0405 Municipal Property Tax by Levy** 
+
+Report revenues specifically generated for the acquisition of tangible capital assets from the municipality’s property tax levy including property tax revenues generated from special area rates. 
+
+## **Line 0406 Reserves and Reserve Funds** 
+
+This line is automatically calculated from Schedule 60-line 1012 column 2 plus Schedule 60line 1012 column 3. (SLC 60 1012 02 + 03) 
+
+Reserves and reserve funds that have been utilized during the year for the acquisition of Tangible Capital Assets are reported on this line. 
+
+## **Line 0410 Municipal User Fee & Service Charges** 
+
+Report revenues specifically generated for the acquisition of tangible capital assets from municipal user fee and service charges. 
+
+## **Line 0415 Development Charges** 
+
+This line is automatically populated from Schedule 61-line 0299 column 8. 
+
+Development charges revenues utilized in the reporting year that were generated for the acquisition of tangible capital assets are reported on this line. 
+
+## **Line 0416 Recreation land (The Planning Act)** 
+
+This line is automatically populated from Schedule 60-line 1032 column 1. 
+
+Recreation land revenues utilized in the reporting year that were generated for the acquisition of tangible capital assets are reported on this line. 
+
+## **Line 0419** 
+
+## **Donations** 
+
+Report donation revenues received for the acquisition of tangible capital assets. 
+
+**Line 0420 Other:** Report other revenues, please describe other. **Line 0446 Proceeds from the sale of Tangible Capital Assets, etc.** 
+
+Report the proceeds from the sale of tangible capital assets that have been used to acquire tangible capital assets on this line. 
+
+## **Line 0447 Investment income** 
+
+Report investment income or interest income used to acquire tangible capital assets. 
+
+## **Line 0448 Prepaid special charges** 
+
+Report any prepaid special charges used to acquire tangible capital assets. 
+
+**Line 0495 Other:** Report other revenues received, please describe other. **Line 0496 Other:** Report other revenues received, please describe other. **Line 0497 Other:** Report other revenues received, please describe other. **Line 0498 Other:** Report other revenues received, please describe other. **Line 0501 Subtotal: Financing from dedicated revenue: Sum of lines 0405 to 0498** 
+
+## **GOVERNMENT TRANSFERS** 
+
+## **Line 0425 Capital Grants: Federal** 
+
+This line is automatically calculated from Schedule 10, Schedule 12 and Schedule 60. 
+
+This line excludes the Federal Gas Tax grants. Federal gas tax grants are shown on Schedule 53-line 0440 column 1. 
+
+Federal capital grants received for the acquisition of tangible capital assets and utilized in the reporting year are reported on this line. 
+
+Calculation:  SLC 12 9910 06 – (SLC 10 4099 01 –SLC 60 1047 01) 
+
+## **Line 0430 Capital Grants: Provincial** 
+
+This line is automatically calculated from Schedule 10, Schedule 12, and Schedule 60. 
+
+This line excludes the Provincial Gas Tax funding for transit. Provincial gas tax grants are shown on Schedule 53-line 0445 column 1. 
+
+Provincial capital grants received for the acquisition of tangible capital assets and utilized in the reporting year are reported on this line. 
+
+Calculation: SLC 12 9910 05 – (SLC 10 4019 01 – SLC 60 1045 01) 
+
+## **Line 0435 Capital Grants: Other Municipalities** 
+
+This line is automatically calculated Schedule 12-line 9910 column 7. 
+
+Grants received from the other municipalities for the acquisition of tangible capital assets and utilized in the reporting year are reported on this line. 
+
+## **Line 0440 Canada Gas Tax** 
+
+This line is automatically populated from Schedule 10-line 4099 column 1. 
+
+Federal gas tax revenues received and utilized in the reporting year to acquire tangible capital assets are reported on this line. 
+
+## **Line 0445 Provincial Gas Tax** 
+
+This line is automatically populated from Schedule 10-line 4019 column 1. 
+
+Provincial gas tax revenues received and utilized in the reporting year to acquire tangible capital assets are reported on this line. 
+
+## **Line 0502 Subtotal: Government Transfers** 
+
+This line is automatically calculated. It is the sum of lines 0425 through 0445. 
+
+## **Line 0499 Subtotal: (Dedicated Revenue and Government Transfers)** 
+
+This line is automatically calculated. It is the sum of line 0501 and line 0502. 
+
+## **Line 0610 Contributed (Donated) Tangible Capital Assets** 
+
+This line automatically populated by multiplying line 1031 in this schedule by -1. 
+
+## **Line 9920 Total Municipal Capital Financing** 
+
+This line is the sum of lines 0499 and 0610. 
+
+## **Line 0810 Unexpended Capital Financing or (Unfinanced Capital Outlay)** 
+
+Both unexpended capital financing and unfinanced capital outlay measure the difference between acquisition of tangible capital assets plus donated tangible capital assets and total capital financing. 
+
+Unexpended capital financing represents a surplus in capital financing and indicates financing received to date exceeds capital expenditures to date. 
+
+Unfinanced capital outlay represents a shortfall in capital financing and indicates capital expenditures exceed financing received to date. 
+
+## **Schedule 54: Consolidated Statement of Cash Flows** 
+
+The consolidated statement of cash flows reflects the effects of a municipality’s activities on its cash resources.  The statement of cash flows shows how a municipality generated and used cash in the reporting year and the change in cash and cash equivalents at the beginning and end of the reporting year. 
+
+The statement of cash flows reports cash flows classified by operating, capital, investing and financing activities. 
+
+PSA Section 1201 Financial statement presentation allows a municipality to use either the direct or indirect method to report cash activities in municipal financial statements. 
+
+## **Please utilize the method in the FIR that was used in the municipal financial statements.** 
+
+## **The information provided in the statement of cash flows for the FIR should be the same as reported in the municipal financial statement.** 
+
+## **Direct Method (Schedule 54A):** 
+
+Please do not report revenues and expenses calculated using the accrual method, instead report gross cash receipts and gross cash payments. Cash receipts (inflows) should be reported as positive amounts and cash payments (outflows) should be reported as negative amounts. 
+
+## **Operating Transactions:** 
+
+This category includes cash received and cash spent during the year on the municipality’s operations. 
+
+Refer to the instructions for Schedule 10 Consolidated Statement of Operations: Revenue and Schedule 40 Consolidated Statement of Operations: Expenses for more information on the line items within the operating transactions category. 
+
+## **Cash received from:** 
+
+**Line 0210 Taxes Line 0220 Transfers Line 0230 User Fees Line 0240 Fees, permits, licenses and fines Line 0250 Enterprises Line 0260 Investments Line 0298 Other Line 0299 subtotal: sum of lines 0210 to 0298** 
+
+|**Cash paid**|**for:**|
+|---|---|
+|**Line 0410**|**Salaries, wages, employment contracts and benefits**|
+|**Line 0420**|**Material and supplies**|
+|**Line 0430**|**Contracted services**|
+|**Line 0440**|<br>**Financing charges**|
+|**Line 0450**|**External transfers**|
+|**Line 0498**|**Other**|
+|**Line 0499**|**subtotal: sum of lines 0410 to 0498**|
+|**Line 2099**|**Cash provided by operating transactions: line 0299 less line 0499**|
+
+
+
+## **Capital Transactions:** 
+
+This category includes cash flow related to the acquisition and disposal of tangible capital assets. 
+
+**Line 0610 Proceeds from the sale of tangible capital assets Line 0620 Cash used to acquire tangible capital assets Line 0630 Cash used for construction-in-progress Line 0698 Other Line 0699 Cash applied to capital transactions: sum of lines 0610 to 0698** 
+
+## **Investing Transactions:** 
+
+Cash flow from investing transactions relates to the purchase and disposal of investments. This category includes investments such as marketable securities and investments in government-controlled business enterprises. Refer to PS 3041 Portfolio investments for a definition of portfolio investments. 
+
+## **Line 0810 Proceed from portfolio transactions** 
+
+Report the proceeds from portfolio transactions, such as disposals and redemptions. 
+
+**Line 0820 Portfolio investments** 
+
+Report cash used for portfolio investments. 
+
+**Line 0898 Other** 
+
+**Line 0899 Cash provided by (applied to) investing transactions: sum of lines 0810 to 0898** 
+
+## **Financing Transactions:** 
+
+Cash flow from financing transactions includes the issuance and payment of debt obligations by the municipality. This category also includes cash transactions associated with tangible capital assets acquired through a capital lease. 
+
+## **Line 1010 Proceeds from debt issues** 
+
+Report the proceeds from debt issued. 
+
+**Line 1020 Debt repayment** 
+
+Report only the principal debt repayment on this line. 
+
+## **Line 1030 Temporary loans** 
+
+Report the proceeds from temporary loans. 
+
+## **Line 1031 Repayment of temporary loans** 
+
+Report the repayment of temporary loans. 
+
+**Line 1096 Other:** Please describe **Line 1097 Other:** Please describe **Line 1098 Other:** Please describe **Line 1099 Cash applied to financing transactions: sum of lines 1010 to 1098** 
+
+## **Increase in cash and cash equivalents:** 
+
+**Line 1210 Increase in cash and cash equivalents** Increase (decrease) in cash and cash equivalents is automatically calculated as follows: 
+
+|**Increase (decrease) in cash and**<br>**cash equivalents**<br>**=**<br>**+**<br>|**Cash provided by operating transactions**|**Line 2099**|
+|---|---|---|
+|**+**<br>|**Cash (applied to) capital transactions**|**Line 0699**|
+|**+**|**Cash provided by investing transactions**|**Line 0899**|
+||**Cash (applied to) financing transactions**|**Line 1099**|
+
+
+
+**Line 1220 Cash and cash equivalents, beginning of year** 
+
+Cash and cash equivalents, beginning of year, is automatically populated from the previous year’s line 9920 Cash and cash equivalents, end of year. 
+
+## **Line 9920 Cash and cash equivalents, end of year** 
+
+Cash and cash equivalents, end of year, is the sum of lines 1210 and 1220. 
+
+## **Cash and cash equivalents represented by:** 
+
+In this section, the end of year balance of cash and cash equivalents is classified by type of component. 
+
+Cash equivalents are short-term highly liquid investments that are readily convertible to known amounts of cash and that are subject to an insignificant risk of changes in value. Cash equivalents are held for the purpose of meeting short-term cash commitments rather than for investing or other purposes. 
+
+## **Line 1401 Cash** 
+
+Cash comprises cash on hand and demand deposits. 
+
+## **Line 1402 Temporary borrowings** 
+
+When bank overdrafts, which are repayable on demand, form an integral part of a municipality’s cash management, such that the municipality's bank balance often fluctuates from being positive to overdrawn, bank overdrafts are included as a component of cash and cash equivalents. 
+
+**Line 1403 Short term Investments** 
+
+An investment would normally qualify as a cash equivalent only when it has a short maturity of, say, three months or less from the date of acquisition. Equity investments are excluded from cash equivalents unless they are, in substance, cash equivalents. 
+
+## **Line 1404 Other** 
+
+Please include other types of cash equivalents. Please provide a text description. 
+
+## **Line 9940 Cash and cash equivalents, end of year** 
+
+Cash and cash equivalents, end of year, is automatically calculated. It is the sum of lines 1401 through 1404. This line is also equal to line 9920. 
+
+## **Cash and cash equivalents represented by:** 
+
+**In this section, the end of year balance of cash and cash equivalents is classified** 
+
+## **CASH:** 
+
+**Line 1501 Unrestricted** 
+
+Please enter Cash and cash equivalents that are “unrestricted.” Unrestricted Cash means cash that has no restrictions. 
+
+## **Line 1501 Restricted** 
+
+Please enter Cash and cash equivalents that are “Restricted.” Restricted Cash means cash amounts in obligatory reserve, development charges, etc., or any reserve funds that council has restricted their use. 
+
+## **Line 1503 Unallocated** 
+
+Please enter Cash and cash equivalents that are “unallocated.” “Unallocated” means cash that hasn’t been apportioned between unrestricted and restricted funds. 
+
+## **Indirect Method (Schedule 54B):** 
+
+Cash receipts (inflows) should be reported as positive amounts and cash payments (outflows) should be reported as negative amounts. 
+
+## **Operating Transactions:** 
+
+Using the indirect method, cash used in and or available from operations is calculated by adjusting the surplus/deficit for the reporting year for the effects of non-cash items included in the calculation of the reporting year surplus/deficit. 
+
+**Line 2010 Annual Surplus/Deficit** 
+
+Automatically carried over from line 2099, column 1, Statement of Operations: Revenue 
+
+## **Line 2021 Non-cash items including amortization** 
+
+Include non-cash items, like amortization as reported on line 9910, column 16, Statement of Operations: Expenses, not specifically requested in lines 2021 through 2040.  Line 2021 could include items such as pension expenses not funded in the period. 
+
+## **Line 2021 Contributed (Donated) tangible capital assets** 
+
+Enter donated tangible capital assets on this line. 
+
+**Line 2022 Change in non-cash assets and liabilities** 
+
+Include changes in non-cash assets and liabilities not included elsewhere in lines 2021 to 2098. The effect of changes in balances of non-cash assets and liabilities should be reflected as follows: 
+
+|<br>reflected as follows:||
+|---|---|
+|**If a non-cash asset at the end of the current year compared to the end**<br>**of the previous year,**|**Effect on cash balance**|
+|**Increases**|<br>**Negative**|
+|**Decreases**|**Positive**|
+|**If a non-cash liability at the end of the current year compared to the end**<br>**of the previous year,**||
+|**Increases**|**Positive**|
+|**Decreases**|**Negative**|
+
+
+
+## **Line 2030 Prepaid Expenses** 
+
+Report the change in the prepaid expense balance at year end compared with the balance at the end of the previous year. 
+
+## **Line 2040 Change in deferred revenue** 
+
+Report the change in the deferred revenue balance at year end compared with the balance at the end of the previous year. 
+
+**Line 2096 Other: Please describe Line 2097 Other: Please describe Line 2098 Other: Please describe** 
+
+**Line 2099 Cash provided by operating transactions:** sum of lines 2010 to 2098 
+
+## **Capital Transactions:** 
+
+This category includes cash flow related to the acquisition and disposal of tangible capital assets. 
+
+**Line 0610 Proceeds from the sale of tangible capital assets** 
+
+**Line 0620 Cash used to acquire tangible capital assets** 
+
+**Line 0630 Change in construction-in-progress** 
+
+**Line 0698 Other: Please describe Line 0699 Cash applied to capital transactions:** Sum of lines 0610 to 0698 
+
+## **Investing Transactions:** 
+
+Cash flow from investing transactions relates to the purchase and disposal of investments. This category includes investments such as marketable securities and investments in government-controlled business enterprises. Refer to PS 3041 Portfolio investments for a definition of portfolio investments. 
+
+## **Line 0810 Proceed from portfolio transactions** 
+
+Report the proceeds from portfolio transactions, such as disposals and redemptions. 
+
+**Line 0820 Portfolio investments** 
+
+Report cash used for portfolio investments. 
+
+**Line 0898 Other: Please describe** 
+
+**Line 0899 Cash provided by (applied to) investing transactions: Sum of lines 0810 to 0898** 
+
+## **Financing Transactions:** 
+
+Cash flow from financing transactions includes the issuance and payment of debt obligations by the municipality. This category also includes cash transactions associated with tangible capital assets acquired through a capital lease. 
+
+## **Line 1010 Proceeds from debt issues** 
+
+Report the proceeds from debt issued. 
+
+**Line 1020 Debt repayment** 
+
+Report only the principal debt repayment on this line. 
+
+**Line 1030 Temporary loans** 
+
+Report the proceeds from temporary loans. 
+
+**Line 1031 Repayment of temporary loans** 
+
+Report the repayment of temporary loans. 
+
+**Line 1096 Other: Please describe Line 1097 Other: Please describe Line 1098 Other: Please describe Line 1099 Cash applied to financing transactions:** sum of lines 1010 to 1098 
+
+**Increase in cash and cash equivalents:** 
+
+**Line 1210 Increase in cash and cash equivalents: Automatically populated.** 
+
+Increase (decrease) in cash and cash equivalents is automatically calculated as follows: 
+
+|**Increase (decrease) in cash and**<br>**cash equivalents**<br>**=**|**Cash provided by operating transactions**|**Line 2099**|
+|---|---|---|
+|**+**|**Cash (applied to) capital transactions**|**Line 0699**|
+|**+**|**Cash provided by investing transactions**|**Line 0899**|
+|**+**|**Cash (applied to) financing transactions**|**Line 1099**|
+
+
+
+**Line 1220 Cash and cash equivalents, beginning of year:** 
+
+Cash and cash equivalents, beginning of year, is automatically populated, from the previous year’s line 9920 Cash and cash equivalents, end of year. 
+
+**Line 9920 Cash and cash equivalents, end of year:** Sum of lines 1210 and 1220. 
+
+## **Cash and cash equivalents represented by:** 
+
+In this section, the end of year balance of cash and cash equivalents is classified by type of component. 
+
+Cash equivalents are short-term highly liquid investments that are readily convertible to known amounts of cash and that are subject to an insignificant risk of changes in value. Cash equivalents are held for the purpose of meeting short-term cash commitments rather than for investing or other purposes. 
+
+## **Line 1401 Cash** 
+
+Cash comprises cash on hand and demand deposits. 
+
+**Line 1402 Temporary borrowings** 
+
+When bank overdrafts, which are repayable on demand, form an integral part of a municipality’s cash management, such that the municipality's bank balance often fluctuates from being positive to overdrawn, bank overdrafts are included as a component of cash and cash equivalents. 
+
+## **Line 1403 Short term Investments** 
+
+An investment would normally qualify as a cash equivalent only when it has a short maturity of, say, three months or less from the date of acquisition. Equity investments are excluded from cash equivalents unless they are, in substance, cash equivalents. 
+
+## **Line 1404 Other** 
+
+Please include other types of cash equivalents. Please provide a text description. 
+
+**Line 9940 Cash and cash equivalents, end of year** 
+
+Cash and cash equivalents, end of year, is automatically calculated. It is the sum of lines 1401 through 1404. This line is also equal to line 9920. 
+
+## **Cash and cash equivalents represented by:** 
+
+In this section, the end of year balance of cash and cash equivalents is classified 
+
+## **CASH:** 
+
+## **Line 1501 Unrestricted** 
+
+Please enter Cash and cash equivalents that are “unrestricted.” Unrestricted Cash means cash that has no restrictions. 
+
+## **Line 1501 Restricted** 
+
+Please enter Cash and cash equivalents that are “Restricted.” Restricted Cash means cash amounts in obligatory reserve, development charges, etc., or any reserve funds that council has restricted their use. 
+
+## **Line 1503 Unallocated** 
+
+Please enter Cash and cash equivalents that are “unallocated.” “Unallocated” means cash that hasn’t been apportioned between unrestricted and restricted funds. 
+
+## **Line 9950 Cash and cash equivalents, end of year** 
+
+Cash and cash equivalents, end of year, is automatically calculated. It is the sum of lines 1501 through 1503. This line is also equal to line 9950. 
+
+## **CHEDULE 60 - Continuity of Reserves and Reserve Funds** 
+
+## **General Information** 
+
+Reserves and reserve funds are comprised of funds set aside for specific purposes by Council and funds set aside for specific purposes by legislation, regulation or agreement. For financial reporting purposes, reserve funds set aside by legislation, regulation or agreement are reported as deferred revenue, a liability, on the Consolidated Statement of Financial Position. Other reserve funds and reserves are balances within the accumulated surplus. 
+
+Schedule 60 contains a continuity section (lines 0299 to 2099) and an analysis section (lines 5010 to 9930). 
+
+Three columns have been created to distinguish Obligatory reserve funds/Deferred revenues from Discretionary reserve funds and Reserves. 
+
+**All schedules of the FIR should be prepared in conjunction with the audited financial statements. Obligatory reserve funds are reported as part of deferred revenue. The reason is that such funds, by their nature, involve restrictions on their use and are not available for the discretionary use of Council.** 
+
+## **CONTINUITY SECTION** 
+
+## **Line 0299 Balance, Beginning of Year** 
+
+Enter the beginning balance for Obligatory reserve funds/Deferred revenue in column 1, Discretionary reserve funds in column 2, and Reserves in column 3. 
+
+For each column, the balance at the beginning of the year on Line 0299 should equal the amount reported in the previous year as the balance at the end of the year on Line 2099. 
+
+## **Reserve Inflows** 
+
+**This section identifies sources of inflows to obligatory reserve funds/deferred revenue, discretionary reserve funds, and reserves.** 
+
+## **Line 0310 Allocation of Surplus** 
+
+**This line is automatically calculated.** The amounts reported on this line represent the allocation of surplus to the discretionary reserve funds and reserves for both operating and capital purposes. 
+
+## **Line 0315 Allocation of Surplus: for operating** 
+
+Enter allocations from the statement of operations to each of Discretionary reserve funds and Reserves for operating purposes. **Do not enter any negative amounts on this line.** 
+
+## **Line 0320 Allocation of Surplus: for capital** 
+
+Enter allocations from the Statement of Operations to each of:  Discretionary reserve funds and Reserves for the acquisition of tangible capital assets. **Do not enter any negative amounts on this line.** 
+
+## **DEVELOPMENT CHARGES ACT** 
+
+All development charges received during the year should be reported on this schedule as an inflow of obligatory reserve funds/deferred revenue, in column 1. 
+
+Recent changes have been made to the Development Charges Act, 1997. Section 26.1 of the Development Charges Act has allowed for deferred payments for builders of rental housing, non-profit housing and institutional development. If there are changes made to the financial statements resulting from the recent updates to the Development Charges Act, 1997, these changes should be reflected in the FIR. The Notes section in Schedule 83 (Line 0070) can be used to provide any additional information. This is a temporary measure until changes to Schedule 61 are finalized to reflect these recent updates. 
+
+## **Development charges are categorized into non-discounted services and discounted services** : 
+
+## **Line 0610 Non-Discounted Services** 
+
+Non-discounted services are those services or service categories for which net growth-related capital costs are 100% recoverable under the Development Charges Act, 1997. 
+
+## **No negative reporting is allowed on this line.** 
+
+## **Line 0620 Discounted Services** 
+
+Discounted services are eligible services or service categories for which net growth related costs are 90% recoverable under the Development Charges Act, 1997. 
+
+## **No negative reporting is allowed on this line.** 
+
+## **Line 0630 Credits utilized (Development Charges Act)** 
+
+The credits utilized balance is automatically carried forward from Schedule 61 Column 5 line 0299. 
+
+## **Line 0699 Subtotal Development Charges Act** 
+
+The subtotal is equal to the sum of lines 0610, 0620 and 0630. 
+
+**Line 0810 Lot levies** 
+
+Report lot levies received previously pursuant to section 164 of the Municipal Act on this Line in either column 2 or 3. 
+
+## **Line 0820 Sub-divider contributions** 
+
+Report sub-divider contributions received previously pursuant to section 51.5 of the Planning Act on this line. 
+
+## **Line 0830 Recreational land (the Planning Act)** 
+
+Report payments received in lieu of parkland dedication under section 51.1 of the Planning Act here. 
+
+## **Line 0841 Investment income** 
+
+Report interest earned from short-term internal loans from reserves and reserve funds. 
+
+Report interest income generated on reserve fund balances from external sources such as bank deposits, promissory notes, etc. 
+
+## **Line 0860 Gasoline Tax - Province** 
+
+Report the Provincial gas tax received from the Provincial Government only if these funds have not been utilized during the year. 
+
+If the Provincial Gasoline tax revenues have been utilized (“earned”) then the earned revenue should be reported on Schedule 12, under the appropriate transit category. 
+
+## **Line 0861 Building Code Act, 1992 (section 1.9.1.1 (d))** 
+
+Record the building permit fees to cover future enforcement and administrative costs as deferred revenue. 
+
+Report the Canada Community-Building Fund grants received from the Federal Government only if these funds have not been utilized during the year. 
+
+If the Canada Community-Building Fund revenues have been utilized (“earned”) then the earned revenue should be reported on Schedule 12, column 6 – Canada Grants: Tangible Capital Assets, under the appropriate functional category. 
+
+## **Line 0864 Building Canada Fund (BCF)** 
+
+Report the Building Canada fund inflows received from the Federal Government only if the funds have not been utilized during the year. 
+
+If the Building Canada Fund inflows have been utilized (“earned”) then the earned revenues should be reported on Schedule 12, column 6 – Canada Grants: Tangible Capital Assets, under the appropriated functional category. 
+
+## **Line 0870 Inter-Reserve Fund/Reserves Transfer** 
+
+This line has been included to allow transfers between the following reserve funds: Discretionary Reserve Funds and Reserves. 
+
+Please note that transfers from Obligatory reserve funds/Deferred revenue to Discretionary reserve funds and Reserves **is not allowed** . 
+
+**Line 0895 to Line 0898 Other** 
+
+Please specify other inflows of the Obligatory reserve funds/Deferred revenue. 
+
+## **Line 9940 Total Reserve Inflows & Surplus** 
+
+In column 1 (Obligatory reserve funds/Deferred revenue), total inflows on Line 9940 equal the sum of lines 0299 and 0699, plus amounts on lines 0820 through 0898. These lines represent contributions from the Statement of Operations, development charges, sub-divider contributions, payments received in lieu of recreational land, investment income, building code act, and Provincial and Federal gasoline inflows. 
+
+In column 2 (Discretionary reserve funds), total inflows on line 9940 equal the sum of Lines 0299, 0310, 0810 and 0841 through 0898.  These lines represent contributions from the Statement of Operations, lot levies and investment income. 
+
+In column 3 (Reserves), total inflows on Line 9940 equal the sum of lines 0299, 0310, 0810 and 0841 through 0898.  These lines represent contributions from the Statement of Operations, lot levies and investment income. 
+
+**LESS: UTILIZATION (Outflows) OF RESERVE FUNDS AND RESERVES (TRANSFERS** ) 
+
+**Line 1012 For acquisition of tangible capital assets** 
+
+For each column, report the amount used for the acquisition of tangible capital assets. 
+
+**Do not include on this line** any amounts coming from the obligatory reserves such as **development charges, recreational land, provincial gas tax, and federal gas tax. Line 1015 For current operations** 
+
+For each column, report the amount used for current operating expenses. 
+
+**Do not include on this line** any amounts coming from the obligatory reserves such as **development charges, recreational land, Canada Community-Building fund, and provincial gas tax.** 
+
+**Line 1025 Development Charges earned to tangible capital asset acquisition** 
+
+This line is automatically populated from Schedule 61-line 0299 column 8. 
+
+**Line 1026 Development Charges earned to operations** 
+
+This line is automatically populated from Schedule 61-line 0299 column 7. 
+
+**Line 1032 Recreational land (the Planning Act) earned to tangible capital asset acquisition** 
+
+Please report recreational land earned for the acquisition of tangible capital assets. 
+
+**Line 1035 Recreational land (the Planning Act) earned to operations** 
+
+Please report recreational land earned for current operating purposes. 
+
+**Line 1042 Deferred revenue earned (Provincial Gas Tax) for Transit (operations)** 
+
+Please report the Provincial gas tax - deferred revenue earned – for transit current operating expenses. 
+
+**Line 1045 Deferred revenue earned (Provincial Gas Tax) for Transit (Capital)** 
+
+Please report the Provincial gas tax –deferred revenue earned – for the acquisition of tangible capital assets only for Transit. 
+
+## **Line 1047 Deferred revenue earned (Canada Gas Tax)** 
+
+Please report the Canada Gas Tax – deferred revenue earned – for the acquisition of tangible capital assets. 
+
+**Line 1048 Deferred revenue earned (Canada Community-Building Fund for Operating – Capacity Building)** 
+
+**Please report the Canada Community -Building Fund (Canada Gas Tax) – deferred revenue earned – for the capacity building.** 
+
+**Line 1055 Development Charges Act – Credits Provided** 
+
+This line is automatically populated from Schedule 61-line 0299 column 10. 
+
+**Line 1070 Inter – Reserve Fund/Reserves Transfer** 
+
+This line has been included to allow transfers between the following: Discretionary reserve funds and Reserves. 
+
+Please note that transfers from Obligatory reserve funds/Deferred revenue to Discretionary reserve funds and Reserves **is not allowed** . 
+
+## **Line 0910 Less: Utilization (deferred revenue recognized)** 
+
+This line is automatically calculated, and it identifies the utilization (“earned”) of obligatory reserve funds/deferred revenue, discretionary reserve funds, and reserves. 
+
+For obligatory reserve funds, utilization is equal to the sum of lines 1012 through 1055. For Discretionary reserve funds and reserves, utilization is equal to the sum of lines 1012, 1015, and 1070. 
+
+## **Line 2099 Balance, End of Year** 
+
+## **For each column: Balance, end of year - Line 2099 equals** 
+
+**Balance, beginning of year - Line 0299** 
+
+## **PLUS: Total reserve inflows & Surplus - Line 9940** 
+
+**LESS: Utilization - Line 0910** 
+
+## **TOTALS IN LINE 2099 ARE ANALYSED AS FOLLOWS:** 
+
+The year-end balances for each column reported in Line 2099 in the Continuity section are analysed further in this section. 
+
+## **Obligatory reserve funds/Deferred revenue** 
+
+In column 1, the year-end balance for obligatory reserve funds/deferred revenue in line 2099 is itemized using the following categories on lines 5610 to 5699: 
+
+**Development charges – Discounted and Non-Discounted services Sub-divider contributions (Section 51.5 of the Planning Act) Recreational land (the Planning Act) (Section 42 (15) of the Planning Act) Building Code Act, 1992 (Section 1.9.1.1 (d)) Gasoline Tax - Province Canada Community-Building Fund (Gasoline Tax – Federal) Canada Transit Funding Building Canada Fund (BCF) Other The lines which do not apply are blocked out.** 
+
+## **Discretionary reserve funds** 
+
+In column 2, the year-end balance for discretionary reserve funds is analysed in terms of: 
+
+## **Working funds and other specified uses (Lines 5010 to 5680)** 
+
+## **Per service function (Lines 5205 to 5290)** 
+
+## **Reserves** 
+
+In column 3, the year-end balance for reserves is analysed in terms of: 
+
+## **Working funds and other specified uses (Lines 5010 to 5680)** 
+
+## **Per service function (Lines 5205 to 5290)** 
+
+For each column, the balance reported on line 9930 of the Analysis section must equal the balance at the end of the year on line 2099 of the Continuity section.  A critical error is triggered if the amounts do not equal. 
+
+## **Lines 5010 to 5290 These Lines apply only to Column 2 (Discretionary reserve funds) and Column 3 (Reserves).** 
+
+For each column, identify amounts included in the year-end balance on line 2099 which are held for the following purposes: working funds, contingencies, Ontario Clean Water Agency, replacement of equipment, sick leave, insurance, Workplace Safety and Insurance Board (WSIB) 
+
+and post-employment benefits, lot levies, parking revenues, debenture repayment, exchange rate stabilization and other. 
+
+## **Line 5010 Working funds** 
+
+Report the amount set aside to meet current expenditures during the year. 
+
+## **Line 5020 Contingencies** 
+
+Report the amounts set aside to offset future expenditures classified as contingencies by your municipality. Amounts set aside may relate to the balance of property taxes under appeal, unresolved litigation, among other balances. 
+
+## **Line 5030 Asset Replacement funds for renewals: Wastewater** 
+
+**Line 5040 Asset Replacement funds for renewals: Water** 
+
+**Line 5050 Replacement of Equipment** 
+
+**Line 5060 Sick Leave Line 5070 Insurance** 
+
+**Line 5080 Workplace Safety and Insurance Board (WSIB)** 
+
+**Line 5090 Post-employment benefits** 
+
+Report the value of reserves or discretionary reserve funds established to provide for the settlement of these liabilities.  The value reported is not necessarily the amount of the liability reported in the balance sheet at the year-end on Schedule 70, Consolidated Financial Position. 
+
+## **Line 5091 Tax rate stabilization** 
+
+Report the amount set aside to stabilize the impact of future budget tax increases. Amounts set aside may relate to the balance of property taxes under appeal among other balances. 
+
+**Line 5630 Lot levies** 
+
+**Line 5660 Parking revenues** 
+
+**Line 5670 Debenture repayment** 
+
+**Line 5680 Exchange rate stabilization** 
+
+## **Per Service Purpose:** 
+
+These lines apply only to Column 2 (Discretionary reserve funds) and Column 3 (Reserves). For column 2 and column 3, identify amounts included in the year-end balance in Line 2099 which are held for capital asset renewal. Per service purposes are identified by function as 
+
+shown below. Each functional category used in Schedule 40 is included. In addition, selected sub-functions are included for transportation services, environmental services and recreation and cultural services. 
+
+|**General Government**||
+|---|---|
+|**Protection Services**||
+|**Transportation Services**|**- Roadways; Transit**|
+|**Environmental Services**|<br>**- Wastewater System**|
+||**- Storm Sewer System**|
+||<br>**- Waterworks System**|
+||**- Waste Collection**|
+||**- Waste Disposal**|
+||**- Waste Diversion**|
+|**Health Services**||
+|**Social and Family Services**||
+|**Social Housing**||
+|<br>**Recreation and Cultural Services**<br>**- Parks**||
+||<br>**- Rec. Facilities - Golf Course, Marina, Ski Hill**|
+||<br>**- Rec. Facilities - Other**|
+||**- Libraries**|
+|**Planning and Development**||
+|**Other**||
+
+
+
+## **OBLIGATORY RESERVE FUNDS/DEFERRED REVENUE** 
+
+These lines apply to Column 1 only. 
+
+Lines 5610 through 5699 provide a list of uses for obligatory reserve funds/deferred revenue. The following categories are available: 
+
+Development Charges Act – Non-discounted services 
+
+Development Charges Act – Discounted services 
+
+Sub-divider Contributions 
+
+Recreational Land (the Planning Act) Building Code Act, 1992 ( **Section 1.9.1)** 
+
+Gasoline Tax - Province 
+
+## **Canada Community -Building Fund (Gasoline Tax – Federal)** 
+
+Building Canada Fund (BCF) 
+
+## Other 
+
+## **Lines 5610/5620 Development Charges Act** 
+
+The sum of lines 5610 and 5620 should agree with the obligatory reserve funds/deferred DC revenue balance in the audited financial statements. 
+
+## **Line 9930 TOTAL** 
+
+For obligatory reserve funds/deferred revenue (Column 1) the total on line 9930 must equal the sum of lines 5610 to 5697. 
+
+For discretionary reserve funds (Column 2), the total on line 9930 must equal the sum of lines 5010 through 5490. 
+
+For reserves (Column 3), the total on line 9930 must equal the sum of lines 5010 through 5490. 
+
+For each column, the total on line 9930 in the analysis section must equal the amount on line 2099 (Balance, end of year) in the Continuity section of this Schedule. 
+
+## **SLC 60 2099 01 = SLC 60 9930 01** 
+
+**SLC 60 2099 02 = SLC 60 9930 02** 
+
+**SLC 60 2099 03 = SLC 60 9930 03** 
+
+## **Schedule 61: Development Charges Reserve Funds** 
+
+Schedule 61 drills deeper than Schedule 60 and collects information on development charge transactions which occurred during the year segmented by service category. 
+
+For financial reporting purposes, development charges reserve funds are reported as obligatory reserve funds/deferred revenue on the Consolidated Statement of Financial Position. 
+
+## **The development charges reserve funds should not be in a deficit position.** 
+
+## **Column 1: Balance January 1** 
+
+Enter the beginning balance for Obligatory reserve funds/Deferred revenue in Column 1 for each service category, as applicable. 
+
+For Column 1, the balance at the beginning of the year on Line 0299 should equal the amount reported in the previous year as the balance at the end of the year. 
+
+## **Development Charges Proceeds** 
+
+## **Column 2: Development Charges collected** 
+
+Enter development charges collected in year for each service in obligatory reserve funds in Column 2. 
+
+**Recent changes have been made to the Development Charges Act, 1997.  Section 26.1 of the Development Charges Act has allowed for deferred payments for builders of rental housing, non-profit housing and institutional development. If there are changes made to the financial statements resulting from the recent updates to the Development Charges Act, 1997, these changes should be reflected in the FIR. The Notes section in Schedule 83 (Line 0070) can be used to provide any additional information. This is a temporary measure until changes to Schedule 61 are finalized to reflect these recent updates.** 
+
+## **Please do not report any negative amounts in this column.** 
+
+## **Development Charges collected should match the amounts shown on Schedule 60 lines 0610 and 0620 column 1.** 
+
+## **Column 3: Interest and Investment Income** 
+
+Enter income from securities and other investments earned in each obligatory reserve fund during the year in Column 3.  Please note that development charges reserve funds cannot be consolidated with other municipal reserve funds for investment purposes. 
+
+If reserve funds for various service categories were grouped (e.g. one reserve fund for all discounted services and one reserve fund for all non-discounted services) please enter proportional interest and investment income for each service. 
+
+## **Please do not report any negative amounts in this column.** 
+
+## **Column 5: Credits Utilized** 
+
+Enter existing credits used by developers at the time when the development charge is payable. The credit existed because of capital works performed by a developer earlier, in lieu of cash payment of development charge obligations. 
+
+Amounts on this column are automatically shown on Schedule 60-line 0630 column 1. 
+
+## **Column 6: Total** 
+
+Total is automatically calculated. It is the sum of Development Charge ~~s~~ Proceeds Columns 2 through 5. 
+
+## **Development Charges Disbursements** 
+
+Amounts included in Columns 7 through 10 should reflect transactions recorded during the year. 
+
+## **Column 7: Development Charges Disbursements to Consolidated Statement of Operations** 
+
+In Column 7, enter the money in the reserve fund spent on costs that were included in the Consolidated Statement of Operations. 
+
+## **Amounts shown on this column should not be negative.** 
+
+## **This column is automatically carried forward to Schedule 60-line 1026 column 1.** 
+
+## **Column 8: Development Charges Disbursements to Tangible Capital Asset Acquisition** 
+
+In Column 8, enter money in the reserve fund spent to acquire tangible capital assets. 
+
+## **Amounts shown on this column should not be negative.** 
+
+## **This column is automatically carried forward to Schedule 60-line 1025 column 1.** 
+
+## **Column 9: Other Disbursements** 
+
+Enter Development Charges Disbursements in Column 9 that cannot be captured under 
+
+other disbursements categories. 
+
+Enter refunds of development charges in this column 
+
+## **Column 10: Credit Provided** 
+
+In Column 10, enter credits provided by the municipality to developers for work performed by the developers related to services that are associated with development charge by-laws. 
+
+**Amounts on this column are automatically shown on Schedule 60-line 1055 column 1.** 
+
+## **Column 11: Total Disbursements** 
+
+Total is automatically calculated. It is the sum of Development Charges Disbursements in Columns 7 through 10. 
+
+## **Column 12: Balance December 31** 
+
+This line is automatically calculated as the Balance Beginning of Year Plus Total Proceeds, less Total Disbursements. 
+
+## **Amounts on this column should not be negative.** 
+
+**The Development Charges Balance at December 31 should match with what’s shown on Schedule 60-line 5610 column 1 plus schedule 60-line 5620 column 1.** 
+
+## **Schedule 62 & 62A: Development Charges Rates** 
+
+Schedules 62 and 62A require municipalities to report their own development charge rate information. 
+
+**Schedule 62** is the main schedule used to report the current year’s municipal wide development charges, both residential and non-residential. Under this schedule, please enter development charges by the type of service and by type of dwelling that were in place as of December 31, 2021. 
+
+**Schedule 62A** – is used in cases where the municipality has special area development charge rates that are not the same as the municipal wide rates and are applied only to specific areas of the municipality. Enter the development charge rates that were in place as of December 31, 2021. 
+
+## **Schedule 62 – Municipal Wide Services – Residential and Non-Residential** 
+
+   1. Click on the box under the heading “ **Municipal Wide Charges”** to report the type of service (e.g. roads, water, police, fire). 
+
+   2. Click on the arrow to the right of the box.  A drop-down menu will appear listing typical **services for which municipalities collect development charges** . Select the appropriate service. If the type of service is not listed, please choose “other”. 
+
+      - A pop-up box will appear that will request you to type in the name of the service. 
+
+   3. Under each **dwelling type** , please enter the residential charges with respect to the dwelling type. Note that, if semi-detached and fully detached rates are the same, please enter the value under both columns. 
+
+      - **Secondary units** also known as accessory or basement apartments, secondary suites and in-law flats are self-contained residential units with kitchen and bathroom facilities within dwellings or within structures accessory to dwellings (such as above laneway garages). 
+
+   4. If you need more rows, please click on the “Add Rows” button. Each time you click “Add Rows” it will add 3 additional rows to enter services and charges. 
+
+- **Line 1250** If the development charges rates are based on a new development charge by-law that was approved by council within the reporting year then enter Y. 
+
+If yes, please attach the new by-law when submitting the FIR file to the Ministry of Municipal Affairs. 
+
+**Please indicate on schedule 83 line 110, the effective period of the development charge by-law.** 
+
+## **Schedule 62A – Special Area Rates** 
+
+1. To report specific area rates which are not municipal wide, please click on “Schedule 62A” on the FIR excel sheet. 
+
+2. Click on “Add a Development Charges Special Area” button to add an area. 
+
+3. A pop-up box will appear requesting the name of special area. Please type in the name of the area and press “OK”. 
+
+4. Once the name is entered, a series of rows under the area-name will appear. 
+
+5. Click on a box under the area names to report the type of service and an arrow will appear. 
+
+6. Click on the arrow to the right of the box. A drop-down menu will appear listing typical services for which municipalities collect development charges. 
+
+7. Select the appropriate service. If the type of service is not listed, please choose “other”. A pop-up box will appear that will request you to type in the name of the service. 
+
+8. Under each dwelling type, please enter the residential charges with respect to the dwelling type. Note that, if semi-detached and fully detached rates are the same, please enter the value under both columns. 
+
+9. If your municipality has per hectare area-rated development charge, enter this information on Schedule 62A. 
+
+   - Select “Add a Development Charges Special Area” and enter the name of the area you are reporting on. 
+
+   - From the pull-down menu under name of the area rate select “Per Hectare” 
+
+   - Scroll across to the columns labelled “Other”.  Enter “Per Hectare” in the appropriate cell and the column heading will change to reflect the text entered. 
+
+   - Enter the dollar amount of the development charge for this area. 
+
+## **SCHEDULE 70: Consolidated Financial Position** 
+
+## **General Information** 
+
+This schedule reports financial assets, liabilities, non-financial assets, and the accumulated surplus. 
+
+Report the assets and liabilities of the revenue fund, capital fund, obligatory reserves/deferred revenue, discretionary reserve funds and reserve funds of the municipality and all the consolidated local boards that make up the reporting entity as defined in PS 1300 of the PSAB Handbook. 
+
+Report all municipal investments in government business enterprises using the modified equity basis of accounting, as set out in PS 1300, paragraphs .28 to .36 of the PSAB Handbook. 
+
+**All inter fund receivables and liabilities are to be eliminated** .  The exception is a long-term loan from own reserve funds. These loans should be reported on Schedule 70 line 2610 column 1. 
+
+**Assets** are divided into financial assets (cash and temporary investments, accounts receivable, taxes receivable, other financial assets) and non-financial assets. 
+
+**Liabilities** are categorized as temporary loans, accounts payable and accrued liabilities, deferred revenue, long term liabilities, tangible capital lease, solid waste management facility liabilities, post-employment benefits, and liability for contaminated sites. 
+
+**The accumulated surplus/(deficit** ) is divided into equity in tangible capital assets (TCA), reserve and reserve funds, general surplus/(deficit), equity in government business enterprises, and unfunded liabilities (post-employment benefits and landfill post closure costs). 
+
+## **FINANCIAL ASSETS** 
+
+## **Line 0299 Cash and cash equivalents** 
+
+Include cash, demand deposits and cash equivalents. Cash equivalents are highly liquid investments that have short maturities of, say, three months or less from the date of acquisition. See PS 1200 of the PSAB Handbook for a definition of cash and cash equivalents. 
+
+Cash in foreign currencies is to be converted into Canadian dollars at the exchange rate in effect at the year-end. 
+
+## **ACCOUNTS RECEIVABLE** 
+
+Report accounts receivable by source on lines 0410 through 0490: Canada, Ontario, upper-tier, other municipalities, school boards, and other. 
+
+Accounts receivable balances should be net of any allowances for doubtful accounts. 
+
+## **Line 0410 Canada** 
+
+Report accounts receivable from the Federal Government of Canada on this line. 
+
+## **Line 0420 Ontario** 
+
+Report accounts receivable from the Province of Ontario on this line. 
+
+## **Line 0430 Upper-Tier** 
+
+Report accounts receivable from the Upper-Tier Municipality on this line. 
+
+## **Line 0440 Other Municipalities** 
+
+Report accounts receivable from all other Municipalities apart from the Upper-Tier Municipality on this line. 
+
+## **Line 0450 School Boards** 
+
+Report accounts receivable from the School Boards on this line. 
+
+## **Line 0490 Other receivables** 
+
+Other receivables could include accounts receivable billed by the waterworks, including sewer surcharges and other charges on water bills. 
+
+Report all receivables that relate to unorganized territories, e.g. provincial land and school board taxes. 
+
+## **Line 0499 Subtotal** 
+
+The subtotal for accounts receivable is equal to the sum of lines 0410 through 0490. 
+
+## **TAXES RECEIVABLE** 
+
+Taxes receivable are categorized by time period (current year's levies, previous year's levies, prior year's levies) on lines 0610 to 0630. Penalties and interest are reported separately on line 0640, and Allowance for uncollectible tax receivables is reported separately on line 0690. 
+
+The portion of taxes receivable which represents taxes deferred under various acts, including Section 373 of the Municipal Act, should not be reported in the taxes receivable section.  Deferred taxes are classified as other financial assets and are reported on line 0850 (Deferred taxes receivable). 
+
+## **Line 0610 Current year’s levies** 
+
+Taxes receivable in respect to the current year’s levies should be reported on this line. 
+
+## **Line 0620 Previous year’s levies** 
+
+Taxes receivable in respect of the previous year’s levies should be reported on this line. In this instance, the previous year is considered one year previous to the current reporting year. 
+
+## **Line 0630 Prior year’s levies** 
+
+Taxes receivable in respect of the prior year’s levies should be reported on this line. this instance, the prior years is considered two or more years previous to the current reporting year. 
+
+## **Line 0640 Penalties and Interest** 
+
+Penalties and interest are reported separately on line 0640.  However, if penalties and interest cannot be reported separately, they are to be included as part of the balances on lines 0610 to 0630. 
+
+## **Line 0690 LESS:  Allowance for uncollectibles** 
+
+Enter allowance for uncollectible tax receivables as a positive amount. 
+
+## **Line 0699 Subtotal** 
+
+The subtotal for taxes receivable is equal to the sum of lines 0610 through 0640, less line 0690. 
+
+## **INVESTMENTS** 
+
+On lines 0805 through 0828 investments are reported by source (Canada, Ontario, municipal, government business enterprises, other). 
+
+All investments are to be reported at cost.  The total market value of the investments reported on line 0829 is reported on line 8010 at the end of this section. 
+
+Exclude investments of sinking funds or trust funds, and those investments which are included on line 0299 as cash and temporary investments. 
+
+## **Line 0805 Canada** 
+
+Report all investments of the municipality in the Federal Government of Canada on this line. 
+
+All investments are to be reported at cost.  Also, exclude investments of sinking funds or trust funds, and those investments which are included on line 0299 as cash and temporary investments. 
+
+## **Line 0810 Ontario** 
+
+Report all investments of the municipality in the Province of Ontario on this line. 
+
+All investments are to be reported at cost.  Also, exclude investments of sinking funds or trust funds, and those investments which are included on line 0299 as cash and cash equivalents. 
+
+## **Line 0815 Municipal** 
+
+Report all investments of the municipality in Municipalities on this line. 
+
+All investments are to be reported at cost.  Also, exclude investments of sinking funds or trust funds, and those investments which are included on line 0299 as cash and temporary investments. 
+
+## **Line 0820 Government business enterprises** 
+
+Report investments of the municipality in business government enterprises on a modified equity basis as defined in PS 1300, paragraphs .28 through .36 of the PSAB Handbook, as of the balance sheet date. 
+
+## **Line 0828 Other** 
+
+Include investments which do not fit into the categories on lines 0805 through 0820. 
+
+## **Line 0829 Subtotal** 
+
+The subtotal for Investments is equal to the sum of lines 0805 through 0828. 
+
+## **DEBT RECOVERABLE FROM OTHERS** 
+
+Include here debt issued on behalf of another municipality or school board.  The amount will be recovered from the assuming municipality or board as it comes due.  Separate lines have been provided for amounts recoverable from other municipalities, school 
+
+boards, retirement funds, sinking funds, individuals (tile drainage/shoreline assistance) and other. 
+
+**Line 0861 Municipalities** 
+
+**This line is automatically populated from Schedule 74-line 0630 column 1.** All debt recoverable from other municipalities is reported on this line. 
+
+## **Line 0862 School Boards** 
+
+**This line is automatically populated from Schedule 74-line 0620 column 1.** All debt recoverable from School Boards is reported on this line. 
+
+**Line 0863 Retirement Funds** 
+
+**This line is automatically populated from Schedule 74-line 0899 column 1.** All debt recoverable from retirement funds is reported on this line. 
+
+## **Line 0864 Sinking Funds** 
+
+**This line is automatically populated from Schedule 74-line 1099 column 1.** All debt recoverable from sinking funds is reported on this line. 
+
+**Line 0865 Individuals** Report all debt recoverable from Individuals (Tile Drainage / Shoreline Assistance) on this line. 
+
+**For tile drainage/shoreline assistance please see the attached information bulletin included with the FIR Introduction instructions.** 
+
+## **Line 0868 Other** 
+
+Report all debt recoverable from others not included in lines 0861 to 0865 above. 
+
+## **Line 0845 Subtotal** 
+
+The subtotal for Debt Recoverable from Others is equal to the sum of lines 861 through 0868. 
+
+## **OTHER FINANCIAL ASSETS** 
+
+## **Line 0830 Inventories held for resale** 
+
+Inventories held for resale are considered financial assets according to PS1200 of the PSAB Handbook. However, inventories of supplies are not considered financial assets and are to be reported on line 6250. 
+
+## **Line 0831 Land held for resale** 
+
+Report all land held for resale that is not included in the Schedule of Tangible Capital Assets. 
+
+## **Line 0835 Notes receivable** 
+
+Report non-current obligations supported by a note outlining the terms of repayment. 
+
+## **Line 0840 Mortgages receivable** 
+
+Mortgages receivable are defined as notes receivable secured by real property. 
+
+## **Line 0850 Deferred taxes receivable** 
+
+Report all taxes receivable which have been deferred under various Acts, including Section 373 of the Municipal Act. 
+
+## **Line 0890 Other** 
+
+Include any other financial assets not reported on lines 0830 to 0850. An example of an ‘other’ financial asset would be the estimated tax receivable associated with potential estimated tax revenue recognized according to PS3510 Tax Revenue not included in lines 0610 through 0699. Estimated taxes receivable and/or taxes liability should be recorded on the same basis (net or gross) as in the audited financial statements. 
+
+## **Line 0898 Subtotal** 
+
+The subtotal for other financial assets is equal to the sum of lines 0830 through 0890. 
+
+**Line 9930 TOTAL FINANCIAL ASSETS Total financial assets - Line 9930 equals:** Cash and cash equivalents - Line 0299 PLUS: Subtotal, Accounts receivable - Line 0499 PLUS: Subtotal, Taxes receivable - Line 0699 PLUS:  Subtotal, Investments - Line 0829 PLUS: Subtotal, Debt Recoverable from Others - Line 0845 PLUS: Subtotal, Other financial assets - Line 0898 
+
+## **Line 8010 Market Value of Investments Included in Line 0829** 
+
+On this line report the market value of the investments reported on lines 0805 to 0828 of this schedule. 
+
+## **LIABILITIES** 
+
+## **TEMPORARY LOANS** 
+
+Temporary loans are reported as temporary loans for current purposes or capital purposes. Loans for capital purposes are identified by source (Canada, Ontario, other). 
+
+## **Line 2010 Current Purposes** 
+
+Report the temporary loans for current purposes on this line. 
+
+**Line 2020 Tangible Capital Assets:  Canada** 
+
+Report the temporary loans for capital purposes from the Federal Government on this line. 
+
+**Line 2030 Tangible Capital Assets: Ontario** 
+
+Report the temporary loans for capital purposes from the Province of Ontario on this line. 
+
+## **Line 2040 Tangible Capital Assets: Other** 
+
+Report other temporary loans for capital purposes not reported on lines 2020 or 2030. 
+
+**Line 2099 Subtotal** 
+
+The subtotal for temporary loans is equal to the sum of lines 2010 through 2040. 
+
+## **ACCOUNTS PAYABLE AND ACCRUED LIABILITIES** 
+
+Accounts payable and accrued liabilities are reported by source (Canada, Ontario, Upper-Tier, Other municipalities, School boards). 
+
+## **Line 2210 Canada** 
+
+Report accounts payable and accrued liabilities to the Federal Government of Canada on this line. 
+
+## **Line 2220 Ontario** 
+
+Report accounts payable and accrued liabilities to the Province of Ontario on this line. 
+
+**Line 2230 Upper-Tier** 
+
+Report accounts payable and accrued liabilities to the Upper-Tier municipality on this line. 
+
+## **Line 2240 Other Municipalities** 
+
+Report accounts payable and accrued liabilities to other municipalities on this line. 
+
+## **Line 2250 School Boards** 
+
+Report accounts payable and accrued liabilities to school boards on this line. 
+
+## **Line 2260 Interest on debt** 
+
+Report interest on debt accrued from the date of the last interest payment to the end of the fiscal year. 
+
+## **Line 2270 Trade accounts payable** 
+
+Report trade accounts payable on this line. 
+
+## **Line 2290 Other** 
+
+Report all other accrued liabilities such as accrued wages and salaries and audit fees. 
+
+**Line 2299 Subtotal** 
+
+The subtotal for accounts payable and accrued liabilities is equal to the sum of lines 2210 through 2290. 
+
+## **Line 2301 Estimated Tax Liabilities (PS3510)** 
+
+The estimated tax liability includes all potential tax revenue changes due to the results of tax appeals and supplementary taxes as the result of Assessment Review Board decisions, Minutes for Settlement, Post Roll Assessments notices, Supplementary and Omitted Assessments, among other tax adjustments. Estimated taxes receivable and/or taxes liability should be recorded on the same basis (net or gross) as in the audited financial statements. 
+
+## **DEFERRED REVENUE** 
+
+## **Line 2410 Obligatory reserve funds** 
+
+This line is automatically carried-forward from the end of the year balance for obligatory reserve funds and deferred revenue from Schedule 60, Continuity of Reserves and Reserve Funds, SLC 60 2099 01. 
+
+## **Line 2490 Deferred revenue - other** 
+
+Report the unearned portion of any grants received in the current period.  Commuted special charges should also be included in this line. 
+
+## **Line 2499 Subtotal** 
+
+The subtotal for deferred revenue is equal to the sum of lines 2410 and 2490. 
+
+## **LONG TERM LIABILITIES** 
+
+## **Line 2610 Debt issued** 
+
+Report total debt issued by the municipality for all purposes. 
+
+## **Line 2620 Debt payable to others** 
+
+Report total debt assumed from other municipalities. As an example, report here the municipality's share of debt issued by another municipality for a joint project. 
+
+## **Line 2630 Lease purchase agreements (Tangible capital assets)** 
+
+A separate line is provided for lease purchase agreements which are tangible capital assets. Please see the section on "Capital Leases" in the Introduction to the FIR instructions. 
+
+## **Line 2640 Other:** 
+
+Report other debt issued by the municipality that’s not listed in the above lines 2610to 2630. 
+
+## **Line 2650 Other:** 
+
+Report other debt issued by the municipality that’s not listed in the above lines 2610 to 2630. 
+
+## **Line 2660 LESS:  Debt issued on behalf of Government Business Enterprise** 
+
+Debt specifically issued on behalf of the Government Business Enterprise is entered as a positive amount on line 2660. 
+
+## **Line 2699 Subtotal** 
+
+The subtotal for long term liabilities is equal to the sum of lines 2610 through 2630, less 2660. **SOLID WASTE MANAGEMENT FACILITY LIABILITIES** 
+
+## **Line 2799 Solid waste landfill closure and post-closure** 
+
+Report liabilities for solid waste landfill closure and post-closure. See the discussion in PS 3270 of the PSAB Handbook. 
+
+## **POST-EMPLOYMENT BENEFITS** 
+
+Report benefits related to PS 3250 and PS 3255 in the following lines: 
+
+## **Line 2810 Accumulated sick leave** 
+
+Report the total value of accumulated sick leave that is vested and payable in future periods. 
+
+**Line 2820 Accrued vacation pay** 
+
+Report the total value of vacation pay entitlements which have been earned at December 31, regardless of whether the entitlements are available to be taken as time off or paid out in future periods. 
+
+## **Line 2830 Accrued pensions payable** 
+
+Report the total of OMERS past service, supplementary benefits or any other unpaid pension amounts. 
+
+## **Line 2840 Accrued Workplace Safety and Insurance Board (WSIB) claims** 
+
+Municipalities operating under Schedule II of the Workplace Safety and Insurance Board Act are to report the amount of outstanding liabilities incurred or those municipalities that have a self-insurance program in place to offset Worker's Compensation claims, report the difference between the total outstanding claims and the total insurance coverage. 
+
+## **Line 2898 Other** 
+
+Report any other post-employment benefits earned but unpaid, such as supplementary health and dental benefits paid after an employee retires.  Also include compensated absences and termination benefits in this line. 
+
+## **Line 2899 Subtotal** 
+
+The subtotal for post-employment benefits is equal to the sum of lines 2810 through 2898. 
+
+## **LIABILITY FOR CONTAMINATED SITES** 
+
+## **Line 2910 Remediation costs of contaminated sites** 
+
+Report remediation costs for contaminated sites as per the discussion in PS 3260 of the PSAB Handbook. 
+
+## **Line 9940 TOTAL LIABILITIES** 
+
+## **Total liabilities - line 9940 equals:** 
+
+Subtotal, Temporary loans - Line 2099 PLUS: Subtotal, Accounts payable and accrued liabilities - Line 2299 PLUS: Subtotal, Deferred revenue - Line 2499 PLUS: Subtotal, Long term liabilities - Line 2699 PLUS: Solid waste management facility liabilities - Line 2799 PLUS: Subtotal, post-employment benefits - Line 2899 PLUS: Liability for contaminated sites – Line 2910 
+
+## **Line 9945 Net Financial Assets/Net Debt (Total Financial Assets Less Total Liabilities)** 
+
+This line reflects the difference between total financial assets (Line 9930) and total liabilities (Line 9940). 
+
+## **Non-Financial Assets** 
+
+**Line 6211 Tangible Capital Assets** 
+
+This line is automatically populated from Schedule 51B line 9921 columns 11. 
+
+## **Line 6250 Inventory of supplies** 
+
+Report all inventories held by the municipality that are consumed by the municipality in the normal course of operations. See PS 1200 of the PSAB Handbook. 
+
+## **Line 6260 Prepaid Expenses** 
+
+Report all prepaid expenses on this line. 
+
+## **Line 6299 Total Non-Financial Assets** 
+
+This line is automatically calculated. This line is the total of lines 6211 to 6260. 
+
+## **Line 9970 Total Accumulated Surplus/(Deficit)** 
+
+Accumulated Surplus/(Deficit) is automatically calculated by adding line 9945 and line 6299: 
+
+**Net Financial Assets (Net Debt) + Total Non-Financial Assets = Accumulated Surplus/ (Deficit)** 
+
+## **Analysis of the Accumulated Surplus/ (Deficit)** 
+
+**Please break out the accumulated surplus/deficit in to the following:** 
+
+## **Line 6410 Equity in Tangible Capital Assets** 
+
+Please report the equity in tangible capital assets on this line. Equity in tangible capital assets (TCA) represents the net book value (NBV) of total capital assets less long-term obligations assumed to acquire those assets. 
+
+**==> picture [499 x 120] intentionally omitted <==**
+
+**----- Start of picture text -----**<br>
+Equity in Tangible Capital<br>Assets  = Total Tangible Capital Assets<br>- Long-term liabilities related to tangible capital assets<br>- Accrued interest on long-term liabilities related to<br>tangible capital assets<br>**----- End of picture text -----**<br>
+
+
+## **Line 6420 Reserves and Discretionary Reserve Funds Balance** 
+
+The balance for reserves and discretionary reserve funds at the end of the year is automatically carried-forward from Schedule 60, Continuity of Reserves and Reserve Funds, SLC 60 2099 02+03. 
+
+Obligatory reserve funds/deferred revenue are not included on this line because they are reported as a liability on line 2410. 
+
+## **Line 6430 General Surplus / (Deficit)** 
+
+Report general surplus/ (deficit) from operations on this line. 
+
+**Line 6431 Unexpended capital financing** 
+
+## **Report any unexpended capital financing on this line.** 
+
+## **Local Boards** 
+
+Report the surplus/deficit of local boards that are fully consolidated. For proportionally consolidated local boards, report only the municipality's proportional share of the surplus/deficit.  The following functional categories are provided for local boards:  transit operations; water operations; sewer operations; libraries; cemeteries; recreation, community centres and arenas; business improvement areas. 
+
+## **Line 5030 Transit Operations** 
+
+Report the operating surplus/deficit of local boards for Transit operations on this line. 
+
+**Line 5035 Water Operations** 
+
+Report the operating surplus/deficit of local boards for Water operations on this line. 
+
+**Line 5040 Wastewater Operations** 
+
+Report the operating surplus/deficit of local boards for Wastewater operations on this line. 
+
+## **Line 5041 Solid Waste Operations** 
+
+Report the operating surplus/deficit of local boards for Solid waste operations on this line. 
+
+## **Line 5045 Libraries** 
+
+Report the operating surplus/deficit of local boards for Libraries on this line. 
+
+**Line 5050 Cemeteries** 
+
+Report the operating surplus/deficit of local boards for Cemeteries on this line. 
+
+## **Line 5055 Recreation, Community Centres and Arenas** 
+
+Report the operating surplus/deficit of local boards for Recreation, Community Centres and Arenas on this line. 
+
+## **Line 5060 Business Improvement Area** 
+
+Report the operating surplus/deficit of local boards for Business Improvement Areas on this line. 
+
+## **Line 5076 Other** 
+
+Please enter description Report the operating surplus/deficit of other local boards not listed in lines 5030 to 5060. 
+
+## **Line 5077 Other** 
+
+Please enter description Report the operating surplus/deficit of other local boards not listed in lines 5030 to 5060. 
+
+## **Line 5078 Other** 
+
+Please enter description Report the operating surplus/deficit of other local boards not listed in lines 5030 to 5060. 
+
+## **Line 5079 Other** 
+
+Please enter description 
+
+Report the operating surplus/deficit of other local boards not listed in lines 5030 to 5060. 
+
+**Line 5098 Total Local Boards** 
+
+The Local boards balance at the end of the year is equal to the sum of lines 5030 through 5079. 
+
+## **Line 5080 Equity in Government Business Enterprises** 
+
+Equity in Government Business Enterprises is automatically carried-forward from the Continuity of Government Business Enterprise section in Schedule 10 on SLC 10 6090 01. 
+
+## **Line 6601 Unfunded Employee Benefits** 
+
+Accumulated surplus may include amounts to be recovered from future revenues. Report the unfunded employee benefits on this line. 
+
+## **Line 6602 Unfunded Landfill closure costs** 
+
+Report the unfunded landfill closure costs on this line. 
+
+## **Line 6603 Unfunded Remediation costs of contaminated sites** 
+
+Report the unfunded remediation costs of contaminated sites on this line. 
+
+**Line 6610 Other: Please describe: Line 6620 Other: Please describe: Line 6630 Other: Please describe: Line 6640 Other: Please describe: Line 6699 Total Other** 
+
+Automatically calculated, this line is the sum of lines 6601 to 6640. 
+
+## **Line 9971 Total Accumulated Surplus** 
+
+Total Accumulated is automatically calculated. It is the sum of lines 6410 to 6431, 5098, 5080, and 6699. Line 9971 should be equal to Line 9970. 
+
+## **SCHEDULE 72: Continuity of Taxes Receivable** 
+
+## **General Information** 
+
+This series of schedules is only completed by Single-Tier or Lower-Tier municipalities.  In a two-tier system, even though the Upper-Tier municipality sets an upper-tier tax rate, the Upper-Tier municipality does not complete this schedule because taxes are collected by lower-tier municipalities. 
+
+This schedule provides information on adjustments to the **balance sheet item, taxes receivable, in SLC 70 0699 01.** 
+
+This schedule consists of the following sections: 
+
+**72A - Continuity of taxes receivable 72A - Cash collections 72B - Tax adjustments applied to taxation 72B - Tax adjustments not applied to taxation 72B - Additional information** 
+
+## **CONTINUITY OF TAXES RECEIVABLE (Schedule 72A)** 
+
+**Line 0210 Taxes receivable, beginning of year** 
+
+This amount is the subtotal for taxes receivable from the statement of Consolidated Financial Position from the previous year. 
+
+Taxes receivable for the beginning of the reporting year will be equal to taxes receivable at the end of the previous year in SLC 72 0290 01. 
+
+**Line 0215 PLUS:  Amounts added to tax bills for collection purposes only** 
+
+On this line report all amounts which have been added to the collector's roll for collection purposes only. These amounts are not reported in section 6, Amounts added to tax bill, in Schedule 22, Municipal and School Board Taxation. (Please note that actual amounts collected are reflected in line 0640 below.) 
+
+A few examples of amounts reported in this line include tile drainage loans pursuant to the Tile Drainage Act, the cost of repairing unsafe buildings pursuant to the Building Code Act, the cost of removing fire hazards pursuant to the Fire Marshall's Act, fence viewers' judgements pursuant to the Line Fences Act, and the cost of destroying weeds pursuant to the Weed Control Act, etc. 
+
+## **Line 0220 PLUS:  Tax amounts levied in the year** 
+
+This amount is automatically carried forward from SLC 26 9199 03. This amount does not include Payments-In-Lieu of taxes. 
+
+## **Line 0225 PLUS: Current year penalties and interest** 
+
+Include penalties imposed in the current year and the interest imposed in the current year in respect of tax arrears. Please refer to section 345 of the Municipal Act, 2001. 
+
+## **Line 0240 LESS:  Total cash collections** 
+
+Cash collections are automatically carried forward from SLC 72 0699 09. 
+
+Cash collections are equal to the sum of taxes collected for the current year, collections on taxes outstanding from the previous and prior years, penalties and interest and accounts added to tax bills for collection purposes only. 
+
+## **Line 0250 LESS: Tax adjustments before allowances** 
+
+This amount is automatically carried forward from SLC 72 2899 09. 
+
+**Line 0260 LESS: Tax adjustments not applied to taxation** 
+
+This amount is automatically carried forward from SLC 72 4999 09. 
+
+## **Line 0280 PLUS:  Other** 
+
+In the space provided please provide an explanation of the adjustment provided for in this line. In column 9, report the increase or decrease for the allowance for uncollectible taxes. Also, include any other increases or decreases not reflected above. 
+
+## **Line 0290 Taxes receivable, end of year** 
+
+## **Taxes receivable end of year line 0290 equals** : 
+
+Taxes receivable, beginning of year - Line 0210 
+
+PLUS: Amounts added to tax bills for collection purposes only - Line 0215 
+
+PLUS:  Tax amounts levied in the year - Line 0220 
+
+PLUS:  Current year penalties and interest - Line 0225 
+
+LESS:  Total cash collections - Line 0240 
+
+LESS:  Tax adjustments before allowances - Line 0250 
+
+LESS:  Tax adjustments not applied to taxation - Line 0260 
+
+PLUS:  Other - Line 0280 
+
+Taxes receivable at the end of the year reported in SLC 72 0290 09 of this schedule must be equal to taxes receivable in SLC 70 0699 01. **CASH COLLECTIONS (Schedule 72A)** 
+
+Cash collections consist of the collection of current year taxes, the collection of outstanding taxes 
+
+from previous and prior years, penalties and interest, and amounts added to the tax bill for collection purposes only. 
+
+Include payments received for railway rights-of-way and utility corridors in cash collections for current, previous and prior years. 
+
+**Line 0610 Current year's tax** 
+
+Report the amount of the current year's tax which has been collected. 
+
+**Line 0620 Previous year's tax** 
+
+Include collections related to previous and prior year taxes. 
+
+## **Line 0630 Penalties and interest** 
+
+Report the amount of penalties and interest on this line.  However, if penalties and interest cannot be isolated from cash collections, the amounts should be reported on line 0610 (Current year's tax) and line 0620 (Previous year's tax). 
+
+## **Line 0640 Amounts added to tax bills for collection purposes only** 
+
+Report on this line amounts collected during the year in regard to amounts added to tax bills for collection purposes only.  If it is not possible to identify the amounts added to tax bills for collection purposes only, then include the collections in line 0610 or 0620. 
+
+## **Line 0690 Other** 
+
+Report collections not included in lines 0610 through 0640. 
+
+## **Line 0699 TOTAL Cash Collections** 
+
+Total cash collections are equal to the sum of lines 0610 through 0690. 
+
+## **TAX ADJUSTMENTS APPLIED TO TAXATION (Schedule 72B)** 
+
+Adjustments reported in this section reduce tax revenue. 
+
+**Where possible, some cells have been pre-populated with information collected by OPTA. Municipal edits are permitted in all cells. Please remember to Save Changes.** 
+
+## **Description of Columns** 
+
+Columns record tax adjustments recoverable from school boards, the municipality, and the upper-tier municipality.  The following columns are used: 
+
+## **Column 1 School Boards:  English - Public** 
+
+The tax adjustments recoverable from the English-Public school board should be reported in this column. 
+
+## **Column 2 School Boards:  French - Public** 
+
+The tax adjustments recoverable from the French - Public school board should be reported in this column. 
+
+## **Column 3 School Boards: English - Separate** 
+
+The tax adjustments recoverable from the English - Separate school board should be reported in this column. 
+
+## **Column 4 School Boards:  French - Separate** 
+
+The tax adjustments recoverable from the French - Separate school board should be reported in this column. 
+
+## **Column 5 School Boards: Other** 
+
+The tax adjustments recoverable from other school boards should be reported in this column. 
+
+## **Column 6 TOTAL Education** 
+
+The tax adjustments recoverable from all school boards should be displayed in this column.  The Total Education amount in column 6 is equal to the sum of columns 1 through 5. 
+
+## **Column 7 Lower-Tier (Single-Tier)** 
+
+This column records tax adjustment funded from the general accounts of the local municipality. 
+
+## **Column 8 Upper-Tier** 
+
+In a two-tier system, lower-tiers use this column to record tax adjustments recoverable from the upper-tier municipality. 
+
+## **Column 9 TOTAL Tax Adjustments** 
+
+Total tax adjustments are equal to the sum of columns 6 through 8. 
+
+## **Description of Lines** 
+
+**I** n this section, several lines are used to identify specific tax adjustments.  The following is a description of lines used to report each of the tax adjustments. 
+
+Refers to a deficiency in taxes collected for another body. On this line, record the amount of the deficiency shared by the lower-tier, upper-tier and school boards in a two-tier system or by the singletier and school boards.  Please refer directly to the Act. 
+
+## **Do not include adjustments reported in lines 1010 to 1090.** 
+
+## **Line 1010 Write-off of taxes (Municipal Act Section 354)** 
+
+Refers to taxes which have been deemed uncollectible by the treasurer or ruled uncollectible by a court decision and are to be recovered from the local municipality, upper-tier and school board.  Enter the amounts of tax adjustments to be shared by the lower-tier, upper-tier and school boards in a twotier system or by the single-tier and school boards.  Please refer directly to the Act. 
+
+## **Line 1020 Cancellation, reduction, refund of taxes, overcharges (Municipal Act Section 357/358)** 
+
+**Section 357** refers to cancellations, reductions, refunds, etc. of taxes approved by Council where an individual has applied to Council for tax relief due to specific circumstances outlined in this section of the Act.  Enter the amount of tax adjustments shared by the lower-tier, upper-tier and school boards in a two-tier system or by the single-tier and school boards.  Please refer directly to the Act. 
+
+**Section 358** refers to cancellation, reductions or refunds of taxes approved by Council in respect to clerical errors. Enter the amounts of tax adjustments to be shared by the lower-tier, upper-tier and school boards in a two-tier system or by the single-tier and school boards. Please refer directly to the Act. 
+
+## **Line 1030 Cancellation, reduction or refund of taxes (Municipal Act Section 365)** 
+
+Refers to cancellation, reductions or refunds of taxes approved by Council in respect to residential/farm, farmlands and managed forest properties.  Taxes are considered by Council to be unduly burdensome. Enter the amounts of tax adjustments to be shared by the lower-tier, upper-tier and school boards in a two-tier system or by the single-tier and school boards. Please refer directly to the Act. 
+
+**Line 1040 ARB decisions, Advisory Notice of Adjustment due to an ARB decisions (Assessment Act 40)** 
+
+## **Assessment Review Board(ARB) decisions** : 
+
+Include Assessment Review Board decisions under section 40 of the Assessment Act that result in a reduction of tax responsibility and Advisory Notices of Assessments given under section 19.1(7) of 
+
+## **Line 1050 RfR (Assessment Act 39.1)** 
+
+## **Requests for Reconsiderations** 
+
+Include Requests for Reconsiderations under section 39.1 of the Assessment Act that result in a reduction of tax responsibility. Please refer directly to the Act. 
+
+## **Line 1060 Increase of taxes, error in calculating taxes (Municipal Act 359 & Municipal Act** 
+
+## **359.1)** 
+
+**Section 359** refers to an increase of taxes upon application made by the treasurer of the local municipality on land in the year in respect of which the application is made to the extent of any undercharge caused by a gross or manifest error that is a clerical or factual error, including the transposition of figures, a typographical error or similar error, but not an error in judgement in assessing the land. Please refer directly to the Act. 
+
+**Section 359.1** refers to a case where, due to an error in the calculation of taxes under Part IX of the Municipal Act or under Part XXII.1, XXII.2 or XXII.3 of the old Act, the use of the amount of taxes referred to in paragraph 1 of subsection 329 (2) for the year in which the application is made which reflects what the taxes would have been on the land for the previous year if the error had not been made Please refer directly to the Act. 
+
+## **Line 1070 Post Roll Amended Notices (PRANs) (Assessment Act Section 32)** 
+
+Include Amended property assessment notices under the Assessment Act. 
+
+This notification is made under section 32(1.1) of the _Assessment Act._ 
+
+## **Line 1080 Special Amended Property Assessment Notices (SANs) (Assessment Act)** 
+
+Include Special Amended Property Notices on this line. 
+
+These relate to a change in legislation. 
+
+## **Line 1090 Tax Incentive Adjustments (TIAs) (Assessment Act)** 
+
+Include Tax Incentive Approval notifications on this line 
+
+This notification is issued pursuant to section 39.1(7) of the _Assessment Act_ . 
+
+Other adjustments: Please see the link below for MPAC Notices: 
+
+## **Line 1099 Subtotal** 
+
+The subtotal for lines 1000 to 1090 is automatically displayed on this line. 
+
+## **Line 1299 Discounts for Advanced Payments (Municipal Act, Section 345 (10))** 
+
+This line only applies to lower-tiers and single-tiers (column 7). 
+
+Enter discounts which apply to prepaid taxes under **section 345 (10) (previously 399 (5)) of the Municipal Act** . 
+
+Please refer directly to the Act for further details. 
+
+**Line 1499 Tax Credit (Municipal Act, Section 474.3)** 
+
+Report tax credits under **Section 474.3 of the Municipal Act** (previously the Municipal Elderly Residents' Assistance Act). 
+
+Please refer directly to the Act for further details. 
+
+**Line 1699 Tax Cancellation - Low income seniors and disabled persons (Municipal Act, Section 319)** 
+
+Under **Sections 319 and 466 of the Municipal Act** , single-tier municipalities and upper-tier municipalities may pass a by-law providing for tax deferrals, cancellations or other relief in respect of assessment related tax increases for low income seniors or low-income persons with disabilities. This assistance also applies to tax increases for lower-tier and school board purposes.  Tax relief is categorized as: 
+
+Tax cancellations for low income seniors, disabled persons and report tax relief other than cancellations and deferrals.  Please note that deferrals under section **Sections 319 and 466 (previously 373) of the Municipal Act** are reported in Schedule 72, line 4210 in the section, Tax adjustments not applied to taxation. 
+
+Please refer directly to the Act for further details. **Line 1810 Rebates to Commercial properties (Municipal Act, Section 362)** 
+
+**Under Section 362 of the Municipal Ac** t, Single-tier municipalities and upper-tier municipalities in a two-tier system may provide rebates to owners of Commercial and Industrial properties.  The costs of these rebates are shared proportionally by the single-tier or upper-tier and school boards. 
+
+On this line, report rebates to Commercial properties. Please refer directly to the Act for further details. 
+
+**Line 1820 Rebates to Industrial properties (Municipal Act, Section 362)** 
+
+**Under Section 362 of the Municipal Act** , Single-tier municipalities and upper-tier municipalities in a two-tier system may provide rebates to owners of Commercial and Industrial properties.  The costs of these rebates are shared proportionally by the single-tier or upper-tier and school boards. 
+
+On this line, report rebates to Industrial properties.  Please refer directly to the Act for further details. 
+
+## **Line 1899 Subtotal** 
+
+The subtotal for Rebates to Commercial and Industrial properties is automatically displayed on this line and equals the sum of lines 1810 and 1820. 
+
+## **Line 2099 Rebates for Charities (Municipal Act, Section 361)** 
+
+**Under Section 361 of the Municipal Act** , upper-tier and single-tier municipalities may provide tax rebates to eligible charities which pay commercial or industrial taxes on properties occupied. In a two-tier system, enter amounts shared by school boards, lower-tiers and the upper-tier. In a single-tier, enter amounts shared by school boards and the single-tier. Please refer directly to the Act for further details. 
+
+## **Line 2299 Vacant Unit Rebates (Municipal Act, Section 364)** 
+
+**Under Section 364 of the Municipal Act,** every local municipality shall have a program to provide tax rebates to owners of property that had vacant portions in the commercial and industrial property classes.  In a two-tier system, enter amounts shared by school boards, lower-tiers and the upper-tier. In a single-tier, enter amounts shared by school boards and the single-tier.  Please refer directly to the Act for further details. 
+
+## **Line 2301 Contaminated Property (Municipal Act, Section 365.1)** 
+
+**Section 365.1 of the Municipal Act** allows a local municipality to pass by-laws providing for the cancellation of all or a portion of the taxes for municipal and school purposes levied on one or more specified eligible properties, on such conditions as the municipality may determine, and a by-law may apply in respect of the rehabilitation period for a specified property, the development period for a specified property, or both. 
+
+## **Line 2399 Reduction for Heritage Property (Municipal Act, Section 365.2)** 
+
+**Section 365.2 of the Municipal Act** which allows municipalities to establish a program, by bylaw, to provide a tax reduction or refund in respect of eligible heritage properties.  The cost of the rebate may be shared with the lower-tier, upper-tier and school boards in a two-tier system or with the single-tier and school boards. Please refer directly to the Act for further details. 
+
+## **Line 2400 Change in Assessment (Municipal Act, 365.3)** 
+
+**Under Section 365.3 of the Municipal Act,** If the assessment of a property for a year changes as a result of a request under section 39.1 of the Assessment Act, an appeal under section 40 of that Act, an application under section 46 of that Act or a correction made under subsection 32 (1.1) of that Act, 
+
+tax relief provided under sections 319, 345, 356, 357, 358, 362, 364, 365, 365.1 and 365.2 and tax increases provided under section 359 shall be redetermined using the new taxes on property for the year based on the new assessment and the tax roll for the year shall be amended to reflect the determination.  2002, c. 17, Sched. A, s. 69; 2006, c. 32, Sched. A, s. 150; 2008, c. 7, Sched. O, s. 8; 2017, c. 10, Sched. 1, s. 53. 
+
+## **Line 2890 Other** 
+
+Enter other tax adjustments which are not reported in any of the categories above. 
+
+**Line 2891 Other** 
+
+Enter other tax adjustments which are not reported in any of the categories above. 
+
+**Line 2899 TOTAL Tax Adjustments before Allowances** 
+
+**The Total tax adjustments before allowances on this line, equals the sum of Lines 1000 through 2893.** 
+
+**Municipal Section 353 - Line 1000 Municipal Act Section 354 - Line 1010 Municipal Act Section 357/358 - Line 1020 Municipal Act Sections 365 - Line 1030 Assessment Act Section 40 ARB's - Line 1040 Assessment Act Section 39.1 Request for Reconsiderations - Line 1050 Municipal Act Sections 359 & 359.1 - Line 1060 Assessment Act Section 32 Post Roll Amended Notice (PRAN) – Line 1070 Assessment Act Special Amended Notice (SAN) - 1080 Assessment Act Tax Incentive Adjustment (TIA) - 1090** 
+
+**Discounts for Advance Payments (Municipal Act, Section 345(10)) - Line 1299 Tax Credit (Municipal Act, Section 474.3) - Line 1499 Tax Cancellations - Low income seniors and disabled persons - Line 1699 Municipal Act 362 Rebates to Commercial properties – Line 1810 Municipal Act 362 Rebates to Industrial properties – Line 1820 Subtotal, Rebates to Commercial and Industrial properties - Line 1899** 
+
+**Rebates for Charities (Municipal Act, Section 361) - Line 2099 Vacant Unit Rebates (Municipal Act, Section 364) - Line 2299 Contaminated Property (Municipal Act, Section 365.1) – Line 2301 Reduction for Heritage Property (Municipal Act, Section 365.2) - Line 2399 Change in Assessment (Municipal Act, Section 365.3) – Line 2400 Other - Line 2890 Other - Line 2891 Other - Line 2892 Other - Line 2893** 
+
+## **TAX ADJUSTMENTS NOT APPLIED TO TAXATION (Schedule 72B)** 
+
+The tax adjustments in this section do not reduce tax revenue for the current year.  The columns in this section are the same as in the previous section.  Please refer to the previous Description of Columns for information on each column. 
+
+## **Description of Lines** 
+
+The following is a description of lines used to report each of the tax adjustments not applied to taxation. 
+
+## **Line 4010 Tax sale, Tax registration accounts** 
+
+Enter the amount contained in tax sale and tax registration accounts in column 7. 
+
+**Line 4210 Tax Deferral - Low income seniors and Disabled persons (Municipal Act, Section 319)** 
+
+Report the tax deferrals for low income seniors and disabled persons under section 319 and 466 of the Municipal Act and other Acts. 
+
+## **Line 4420 Net impact of 5% Capping Limit Program** 
+
+In this line, record the aggregate impact of the capping tax adjustments from the frozen capping reports for all the capped property classes (Multi-Residential, Commercial and Industrial). 
+
+The calculation of the capping tax adjustments for line 4420 recognizes that "taxation revenue" is to be recorded at full CVA tax responsibility as if capping did not apply. 
+
+The capping tax adjustment for line 4420 applies to column 8: upper-tier. 
+
+The data to calculate the capping tax adjustments is available in OPTA under the **2016** capping reports:  Upper-tier Distribution of Capping Tax Adjustments. 
+
+Any amounts reflected for each property tax class in the column headed "municipal share" in the report:  Upper-tier Distribution of Capping Tax Adjustments indicates a property class shortfall and is to be reported as an operating expense on Schedule 40 under general government SLC 40 0250 03. 
+
+For single-tier municipalities, the **2016** Capping Summary Report using Actual Rates reports reflects the tax adjustment amounts for each property tax class.  The amount reflected as Broad Class Grand Total for property tax class is to be reported as an operating expenditure on Schedule 40 under general government SLC 40 0250 03. 
+
+The following chart provides an example of how to calculate the amount to be reported in SLC 72 4420 08. 
+
+## **Example: How to calculate the amount to be reported in SLC 72 4420 08 Upper -Tier** 
+
+## **Distribution of Capping Tax Adjustments** 
+
+## **For Munc. Multi-Residential** : 
+
+If Levy*= 200,000; Cap Impact=-86,692; Municipal Share=3,958; Net Adjustment=-82,734 
+
+## **For Munc. Commercial:** 
+
+If Levy*=400,000; Cap Impact=9,183; Municipal Share=0; Net Adjustment=9,183 
+
+## **For Munc. Industrial:** 
+
+If Levy*=200,000; Cap Impact=-119,052; Municipal Share=0; Net Adjustment=-119,052 
+
+Municipal share represents share of shortfall: 
+
+Positive amounts under net adjustments represent payments due from Lower-Tier to Upper-Tier 
+
+Negative amounts under net adjustments represent payments due from Upper-Tier to Lower-Tier 
+
+*Levy amount in this report reflects the Lower-Tier levy only.  For the overall levy for each class (Lower-Tier, Upper-Tier and School), please refer to the **2016** frozen capping reports for your municipality. 
+
+Multi-residential: total CVA levy (lower-tier, upper-tier & school): 600,000 Dr. taxes receivable - 600,000 Dr. expenditure - 3,958 Dr. accounts receivable-upper-tier - 86,692 Cr. taxes receivable - 86,692 Cr. accounts payable-upper-tier - 3,958 Cr. taxation revenue - 600,000 
+
+Commercial: total CVA levy (lower-tier, upper-tier & school): 2,700,000 Dr. taxes receivable - 2,709,183 Cr. accounts payable-upper tier - 9,183 Cr. taxation revenue - 2,700,000 
+
+Industrial: total CVA levy (Lower-tier, upper-tier & school): 1,300,000 Dr. taxes receivable - 1,300,000 Dr. accounts receivable-upper tier - 119,052 Cr. taxes receivable - 119,052 Cr. taxation revenue - 1,300,000 
+
+Summary: 
+
+Dr. taxes receivable - 4,609,183 (600,000+2,709,183+1300,000) Dr. expenditure - 3,958 Dr. accounts receivable-upper-tier - 205,744 (86,692+119,052) 
+
+Record on SLC 72 4420 08: 192,603 (205,744 - 13,141) 
+
+## **Line 4890 Other** 
+
+Enter other non-tax adjustments which are not reported in any of the categories above. 
+
+## **Line 4891 Other** 
+
+Enter other non-tax adjustments which are not reported in any of the categories above. 
+
+## **Line 4999 TOTAL Tax Adjustments Not Applied to Taxation** 
+
+The Total tax adjustments not applied to taxation on this line equals the sum of Lines 4010 through 4891. 
+
+Tax Sale, Tax Registration Accounts - Line 4010 
+
+Tax Deferral - Low income seniors and Disabled persons - Line 4210 
+
+Net impact of 5% Capping Limit Program - Line 4420 
+
+Other - Line 4890 
+
+Other - Line 4891 
+
+## **ADDITIONAL INFORMATION** 
+
+The following lines are used to report other information related to tax adjustments. 
+
+## **Line 6010 Recovery of Tax Deferrals** 
+
+On this line, report any taxes paid which were previously deferred. 
+
+## **Line 7010 Entitlement of school boards** 
+
+In Co-ordination with the Ministry of Education, this line was introduced to show the total Property Tax and Payment-In-Lieu entitlement of School Boards after adjustments.  Amounts on this line are automatically calculated by the following formula. 
+
+**Entitlement of School Board Schedule 72, Line 7010 = Total Taxes (Before Adjustments) Schedule 26, Line 9199 +** 
+
+**Total Payments-In-Lieu of Taxation Schedule 26, Line 9599 - Tax Adjustments Before Allowances Schedule 72, Line 2899 - Tax Adjustments Not Applied to Taxation Schedule 72, Line 4999 + Recovery of Tax Deferrals Schedule 72, Line 6010** 
+
+## **SCHEDULE 74: Long Term Liabilities and Commitments** 
+
+## **General Information** 
+
+The Schedule 74 series consists of the following 13 sections.  The corresponding worksheet in the FIR file is indicated next to the section. 
+
+**74A-1. Debt burden of the municipality 74A-2. Debt burden of the municipality - Analysed by debt instrument 74A-3. Debt burden of the municipality - Analysed by function** 
+
+**74B-4. Debt payable in foreign currencies (net of sinking fund holdings) 74B-5. Interest earned on sinking funds and on debt retirement funds during the year.** 
+
+**74B-6. Details of sinking fund balance 74B-7. Long term commitments at year end** 
+
+**74C-8. Contingent liabilities** 
+
+**74C-10. Debt Charges for the current year 74C-11. Long term debt refinanced** 
+
+**74D-12. Future principal and interest payments on EXISTING debt 74D-13. Other Notes** 
+
+## **Definition:  Long Term Liabilities** 
+
+_**Please note that liabilities for solid waste management facilities, postemployment benefits, and contaminated sites are not reflected on Schedule 74. These liabilities are only reflected in Schedule 70.**_ 
+
+The term "long term liabilities" as used in the FIR reflects the debt position of a municipality and its consolidated municipal entities, including local boards.  It takes into account the debt assumed by other bodies and debt assumed by the municipality from other bodies.  It also takes into account the value of the municipality's own sinking funds and the Ontario Clean Water Agency debt retirement funds. 
+
+Long term liabilities are defined to include all types of debentures, mortgages, and capital lease agreements. 
+
+In addition, bank loans are considered long term liabilities if all the following conditions are met: 
+
+- (a) The loan is made for capital purposes; 
+
+- (b) The bank cannot, under normal circumstances, demand payment before maturity of the promissory note; and 
+
+(c) The municipality does not intend to issue debentures but has instead set up a plan to repay the loan out of general revenues over a period exceeding one year, with the approval of Council or the Local Planning Appeal Tribunal (LPAT), as the case may be. 
+
+Generally, all three conditions will be met. 
+
+## **Assumption of Debt** 
+
+Municipalities may assume debt from other municipalities because of a municipal reorganization (annexation or amalgamation). Municipalities may also assume debt issued on behalf of a joint project or local board, or debt issuances on behalf of other bodies such as a public utilities commission. The debt assumed by another municipality under these circumstances is to be reported by that municipality and by the issuing municipality with a corresponding amount reported as debt recoverable from others, as outlined in the following diagram: 
+
+**==> picture [384 x 141] intentionally omitted <==**
+
+**----- Start of picture text -----**<br>
+Did your Yes Report:<br>municipality issue - Total debt issued (lines 0210 to 0298)<br>the debt? - Total debt recoverable (lines 0610 to 0698)<br>No<br>Report total debt<br>assumed from<br>others (line 0499)<br>**----- End of picture text -----**<br>
+
+
+In addition, the issuing municipality should net payments received, if any, from the municipality assuming the debt against debt charges incurred for the debt. The issuing municipality should not report the payments received from the assuming municipality as revenues on Schedule 12 or recovered debt charges as expenses on Schedule 40. 
+
+## **1. DEBT BURDEN OF THE MUNICIPALITY** 
+
+The total debt burden of the municipality reported in section 1 on line 9910 equals the amount reported in section 2 on line 9920 and the amount in section 3 on line 9930.  In each section, the debt is analysed in a different manner. 
+
+Please note that if a municipality has refinanced debt, the new debt is included in the liabilities reported in sections 1, 2 and 3. 
+
+The total debt burden of the municipality on line 9910 is equal to all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities, plus all debt assumed by the municipality from others, less all debt assumed by others, less 
+
+Ontario Clean Water Agency (OCWA) debt retirement funds, less the actual balances of own sinking funds. 
+
+## **All outstanding debt issued by the municipality, predecessor municipalities and consolidated entities** 
+
+## **Include:** 
+
+## **1. All debt issued in the name of the municipality** 
+
+## **2. Debt of predecessor municipalities** 
+
+## **3. Debt issued in the name of consolidated entities** 
+
+**4. Debt issued in the name of the municipality on behalf of school boards and local boards, whether consolidated or unconsolidated** 
+
+## **Line 0210 To: Ontario and agencies** 
+
+Enter debt issued by the municipality, predecessor municipalities and consolidated entities to the province and its agencies. 
+
+## **Line 0220 To: Canada and agencies** 
+
+Enter debt issued by the municipality, predecessor municipalities and consolidated entities to the federal government and its agencies. 
+
+## **Line 0230 To: Others** 
+
+Enter debt issued by the municipality, predecessor municipalities and consolidated entities to others.  This category includes debt issued to the public **(including tile drain loans)** and debt issued to financial institutions. 
+
+Exclude liabilities pertaining to the former Ontario Hydro. 
+
+Debt issued in U.S. dollars must be included at the Canadian dollar equivalent using the rate of exchange prevailing at the balance sheet date. 
+
+**Line 0297 Other** 
+
+Refer to the instructions for line 0230 above. 
+
+## **Line 0298 Other** 
+
+Refer to the instructions for line 0230 above. 
+
+## **Line 0299 Subtotal** 
+
+The subtotal of all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities is equal to the sum of lines 0210 through 0298. 
+
+## **Line 0499 PLUS:  All debt assumed by the municipality from others** 
+
+Debt of predecessor municipalities is not considered debt assumed by the municipality from others. Debt of predecessor municipalities is considered debt issued by the municipality and should be reported on lines 0210 to 0230. 
+
+## **LESS:  All debt assumed by others** 
+
+Identify debt issued by the municipality and assumed by the following: 
+
+**Line 0610 Ontario Line 0620 School boards Line 0630 Other municipalities Line 0640 Government Business Enterprises** 
+
+Report long term debt specifically issued on behalf of Government Business Enterprises. 
+
+**Line 0697 Other: Please describe Line 0698 Other: Please describe Line 0699 Subtotal** 
+
+The subtotal of all debt assumed by others is equal to the sum of lines 0610 through 0698. 
+
+## **LESS: Debt retirement funds** 
+
+**Line 0810 Sewer Line 0820 Water Line 0896 Other: Please describe Line 0897 Other: Please describe Line 0898 Other: Please describe Line 0899 Subtotal** 
+
+The subtotal of debt retirement funds is equal to the sum of lines 0810 through 0898. 
+
+## **LESS: Own sinking funds (actual balances)** 
+
+The amount reported is the actual balance in sinking funds, including interest earned. 
+
+**Line 1010 General municipal** 
+
+Enter actual sinking fund balances for general municipal purposes. 
+
+## **Line 1020 Enterprises and others** 
+
+Enter actual sinking fund balances for government business enterprises and other entities. 
+
+**Line 1097 Other: Please describe** 
+
+**Line 1098 Other: Please describe** 
+
+**Line 1099 Subtotal** 
+
+The subtotal of own sinking funds is equal to the sum of lines 1010 through 1098. 
+
+**Line 9910 Total Net Long Term Liabilities of the municipality/ TOTAL Debt burden of the municipality** 
+
+Total debt burden of the municipality equals: 
+
+Subtotal, all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities - Line 0299 
+
+PLUS: All debt assumed by the municipality from others - Line 0499 
+
+LESS:  Subtotal, all debt assumed by others - Line 0699 
+
+LESS:  Subtotal, Debt retirement funds-Line 0899 
+
+LESS:  Subtotal, Own sinking funds (actual balances) - Line 1099 
+
+In section 2 of this schedule, Debt burden of the municipality - Analysed by debt instrument, the debt burden of the municipality on line 9910 is analysed by type of debt instrument.  In the section 3 of this schedule, Debt burden of the municipality - Analysed by function, the debt burden of the municipality is analyzed by function. 
+
+## **2.  DEBT BURDEN OF THE MUNICIPALITY - ANALYZED BY DEBT INSTRUMENT** 
+
+In this section, the total debt burden of the municipality from line 9910 is categorized by type of instrument: sinking fund debentures, installment (serial) debentures, long term bank loans, lease purchase agreements, mortgages, construction financing debentures, and other. 
+
+When lines 1210 through 1298 are added, the subtotal on line 9920 must equal the amount reported in line 9910 (TOTAL Debt burden of the municipality). 
+
+## **Line 1210 Sinking fund debentures** 
+
+Include all debentures which are to be retired by a sinking fund. 
+
+## **Line 1220 Installment (serial) debentures** 
+
+Include all debentures which have a fixed repayment schedule. 
+
+**Line 1230 Long term bank loans** 
+
+Bank loans are considered long term liabilities if: 
+
+1. The loan is made for capital purposes; and 
+
+2. The bank cannot under normal circumstances demand payment before maturity of the promissory note; and 
+
+3. The municipality does not intend to issue debentures but has instead set up a plan to repay the loan out of general revenues over a period exceeding one year, with the approval of Council or the LPAT, as the case may be. 
+
+Generally, all three conditions will be met. 
+
+## **Line 1240 Lease purchase agreements** 
+
+Please see the section on "Capital Leases" in the Introduction. 
+
+## **Line 1250 Mortgages** 
+
+Include all debt issued with a mortgage deed executed as security. 
+
+## **Line 1280 Construction financing debentures** 
+
+Municipalities issue debentures which carry debt service holiday periods that match construction. Ontario regulation 278/02 enables construction financing debentures to be issued. 
+
+## **Line 1297 Other** 
+
+Indicate any other types of long-term liabilities. 
+
+## **Line 1298 Other** 
+
+Indicate any other types of long-term liabilities. 
+
+## **Line 9920 TOTAL Debt burden of the municipality** 
+
+Line 9920 is equal to the sum of lines 1210 through 1298. This line is also equal to line 9910. 
+
+## **3.  DEBT BURDEN OF THE MUNICIPALITY - ANALYSED BY FUNCTION** 
+
+The debt burden of the municipality from line 9910 is analysed by functional categories in lines 1405 to 1490. There is at least one line for every functional category.  There are additional lines for transportation, environmental and recreation and cultural services. 
+
+## **Line 9930 TOTAL Debt burden of the municipality** 
+
+Line 9930 is equal to the sum of lines 1405 through 1490.  Line 9930 is also equal to 9910. 
+
+## **4.  DEBT PAYABLE IN FOREIGN CURRENCIES (Net of Sinking Fund Holdings)** 
+
+In section 1, Debt burden of the municipality, line 9910 may include debt payable in foreign currencies. Foreign debt is reported at its Canadian dollar equivalent. 
+
+In this section, debt is recorded in both the original currency and its Canadian equivalent.  This information can be used to gauge the impact of exchange rate fluctuations. 
+
+Record the amount of foreign held debt, net of sinking funds. 
+
+## **US dollars** 
+
+## **Line 1610 Canadian dollar equivalent included in SLC 74 9910 01** 
+
+Enter the Canadian dollar equivalent of debt payable in U.S. dollars which was included in the total debt burden of the municipality in line 9910.  Use the exchange rate prevailing as of the balance sheet date.  Report the par value in U.S. dollars on line 1620. 
+
+## **Line 1620 Par value in U.S. dollars** 
+
+State the amount of debt outstanding at year end in U.S. currency. 
+
+## **Other currency** 
+
+Lines 1630 to 1660 are provided to record debt in foreign currencies other than U.S. dollars. 
+
+## **Line 1630 Canadian dollar equivalent included in SLC 74 9910 01** 
+
+Enter the Canadian dollar equivalent of debt payable in foreign currency which was included in the total debt burden of the municipality on line 9910.  Use the exchange rate prevailing as of the balance sheet date. On line 1640 specify the currency and the par value. 
+
+## **Line 1640 Par value in:** 
+
+Specify the foreign currency in the space provided.  In column 1, state the amount of debt outstanding at year end in the foreign currency. 
+
+## **Line 1650 Canadian dollar equivalent included in SLC 74 9910 01** 
+
+Enter the Canadian dollar equivalent of debt payable in foreign currency which was included in the total debt burden of the municipality on line 9910.  Use the exchange rate prevailing as of the balance sheet date. On line 1660 specify the currency and the par value. 
+
+## **Line 1660 Par value in:** 
+
+Specify the foreign currency in the space provided. In column 1, state the amount of debt outstanding at year end in the foreign currency. 
+
+## **5.  INTEREST EARNED ON SINKING FUNDS AND ON DEBT RETIREMENT FUNDS DURING THE YEAR** 
+
+## **Line 1810 Own funds** 
+
+Report interest earned on own sinking funds. 
+
+## **6.  DETAILS OF SINKING FUND BALANCE** 
+
+The information in this section concerns the value of outstanding sinking fund debentures (line 2010), the sinking fund balance (line 2199).  The section also reports the amount of future contributions to the sinking fund (line 2210) and income from investments (line 2220) required to retire sinking fund debentures. 
+
+**Line 2010 Value of own sinking fund debentures issued and outstanding at year end** 
+
+Enter the outstanding balance on gross sinking fund debentures. 
+
+## **Balance of own sinking funds at year end** 
+
+Line 2110 reports amounts contributed to sinking funds and line 2120 reports income earned on sinking funds. 
+
+**Line 2110 Total contributions to own sinking funds** 
+
+Report all contributions to own sinking funds on this line. 
+
+**Line 2120 Total income earned from investments of sinking fund monies** 
+
+Report income, including interest, earned from investing sinking funds. 
+
+## **Line 2199 Subtotal** 
+
+The subtotal of lines 2110 and 2120 is the actual balance of own sinking funds at the year end.  The balance of own sinking funds is the amount available to meet sinking fund obligations reported on line 2010. 
+
+## **Future contributions and income:** 
+
+Future contributions to sinking funds and future income earned on investment of sinking funds 
+
+The difference between the value of outstanding sinking fund debentures (line 2010) and the actual balance of own sinking funds (line 2199) are the amount that will be needed to be raised in the future. 
+
+The amount to be raised will come from future contributions of the municipality to the sinking fund (line 2210) and future income from the investment of sinking fund monies (line 2220). 
+
+The amount to be raised in the future (line 2010 less line 2199) will be approximately equal to estimated future contributions and income (line 2210 plus line 2220). 
+
+Estimate total future contributions to the sinking fund by this municipality, excluding interest. 
+
+**Line 2220 Estimated total future income earned from investments in lines 2199 and 2210 above** 
+
+On this line, report estimated interest to be earned from the balance of own sinking funds at year end (line 2199) plus estimated interest to be earned on future contributions to the sinking fund (line 2210). 
+
+## **7.  LONG TERM COMMITMENTS AT YEAR END** 
+
+In this section, report the remaining portion of all long-term commitments at year end which are financed from the statement of operations and approved by Council or the Local Planning Appeal Tribunal (LPAT), as the case may be, for the following purposes: hospital support; university support; leases and other agreements; capital equipment, land acquisition; and other. 
+
+These liabilities should be capitalized at the interest rate used by Council or the LPAT, as of the date of Council or LPAT approval. 
+
+Please note that the LPAT does not capitalize certain commitments such as service agreements for garbage disposal, snow removal, office cleaning, etc. Do not include such commitments here. 
+
+Where commitments are not readily convertible into dollar amounts, a narrative description should be sent by email to the Ministry at FIR.mah@ontario.ca 
+
+List the supporting material sent to the Ministry in Section 13 (Other Notes). 
+
+## **Line 2410 Hospital support** 
+
+Commitments for hospitals may be for municipal, public or private hospitals. The municipality reports this as a long-term commitment, irrespective of whether the hospital uses the funds for capital or operating purposes. 
+
+## **Line 2420 University support** 
+
+**Line 2430 Leases and other agreements** 
+
+Report leases that extend beyond the term of council but are not deemed to be tangible capital leases. 
+
+## **Line 2440 Capital equipment, land acquisition** 
+
+## **Line 2496 Other** 
+
+On this line report other contractual obligations and commitments that are abnormally large in relation to the usual operations of the municipality. 
+
+**Line 2497 Other** 
+
+On this line report other contractual obligations and commitments that are abnormally large in relation to the usual operations of the municipality. 
+
+## **Line 2498 Other** 
+
+On this line report other contractual obligations and commitments that are abnormally large in relation to the usual operations of the municipality. 
+
+**Line 2499 TOTAL** 
+
+Total long-term commitments at year end are equal to the sum of lines 2410 through 2498. 
+
+## **8.  CONTINGENT LIABILITIES** 
+
+This section provides information on contingent liabilities to the extent that they are not already accrued in Schedule 70, Consolidated Financial Position.  If your municipality has one or more contingent liabilities, please enter the actual or estimated value for each type of contingent liability. 
+
+## **Description of Columns** 
+
+## **Column 4 Contingent Liabilities** 
+
+Enter Y for “Yes” if you have a contingent liability. 
+
+Enter N for “No” if you do not have a contingent liability. 
+
+## **Column 1 Is Value in Column 2 Estimated?  (Y or N)** 
+
+Enter Y for "Yes" if the value of the contingent liability reported in column 2 is estimated. Enter N for "No" if the value is not an estimate. 
+
+## **Column 2 Value ($)** 
+
+Enter the value of each type of contingent liability listed. 
+
+## **Column 3 Number of Years payable over** 
+
+This column applies only to line 2640 (Outstanding loans guaranteed). Report the number of years as the time from the next reporting year to the year the last loan payment is due. 
+
+## **Description of Lines** 
+
+## **Line 2610 Pending or threatened litigation** 
+
+Report only the portion of the contingency which is uninsured. 
+
+## **Line 2620 Retroactive wage settlements** 
+
+Enter the amount owing in respect of a wage settlement which involves a payment resulting from a retroactive charge to the reporting year and prior years which has not otherwise been accrued in Schedule 70, Consolidated Financial Position. 
+
+**Line 2630 Guarantees of long-term indebtedness in the name of the municipality but assumed by others** 
+
+Report long term debt guaranteed by the municipality where the debt has been assumed by others. 
+
+## **Line 2640 Outstanding loans guaranteed** 
+
+Enter the amount of loans guaranteed by the municipality on behalf of another entity. 
+
+In column 3 specify the term of the loan in years. Report the number of years as the time from the next reporting year to the year the last loan payment is due. 
+
+## **Line 2698 Other** 
+
+Report other contingent liabilities.  PS 1201.071 of the PSAB Handbook states that "contingencies are the result of existing conditions or situations involving uncertainty that will ultimately be resolved when one or more future events occur or fail to occur." Potential contingent liabilities could include significant balances related to property tax under appeal. 
+
+## **Line 2699 TOTAL** 
+
+Total contingent liabilities in this section are equal to the sum of lines 2610 through 2698. 
+
+## **10.  DEBT CHARGES FOR THE CURRENT YEAR** 
+
+Section 10 identifies sources that will be used to recover debt charges for the current year: consolidated statement of operations (lines 3012 and 3014), discretionary reserve funds (line 3020), unconsolidated entities (lines 3030 through 3050) and other sources (lines 3097 and 3098). 
+
+The amount recovered is divided into principal payments (column 1) and interest payments (column 2). 
+
+The debt charges reported on lines 3010 through 3098 should include balloon payments. 
+
+## **Recovered from the consolidated statement of operations:** 
+
+## **Line 3012 General tax rates** 
+
+Report principal and interest payments recovered from general tax rates. Include debt charges for unconsolidated entities which are paid by the municipality. 
+
+## **Line 3014 Other** 
+
+Report principal and interest payments recovered from special area rates and special charges benefiting landlords. 
+
+**Line 3015 Tile Drainage/Shoreline Assistance** 
+
+Report principal and interest payments recovered from landowners (tile drain loans). 
+
+## **Line 3020 Recovered from the reserve funds** 
+
+Report principal and interest payments recovered from discretionary reserve funds. 
+
+## **Recovered from unconsolidated entities** 
+
+Report debt charges recovered from unconsolidated entities (electricity, gas, telephone) on lines 3030 to 3098 if they are recovered from user rates or general revenues of the unconsolidated entities. 
+
+Where debt charges for unconsolidated entities are paid by the municipality, they are recovered from the consolidated statement of operations and are entered on line 3012 or 3014. 
+
+## **Line 3030 Recovered from unconsolidated entities - Electricity** 
+
+**Line 3040 Recovered from unconsolidated entities - Gas Line 3050 Recovered from unconsolidated entities - Telephone** 
+
+**Line 3097 Recovered from unconsolidated entities - Other** 
+
+## **Please specify debt recoverable from all other sources, including obligatory reserve funds/deferred revenue.** 
+
+**Line 3098 Recovered from unconsolidated entities - Other** 
+
+Please specify debt recoverable from all other sources, including obligatory reserve funds/deferred revenue. 
+
+**Line 3099 TOTAL** 
+
+For each column, the total is equal to the sum of lines 3012 through 3098. 
+
+**The principal debt repayment shown on column 1 should match the amounts shown on schedule 54 under the financing section.** 
+
+**The interest expense shown on column 1 should match the amount shown on schedule 40-line 9910 column 2.** 
+
+**Line 3099 includes:** 
+
+## **Line 3110 Lump sum (balloon) repayments of long-term debt** 
+
+On line 3110 report large, one-time payments of principal and interest (balloon payments) which are included in total debt charges on line 3099. 
+
+**Line 3120 Provincial Grant funding for repayment of long-term debt** 
+
+On line 3120 report the provincial grant used for the repayment of long-term debt charges. 
+
+## **Analysis of Lease Purchase Agreements (Tangible Capital Leases)** 
+
+## **Line 3140 Debt charges for Lease purchase agreements (Tangible capital leases)** 
+
+Report principal and interest payments for lease purchase agreements which are deemed to be tangible capital assets on line 3140 in columns 1 and 2. 
+
+The total in column 3 is automatically calculated. 
+
+For additional information on capital leases see the section "Capital Leases" in the Introduction to the FIR. 
+
+## **11.  LONG TERM DEBT REFINANCED** 
+
+Debt which has been refinanced is analysed in two categories, repayment of provincial Special Assistance and other long-term debt refinanced. Please note that debt which has been refinanced is reported as part of the debt burden of the municipality in sections 1, 2 and 3 of this schedule. 
+
+## **Line 3410 Repayment of Provincial Special Assistance** 
+
+If your municipality incurred a new long-term debt in order to repay a current long-term liability to the province for Special Assistance, please record the amount of the repayment on this line. 
+
+## **Line 3420 Other long-term debt refinanced** 
+
+Report all other repayments arising from refinancing debt on this line. 
+
+Please note that repayments associated with refinancing debt should not be included in section 10, Debt charges for the current year. 
+
+## **12.  FUTURE PRINCIPAL AND INTEREST PAYMENTS ON EXISTING DEBT** 
+
+Section 12 identifies sources that will be used to recover debt charges for future years: from consolidated statement of operations (columns 1 and 2), reserve funds (columns 3 and 4), unconsolidated entities (columns 5 and 6) and all others (columns 7 and 8). 
+
+## **Description of Columns** 
+
+For each source, there is a principal and interest column. 
+
+## **Columns 1 & 2: Recoverable from the consolidated statement of operations** 
+
+Report the amount of principal and interest payments recoverable from the consolidated statement of operations in these columns.  Column 1 represents principal repayments and column 2 represents interest payments. 
+
+Amounts recoverable from the consolidated statement of operations represent amounts to be recovered from taxes. 
+
+## **Columns 3 & 4: Recoverable from reserve funds** 
+
+Report the amount of principal and interest payments recoverable from discretionary reserve funds in these columns. 
+
+## **Columns 5 & 6: Recoverable from unconsolidated entities** 
+
+Report the amount of principal and interest payments recoverable from unconsolidated entities in these columns. 
+
+## **Columns 7 & 8: Recoverable from all others** 
+
+Report the amount of principal and interest recoverable from all other sources.  This category includes debt recoverable from obligatory reserve funds/deferred revenue. This category also includes debt recoverable from interest on sinking funds. 
+
+## **Description of Lines** 
+
+On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually. 
+
+**Line 3210 Year 2022 Line 3220 Year 2023 Line 3230 Year 2024 Line 3240 Year 2025 Line 3250 Year 2026** 
+
+**Line 3260 Years 2027 to 2031 Year’s six to ten are aggregated. Line 3270 Years 2032 onwards Amounts beyond ten years are aggregated. Line 3280 Interest to be earned on sinking funds** 
+
+The estimated interest on sinking funds and the interest on debt retirement funds should be reported on the line for the appropriate year.  However, when the estimated interest cannot be readily assigned to a year, it should be reported on line 3280 in column 8 (Recoverable from all others - Interest). 
+
+For each column, the total is equal to the sum of lines 3210 through 3280. 
+
+## **13. OTHER NOTES** 
+
+In the space provided on line 3601 or on Schedule 83, list all supporting schedules sent to the Ministry by email, fax or mail. 
+
+**Line 3601 Other Notes** 
+
+Examples of supporting materials include: 
+
+Explanatory notes which the municipal council or treasurer feels are required for adequate disclosure of the municipality's financial affairs. 
+
+A report of long-term commitments at year end which are not readily convertible into dollar amounts which were not reported in section 7, Long term commitments at year end. 
+
+Please include the amount incurred for cross border leases that are enabled by specific Ontario regulation. 
+
+Please forward supporting documents by email to: FIR.mah@ontario.ca 
+
+## **Schedule 76: GOVERNMENT BUSINESS ENTERPRISES (GBE)** 
+
+Please report the requested financial data that pertains to all entities deemed to be Government Business Enterprises (GBEs) as defined by section 1300 of the PSA Handbook.  These include entities established under Ontario Regulation 599/06, Municipal Services Corporations, of the Municipal Act, 2001. 
+
+## **Please list the following for each GBE** . 
+
+## **Statement of Financial Position** 
+
+## **Assets:** 
+
+## **Line 0210 Current Assets** 
+
+Report all the current assets on this line for all entities deemed to be GBEs. 
+
+## **Line 0220 Capital Assets** 
+
+Report all the capital assets on this line for all entities deemed to be GBEs. 
+
+## **Line 0297 Other** 
+
+Report all other assets on this line for all entities deemed to be GBEs. Please provide a text description of other. 
+
+## **Line 0298 Other** 
+
+Report all other assets on this line for all entities deemed to be GBEs. Please provide a text description of other. 
+
+## **Line 0299 Total Assets** 
+
+Total Assets is automatically calculated. It is the sum of lines 0210 through 0298. 
+
+## **Liabilities:** 
+
+## **Line 0410 Current Liabilities** 
+
+Report all the current liabilities on this line for all entities deemed to be GBEs. 
+
+## **Line 0420 Long-term Liabilities** 
+
+Report all the long-term liabilities on this line for all entities deemed to be GBEs. 
+
+## **Line 0497 Other** 
+
+Report all other liabilities on this line for all entities deemed to be GBEs. Please provide a text description of other. 
+
+## **Line 0498 Other** 
+
+Report all other liabilities on this line for all entities deemed to be GBEs. Please provide a text description of other. 
+
+## **Line 0499 Total Liabilities** 
+
+## Total Liabilities is automatically calculated. It is the sum of lines 0410 through 0498. **Line 9910 Net Equity** 
+
+Net equity is automatically calculated by subtracting line 0499 from line 0299: 
+
+**Total Assets – Total Liabilities = Net Equity** 
+
+**Line 0610 Municipality’s Share** 
+
+Report the municipality’s share of the GBE’s net equity (line 9910). 
+
+**Statement of Operations:** 
+
+**Line 0810 Revenues** 
+
+Report all the revenues on this line for all entities deemed to be GBEs. 
+
+**Line 0820 Expenses** 
+
+Report all the expenses on this line for all entities deemed to be GBEs. 
+
+**Line 9920 Net Income (Loss** ) 
+
+Net Income (Loss) is automatically calculated by subtracting line 0810 from line 0810: 
+
+## **Revenues – Expenses = Net Income (Loss)** 
+
+**Line 1010 Municipality’s share** Report the municipality’s share of the GBE’s net income (loss) (line 9920). **Line 1020 Dividends paid** Report the dividends paid on this line for all entities deemed to be GBEs. 
+
+## **Schedule 77: OTHER ENTITIES (DSSABS, HEALTH UNITS, ETC.)** 
+
+In the Schedule 77 series, report financial data that pertains to entities that were previously fully or proportionally consolidated in the FIR but not fully or proportionally consolidated in municipal financial statements. This type of entity includes District Social Services Administration Boards (77A), Health Units (77B), and Other entities (77C). 
+
+## **In Schedules 77A through 77C, please complete column 1 and then enter the municipality’s share as a percent on column 3. Column 2 is automatically calculated by multiplying total expenses (Column 1) by % of municipality’s share (Column 3).** 
+
+Data entered in Schedules 77A through 77C is carried forward and consolidated in Schedule 77D. 
+
+**Line 0210 Please select from the drop-down menu the name of your DSSAB or Health Unit.** 
+
+**For other entity, please enter a description of the entity, i.e.: Homes for the aged, etc.** 
+
+## **Consolidated Statement of Financial Position:** 
+
+**Financial Assets:** 
+
+**Line 0410 Cash and cash equivalents** 
+
+Report the cash and cash equivalents balance on this line. 
+
+**Line 0420 Accounts Receivable** 
+
+Report all accounts receivable on this line. 
+
+**Line 0430 Investments** 
+
+Report all investments on this line. 
+
+**Line 0496 Other** 
+
+Report all other financial assets on this line. Please provide the text description for other. 
+
+**Line 0497 Other** 
+
+Report all other financial assets on this line. Please provide the text description for other. 
+
+## **Line 0498 Other** 
+
+Report all other financial assets on this line. Please provide the text description for other. 
+
+## **Line 0499 Total Financial Assets** 
+
+Total Financial Assets is automatically calculated. It is the sum of lines 0410 through 0498. 
+
+## **Liabilities:** 
+
+**Line 0610 Accounts Payable and accrued liabilities** 
+
+Report all accounts payable and accrued liabilities on this line. 
+
+**Line 0620 Debt** 
+
+Report all long-term debt on this line. 
+
+**Line 0630 Pensions and other employee benefits** 
+
+Report all post-employment benefits on this line. 
+
+**Line 0640 Other accrued liabilities** Report other accrued liabilities on this line. 
+
+**Line 0650 Deferred Revenue** 
+
+Report deferred revenues on this line. 
+
+**Line 0696 to 0698 Other** 
+
+Report all other liabilities on this line. Please provide the text description for other. 
+
+**Line 0699 Total Liabilities** 
+
+Total Liabilities is automatically calculated. It is the sum of line 0610 through 0698. 
+
+## **Line 9910 Net Financial Assets** 
+
+Net Financial Assets (Net Debt) is automatically calculated by subtracting line 699 from line 0499: 
+
+**Total Financial Assets – Total Liabilities = Net Financial Assets (Net Debt)** 
+
+## **Non-Financial Assets:** 
+
+## **Line 0810 Tangible capital assets** 
+
+Report tangible capital assets on this line. 
+
+## **Line 0820 Inventories of supplies** 
+
+Report the balance of inventories of supplies on this line. 
+
+**Line 0830 Prepaid expenses** 
+
+Report prepaid expenses on this line. 
+
+## **Line 0896 to 0898 Other** 
+
+Report all other non-financial assets on this line. Please provide the text description for other. 
+
+## **Line 0899 Total Non-Financial Assets** 
+
+Total Non-Financial Assets is automatically calculated. It is the sum of lines 0810 through 0898. 
+
+## **Line 9920 Accumulated Surplus/(Deficit)** 
+
+Accumulated Surplus/(Deficit) is automatically calculated by adding line 9910 and line 0899: 
+
+Net Financial Assets (Net Debt) + Total Non-Financial Assets = Accumulated Surplus/ (Deficit) 
+
+## **Accumulated Surplus Analysis:** 
+
+**Please report the following items that comprise accumulated surplus/deficit (Line 9920):** 
+
+## **Line 1010 Equity in Tangible Capital Assets** 
+
+Please report the equity in tangible capital assets on this line. Equity in tangible capital assets is calculated as follows: 
+
+**Equity in Tangible Capital Assets = - Total Tangible Capital Assets - Long-term liabilities related to tangible capital assets Accrued interest on long-term liabilities related to tangible capital assets** 
+
+## **Line 1020 Reserves and Reserve Fund** 
+
+Report all reserves and reserve funds on this line. 
+
+## **Line 1030 General Surplus/ (Deficit)** 
+
+Report the general operating surplus/deficit on this line. 
+
+## **Line 1097 Other** 
+
+Report other surplus/deficit balances on this line. Please provide the text description for other. 
+
+**Line 1098 Other** 
+
+Report other surplus/deficit balances on this line. Please provide the text description for other. 
+
+## **Line 1099 Accumulated Surplus/ (Deficit)** 
+
+The Accumulated Surplus/ (Deficit) is automatically calculated. It is the sum of lines 1010 through 1098. 
+
+## **Columns 2 and 3: Municipality’s Share $ and % of Municipality’s Share.** 
+
+In Column 3, please report the municipality’s responsibility for each line item as a percent, as per the agreement between the municipality and the entity. If no agreement exists, record the municipality’s share of the entity’s net levy. 
+
+**Column 2 is automatically calculated by multiplying the amounts in columns 1 and column 3.** 
+
+## **Consolidated Statement of Operations:** 
+
+**Please complete the Consolidated Statement of Operations for each of the entities referenced above.** 
+
+**Line 1210** This line is automatically populated from line 0210. 
+
+## **Revenues:** 
+
+Line items referred to in this section may not be found in each schedule in the Schedule 77 series. 
+
+## **Provincial:** 
+
+**Line 1410 Ontario Works** 
+
+Report all provincial funding for Ontario Works on this line. 
+
+## **Line 1411 Province of Ontario** 
+
+Report all provincial funding for health units (Schedule 77B) or other provincial funding (Schedule 77C) on this line. 
+
+## **Line 1440 Child Care** 
+
+Report all provincial funding for child care on this line. 
+
+**Line 1450 Land Ambulance** 
+
+Report all provincial funding for Land Ambulance on this line. 
+
+**Line 1460 Social Housing** 
+
+Report all provincial funding for Social Housing on this line. 
+
+**Line 1498 Other** 
+
+Report other provincial funding on this line. Please a provide text description for other. 
+
+## **Line 1499 Total Provincial Funding** 
+
+Total Provincial Funding is automatically calculated. It is the sum of lines 1410 through 1498. 
+
+## **Federal:** 
+
+## **Line 1610 Social Housing** 
+
+Report all federal funding for Social Housing on this line. 
+
+## **Line 1611 Government of Canada** 
+
+Report all federal funding for health units (Schedule 77B) or other federal funding (Schedule 77C) on this line. 
+
+## **Line 1698 Other** 
+
+Report all other federal funding on this line. Please provide a text description for other. 
+
+## **Line 1699 Total Federal funding** 
+
+Total Federal Funding is automatically calculated. It is the sum of lines 1610 through 1698. 
+
+## **Municipal Contributions:** 
+
+**Line 1810 Municipal billings** 
+
+Report all municipal billings on this line. 
+
+**Line 1898 Other** 
+
+Report all other municipal contributions on this line. Please provide a text description for other. 
+
+## **Line 1899 Total Municipal Contributions** 
+
+Total Municipal Contributions is automatically calculated. It is the sum of lines 1810 and 1898. 
+
+## **Other Revenues:** 
+
+## **Line 2010 Investment Income** 
+
+Report all investment income on this line. 
+
+**Line 2020 Deferred revenue earned** 
+
+Report all deferred revenue earned on this line. 
+
+**Line 2097 Other** 
+
+Report all other revenues on this line. Please provide a text description for other. 
+
+## **Line 2098 Other** 
+
+Report all other revenues on this line. Please provide a text description for other. 
+
+**Line 2099 Total Other Revenues** 
+
+Total Other Revenues is automatically calculated. It is the sum of lines 2010 through 2098. 
+
+## **Line 9930 Total Revenues** 
+
+Total Revenues is automatically calculated. It is the sum of line 1499, line 1699, line 1899, and line 2099. 
+
+## **Expenses:** 
+
+## **Social Services:** 
+
+The following set of social services expenses are only found in Schedule 77A. 
+
+**Line 2210 Ontario Works** 
+
+Report all expenses for Ontario Works program. 
+
+## **Line 2240 Child Care** 
+
+Report all expenses for Child Care services. 
+
+## **Line 2250 Social Housing** 
+
+Report all expenses for social housing services. 
+
+## **Line 2260 Other** 
+
+Report all other expenses for social services. Please provide a text description for other. 
+
+## **Line 2299 Total Social Services** 
+
+Total Social Services is automatically calculated. It is the sum of lines 2210 through 2260. 
+
+## **Health Services:** 
+
+The following set of health services expenses can be found in Schedules 77A and 77B. 
+
+## **Line 2410 Land Ambulance** 
+
+Report all expenses for land ambulance services on this line. 
+
+## **Line 2420 Public Health** 
+
+Report all expenses for public health services on this line. 
+
+## **Line 2430 Other** 
+
+Report all other expenses for health services. Please provide a text description for other. 
+
+## **Line 2440 DSSAB Administration** 
+
+Report all expenses for the DSSAB administration on this line. 
+
+## **Line 2496 Other** 
+
+Report all other expenses for health services. Please provide a text description for other. 
+
+## **Line 2497 Other** 
+
+Report all other expenses for health services. Please provide a text description for other. 
+
+## **Line 2498 Other** 
+
+Report all other expenses for health services. Please provide a text description for other. 
+
+## **Line 2499 Total Health Services** 
+
+Total Health Services is automatically calculated. It is the sum of lines 2410 through 2498. 
+
+## **Other:** 
+
+**Only applies to municipalities with other entities; for example, homes for the aged.** 
+
+## **Line 2693 Other** 
+
+## Report all other expenses for other entities. Please provide a text description for other. **Line 2694 Other** 
+
+Report all other expenses for other entities. Please provide a text description for other. 
+
+## **Line 2695 Other** 
+
+Report all other expenses for other entities. Please provide a text description for other. 
+
+## **Line 2696 Other** 
+
+Report all other expenses for other entities. Please provide a text description for other. 
+
+## **Line 2697 Other** 
+
+Report all other expenses for other entities. Please provide a text description for other. **Line 2698 Other** 
+
+Report all other expenses for other entities. Please provide a text description for other. 
+
+## **Line 2699 Total Other Expenses** 
+
+Total Other Expenses is automatically calculated. It is the sum of lines 2693 through 2698. 
+
+## **Line 9940 Total Expenses** 
+
+Total Expenses is automatically calculated. It is the sum of line 2299 and line 2499. 
+
+## **Line 9950 Annual Surplus/ (Deficit)** 
+
+Annual Surplus/ (Deficit) is automatically calculated as follows: 
+
+## **Total Revenues – Total Expenses = Annual Surplus/ (Deficit)** 
+
+|Schedule|Total Revenues|Total Expenses|Annual Surplus/<br>(Deficit)|
+|---|---|---|---|
+|77A|+ Line 9930|-<br>Line 9940|= Line 9950|
+|77B||-<br>Line 2499||
+|77C||-<br>Line 2699||
+
+
+
+## **Schedule 79: Community Improvement Plans** 
+
+## **(Section 28 of the Planning Act)** 
+
+Please report the financial incentive tools used by your municipality to support Community Improvement Project Areas. 
+
+## **Grants:** 
+
+## **Line 2010 Environment Site Assessment/Remediation** 
+
+Enter the total value of all grants that are for environmental site assessment and remediation on column 1. 
+
+Enter the number of approved grants that are for environmental site assessment and remediation on column 2. 
+
+## **Line 2021 Development/Redevelopment of Land/Buildings** 
+
+Enter the total value of all grants that are for development and redevelopment of land and buildings (including facades) on column 1. 
+
+Enter the number of approved grants that are for development and redevelopment of land and buildings (including facades) on column 2. 
+
+## **Loans:** 
+
+## **Line 2210 Loans issued in current year (2021)** 
+
+Enter the total value of all loans issued in the current year (2021) on column 1. 
+
+Enter the total number of approved loans issued in the current year (2021) on column 2. 
+
+## **Line 2220 Outstanding Loans as of 2021** 
+
+Enter the value of all outstanding loans issued to date, as of December 31, 2021 on column 1. 
+
+Enter the total number of approved loans issued to date as of December 31, 2021 on column 2. 
+
+## **Tax Assistance (per Municipal Act, 365.1 ss21)** 
+
+The Planning Act also refers to tax assistance as defined in section 365.1 of the Municipal Act. 
+
+Tax assistance means the cancellation or deferral of the municipal and education portion of property tax for “eligible properties” during the “rehabilitation period” and/or the “development period”. 
+
+## **Line 2410 Cancellation** 
+
+Enter the total value of tax assistance (per 365.1 ss21) that relates to cancellation of taxation on column 1. 
+
+Enter the total number of tax assistance (per 365.1 ss21) applications that relates to cancellation on column 2. 
+
+## **Line 2420 Deferral** 
+
+Enter the total value of tax assistance (per 365.1 ss21) that relates to deferral of taxation on column 1. 
+
+Enter the total number of tax assistance (per 365.1 ss21) applications that relates to deferral of taxation on column 2. 
+
+## **Long-Term Commitments for Grants, Loans or Tax Assistance beyond 2021** 
+
+For each of the following years please report the following: 
+
+Total Value: bundle all grants, etc if more than one plan. 
+
+Line 2610 Year 2022 Line 2620 Year 2023 Line 2630 Year 2024 Line 2640 Year 2025 Line 2650 Year 2026 Line 2660 Years beyond 2027 
+
+## **SCHEDULE 80: Statistical Information** 
+
+## **General Information** 
+
+The Schedule 80 series collects statistical information that is not collected elsewhere. This schedule series consists of sections 1 through 8. 
+
+1. Municipal workforce profile 
+
+2. Selected investments of own sinking funds as at December 31 
+
+3. Municipal procurement this year 
+
+4. Building permit information 
+
+5. Insured value of physical assets 
+
+6. Total dollar losses due to structural fires 
+
+7. Alternate service delivery arrangements 
+
+8. Consolidated local boards including joint local boards and all local entities set up by the Municipality 
+
+   - (I) proportionally consolidated joint local boards 
+
+   - (II) Fully consolidated local boards and any local entities set up by the municipality 
+
+In Schedule 80, the number of columns and column headings change with each section to accommodate the information collected. 
+
+## **1. MUNICIPAL WORKFORCE PROFILE (Schedule 80A)** 
+
+Separate sections are provided for data pertaining to employees of the municipality and employees of joint local boards. 
+
+Data is collected on the number of full-time and part-time funded positions, as well as the number of seasonal employees. The position categories are mutually exclusive. **Description of Columns** 
+
+## **Column 1 Full-time funded positions** 
+
+Enter the number of full-time funded positions on a permanent or contractual basis, whether they are filled or not. 
+
+## **Column 2 Part-time funded positions** 
+
+Enter the number of funded positions where the employee works less than 30 hours a week, either on a permanent or contractual basis.  Include only filled positions. 
+
+## **Do not include volunteer positions such as volunteer fire fighters.** 
+
+## **Column 3 Seasonal employees** 
+
+Please report the actual number of seasonal employees.  Seasonal positions are those where employment recurs each year but lasts less than a year.  Example:  Staff for summer recreational programs and crossing guards. 
+
+## **Description of Lines** 
+
+Lines are provided for broad service areas.  Report employees of the municipality on lines 0205 through 0290. Employees of joint local boards which are fully and proportionally consolidated are reported on lines 0305 through 0390. For proportionally consolidated joint local boards, employees are to be shown on a proportional basis. 
+
+Clerical staff should be included in the appropriate functional category. 
+
+For each service area, select the appropriate column(s): full-time funded positions, parttime funded positions or seasonal employees. 
+
+Do not include employees where service is provided by another municipality, the Ontario Provincial Police (OPP) or an external contractor. 
+
+A line is also provided to record information on the percentage of the municipal workforce covered by collective agreements (Line 0300). 
+
+**Line 0205 and 0305 Administration** 
+
+Include all professional staff involved in general administration, including managerial, supervisory, salaried clerk-treasurer, treasurer, and clerk. 
+
+If professional staff is identified by the type of responsibility, enter the positions in the appropriate category. For example, include the Public Works Commissioner and Public Works Administrator in the public works category. 
+
+## **Line 0210 and 0310 Fire** 
+
+This line is automatically calculated. It is the sum of uniform and civilian fire staff. 
+
+**Line 0211 and 0311 Fire - Uniform** 
+
+Include all Fire-fighting personnel. **Do not include volunteer personnel** . 
+
+## **Line 0212 and 0312 Fire - Civilian** 
+
+Enter the number of civilian fire staff on this line. (Administrative, management, support staff, etc.) 
+
+## **Line 0215 and 0315** 
+
+## **Police** 
+
+This line automatically calculates total uniform and civilian police staff. 
+
+## **Line 0216 and 0316 Police - Uniform** 
+
+Enter the number of policing staff if policing is provided by the municipality.  If policing is provided by the OPP do not report OPP staff. 
+
+## **Line 0217 and 0317 Police - Civilian** 
+
+Enter the number of civilian police staff on this line. (Administrative, management, support staff, etc.) 
+
+## **Line 0260 and 0360 Court Security** 
+
+This line automatically calculates the total uniform and civilian court security staff. 
+
+## **Line 0261 and 0361 Court Security – Uniform** 
+
+Enter the number of uniform security staff. 
+
+**Line 0262 and 0362 Court Security - Civilian** 
+
+Enter the number of civilian court security staff on this line. (Administrative, management, support staff, etc.) 
+
+## **Line 0263 and 0363 Prisoner Transportation** 
+
+This line automatically calculates the total uniform and civilian prisoner transportation staff. 
+
+**Line 0261 and 0361 Prisoner Transportation – Uniform** 
+
+Enter the number of uniform prisoner transportation staff. 
+
+## **Line 0262 and 0362 Prisoner Transportation – Civilian** 
+
+Enter the number of civilian prisoner transportation staff on this line.  (Administrative, management, support staff, etc.) 
+
+## **Line 0220 and 0320 Transit** 
+
+This line includes transit staff only. Staff performing all other transportation duties should be reported under public works. 
+
+## **Line 0225 and 0325** 
+
+## **Public Works** 
+
+Include staff performing environmental services.  Include staff performing transportation services, other than transit services.  Exclude staff performing functions specifically identified on other lines, such as parks and recreation. 
+
+## **Line 0230 and 0330 Health Services** 
+
+Include public health employees, inspectors, and cemetery employees. 
+
+## **Line 0227 and 0327 Ambulance** 
+
+This line automatically calculates the total uniform and civilian ambulance staff. 
+
+## **Line 0228 and 0328 Ambulance - Uniform** 
+
+Enter the number of uniform staff for Ambulance services. (Includes paramedics, drivers) 
+
+## **Line 0229 and 0329 Ambulance - Civilian** 
+
+Enter the number of civilian ambulance staff on this line. (Administrative, management, support staff) 
+
+## **Line 0235 and 0335 Homes for the Aged** 
+
+Include all staff employed in homes for the aged. 
+
+## **Line 0240 and 0340 Other Social Services** 
+
+Include child care staff, social workers, and any other staff associated with social services.  Exclude staff reported on line 0235 or 0335, Homes for the aged. 
+
+## **Line 0245 and 0345 Parks and Recreation** 
+
+Include all staff associated with the provision of parks, recreation and cultural services, excluding libraries. 
+
+## **Line 0250 and 0350 Libraries** 
+
+Include all library staff. 
+
+## **Line 0255 and 0355 Planning** 
+
+Include staff performing planning functions, including planners and planning inspectors. 
+
+## **Line 0290 and 0390** 
+
+## **Other** 
+
+Include staff not specifically identified in administration and the functions listed on lines 0205 through 0255 or on lines 0305 through 0355.  Examples include:  clerical and professional staff that are not included in specific functions, parking staff, by-law enforcement officers and inspection officers of various kinds. 
+
+## **Line 0298 and 0398 SUBTOTAL** 
+
+For each column, the subtotal for municipal employees is equal to the sum of lines 0205 through 0290 less embedded subtotals. 
+
+The subtotal for employees of joint local boards is equal to the sum of lines 0305 through 0390 less embedded subtotals. 
+
+## **Line 0399 TOTAL** 
+
+For each column, the total is equal to the sum of lines 0298 and 0398. 
+
+## **Line 0300 Proportion of municipal employees covered by 'collective agreements'** 
+
+For each column, please report the percentage (%) of municipal staff covered by collective agreements.  This is to be based on funded positions for full-time and parttime positions and on the number of actual employees for seasonal positions. 
+
+**2. SELECTED INVESTMENTS OF OWN SINKING FUNDS AS AT DECEMBER 31 (Schedule 80A)** 
+
+**This section is required by Statistics Canada for its analysis of intergovernmental debt.** 
+
+## **Line 0610 Own sinking funds** 
+
+On this line enter the amount of sinking funds invested in debt issued by the municipality, other municipalities and school boards, the province, and the federal government in the appropriate column. 
+
+## **Description of Columns** 
+
+## **Column 1 Own municipality** 
+
+Enter the amount of sinking funds invested in own debt. 
+
+## **Column 2 Other municipalities, school boards** 
+
+Enter the amount of sinking funds invested in the debt of school boards and other municipalities. 
+
+## **Column 3 Provincial** 
+
+Enter the amount of sinking funds invested in provincial debt. 
+
+## **Column 4 Federal** 
+
+Enter the amount of sinking funds invested in federal debt. 
+
+## **3. MUNICIPAL PROCUREMENT THIS YEAR (Schedule 80A)** 
+
+## **This section gathers information required under the authority of the OntarioQuebec Procurement Agreement.** 
+
+A construction contract is defined in the Agreement as a contract regarding the construction, reconstruction, demolition, repair or renovation of a building, structure or other civil engineering or architectural work.  It also includes site preparation, excavation, drilling, seismic investigation, the supply of products and materials, equipment and machinery if these are included and incidental to a construction contract, as well as the installation and repair of fixtures of a building, structure or other civil 
+
+engineering or architectural work.  It excludes professional consulting services related to the construction contract. 
+
+## **Line 1010 Total construction contracts awarded** 
+
+This line refers to the total number of construction contracts, as defined above, which were awarded by your municipality during the year. 
+
+## **Line 1020 Construction contracts awarded at $100,000 or greater** 
+
+This line refers to contracts awarded where the value of each contract equals or exceeds $100,000. 
+
+## **Descriptions of Columns** 
+
+## **Column 1 Number of contracts** 
+
+Enter the number of construction contracts awarded by your municipality during the year for each category listed. 
+
+## **Column 2 Value of contracts** 
+
+Enter the value of contracts awarded by your municipality for each category listed. 
+
+## **4. BUILDING PERMIT INFORMATION (Schedule 80A)** 
+
+**This section collects information on building permits and the total value of building permits of new construction by property class.** 
+
+## **Line 1210 Residential properties** 
+
+Residential properties include single family and small multi-residential properties (6 units or less). 
+
+## **Line 1220 Multi-residential properties** 
+
+Multi-residential properties include properties in the multi-residential property class (7 units or more). 
+
+## **Line 1230 All other property classes** 
+
+All other property classes refer to properties in the commercial class, industrial class, and all other property classes. 
+
+## **Line 1299 Subtotal** 
+
+The subtotal is automatically calculated. It is equal to the sum of lines 1210 through line 1230. 
+
+## **Descriptions of Columns** 
+
+## **Column 1 Number of building permits** 
+
+Enter the total number of building permits for each property class identified. 
+
+## **Column 2 Total value of building permits** 
+
+Enter the total value of construction associated with the issuance of building permits for each property class identified. 
+
+## **5. INSURED VALUE OF PHYSICAL ASSETS (Schedule 80A)** 
+
+## **Enter the insured value of the following tangible capital assets:** 
+
+**Line 1410 Buildings** 
+
+Enter the insured value of buildings on this line. Include the insured value of contents. 
+
+## **Line 1420 Machinery and equipment** 
+
+Enter the insured value of machinery and equipment on this line. 
+
+## **Line 1430 Vehicles** 
+
+Enter the insured value of municipal vehicles on this line. **Line 1497 Other** 
+
+Please specify other significant fixed assets and enter the insured value on this line. 
+
+**Line 1498 Other** 
+
+Please specify other significant fixed assets and enter the insured value on this line. 
+
+**Line 1499 Subtotal** 
+
+The subtotal is automatically calculated. It is equal to the sum of lines 1410 through 1498. 
+
+## **6. TOTAL DOLLAR LOSSES DUE TO STRUCTURAL FIRES (Schedule 80A)** 
+
+## **Line 1510 Losses due to structural fires, averaged over 3 years (2018 - 2021)** 
+
+Determine the average dollar loss due to structural fires for the reporting year and the two previous years.  Note that fire losses are averaged over three years in order to even out the impact of one-time anomalies.  Pertains to all structures within a municipality (includes municipal structures) **.** 
+
+A structural fire is an instance of destructive and uncontrolled burning of a building or other structure or its contents, which may or may not be due to an explosion.  Examples of other structures include a transmission tower, lighthouse, shed, kiosk, and gazebo. 
+
+## **A structural fire does not include:** 
+
+- **An explosion that does not result in fire.** 
+
+- **A vehicle fire or explosion, unless the vehicle is located inside a structure (in which case it is considered part of the structure's contents).** 
+
+## **An open area fire or explosion, as might occur with forest, hedge or brush.** 
+
+- **An incident other than a fire that results in a fire department emergency response, such as an over pressure rupture, false fire call, rescue, public hazard or medical call.** 
+
+The definition of total dollar losses is taken from the Ontario Fire Marshal's Occurrence Reporting Manual, which is used by municipal fire departments as a guide in completing Standard Incident Reports. 
+
+Estimated dollar loss is defined as the cost of actual damage to property and property contents.  This amount includes direct losses resulting from fire, explosion, smoke, water or other destruction associated with firefighting operations.  Not to be included in this total are revenue losses or costs involved due to business interruption, loss of good will, loss of sale, production down time, vacancies or environmental contamination cleanup. In accordance with Canadian insurance practices, damages and/or destruction of buildings, installed equipment and contents shall be estimated and reported at actual replacement value.  For buildings under demolition or other property of little value, the dollar loss is the salvage value of the property lost in the fire. 
+
+## **7. ALTERNATE SERVICE DELIVERY ARRANGEMENTS (Schedule 80B)** 
+
+**This section itemizes the top services provided through alternate service delivery arrangements. Line 1601 to 1610** 
+
+On the lines provided, list up to ten top services which the municipality currently provides through an alternate service delivery arrangement.  Alternative service delivery arrangements refer to services which are not directly provided by the municipality. Examples include joint service agreements and contracting out. 
+
+Select the top services according to expenses in the statement of operations.  However, only list those services where significant expenses are involved in contracting out.  This may result in a list of fewer than ten services. 
+
+## **Descriptions of Columns** 
+
+## **Column 1 Municipal service** 
+
+List the top municipal services which are currently provided through an alternate service delivery arrangement. 
+
+## **Column 3 Schedule 40 Functional heading** 
+
+When the FIR line number is entered in column 2, the name of the corresponding sub function will automatically appear in this column. 
+
+## **Column 2 Schedule 40 FIR Line Number** 
+
+Enter the line number from Schedule 40 for the sub function which best describes the municipal service. 
+
+For example, a waste collection contract would fall under the "waste collection" sub function and line 0840 would be entered. 
+
+## **Column 4 Statement of Operations Expense** 
+
+For each municipal service listed in column 1, determine the amount of operating expense included in Schedule 40, column 4 (Contracted services) which pertain to the particular alternate service delivery arrangement. 
+
+## **Column 5 Comments** 
+
+The completion of this column is optional. This space can be used to provide a brief description of the alternate service delivery arrangement.  The amount of space is expandable. 
+
+## **8. CONSOLIDATED LOCAL BOARDS INCLUDING JOINT LOCAL BOARDS AND ALL LOCAL ENTITIES SET UP BY THE MUNICIPALITY (Schedule 80C)** 
+
+**Part (I)** identifies joint local boards which are proportionally consolidated. 
+
+**Part (II)** identifies local boards and local entities which are fully consolidated by the municipality. 
+
+## **Line 0801 to 0849 (I) proportionally consolidated joint local boards** 
+
+List all local boards which are proportionally consolidated by the municipality.  Include joint boards and any other local corporate entities set up by the municipality to provide service to ratepayers. 
+
+## **Line 0851 to 0899 (II) fully consolidated local boards and any local entities set up by themunicipality** 
+
+List all local boards and other entities which are fully consolidated. 
+
+## **Descriptions of Columns** 
+
+## **Column 1 Name of board or entity** 
+
+Enter the name of the local board or other local entity. 
+
+## **Column 3 Board description** 
+
+Select a Board Description from the drop-down List. 
+
+## **Column 2 Board code** 
+
+The Board Code corresponds to the Board Description selected in column 3. 
+
+## **Column 4 Proportion of total municipal contributions consolidated** 
+
+In **part (I),** report the municipality's percentage share of total municipal contributions to the local board or entity. 
+
+In **part (II),** 100% is automatically shown for each fully consolidated local board or entity. 
+
+## **Column 5 Municipality's share of total municipal contributions ($)** 
+
+This column applies to part (I) only. Enter the dollar amount of contributions made by your municipality to the board or entity. 
+
+## **Column 6 Municipality's share of total fee revenues** 
+
+This column applies to part (I) only. Enter the dollar amount of fee revenues received by your municipality from the local board or entity.  This amount is equal to total fee revenues received by the local board or entity times the percentage reported in column 4. 
+
+## **SCHEDULE 80D: Municipal Performance Statistical Information** 
+
+## **General Information** 
+
+Schedule 80D collects statistical information. 80D replaces some of the data points that were in the former schedules 90-95 of the FIR. Municipalities report the data when they are responsible for the service, whether provided by municipal staff or contracted out. This schedule consists of section 9 through 14. 
+
+**9. Building services** 
+
+**10. Planning and development** 
+
+**11. Transportation services** 
+
+**12. Environmental services** 
+
+**13. Recreation services** 
+
+**14. Other revenue and assessment on exempt properties.** 
+
+In Schedule 80D the number of columns and column headings change with each section to accommodate the information collected. 
+
+## **9. BUILDING SERVICES** 
+
+## **Line 1304: Construction value** 
+
+Total value of construction activity, based on permits issued is entered in **Line 1304** . Prior to 2014 the data was reported as an average over three years in Schedule (S) 90, Line (L) 0060, and Column (C) 01. 
+
+The total value of construction activity is the hard construction or demolition cost, including: 
+
+- All general construction, labour and equipment; plumbing, heating and air conditioning; elevators and other building services and systems; site services and landscaping inside the property line; contractor’s overhead and profit; and provincial sales tax. 
+
+These costs will approximate a construction tender in most cases. The value of construction should not include: 
+
+- Cost of land, professional design fees; soft costs, such as financing, marketing, legal, appraisal, surveying, soil testing or remediation, development charges; furnishings and process equipment housed in the building; and allowances. 
+
+## **Column 4 Method used to determine construction value** 
+
+Since many municipal building departments charge building permit fees on the basis of the floor area of the building or work requiring a building permit, it is necessary to 
+
+convert the building area, usually in square meters, to construction value for that particular type of construction. 
+
+Municipal methods of determining total construction value are typically based on: 
+
+- A standard value schedule, such as: 
+
+   - _Hanscomb Yardsticks for Costing_ 
+
+http://www.hanscomb.com/Yardsticks.html 
+
+   - _Toronto Area Chief Building Officials Committee (TACBOC) Construction_ - 
+
+   - _Value Standard._ http://www.tacboc.ca/about tacboc/tacboc 
+
+   - _Toronto Real Estate Board’s Rough/Advanced Guide to Construction Costs_ - - 
+
+   - http://www.trebcommercial.com/realtor/pdf/rough_guide green_guide 2012.pdf 
+
+- Estimation; and applicant’s declared value 
+
+A standard value schedule is the preferred method of determining construction value to improve consistency and comparability in reporting results. 
+
+Municipalities are asked to select the method used to determine the total value of construction activity from a pull-down list in **column 4, Line 1300** . If “Other” is selected, a cell will open, providing space for the municipality to enter a description of the other method in **Line 1302** . 
+
+Prior to 2014 the data was reported in SLC 94 1301 03 and SLC 94 1302 03. 
+
+## **Numbers of working days to complete building permit applications** 
+
+## **Definition of a complete application** 
+
+To be considered a complete application, a permit application must meet the requirements of sentence 5 in article 1.3.1.3 of Division C, Administrative Provisions, of the _Building Code.[1 ]_ 
+
+To be considered a **complete application** , a permit application must be made by the owner or authorized agent on a form approved by the Minister of Municipal Affairs and 
+
+1 The _Building Code_ is technically known as _Ontario Regulation 350/06,_ under the _Building Code Act, 1992,_ and can be accessed using e-Laws: - http://www.e laws.gov.on.ca/html/regs/english/elaws_regs_060350_e.htm 
+
+The link for the _Building Code Act, 1992_ , on e-Laws is: - http://www.e laws.gov.on.ca/html/statutes/english/elaws_statutes_92b23_e.htm 
+
+Housing, and all applicable fields and schedules must be completed in the application. All fees must be paid which are required under the applicable municipal by-law, resolution or regulation made under paragraph 7(1)(c) of the _Building Code Act_ . 
+
+If an application for a building permit is submitted as a complete application, the Chief Building Official may determine within two working days whether an application is complete, which means that it is accompanied by the required plans, specifications, information and documents and whether the proposed building, construction or demolition will contravene any applicable law. 
+
+The starting time for determining the number of working days for the review and notification of the applicant is the first working day after a complete application is submitted.  See sentence 7 in article 1.3.1.3. of Division C of the _Building Code_ for a discussion of this matter. 
+
+The maximum number of working days to review a complete building application and issue a permit or not issue a permit, and provide all reasons for refusal, are outlined in the Building Code under Table 1.3.1.3. and range from 10 to 30 days depending on the class of building.  For building permit applications that are not accepted as complete and instead are accepted as incomplete, there are no permit review timeframes under the Building Code. 
+
+For the purpose of determining the “median number of days to review a complete building permit application, and issue a permit or not issue a permit, and provide all reasons for refusal, by category”, municipalities should only include applications that are submitted and accepted as complete applications.  Do not include building permit applications that are submitted and accepted by the municipality as incomplete. 
+
+Generally, municipalities that accept incomplete building permit applications consider the number of working days to review the application, once it is deemed to be complete, as zero (0) days.  For purposes of completing this measure, these applications are not to be included when calculating the median number of working days to review a complete application. 
+
+If your municipality, over the course of a year, received and accepted only incomplete building permit applications for a particular building permit category, then the corresponding line should be left blank. 
+
+If your municipality accepts both complete building permit applications and incomplete applications, include only the building permit applications initially submitted and accepted by the municipality as complete for purposes of calculating the median number of working days to review applications for each building category. 
+
+The categories and the time period within which a permit shall be issued or refused are listed in Table 1.3.1.3 in sentence 10 of Article 1.3.1.3 in Division C of the _Building Code_ . 
+
+The **method of determining the median number of working days** “to review a complete building permit application and issue a permit or not issue a permit and provide all reasons for refusal” is provided below. 
+
+For each permit category: 
+
+- Create a list which identifies each building permit application submitted and accepted by the municipality as complete.  Include the exact number of working days to review each complete building application, and issue a permit or not issue a permit, and provide all reasons for refusal. 
+
+- Next, order the list by the number of working days from lowest to highest.  The median is the midpoint observation.  For example, in a list of 101 observations, ordered from low to high, the median is observation 51.  If the number of observations is even, the two middle observations are averaged. 
+
+- Spreadsheet programs, such as Excel, can be used to calculate the median. 
+
+Enter the median number of working days for each category on lines 1306 to 1312. Prior to 2014 the data for these four lines was reported in SLC 92 1351-1354 07. 
+
+## **Line 1306: Category 1: Houses (houses not exceeding 3 storeys/ 600 square meters)** _Reference: provincial standard is 10 working days._ 
+
+- A detached house, semi-detached house, townhouse, or row house where no dwelling unit is located above another dwelling unit. 
+
+- A detached structure that serves a building listed above, that does not exceed 55 square meters in building area. This would include a deck, shed or the like, if the structure requires a building permit. 
+
+- A tent to which section 3.14 of Division B of the _Building Code_ applies. 
+
+- A sign to which Section 3.15 of Division B of the _Building Code_ applies. 
+
+**Line 1308: Category 2: Small buildings (small commercial/ industrial not exceeding 3 storeys/ 600 square meters)** _Reference: provincial standard is 15 working days._ 
+
+- Buildings having three or fewer stories in building height, not exceeding 600 square meters in building area and which are used for major occupancies, such as: 
+
+   - Group C, residential occupancies; Group D, business and personal services occupancies; Group E, mercantile occupancies; Group F, Divisions 2 and 3, medium hazard industrial occupancies and low hazard industrial occupancies. 
+
+_Note that smaller buildings are described in clauses 1.1.2.4. (1)(a), (b), (c) of Division A of the Building Code._ 
+
+- Farm buildings that do not exceed 600 square meters in building area. 
+
+**Line 1310: Category 3:  Large buildings (large residential/ commercial/ industrial/ institutional)** _Reference: provincial standard is 20 working days_ 
+
+- All buildings used for major occupancies classified as: 
+
+   - Group A, assembly occupancies; Group B, care or detention occupancies; or Group F, Division 1, high hazard industrial occupancies. 
+
+_Large buildings listed here are described in clause 1.1.2.2. (1)(a) of Division A of the Building Code._ 
+
+Buildings exceeding 600 square meters in building area or exceeding three stories in building height and used for major occupancies classified as: 
+
+   - Group C, residential occupancies; Group D, business and personal services occupancies; Group E, mercantile occupancies, or; Group F, Divisions 2 and 3, medium hazard industrial occupancies and low hazard industrial occupancies. _Large buildings listed here are described in Clause 1.1.2.2. (1)(b) of Division A of the Building Code._ 
+
+- Farm buildings that exceed 600 square meters in building area. 
+
+## **Line 1312: Category 4: Complex buildings (post disaster buildings, including hospitals, power/water, fire/police/EMS, communications)** _Reference: provincial standard is 30 working days_ 
+
+- Post disaster buildings include: 
+
+   - a) hospitals, emergency treatment facilities and blood banks; b) telephone exchanges; c) power generating stations and electrical substations; d) control centres for land transportation; e) public water treatment and storage facilities; f) water and sewage pumping stations; g) emergency response facilities; h) fire, rescue and police stations; i) storage facilities for vehicles, or boats used for fire, rescue and police purposes; j) communications facilities including radio and television stations 
+
+      - _Note that these post-disaster buildings are listed in the definitions in Article 1.4.1.2 of Division A of the Building Code._ 
+
+- High buildings: _High buildings are buildings to which provisions of subsection 3.2.6 of Division B of the Building Code apply._ 
+
+- Complex buildings with mezzanine: _Complex buildings with mezzanines are buildings to which provisions of Articles 3.2.8.3 to 3.2.8.11 of Division B of the Building Code apply._ 
+
+## **Numbers of building permit applications, by category** 
+
+To be considered a complete application, a permit application must meet the requirements of sentence 5 in article 1.3.1.3 of Division C of the _Building Code._ 
+
+## **Column 1 Number of complete applications, by category** 
+
+In column 1, report the number of building permit applications which are submitted and accepted by the municipality as complete applications for each permit category on lines **1314 to 1320** . 
+
+Prior to 2014 the data for these lines was reported in SLC 92 1356-159 05. 
+
+Zero (0) may be entered in column 1 for any line if no applications for a permit category were submitted and accepted by the municipality as complete. 
+
+## **Column 2 Number of incomplete applications, by category** 
+
+In column 2, report the number of building permit applications submitted and accepted by the municipality as incomplete for each permit category on lines **1314 to 1320** . 
+
+Prior to 2014 the data for these lines was reported in SLC 92 1356-1359 07. 
+
+Zero (0) may be entered in column 2 for any line if no incomplete applications were submitted and accepted by the municipality for the permit category. 
+
+## **Column 3 Subtotal: number of complete and incomplete applications** 
+
+The subtotal for the number of complete and incomplete applications, by category, is automatically calculated in column 3 for lines **1314 to 1322** . 
+
+The total number of building permit applications is automatically calculated in SLC 80D 1322 03 and equals the sum of the total number of building permit applications submitted and accepted by the municipality as complete and as incomplete for all categories. 
+
+The total number of building permit applications provides a measure of volume for the processing of building permit applications.  Municipalities interested in comparing their results may wish to consider the volume and application status (complete/incomplete) of building permit applications in selecting comparators. 
+
+## **10. PLANNING AND DEVELOPMENT** 
+
+## **Location of residential units within settlement areas** 
+
+The data can be used to calculate the percentage of new residential units located within settlement areas. 
+
+## **Column 1 Residential units within settlement areas** 
+
+Use lines **1350 to 1356, column 1,** to report new residential units within settlement areas which involve the construction of new buildings or structures as follows: 
+
+Line 1350 Number of residential units in new detached houses 
+
+Line 1352 Number of residential units in new semi-detached houses 
+
+Line 1354 Number of residential units in new row houses 
+
+Line 1356 Number of residential units in new apartments/condo apartments 
+
+Prior to 2014 the data for these lines were reported in SLC 92 8171-8174 05. 
+
+## **Column 2 Total residential units** 
+
+Use lines **1350 to 1356, column 2,** to report total residential units which involve the construction of new buildings or structures as follows: 
+
+Line 1350 Number of residential units in new detached houses 
+
+Line 1352 Number of residential units in new semi-detached houses 
+
+Line 1354 Number of residential units in new row houses 
+
+Line 1356 Number of residential units in new apartments/condo apartments 
+
+Prior to 2014 the data for these lines were reported in SLC 92 8171-8174 07. 
+
+The subtotal in **line 1358** is automatically calculated. 
+
+## **Column 3 Total secondary units** 
+
+Use lines **1350 to 1356, column 3,** to report total **secondary units** which involve the construction of new buildings or structures as follows: 
+
+Line 1350 Number of secondary units in new detached houses 
+
+Line 1352 Number of secondary units in new semi-detached houses Line 1354 Number of secondary units in new row houses Line 1356 Number of secondary units in new apartments/condo apartments 
+
+The number of new residential units should be based on building permit information. 
+
+Do not report new residential construction for additions to existing residential buildings or reconstructions that do not involve the creation of additional residential units. 
+
+Only the level of municipal government responsible for issuing building permits reports this information. 
+
+A residential unit refers to a part of a property consisting of a room or rooms designed and intended for use by one or more persons and usually containing cooking, eating, living, sleeping and sanitary facilities. 
+
+Settlement area means areas within cities, towns, villages or hamlets which have been designated for development in an approved municipal official plan. This includes areas designated for seasonal or shoreline development which have been identified by the municipality as being part of a settlement area. 
+
+If no official plan exists in a municipality, settlement area means areas within cities, towns, villages or hamlets where development is concentrated. It includes existing development, as well as vacant registered and draft approved lots, and immediately surrounding lands, within cities, towns, villages or hamlets. 
+
+## **Land designated for agricultural purposes in the official plan** 
+
+Enter hectares of land designated for agricultural purposes in the Official Plan as of December 31, 2014 in **line 1370.** Prior to 2014 the data for this line was reported in SLC 92 8163 05. 
+
+Report hectares of land specifically designated as agricultural land or bearing any other designation intended to preserve agricultural land in an Official plan as of December 31, 2014. 
+
+Where there is no Official Plan, a municipality does not input data. 
+
+In Planning Areas where there is a Planning Board, the appropriate information will need to be obtained from the Board to reflect new lot approvals within local municipal boundaries and unincorporated areas. 
+
+## **11. TRANSPORTATION SERVICES** 
+
+## **Line 1710: Roads: Total paved lane kilometers** 
+
+A lane kilometer is a continuous lane of road which conveys traffic in one direction. Continuous two-way median turn lanes and assumed access lanes may be counted as a single lane.  A two-way median turn lane is a continuous centre left turn lane that accepts traffic travelling in both directions. 
+
+Unlike previous reporting years, parking, storage, ramp and turning lanes are counted. 
+
+Total lane kilometers are determined by multiplying the number of centre line kilometers by the number of lanes, for each road. 
+
+- Example: Municipality A has 140 kilometers of roads.  All roads have two lanes. Therefore, total lane kilometers equal 280. 
+
+- Example: Municipality B has 200 kilometers of roads.  Only 30 kilometers have four lanes. Total lane kilometers equal 170 times 2 plus 30 times 4 or 460 total lane km. 
+
+When the reporting municipality provides service to another municipality on a contractual basis, the lane kilometers in the denominator refer to lane kilometers in the reporting municipality only. 
+
+If a municipality does not report expenses for maintaining particular lane kilometers, it should not include those lane kilometers in the denominator. 
+
+Prior to 2014 the data for this line was reported in SLC 92 2152 06. 
+
+Both the lane kilometers and adequacy must be completed before the FIR is considered complete. 
+
+**Line 1720: Condition of roads: number of paved lane kilometers where the condition is rated as good to very good.** 
+
+Enter the number of paved lane kilometers where the condition is rated as good to very good in **line 1720.** Prior to 2014 the data for this line was reported in SLC 92 2152 05. 
+
+This measure assumes that the entire municipal road system has been rated. Please enter in **line 1722** whether the entire road system has been rated or just a sample. 
+
+Condition of roads is determined using a Pavement Condition Index (PCI) or the Ministry of Transportation’s Roads Inventory Management System (RIMS) or other similar rating system used by the municipality. 
+
+The Ontario Good Roads Association (OGRA) has a PCI method that includes a decision matrix for determining which roads are rated as good to very good and which roads require repair. For information, please contact the Association at www.ogra.org. 
+
+Please indicate the rating system used and year rating was conducted in **line 1725** . 
+
+A road rated as good to very good, is a road whose surface distress is minimal, and no maintenance or rehabilitation action is required. Paved (hard top) roads are defined as roads with an asphalt surface, concrete surface, composite pavement, portland cement or surface treatment. 
+
+## **Line 1730: Roads: total unpaved lane kilometers:** 
+
+Unpaved (loose top) roads are defined as roads with a gravel, stone or other loose travelling surface. Report only unpaved lane kilometers maintained within your municipality. 
+
+Prior to 2014 the data for this line was reported in SLC 91 2110 31 or SLC 92 2152 06. 
+
+**Line 1740: Winter control: total land kilometers maintained in winter** 
+
+Report only lane kilometers maintained in winter within your municipality. Winter maintenance of roadways uses the functional definition of “winter control – except sidewalks, parking lots” on line 0621 of Schedule 40. 
+
+Prior to 2014 the data for this line was reported in SLC 91 2205 31. 
+
+**Line 1750: Transit: total number of regular service passenger trips on conventional transit in service area** 
+
+Conventional transit is defined as all regular public transport services as opposed to specialized transit services for persons with disabilities who are unable to access regular public transport services.  Conventional transit does not include GO transit. 
+
+Include only regular service passenger trips on conventional transit where the fare system is applicable including regular fare, reduced fare, free trips, passes and tickets. Transfers are not counted as passenger trips. Count the number of trips for the full year. 
+
+Prior to 2014 the data for this line was reported in SLC 91 2303 31. 
+
+## **Line 1755: Transit: population of service area** 
+
+The population of the service area is defined as the population residing within the builtup area which receives regular transit service. Frequently, local service standards define the population of the service area as the population within 400 meters of service routes. 
+
+Prior to 2014 the data for this line was reported in SLC 92 2351 06. 
+
+**Line 1760: Bridges and culverts: total square meters of surface area on bridges and culverts:** 
+
+Enter the total square meters of surface area on bridges and culverts in **line 1760.** 
+
+Prior to 2014 the data for this line was reported in SLC 91 2130 31. 
+
+A bridge is a structure which provides a roadway or walkway for the passage of vehicles, pedestrians or cyclists across an obstruction, gap or facility and which is greater than or equal to three meters in span. A pedestrian bridge is a structure which provides a walkway for pedestrians or cyclists across an obstruction, gap or facility and which is greater than or equal to three meters in span. 
+
+Culverts, (including concrete and steel), is defined as an opening through soil with a span equal to or greater than three meters.  Include adjacent multiple cell culverts separated by soil with individual spans greater than or equal to three meters. 
+
+Total square meters of surface area on bridges and culverts means the equivalent deck area, including sidewalks and railings.  For structures with no measurable deck, such as some rigid frame and pipe structures, the equivalent deck area is the width times the length. 
+
+Sum the number of square meters of surface area for all bridges and culverts with a span greater than three meters. 
+
+## **Column 1 Number of structures where the condition of the primary components is rated as good to very good, requiring only repair** 
+
+The condition of a bridge or culvert in this measure means the condition of primary components which are the main load carrying components of the structure and includes: the deck, beams, girders, abutments, foundations, etc. Secondary and auxiliary components are not included. 
+
+**A bridge or culvert is rated as good to very good if distress to primary components is minimal, requiring only maintenance.** 
+
+Secondary components are any component which helps to distribute loads to primary components or carries wind loads or stabilizes primary components, such as: sidewalk, 
+
+curb, sway bracing, ballast wall, wingwalls, etc. 
+
+Auxiliary components are any component which does not share in the load carrying capacity of the structure and includes: deck drains, gutters, catch-basins, etc. 
+
+This measure assumes that all bridges and culverts in the municipal road system have been rated. In **line 1768** , please indicate whether all bridges and culverts in the municipal system have been rated or just a sample. 
+
+The structural integrity, safety and condition of every bridge shall be determined through the performance of at least one inspection in every second calendar year under the direction of a professional engineer and in accordance with the _Ontario Structure Inspection Manual_ , published by the Ministry of Transportation, as it may be amended from time to time. 
+
+Please indicate the rating system used and year it was conducted in **line 1769** . 
+
+- **Line 1765: Bridges: enter the number of bridges where the condition of primary components is rated as good to very good, requiring only repair.** 
+
+Prior to 2014 the data for this line was reported in SLC 92 2161 05. 
+
+- **Line 1766: Culverts: entre the number of culverts where the condition of primary components is rated as good to very good, requiring only repair.** 
+
+Prior to 2014 the data for this line was reported in SLC 92 2162 05. 
+
+**Column 2 Total number** 
+
+**Line 1765: Bridges: total number** 
+
+Prior to 2014 the data for this line was reported in SLC 92 2161 06. 
+
+## **Line 1766: Culverts: total number** 
+
+Prior to 2014 the data for this line was reported in SLC 92 2162 06. 
+
+The subtotals in SLC 80B 1770 01 and SLC 80D 1770 03 are automatically calculated. 
+
+## **12. ENVIRONMENTAL SERVICES** 
+
+## **Line 1810: Wastewater main backups: total number of backed up mains** 
+
+A backup in a wastewater main is defined as an obstruction or hydraulic overload in a municipal system which results in a backup of wastewater which may enter a house. Do not include an obstruction in a lateral line from a house to the wastewater main which results in a backup. Wastewater mains on private property are not measured. 
+
+Prior to 2014 the data for this line was reported in SLC 92 3154 05. 
+
+**Line 1815: Wastewater collection/conveyance: total kilometers of wastewater mains** 
+
+Total kilometers of wastewater mains, means total kilometers of sanitary sewer pipe, plus total kilometers of combined sanitary/storm sewer pipe; and is the responsibility of the municipality. This does not include service connections. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3111 31. 
+
+**Line 1820: Wastewater treatment and disposal: total mega liters of wastewater treated** 
+
+The volume of wastewater treated is defined as the volume at the point where the wastewater enters the treatment plant. A mega liter equals 1,000,000 liters or 1,000 cubic meters. Divide total liters by 1,000,000 and enter the value to three decimal places. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3112 31. 
+
+**Line 1825: Wastewater bypasses treatment: estimated mega liters of untreated wastewater** 
+
+Wastewater which bypasses treatment refers to sewage which is untreated and has bypassed any form of municipal treatment. Note that untreated effluents may occur when the influent exceeds the capacity of the treatment plant. One mega liter equals 1,000,000 liters or 1,000 cubic meters. Divide total liters by 1,000,000 and enter the value to three decimal places. 
+
+Prior to 2014 the data for this line was reported in SLC 92 3155 05 
+
+**Line 1835: Total kilometers of urban drainage system plus (0.005 kilometers times number of catch basins)** 
+
+Provide kilometers of storm water mains (storm sewers) and ditches in the urban drainage systems and multiply the number of catch basins. If ditches run along both 
+
+sides of a road, multiply the number of kilometers by 2. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3209 31. 
+
+**Line 1840: Total kilometers of rural drainage system plus (0.005 kilometers times catch basins)** 
+
+Provide kilometers of storm water mains and ditches in the rural drainage systems and multiply the number of catch basins. If ditches run along both sides of a road, multiply the number of kilometers by 2. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3210 31. 
+
+## **Line 1845: Total mega liters of drinking water treated.** 
+
+Enter total mega liters of drinking water treated. The volume of drinking water treated is defined as the volume at the point where treated water exits the treatment plant. One mega liter equals 1,000,000 liters or 1,000 cubic meters. Divide total liters by 1,000,000 and enter the value to three decimal places. 
+
+Prior to 2014 the data for this line was in SLC 91 3311 31. 
+
+## **Line 1850: Number of water main breaks in a year.** 
+
+Record the number of breaks/leaks in municipal water mains which require digging to repair. This does not include service connections. 
+
+Prior to 2014 the data for this line was reported in SLC 92 3356 05. 
+
+**Line 1855: Total kilometers of water distribution/transmission pipe.** 
+
+Include total kilometers of water distribution pipe for which the municipality is responsible. This does not include service connections. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3312 31. 
+
+## **Line 1860: Garbage collection: total tonnes collected from all property classes.** 
+
+Report total tonnes collected from all property classes by the municipality and its contractors, if available. If not available leave blank. Do not include any tonnage for material delivered directly to a transfer station by residents. A tonne is defined as a metric tonne and equal 2,204.62 or 1,000 kilograms. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3404 31. 
+
+## **Line 1865: Garbage disposal: total tonnes disposed of from all property classes.** 
+
+Report total tonnes disposed from all property classes by the municipality, if available. If not available, leave blank. A tonne is defined as a metric tonne and equal 2,204.62 or 1,000 kilograms. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3504 31. 
+
+## **Line 1870: Solid waste diversion: total tonnes diverted from all property classes.** 
+
+Report total tonnes diverted from all property classes by the municipality, if available. If not available, leave blank. 
+
+Prior to 2014 the data for this line was reported in SLC 91 3606 31. 
+
+## **13. RECREATION SERVICES** 
+
+## **Line 1910: Trails: total kilometers of trails (owned by municipality and third parties)** 
+
+Report trails owned by the municipalities plus trails owned by third parties where the municipality has a formal lease contract, joint use agreement or reciprocal use agreement. If there no trails, please entre zero, but do not leave blank. 
+
+Total kilometers of trails should include the length of all trails that fall under municipal responsibility or control.  Include leased trails if there is a formal lease agreement and the trail is managed and controlled by the municipality and made available for public use. 
+
+The following criteria are suggested to define a trail: land is dedicated to trail use; trail is mapped; and signage exists. 
+
+Trails may support a range of non-motorized and motorized recreational uses. Examples are walking/hiking, bicycling, riding/equestrian, and snowmobiling. Include trails on property owned by third parties if the municipality has a formal lease, joint use agreement or reciprocal agreement. 
+
+Prior to 2014 the data for this line was reported in SLC 92 7152 05. 
+
+## **Line 1920: Square meters of indoor recreation facilities (municipally owned)** 
+
+Indoor recreation facilities include built or enclosed structures used for the purposes of community recreation and leisure. In the case of multi-use facilities, include only recreation facility space.  Multi-purpose rooms may be included if they are used for recreation purposes. 
+
+Include only municipally owned indoor recreation facility space. Square meters of indoor recreation facilities owned by third parties are not included in the measure. 
+
+Prior to 2014 the data for this line was reported in SLC 92 7356 05. 
+
+## **Line 1930: Square meters of outdoor recreation facility space (municipally owned)** 
+
+Report square meters of outdoor recreation space with controlled access and electrical or mechanical functions (municipally owned). Outdoor recreation facility space is defined as involving some form or operating function (e.g. mechanical, electrical) and some form of controlled access (e.g. entranceways). Square meters of outdoor recreation facilities owned by third parties are not included in the measure. 
+
+Prior to 2014 the data for this line was reported in SLC 92 7359 05. 
+
+## **14. OTHER REVENUE** 
+
+The MPMP calculated cost or efficiency measures use standard formulas. In the FIR, costs are reported on a gross basis. Only revenue received from other municipalities are netted out from costs. In developing the formulas for costs measures, there were four exceptions where other revenue was subtracted from operating costs recorded in Schedule 40. These are noted below. 
+
+## **Line 2310: Fire services: other revenue** 
+
+The Fire Services measure based on operating costs, nets out both revenue from other municipalities and other revenue from expenses.  Other revenue is narrowly defined as revenue received for fire services provided outside municipal boundaries.  This consists of revenue received for fire services to an Indian band, unorganized areas or Crown land outside municipal boundaries. Revenue for fire services provided to federal airports and armed forces basis are not considered other revenue because the services is provided within municipal boundaries. 
+
+Prior to 2014 the data for this line was reported in SLC 91 1103 21. 
+
+## **Line 2320: Paved roads: other revenue** 
+
+For the Paved Roads measure based on operating costs, other revenue consisting of revenue from utilities for utility cut repairs is netted from operating expenses. 
+
+Prior to 2014 the data for this line was reported in SLC 91 2111 21. 
+
+## **Line 2330: Garbage disposal: other revenue** 
+
+Other Revenue is subtracted from expenses for Operating Costs. Other revenue refers to revenue from the sale of resources related to disposal activity. Examples include revenue pertaining to electricity production and landfill gas (e.g. methane), including landfill gas credits, royalties and sales. Revenue from tipping fees, user fees, grants or Waste Diversion Ontario (WDO) is not subtracted. 
+
+Prior to 2014 the data for this line was reported in SLC 91 2111 21. 
+
+## **Line 2340: Waste management diversion: other revenue** 
+
+Other revenue refers to revenue from the sale of resources related to diversion activities. Examples include revenue pertaining to electricity production and landfill gas (e.g. methane), including landfill gas credits, royalties and sales of recyclable materials. Revenue from tipping fees and user fees are not to be reported as other revenue. Other revenue does not refer to user fees, grants or funding from Waste Diversion Ontario (WDO). Prior to 2014 the data for this line was reported in SLC 91 3606 21. 
+
+## **Line 2370: Assessment on exempt properties** 
+
+This line contains assessment for properties which are exempt from taxes and do not make Payments-in-Lieu of taxes.  The municipality must enter this amount using the returned roll.  The returned roll used to set tax rates for the reporting year should be used. 
+
+Examples of exempt properties under section 3 of the Assessment Act include churches, certain charitable institutions, small theatres, large non-profit theatres, hydroelectric generating stations, etc. Please see the Assessment Act for a further description. 
+
+The assessment of exempt properties is added to Phased-in Taxable Assessment (SLC 22 9299 16) and Phased in PIL Assessment (SLC 24 9299 16) to determine total property assessment, which is used as the denominator for fire service efficiency measures in the MPMP. 
+
+The annual debt and financial obligation limit for municipalities is determined under ONTARIO REGULATION 403/02: debt and financial obligation limits. 
+
+Under the above-mentioned regulation: 
+
+The Ministry shall inform the treasurer of the municipality in writing of the limit. 
+
+Before authorizing any specific work or class of work or any increase in expenditure for a previously authorized specific work or class of work that would require a long-term debt or financial obligation described in section 2, the council of the municipality shall have its treasurer calculate an updated limit using the most recent debt and financial obligation limit determined by the Ministry. 
+
+All of the rows in this schedule except for line 2410 are automatically populated from the schedules, rows and columns indicated in the ARL schedule. 
+
+Please complete line 2410: Fees and Revenue for Joint Local Boards for Homes for the Aged. 
+
+Please understand that the Ministry of Municipal Affairs will review the ARL schedule and send out a confirmation of the Annual Repayment Limit as required by Ontario Regulation 403/02. 
+
+This schedule is to be used for additional notes on the various schedules in the **2021 FIR.** 
+
+Notes should be used to provide information about variances between municipal audited financial statements and Financial Information Return balances, as well as other transactions, circumstances or events as needed. 
+
+|**Line**|**0010**|**Schedule 10**|Please enter additional notes for schedule 10.|
+|---|---|---|---|
+|**Line**|**0020**|**Schedule 12**|Please enter additional notes for schedule 12.|
+|**Line**|**0030**|**Schedule 40**|Please enter additional notes for schedule 40.|
+|**Line**|**0040**|**Schedule 51**|Please enter additional notes for schedule 51.|
+|**Line**|**0050**|**Schedule 53**|Please enter additional notes for schedule 53.|
+|**Line**|**0060**|<br>**Schedule 54**|Please enter additional notes for schedule 54.|
+|**Line**|**0070**|**Schedule 60**|<br>Please enter additional notes for schedule 60, 61, & 62.|
+|**Line**|**0080**|<br>**Schedule 70**|Please enter additional notes for schedule 70.|
+|**Line**|**0090**|**Schedule 74**|Please enter additional notes for schedule 74.|
+|**Line**|**0110**|**Schedule-Other:**|**Please enter additional notes for any schedule not listed**|
+||||<br>**above.**|
+
+
+
