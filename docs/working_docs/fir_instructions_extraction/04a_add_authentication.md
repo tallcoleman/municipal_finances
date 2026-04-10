@@ -14,11 +14,11 @@ Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity
 
 **Permission levels:**
 
-| Role | Capabilities |
-|---|---|
-| Viewer | Read-only access to all data endpoints; can manage their own Keycloak account |
-| Editor | All Viewer privileges; can mutate data (write endpoints added in a later task) |
-| Administrator | All Editor privileges; can manage users via Keycloak admin console |
+| Role          | Capabilities                                                                   |
+| ------------- | ------------------------------------------------------------------------------ |
+| Viewer        | Read-only access to all data endpoints; can manage their own Keycloak account  |
+| Editor        | All Viewer privileges; can mutate data (write endpoints added in a later task) |
+| Administrator | All Editor privileges; can manage users via Keycloak admin console             |
 
 ## Prerequisites
 
@@ -173,7 +173,7 @@ Add `require_viewer` as a dependency to every route in:
 - `api/routes/municipalities.py`
 - `api/routes/fir_records.py`
 - `api/routes/fir_sources.py`
-- `api/routes/fir_instructions.py` (Task 10, if complete)
+- `api/routes/fir_instructions.py` (Task 10a, if complete)
 
 Example:
 
