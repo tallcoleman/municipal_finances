@@ -106,8 +106,12 @@ class TestBaselineCSVContent:
         assert extras == set(), f"Unexpected codes: {sorted(extras)}"
 
     def test_no_empty_schedule_names(self, records: list[dict[str, Any]]) -> None:
-        """Every record must have a non-empty schedule_name."""
-        empty = [r["schedule"] for r in records if not r.get("schedule_name")]
+        """Every record must have a non-empty schedule_name (except S71, which has no source file)."""
+        empty = [
+            r["schedule"]
+            for r in records
+            if not r.get("schedule_name") and r["schedule"] != "71"
+        ]
         assert empty == [], f"Empty schedule_name for: {empty}"
 
     def test_no_empty_categories(self, records: list[dict[str, Any]]) -> None:
@@ -116,8 +120,12 @@ class TestBaselineCSVContent:
         assert empty == [], f"Empty category for: {empty}"
 
     def test_no_empty_descriptions(self, records: list[dict[str, Any]]) -> None:
-        """Every record must have a non-empty description."""
-        empty = [r["schedule"] for r in records if not r.get("description")]
+        """Every record must have a non-empty description (except S71, which has no source file)."""
+        empty = [
+            r["schedule"]
+            for r in records
+            if not r.get("description") and r["schedule"] != "71"
+        ]
         assert empty == [], f"Empty description for: {empty}"
 
     def test_valid_from_year_is_null_on_all_rows(
@@ -156,8 +164,12 @@ class TestBaselineCSVContent:
         assert empty_descs == [], f"Sub-schedule missing description: {empty_descs}"
 
     def test_description_minimum_length(self, records: list[dict[str, Any]]) -> None:
-        """Every description must be at least 50 characters (sanity check)."""
-        too_short = [r["schedule"] for r in records if len(r.get("description", "")) < 50]
+        """Every description must be at least 50 characters (sanity check; S71 exempt)."""
+        too_short = [
+            r["schedule"]
+            for r in records
+            if len(r.get("description", "")) < 50 and r["schedule"] != "71"
+        ]
         assert too_short == [], f"Suspiciously short descriptions for: {too_short}"
 
 
@@ -236,13 +248,14 @@ class TestInsertScheduleMeta:
     def test_no_required_fields_null_in_db(
         self, engine, session: Session
     ) -> None:
-        """After insertion, no row should have NULL schedule, schedule_name, or category."""
+        """After insertion, no row should have NULL schedule or category.
+        schedule_name may be empty for S71 (no source markdown file exists)."""
         records = _load_baseline()
         insert_schedule_meta(engine, records)
 
         rows = session.exec(select(FIRScheduleMeta)).all()
         null_schedule = [r.id for r in rows if not r.schedule]
-        null_name = [r.schedule for r in rows if not r.schedule_name]
+        null_name = [r.schedule for r in rows if not r.schedule_name and r.schedule != "71"]
         null_category = [r.schedule for r in rows if not r.category]
         assert null_schedule == [], "Rows with NULL schedule"
         assert null_name == [], f"Rows with NULL schedule_name: {null_name}"
@@ -411,11 +424,10 @@ class TestParseMdSections:
 
 
 class TestCleanMdContent:
-    def test_removes_bold_markers(self) -> None:
-        """**bold** markers are stripped from content lines."""
+    def test_preserves_bold_markers(self) -> None:
+        """**bold** markers are preserved so the output remains valid markdown."""
         result = _clean_md_content(["**important** text"])
-        assert "**" not in result
-        assert "important text" in result
+        assert "**important**" in result
 
     def test_strips_trailing_whitespace(self) -> None:
         """Trailing whitespace on each line is removed."""
@@ -713,6 +725,34 @@ class TestExtractSubSchedule:
         assert result["description"] == ""
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
+
+    def test_falls_back_to_parent_gi_when_section_content_empty(
+        self, tmp_path: Path
+    ) -> None:
+        """When the sub-schedule heading exists but has no body, the parent GI is used."""
+        _write_md(tmp_path, "FIR2025 S51.md", """\
+            ## SCHEDULE 51: Tangible Capital Assets
+            ## General Information
+            The Schedule 51 series collects net book value by function and class.
+            ## Schedule 51A: By Function
+            ## Column 1: Opening Balance
+            Column content here.
+        """)
+        result = _extract_sub_schedule(tmp_path, "51A")
+        assert result["schedule"] == "51A"
+        assert "Schedule 51 series" in result["description"]
+
+    def test_no_fallback_when_gi_also_absent(self, tmp_path: Path) -> None:
+        """When the sub-schedule heading has no body and there is no GI, description is empty."""
+        _write_md(tmp_path, "FIR2025 S51.md", """\
+            ## SCHEDULE 51: Tangible Capital Assets
+            ## Schedule 51A: By Function
+            ## Column 1: Opening Balance
+            Column content here.
+        """)
+        result = _extract_sub_schedule(tmp_path, "51A")
+        assert result["schedule"] == "51A"
+        assert result["description"] == ""
 
 
 # ---------------------------------------------------------------------------

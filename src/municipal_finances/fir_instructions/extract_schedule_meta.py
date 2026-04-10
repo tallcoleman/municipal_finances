@@ -185,18 +185,19 @@ def _parse_md_sections(md_path: Path) -> list[tuple[str, list[str]]]:
 
 
 def _clean_md_content(lines: list[str]) -> str:
-    """Convert markdown content lines to a clean plain-text description.
+    """Normalise markdown content lines into a description string.
 
-    Removes ``**`` bold markers, strips trailing whitespace from each line,
-    and collapses runs of three or more consecutive blank lines to two.
+    Strips trailing whitespace from each line and collapses runs of three or
+    more consecutive blank lines to two.  Inline markdown formatting (e.g.
+    ``**bold**``) is preserved so callers receive valid markdown.
 
     Args:
         lines: Raw content lines from a markdown section (no trailing newlines).
 
     Returns:
-        Clean multi-line string suitable for storage as ``description``.
+        Markdown string suitable for storage as ``description``.
     """
-    cleaned = [re.sub(r"\*\*", "", line).rstrip() for line in lines]
+    cleaned = [line.rstrip() for line in lines]
     text = "\n".join(cleaned)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
@@ -285,10 +286,11 @@ def _extract_regular_schedule(markdown_dir: Path, code: str) -> dict[str, Any]:
     md_path = markdown_dir / f"FIR2025 S{code}.md"
     sections = _parse_md_sections(md_path)
 
-    # Schedule name: first heading matching "SCHEDULE {code}: Name" or "SCHEDULE {code} - Name"
+    # Schedule name: first heading matching "SCHEDULE {code}[...]: Name" or "SCHEDULE {code}[...] - Name"
+    # The [^:-]* allows for variants like "SCHEDULE 62 and 62A: Name".
     schedule_name = ""
     name_re = re.compile(
-        r"^(?:SCHEDULE|Schedule)\s+" + re.escape(code) + r"\s*[:\-]\s*(.*)",
+        r"^(?:SCHEDULE|Schedule)\s+" + re.escape(code) + r"[^:\-]*[:\-]\s*(.*)",
         re.IGNORECASE,
     )
     for heading, _ in sections:
@@ -434,6 +436,16 @@ def _extract_sub_schedule(markdown_dir: Path, code: str) -> dict[str, Any]:
     heading, content = sections[idx]
     schedule_name = _extract_sub_schedule_name(heading, code)
     description = _clean_md_content(content)
+
+    # If the sub-schedule heading has no body text, fall back to the parent
+    # schedule's General Information section (e.g. S51A has no intro paragraph;
+    # the parent S51 GI describes the whole 51 series).
+    if not description:
+        gi_headings = {"general information", "general instructions"}
+        for h, c in sections:
+            if h.lower().strip() in gi_headings:
+                description = _clean_md_content(c)
+                break
 
     return {
         "schedule": code,
