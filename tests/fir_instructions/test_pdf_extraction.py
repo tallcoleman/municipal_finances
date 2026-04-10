@@ -24,7 +24,7 @@ from municipal_finances.fir_instructions.pdf_extraction import (
 # Constants
 # ---------------------------------------------------------------------------
 
-SOURCE_DIR = Path("fir_instructions/source_files")
+SOURCE_DIR = Path("fir_instructions/source_files/text")
 
 ALL_YEARS = [2019, 2020, 2021, 2022, 2023, 2024, 2025]
 

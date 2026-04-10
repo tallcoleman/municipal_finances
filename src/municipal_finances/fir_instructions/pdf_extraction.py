@@ -9,7 +9,7 @@ Usage — one-time setup per PDF::
 
     # Convert PDFs to text (run once in the project root)
     # for f in fir_instructions/source_files/*.pdf; do
-    #     pdftotext -layout "$f" "${f%.pdf}.txt"
+    #     pdftotext -layout "$f" "fir_instructions/source_files/text/$(basename "${f%.pdf}.txt")"
     # done
 
     from municipal_finances.fir_instructions.pdf_extraction import (
@@ -17,8 +17,8 @@ Usage — one-time setup per PDF::
         save_schedule_offsets,
     )
 
-    offsets = build_schedule_offsets("fir_instructions/source_files/FIR2025 Instructions.txt")
-    save_schedule_offsets(offsets, "fir_instructions/source_files/FIR2025 Instructions.offsets.json")
+    offsets = build_schedule_offsets("fir_instructions/source_files/text/FIR2025 Instructions.txt")
+    save_schedule_offsets(offsets, "fir_instructions/source_files/text/FIR2025 Instructions.offsets.json")
 """
 
 from __future__ import annotations
@@ -81,7 +81,7 @@ def build_schedule_offsets(txt_path: str) -> dict[str, int]:
 
     Args:
         txt_path: Path to a ``.txt`` file produced by ``pdftotext -layout``,
-                  e.g. ``"fir_instructions/source_files/FIR2025 Instructions.txt"``.
+                  e.g. ``"fir_instructions/source_files/text/FIR2025 Instructions.txt"``.
 
     Returns:
         Dict mapping schedule codes (e.g. ``"10"``, ``"74E"``, ``"80D"``) to
@@ -132,7 +132,7 @@ def save_schedule_offsets(offsets: dict[str, int], json_path: str) -> None:
     Args:
         offsets:  Dict produced by :func:`build_schedule_offsets`.
         json_path: Destination path (e.g.
-                   ``"fir_instructions/source_files/FIR2025 Instructions.offsets.json"``).
+                   ``"fir_instructions/source_files/text/FIR2025 Instructions.offsets.json"``).
     """
     out = Path(json_path)
     out.parent.mkdir(parents=True, exist_ok=True)
