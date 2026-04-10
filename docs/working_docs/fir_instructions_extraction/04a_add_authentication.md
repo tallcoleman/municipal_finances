@@ -9,7 +9,7 @@ Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity
 - Three permission levels: Viewer, Editor, Administrator (see below)
 - All existing endpoints are protected — unauthenticated requests return 401
 - For development, the Keycloak container launches with a pre-configured realm, client, and default admin user (credentials documented below)
-- Short-lived access tokens only (no refresh token support in this task — see notes in Implementation Details)
+- Access tokens (short-lived) plus refresh tokens for session continuity
 - No User table in the app database; user identity and roles are trusted entirely from JWT claims
 
 **Permission levels:**
@@ -27,13 +27,12 @@ Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity
 
 ## Task List
 
-- [ ] Add `python-jose[cryptography]` and `httpx` (already a dev dep — promote to main) to dependencies; run `uv sync`
+- [ ] Add `PyJWT[crypto]`, `cachetools`, and `httpx` (already a dev dep — promote to main) to dependencies; run `uv sync`
 - [ ] Add Keycloak service to `docker-compose.yml`
 - [ ] Create Keycloak realm initialization script (`keycloak/realm-export.json`) with realm, client, roles, and default dev admin user
 - [ ] Create `src/municipal_finances/api/auth.py` — JWT validation and role-checking dependencies
 - [ ] Apply auth dependencies to all existing routes (Viewer minimum on all read endpoints)
 - [ ] Write tests
-- [ ] Create `docs/working_docs/fir_instructions_extraction/xx_auth_production_hardening.md` (draft notes)
 - [ ] Update documentation
 
 ## Implementation Details
@@ -43,8 +42,9 @@ Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity
 Add to `pyproject.toml` main dependencies:
 
 ```toml
-"python-jose[cryptography]>=3.3"
-"httpx>=0.28"          # move from dev to main (needed for JWKS fetch)
+"PyJWT[crypto]>=2.10"    # actively maintained; [crypto] pulls in cryptography for RS256
+"cachetools>=5.5"        # TTL cache for JWKS
+"httpx>=0.28"            # move from dev to main (needed for JWKS fetch)
 ```
 
 ### Docker Compose — Keycloak Service
@@ -81,7 +81,8 @@ Create `keycloak/realm-export.json` to configure the realm on first start. Key e
   - Username: `admin-dev`
   - Password: `changeme` (temporary, documented)
   - Roles assigned: `administrator`
-- **Token lifespan**: 300 seconds (5 minutes) — short-lived, no refresh tokens issued to keep scope limited
+- **Access token lifespan**: 300 seconds (5 minutes)
+- **Refresh token lifespan**: 30 minutes (configurable in realm settings)
 
 Generate the export JSON by standing up Keycloak manually once, configuring via the admin console, and exporting the realm. Commit the result as `keycloak/realm-export.json`. Document the manual export process briefly in a comment at the top of the file.
 
@@ -110,7 +111,7 @@ KEYCLOAK_CLIENT_ID=municipal-finances-api
 **Token validation flow:**
 
 ```python
-from jose import jwt, JWTError
+import jwt                # PyJWT
 import httpx
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -119,16 +120,21 @@ oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl=f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token"
 )
 
-def get_jwks() -> dict:
-    """Fetch JWKS from Keycloak. Cache the result (e.g., with functools.lru_cache or a module-level variable)."""
+def get_jwks_client() -> jwt.PyJWKClient:
+    """Return a PyJWKClient pointed at Keycloak's JWKS endpoint."""
     ...
 
 def decode_token(token: str) -> dict:
     """Validate the JWT signature and expiry; return the claims dict."""
-    jwks = get_jwks()
     try:
-        return jwt.decode(token, jwks, algorithms=["RS256"], audience=KEYCLOAK_CLIENT_ID)
-    except JWTError:
+        signing_key = get_jwks_client().get_signing_key_from_jwt(token)
+        return jwt.decode(
+            token,
+            signing_key.key,
+            algorithms=["RS256"],
+            audience=KEYCLOAK_CLIENT_ID,
+        )
+    except jwt.PyJWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
 def get_roles(claims: dict) -> list[str]:
@@ -187,34 +193,40 @@ The `_claims` parameter is prefixed with `_` to indicate it's used only for its 
 
 ### JWKS Caching
 
-Fetching JWKS on every request is expensive and fragile. Cache the JWKS response at module level with a short TTL (e.g., 5 minutes). A simple approach:
+`PyJWKClient` handles key fetching, but it re-fetches on every process startup and again on key rotation events. Wrap it in a module-level `cachetools.TTLCache` so the client instance (and its internally cached keys) is reused across requests within the TTL:
 
 ```python
-import time
+from cachetools import TTLCache
+from threading import Lock
 
-_jwks_cache: dict | None = None
-_jwks_fetched_at: float = 0.0
-_JWKS_TTL = 300  # seconds
+_jwks_cache: TTLCache = TTLCache(maxsize=1, ttl=300)  # 5-minute TTL
+_jwks_lock = Lock()
 
-def get_jwks() -> dict:
-    global _jwks_cache, _jwks_fetched_at
-    if _jwks_cache is None or time.time() - _jwks_fetched_at > _JWKS_TTL:
-        response = httpx.get(JWKS_URL)
-        response.raise_for_status()
-        _jwks_cache = response.json()
-        _jwks_fetched_at = time.time()
-    return _jwks_cache
+def get_jwks_client() -> jwt.PyJWKClient:
+    """Return a cached PyJWKClient. Thread-safe via lock."""
+    with _jwks_lock:
+        if "client" not in _jwks_cache:
+            _jwks_cache["client"] = jwt.PyJWKClient(JWKS_URL)
+        return _jwks_cache["client"]
 ```
 
-### Notes on Refresh Tokens
+The lock ensures only one thread reconstructs the client on expiry. `PyJWKClient` itself also caches fetched keys internally and re-fetches automatically on a key-ID miss (i.e., after a Keycloak key rotation), so this two-layer approach avoids both thundering-herd on startup and stale-key issues after rotation.
 
-This task issues short-lived access tokens only (5-minute TTL). Refresh token support is deferred. It would be warranted if:
+### Refresh Tokens
 
-- **Interactive web clients** need to maintain a session without re-prompting for credentials — access tokens expiring every 5 minutes would cause frequent logouts
-- **Long-running batch jobs** need API access across token expiry boundaries
-- **Mobile clients** are added, where re-authentication UX is disruptive
+Keycloak issues both an access token and a refresh token when a user authenticates. The API does not handle refresh tokens directly — the client is responsible for using the refresh token to obtain a new access token before expiry.
 
-Keycloak supports refresh tokens natively; enabling them is primarily a client and realm configuration change. The API itself would not need to change — the client handles the refresh flow and presents a fresh access token.
+**Keycloak configuration** (in `realm-export.json`):
+- Refresh token TTL: 1800 seconds (30 minutes)
+- Refresh token rotation: enabled (each use issues a new refresh token and invalidates the old one)
+
+**Client flow:**
+1. Client POSTs credentials to Keycloak's token endpoint → receives `access_token` + `refresh_token`
+2. Client includes `access_token` as `Authorization: Bearer <token>` on API calls
+3. When the access token nears expiry, client POSTs to Keycloak's token endpoint with `grant_type=refresh_token&refresh_token=<token>` → receives new token pair
+4. On logout, client POSTs to Keycloak's logout endpoint to revoke the refresh token
+
+The API itself only validates access tokens and is unaware of refresh tokens.
 
 ## Tests
 
@@ -233,9 +245,10 @@ Auth logic in `tests/test_auth.py`, route enforcement in `tests/api/test_auth_en
 - [ ] Test `require_viewer` raises 403 for a token with no recognized role
 - [ ] Test `require_editor` passes for `editor` and `administrator`; raises 403 for `viewer`
 - [ ] Test `require_administrator` passes only for `administrator`; raises 403 for others
-- [ ] Test JWKS caching: a second call within TTL does not re-fetch from Keycloak
+- [ ] Test JWKS caching: a second call within TTL returns the same `PyJWKClient` instance without re-fetching
+- [ ] Test JWKS caching: a call after TTL expiry constructs a new `PyJWKClient` instance
 
-Use `pytest-mock` to mock `httpx.get` for JWKS responses and construct test JWTs using `python-jose` with a test RSA key pair.
+Use `pytest-mock` to mock `jwt.PyJWKClient` and construct test JWTs using `PyJWT` with a test RSA key pair (generated with `cryptography` in a session-scoped fixture).
 
 **Route enforcement (`tests/api/test_auth_enforcement.py`):**
 
@@ -265,7 +278,8 @@ Parametrize across all route paths to avoid repetitive test code.
     -d "grant_type=password&client_id=municipal-finances-api&username=admin-dev&password=changeme" \
     | jq .access_token
   ```
-- All `GET` endpoints return 401 without a token and 200 with a valid token
+- All `GET` endpoints return 401 without a token and 200 with a valid access token
+- A refresh token is included in the token response alongside the access token
 - All tests pass with 100% coverage on new code
 
 ## Verification

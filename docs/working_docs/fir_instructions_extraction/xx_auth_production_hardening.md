@@ -19,9 +19,9 @@
 
 ## Token and Session Management
 
-- **Consider refresh tokens** if interactive clients or long-running jobs are added (see notes in Task 04a).
 - **Token introspection vs. offline validation**: Task 04a validates JWTs offline using JWKS. For higher-security scenarios (e.g., to support immediate token revocation), switch to token introspection (`/protocol/openid-connect/token/introspect`) at the cost of a network call per request.
-- **Review token TTL**: 5 minutes is conservative and fine for API-only access. Adjust if a frontend is added.
+- **Review token TTLs**: access token (5 min) and refresh token (30 min) lifespans were chosen conservatively. Adjust if a frontend with longer idle sessions is added.
+- **Refresh token absolute expiry**: Keycloak supports a `ssoSessionMaxLifespan` that caps the total refresh chain regardless of activity. Set this to a reasonable value (e.g., 8 hours) to limit the window of a stolen refresh token.
 
 ## API Security
 
