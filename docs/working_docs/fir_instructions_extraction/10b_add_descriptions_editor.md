@@ -1,5 +1,5 @@
 
-# Task 04b: Create Metadata Descriptions Editor
+# Task 10b: Create Metadata Descriptions Editor
 
 ## Goal
 
@@ -22,13 +22,13 @@ Edits are in-place updates to existing rows — the intent is to clean up and en
 - Front-end: Vite + React + TypeScript, deployed as a static site on Coolify via Docker + nginx
 - Markdown editor: `@uiw/react-md-editor` with `rehype-sanitize` (XSS protection on preview output)
 - Auth: Keycloak Authorization Code + PKCE flow (extends the client from Task 04a to support the SPA)
-- Backend additions: three `PATCH` endpoints added to the FastAPI app; read access via Task 10 GET endpoints
+- Backend additions: three `PATCH` endpoints added to the FastAPI app; read access via Task 10a GET endpoints
 - State management: TanStack Query for server state; local React state for in-progress edits
 
 ## Prerequisites
 
 - Task 04a (authentication) complete — Keycloak is running, JWT validation is in place, and the `municipal-finances-api` Keycloak client exists
-- Task 10 (API endpoints) complete, or at minimum the GET list and detail endpoints for schedules, lines, and columns are implemented
+- Task 10a (API endpoints) complete, or at minimum the GET list and detail endpoints for schedules, lines, and columns are implemented
 
 ## Task List
 
@@ -93,7 +93,7 @@ Using the same client for both the API (Direct Access Grants in dev) and the SPA
 
 ### Backend: PATCH Endpoints
 
-Add to `src/municipal_finances/api/routes/fir_instructions.py` alongside the Task 10 read endpoints. All three endpoints require `require_editor`, accept a partial-update body, return the full updated record, and return 404 for an unknown id.
+Add to `src/municipal_finances/api/routes/fir_instructions.py` alongside the Task 10a read endpoints. All three endpoints require `require_editor`, accept a partial-update body, return the full updated record, and return 404 for an unknown id.
 
 **Pydantic update models:**
 
@@ -145,7 +145,7 @@ Version navigation requires fetching all version rows for a specific (schedule, 
 - `GET /instructions/lines/?schedule={s}&line_id={l}` — when `line_id` is provided, filter to rows matching that exact `line_id`. Combine with omitting `year` to return all versions.
 - `GET /instructions/columns/?schedule={s}&column_id={c}` — same pattern.
 
-These are additive changes to the Task 10 endpoint signatures.
+These are additive changes to the Task 10a endpoint signatures.
 
 ### Frontend: Project Setup
 
