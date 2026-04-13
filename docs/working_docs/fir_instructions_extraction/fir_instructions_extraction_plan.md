@@ -21,12 +21,12 @@ General context: accounting standards, SLC coding system, cross-cutting reportin
 A standalone attachment defining what activities belong under each line in Schedules 12 (Grants/User Fees), 40 (Expenses), and 51 (Tangible Capital Assets). Organized by service area (General Government, Protection Services, Transportation, Environmental, Health, Social, Recreation, Planning). Each line gets a structured list of what to include/exclude.
 
 **Part 3 — Schedule-by-Schedule Instructions**
-One section per schedule (~26 schedules). Each section contains general information about the schedule's purpose, line-by-line descriptions (what to report, inclusion/exclusion rules, carry-forward sources), and column-by-column descriptions.
+One section per schedule (31 schedules). Each section contains general information about the schedule's purpose, line-by-line descriptions (what to report, inclusion/exclusion rules, carry-forward sources), and column-by-column descriptions.
 
 **Content Changes attachment**
 A structured table (Schedule / SLC / Heading / Description) documenting exactly what changed from the prior year. The PDFs distinguish Major Changes (new/deleted schedules) from Minor Changes (new/updated/removed lines or columns). This is the key input for versioning. These are available as pre-extracted pages in `fir_instructions/change_logs/`.
 
-### The 26 Schedules
+### The 31 Schedules
 
 | Category | Schedules |
 |---|---|
@@ -40,7 +40,7 @@ A structured table (Schedule / SLC / Heading / Description) documenting exactly 
 | Financial Position | 70 |
 | Remeasurement Gains & Losses | 71 (new in 2023) |
 | Long Term Liabilities | 74, 74E (new in 2023) |
-| Other Information | 76, 77, 80, 81, 83 |
+| Other Information | 76, 77, 80, 80D, 81, 83 |
 
 Note: the schedule list itself changes over time. Schedule 51C and 79 were deleted in 2023.
 
@@ -171,7 +171,7 @@ Work through the PDF in sections:
 2. Functional Classifications attachment (~pages 43–93): provides `includes`/`excludes` content for Schedules 12, 40, 51 lines
 3. Each schedule's instruction section: provides `description`, `carry_forward_from`, `applicability`, column descriptions
 
-Expect ~2–5 PDF read passes per schedule across 26 schedules.
+Expect ~2–5 PDF read passes per schedule across 31 schedules.
 
 ### Phase 2: Apply documented changes backwards to create versioned rows
 
