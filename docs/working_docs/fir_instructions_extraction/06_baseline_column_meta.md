@@ -7,11 +7,11 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 ## Prerequisites
 
 - Task 01 (database models) complete
-- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values), and the PDF-to-text conversion and offset maps from Task 04's prerequisite step must already exist (`fir_instructions/source_files/FIR2025 Instructions.txt` and `FIR2025 Instructions.offsets.json`)
+- Task 04 (schedule metadata) complete — need `fir_schedule_meta` rows (for the `schedule_id` FK and `schedule` text values)
 
 ## Task List
 
-- [ ] For each of the 26 schedules, use the offset map to locate the schedule section in `FIR2025 Instructions.txt` and extract column descriptions
+- [ ] For each of the 31 schedules, open `FIR2025 S{code}.md` (or parent file for sub-schedules) and extract column descriptions using `_parse_md_sections`
 - [ ] Create `fir_column_meta` rows for all columns
 - [ ] Set all rows to `valid_from_year = NULL`, `valid_to_year = NULL`
 - [ ] Export to CSV
@@ -34,7 +34,8 @@ Extract column-level metadata for all schedules from the FIR2025 Instructions PD
 
 ### Extraction Notes
 
-- Use the offset map from Task 04 to jump directly to each schedule's section in `FIR2025 Instructions.txt`; column descriptions are typically found after the line descriptions within that section
+- For each schedule, open `FIR2025 S{code}.md` (or the parent file for sub-schedules — see `_MD_PARENT_FILE` in `extract_schedule_meta.py`). Use the same `_parse_md_sections` helper developed for Task 04.
+- Column descriptions are in sections whose headings match `Column N - Column Name` (e.g. `Column 1 - Ontario Conditional Grants`). Many schedules collect these under a `Description of Columns` section heading; scan for that heading first, then read forward.
 - Some schedules have very few columns (2–3), while others like Schedule 12 have many (10+)
 - Column descriptions tend to be shorter than line descriptions
 - Schedules 12 and 40 have particularly complex column structures worth extra attention
@@ -46,7 +47,7 @@ Most schedules have 3–10 columns. Total: likely 100–200 column metadata rows
 
 ### Data File Approach
 
-Even with the pre-converted text files, extraction logic involves parsing heuristics that may need manual correction. Save the extracted data as a CSV at `fir_instructions/exports/baseline_column_meta.csv`. This allows re-loading without re-parsing and serves as the human-editable source of truth before DB insertion.
+Even with the markdown source files, extraction logic involves parsing heuristics that may need manual correction. Save the extracted data as a CSV at `fir_instructions/exports/baseline_column_meta.csv`. This allows re-loading without re-parsing and serves as the human-editable source of truth before DB insertion.
 
 ## Tests
 
