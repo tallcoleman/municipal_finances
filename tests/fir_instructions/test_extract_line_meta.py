@@ -26,6 +26,7 @@ from municipal_finances.fir_instructions.extract_line_meta import (
     _extract_fc_lines,
     _extract_includes_excludes,
     _extract_per_schedule_lines,
+    _get_schedule_sections,
     _is_functional_area,
     _parse_line_heading,
     app,
@@ -1055,3 +1056,295 @@ class TestCLI:
 
         assert result.exit_code == 0, result.output
         assert "Inserted 1" in result.output
+
+
+# ---------------------------------------------------------------------------
+# 10. Additional branch coverage
+# ---------------------------------------------------------------------------
+
+
+class TestExtractIncludesExcludesAdditional:
+    """Additional tests for uncovered branches in _extract_includes_excludes."""
+
+    def test_sub_heading_only_no_body_added_to_includes(self) -> None:
+        """A sub-section with a heading but no body adds the heading text to includes."""
+        sections = [
+            ("Line 0410 - Fire", []),          # main section, no body
+            ("Sub-type A", []),                 # sub-section: heading only, empty body
+            ("NEXT", []),
+        ]
+        includes, excludes = _extract_includes_excludes(sections, 0, 2)
+        assert "Sub-type A" in includes
+        assert excludes == ""
+
+    def test_sub_section_body_no_heading_added_to_includes(self) -> None:
+        """A sub-section with body but no heading adds the body text directly to includes."""
+        sections = [
+            ("Line 0410 - Fire", []),            # main section, no body
+            ("", ["Some additional details."]),  # sub-section: no heading, body only
+            ("NEXT", []),
+        ]
+        includes, excludes = _extract_includes_excludes(sections, 0, 2)
+        assert "additional details" in includes
+        assert excludes == ""
+
+    def test_all_content_excluded_gives_empty_includes(self) -> None:
+        """When every line matches an exclude pattern, includes is empty and excludes is not."""
+        sections = [
+            ("Line 0410 - Fire", ["Do not include police services here."]),
+            ("NEXT", []),
+        ]
+        includes, excludes = _extract_includes_excludes(sections, 0, 1)
+        assert includes == ""
+        assert "do not include" in excludes.lower()
+
+    def test_no_usable_content_returns_empty_strings(self) -> None:
+        """When the line section has no body and sub-sections have no content, returns ('', '')."""
+        sections = [
+            ("Line 0410 - Fire", []),   # line heading, empty content
+            ("", []),                    # sub-section with neither heading nor body
+            ("NEXT", []),
+        ]
+        includes, excludes = _extract_includes_excludes(sections, 0, 2)
+        assert includes == ""
+        assert excludes == ""
+
+
+class TestDetectSubtotalSumOfLines:
+    """Cover the 'sum of lines' branch that is bypassed when name contains 'total'."""
+
+    def test_sum_of_lines_text_without_total_in_name(self) -> None:
+        """'sum of lines' in description flags as subtotal even without 'total' in name."""
+        is_sub, notes = _detect_subtotal("0299", "Other Revenue", "Sum of lines 0200 to 0298.")
+        assert is_sub is True
+        assert notes is None
+
+
+class TestExtractFCLinesFallback:
+    """Cover the fallback path when the FC file lacks the expected main heading."""
+
+    def test_fc_file_without_main_heading_falls_back_to_start(self, tmp_path: Path) -> None:
+        """If the FC main heading is absent, extraction falls back to index 0 and still finds lines."""
+        content = dedent("""\
+            ## GENERAL GOVERNMENT
+
+            ## Line 0240 - Governance
+
+            Includes governance expenses.
+        """)
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(content, encoding="utf-8")
+        results = _extract_fc_lines(tmp_path)
+        line_ids = {r["line_id"] for r in results}
+        assert "0240" in line_ids
+
+
+class TestGetScheduleSections:
+    """Tests for _get_schedule_sections, focusing on sub-schedule boundary detection."""
+
+    def test_sub_schedule_ends_at_sibling_prefix(self, tmp_path: Path) -> None:
+        """51A extraction ends at the 51B heading, not EOF."""
+        content = dedent("""\
+            ## Schedule 51A: Tangible Capital Assets
+
+            ## Line 0001 - Land
+
+            Land owned by the municipality.
+
+            ## Schedule 51B: Tangible Capital Assets (Continuity)
+
+            ## Line 0002 - Opening Balance
+
+            Opening balance from prior year.
+        """)
+        (tmp_path / "FIR2025 S51.md").write_text(content, encoding="utf-8")
+        sections = _get_schedule_sections(tmp_path, "51A")
+        headings = [s[0] for s in sections]
+        # 51A section should be present
+        assert any("51A" in h for h in headings)
+        # 51B content should NOT be included in the 51A slice
+        assert not any("51B" in h for h in headings)
+        assert not any("0002" in h for h in headings)
+
+    def test_sub_schedule_start_prefix_missing_returns_empty(self, tmp_path: Path) -> None:
+        """If the sub-schedule heading prefix is not found in the parent file, returns []."""
+        (tmp_path / "FIR2025 S51.md").write_text(
+            "## Unrelated Heading\n\nSome content.\n", encoding="utf-8"
+        )
+        sections = _get_schedule_sections(tmp_path, "51A")
+        assert sections == []
+
+    def test_74e_extraction_starts_at_schedule_74e_heading(self, tmp_path: Path) -> None:
+        """74E extraction starts from the 'Schedule 74E' heading within S74.md."""
+        content = dedent("""\
+            ## Schedule 74
+
+            ## Line 0001 - Preamble
+
+            Intro content.
+
+            ## Schedule 74E
+
+            ## Line 0010 - Asset Retirement
+
+            ARO description.
+        """)
+        (tmp_path / "FIR2025 S74.md").write_text(content, encoding="utf-8")
+        sections = _get_schedule_sections(tmp_path, "74E")
+        headings = [s[0] for s in sections]
+        # Should start at the Schedule 74E heading
+        assert headings[0] == "Schedule 74E"
+        # Should NOT include the pre-74E content
+        assert not any("Preamble" in h for h in headings)
+
+    def test_74e_missing_file_returns_empty(self, tmp_path: Path) -> None:
+        """Missing S74.md returns empty list for 74E."""
+        sections = _get_schedule_sections(tmp_path, "74E")
+        assert sections == []
+
+    def test_74e_heading_not_found_returns_empty(self, tmp_path: Path) -> None:
+        """S74.md without a 'Schedule 74E' heading returns empty list."""
+        (tmp_path / "FIR2025 S74.md").write_text(
+            "## Some Other Heading\n\nContent.\n", encoding="utf-8"
+        )
+        sections = _get_schedule_sections(tmp_path, "74E")
+        assert sections == []
+
+    def test_sub_schedule_is_last_section_in_parent(self, tmp_path: Path) -> None:
+        """When the sub-schedule section is the last in the parent file, the sibling
+        search range is empty and the section is returned as-is (no break needed)."""
+        content = dedent("""\
+            ## Schedule 51A: Tangible Capital Assets
+        """)
+        (tmp_path / "FIR2025 S51.md").write_text(content, encoding="utf-8")
+        sections = _get_schedule_sections(tmp_path, "51A")
+        headings = [s[0] for s in sections]
+        assert any("51A" in h for h in headings)
+
+
+class TestDuplicateLineIdSkipped:
+    """Cover the duplicate line_id skip in _extract_per_schedule_lines."""
+
+    def test_second_occurrence_of_same_line_id_skipped(self, tmp_path: Path) -> None:
+        """When the same line_id appears twice, only the first record is kept."""
+        content = dedent("""\
+            ## Line 0299 - Taxation Own Purposes
+
+            First occurrence: report property tax here.
+
+            ## Alternative Method
+
+            ## Line 0299 - Taxation Own Purposes
+
+            Second occurrence: should be ignored.
+        """)
+        (tmp_path / "FIR2025 S10.md").write_text(content, encoding="utf-8")
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        matching = [r for r in records if r["line_id"] == "0299"]
+        assert len(matching) == 1
+        assert "First occurrence" in (matching[0]["description"] or "")
+
+
+class TestMergeFlagPropagation:
+    """Cover branches in extract_line_records where per-schedule flags override FC defaults."""
+
+    def _write_fc_and_schedule(
+        self,
+        tmp_path: Path,
+        per_schedule_line_content: str,
+        line_name: str = "Governance",
+    ) -> None:
+        """Write FC file with line 0240 and a per-schedule S12 file."""
+        fc = dedent("""\
+            ## FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES
+
+            ## GENERAL GOVERNMENT
+
+            ## Line 0240 - Governance
+
+            Includes governance expenses.
+        """)
+        sched12 = dedent(f"""\
+            ## Line 0240 - {line_name}
+
+            {per_schedule_line_content}
+        """)
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(fc, encoding="utf-8")
+        (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
+
+    def test_merge_propagates_is_subtotal_from_per_schedule(self, tmp_path: Path) -> None:
+        """When the per-schedule record marks a line as subtotal, the merged record reflects it."""
+        # FC: "Governance" (not a subtotal); per-schedule: "Governance Subtotal" (is_subtotal=True)
+        fc = dedent("""\
+            ## FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES
+
+            ## GENERAL GOVERNMENT
+
+            ## Line 0240 - Governance
+
+            Includes governance expenses.
+        """)
+        sched12 = dedent("""\
+            ## Line 0240 - Governance Subtotal
+
+            Sum of governance lines.
+        """)
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(fc, encoding="utf-8")
+        (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
+
+        records = extract_line_records(tmp_path, "12")
+        gov = next((r for r in records if r["line_id"] == "0240"), None)
+        assert gov is not None
+        assert gov["is_subtotal"] is True
+
+    def test_merge_propagates_auto_calculated_and_carry_forward(self, tmp_path: Path) -> None:
+        """Auto-calc flag and carry_forward_from are copied from per-schedule to merged record."""
+        self._write_fc_and_schedule(
+            tmp_path,
+            per_schedule_line_content=(
+                "This line is automatically carried forward from SLC 40 9910 05."
+            ),
+        )
+        records = extract_line_records(tmp_path, "12")
+        gov = next((r for r in records if r["line_id"] == "0240"), None)
+        assert gov is not None
+        assert gov["is_auto_calculated"] is True
+        assert gov["carry_forward_from"] == "40 9910 05"
+
+    def test_merge_propagates_applicability_from_per_schedule(self, tmp_path: Path) -> None:
+        """Applicability restriction from per-schedule data appears in the merged record."""
+        self._write_fc_and_schedule(
+            tmp_path,
+            per_schedule_line_content="Upper-tier only municipalities should report here.",
+        )
+        records = extract_line_records(tmp_path, "12")
+        gov = next((r for r in records if r["line_id"] == "0240"), None)
+        assert gov is not None
+        assert gov["applicability"] == "Upper-tier municipalities only"
+
+    def test_merge_auto_calculated_without_carry_forward(self, tmp_path: Path) -> None:
+        """When per-schedule sets auto_calculated but no carry_forward_from SLC is found,
+        is_auto_calculated is True and carry_forward_from remains None."""
+        self._write_fc_and_schedule(
+            tmp_path,
+            per_schedule_line_content="This value is automatically calculated.",
+        )
+        records = extract_line_records(tmp_path, "12")
+        gov = next((r for r in records if r["line_id"] == "0240"), None)
+        assert gov is not None
+        assert gov["is_auto_calculated"] is True
+        assert gov["carry_forward_from"] is None
+
+
+class TestCSVYearFieldIntConversion:
+    """Cover the int() conversion branch in load_from_csv for non-null year fields."""
+
+    def test_non_null_year_fields_parsed_as_int(self, tmp_path: Path) -> None:
+        """Year field values survive CSV round-trip as Python ints, not strings."""
+        records = [_minimal_line_record(valid_from_year=2020, valid_to_year=2024)]
+        csv_path = tmp_path / "years.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["valid_from_year"] == 2020
+        assert loaded[0]["valid_to_year"] == 2024
+        assert isinstance(loaded[0]["valid_from_year"], int)
+        assert isinstance(loaded[0]["valid_to_year"], int)
