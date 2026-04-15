@@ -24,8 +24,8 @@ from municipal_finances.fir_instructions.extract_line_meta import (
     _detect_applicability,
     _detect_auto_calculated,
     _detect_subtotal,
+    _extract_fc_description,
     _extract_fc_lines,
-    _extract_includes_excludes,
     _extract_per_schedule_lines,
     _get_schedule_sections,
     _is_functional_area,
@@ -61,8 +61,6 @@ def _minimal_line_record(**overrides: Any) -> dict[str, Any]:
         "line_name": "Taxation Own Purposes",
         "section": "Revenue",
         "description": "Test description.",
-        "includes": None,
-        "excludes": None,
         "is_subtotal": False,
         "is_auto_calculated": False,
         "carry_forward_from": None,
@@ -212,27 +210,15 @@ class TestIsFunctionalArea:
 # ---------------------------------------------------------------------------
 
 
-class TestExtractIncludesExcludes:
-    def _make_sections(self, *items: Any) -> list[tuple[str, list[str]]]:
-        """Build a list of (heading, content_lines) tuples from plain strings."""
-        result = []
-        for item in items:
-            if isinstance(item, str):
-                result.append(("", [item]))
-            else:
-                heading, body = item
-                result.append((heading, [body]))
-        return result
-
-    def test_flat_body_text_as_includes(self, tmp_path: Path) -> None:
-        """Flat body text with no sub-headings becomes a single includes block."""
+class TestExtractFCDescription:
+    def test_flat_body_text_in_description(self, tmp_path: Path) -> None:
+        """Flat body text with no sub-headings is returned as a single block."""
         sections = [
             ("Line 0410 - Fire", ["Includes fire stations, fire suppression."]),
             ("PROTECTION SERVICES", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 1)
-        assert "fire stations" in includes
-        assert excludes == ""
+        result = _extract_fc_description(sections, 0, 1)
+        assert "fire stations" in result
 
     def test_sub_headings_become_blocks(self, tmp_path: Path) -> None:
         """Sub-heading sections are formatted as 'heading\\nbody' blocks."""
@@ -241,12 +227,12 @@ class TestExtractIncludesExcludes:
             ("Booking and Detention", ["Includes booking facilities."]),
             ("Line 0430 - Other", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 2)
-        assert "Booking and Detention" in includes
-        assert "booking facilities" in includes
+        result = _extract_fc_description(sections, 0, 2)
+        assert "Booking and Detention" in result
+        assert "booking facilities" in result
 
-    def test_exclude_pattern_moved_to_excludes(self) -> None:
-        """Lines matching 'do not include' are moved to excludes."""
+    def test_exclude_language_preserved_in_description(self) -> None:
+        """Lines matching 'do not include' remain in the returned text."""
         sections = [
             (
                 "Line 0410 - Fire",
@@ -257,13 +243,12 @@ class TestExtractIncludesExcludes:
             ),
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 1)
-        assert "Do not include" in excludes
-        assert "Do not include" not in includes
-        assert "fire suppression" in includes
+        result = _extract_fc_description(sections, 0, 1)
+        assert "Do not include" in result
+        assert "fire suppression" in result
 
-    def test_excludes_heading_moved(self) -> None:
-        """Lines starting with 'Excludes:' are moved to excludes."""
+    def test_excludes_heading_preserved_in_description(self) -> None:
+        """Lines starting with 'Excludes:' remain in the returned text."""
         sections = [
             (
                 "Line 0260 - Support",
@@ -274,19 +259,17 @@ class TestExtractIncludesExcludes:
             ),
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 1)
-        assert "Excludes:" in excludes
-        assert "Excludes:" not in includes
+        result = _extract_fc_description(sections, 0, 1)
+        assert "Excludes:" in result
 
-    def test_empty_range_returns_empty_strings(self) -> None:
-        """When start >= end, both strings are empty."""
+    def test_empty_range_returns_empty_string(self) -> None:
+        """When start >= end, an empty string is returned."""
         sections = [("Line 0299 - Tax", ["content"])]
-        includes, excludes = _extract_includes_excludes(sections, 0, 0)
-        assert includes == ""
-        assert excludes == ""
+        result = _extract_fc_description(sections, 0, 0)
+        assert result == ""
 
-    def test_should_not_be_reported_moved_to_excludes(self) -> None:
-        """Sentences with 'should not be reported' move to excludes."""
+    def test_should_not_be_reported_preserved_in_description(self) -> None:
+        """Sentences with 'should not be reported' remain in the returned text."""
         sections = [
             (
                 "Line 0250 - Other",
@@ -297,9 +280,8 @@ class TestExtractIncludesExcludes:
             ),
             ("END", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 1)
-        assert "should not be reported" in excludes
-        assert "should not be reported" not in includes
+        result = _extract_fc_description(sections, 0, 1)
+        assert "should not be reported" in result
 
 
 class TestDetectAutoCalculated:
@@ -460,22 +442,23 @@ class TestExtractFCLines:
         governance_records = [r for r in results if r["line_id"] == "0240"]
         assert all(r["section"] == "GENERAL GOVERNMENT" for r in governance_records)
 
-    def test_includes_populated(self, tmp_path: Path) -> None:
-        """FC line records have non-empty includes content."""
+    def test_description_populated(self, tmp_path: Path) -> None:
+        """FC line records have non-empty description content."""
         self._write_fc_file(tmp_path)
         results = _extract_fc_lines(tmp_path)
         fire_records = [r for r in results if r["line_id"] == "0410"]
-        assert all(r["includes"] is not None for r in fire_records)
-        assert all("fire" in (r["includes"] or "").lower() for r in fire_records)
+        assert all(r["description"] is not None for r in fire_records)
+        assert all("fire" in (r["description"] or "").lower() for r in fire_records)
 
-    def test_excludes_extracted(self, tmp_path: Path) -> None:
-        """Sentences matching exclude patterns are moved to excludes."""
+    def test_exclude_language_in_description(self, tmp_path: Path) -> None:
+        """Exclusion-language sentences remain in the description field."""
         self._write_fc_file(tmp_path)
         results = _extract_fc_lines(tmp_path)
         support_records = [r for r in results if r["line_id"] == "0250"]
-        assert all(r["excludes"] is not None for r in support_records)
+        assert all(r["description"] is not None for r in support_records)
         assert all(
-            "do not include" in (r["excludes"] or "").lower() for r in support_records
+            "do not include" in (r["description"] or "").lower()
+            for r in support_records
         )
 
     def test_change_notes_contains_provenance(self, tmp_path: Path) -> None:
@@ -601,21 +584,6 @@ class TestExtractPerScheduleLines:
         records = _extract_per_schedule_lines(tmp_path, "10")
         assert records == []
 
-    def test_includes_and_excludes_not_set(self, tmp_path: Path) -> None:
-        """Per-schedule extraction never populates includes/excludes."""
-        self._write_schedule_file(
-            tmp_path,
-            "10",
-            """\
-            ## Line 0299 - Taxation
-
-            Report here.
-            """,
-        )
-        records = _extract_per_schedule_lines(tmp_path, "10")
-        assert all(r["includes"] is None for r in records)
-        assert all(r["excludes"] is None for r in records)
-
 
 # ---------------------------------------------------------------------------
 # 5. Merge logic
@@ -646,14 +614,14 @@ class TestMerge:
         )
         (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
 
-    def test_fc_includes_preserved_after_merge(self, tmp_path: Path) -> None:
-        """FC includes are retained in the merged record."""
+    def test_fc_description_preserved_after_merge(self, tmp_path: Path) -> None:
+        """FC description content is retained in the merged record."""
         self._write_fc_and_schedule(tmp_path)
         records = extract_line_records(tmp_path, "12")
         governance = next((r for r in records if r["line_id"] == "0240"), None)
         assert governance is not None
-        assert governance["includes"] is not None
-        assert "elected officials" in governance["includes"]
+        assert governance["description"] is not None
+        assert "elected officials" in governance["description"]
 
     def test_per_schedule_description_added_after_merge(self, tmp_path: Path) -> None:
         """Per-schedule description supplements FC data after merge."""
@@ -674,7 +642,6 @@ class TestMerge:
         (tmp_path / "FIR2025 S10.md").write_text(sched10, encoding="utf-8")
         records = extract_line_records(tmp_path, "10")
         assert len(records) == 1
-        assert records[0]["includes"] is None
 
 
 # ---------------------------------------------------------------------------
@@ -716,19 +683,18 @@ class TestCSVRoundTrip:
         assert loaded[0]["is_auto_calculated"] is False
 
     def test_multiline_text_round_trip(self, tmp_path: Path) -> None:
-        """Multiline includes/excludes text survives CSV round-trip."""
+        """Multiline description text survives CSV round-trip."""
         records = [
             _minimal_line_record(
-                includes="Line one.\n\nLine two.",
-                excludes="Do not include X.",
+                description="Line one.\n\nLine two.\n\nDo not include X.",
             )
         ]
         csv_path = tmp_path / "multiline.csv"
         save_to_csv(records, csv_path)
         loaded = load_from_csv(csv_path)
-        assert "Line one." in loaded[0]["includes"]
-        assert "Line two." in loaded[0]["includes"]
-        assert loaded[0]["excludes"] == "Do not include X."
+        assert "Line one." in loaded[0]["description"]
+        assert "Line two." in loaded[0]["description"]
+        assert "Do not include X." in loaded[0]["description"]
 
     def test_nullable_fields_round_trip_as_none(self, tmp_path: Path) -> None:
         """None values in nullable fields survive CSV round-trip as None."""
@@ -736,8 +702,6 @@ class TestCSVRoundTrip:
             _minimal_line_record(
                 section=None,
                 description=None,
-                includes=None,
-                excludes=None,
                 carry_forward_from=None,
                 applicability=None,
                 change_notes=None,
@@ -751,8 +715,6 @@ class TestCSVRoundTrip:
         for field in (
             "section",
             "description",
-            "includes",
-            "excludes",
             "carry_forward_from",
             "applicability",
             "change_notes",
@@ -939,12 +901,12 @@ class TestBaselineCSVContent:
         ]
         assert bad == [], f"Invalid line_id values: {bad[:20]}"
 
-    def test_fc_schedules_have_includes(self, records: list[dict[str, Any]]) -> None:
-        """Schedules 12, 40, and 51A have at least some non-NULL includes values."""
+    def test_fc_schedules_have_description(self, records: list[dict[str, Any]]) -> None:
+        """Schedules 12, 40, and 51A have at least some non-NULL description values."""
         for sched in ("12", "40", "51A"):
             sched_records = [r for r in records if r["schedule"] == sched]
-            has_includes = [r for r in sched_records if r.get("includes")]
-            assert has_includes, f"Schedule {sched} has no includes data"
+            has_description = [r for r in sched_records if r.get("description")]
+            assert has_description, f"Schedule {sched} has no description data"
 
     def test_year_fields_null_in_baseline(self, records: list[dict[str, Any]]) -> None:
         """All baseline rows have NULL valid_from_year and valid_to_year."""
@@ -1093,51 +1055,47 @@ class TestCLI:
 # ---------------------------------------------------------------------------
 
 
-class TestExtractIncludesExcludesAdditional:
-    """Additional tests for uncovered branches in _extract_includes_excludes."""
+class TestExtractFCDescriptionAdditional:
+    """Additional tests for uncovered branches in _extract_fc_description."""
 
-    def test_sub_heading_only_no_body_added_to_includes(self) -> None:
-        """A sub-section with a heading but no body adds the heading text to includes."""
+    def test_sub_heading_only_no_body_in_description(self) -> None:
+        """A sub-section with a heading but no body adds the heading text to description."""
         sections = [
             ("Line 0410 - Fire", []),  # main section, no body
             ("Sub-type A", []),  # sub-section: heading only, empty body
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 2)
-        assert "Sub-type A" in includes
-        assert excludes == ""
+        result = _extract_fc_description(sections, 0, 2)
+        assert "Sub-type A" in result
 
-    def test_sub_section_body_no_heading_added_to_includes(self) -> None:
-        """A sub-section with body but no heading adds the body text directly to includes."""
+    def test_sub_section_body_no_heading_in_description(self) -> None:
+        """A sub-section with body but no heading adds the body text to description."""
         sections = [
             ("Line 0410 - Fire", []),  # main section, no body
             ("", ["Some additional details."]),  # sub-section: no heading, body only
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 2)
-        assert "additional details" in includes
-        assert excludes == ""
+        result = _extract_fc_description(sections, 0, 2)
+        assert "additional details" in result
 
-    def test_all_content_excluded_gives_empty_includes(self) -> None:
-        """When every line matches an exclude pattern, includes is empty and excludes is not."""
+    def test_exclude_language_included_in_description(self) -> None:
+        """Exclusion-language lines are kept in the returned description."""
         sections = [
             ("Line 0410 - Fire", ["Do not include police services here."]),
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 1)
-        assert includes == ""
-        assert "do not include" in excludes.lower()
+        result = _extract_fc_description(sections, 0, 1)
+        assert "do not include" in result.lower()
 
-    def test_no_usable_content_returns_empty_strings(self) -> None:
-        """When the line section has no body and sub-sections have no content, returns ('', '')."""
+    def test_no_usable_content_returns_empty_string(self) -> None:
+        """When the line section has no body and sub-sections have no content, returns ''."""
         sections = [
             ("Line 0410 - Fire", []),  # line heading, empty content
             ("", []),  # sub-section with neither heading nor body
             ("NEXT", []),
         ]
-        includes, excludes = _extract_includes_excludes(sections, 0, 2)
-        assert includes == ""
-        assert excludes == ""
+        result = _extract_fc_description(sections, 0, 2)
+        assert result == ""
 
 
 class TestDetectSubtotalSumOfLines:

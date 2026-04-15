@@ -4,13 +4,14 @@ This module reads the per-schedule ``.md`` files and the shared
 ``FIR2025 - Functional Categories.md`` file produced by ``convert-folder``
 and extracts one metadata record per (schedule, line) combination.
 
-Two data sources are merged for Schedules 12, 40, and 51A:
+For Schedules 12, 40, and 51A, two data sources are merged into a single
+``description`` field:
 
-1. ``FIR2025 - Functional Categories.md`` provides ``includes`` and ``excludes``
-   content (what belongs under each functional line).
-2. Per-schedule ``FIR2025 S{code}.md`` files provide ``description``,
-   ``carry_forward_from``, ``applicability``, ``is_subtotal``, and
-   ``is_auto_calculated``.
+1. ``FIR2025 - Functional Categories.md`` provides the functional content
+   (what belongs under each line, including any exclusion language).
+2. Per-schedule ``FIR2025 S{code}.md`` files provide additional reporting
+   instructions, ``carry_forward_from``, ``applicability``, ``is_subtotal``,
+   and ``is_auto_calculated``.
 
 Records are inserted into ``fir_line_meta`` and exported to a CSV file at
 ``fir_instructions/exports/baseline_line_meta.csv`` for human verification.
@@ -71,8 +72,6 @@ _CSV_FIELDS = [
     "line_name",
     "section",
     "description",
-    "includes",
-    "excludes",
     "is_subtotal",
     "is_auto_calculated",
     "carry_forward_from",
@@ -105,13 +104,6 @@ _AUTO_CALC_RE = re.compile(
 
 # SLC reference pattern (e.g. "SLC 12 9910 05")
 _CARRY_FWD_SLC_RE = re.compile(r"SLC\s+(\d+\w*\s+\w{4}\s+\d{2})", re.IGNORECASE)
-
-# Lines matching these patterns are moved from includes to excludes.
-_EXCLUDE_LINE_RE = re.compile(
-    r"(?:do not|should not be reported|not report)",
-    re.IGNORECASE,
-)
-_EXCLUDES_HEADING_RE = re.compile(r"^\s*Excludes?:", re.IGNORECASE)
 
 
 # ---------------------------------------------------------------------------
@@ -163,21 +155,20 @@ def _is_functional_area(heading: str) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def _extract_includes_excludes(
+def _extract_fc_description(
     sections: list[tuple[str, list[str]]],
     line_idx: int,
     end: int,
-) -> tuple[str, str]:
-    """Extract ``includes`` and ``excludes`` text from an FC line's content.
+) -> str:
+    """Extract functional-classification description text for a line.
 
     Collects the body text of ``sections[line_idx]`` (content between the line
     heading and the first sub-heading) and any sub-heading sections in
     ``sections[line_idx+1:end]``.
 
     Sub-heading sections are formatted as ``heading_text\\nbody_text`` blocks
-    joined by ``\\n\\n``.  Lines matching exclude patterns (``do not include``,
-    ``should not be reported``, ``Excludes:``) are moved to *excludes* and
-    removed from *includes*.
+    joined by ``\\n\\n``.  Exclusion language (e.g. ``do not include``,
+    ``Excludes:``) is kept in-place within the returned text.
 
     Args:
         sections:  All parsed sections from the markdown file.
@@ -185,10 +176,10 @@ def _extract_includes_excludes(
         end:       Exclusive upper bound (index of the next line or area heading).
 
     Returns:
-        ``(includes, excludes)`` strings.  Either may be an empty string.
+        Combined description string, or an empty string if there is no content.
     """
     if line_idx >= end or line_idx >= len(sections):
-        return ("", "")
+        return ""
 
     blocks: list[str] = []
 
@@ -207,30 +198,7 @@ def _extract_includes_excludes(
         elif body:
             blocks.append(body)
 
-    if not blocks:
-        return ("", "")
-
-    # Split lines into includes / excludes buckets.
-    excludes_lines: list[str] = []
-    remaining_blocks: list[str] = []
-
-    for block in blocks:
-        block_lines = block.split("\n")
-        kept: list[str] = []
-        for line in block_lines:
-            if _EXCLUDES_HEADING_RE.match(line):
-                excludes_lines.append(line)
-            elif _EXCLUDE_LINE_RE.search(line):
-                excludes_lines.append(line)
-            else:
-                kept.append(line)
-        cleaned = "\n".join(kept).strip()
-        if cleaned:
-            remaining_blocks.append(cleaned)
-
-    includes = "\n\n".join(remaining_blocks)
-    excludes = "\n".join(excludes_lines)
-    return (includes, excludes)
+    return "\n\n".join(blocks)
 
 
 def _detect_auto_calculated(text: str) -> tuple[bool, str | None]:
@@ -363,12 +331,11 @@ def _extract_fc_lines(markdown_dir: Path) -> list[dict[str, Any]]:
         line_id: str = open_line["line_id"]
         line_name: str = open_line["line_name"]
 
-        includes, excludes = _extract_includes_excludes(sections, line_idx, end_idx)
-        combined_text = f"{includes} {excludes}"
+        fc_description = _extract_fc_description(sections, line_idx, end_idx)
 
-        is_auto, carry_fwd = _detect_auto_calculated(combined_text)
-        is_sub, sub_notes = _detect_subtotal(line_id, line_name, combined_text)
-        applicability = _detect_applicability(combined_text)
+        is_auto, carry_fwd = _detect_auto_calculated(fc_description)
+        is_sub, sub_notes = _detect_subtotal(line_id, line_name, fc_description)
+        applicability = _detect_applicability(fc_description)
 
         provenance = (
             "Source: Functional Categories document; "
@@ -384,9 +351,7 @@ def _extract_fc_lines(markdown_dir: Path) -> list[dict[str, Any]]:
                     "line_id": line_id,
                     "line_name": line_name,
                     "section": current_fc_area,
-                    "description": None,
-                    "includes": includes if includes else None,
-                    "excludes": excludes if excludes else None,
+                    "description": fc_description if fc_description else None,
                     "is_subtotal": is_sub,
                     "is_auto_calculated": is_auto,
                     "carry_forward_from": carry_fwd,
@@ -535,8 +500,6 @@ def _extract_per_schedule_lines(markdown_dir: Path, code: str) -> list[dict[str,
                     "line_name": line_name,
                     "section": current_section,
                     "description": text if text else None,
-                    "includes": None,
-                    "excludes": None,
                     "is_subtotal": is_sub,
                     "is_auto_calculated": is_auto,
                     "carry_forward_from": carry_fwd,
@@ -567,9 +530,9 @@ def extract_line_records(
 
     For schedules 12, 40, and 51A, merges Functional Categories data with
     per-schedule data: FC lines are the authoritative source for
-    ``line_id``, ``line_name``, ``section``, ``includes``, and ``excludes``,
-    while per-schedule data contributes ``description``, ``applicability``,
-    and boolean flags when available.
+    ``line_id``, ``line_name``, and ``section``, while per-schedule data
+    contributes additional instruction text, ``applicability``, and boolean
+    flags when available.  Both sources' text is combined into ``description``.
 
     For all other schedules (including 51B), returns per-schedule data only.
 
@@ -598,8 +561,13 @@ def extract_line_records(
             rec = dict(fc_rec)
             ps_rec = per_sched.get(rec["line_id"])
             if ps_rec:
-                # Per-schedule description supplements FC includes/excludes.
-                rec["description"] = ps_rec.get("description")
+                # Combine FC description and per-schedule description.
+                fc_desc = rec.get("description") or ""
+                ps_desc = ps_rec.get("description") or ""
+                if fc_desc and ps_desc:
+                    rec["description"] = f"{fc_desc}\n\n{ps_desc}"
+                elif ps_desc:
+                    rec["description"] = ps_desc
                 # OR in boolean flags: either source can declare is_subtotal / auto_calc.
                 if ps_rec.get("is_subtotal"):
                     rec["is_subtotal"] = True
@@ -761,8 +729,6 @@ def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
     nullable_str_fields = {
         "section",
         "description",
-        "includes",
-        "excludes",
         "carry_forward_from",
         "applicability",
         "change_notes",

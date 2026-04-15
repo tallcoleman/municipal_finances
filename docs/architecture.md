@@ -68,7 +68,7 @@ This structure avoids repeating municipality metadata on every one of the millio
 Extracted from the annual FIR Instructions PDFs and versioned using `valid_from_year` / `valid_to_year` fields (NULL means "before our earliest PDF" or "still current" respectively).
 
 - **`FIRScheduleMeta`** (`fir_schedule_meta`) — one row per (schedule, version); schedule name, category, and description paragraph.
-- **`FIRLineMeta`** (`fir_line_meta`) — one row per (schedule, line, version); the richest table, covering narrative reporting rules, includes/excludes, subtotal flags, and carry-forward references.
+- **`FIRLineMeta`** (`fir_line_meta`) — one row per (schedule, line, version); the richest table, covering narrative reporting rules (including functional classification content), subtotal flags, and carry-forward references.
 - **`FIRColumnMeta`** (`fir_column_meta`) — one row per (schedule, column, version); column name and description.
 - **`FIRInstructionChangelog`** (`fir_instruction_changelog`) — one row per documented or inferred change event across all years; the source of truth for setting `valid_from_year` / `valid_to_year` on the metadata tables. `source` distinguishes PDF-documented changes (`"pdf_changelog"`) from data-inferred ones (`"data_inferred"`).
 

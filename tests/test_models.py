@@ -118,8 +118,6 @@ def test_fir_line_meta_instantiation():
     assert row.schedule_id is None
     assert row.section is None
     assert row.description is None
-    assert row.includes is None
-    assert row.excludes is None
     assert row.carry_forward_from is None
     assert row.applicability is None
     assert row.valid_from_year is None
@@ -271,8 +269,6 @@ def test_fir_line_meta_nullable_fields_accept_none(session):
         schedule_id=None,
         section=None,
         description=None,
-        includes=None,
-        excludes=None,
         carry_forward_from=None,
         applicability=None,
         valid_from_year=None,
@@ -282,8 +278,6 @@ def test_fir_line_meta_nullable_fields_accept_none(session):
     assert row.schedule_id is None
     assert row.section is None
     assert row.description is None
-    assert row.includes is None
-    assert row.excludes is None
     assert row.carry_forward_from is None
     assert row.applicability is None
     assert row.valid_from_year is None

@@ -81,8 +81,6 @@ class FIRLineMeta(SQLModel, table=True):
     line_name: str = Field()
     section: Optional[str] = Field(default=None)  # section heading within the schedule
     description: Optional[str] = Field(default=None)
-    includes: Optional[str] = Field(default=None)
-    excludes: Optional[str] = Field(default=None)
     is_subtotal: bool = Field(default=False)
     is_auto_calculated: bool = Field(default=False)
     carry_forward_from: Optional[str] = Field(default=None)  # SLC ref if auto-populated
