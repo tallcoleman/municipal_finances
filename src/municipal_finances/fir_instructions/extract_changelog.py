@@ -24,6 +24,7 @@ This module:
 - Exports a combined CSV for human verification.
 """
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 import csv
@@ -46,16 +47,18 @@ app = typer.Typer()
 # Constants
 # ---------------------------------------------------------------------------
 
-VALID_CHANGE_TYPES = frozenset({
-    "new_schedule",
-    "deleted_schedule",
-    "new_line",
-    "deleted_line",
-    "updated_line",
-    "new_column",
-    "deleted_column",
-    "updated_column",
-})
+VALID_CHANGE_TYPES = frozenset(
+    {
+        "new_schedule",
+        "deleted_schedule",
+        "new_line",
+        "deleted_line",
+        "updated_line",
+        "new_column",
+        "deleted_column",
+        "updated_column",
+    }
+)
 
 _SOURCE_TAG = "pdf_changelog"
 
@@ -468,9 +471,7 @@ def load_changelog_csv(csv_path: Path, year: int) -> list[dict[str, Any]]:
 # ---------------------------------------------------------------------------
 
 
-def insert_changelog_entries(
-    engine: Any, entries: list[dict[str, Any]]
-) -> int:
+def insert_changelog_entries(engine: Any, entries: list[dict[str, Any]]) -> int:
     """Insert changelog entries into ``fir_instruction_changelog``, skipping duplicates.
 
     Entries with a non-NULL ``slc_pattern`` use ``INSERT … ON CONFLICT DO
@@ -569,7 +570,12 @@ def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
         List of entry dicts with an integer ``year`` field.
     """
     nullable = {
-        "slc_pattern", "line_id", "column_id", "heading", "severity", "description"
+        "slc_pattern",
+        "line_id",
+        "column_id",
+        "heading",
+        "severity",
+        "description",
     }
     entries: list[dict[str, Any]] = []
     with open(csv_path, newline="", encoding="utf-8") as f:

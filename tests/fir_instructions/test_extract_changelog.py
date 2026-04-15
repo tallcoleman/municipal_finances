@@ -1,5 +1,6 @@
 """Tests for fir_instructions/extract_changelog.py."""
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 import csv
@@ -131,13 +132,17 @@ class TestInferChangeType:
     def test_new_schedule(self):
         """A 'New **' SLC marker with a description mentioning 'new schedule' is classified
         as new_schedule."""
-        ct = _infer_change_type("New **", None, None, "New schedule added.", "", "MAJOR CHANGES")
+        ct = _infer_change_type(
+            "New **", None, None, "New schedule added.", "", "MAJOR CHANGES"
+        )
         assert ct == "new_schedule"
 
     def test_deleted_schedule(self):
         """A 'Deleted' SLC marker with a description mentioning 'eliminated' is classified
         as deleted_schedule."""
-        ct = _infer_change_type("Deleted", None, None, "This schedule has been eliminated.", "", "")
+        ct = _infer_change_type(
+            "Deleted", None, None, "This schedule has been eliminated.", "", ""
+        )
         assert ct == "deleted_schedule"
 
     def test_empty_slc_gives_updated_line(self):
@@ -152,19 +157,35 @@ class TestInferChangeType:
 
     def test_deleted_line(self):
         """A deterministic SLC with a description containing 'removed' is classified as deleted_line."""
-        ct = _infer_change_type("10 0831 01", "0831", "01", "Removed line, please refer to instructions.", "", "")
+        ct = _infer_change_type(
+            "10 0831 01",
+            "0831",
+            "01",
+            "Removed line, please refer to instructions.",
+            "",
+            "",
+        )
         assert ct == "deleted_line"
 
     def test_updated_line(self):
         """A deterministic SLC with a neutral description (no add/remove keywords) is classified
         as updated_line."""
-        ct = _infer_change_type("10 1421 01", "1421", "01", "Report all building permit revenue on this line.", "", "")
+        ct = _infer_change_type(
+            "10 1421 01",
+            "1421",
+            "01",
+            "Report all building permit revenue on this line.",
+            "",
+            "",
+        )
         assert ct == "updated_line"
 
     def test_line_wildcard_gives_column_entity(self):
         """'xxxx' in the line position means the change affects a whole column, so the entity
         type is column-level (updated_column here based on the description)."""
-        ct = _infer_change_type("40 xxxx 05", None, "05", "Column heading modified.", "", "")
+        ct = _infer_change_type(
+            "40 xxxx 05", None, "05", "Column heading modified.", "", ""
+        )
         assert ct == "updated_column"
 
     def test_column_wildcard_gives_line_entity(self):
@@ -188,7 +209,9 @@ class TestInferChangeType:
         ]
         for args in test_cases:
             ct = _infer_change_type(*args)
-            assert ct in VALID_CHANGE_TYPES, f"Unexpected change_type {ct!r} for args {args}"
+            assert ct in VALID_CHANGE_TYPES, (
+                f"Unexpected change_type {ct!r} for args {args}"
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -203,7 +226,10 @@ class TestInferSeverity:
 
     def test_explicit_minor_label(self):
         """Tier 1: 'Minor' in section_desc → severity is minor regardless of other signals."""
-        assert _infer_severity("Minor Changes:", "updated_line", "10 1421 01", "") == "minor"
+        assert (
+            _infer_severity("Minor Changes:", "updated_line", "10 1421 01", "")
+            == "minor"
+        )
 
     def test_new_schedule_is_major(self):
         """Tier 2: new_schedule change_type → severity is major (structural scope)."""
@@ -215,15 +241,26 @@ class TestInferSeverity:
 
     def test_keyword_eliminated_is_major(self):
         """Tier 3: 'eliminated' keyword in description → severity is major."""
-        assert _infer_severity("", "updated_line", "10 9950 01", "This line has been eliminated.") == "major"
+        assert (
+            _infer_severity(
+                "", "updated_line", "10 9950 01", "This line has been eliminated."
+            )
+            == "major"
+        )
 
     def test_keyword_updated_language_is_minor(self):
         """Tier 3: 'updated language' keyword in description → severity is minor."""
-        assert _infer_severity("", "updated_line", "10 2099 01", "Updated language.") == "minor"
+        assert (
+            _infer_severity("", "updated_line", "10 2099 01", "Updated language.")
+            == "minor"
+        )
 
     def test_default_is_minor(self):
         """Tier 5: no label, no structural scope, no keyword signals → default severity is minor."""
-        assert _infer_severity("", "updated_line", "10 1421 01", "Report on this line.") == "minor"
+        assert (
+            _infer_severity("", "updated_line", "10 1421 01", "Report on this line.")
+            == "minor"
+        )
 
     def test_tier2_new_line_with_xxxx_wildcard_is_major(self):
         """Tier 2: new_line with 'xxxx' in slc_pattern (affects all lines on a schedule)
@@ -380,7 +417,14 @@ class TestInsertChangelogEntries:
     def test_idempotent_insertion_null_slc(self, engine, session):
         """Schedule-level entries (slc_pattern=NULL) are deduplicated at the application layer;
         inserting the same entry twice leaves exactly one row in the database."""
-        entries = [_entry(slc_pattern=None, line_id=None, column_id=None, change_type="new_schedule")]
+        entries = [
+            _entry(
+                slc_pattern=None,
+                line_id=None,
+                column_id=None,
+                change_type="new_schedule",
+            )
+        ]
         first = insert_changelog_entries(engine, entries)
         second = insert_changelog_entries(engine, entries)
         assert first == 1
@@ -408,7 +452,12 @@ class TestInsertChangelogEntries:
         and returns 2."""
         entries = [
             _entry(slc_pattern="10 6021 01", line_id="6021", column_id="01"),
-            _entry(slc_pattern=None, line_id=None, column_id=None, change_type="new_schedule"),
+            _entry(
+                slc_pattern=None,
+                line_id=None,
+                column_id=None,
+                change_type="new_schedule",
+            ),
         ]
         inserted = insert_changelog_entries(engine, entries)
         assert inserted == 2
@@ -427,7 +476,12 @@ class TestCSVRoundtrip:
         entries = [
             _entry(slc_pattern="10 6021 01", line_id="6021", column_id="01"),
             _entry(slc_pattern="40 xxxx 05", line_id=None, column_id="05"),
-            _entry(slc_pattern=None, line_id=None, column_id=None, change_type="new_schedule"),
+            _entry(
+                slc_pattern=None,
+                line_id=None,
+                column_id=None,
+                change_type="new_schedule",
+            ),
         ]
         csv_path = tmp_path / "test_changelog.csv"
         save_to_csv(entries, csv_path)
@@ -485,7 +539,9 @@ class TestCLI:
         )
         assert result.exit_code != 0
 
-    def test_load_changelogs_skips_unrecognised_filename(self, tmp_path, engine, session, mocker):
+    def test_load_changelogs_skips_unrecognised_filename(
+        self, tmp_path, engine, session, mocker
+    ):
         """A file that matches the 'FIR* Changes.csv' glob but lacks a 4-digit year (e.g.
         'FIRabc Changes.csv') is logged and skipped; a valid file in the same directory is
         still processed and the command exits successfully."""
@@ -499,18 +555,35 @@ class TestCLI:
         with open(valid_csv, "w", newline="") as f:
             writer = csv.DictWriter(
                 f,
-                fieldnames=["Schedule", "SLC", "Heading", "Description", "Section Description"],
+                fieldnames=[
+                    "Schedule",
+                    "SLC",
+                    "Heading",
+                    "Description",
+                    "Section Description",
+                ],
             )
             writer.writeheader()
-            writer.writerow({
-                "Schedule": "10", "SLC": "10 6021 01", "Heading": "H",
-                "Description": "New line.", "Section Description": "Minor Changes:",
-            })
+            writer.writerow(
+                {
+                    "Schedule": "10",
+                    "SLC": "10 6021 01",
+                    "Heading": "H",
+                    "Description": "New line.",
+                    "Section Description": "Minor Changes:",
+                }
+            )
 
         export_dir = tmp_path / "exports"
         result = runner.invoke(
             app,
-            ["load-changelogs", "--csv-dir", str(tmp_path), "--export-dir", str(export_dir)],
+            [
+                "load-changelogs",
+                "--csv-dir",
+                str(tmp_path),
+                "--export-dir",
+                str(export_dir),
+            ],
         )
         assert result.exit_code == 0, result.output
 
@@ -525,24 +598,34 @@ class TestCLI:
         with open(csv_path, "w", newline="") as f:
             writer = csv.DictWriter(
                 f,
-                fieldnames=["Schedule", "SLC", "Heading", "Description", "Section Description"],
+                fieldnames=[
+                    "Schedule",
+                    "SLC",
+                    "Heading",
+                    "Description",
+                    "Section Description",
+                ],
             )
             writer.writeheader()
-            writer.writerow({
-                "Schedule": "10",
-                "SLC": "10 6021 01",
-                "Heading": "Test Heading",
-                "Description": "New line.",
-                "Section Description": "Minor Changes:",
-            })
+            writer.writerow(
+                {
+                    "Schedule": "10",
+                    "SLC": "10 6021 01",
+                    "Heading": "Test Heading",
+                    "Description": "New line.",
+                    "Section Description": "Minor Changes:",
+                }
+            )
 
         export_dir = tmp_path / "exports"
         result = runner.invoke(
             app,
             [
                 "load-changelogs",
-                "--csv-dir", str(tmp_path),
-                "--export-dir", str(export_dir),
+                "--csv-dir",
+                str(tmp_path),
+                "--export-dir",
+                str(export_dir),
             ],
         )
         assert result.exit_code == 0, result.output
@@ -552,7 +635,9 @@ class TestCLI:
         assert len(rows) == 1
         assert rows[0].year == 2025
 
-    def test_load_changelogs_no_parseable_entries(self, tmp_path, engine, session, mocker):
+    def test_load_changelogs_no_parseable_entries(
+        self, tmp_path, engine, session, mocker
+    ):
         """A header-only CSV produces zero parsed entries; the command exits with a non-zero
         status code and writes an error message."""
         mocker.patch(

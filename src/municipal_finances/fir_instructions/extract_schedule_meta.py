@@ -23,6 +23,7 @@ Usage::
     save_to_csv(records, Path("fir_instructions/exports/baseline_schedule_meta.csv"))
 """
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 import csv
@@ -384,7 +385,10 @@ def _extract_schedule_74e(markdown_dir: Path) -> dict[str, Any]:
     description = ""
     if s74e_idx is not None:
         aro_idx = _find_section(
-            sections, "Asset Retirement Obligation Liability", exact=True, start=s74e_idx + 1
+            sections,
+            "Asset Retirement Obligation Liability",
+            exact=True,
+            start=s74e_idx + 1,
         )
         if aro_idx is not None:
             description = _clean_md_content(sections[aro_idx][1])

@@ -30,6 +30,7 @@ Usage::
     save_to_csv(records, Path("fir_instructions/exports/baseline_line_meta.csv"))
 """
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 import csv
@@ -485,9 +486,7 @@ def _get_schedule_sections(
     return _parse_md_sections(md_path)
 
 
-def _extract_per_schedule_lines(
-    markdown_dir: Path, code: str
-) -> list[dict[str, Any]]:
+def _extract_per_schedule_lines(markdown_dir: Path, code: str) -> list[dict[str, Any]]:
     """Extract line metadata from a schedule's per-schedule instruction markdown.
 
     Scans section headings for ``Line XXXX - Name`` patterns.  Non-line headings
@@ -591,8 +590,7 @@ def extract_line_records(
 
         # Index per-schedule lines by line_id for O(1) lookup during merge.
         per_sched: dict[str, dict[str, Any]] = {
-            r["line_id"]: r
-            for r in _extract_per_schedule_lines(markdown_dir, code)
+            r["line_id"]: r for r in _extract_per_schedule_lines(markdown_dir, code)
         }
 
         merged: list[dict[str, Any]] = []

@@ -7,6 +7,7 @@ DB tests require the test PostgreSQL container (localhost:5433).
 Baseline CSV tests are skipped when the CSV has not yet been generated.
 """
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 from pathlib import Path
@@ -319,7 +320,9 @@ class TestDetectAutoCalculated:
 
     def test_pre_populated(self) -> None:
         """'pre-populated' triggers auto flag."""
-        is_auto, carry = _detect_auto_calculated("Amount is pre-populated from prior year.")
+        is_auto, carry = _detect_auto_calculated(
+            "Amount is pre-populated from prior year."
+        )
         assert is_auto is True
 
     def test_not_auto_calculated(self) -> None:
@@ -359,7 +362,9 @@ class TestDetectSubtotal:
 
     def test_sum_of_lines_in_text(self) -> None:
         """'sum of lines' in description flags the line as subtotal."""
-        is_sub, notes = _detect_subtotal("0299", "Revenue Total", "Sum of lines 0210 to 0298.")
+        is_sub, notes = _detect_subtotal(
+            "0299", "Revenue Total", "Sum of lines 0210 to 0298."
+        )
         assert is_sub is True
 
     def test_regular_line_not_subtotal(self) -> None:
@@ -387,7 +392,9 @@ class TestDetectApplicability:
 
     def test_city_of_toronto(self) -> None:
         """'City of Toronto' returns the City of Toronto restriction."""
-        result = _detect_applicability("City of Toronto reports using a different form.")
+        result = _detect_applicability(
+            "City of Toronto reports using a different form."
+        )
         assert result == "City of Toronto only"
 
     def test_no_restriction_returns_none(self) -> None:
@@ -430,7 +437,9 @@ class TestExtractFCLines:
 
             Fire suppression and prevention.
         """)
-        (tmp_path / "FIR2025 - Functional Categories.md").write_text(content, encoding="utf-8")
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            content, encoding="utf-8"
+        )
 
     def test_returns_three_records_per_fc_line(self, tmp_path: Path) -> None:
         """Each FC line produces one record for each of schedules 12, 40, and 51A."""
@@ -467,13 +476,17 @@ class TestExtractFCLines:
         results = _extract_fc_lines(tmp_path)
         support_records = [r for r in results if r["line_id"] == "0250"]
         assert all(r["excludes"] is not None for r in support_records)
-        assert all("do not include" in (r["excludes"] or "").lower() for r in support_records)
+        assert all(
+            "do not include" in (r["excludes"] or "").lower() for r in support_records
+        )
 
     def test_change_notes_contains_provenance(self, tmp_path: Path) -> None:
         """All FC records have change_notes explaining provenance."""
         self._write_fc_file(tmp_path)
         results = _extract_fc_lines(tmp_path)
-        assert all("Functional Categories" in (r.get("change_notes") or "") for r in results)
+        assert all(
+            "Functional Categories" in (r.get("change_notes") or "") for r in results
+        )
 
     def test_missing_fc_file_returns_empty(self, tmp_path: Path) -> None:
         """If the Functional Categories file is absent, an empty list is returned."""
@@ -630,7 +643,9 @@ class TestMerge:
 
             Reports governance and legislative costs.
         """)
-        (tmp_path / "FIR2025 - Functional Categories.md").write_text(fc, encoding="utf-8")
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            fc, encoding="utf-8"
+        )
         (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
 
     def test_fc_includes_preserved_after_merge(self, tmp_path: Path) -> None:
@@ -736,9 +751,15 @@ class TestCSVRoundTrip:
         save_to_csv(records, csv_path)
         loaded = load_from_csv(csv_path)
         for field in (
-            "section", "description", "includes", "excludes",
-            "carry_forward_from", "applicability", "change_notes",
-            "valid_from_year", "valid_to_year",
+            "section",
+            "description",
+            "includes",
+            "excludes",
+            "carry_forward_from",
+            "applicability",
+            "change_notes",
+            "valid_from_year",
+            "valid_to_year",
         ):
             assert loaded[0][field] is None, f"Expected None for {field}"
 
@@ -753,6 +774,7 @@ class TestCSVRoundTrip:
         csv_path = tmp_path / "fields.csv"
         save_to_csv([_minimal_line_record()], csv_path)
         import csv as csv_mod
+
         with open(csv_path, newline="", encoding="utf-8") as f:
             reader = csv_mod.DictReader(f)
             assert set(reader.fieldnames or []) == set(_CSV_FIELDS)  # type: ignore[arg-type]
@@ -808,7 +830,9 @@ class TestInsertLineMeta:
         assert row is not None
         assert row.is_subtotal is False
 
-    def test_is_auto_calculated_default_false(self, engine: Any, session: Session) -> None:
+    def test_is_auto_calculated_default_false(
+        self, engine: Any, session: Session
+    ) -> None:
         """A newly inserted row without is_auto_calculated has it default to False."""
         _insert_schedule_meta_for_test(engine, ["10"])
         insert_line_meta(engine, [_minimal_line_record(is_auto_calculated=False)])
@@ -885,18 +909,19 @@ class TestBaselineCSVContent:
         # and therefore produce no "Line XXXX" metadata rows.
         column_format_schedules: frozenset[str] = frozenset(
             {
-                "20",   # Taxation Information — OPTA-prepopulated, Column X structure
+                "20",  # Taxation Information — OPTA-prepopulated, Column X structure
                 "22A",  # General Purpose Levy — prepopulated, no line headings
                 "22B",  # Special Area Levy — form structure, no line headings
-                "28",   # Upper-Tier Entitlements — Column X structure
+                "28",  # Upper-Tier Entitlements — Column X structure
                 "61A",  # Development Charges Receivable — Column X structure
                 "61B",  # Development Charges Cash Collected — Column X structure
-                "62",   # Development Charges Rates — rate table, no named lines
+                "62",  # Development Charges Rates — rate table, no named lines
                 "74E",  # Asset Retirement Obligation — Column X structure
-                "81",   # Annual Debt Repayment Limit — no instruction lines
+                "81",  # Annual Debt Repayment Limit — no instruction lines
             }
         )
         from collections import Counter
+
         counts = Counter(r["schedule"] for r in records)
         empty = [
             code
@@ -908,6 +933,7 @@ class TestBaselineCSVContent:
     def test_line_id_format(self, records: list[dict[str, Any]]) -> None:
         """All line_id values are 4-character alphanumeric strings."""
         import re
+
         bad = [
             f"{r['schedule']}:{r['line_id']}"
             for r in records
@@ -927,7 +953,8 @@ class TestBaselineCSVContent:
         non_null = [
             r["schedule"]
             for r in records
-            if r.get("valid_from_year") is not None or r.get("valid_to_year") is not None
+            if r.get("valid_from_year") is not None
+            or r.get("valid_to_year") is not None
         ]
         assert non_null == [], f"Non-null year fields on: {non_null}"
 
@@ -947,6 +974,7 @@ class TestBaselineCSVContent:
     ) -> None:
         """Each (schedule, line_id) combination should be unique in the baseline."""
         from collections import Counter
+
         counts = Counter((r["schedule"], r["line_id"]) for r in records)
         dupes = [key for key, count in counts.items() if count > 1]
         assert dupes == [], f"Duplicate (schedule, line_id) pairs: {dupes[:10]}"
@@ -998,8 +1026,10 @@ class TestCLI:
                     app,
                     [
                         "extract-baseline-line-meta",
-                        "--markdown-dir", str(md_dir),
-                        "--export-path", str(export_path),
+                        "--markdown-dir",
+                        str(md_dir),
+                        "--export-path",
+                        str(export_path),
                     ],
                 )
 
@@ -1023,8 +1053,10 @@ class TestCLI:
                 app,
                 [
                     "extract-baseline-line-meta",
-                    "--markdown-dir", str(md_dir),
-                    "--export-path", str(export_path),
+                    "--markdown-dir",
+                    str(md_dir),
+                    "--export-path",
+                    str(export_path),
                     "--no-load-db",
                 ],
             )
@@ -1069,8 +1101,8 @@ class TestExtractIncludesExcludesAdditional:
     def test_sub_heading_only_no_body_added_to_includes(self) -> None:
         """A sub-section with a heading but no body adds the heading text to includes."""
         sections = [
-            ("Line 0410 - Fire", []),          # main section, no body
-            ("Sub-type A", []),                 # sub-section: heading only, empty body
+            ("Line 0410 - Fire", []),  # main section, no body
+            ("Sub-type A", []),  # sub-section: heading only, empty body
             ("NEXT", []),
         ]
         includes, excludes = _extract_includes_excludes(sections, 0, 2)
@@ -1080,7 +1112,7 @@ class TestExtractIncludesExcludesAdditional:
     def test_sub_section_body_no_heading_added_to_includes(self) -> None:
         """A sub-section with body but no heading adds the body text directly to includes."""
         sections = [
-            ("Line 0410 - Fire", []),            # main section, no body
+            ("Line 0410 - Fire", []),  # main section, no body
             ("", ["Some additional details."]),  # sub-section: no heading, body only
             ("NEXT", []),
         ]
@@ -1101,8 +1133,8 @@ class TestExtractIncludesExcludesAdditional:
     def test_no_usable_content_returns_empty_strings(self) -> None:
         """When the line section has no body and sub-sections have no content, returns ('', '')."""
         sections = [
-            ("Line 0410 - Fire", []),   # line heading, empty content
-            ("", []),                    # sub-section with neither heading nor body
+            ("Line 0410 - Fire", []),  # line heading, empty content
+            ("", []),  # sub-section with neither heading nor body
             ("NEXT", []),
         ]
         includes, excludes = _extract_includes_excludes(sections, 0, 2)
@@ -1115,7 +1147,9 @@ class TestDetectSubtotalSumOfLines:
 
     def test_sum_of_lines_text_without_total_in_name(self) -> None:
         """'sum of lines' in description flags as subtotal even without 'total' in name."""
-        is_sub, notes = _detect_subtotal("0299", "Other Revenue", "Sum of lines 0200 to 0298.")
+        is_sub, notes = _detect_subtotal(
+            "0299", "Other Revenue", "Sum of lines 0200 to 0298."
+        )
         assert is_sub is True
         assert notes is None
 
@@ -1123,7 +1157,9 @@ class TestDetectSubtotalSumOfLines:
 class TestExtractFCLinesFallback:
     """Cover the fallback path when the FC file lacks the expected main heading."""
 
-    def test_fc_file_without_main_heading_falls_back_to_start(self, tmp_path: Path) -> None:
+    def test_fc_file_without_main_heading_falls_back_to_start(
+        self, tmp_path: Path
+    ) -> None:
         """If the FC main heading is absent, extraction falls back to index 0 and still finds lines."""
         content = dedent("""\
             ## GENERAL GOVERNMENT
@@ -1132,7 +1168,9 @@ class TestExtractFCLinesFallback:
 
             Includes governance expenses.
         """)
-        (tmp_path / "FIR2025 - Functional Categories.md").write_text(content, encoding="utf-8")
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            content, encoding="utf-8"
+        )
         results = _extract_fc_lines(tmp_path)
         line_ids = {r["line_id"] for r in results}
         assert "0240" in line_ids
@@ -1165,7 +1203,9 @@ class TestGetScheduleSections:
         assert not any("51B" in h for h in headings)
         assert not any("0002" in h for h in headings)
 
-    def test_sub_schedule_start_prefix_missing_returns_empty(self, tmp_path: Path) -> None:
+    def test_sub_schedule_start_prefix_missing_returns_empty(
+        self, tmp_path: Path
+    ) -> None:
         """If the sub-schedule heading prefix is not found in the parent file, returns []."""
         (tmp_path / "FIR2025 S51.md").write_text(
             "## Unrelated Heading\n\nSome content.\n", encoding="utf-8"
@@ -1173,7 +1213,9 @@ class TestGetScheduleSections:
         sections = _get_schedule_sections(tmp_path, "51A")
         assert sections == []
 
-    def test_74e_extraction_starts_at_schedule_74e_heading(self, tmp_path: Path) -> None:
+    def test_74e_extraction_starts_at_schedule_74e_heading(
+        self, tmp_path: Path
+    ) -> None:
         """74E extraction starts from the 'Schedule 74E' heading within S74.md."""
         content = dedent("""\
             ## Schedule 74
@@ -1268,10 +1310,14 @@ class TestMergeFlagPropagation:
 
             {per_schedule_line_content}
         """)
-        (tmp_path / "FIR2025 - Functional Categories.md").write_text(fc, encoding="utf-8")
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            fc, encoding="utf-8"
+        )
         (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
 
-    def test_merge_propagates_is_subtotal_from_per_schedule(self, tmp_path: Path) -> None:
+    def test_merge_propagates_is_subtotal_from_per_schedule(
+        self, tmp_path: Path
+    ) -> None:
         """When the per-schedule record marks a line as subtotal, the merged record reflects it."""
         # FC: "Governance" (not a subtotal); per-schedule: "Governance Subtotal" (is_subtotal=True)
         fc = dedent("""\
@@ -1288,7 +1334,9 @@ class TestMergeFlagPropagation:
 
             Sum of governance lines.
         """)
-        (tmp_path / "FIR2025 - Functional Categories.md").write_text(fc, encoding="utf-8")
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            fc, encoding="utf-8"
+        )
         (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
 
         records = extract_line_records(tmp_path, "12")
@@ -1296,7 +1344,9 @@ class TestMergeFlagPropagation:
         assert gov is not None
         assert gov["is_subtotal"] is True
 
-    def test_merge_propagates_auto_calculated_and_carry_forward(self, tmp_path: Path) -> None:
+    def test_merge_propagates_auto_calculated_and_carry_forward(
+        self, tmp_path: Path
+    ) -> None:
         """Auto-calc flag and carry_forward_from are copied from per-schedule to merged record."""
         self._write_fc_and_schedule(
             tmp_path,
@@ -1310,7 +1360,9 @@ class TestMergeFlagPropagation:
         assert gov["is_auto_calculated"] is True
         assert gov["carry_forward_from"] == "40 9910 05"
 
-    def test_merge_propagates_applicability_from_per_schedule(self, tmp_path: Path) -> None:
+    def test_merge_propagates_applicability_from_per_schedule(
+        self, tmp_path: Path
+    ) -> None:
         """Applicability restriction from per-schedule data appears in the merged record."""
         self._write_fc_and_schedule(
             tmp_path,

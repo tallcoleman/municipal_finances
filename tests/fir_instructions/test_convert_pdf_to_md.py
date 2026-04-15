@@ -1,5 +1,6 @@
 """Tests for fir_instructions/convert_pdf_to_md.py."""
 
+# postponse evaluation of typing annotations
 from __future__ import annotations
 
 from pathlib import Path
@@ -18,6 +19,7 @@ MOCK_MARKDOWN = "# FIR Instructions\n\nSome content here."
 # ---------------------------------------------------------------------------
 # convert_pdf
 # ---------------------------------------------------------------------------
+
 
 class TestConvertPdf:
     def test_creates_output_in_markdown_subdirectory(self, tmp_path: Path) -> None:
@@ -97,6 +99,7 @@ class TestConvertPdf:
 # ---------------------------------------------------------------------------
 # convert_folder
 # ---------------------------------------------------------------------------
+
 
 class TestConvertFolder:
     def test_converts_all_pdfs_in_folder(self, tmp_path: Path) -> None:
