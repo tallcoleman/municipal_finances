@@ -643,6 +643,54 @@ class TestMerge:
         records = extract_line_records(tmp_path, "10")
         assert len(records) == 1
 
+    def test_fc_line_with_no_fc_description_uses_per_schedule_description(
+        self, tmp_path: Path
+    ) -> None:
+        """When FC doc has no content under a line, per-schedule description is used."""
+        fc = dedent("""\
+            ## FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES
+
+            ## GENERAL GOVERNMENT
+
+            ## Line 0240 - Governance
+        """)
+        sched12 = dedent("""\
+            ## Line 0240 - Governance
+
+            Reports governance and legislative costs.
+        """)
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            fc, encoding="utf-8"
+        )
+        (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
+        records = extract_line_records(tmp_path, "12")
+        governance = next((r for r in records if r["line_id"] == "0240"), None)
+        assert governance is not None
+        assert governance["description"] == "Reports governance and legislative costs."
+
+    def test_fc_line_with_no_description_in_either_source_stays_none(
+        self, tmp_path: Path
+    ) -> None:
+        """When neither FC nor per-schedule source has description text, description is None."""
+        fc = dedent("""\
+            ## FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES
+
+            ## GENERAL GOVERNMENT
+
+            ## Line 0240 - Governance
+        """)
+        sched12 = dedent("""\
+            ## Line 0240 - Governance
+        """)
+        (tmp_path / "FIR2025 - Functional Categories.md").write_text(
+            fc, encoding="utf-8"
+        )
+        (tmp_path / "FIR2025 S12.md").write_text(sched12, encoding="utf-8")
+        records = extract_line_records(tmp_path, "12")
+        governance = next((r for r in records if r["line_id"] == "0240"), None)
+        assert governance is not None
+        assert governance["description"] is None
+
 
 # ---------------------------------------------------------------------------
 # 6. CSV round-trip
