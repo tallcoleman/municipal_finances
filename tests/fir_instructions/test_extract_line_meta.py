@@ -96,12 +96,7 @@ def _insert_schedule_meta_for_test(engine: Any, schedules: list[str]) -> None:
         for s in schedules
     ]
     with Session(engine) as sess:
-        stmt = (
-            pg_insert(FIRScheduleMeta)
-            .values(rows)
-            .on_conflict_do_nothing()
-            .returning(FIRScheduleMeta.id)
-        )
+        stmt = pg_insert(FIRScheduleMeta).values(rows).on_conflict_do_nothing()
         sess.execute(stmt)
         sess.commit()
 
