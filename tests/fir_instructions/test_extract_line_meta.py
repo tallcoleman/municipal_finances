@@ -31,7 +31,6 @@ from municipal_finances.fir_instructions.extract_line_meta import (
     _is_functional_area,
     _parse_line_heading,
     app,
-    extract_all_line_meta,
     extract_line_records,
     insert_line_meta,
     load_from_csv,
@@ -39,7 +38,6 @@ from municipal_finances.fir_instructions.extract_line_meta import (
 )
 from municipal_finances.fir_instructions.extract_schedule_meta import (
     SCHEDULE_CATEGORIES,
-    _parse_md_sections,
 )
 from municipal_finances.models import FIRLineMeta, FIRScheduleMeta
 

@@ -74,6 +74,9 @@ uv run src/municipal_finances/app.py export-changelog --export-dir path/to/expor
 # run tests
 uv run pytest
 
+# run formatter
+uv run ruff check --fix
+
 # delete all data from all tables (prompts for confirmation)
 uv run src/municipal_finances/app.py clear-db
 uv run src/municipal_finances/app.py clear-db --yes  # skip confirmation

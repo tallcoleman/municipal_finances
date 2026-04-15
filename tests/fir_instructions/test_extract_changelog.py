@@ -4,10 +4,8 @@
 from __future__ import annotations
 
 import csv
-from pathlib import Path
 
-import pytest
-from sqlmodel import Session, select
+from sqlmodel import select
 from typer.testing import CliRunner
 
 from municipal_finances.app import app

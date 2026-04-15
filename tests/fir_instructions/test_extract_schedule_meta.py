@@ -7,7 +7,6 @@ round-trip.  DB tests require the test PostgreSQL container (localhost:5433).
 # postponse evaluation of typing annotations
 from __future__ import annotations
 
-import csv
 from pathlib import Path
 from textwrap import dedent
 from typing import Any
@@ -20,7 +19,6 @@ from typer.testing import CliRunner
 from municipal_finances.fir_instructions.extract_schedule_meta import (
     SCHEDULE_CATEGORIES,
     SUB_SCHEDULE_PARENTS,
-    _SUB_SCHEDULE_HEADING_PREFIXES,
     _clean_md_content,
     _extract_regular_schedule,
     _extract_schedule_53,
