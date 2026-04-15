@@ -7,7 +7,7 @@ DB tests require the test PostgreSQL container (localhost:5433).
 Baseline CSV tests are skipped when the CSV has not yet been generated.
 """
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 from pathlib import Path

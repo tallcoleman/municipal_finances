@@ -4,7 +4,7 @@ These tests cover schedule metadata extraction, database insertion, and CSV
 round-trip.  DB tests require the test PostgreSQL container (localhost:5433).
 """
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 from pathlib import Path

@@ -1,6 +1,6 @@
 """Tests for fir_instructions/extract_changelog.py."""
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 import csv

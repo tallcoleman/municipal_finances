@@ -23,7 +23,7 @@ Usage::
     save_to_csv(records, Path("fir_instructions/exports/baseline_schedule_meta.csv"))
 """
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 import csv

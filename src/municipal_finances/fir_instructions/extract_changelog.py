@@ -24,7 +24,7 @@ This module:
 - Exports a combined CSV for human verification.
 """
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 import csv

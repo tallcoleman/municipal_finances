@@ -1,6 +1,6 @@
 """Tests for fir_instructions/convert_pdf_to_md.py."""
 
-# postponse evaluation of typing annotations
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
 from pathlib import Path
