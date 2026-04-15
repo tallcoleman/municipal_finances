@@ -72,32 +72,11 @@ def _minimal_line_record(**overrides: Any) -> dict[str, Any]:
     return {**base, **overrides}
 
 
-def _minimal_schedule_record(**overrides: Any) -> dict[str, Any]:
-    """Build a minimal schedule metadata record for FK setup."""
-    base: dict[str, Any] = {
-        "schedule": "10",
-        "schedule_name": "Consolidated Statement of Operations: Revenue",
-        "category": "Revenue",
-        "description": "Test.",
-        "valid_from_year": None,
-        "valid_to_year": None,
-        "change_notes": None,
-    }
-    return {**base, **overrides}
-
-
 def _load_baseline() -> list[dict[str, Any]]:
     """Load the pre-extracted baseline CSV; skip if it does not exist."""
     if not _BASELINE_CSV.exists():
         pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")
     return load_from_csv(_BASELINE_CSV)
-
-
-def _write_md(tmp_path: Path, filename: str, content: str) -> Path:
-    """Write a markdown file into tmp_path and return the path."""
-    p = tmp_path / filename
-    p.write_text(dedent(content), encoding="utf-8")
-    return p
 
 
 def _insert_schedule_meta_for_test(engine: Any, schedules: list[str]) -> None:
