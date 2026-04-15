@@ -97,7 +97,7 @@ def _insert_schedule_meta_for_test(engine: Any, schedules: list[str]) -> None:
     ]
     with Session(engine) as sess:
         stmt = pg_insert(FIRScheduleMeta).values(rows).on_conflict_do_nothing()
-        sess.execute(stmt)
+        sess.execute(stmt)  # raw Core DML — sess.exec() is for SQLModel selects only
         sess.commit()
 
 
