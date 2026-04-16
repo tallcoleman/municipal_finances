@@ -26,10 +26,12 @@ from municipal_finances.fir_instructions.extract_line_meta import (
     _detect_subtotal,
     _extract_fc_description,
     _extract_fc_lines,
+    _extract_inline_lines,
     _extract_per_schedule_lines,
     _get_schedule_sections,
     _is_functional_area,
     _parse_line_heading,
+    _parse_range_heading,
     app,
     extract_line_records,
     insert_line_meta,
@@ -129,12 +131,10 @@ class TestParseLineHeading:
         assert result[0] == "0812"
         assert result[1] == "Wastewater Treatment and Disposal"
 
-    def test_range_line_returns_first_id(self) -> None:
-        """'Lines 0696 to 0698 - Other' returns only the first line_id."""
+    def test_range_line_returns_none(self) -> None:
+        """Range headings are handled by _parse_range_heading; _parse_line_heading returns None."""
         result = _parse_line_heading("Lines 0696 to 0698 - Other")
-        assert result is not None
-        assert result[0] == "0696"
-        assert result[1] == "Other"
+        assert result is None
 
     def test_trailing_colon_stripped(self) -> None:
         """Trailing colon is stripped from line_name."""
@@ -153,6 +153,121 @@ class TestParseLineHeading:
         result = _parse_line_heading("Line 000A - Other Assets")
         assert result is not None
         assert result[0] == "000A"
+
+
+# ---------------------------------------------------------------------------
+# 1b. Range heading parser
+# ---------------------------------------------------------------------------
+
+
+class TestParseRangeHeading:
+    def test_standard_to_connector(self) -> None:
+        """'Lines 0696 to 0698 - Other' returns (first, last, name) triple."""
+        result = _parse_range_heading("Lines 0696 to 0698 - Other")
+        assert result == ("0696", "0698", "Other")
+
+    def test_missing_space_after_to(self) -> None:
+        """'Lines 1890 to1898 - Other' (no space) is handled correctly."""
+        result = _parse_range_heading("Lines 1890 to1898 - Other")
+        assert result == ("1890", "1898", "Other")
+
+    def test_hyphen_connector(self) -> None:
+        """'Lines 2890-2891 - Other' (hyphen between IDs) is parsed."""
+        result = _parse_range_heading("Lines 2890-2891 - Other")
+        assert result == ("2890", "2891", "Other")
+
+    def test_en_dash_connector(self) -> None:
+        """'Lines 4890 \u2013 4891 - Other' (en-dash between IDs) is parsed."""
+        result = _parse_range_heading("Lines 4890 \u2013 4891 - Other")
+        assert result == ("4890", "4891", "Other")
+
+    def test_and_connector(self) -> None:
+        """'Lines 0297 and 0298 - Other' is parsed."""
+        result = _parse_range_heading("Lines 0297 and 0298 - Other")
+        assert result == ("0297", "0298", "Other")
+
+    def test_singular_line_before_both_ids(self) -> None:
+        """'Line 0895 to Line 0898 - Other' (S60 format) is parsed."""
+        result = _parse_range_heading("Line 0895 to Line 0898 - Other")
+        assert result == ("0895", "0898", "Other")
+
+    def test_unnamed_range_returns_none(self) -> None:
+        """'Lines 0810 to 0898' (no name after IDs) returns None."""
+        result = _parse_range_heading("Lines 0810 to 0898")
+        assert result is None
+
+    def test_trailing_colon_stripped(self) -> None:
+        """Trailing colon is stripped from range name."""
+        result = _parse_range_heading("Lines 1297 to 1298 - Other:")
+        assert result is not None
+        assert result[2] == "Other"
+
+    def test_single_line_heading_returns_none(self) -> None:
+        """A plain single-line heading returns None."""
+        result = _parse_range_heading("Line 0299 - Taxation Own Purposes")
+        assert result is None
+
+    def test_non_line_heading_returns_none(self) -> None:
+        """A section heading (not a line) returns None."""
+        result = _parse_range_heading("Revenue: Property Tax")
+        assert result is None
+
+
+# ---------------------------------------------------------------------------
+# 1c. Inline line extractor
+# ---------------------------------------------------------------------------
+
+
+class TestExtractInlineLines:
+    def test_single_bold_line(self) -> None:
+        """A single **Line XXXX - Name** in body content is extracted."""
+        content = ["**Line 0205 - Canada Mortgage and Housing Corporation**"]
+        result = _extract_inline_lines(content)
+        assert ("0205", "Canada Mortgage and Housing Corporation") in result
+
+    def test_multiple_inline_lines(self) -> None:
+        """Multiple inline lines on one row are each extracted."""
+        content = ["**Line 0205 - Canada Mortgage Line 0210 - Ontario**"]
+        result = _extract_inline_lines(content)
+        ids = [r[0] for r in result]
+        assert "0205" in ids
+        assert "0210" in ids
+
+    def test_inline_range_enumerated(self) -> None:
+        """**Lines 5695 TO 5699 - Other** produces records for all 5 IDs."""
+        content = ["**Lines 5695 TO 5699 - Other**"]
+        result = _extract_inline_lines(content)
+        ids = [r[0] for r in result]
+        assert ids == ["5695", "5696", "5697", "5698", "5699"]
+        assert all(name == "Other" for _, name in result)
+
+    def test_inline_range_name_trimmed_at_next_line_token(self) -> None:
+        """Name is trimmed when the range name greedily includes a subsequent Line token."""
+        # Simulates S60 line 299: Lines 5695 TO 5699 - Other Line 9930 - Total
+        content = ["**Lines 5695 TO 5699 - Other Line 9930 - Total**"]
+        result = _extract_inline_lines(content)
+        range_records = [(lid, name) for lid, name in result if lid in {"5695", "5699"}]
+        assert all(name == "Other" for _, name in range_records)
+
+    def test_no_bold_marker_returns_empty(self) -> None:
+        """Content without **Line markers produces no results."""
+        content = ["Line 0299 - plain text without bold markers"]
+        result = _extract_inline_lines(content)
+        assert result == []
+
+    def test_trailing_colon_stripped(self) -> None:
+        """Trailing colon in inline line name is stripped."""
+        content = ["**Line 0110 - Schedule - Other:**"]
+        result = _extract_inline_lines(content)
+        assert result == [("0110", "Schedule - Other")]
+
+    def test_range_ids_not_double_counted(self) -> None:
+        """IDs captured in a range pass are not also captured as single lines."""
+        content = ["**Lines 5695 TO 5699 - Other**"]
+        result = _extract_inline_lines(content)
+        # All IDs should appear exactly once
+        ids = [r[0] for r in result]
+        assert len(ids) == len(set(ids))
 
 
 class TestIsFunctionalArea:
@@ -557,6 +672,101 @@ class TestExtractPerScheduleLines:
         """If the schedule file is absent, an empty list is returned."""
         records = _extract_per_schedule_lines(tmp_path, "10")
         assert records == []
+
+    def test_range_heading_produces_multiple_records(self, tmp_path: Path) -> None:
+        """A range heading 'Lines 0696 to 0698 - Other' produces one record per ID."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Lines 0696 to 0698 - Other
+
+            Report other revenue here.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        assert ids == ["0696", "0697", "0698"]
+        # All records should share the same line_name
+        assert all(r["line_name"] == "Other" for r in records)
+        # Description should include the group note
+        assert all("Lines 0696 to 0698" in r["description"] for r in records)
+
+    def test_range_heading_deduplication(self, tmp_path: Path) -> None:
+        """A range heading that appears twice: only first occurrence is kept."""
+        self._write_schedule_file(
+            tmp_path,
+            "54",
+            """\
+            ## Lines 1096 to 1098 - Other
+
+            First occurrence.
+
+            ## Some Section
+
+            ## Lines 1096 to 1098 - Other
+
+            Second occurrence (duplicate).
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "54")
+        ids = [r["line_id"] for r in records]
+        # Each ID should appear exactly once
+        assert ids.count("1096") == 1
+        assert ids.count("1097") == 1
+        assert ids.count("1098") == 1
+
+    def test_unnamed_range_heading_produces_no_records(self, tmp_path: Path) -> None:
+        """A range heading without a name (e.g. 'Lines 0810 to 0898') produces no line records."""
+        self._write_schedule_file(
+            tmp_path,
+            "60",
+            """\
+            ## Lines 0810 to 0898
+
+            Some body text.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "60")
+        # No line records should be created for unnamed ranges
+        assert records == []
+
+    def test_inline_lines_extracted_from_body(self, tmp_path: Path) -> None:
+        """Inline **Line XXXX - Name** patterns in body text produce records."""
+        self._write_schedule_file(
+            tmp_path,
+            "53",
+            """\
+            ## Some Section
+
+            **Line 0205 - Canada Mortgage Line 0210 - Ontario**
+
+            Some additional context.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "53")
+        ids = [r["line_id"] for r in records]
+        assert "0205" in ids
+        assert "0210" in ids
+
+    def test_inline_range_in_body_produces_multiple_records(self, tmp_path: Path) -> None:
+        """**Lines XXXX TO YYYY - Name** in body text enumerates all IDs."""
+        self._write_schedule_file(
+            tmp_path,
+            "60",
+            """\
+            ## Some Section
+
+            **Lines 5695 TO 5699 - Other**
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "60")
+        ids = [r["line_id"] for r in records]
+        assert "5695" in ids
+        assert "5696" in ids
+        assert "5697" in ids
+        assert "5698" in ids
+        assert "5699" in ids
 
 
 # ---------------------------------------------------------------------------

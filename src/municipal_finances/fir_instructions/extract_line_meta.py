@@ -84,11 +84,42 @@ _CSV_FIELDS = [
 _DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown")
 _DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_line_meta.csv")
 
-# Matches "Line XXXX - Name", "Lines XXXX to YYYY - Name", or "Line XXXX Name"
-# (some headings use a space instead of a dash as the separator).
+# Matches "Line XXXX - Name" or "Line XXXX Name" (space-only separator).
+# The negative lookahead blocks matching when a numeric second ID follows the
+# first ID (those headings are range headings handled by _parse_range_heading).
 _LINE_HEADING_RE = re.compile(
-    r"Lines?\s+(\w{4})(?:\s+to\s+\w{4})?\s*(?:[-\u2013\u2014]\s*|\s+)(.+)",
+    r"Lines?\s+(\w{4})"
+    r"(?!\s*(?:to\s*|[-\u2013\u2014]\s*|and\s+)\d{4})"  # not a numeric range
+    r"\s*(?:[-\u2013\u2014]\s*|\s+)(.+)",
     re.IGNORECASE,
+)
+
+# Matches named range headings, e.g. "Lines 0696 to 0698 - Other".
+# Handles: standard "to", missing space ("to1898"), hyphen, en-dash, and "and".
+# Requires a dash-separated name — unnamed ranges (e.g. "Lines 0810 to 0898")
+# do NOT match and produce no record.
+_LINE_RANGE_RE = re.compile(
+    r"Lines?\s+(\w{4})"
+    r"\s*(?:to\s*|[-\u2013\u2014]\s*|and\s+)"
+    r"(\w{4})"
+    r"\s*[-\u2013\u2014]\s*"
+    r"(.+)",
+    re.IGNORECASE,
+)
+
+# Matches "Line X to Line Y - Name" (singular "Line" before both IDs).
+# Used only in S60: "Line 0895 to Line 0898 - Other".
+_LINE_RANGE_SINGULAR_RE = re.compile(
+    r"Line\s+(\w{4})\s+to\s+Line\s+(\w{4})"
+    r"\s*[-\u2013\u2014]\s*(.+)",
+    re.IGNORECASE,
+)
+
+# Matches "Line XXXX - Name" within bold body content (pass 2 of inline extraction).
+_INLINE_LINE_RE = re.compile(
+    r"Line\s+(\w{4})\s*[-\u2013\u2014]\s*"
+    r"(.+?)(?=\s+Line\s+\w{4}\s*[-\u2013\u2014]|\Z)",
+    re.IGNORECASE | re.DOTALL,
 )
 
 # Matches all-caps functional area headings: GENERAL GOVERNMENT, PROTECTION SERVICES, etc.
@@ -112,19 +143,22 @@ _CARRY_FWD_SLC_RE = re.compile(r"SLC\s+(\d+\w*\s+\w{4}\s+\d{2})", re.IGNORECASE)
 
 
 def _parse_line_heading(heading: str) -> tuple[str, str] | None:
-    """Parse a section heading into (line_id, line_name) if it is a line heading.
+    """Parse a section heading into (line_id, line_name) if it is a single-line heading.
 
     Handles the following formats found in the FIR markdown files:
 
     - ``Line 0299 - Taxation Own Purposes``
-    - ``Lines 0696 to 0698 - Other:`` (range line — first ID only is returned)
     - ``Line 0812 Wastewater Treatment and Disposal`` (no separator)
+
+    Range headings (e.g. ``Lines 0696 to 0698 - Other``) are handled by
+    :func:`_parse_range_heading` and will NOT match here due to the negative
+    lookahead in ``_LINE_HEADING_RE``.
 
     Args:
         heading: Section heading text (bold markers already stripped).
 
     Returns:
-        ``(line_id, line_name)`` tuple, or ``None`` if the heading is not a line.
+        ``(line_id, line_name)`` tuple, or ``None`` if the heading is not a single line.
     """
     m = _LINE_HEADING_RE.match(heading.strip())
     if m:
@@ -132,6 +166,92 @@ def _parse_line_heading(heading: str) -> tuple[str, str] | None:
         line_name = m.group(2).strip().rstrip(":").strip()
         return (line_id, line_name)
     return None
+
+
+def _parse_range_heading(heading: str) -> tuple[str, str, str] | None:
+    """Parse a range heading into (first_id, last_id, name), or None.
+
+    Handles these formats:
+
+    - ``Lines 0696 to 0698 - Other`` (standard ``to``)
+    - ``Lines 1890 to1898 - Other`` (missing space after ``to``)
+    - ``Lines 2890-2891 - Other`` (hyphen between IDs)
+    - ``Lines 4890 – 4891 - Other`` (en-dash between IDs)
+    - ``Lines 0297 and 0298 - Other`` (``and`` connector)
+    - ``Line 0895 to Line 0898 - Other`` (singular ``Line`` before both IDs)
+
+    Returns ``None`` for unnamed ranges (e.g. ``Lines 0810 to 0898`` — no
+    dash-separated name) and for single-line headings.
+
+    Args:
+        heading: Section heading text (bold markers already stripped).
+
+    Returns:
+        ``(first_id, last_id, name)`` triple, or ``None`` if not a range heading.
+    """
+    stripped = heading.strip()
+    for regex in (_LINE_RANGE_RE, _LINE_RANGE_SINGULAR_RE):
+        m = regex.match(stripped)
+        if m:
+            name = m.group(3).strip().rstrip(":").strip()
+            return (m.group(1), m.group(2), name)
+    return None
+
+
+def _extract_inline_lines(content: list[str]) -> list[tuple[str, str]]:
+    """Extract (line_id, line_name) pairs from inline bold line-definition patterns.
+
+    Searches raw body content lines for ``**Line XXXX - Name**`` and
+    ``**Lines XXXX to YYYY - Name**`` patterns used in schedules that define
+    lines within body text rather than via ``##`` headings (e.g. S53, S54, S60).
+
+    Two passes run over each content line:
+
+    1. **Range pass**: ``_LINE_RANGE_RE`` and ``_LINE_RANGE_SINGULAR_RE`` detect
+       ranges and enumerate all IDs between first and last inclusive.
+    2. **Single-line pass**: ``_INLINE_LINE_RE`` detects individual lines; any
+       match whose start position overlaps a span from pass 1 is skipped to avoid
+       double-counting IDs already captured by a range.
+
+    Args:
+        content: Raw content lines from ``_parse_md_sections`` (bold markers not
+                 stripped — used as a fast pre-filter).
+
+    Returns:
+        List of ``(line_id, line_name)`` pairs in document order.
+    """
+    results: list[tuple[str, str]] = []
+    for raw_line in content:
+        if "**Line" not in raw_line and "**Lines" not in raw_line:
+            continue
+        text = re.sub(r"\*\*", "", raw_line)
+
+        range_spans: list[tuple[int, int]] = []
+        for range_re in (_LINE_RANGE_RE, _LINE_RANGE_SINGULAR_RE):
+            for m in range_re.finditer(text):
+                first_id, last_id = m.group(1), m.group(2)
+                raw_name = m.group(3).strip().rstrip(":").strip()
+                # In inline context the name group (.+) may greedily capture
+                # subsequent "Line XXXX" tokens from the same bold block.
+                # Trim anything from the first following "Line/Lines XXXX" onward.
+                name = re.sub(r"\s+Lines?\s+\w{4}\b.*", "", raw_name, flags=re.IGNORECASE).strip()
+                if name:
+                    try:
+                        for i in range(int(first_id), int(last_id) + 1):
+                            results.append((f"{i:04d}", name))
+                    except ValueError:
+                        results.append((first_id, name))
+                range_spans.append((m.start(), m.end()))
+
+        for m in _INLINE_LINE_RE.finditer(text):
+            if any(start <= m.start() < end for start, end in range_spans):
+                continue
+            line_id = m.group(1)
+            line_name = m.group(2).strip().rstrip(":").strip()
+            if line_name:
+                results.append((line_id, line_name))
+
+    return results
 
 
 def _is_functional_area(heading: str) -> bool:
@@ -477,9 +597,67 @@ def _extract_per_schedule_lines(markdown_dir: Path, code: str) -> list[dict[str,
     current_section: str | None = None
 
     for heading, content in sections:
-        line_parsed = _parse_line_heading(heading)
+        range_parsed = _parse_range_heading(heading)
+        line_parsed = _parse_line_heading(heading) if not range_parsed else None
 
-        if line_parsed:
+        if range_parsed:
+            first_id, last_id, range_name = range_parsed
+            text = _clean_md_content(content)
+            try:
+                ids = [f"{i:04d}" for i in range(int(first_id), int(last_id) + 1)]
+            except ValueError:
+                ids = [first_id]
+            group_note = f"Part of fill-in group Lines {first_id} to {last_id} — {range_name}."
+            description = f"{group_note}\n\n{text}" if text else group_note
+            for line_id in ids:
+                if line_id in seen_line_ids:
+                    continue
+                seen_line_ids.add(line_id)
+                is_auto, carry_fwd = _detect_auto_calculated(description)
+                is_sub, sub_notes = _detect_subtotal(line_id, range_name, description)
+                applicability = _detect_applicability(description)
+                records.append(
+                    {
+                        "schedule": code,
+                        "line_id": line_id,
+                        "line_name": range_name,
+                        "section": current_section,
+                        "description": description,
+                        "is_subtotal": is_sub,
+                        "is_auto_calculated": is_auto,
+                        "carry_forward_from": carry_fwd,
+                        "applicability": applicability,
+                        "valid_from_year": None,
+                        "valid_to_year": None,
+                        "change_notes": sub_notes,
+                    }
+                )
+            # Also extract any inline line definitions from the section body.
+            for inline_id, inline_name in _extract_inline_lines(content):
+                if inline_id in seen_line_ids:
+                    continue
+                seen_line_ids.add(inline_id)
+                is_auto, carry_fwd = _detect_auto_calculated(text)
+                is_sub, sub_notes = _detect_subtotal(inline_id, inline_name, text)
+                applicability = _detect_applicability(text)
+                records.append(
+                    {
+                        "schedule": code,
+                        "line_id": inline_id,
+                        "line_name": inline_name,
+                        "section": current_section,
+                        "description": text if text else None,
+                        "is_subtotal": is_sub,
+                        "is_auto_calculated": is_auto,
+                        "carry_forward_from": carry_fwd,
+                        "applicability": applicability,
+                        "valid_from_year": None,
+                        "valid_to_year": None,
+                        "change_notes": sub_notes,
+                    }
+                )
+
+        elif line_parsed:
             line_id, line_name = line_parsed
 
             # Skip duplicate line_ids — some schedules (e.g. 54) describe the same
@@ -509,9 +687,59 @@ def _extract_per_schedule_lines(markdown_dir: Path, code: str) -> list[dict[str,
                     "change_notes": sub_notes,
                 }
             )
+            # Also extract any inline line definitions from the section body.
+            for inline_id, inline_name in _extract_inline_lines(content):
+                if inline_id in seen_line_ids:
+                    continue
+                seen_line_ids.add(inline_id)
+                is_auto, carry_fwd = _detect_auto_calculated(text)
+                is_sub, sub_notes = _detect_subtotal(inline_id, inline_name, text)
+                applicability = _detect_applicability(text)
+                records.append(
+                    {
+                        "schedule": code,
+                        "line_id": inline_id,
+                        "line_name": inline_name,
+                        "section": current_section,
+                        "description": text if text else None,
+                        "is_subtotal": is_sub,
+                        "is_auto_calculated": is_auto,
+                        "carry_forward_from": carry_fwd,
+                        "applicability": applicability,
+                        "valid_from_year": None,
+                        "valid_to_year": None,
+                        "change_notes": sub_notes,
+                    }
+                )
+
         elif heading:
             # Any non-line heading updates the current section label.
             current_section = heading
+            # Also extract any inline line definitions from the section body.
+            text = _clean_md_content(content)
+            for inline_id, inline_name in _extract_inline_lines(content):
+                if inline_id in seen_line_ids:
+                    continue
+                seen_line_ids.add(inline_id)
+                is_auto, carry_fwd = _detect_auto_calculated(text)
+                is_sub, sub_notes = _detect_subtotal(inline_id, inline_name, text)
+                applicability = _detect_applicability(text)
+                records.append(
+                    {
+                        "schedule": code,
+                        "line_id": inline_id,
+                        "line_name": inline_name,
+                        "section": current_section,
+                        "description": text if text else None,
+                        "is_subtotal": is_sub,
+                        "is_auto_calculated": is_auto,
+                        "carry_forward_from": carry_fwd,
+                        "applicability": applicability,
+                        "valid_from_year": None,
+                        "valid_to_year": None,
+                        "change_notes": sub_notes,
+                    }
+                )
 
     return records
 
