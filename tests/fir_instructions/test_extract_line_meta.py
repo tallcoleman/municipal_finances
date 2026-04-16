@@ -269,6 +269,30 @@ class TestExtractInlineLines:
         ids = [r[0] for r in result]
         assert len(ids) == len(set(ids))
 
+    def test_alphanumeric_range_falls_back_to_first_id(self) -> None:
+        """Range with non-numeric IDs (e.g. 000A) falls back to emitting only first_id."""
+        # int("000A") raises ValueError; fallback emits just the first ID.
+        content = ["**Lines 000A to 000C - Special**"]
+        result = _extract_inline_lines(content)
+        assert result == [("000A", "Special")]
+
+    def test_range_whitespace_only_name_produces_no_record(self) -> None:
+        """A range whose name trims to empty string emits no record but still claims the span."""
+        # The range span is still recorded so _INLINE_LINE_RE won't re-match it,
+        # but no (id, name) pair is appended.
+        content = ["**Lines 0696 to 0698 -   **"]
+        result = _extract_inline_lines(content)
+        # No records for the range (name is blank), and the single-line pass won't
+        # match the IDs either since they're inside the range span.
+        assert result == []
+
+    def test_empty_line_name_after_strip_produces_no_record(self) -> None:
+        """A single-line match whose name is colon-only (empty after stripping) is skipped."""
+        # group(2) = ":" → rstrip(":") → "" → if line_name: is False
+        content = ["**Line 0299 - :**"]
+        result = _extract_inline_lines(content)
+        assert result == []
+
 
 class TestIsFunctionalArea:
     def test_all_caps_two_words(self) -> None:
@@ -767,6 +791,117 @@ class TestExtractPerScheduleLines:
         assert "5697" in ids
         assert "5698" in ids
         assert "5699" in ids
+
+    def test_range_heading_with_alphanumeric_ids_falls_back(self, tmp_path: Path) -> None:
+        """Range heading with non-numeric IDs falls back to emitting only first_id."""
+        # int("000A") raises ValueError; the except branch emits just first_id.
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Lines 000A to 000C - Special Items
+
+            Some description.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        assert ids == ["000A"]
+        assert records[0]["line_name"] == "Special Items"
+
+    def test_inline_lines_in_range_heading_body(self, tmp_path: Path) -> None:
+        """Inline **Line XXXX - Name** definitions in a range-heading section body are extracted."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Lines 0696 to 0698 - Other
+
+            **Line 0699 - Extra Item**
+
+            Some description.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        # Range IDs from heading
+        assert "0696" in ids
+        assert "0697" in ids
+        assert "0698" in ids
+        # Inline ID from body
+        assert "0699" in ids
+
+    def test_inline_lines_in_single_line_heading_body(self, tmp_path: Path) -> None:
+        """Inline **Line XXXX - Name** definitions in a single-line heading body are extracted."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Line 0299 - Taxation Own Purposes
+
+            Report property tax here. **Line 0300 - Additional Item** also applies.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        assert "0299" in ids
+        assert "0300" in ids
+
+    def test_inline_line_deduplication_under_non_line_heading(self, tmp_path: Path) -> None:
+        """An inline ID already seen from a heading is not duplicated under a later section."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Line 0299 - Taxation Own Purposes
+
+            Report property tax here.
+
+            ## Some Section
+
+            **Line 0299 - Taxation Own Purposes**
+
+            Repeated reference to the same line.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        # 0299 should appear exactly once despite the inline reference
+        assert ids.count("0299") == 1
+
+    def test_inline_dedup_in_range_heading_body(self, tmp_path: Path) -> None:
+        """An inline ID that duplicates one already emitted by range enumeration is skipped."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Lines 0696 to 0698 - Other
+
+            **Line 0697 - Other**
+
+            This inline reference repeats an ID already produced by the range.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        # 0697 comes from the range enumeration; the inline reference must not create a duplicate
+        assert ids.count("0697") == 1
+
+    def test_inline_dedup_in_single_line_heading_body(self, tmp_path: Path) -> None:
+        """An inline ID that duplicates the heading's own line ID is skipped."""
+        self._write_schedule_file(
+            tmp_path,
+            "10",
+            """\
+            ## Line 0299 - Taxation Own Purposes
+
+            **Line 0299 - Taxation Own Purposes** is reported here.
+            """,
+        )
+        records = _extract_per_schedule_lines(tmp_path, "10")
+        ids = [r["line_id"] for r in records]
+        # 0299 is added when the heading is processed; the inline reference must not duplicate it
+        assert ids.count("0299") == 1
 
 
 # ---------------------------------------------------------------------------
