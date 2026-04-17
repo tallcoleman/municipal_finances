@@ -23,6 +23,9 @@ uv sync
 # Run tests
 uv run pytest
 
+# Run formatter
+uv run ruff check --fix
+
 # Start PostgreSQL + API containers
 docker compose up -d
 

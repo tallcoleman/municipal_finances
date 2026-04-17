@@ -4,9 +4,9 @@ These tests cover schedule metadata extraction, database insertion, and CSV
 round-trip.  DB tests require the test PostgreSQL container (localhost:5433).
 """
 
+# postpone evaluation of typing annotations
 from __future__ import annotations
 
-import csv
 from pathlib import Path
 from textwrap import dedent
 from typing import Any
@@ -19,7 +19,6 @@ from typer.testing import CliRunner
 from municipal_finances.fir_instructions.extract_schedule_meta import (
     SCHEDULE_CATEGORIES,
     SUB_SCHEDULE_PARENTS,
-    _SUB_SCHEDULE_HEADING_PREFIXES,
     _clean_md_content,
     _extract_regular_schedule,
     _extract_schedule_53,
@@ -68,7 +67,7 @@ def _minimal_record(**overrides: Any) -> dict[str, Any]:
 def _load_baseline() -> list[dict[str, Any]]:
     """Load the pre-extracted baseline CSV; skip if it does not exist."""
     if not _BASELINE_CSV.exists():
-        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")
+        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")  # pragma: no cover
     return load_from_csv(_BASELINE_CSV)
 
 
@@ -124,14 +123,18 @@ class TestBaselineCSVContent:
         self, records: list[dict[str, Any]]
     ) -> None:
         """Baseline rows must have valid_from_year = NULL."""
-        non_null = [r["schedule"] for r in records if r.get("valid_from_year") is not None]
+        non_null = [
+            r["schedule"] for r in records if r.get("valid_from_year") is not None
+        ]
         assert non_null == [], f"Unexpected valid_from_year on: {non_null}"
 
     def test_valid_to_year_is_null_on_all_rows(
         self, records: list[dict[str, Any]]
     ) -> None:
         """Baseline rows must have valid_to_year = NULL."""
-        non_null = [r["schedule"] for r in records if r.get("valid_to_year") is not None]
+        non_null = [
+            r["schedule"] for r in records if r.get("valid_to_year") is not None
+        ]
         assert non_null == [], f"Unexpected valid_to_year on: {non_null}"
 
     def test_categories_match_expected_mapping(
@@ -158,9 +161,7 @@ class TestBaselineCSVContent:
     def test_description_minimum_length(self, records: list[dict[str, Any]]) -> None:
         """Every description must be at least 50 characters (sanity check)."""
         too_short = [
-            r["schedule"]
-            for r in records
-            if len(r.get("description", "")) < 50
+            r["schedule"] for r in records if len(r.get("description", "")) < 50
         ]
         assert too_short == [], f"Suspiciously short descriptions for: {too_short}"
 
@@ -217,9 +218,7 @@ class TestInsertScheduleMeta:
         assert row.valid_to_year is None
         assert row.change_notes is None
 
-    def test_insert_all_31_baseline_records(
-        self, engine, session: Session
-    ) -> None:
+    def test_insert_all_31_baseline_records(self, engine, session: Session) -> None:
         """All 31 baseline records from the CSV can be inserted into the DB."""
         records = _load_baseline()
         inserted = insert_schedule_meta(engine, records)
@@ -237,9 +236,7 @@ class TestInsertScheduleMeta:
         missing = _EXPECTED_CODES - db_codes
         assert missing == set(), f"Missing codes in DB: {sorted(missing)}"
 
-    def test_no_required_fields_null_in_db(
-        self, engine, session: Session
-    ) -> None:
+    def test_no_required_fields_null_in_db(self, engine, session: Session) -> None:
         """After insertion, no row should have NULL schedule, schedule_name, or category."""
         records = _load_baseline()
         insert_schedule_meta(engine, records)
@@ -352,10 +349,14 @@ class TestStripBold:
 class TestParseMdSections:
     def test_single_heading_no_preamble(self, tmp_path: Path) -> None:
         """A file with a single heading and content is parsed into two sections."""
-        md = _write_md(tmp_path, "test.md", """\
+        md = _write_md(
+            tmp_path,
+            "test.md",
+            """\
             # Heading One
             content line
-        """)
+        """,
+        )
         sections = _parse_md_sections(md)
         # [("", []), ("Heading One", ["content line"])]
         assert len(sections) == 2
@@ -364,23 +365,31 @@ class TestParseMdSections:
 
     def test_preamble_before_first_heading(self, tmp_path: Path) -> None:
         """Content before the first heading is captured under an empty heading string."""
-        md = _write_md(tmp_path, "test.md", """\
+        md = _write_md(
+            tmp_path,
+            "test.md",
+            """\
             preamble line
             # First Heading
             after
-        """)
+        """,
+        )
         sections = _parse_md_sections(md)
         assert sections[0][0] == ""
         assert any("preamble line" in line for line in sections[0][1])
 
     def test_multiple_headings(self, tmp_path: Path) -> None:
         """Multiple headings produce one section per heading."""
-        md = _write_md(tmp_path, "test.md", """\
+        md = _write_md(
+            tmp_path,
+            "test.md",
+            """\
             ## Alpha
             alpha content
             ## Beta
             beta content
-        """)
+        """,
+        )
         sections = _parse_md_sections(md)
         headings = [s[0] for s in sections]
         assert "Alpha" in headings
@@ -388,10 +397,14 @@ class TestParseMdSections:
 
     def test_bold_markers_stripped_from_headings(self, tmp_path: Path) -> None:
         """**bold** in heading text is stripped when the heading is recorded."""
-        md = _write_md(tmp_path, "test.md", """\
+        md = _write_md(
+            tmp_path,
+            "test.md",
+            """\
             ## **Bold Heading**
             content
-        """)
+        """,
+        )
         sections = _parse_md_sections(md)
         heading_texts = [s[0] for s in sections]
         assert "Bold Heading" in heading_texts
@@ -404,10 +417,14 @@ class TestParseMdSections:
 
     def test_content_lines_have_no_trailing_newlines(self, tmp_path: Path) -> None:
         """Content lines stored in sections have trailing newlines stripped."""
-        md = _write_md(tmp_path, "test.md", """\
+        md = _write_md(
+            tmp_path,
+            "test.md",
+            """\
             ## Heading
             line with text
-        """)
+        """,
+        )
         sections = _parse_md_sections(md)
         for _, content in sections:
             for line in content:
@@ -500,7 +517,9 @@ class TestFindSection:
 class TestExtractSubScheduleName:
     def test_strips_schedule_prefix(self) -> None:
         """A heading of the form 'Schedule XX: Name' has the prefix stripped, returning Name."""
-        result = _extract_sub_schedule_name("Schedule 51A: Tangible Capital Assets", "51A")
+        result = _extract_sub_schedule_name(
+            "Schedule 51A: Tangible Capital Assets", "51A"
+        )
         assert result == "Tangible Capital Assets"
 
     def test_strips_code_suffix_in_parentheses(self) -> None:
@@ -529,11 +548,15 @@ class TestExtractSubScheduleName:
 class TestExtractRegularSchedule:
     def test_extracts_name_and_description(self, tmp_path: Path) -> None:
         """Name from SCHEDULE heading and description from General Information section."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue Operations
             ## General Information
             This schedule collects revenue information.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert result["schedule"] == "10"
         assert result["schedule_name"] == "Revenue Operations"
@@ -541,40 +564,56 @@ class TestExtractRegularSchedule:
 
     def test_general_instructions_also_accepted(self, tmp_path: Path) -> None:
         """'General Instructions' heading is accepted in addition to 'General Information'."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Instructions
             Instruction text for this schedule.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert "Instruction text" in result["description"]
 
     def test_empty_name_when_no_schedule_heading(self, tmp_path: Path) -> None:
         """schedule_name is empty when no matching SCHEDULE heading is found."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## General Information
             Some description.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert result["schedule_name"] == ""
 
     def test_empty_description_when_no_gi_heading(self, tmp_path: Path) -> None:
         """description is empty when no General Information/Instructions section is found."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## Line 1010
             Some line description.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert result["description"] == ""
 
     def test_null_year_fields(self, tmp_path: Path) -> None:
         """valid_from_year, valid_to_year, and change_notes are always None."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Information
             Description.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
@@ -589,11 +628,15 @@ class TestExtractRegularSchedule:
 
     def test_category_set_from_schedule_categories(self, tmp_path: Path) -> None:
         """Category in the result matches SCHEDULE_CATEGORIES for the code."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Information
             Description.
-        """)
+        """,
+        )
         result = _extract_regular_schedule(tmp_path, "10")
         assert result["category"] == SCHEDULE_CATEGORIES["10"]
 
@@ -601,12 +644,16 @@ class TestExtractRegularSchedule:
 class TestExtractSchedule53:
     def test_extracts_name_and_description(self, tmp_path: Path) -> None:
         """Name from SCHEDULE 53 heading; description from the section immediately after."""
-        _write_md(tmp_path, "FIR2025 S53.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S53.md",
+            """\
             ## SCHEDULE 53: Net Financial Assets (Net Debt)
             ## Consolidated Statement of Change in Net Financial Assets (Net Debt)
             This statement explains the difference between surplus or deficit and
             the change in net financial assets for the reporting year.
-        """)
+        """,
+        )
         result = _extract_schedule_53(tmp_path)
         assert result["schedule"] == "53"
         assert "Net Financial Assets" in result["schedule_name"]
@@ -614,21 +661,29 @@ class TestExtractSchedule53:
 
     def test_empty_description_when_no_body_section(self, tmp_path: Path) -> None:
         """description is empty when SCHEDULE 53 heading is not found."""
-        _write_md(tmp_path, "FIR2025 S53.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S53.md",
+            """\
             ## Some Other Heading
             Content.
-        """)
+        """,
+        )
         result = _extract_schedule_53(tmp_path)
         assert result["schedule"] == "53"
         assert result["description"] == ""
 
     def test_null_year_fields(self, tmp_path: Path) -> None:
         """Year and change_notes fields are always None."""
-        _write_md(tmp_path, "FIR2025 S53.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S53.md",
+            """\
             ## SCHEDULE 53: Net Financial Assets
             ## Body Section
             Content.
-        """)
+        """,
+        )
         result = _extract_schedule_53(tmp_path)
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
@@ -638,13 +693,17 @@ class TestExtractSchedule53:
 class TestExtractSchedule74E:
     def test_extracts_description_after_aro_heading(self, tmp_path: Path) -> None:
         """Finds the 'Schedule 74E' section (exact), then extracts the ARO sub-section."""
-        _write_md(tmp_path, "FIR2025 S74.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
             ## Schedule 74E - Asset Retirement Obligation Liability
             Overview mention of 74E here.
             ## Schedule 74E
             ## Asset Retirement Obligation Liability
             This section describes ARO liabilities for municipalities.
-        """)
+        """,
+        )
         result = _extract_schedule_74e(tmp_path)
         assert result["schedule"] == "74E"
         assert result["schedule_name"] == "Asset Retirement Obligation Liability"
@@ -652,10 +711,14 @@ class TestExtractSchedule74E:
 
     def test_empty_description_when_aro_heading_absent(self, tmp_path: Path) -> None:
         """Returns empty description when 'Asset Retirement Obligation Liability' is not found."""
-        _write_md(tmp_path, "FIR2025 S74.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
             ## Schedule 74E
             Some content without the ARO heading.
-        """)
+        """,
+        )
         result = _extract_schedule_74e(tmp_path)
         assert result["schedule"] == "74E"
         assert result["description"] == ""
@@ -665,10 +728,14 @@ class TestExtractSchedule74E:
 
     def test_empty_when_s74e_section_absent(self, tmp_path: Path) -> None:
         """Returns empty description when exact 'Schedule 74E' heading is not present."""
-        _write_md(tmp_path, "FIR2025 S74.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
             ## Schedule 74E - Asset Retirement Obligation Liability
             No exact bare 74E heading here.
-        """)
+        """,
+        )
         result = _extract_schedule_74e(tmp_path)
         assert result["description"] == ""
 
@@ -676,7 +743,10 @@ class TestExtractSchedule74E:
 class TestExtractSubSchedule:
     def test_extracts_22a_from_parent(self, tmp_path: Path) -> None:
         """22A content is extracted from FIR2025 S22.md using the heading prefix."""
-        _write_md(tmp_path, "FIR2025 S22.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S22.md",
+            """\
             ## SCHEDULE 22: Taxation
             ## General Information
             Parent description.
@@ -684,7 +754,8 @@ class TestExtractSubSchedule:
             This sub-schedule covers the general purpose levy.
             ## Lower-Tier / Single-Tier Special Area Levy Information (22B)
             22B content.
-        """)
+        """,
+        )
         result = _extract_sub_schedule(tmp_path, "22A")
         assert result["schedule"] == "22A"
         assert result["schedule_name"] == "General Purpose Levy Information"
@@ -692,13 +763,17 @@ class TestExtractSubSchedule:
 
     def test_extracts_51a_from_parent(self, tmp_path: Path) -> None:
         """51A content is extracted using 'Schedule 51A:' prefix."""
-        _write_md(tmp_path, "FIR2025 S51.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S51.md",
+            """\
             ## SCHEDULE 51: Tangible Capital Assets
             ## Schedule 51A: Prior Year Balances
             Prior year balance description.
             ## Schedule 51B: Current Year
             51B content.
-        """)
+        """,
+        )
         result = _extract_sub_schedule(tmp_path, "51A")
         assert result["schedule"] == "51A"
         assert result["schedule_name"] == "Prior Year Balances"
@@ -706,11 +781,15 @@ class TestExtractSubSchedule:
 
     def test_empty_result_when_heading_absent(self, tmp_path: Path) -> None:
         """Returns empty description when the sub-schedule heading is not found."""
-        _write_md(tmp_path, "FIR2025 S22.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S22.md",
+            """\
             ## SCHEDULE 22: Taxation
             ## General Information
             Some content with no sub-schedule heading.
-        """)
+        """,
+        )
         result = _extract_sub_schedule(tmp_path, "22A")
         assert result["schedule"] == "22A"
         assert result["description"] == ""
@@ -721,26 +800,34 @@ class TestExtractSubSchedule:
         self, tmp_path: Path
     ) -> None:
         """When the sub-schedule heading exists but has no body, the parent GI is used."""
-        _write_md(tmp_path, "FIR2025 S51.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S51.md",
+            """\
             ## SCHEDULE 51: Tangible Capital Assets
             ## General Information
             The Schedule 51 series collects net book value by function and class.
             ## Schedule 51A: By Function
             ## Column 1: Opening Balance
             Column content here.
-        """)
+        """,
+        )
         result = _extract_sub_schedule(tmp_path, "51A")
         assert result["schedule"] == "51A"
         assert "Schedule 51 series" in result["description"]
 
     def test_no_fallback_when_gi_also_absent(self, tmp_path: Path) -> None:
         """When the sub-schedule heading has no body and there is no GI, description is empty."""
-        _write_md(tmp_path, "FIR2025 S51.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S51.md",
+            """\
             ## SCHEDULE 51: Tangible Capital Assets
             ## Schedule 51A: By Function
             ## Column 1: Opening Balance
             Column content here.
-        """)
+        """,
+        )
         result = _extract_sub_schedule(tmp_path, "51A")
         assert result["schedule"] == "51A"
         assert result["description"] == ""
@@ -755,63 +842,88 @@ class TestExtractScheduleRecordDispatcher:
     """Verify that extract_schedule_record dispatches to the correct extractor."""
 
     _REQUIRED_KEYS = {
-        "schedule", "schedule_name", "category",
-        "description", "valid_from_year", "valid_to_year", "change_notes",
+        "schedule",
+        "schedule_name",
+        "category",
+        "description",
+        "valid_from_year",
+        "valid_to_year",
+        "change_notes",
     }
 
     def test_sub_schedule_routes_to_sub_extractor(self, tmp_path: Path) -> None:
         """Sub-schedule codes are dispatched to _extract_sub_schedule."""
-        _write_md(tmp_path, "FIR2025 S22.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S22.md",
+            """\
             ## SCHEDULE 22: Taxation
             ## General Purpose Levy Information (22A)
             Sub-schedule 22A description text here.
             ## Lower-Tier / Single-Tier Special Area Levy Information (22B)
             22B content.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "22A")
         assert result["schedule"] == "22A"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
     def test_schedule_53_routes_to_special_extractor(self, tmp_path: Path) -> None:
         """Schedule 53 is dispatched to its dedicated extractor."""
-        _write_md(tmp_path, "FIR2025 S53.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S53.md",
+            """\
             ## SCHEDULE 53: Net Financial Assets
             ## Body Section
             Overview paragraph for Schedule 53.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "53")
         assert result["schedule"] == "53"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
     def test_schedule_74e_routes_to_special_extractor(self, tmp_path: Path) -> None:
         """Schedule 74E is dispatched to its dedicated extractor."""
-        _write_md(tmp_path, "FIR2025 S74.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
             ## Schedule 74E
             ## Asset Retirement Obligation Liability
             Description text for 74E.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "74E")
         assert result["schedule"] == "74E"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
     def test_regular_schedule_routes_to_regular_extractor(self, tmp_path: Path) -> None:
         """A standard schedule code is dispatched to _extract_regular_schedule."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Information
             Revenue description text.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "10")
         assert result["schedule"] == "10"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
     def test_all_results_have_null_year_fields(self, tmp_path: Path) -> None:
         """Baseline records always have valid_from_year and valid_to_year as None."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Information
             Description.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "10")
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
@@ -819,11 +931,15 @@ class TestExtractScheduleRecordDispatcher:
 
     def test_category_set_from_schedule_categories(self, tmp_path: Path) -> None:
         """Category in result matches SCHEDULE_CATEGORIES for the given code."""
-        _write_md(tmp_path, "FIR2025 S10.md", """\
+        _write_md(
+            tmp_path,
+            "FIR2025 S10.md",
+            """\
             ## SCHEDULE 10: Revenue
             ## General Information
             Description.
-        """)
+        """,
+        )
         result = extract_schedule_record(tmp_path, "10")
         assert result["category"] == SCHEDULE_CATEGORIES["10"]
 
@@ -840,7 +956,7 @@ class TestExtractAllScheduleMeta:
         """extract_all_schedule_meta returns exactly 31 records when the real markdown files exist."""
         markdown_dir = Path("fir_instructions/source_files/2025/markdown")
         if not markdown_dir.exists():
-            pytest.skip("Real FIR2025 markdown files not found")
+            pytest.skip("Real FIR2025 markdown files not found")  # pragma: no cover
         records = extract_all_schedule_meta(markdown_dir)
         assert len(records) == 31
         codes = {r["schedule"] for r in records}
@@ -901,7 +1017,9 @@ class TestCLICommands:
             patch(f"{module}.save_to_csv"),
             patch(f"{module}.insert_schedule_meta") as mock_insert,
         ):
-            result = runner.invoke(app, ["extract-baseline-schedule-meta", "--no-load-db"])
+            result = runner.invoke(
+                app, ["extract-baseline-schedule-meta", "--no-load-db"]
+            )
 
         assert result.exit_code == 0
         mock_insert.assert_not_called()

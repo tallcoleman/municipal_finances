@@ -33,10 +33,10 @@ Extract line-level metadata for all schedules from the FIR2025 Instructions PDF.
 
 Lines in Schedules 12, 40, and 51 have data from two markdown sources:
 
-1. **`FIR2025 - Functional Categories.md`**: provides `includes` and `excludes` content organized by functional area (GENERAL GOVERNMENT, PROTECTION SERVICES, etc.)
-2. **Per-schedule markdown** (`FIR2025 S{code}.md`): provides `description`, `carry_forward_from`, `applicability`, `is_subtotal`, `is_auto_calculated`
+1. **`FIR2025 - Functional Categories.md`**: provides functional classification content (what belongs under each line, including any exclusion language) organized by functional area (GENERAL GOVERNMENT, PROTECTION SERVICES, etc.)
+2. **Per-schedule markdown** (`FIR2025 S{code}.md`): provides additional reporting instructions, `carry_forward_from`, `applicability`, `is_subtotal`, `is_auto_calculated`
 
-These need to be merged into a single `fir_line_meta` row per line.
+Both sources' text is merged into a single `description` field in `fir_line_meta`.
 
 ### Fields to Extract Per Line
 
@@ -47,9 +47,7 @@ These need to be merged into a single `fir_line_meta` row per line.
 | `line_id` | 4-character alphanumeric code from the PDF (e.g., `"0410"`; `"000A"` on schedules 76X, 80C, 81X) |
 | `line_name` | Heading text (e.g., `"Fire"`) |
 | `section` | Section heading within the schedule (e.g., `"Protection Services"`) |
-| `description` | Narrative text from schedule instructions |
-| `includes` | From Functional Classifications or schedule instructions. Full text content (sub-headings + their body paragraphs), blocks separated by blank lines. |
-| `excludes` | Explicit "Exclude"/"Excludes" sentences or "do not include" language extracted from the includes content. |
+| `description` | Narrative text. For schedules 12, 40, 51A: functional classification content (from Functional Categories) followed by per-schedule instruction text, separated by a blank line. Exclusion language is kept in-place rather than separated out. For all other schedules: per-schedule instruction text only. |
 | `is_subtotal` | Whether this is a computed subtotal row (infer from context: words like "Subtotal", "Total", or lines that sum other lines) |
 | `is_auto_calculated` | Whether auto-populated from another schedule (infer from "carried forward from" language) |
 | `carry_forward_from` | SLC reference if auto-populated (e.g., `"12 9910 05"`) |
@@ -62,9 +60,9 @@ These need to be merged into a single `fir_line_meta` row per line.
 
 Work in two passes over the markdown source files, then merge. Use the same `_parse_md_sections` and `_find_section` helpers developed for Task 04's `extract_schedule_meta.py`.
 
-1. **Functional Classifications first**: Parse `FIR2025 - Functional Categories.md` with `_parse_md_sections`. The top-level section headings identify functional areas (e.g. `GENERAL GOVERNMENT`, `PROTECTION SERVICES`) — these become the `section` values. Within each functional area, sections whose headings match `Line XXXX - Name` correspond to individual lines. The full text content under each line heading — sub-headings and their body paragraphs — is the source for `includes`. Format each sub-heading followed by its body text as one block, separated from the next by a blank line. For lines where all included items appear as flat body text with no sub-headings (e.g. Line 0410 Fire), store the entire body text as a single block. Any "do not include", "should not be reported here", or explicit "Exclude"/"Excludes" sentences found within this content are moved to `excludes` and removed from `includes`. Store results in a temporary structure keyed by `(line_id)`. Note: the Functional Classifications document applies to Schedules 12, 40, and 51 generically rather than distinguishing 51A from 51B. Assign the includes/excludes to all applicable sub-schedules and note the ambiguity in `change_notes`.
+1. **Functional Classifications first**: Parse `FIR2025 - Functional Categories.md` with `_parse_md_sections`. The top-level section headings identify functional areas (e.g. `GENERAL GOVERNMENT`, `PROTECTION SERVICES`) — these become the `section` values. Within each functional area, sections whose headings match `Line XXXX - Name` correspond to individual lines. The full text content under each line heading — sub-headings and their body paragraphs — becomes the `description` for that line. Exclusion language ("do not include", "Excludes:", etc.) is kept in-place in the text. Store results in a temporary structure keyed by `(line_id)`. Note: the Functional Classifications document applies to Schedules 12, 40, and 51 generically rather than distinguishing 51A from 51B. Assign the description to all applicable sub-schedules and note the ambiguity in `change_notes`.
 2. **Schedule-by-schedule**: For each schedule, open `FIR2025 S{code}.md` (or the parent file for sub-schedules — see `_MD_PARENT_FILE` in `extract_schedule_meta.py`). Parse with `_parse_md_sections`. Sections whose headings match `Line XXXX - Name` (or `Lines XXXX to YYYY - Name` for range lines) correspond to individual lines. The section content is the `description`. Carry-forward references (`SLC X Y Z` patterns), applicability notes, and subtotal language are extracted from the content.
-3. **Merge**: For Schedules 12, 40, 51A, 51B — combine the Functional Classifications data with the schedule instruction data. Use the schedule instruction text for `description` and Functional Classifications data only for `includes`/`excludes`.
+3. **Merge**: For Schedules 12, 40, 51A — combine the Functional Classifications `description` (functional content) with the per-schedule `description` (reporting instructions) into a single `description` field, separated by a blank line.
 
 ### Handling Section Boundaries
 
@@ -106,7 +104,7 @@ Even with the pre-converted text files, extraction logic involves parsing heuris
 
 - Every schedule has line metadata entries
 - `line_id` values are valid 4-character alphanumeric strings
-- Schedules 12, 40, 51 have `includes`/`excludes` populated from Functional Classifications
+- Schedules 12, 40, 51A have `description` populated with functional classification content merged with per-schedule instructions
 - Subtotal and auto-calculated lines are correctly flagged
 - `carry_forward_from` references use the PDF SLC format
 - Section assignments are correct at section boundaries
@@ -132,10 +130,9 @@ FROM fir_line_meta GROUP BY schedule ORDER BY schedule;
 -- Lines with carry_forward_from but not flagged as auto_calculated (should be empty)
 SELECT * FROM fir_line_meta WHERE carry_forward_from IS NOT NULL AND NOT is_auto_calculated;
 
--- Functional Classifications coverage
+-- FC schedules have description populated
 SELECT schedule,
-    count(*) FILTER (WHERE includes IS NOT NULL) as has_includes,
-    count(*) FILTER (WHERE excludes IS NOT NULL) as has_excludes
-FROM fir_line_meta WHERE schedule IN ('12', '40', '51A', '51B')
+    count(*) FILTER (WHERE description IS NOT NULL) as has_description
+FROM fir_line_meta WHERE schedule IN ('12', '40', '51A')
 GROUP BY schedule;
 ```

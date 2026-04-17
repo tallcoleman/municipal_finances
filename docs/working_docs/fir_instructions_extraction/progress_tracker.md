@@ -6,7 +6,7 @@
 - [x] 03_content_changes_extraction.md (https://github.com/tallcoleman/municipal_finances/pull/10)
 - [x] 04_baseline_schedule_meta.md
 - [ ] 04a_add_authentication.md
-- [ ] 05_baseline_line_meta.md
+- [x] 05_baseline_line_meta.md (https://github.com/tallcoleman/municipal_finances/pull/18)
 - [ ] 06_baseline_column_meta.md
 - [ ] 07_apply_changes_backwards.md
 - [ ] 08a_reporting_completeness_inference.md
