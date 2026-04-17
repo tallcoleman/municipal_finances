@@ -67,7 +67,7 @@ def _minimal_record(**overrides: Any) -> dict[str, Any]:
 def _load_baseline() -> list[dict[str, Any]]:
     """Load the pre-extracted baseline CSV; skip if it does not exist."""
     if not _BASELINE_CSV.exists():
-        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")
+        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")  # pragma: no cover
     return load_from_csv(_BASELINE_CSV)
 
 
@@ -956,7 +956,7 @@ class TestExtractAllScheduleMeta:
         """extract_all_schedule_meta returns exactly 31 records when the real markdown files exist."""
         markdown_dir = Path("fir_instructions/source_files/2025/markdown")
         if not markdown_dir.exists():
-            pytest.skip("Real FIR2025 markdown files not found")
+            pytest.skip("Real FIR2025 markdown files not found")  # pragma: no cover
         records = extract_all_schedule_meta(markdown_dir)
         assert len(records) == 31
         codes = {r["schedule"] for r in records}

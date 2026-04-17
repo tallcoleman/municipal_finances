@@ -77,7 +77,7 @@ def _minimal_line_record(**overrides: Any) -> dict[str, Any]:
 def _load_baseline() -> list[dict[str, Any]]:
     """Load the pre-extracted baseline CSV; skip if it does not exist."""
     if not _BASELINE_CSV.exists():
-        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")
+        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")  # pragma: no cover
     return load_from_csv(_BASELINE_CSV)
 
 

@@ -73,7 +73,7 @@ def validate_FIRStatus(input: dict) -> bool:
     FIRStatusValidator = TypeAdapter(FIRStatus)
     try:
         FIRStatusValidator.validate_python(input)
-    except ValidationError:
+    except ValidationError:  # pragma: no cover
         return False
     return True
 
