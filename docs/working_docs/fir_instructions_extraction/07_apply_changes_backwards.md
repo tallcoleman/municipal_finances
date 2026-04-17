@@ -4,6 +4,9 @@
 
 Using the changelog from Task 03, create versioned rows in the metadata tables by reading the older PDFs (2024, 2023, 2022, 2021, 2020, and 2019) and extracting prior-version descriptions for anything that changed.
 
+## Things to Check
+In task 05, line ranges that included letters (e.g 123A) weren't parsed into individual lines. Check if this is an issue that should be handled for the older years?
+
 ## Prerequisites
 
 - Task 03 (changelog extraction) complete — provides the list of what changed each year
