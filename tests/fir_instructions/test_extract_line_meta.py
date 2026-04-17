@@ -773,7 +773,9 @@ class TestExtractPerScheduleLines:
         assert "0205" in ids
         assert "0210" in ids
 
-    def test_inline_range_in_body_produces_multiple_records(self, tmp_path: Path) -> None:
+    def test_inline_range_in_body_produces_multiple_records(
+        self, tmp_path: Path
+    ) -> None:
         """**Lines XXXX TO YYYY - Name** in body text enumerates all IDs."""
         self._write_schedule_file(
             tmp_path,
@@ -792,7 +794,9 @@ class TestExtractPerScheduleLines:
         assert "5698" in ids
         assert "5699" in ids
 
-    def test_range_heading_with_alphanumeric_ids_falls_back(self, tmp_path: Path) -> None:
+    def test_range_heading_with_alphanumeric_ids_falls_back(
+        self, tmp_path: Path
+    ) -> None:
         """Range heading with non-numeric IDs falls back to emitting only first_id."""
         # int("000A") raises ValueError; the except branch emits just first_id.
         self._write_schedule_file(
@@ -847,7 +851,9 @@ class TestExtractPerScheduleLines:
         assert "0299" in ids
         assert "0300" in ids
 
-    def test_inline_line_deduplication_under_non_line_heading(self, tmp_path: Path) -> None:
+    def test_inline_line_deduplication_under_non_line_heading(
+        self, tmp_path: Path
+    ) -> None:
         """An inline ID already seen from a heading is not duplicated under a later section."""
         self._write_schedule_file(
             tmp_path,
