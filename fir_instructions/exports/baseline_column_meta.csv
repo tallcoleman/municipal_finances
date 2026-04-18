@@ -1,5 +1,5 @@
-schedule,column_id,column_name,description,valid_from_year,valid_to_year,change_notes
-12,01,Ontario Conditional Grants,"All conditional operating grants received or receivable from the province, including those from Ontario enterprises, are reported here.
+schedule,column_id,column_name,section_name,description,valid_from_year,valid_to_year,change_notes
+12,01,Ontario Conditional Grants,General Information,"All conditional operating grants received or receivable from the province, including those from Ontario enterprises, are reported here.
 
 Please note that unconditional operating grants are reported on Schedule 10, Total Revenues, because they are not related to a specific municipal function or service.
 
@@ -20,7 +20,7 @@ An example is overpayment for general welfare assistance.
 The total for Ontario conditional grants is automatically carried forward to Schedule 10 (SLC 10 0810 01).
 
 Provincial grants for tangible capital assets are reported on column 5. Total provincial grants for tangible capital assets are automatically carried forward to Schedule 10 (SLC 10 0815 01).",,,
-12,02,Canada Conditional Grants,"Enter conditional operating grants received or receivable from the federal government or its agencies.
+12,02,Canada Conditional Grants,General Information,"Enter conditional operating grants received or receivable from the federal government or its agencies.
 
 Include grants for fully or proportionally consolidated local boards.
 
@@ -29,7 +29,7 @@ If Canada conditional operating grants have been overpaid as of December 31st, t
 The total for Canada conditional grants is automatically carried forward to Schedule 10 (SLC 10 0820 01).
 
 Federal grants for tangible capital assets are reported on column 6.  Total Canada conditional grants for tangible capital assets is automatically carried forward to Schedule 10 (SLC 10 0825 01).",,,
-12,03,Other Municipalities,"Include revenue received or receivable from other municipalities, including amounts recovered from the upper tier.
+12,03,Other Municipalities,General Information,"Include revenue received or receivable from other municipalities, including amounts recovered from the upper tier.
 
 Include amounts recovered from neighbouring municipalities for services provided.
 
@@ -46,8 +46,8 @@ Include county contributions towards roads under section 41 (5) of the Public Tr
 Revenue received from a First Nations Council for fire protection services is to be reported as revenue from other municipalities in Schedule 12, column 3, rather than revenue from user fees in Schedule 12, column 4.
 
 The total for revenue from other municipalities is automatically carried forward to Schedule 10 (SLC 10 1099 01).",,,
-12,04,User Fees and Service Charges,"In column 4, report user fees. User fees are fees and service charges imposed by the municipality which are directly associated with a particular municipal function.",,,
-12,05,Ontario Grants - Tangible Capital Assets,"Report all Ontario grants for tangible capital assets on this column under the appropriate functional category.
+12,04,User Fees and Service Charges,Library Boards,"In column 4, report user fees. User fees are fees and service charges imposed by the municipality which are directly associated with a particular municipal function.",,,
+12,05,Ontario Grants - Tangible Capital Assets,Responsibility for Water Services and Wastewater Services Split Between Lower Tier and Upper Tier.,"Report all Ontario grants for tangible capital assets on this column under the appropriate functional category.
 
 Report OCIF deferred revenue earned in the year under the appropriate functional category.
 
@@ -60,7 +60,7 @@ Report all deferred revenue earned, such as Ontario bus replacement grant, etc.,
 **Deferred revenue earned (Provincial Gas Tax) for Transit (Capital) should be entered in Schedule 60-line 1045 column 1. Schedule 10-line 0830 column 1 automatically draws the amounts entered in schedule 60-line 1042 column 1 + schedule 60-line 1045 column 1.**
 
 **The total in column 5 in SLC 12 9910 05 is carried forward to SLC 10 0815 01.**",,,
-12,06,Canada Grants - Tangible Capital Assets,"Report all federal grants for tangible capital assets on this column under the appropriate functional category.
+12,06,Canada Grants - Tangible Capital Assets,Responsibility for Water Services and Wastewater Services Split Between Lower Tier and Upper Tier.,"Report all federal grants for tangible capital assets on this column under the appropriate functional category.
 
 Report the Canada Community-Building Fund (previously Federal Gas Tax) grant received and applied (or used) to the applicable program (or the various functional areas).
 
@@ -69,35 +69,60 @@ If the Canada Community-Building Fund grant was not utilized during the year, th
 Report all deferred revenue earned, such as Federal public transit, Canada Building Fund, and Canada Community-Building Fund, etc.
 
 The total in column 6 in SLC 12 9910 06 is carried forward to SLC 10 825 01.",,,
-12,07,Other Municipalities - Tangible Capital Assets,"Include amounts received from other municipalities for their share of capital projects.
+12,07,Other Municipalities - Tangible Capital Assets,Responsibility for Water Services and Wastewater Services Split Between Lower Tier and Upper Tier.,"Include amounts received from other municipalities for their share of capital projects.
 
 For example, include amounts received from other municipalities for joint wastewater and water projects.",,,
-20,01,Exit Capping Immediately,"Enter Yes (Y) if your municipality exited the Capping Limit Program.
+20,01,Exit Capping Immediately,Capping Parameters and Results,"Enter Yes (Y) if your municipality exited the Capping Limit Program.
 
 Enter No (Y) if your municipality did not exit the Capping Limit Program.",,,
-20,02,Decrease- Percentage Retained,"Enter the percentage decrease retained value for properties that would have experienced a decrease in taxes.
+20,02,Decrease- Percentage Retained,Capping Parameters and Results,"Enter the percentage decrease retained value for properties that would have experienced a decrease in taxes.
 
 If the total cost of protection of the capping program has been funded by the municipality, the decrease-percentage retained should equal 100%.
 
 If the cost of protection has been totally funded by minimizing the property tax decreases, (i.e. Revenue Neutral approach), the decrease percentage share should be between 0% and 100%.",,,
-20,03,Tax Adjustment - Increasers,"Tax Adjustment - Increasers refers to the dollar amount refunded or credited to the capped properties (increasing properties).  This amount is the difference between the Current Value Assessment (CVA) taxes on these properties for the year, and the capped taxes raised from these properties.
+20,03,Tax Adjustment - Increasers,Capping Parameters and Results,"Tax Adjustment - Increasers refers to the dollar amount refunded or credited to the capped properties (increasing properties).  This amount is the difference between the Current Value Assessment (CVA) taxes on these properties for the year, and the capped taxes raised from these properties.
 
 For municipalities that use the OPTA system, these amounts are displayed on the summary lines of the frozen capping reports.
 
 Upper tier municipalities must report the total cost of protection for all capped properties across the upper tier.",,,
-20,04,Net Class Impact,"The Net Class Impact is the difference between the total taxes raised from the class after the capping adjustments, and the CVA taxes that would be levied on the class in the absence of capping.  For lower tier municipalities, the amount can be positive or negative and should be inserted as such.
+20,04,Net Class Impact,Capping Parameters and Results,"The Net Class Impact is the difference between the total taxes raised from the class after the capping adjustments, and the CVA taxes that would be levied on the class in the absence of capping.  For lower tier municipalities, the amount can be positive or negative and should be inserted as such.
 
 For municipalities that use the OPTA system, these amounts are displayed in the net class impact line of the capping summary analysis report or the tax adjustment column of the capping summary report.
 
 Upper tier municipalities must report the total net tax impact across the upper tier (generally this amount is zero unless the upper tier has selected a non-revenue neutral capping policy or if there is a shortfall in the capping calculation).",,,
-20,05,Annualized Tax Limit,"The minimum percentage of annualized tax limit that can be entered is 5%. Municipalities can increase this amount to up to 10%.  Enter the value included in the by-law up to two decimal places for each of the multi-residential, commercial and industrial classes.",,,
-20,06,CVA Tax Limit,"If the municipality has adopted the CVA tax limit parameter of between 0 and 5% of the previous year’s CVA taxes, enter the percentage amount to two decimal places.",,,
-20,07,CVA Threshold Value for Protected Properties,"If the municipality has elected to move increasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law.",,,
-20,08,CVA Threshold Value for Clawed Back Properties,"If the municipality has elected to move decreasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law.",,,
-20,09,Exclude Properties Previously at CVA Tax,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 9.,,,
-20,10,Exclude Properties That Go from Capped to Clawed Back,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 10.,,,
-20,11,Exclude Properties That Go from Clawed Back to Capped,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 11.,,,
-22,01,RTC / RTQ,"This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property.
+20,05,Annualized Tax Limit,Capping Parameters and Results,"The minimum percentage of annualized tax limit that can be entered is 5%. Municipalities can increase this amount to up to 10%.  Enter the value included in the by-law up to two decimal places for each of the multi-residential, commercial and industrial classes.",,,
+20,06,CVA Tax Limit,Capping Parameters and Results,"If the municipality has adopted the CVA tax limit parameter of between 0 and 5% of the previous year’s CVA taxes, enter the percentage amount to two decimal places.",,,
+20,07,CVA Threshold Value for Protected Properties,Capping Parameters and Results,"If the municipality has elected to move increasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law.",,,
+20,08,CVA Threshold Value for Clawed Back Properties,Capping Parameters and Results,"If the municipality has elected to move decreasing properties to CVA taxation if they fall within 0 to $250 of CVA taxes, enter the CVA tax limit amount adopted in the by-law.",,,
+20,09,Exclude Properties Previously at CVA Tax,Capping Parameters and Results,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 9.,,,
+20,10,Exclude Properties That Go from Capped to Clawed Back,Capping Parameters and Results,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 10.,,,
+20,11,Exclude Properties That Go from Clawed Back to Capped,Capping Parameters and Results,Please indicate which of these capping parameters have been implemented in the municipality by entering Y for Yes and N for No in column 11.,,,
+20,02,Yes or No,Graduated Taxation (Tax Bands),Indicate whether graduated tax rates are in effect for each of the classes shown by entering a Y for Yes or N for No.,,,
+20,03,Number of Tax Bands,Graduated Taxation (Tax Bands),"If Graduated Tax Rates (Tax Bands) exist in the class, enter the number of tax bands which apply to the class.",,,
+20,04,Low Band- CVA Boundary,Graduated Taxation (Tax Bands),"This column should be completed if a municipality has opted for either two (Low and High) or three (Low, Middle, and High), taxation bands.
+
+For two taxation bands, report the assessment value that separates the Low band from the High band in column 4, CVA Boundary.
+
+For three taxation bands, report the assessment value that separates the Low band from the Middle band in column 4, CVA Boundary.",,,
+20,05,Low Band - Percent of Highest Band Rate,Graduated Taxation (Tax Bands),"This column should be completed if a municipality has opted for either two (Low and High) or three (Low, Middle, and High), taxation bands.
+
+For two taxation bands, report the Low band tax rate as a percentage of the High band tax rate. (i.e. Low band rate / High band rate x 100) in column 5.
+
+For three taxation bands, report the Low band tax rate as a percentage of the High band tax rate. (i.e. Low band rate / High band rate x 100) in column 5.",,,
+20,06,Middle Band- CVA Boundary,Graduated Taxation (Tax Bands),"This column should only be completed if a municipality opted for three taxation bands in the respective classes.
+
+Report the assessment value that separates the Middle band from the High band in column 6, CVA Boundary.",,,
+20,07,Middle Band - Percent of Highest Band Rate,Graduated Taxation (Tax Bands),This column should only be completed if a municipality opted for three taxation bands in the respective classes.  Report the Middle band tax rate as a percentage of the High band tax rate. (i.e. Middle band rate / High band rate x 100).,,,
+20,02,Phase-In Program in Effect,Phase-in Program in Effect,"For each property class, enter a Y for Yes, if a Phase-In program is in effect in the municipality.  Enter N (for No) if a Phase-In program is not in effect in the municipality.",,,
+20,03,Year Current Phase-In Initiated,Phase-in Program in Effect,"For each property class with a Phase-In program in effect, enter the year when the Phase-In program began.  Municipalities could have opted for a Phase-In program in 1998, 2001, 2003 and/or 2016 (i.e. during any reassessment year).",,,
+20,04,Term of Current Phase-In,Phase-in Program in Effect,"For each property class with a Phase-In program in effect, enter the total number of years the Phase-In program is in effect.",,,
+20,02,Interim Billing - Instalments,Property Tax Due Dates for Current Year,Enter the number of installments for Interim property tax billings of each property class which is applicable in the municipality.,,,
+20,03,Interim Billing - First Due Date,Property Tax Due Dates for Current Year,Enter the due date for the first installment of the Interim property tax bill in column 3. Due dates should be entered as eight-digit numbers (YYYYMMDD).,,,
+20,04,Interim Billing - Last Due Date,Property Tax Due Dates for Current Year,Enter the due date for the last installment of the Interim property tax bill in column 4. Due dates should be entered as eight-digit numbers (YYYYMMDD).,,,
+20,05,Final Billing - Installments,Property Tax Due Dates for Current Year,Enter the number of installments for Final property tax billings of each property class which is applicable in the municipality.,,,
+20,06,Final Billing - First Due Date,Property Tax Due Dates for Current Year,Enter the due date for the first installment of the Final property tax bill in column 6.  Due dates should be entered as eight-digit numbers (YYYYMMDD).,,,
+20,07,Final Billing - Last Due Date,Property Tax Due Dates for Current Year,Enter the due date for the last installment of the Final property tax bill in column 7.  Due dates should be entered as eight-digit numbers (YYYYMMDD).,,,
+22,01,RTC / RTQ,Property Class Description (Columns 1 to 4),"This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property.
 
 The RTQ describes which of the following ways the Tax Rate is applied:
 
@@ -120,7 +145,7 @@ For RTC / RTQ codes that refer to optional property classes, municipalities shou
 Please refer to the FIR2025 Tables document for a complete list of applicable RTC / RTQ combinations. New Construction classes have been formed under the Commercial and Industrial property class.  RTC codes and RTQ codes available at the FIR website:
 
 https://efis.fma.csc.gov.on.ca/fir/index.php/municipal-reporting/additional-information/",,,
-22,02,Tax Band,"Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class.  Please refer to Section 3 of Schedule 20 in these instructions, for further information on Tax Bands.
+22,02,Tax Band,Property Class Description (Columns 1 to 4),"Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class.  Please refer to Section 3 of Schedule 20 in these instructions, for further information on Tax Bands.
 
 Municipalities must enter 0, L, M, or H in this column as explained in the instructions below:
 
@@ -132,9 +157,9 @@ For municipalities who have adopted tax banding, by either creating 2 or 3 Tax B
 
 **----- Start of picture text -----**<br>
 No Tax Bands<br>Tax Band  Enter<br>Un-banded  0<br>2 Tax Bands<br>Tax Band Enter<br>Low tax band  L<br>High tax band  H<br>**----- End of picture text -----**<br>",,,
-22,03,Property Class,"The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
-22,04,Tax Rate Description,"This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
-22,05,Tax Ratio,"The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RT).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CT) is 4% twice that of the Residential tax rate, then the Commercial tax ratio is 2.0000:
+22,03,Property Class,3 Tax Bands,"The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
+22,04,Tax Rate Description,3 Tax Bands,"This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
+22,05,Tax Ratio,CX Tax Rate = RT Rate x CT Tax Ratio x Percent of Full CT Rate,"The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RT).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CT) is 4% twice that of the Residential tax rate, then the Commercial tax ratio is 2.0000:
 
 **==> picture [294 x 46] intentionally omitted <==**
 
@@ -145,7 +170,7 @@ Each property class, and similarly, each RTC code, must have a tax ratio associa
 Please refer to the FIR2025 Tables document for a complete list of RTC Codes which shows the relationship between the RTC Code (or property class) and the tax ratio.
 
 Please note the exceptions that exist when optional classes are in effect.",,,
-22,06,Percent of Full Rate,"This column captures information relating to discounted tax rates, and tax banding of the tax rates. These can be summarized into the following 3 cases:
+22,06,Percent of Full Rate,CX Tax Rate = RT Rate x CT Tax Ratio x Percent of Full CT Rate,"This column captures information relating to discounted tax rates, and tax banding of the tax rates. These can be summarized into the following 3 cases:
 
 |**Types of Tax Rate Discounts**|**Options**|
 |---|---|
@@ -158,7 +183,7 @@ Notice that the first 2 cases relate to the RTQ of a property, while the 3rd cas
 For municipalities who have opted for tax banding of tax rates, it may be possible to have case 1 and 3 occurring at the same time (i.e. RTQ = U, X and Tax Band = L, M, H).
 
 Remember, every tax rate is determined by the following relationship with the Residential tax rate:",,,
-22,07,CVA Assessment,"The total current value assessment (CVA) associated with each property class is entered in this column.
+22,07,CVA Assessment,Percent of Full Rate = CU Low Rate ÷ CT Un-Banded Rate,"The total current value assessment (CVA) associated with each property class is entered in this column.
 
 Column 7 is pre-populated for the user in this taxable general-purpose levy schedule.  If the CVA assessment is incorrect, please delete the pre-populated amount and enter the correct information.
 
@@ -167,21 +192,21 @@ For those municipalities that have multiple general levy areas, you will enter t
 Each taxable RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
 
 Please note that Hydro properties represented by RTQ = H, J, or K are reported in this column as Taxable Assessment.",,,
-22,16,Phase-In Taxable Assessment,"The phase-in taxable assessment associated with each property class is entered in this column.  Each taxable RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
+22,16,Phase-In Taxable Assessment,Upper-tier Municipalities,"The phase-in taxable assessment associated with each property class is entered in this column.  Each taxable RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
 
 Column 16 is pre-populated for the user in the taxable general-purpose levy schedule. The information has been pre-populated from OPTA. If the phase-in taxable assessment is incorrect, please delete the pre-populated amount and enter the correct information.
 
 The phase-in taxable assessment amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Taxation amounts in columns 12 to 15 in this schedule.
 
 Please note that Hydro properties represented by RTQ = H, J, or K are reported in this column as Taxable Assessment.",,,
-22,08,Tax Rates:  Lower-Tier / Single-Tier,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column.
+22,08,Tax Rates:  Lower-Tier / Single-Tier,Upper-tier Municipalities,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column.
 
 Column 8 is pre-populated for the user in this taxable general-purpose levy schedule
 
 All tax rates that have been applied in the municipality for Lower-tier or Single-tier purposes should appear in this column.
 
 The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate.",,,
-22,09,Tax Rates: Upper-Tier,"All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column.
+22,09,Tax Rates: Upper-Tier,(Decimal) 0.00123456 = (Percentage) 0.123456 %,"All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column.
 
 Column 9 is pre-populated for the user in this taxable general-purpose levy schedule
 
@@ -192,7 +217,7 @@ The tax rates should be entered as a Percentage to 6 decimal places into the app
 (Decimal) **0.00123456** = (Percentage) **0.123456 %**
 
 **Note:** Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only.",,,
-22,10,Tax Rates:  Education,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column.  Upper-Tier (UT) municipalities should NOT enter tax rates in this column.
+22,10,Tax Rates:  Education,(Decimal) 0.00123456 = (Percentage) 0.123456 %,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column.  Upper-Tier (UT) municipalities should NOT enter tax rates in this column.
 
 Column 10 is pre-populated for the user in this taxable general-purpose levy schedule
 
@@ -203,28 +228,28 @@ The tax rates should be entered as a Percentage to 6 decimal places into the app
 (Decimal) **0.00123456** = (Percentage) **0.123456 %**
 
 **Note:** Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only.",,,
-22,11,Tax Rates: Total,"This column displays the total municipal and education tax rates.
+22,11,Tax Rates: Total,(Decimal) 0.00123456 = (Percentage) 0.123456 %,"This column displays the total municipal and education tax rates.
 
 The total tax rate in each line is automatically calculated from the sum of columns 8, 9, and 10.",,,
-22,12,Municipal Taxes:  Lower-Tier / Single-Tier,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column.
+22,12,Municipal Taxes:  Lower-Tier / Single-Tier,Taxes Levied = Assessment x Tax Rate,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column.
 
 This column is automatically calculated by multiplying the Assessment in column 7 by the LT / ST Tax Rate in column 8.
 
 In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-22,13,Municipal Taxes:  Upper-Tier,"All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column.
+22,13,Municipal Taxes:  Upper-Tier,Taxes Levied = Assessment x Tax Rate,"All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column.
 
 This column is automatically calculated by multiplying the Assessment in column 7 by the UT Tax Rate in column 9.
 
 In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-22,14,Education Taxes,"All Lower-tier (LT) or Single-tier (ST) municipalities should have values in this column.
+22,14,Education Taxes,Taxes Levied = Assessment x Tax Rate,"All Lower-tier (LT) or Single-tier (ST) municipalities should have values in this column.
 
 This column is automatically calculated by multiplying the Assessment in column 7 by the Education Tax Rate in column 10.
 
 In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-22,15,Total Taxes,"This column displays the total municipal and education taxes.
+22,15,Total Taxes,Taxes Levied = Assessment x Tax Rate,"This column displays the total municipal and education taxes.
 
 This column is automatically calculated by adding the Taxes in columns 12 to 14.",,,
-24,01,RTC / RTQ,"This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property.
+24,01,RTC / RTQ,Property Class Description (Columns 1 to 4),"This refers to the 2-digit code of the property class, and tax rate applicable to the assessment on a property. The first digit represents the Realty Tax Class (RTC) and refers to the property class. The second digit represents the Realty Tax Qualifier (RTQ) and refers to the tax rate that is applied to the property.
 
 The RTQ describes which of the following ways the Tax Rate is applied:
 
@@ -239,17 +264,17 @@ The RTQ describes which of the following ways the Tax Rate is applied:
    - **iii. Farmland Awaiting Development**
 
 **3. Education tax rate only**",,,
-24,02,Tax Band,"Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class.
+24,02,Tax Band,4. General tax rate only,"Municipalities have been provided with the option of applying graduated tax rates, often referred to as Tax Banding, in the commercial and industrial property classes. This means that municipalities can apply different tax rates to tax bands, or different ranges of assessment within a property class.
 
 Please refer to Section 3 of Schedule 20 in these instructions, for further information on Tax Bands.
 
 Municipalities must enter 0, L, M, or H in this column as explained in the instructions below:
 
 For municipalities who have NOT adopted tax banding in a property class, a zero, ‘0', should be reported on each line in this column.  An entry of ‘0' represents an ‘Unbanded’ tax rate.",,,
-24,03,Property Class,"The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
-24,04,Tax Rate Description,"This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
-24,05,Tax Ratio,"The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RF).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CF) is 4%, twice that of the residential tax rate, then the Commercial tax ratio is 2.0000:",,,
-24,06,Percent of Full Rate,"This column captures information relating to discounted tax rates, and tax banding of the tax rates.
+24,03,Property Class,3 Tax Bands:,"The name of the property class in this column corresponds to the Realty Tax Class (RTC) code, which is the first letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
+24,04,Tax Rate Description,3 Tax Bands:,"This column describes the tax rate that is applied to a property class and corresponds to the Realty Tax Qualifier (RTQ) code, which is the second letter of the RTC / RTQ Code in column 1.  (See FIR2025 Tables)",,,
+24,05,Tax Ratio,Example:,"The Tax Ratio defines the relationship between the Tax Rate of each property class in relation to the Residential property class (RF).  For example, if the Residential tax rate is 2% and the Commercial tax rate (CF) is 4%, twice that of the residential tax rate, then the Commercial tax ratio is 2.0000:",,,
+24,06,Percent of Full Rate,Commercial Tax Ratio = CF Tax Rate ÷ RF Tax Rate,"This column captures information relating to discounted tax rates, and tax banding of the tax rates.
 
 These can be summarized into the following 3 cases:
 
@@ -264,45 +289,45 @@ Notice that the first 2 cases relate to the RTQ of a property, while the 3rd cas
 For municipalities who have opted for tax banding of tax rates, it may be possible to have case 1 and 3 occurring at the same time (i.e. RTQ = V, W, Y, Z and Tax Band = L, M, H).
 
 Remember, every tax rate is determined by the following relationship with the Residential tax rate:",,,
-24,07,PIL CVA Assessment,"The total current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
+24,07,PIL CVA Assessment,Percent of Full Rate = CV Low Rate ÷ CF Un-Banded Rate,"The total current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
 
 The CVA amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Total PIL Levied amounts in columns 12 to 15 in this schedule. Column 7 is pre-populated for the user in this schedule.
 
 Please note that Hydro properties represented by RTQ = H, J, or K are reported on Schedule 22, Municipal and School Board Taxation.",,,
-24,16,PIL Phased-In Assessment,"The total phased-in current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
+24,16,PIL Phased-In Assessment,Upper-tier Municipalities,"The total phased-in current value assessment (CVA) associated with each property class should be entered in this column.  Each Payment-In-Lieu RTC / RTQ Code and Tax Band combination that is applicable in a municipality should have a record shown in this schedule.
 
 The CVA amounts reported in this column will be applied to the Tax Rates reported in columns 8 to 11 to arrive at the Total PIL Levied amounts in columns 12 to 15 in this schedule.
 
 Please note that Hydro properties represented by RTQ = H, J, or K are reported on Schedule 22, Municipal and School Board Taxation.",,,
-24,08,Tax Rates:  Lower-Tier / Single-Tier,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Lower-tier or Singletier purposes should appear in this column.
+24,08,Tax Rates:  Lower-Tier / Single-Tier,Upper-tier Municipalities,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Lower-tier or Singletier purposes should appear in this column.
 
 The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate.",,,
-24,09,Tax Rates:  Upper-Tier,"All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Upper-tier purposes should appear in this column.
+24,09,Tax Rates:  Upper-Tier,Decimal 0.00123456 = Percentage 0.123456 %,"All Upper-tier (UT) and Lower-tier (LT) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Upper-tier purposes should appear in this column.
 
 The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate.",,,
-24,10,Tax Rates:  Education,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Education purposes should appear in this column.
+24,10,Tax Rates:  Education,Decimal 0.00123456 = Percentage 0.123456 %,"All Lower-tier (LT) and Single-tier (ST) municipalities should enter tax rates in this column. All Tax rates that have been applied in the municipality for Education purposes should appear in this column.
 
 The tax rates should be entered as a Percentage to 6 decimal places into the appropriate column based on the purpose of the tax rate.
 
 Decimal **0.00123456** = Percentage **0.123456 %**
 
 **NOTE:** Some RTC / RTQ combinations represent Education Rates only, or General Municipal rates only.",,,
-24,11,Tax Rates:  Total,"This column displays the total municipal and education tax rates. The total tax rate in each line is automatically calculated from the sum of columns 8, 9, and 10.",,,
-24,12,Municipal PILS:  Lower-Tier / Single-Tier,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column.
+24,11,Tax Rates:  Total,Decimal 0.00123456 = Percentage 0.123456 %,"This column displays the total municipal and education tax rates. The total tax rate in each line is automatically calculated from the sum of columns 8, 9, and 10.",,,
+24,12,Municipal PILS:  Lower-Tier / Single-Tier,PILS Levied = Assessment x Tax Rate,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column.
 
 This column is automatically calculated by multiplying the Assessment in column 7 by the LT / ST Tax Rate in column 8. In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-24,13,Municipal PILS:  Upper-Tier,"All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column.
+24,13,Municipal PILS:  Upper-Tier,PILS Levied = Assessment x Tax Rate,"All Upper-tier (UT) and Lower-tier (LT) municipalities should have values in this column.
 
 This column is automatically calculated by multiplying the Assessment in column 7 by the UT Tax Rate in column 9.
 
 In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-24,14,Education PILS,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column. This column is automatically calculated by multiplying the Assessment in column 7 by the Education Tax Rate in column 10.
+24,14,Education PILS,PILS Levied = Assessment x Tax Rate,"All Lower-tier (LT) and Single-tier (ST) municipalities should have values in this column. This column is automatically calculated by multiplying the Assessment in column 7 by the Education Tax Rate in column 10.
 
 In sections 4 to 8, the amounts must be entered, with the exception of totals which are automatically added.",,,
-24,15,Total PILS,"This column displays the total municipal and education PILS Levied.  Remember, this may not be the total amount of PILS actually received and retained by the Municipality.
+24,15,Total PILS,PILS Levied = Assessment x Tax Rate,"This column displays the total municipal and education PILS Levied.  Remember, this may not be the total amount of PILS actually received and retained by the Municipality.
 
 This column is automatically calculated by adding the PILS in columns 12 to 14.",,,
-26,01,Property Class Group,"In this column, every property class, or RTC / RTQ combination has been ‘categorized’ into Property Class Groups.  The Realty Tax Class (RTC) determines which Property Class belongs to which Group.  Amounts for each property class on Schedule 22 will be aggregated for each Group.
+26,01,Property Class Group,Municipal and School Board Taxation,"In this column, every property class, or RTC / RTQ combination has been ‘categorized’ into Property Class Groups.  The Realty Tax Class (RTC) determines which Property Class belongs to which Group.  Amounts for each property class on Schedule 22 will be aggregated for each Group.
 
 The Construction class has been reflected by the RTC codes for the Commercial and Industrial property class group.
 
@@ -326,10 +351,10 @@ The following table outlines the RTC codes that are included in each Property Cl
 Subtotals exist for Residential and Farmland property classes (Line 9110), Commercial property classes (Line 9120), and Industrial property classes (Line 9130).
 
 It should be noted that these property class groups do not include Supplementary Taxes, and Amounts Added to Tax Bills. Like Schedule 22, individual lines are made available for reporting Supplementary Taxes, and Amounts Added to Tax Bills.",,,
-26,16,Taxable Assessment (CVA),"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
+26,16,Taxable Assessment (CVA),Municipal and School Board Taxation,"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
 
 Assessment values reported in column 7 of Schedule 22 are summed by Property Class Group as discussed in column 1 of this Schedule.",,,
-26,02,Taxable Assessment (Weighted and Discounted CVA),"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
+26,02,Taxable Assessment (Weighted and Discounted CVA),Municipal and School Board Taxation,"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
 
 Assessment values reported in column 7 of Schedule 22 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6.
 
@@ -338,10 +363,10 @@ Assessment values reported in column 7 of Schedule 22 are converted to a ‘Weig
 ‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding.
 
 For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows:",,,
-26,18,Phase-In Taxable Assessment (CVA),"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
+26,18,Phase-In Taxable Assessment (CVA),Weighted and Discounted Assessment,"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
 
 Phase-in taxable assessment values reported in column 16 of Schedule 22 are summed by Property Class Group as discussed in column 1 of this Schedule.",,,
-26,17,Phase-In Taxable Assessment (Weighted and Discounted CVA),"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
+26,17,Phase-In Taxable Assessment (Weighted and Discounted CVA),Weighted and Discounted Assessment,"Amounts shown in this column are automatically calculated from information reported in Schedule 22, Municipal and School Board Taxation.
 
 Assessment values reported in column 16 of Schedule 22 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6.
 
@@ -350,23 +375,154 @@ Assessment values reported in column 16 of Schedule 22 are converted to a ‘Wei
 ‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding.
 
 For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Phase-In Taxable Assessment is calculated as follows:",,,
-26,03,Total Taxes,"The Total Taxes shown in this column are equal to the sum of Municipal Taxes, and Education taxes.  This column is automatically calculated by adding amounts in columns 4 to 6 of this Section.
+26,03,Total Taxes,Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Phase-In Taxable Assessment = Column 5 x Column 6 x Column 16,"The Total Taxes shown in this column are equal to the sum of Municipal Taxes, and Education taxes.  This column is automatically calculated by adding amounts in columns 4 to 6 of this Section.
 
 Unlike other parts of the FIR, the Total Taxes column has been placed to the left of Municipal and Education taxes for the Education taxes, column 6, to appear beside the Distribution of Education Taxes by School Board, columns 7 to 11.",,,
-26,04,Municipal Taxes:  Lower-Tier (Single-Tier),No description provided.,,,
-26,05,Municipal Taxes:  Upper-Tier,No description provided.,,,
-26,06,Education Taxes,No description provided.,,,
-26,07,Education Taxes by School Board:  English - Public,No description provided.,,,
-26,08,Education Taxes by School Board:  French - Public,No description provided.,,,
-26,09,Education Taxes by School Board:  English - Separate,No description provided.,,,
-26,10,Education Taxes by School Board:  French - Separate,No description provided.,,,
-26,11,Education Taxes by School Board:  Other,No description provided.,,,
-26,12,French - Public,The portion of Education PIL amounts that are passed onto the French-Public school board should be reported in this column.,,,
-26,13,English - Separate,The portion of Education PIL amounts that are passed onto the English-Separate school board should be reported in this column.,,,
-26,14,French - Separate,The portion of Education PIL amounts that are passed onto the French-Separate school board should be reported in this column.,,,
-26,15,Other,"The portion of Education PIL amounts that are passed onto any other school boards other than the English-Public, French-Public, English-Separate or French-Separate school boards should be reported in this column.",,,
-28,01,Lower-tier Municipalities,This column displays the name of each of the lower-tier municipalities within the uppertier municipality.,,,
-28,02,MAH Code,"This column displays the Municipal Affairs and Housing Code (MAH Code) which is associated with the municipality.  The MAH Code is a five-digit code which is unique to each municipality in the province.
+26,04,Municipal Taxes:  Lower-Tier (Single-Tier),Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Phase-In Taxable Assessment = Column 5 x Column 6 x Column 16,No description provided.,,,
+26,05,Municipal Taxes:  Upper-Tier,Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Phase-In Taxable Assessment = Column 5 x Column 6 x Column 16,No description provided.,,,
+26,06,Education Taxes,Weighted and Discounted Assessment = Tax Ratio X Percent of Full Rate X Phase-In Taxable Assessment = Column 5 x Column 6 x Column 16,No description provided.,,,
+26,07,Education Taxes by School Board:  English - Public,Distribution of Education Taxes in Column 6 by School Board,No description provided.,,,
+26,08,Education Taxes by School Board:  French - Public,Distribution of Education Taxes in Column 6 by School Board,No description provided.,,,
+26,09,Education Taxes by School Board:  English - Separate,Distribution of Education Taxes in Column 6 by School Board,No description provided.,,,
+26,10,Education Taxes by School Board:  French - Separate,Distribution of Education Taxes in Column 6 by School Board,No description provided.,,,
+26,11,Education Taxes by School Board:  Other,Distribution of Education Taxes in Column 6 by School Board,No description provided.,,,
+26,01,Property Class Group,Payments-in-Lieu of Taxation,"In this column, every property class, or RTC / RTQ combination has been ‘categorized’ into Property Class Groups.  The Realty Tax Class (RTC) determines which Property Class Group belongs to which Group.  Amounts for each property class on Schedule 24 will be aggregated for each Group.
+
+The New Construction class has been reflected by the new RTC codes for the Commercial and Industrial property class group.
+
+The following table outlines the RTC codes that are included in each Property Class Group shown in column 1:
+
+|**Property Class Group**|**RTC Included**|
+|---|---|
+|Residential|R|
+|Multi-Residential|M, N|
+|Commercial|C, A,**X**|
+|Parking Lot|G|
+|Office Building|D,**Y**|
+|Shopping Centre|S,**Z**|
+|Industrial|I,**J**|
+|Large Industrial|L,**K**|
+|Pipeline|P|
+|Other Property Classes|O|
+
+Subtotals exist for Residential property classes (Line 9210), Commercial property classes (Line 9220), and Industrial property classes (Line 9230).
+
+It should be noted that these property class groups do not include Supplementary PILS, and Amounts Added to PILS.  Like schedule 24, individual lines are made available for reporting Supplementary PILS, Amounts Added to PILS and Other PIL Amounts.",,,
+26,16,PIL Assessment (CVA),Payments-in-Lieu of Taxation,"Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation.
+
+Assessment values reported in column 7 of Schedule 24 are summed by Property Class Group as discussed in column 1 of this schedule.",,,
+26,02,PIL Assessment (Weighted and Discounted CVA),Payments-in-Lieu of Taxation,"Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation.
+
+Assessment values reported in column 7 of Schedule 24 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6.
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class.
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding.
+
+For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows:",,,
+26,18,Phase-In PIL Assessment (CVA),= Column 5 x Column 6 x Column 7,"Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation.
+
+Assessment values reported in column 16 of Schedule 24 are summed by Property Class Group as discussed in column 1 of this schedule.",,,
+26,17,PIL Phase-In Assessment (Weighted and Discounted CVA),= Column 5 x Column 6 x Column 7,"Amounts shown in this column are automatically calculated from information reported in Schedule 24, Payments-In-Lieu of Taxation.
+
+Assessment values reported in column 16 of Schedule 24 are converted to a ‘Weighted’ and ‘Discounted’ Assessment value by multiplying by the Tax Ratio in column 5, and the Percentage of Full Rate in column 6.
+
+‘Weighted’ Assessment refers to Assessment values that have been multiplied by the Tax Ratio applicable to the property class.
+
+‘Discounted’ Assessment refers to Assessment values that have been multiplied by the Percent of Full discount applicable to the property class.  Assessment values are discounted for unoccupied properties, Farmland Awaiting Development, and Tax Banding.
+
+For each property class, or RTC / RTQ and Tax Band combination, the Weighted and Discounted Assessment is calculated as follows:",,,
+26,03,Total PILS Levied,= Column 5 x Column 6 x Column 16,"The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS.  This column is automatically calculated by adding amounts in columns 4 to 6 of this Section.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  Thus, the Final PIL Entitlement is shown in Section 3.",,,
+26,04,Municipal PILS:  Lower-Tier (Single-Tier),= Column 5 x Column 6 x Column 16,"Only Lower-tier or Single-tier municipalities should have values in this column.
+
+This column shows automatically calculated Municipal PILS for Lower-tier (or Singletier) purposes from information reported in Schedule 24, Payments-In-Lieu of Taxation. Amounts are summed by property class groups as discussed in column 1 of this schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  Thus, the Final PIL Entitlement is shown in Section 3.",,,
+26,05,Municipal PILS:  Upper-Tier,= Column 5 x Column 6 x Column 16,"Only Upper-tier or Lower-tier municipalities should have values in this column.  Uppertier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column.
+
+This column shows automatically calculated Municipal PILS for Upper-tier purposes from information reported in Schedule 24, Payments-In-Lieu of Taxation.  Amounts are summed by property class groups as discussed in column 1 of this schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  Thus, the Final PIL Entitlement is shown in Section 3.",,,
+26,06,Education PILS,= Column 5 x Column 6 x Column 16,"Only Lower-tier or Single-tier municipalities should have values in this column.
+
+This column shows automatically calculated Education PILS from information reported in Schedule 24, Payments-In-Lieu of Taxation.  Amounts are summed by property class groups as discussed in column 1 of this schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  Thus, the Final PIL Entitlement is shown in Section 3.",,,
+26,01,Source of PILS,PIL Entitlements After Adjustments = PILS Levied + Adjustments to PILS Levied Column 7 = Column 2 + Column 6,"This column displays the Payment-In-Lieu of Taxation amounts by Source of the PIL. The following table outlines the Sources of Payment-In-Lieu amounts available for reporting:
+
+|**Line**|**Source of PIL**|
+|---|---|
+|5010|Canada|
+|5020|Canada Enterprises|
+|5210|Ontario:  Municipal Tax Assistance Act - Previously Exempt Properties|
+|5220|Ontario:  Municipal Tax Assistance Act - Other PILS|
+|5230|Ontario:  Institutional Payments - Heads and Beds|
+|5232|Ontario:  Railway Rights-Of-Way|
+|5234|Ontario:  Utility Corridors/Transmission|
+|5236|Ontario:  Hydro-Electric Power Dams|
+|5240|Ontario:  Other|
+|5410|Ontario Enterprises:  Ontario Housing Corporation|
+|5430|Ontario Enterprises:  Liquor Control Board of Ontario|
+|5432|Ontario Enterprises:  Railway Rights-Of-Way|
+|5434|Ontario Enterprises:  Utility Corridor/Transmission|
+|5437|Ontario Enterprises:  Ontario Lottery and Gaming Corporation|
+|5460|Ontario Enterprises:  Other|
+|5610|Municipal Enterprises|
+|5910|Other Municipalities, Other Enterprises|
+|5950|Amounts Added to PIL|
+|9599|TOTAL|
+
+Line 9599 automatically calculates the Total of lines 5010 to 5950 in this Section. Notice that the Totals on Line 9599 from Columns 2 to 5 should match the Totals shown on Line 9299 of Section 2, Columns 3 to 6.",,,
+26,03,PILS Levied:  Lower-Tier (Single-Tier),PILS Levied,"Only Lower-tier or Single-tier municipalities should have values in this column.
+
+Municipalities must enter PILS Levied for Lower-tier (or Single-tier) purposes in this column.  The Total in line 9599 must equal the Total Lower-tier (or Single-tier) PILS Levied in column 4, line 9299 of Section 2 in this Schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3.",,,
+26,04,PILS Levied:  Upper-Tier,PILS Levied,"Only Upper-tier or Lower-tier municipalities should have values in this column.
+
+Upper-tier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column.
+
+Municipalities must enter PILS Levied for Upper-tier purposes in this column.
+
+The Total in line 9599 must equal the Total Upper-tier PILS Levied in column 5, line 9299 of Section 2 in this Schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.
+
+Also, the portion “levied” for Education may not be the amount passed onto the School Boards. Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3.",,,
+26,05,PILS Levied:  Education PILS,PILS Levied,"Only Lower-tier or Single-tier municipalities should have values in this column. Municipalities must enter PILS Levied for Education purposes in this column. The Total in line 9599 must equal the Total Education PILS Levied in column 6, line 9299 of Section 2 in this Schedule.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3.",,,
+26,02,PILS Levied:  TOTAL,PILS Levied,"The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS.  This column is automatically calculated by adding amounts in columns 3 to 5 of this section.
+
+Remember, the PIL Levied amount is not necessarily the amount received by the municipality.  Also, the portion “levied” for Education may not be the amount passed onto the School Boards.  Section 3 captures adjustments for cases when the municipality does not receive the full amount of the PIL, and cases where the Municipality retains the Education portion.  The Final PIL Entitlement is shown in columns 7 to 10 of Section 3.",,,
+26,06,Adjustments to PILS Levied,Adjustments,"In this column, municipalities will be able to report any adjustments to the PILS Levied.
+
+In some cases, the PIL amount received and distributed is not equal to the PIL amount levied. This column allows municipalities to account for the difference between the PILS
+
+that are levied in columns 2 to 5, with the PILS that are actually received in columns 7 to 10.",,,
+26,07,PIL Entitlement after Adjustments:  Total,2. Municipality Retains Education Portion of PIL,"The Total PILS Levied shown in this column is equal to the sum of Municipal PILS, and Education PILS, net of Adjustments to PILS Levied reported in Column 6.
+
+This column is automatically calculated by adding amounts in columns 2 and 6.",,,
+26,08,PIL Entitlement after Adjustments:  Lower-Tier (SingleTier),2. Municipality Retains Education Portion of PIL,"Only Lower-tier or Single-tier municipalities should have values in this column.
+
+Municipalities must enter PIL amounts retained for Lower-tier (or Single-tier) purposes in this column.  This amount should include any education PIL amounts retained by the lower-tier or single-tier municipality.
+
+The Total in line 9599 will be automatically carried forward into line 0499, Payments-InLieu of Taxation, of Schedule 10, Revenue Fund Receipts, for all Lower-tier, or Singletier municipalities.
+
+(For further details, please refer to the Carry Forward Operations table in the FIR2025 Tables file).",,,
+26,09,PIL Entitlement after Adjustments:  Upper-Tier,2. Municipality Retains Education Portion of PIL,"Only Upper-tier or Lower-tier municipalities should have values in this column. Uppertier municipalities will have an aggregated amount from all Lower-tier municipalities shown in this column.
+
+Municipalities must enter PIL amounts retained for Upper-tier purposes in this column. This amount should include any education PIL amounts shared with the upper-tier municipality.",,,
+26,10,PIL Entitlement after Adjustments:  Education PILS,2. Municipality Retains Education Portion of PIL,Only Lower-tier or Single-tier municipalities should have values in this column. Municipalities must enter PIL amounts received and distributed for Education purposes in this column.,,,
+26,11,English - Public,Distribution of Education PILS by School Board (Columns 11 to 15),The portion of Education PIL amounts that are passed onto the English-Public school board should be reported in this column.,,,
+26,12,French - Public,Distribution of Education PILS by School Board (Columns 11 to 15),The portion of Education PIL amounts that are passed onto the French-Public school board should be reported in this column.,,,
+26,13,English - Separate,Distribution of Education PILS by School Board (Columns 11 to 15),The portion of Education PIL amounts that are passed onto the English-Separate school board should be reported in this column.,,,
+26,14,French - Separate,Distribution of Education PILS by School Board (Columns 11 to 15),The portion of Education PIL amounts that are passed onto the French-Separate school board should be reported in this column.,,,
+26,15,Other,Distribution of Education PILS by School Board (Columns 11 to 15),"The portion of Education PIL amounts that are passed onto any other school boards other than the English-Public, French-Public, English-Separate or French-Separate school boards should be reported in this column.",,,
+28,01,Lower-tier Municipalities,Lower-Tier Municipality Description,This column displays the name of each of the lower-tier municipalities within the uppertier municipality.,,,
+28,02,MAH Code,Lower-Tier Municipality Description,"This column displays the Municipal Affairs and Housing Code (MAH Code) which is associated with the municipality.  The MAH Code is a five-digit code which is unique to each municipality in the province.
 
 The five-digit MAH Code is divided into three parts.
 
@@ -384,7 +540,7 @@ Third digit: Code which identifies the municipality’s status according to the 
 |6|Township / Municipality|
 
 Last two digits: Represent a sequence code to ensure code uniqueness amongst municipalities of the same status in the same geographic region, county, or district.",,,
-28,03,Municipal Assessment Code,"This column displays the Municipal Assessment Code (Asmt Code) which is associated with the municipality.
+28,03,Municipal Assessment Code,Example:,"This column displays the Municipal Assessment Code (Asmt Code) which is associated with the municipality.
 
 The Municipal Assessment Code is a four-digit code which is unique to each municipality in the province.
 
@@ -399,7 +555,7 @@ Last two digits:  Identifies each Municipality
 **Example:** 1946 Town of Aurora (in York Region)
 
 **19** Represents York R **46** Represents Aurora T",,,
-28,04,General Purpose Levy,"For each lower-tier municipality, the General-Purpose Levy for upper-tier purposes should be reported in this column.
+28,04,General Purpose Levy,Taxation and Payments-in-Lieu,"For each lower-tier municipality, the General-Purpose Levy for upper-tier purposes should be reported in this column.
 
 This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9299 (Total General-Purpose Levy), column 13 (Municipal Taxes:  Upper-tier).
 
@@ -410,55 +566,496 @@ For each lower-tier municipality, the total of all Upper-tier Special Area Levie
 This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9699 (Total Upper-tier Special Area Levies), column 13 (Municipal Taxes:  Upper-tier).
 
 This amount equals the sum of all subtotals for upper-tier special area levies that are reported (Lines 9601, 9602, 9603…).",,,
-28,06,Supplementary Taxes,"For each lower-tier municipality, the Supplementary Taxes should be reported in this column.
+28,05,Upper-tier Special Area Levies,Taxation and Payments-in-Lieu,"F
+o
+r
+
+e
+a
+c
+h
+
+l
+o
+w
+e
+r
+-
+t
+i
+e
+r
+
+m
+u
+n
+i
+c
+i
+p
+a
+l
+i
+t
+y
+,
+
+t
+h
+e
+
+t
+o
+t
+a
+l
+
+o
+f
+
+a
+l
+l
+
+U
+p
+p
+e
+r
+-
+t
+i
+e
+r
+
+S
+p
+e
+c
+i
+a
+l
+
+A
+r
+e
+a
+
+L
+e
+v
+i
+e
+s
+
+s
+h
+o
+u
+l
+d
+
+b
+e
+
+r
+e
+p
+o
+r
+t
+e
+d
+
+i
+n
+
+t
+h
+i
+s
+
+c
+o
+l
+u
+m
+n
+.
+
+T
+h
+i
+s
+
+a
+m
+o
+u
+n
+t
+
+i
+s
+
+r
+e
+p
+o
+r
+t
+e
+d
+
+b
+y
+
+e
+a
+c
+h
+
+l
+o
+w
+e
+r
+-
+t
+i
+e
+r
+
+m
+u
+n
+i
+c
+i
+p
+a
+l
+i
+t
+y
+,
+
+i
+n
+
+S
+c
+h
+e
+d
+u
+l
+e
+
+2
+2
+,
+
+M
+u
+n
+i
+c
+i
+p
+a
+l
+
+a
+n
+d
+
+S
+c
+h
+o
+o
+l
+
+B
+o
+a
+r
+d
+
+T
+a
+x
+a
+t
+i
+o
+n
+,
+
+l
+i
+n
+e
+
+9
+6
+9
+9
+
+(
+T
+o
+t
+a
+l
+
+U
+p
+p
+e
+r
+-
+t
+i
+e
+r
+
+S
+p
+e
+c
+i
+a
+l
+
+A
+r
+e
+a
+
+L
+e
+v
+i
+e
+s
+)
+,
+
+c
+o
+l
+u
+m
+n
+
+1
+3
+
+(
+M
+u
+n
+i
+c
+i
+p
+a
+l
+
+T
+a
+x
+e
+s
+:
+
+U
+p
+p
+e
+r
+-
+t
+i
+e
+r
+)
+.
+
+T
+h
+i
+s
+
+a
+m
+o
+u
+n
+t
+
+e
+q
+u
+a
+l
+s
+
+t
+h
+e
+
+s
+u
+m
+
+o
+f
+
+a
+l
+l
+
+s
+u
+b
+t
+o
+t
+a
+l
+s
+
+f
+o
+r
+
+u
+p
+p
+e
+r
+-
+t
+i
+e
+r
+
+s
+p
+e
+c
+i
+a
+l
+
+a
+r
+e
+a
+
+l
+e
+v
+i
+e
+s
+
+t
+h
+a
+t
+
+a
+r
+e
+
+r
+e
+p
+o
+r
+t
+e
+d
+
+(
+L
+i
+n
+e
+s
+
+9
+6
+0
+1
+,
+
+9
+6
+0
+2
+,
+
+9
+6
+0
+3
+…
+)
+.",,,
+28,06,Supplementary Taxes,Taxation and Payments-in-Lieu,"For each lower-tier municipality, the Supplementary Taxes should be reported in this column.
 
 This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9799 (Total of all Supplementary Taxes), column 13 (Municipal Taxes:  Upper-tier).",,,
-28,07,Amounts Added to Tax Bills,"For each lower-tier municipality, the Amounts Added to Tax Bills should be reported in this column.
+28,07,Amounts Added to Tax Bills,Taxation and Payments-in-Lieu,"For each lower-tier municipality, the Amounts Added to Tax Bills should be reported in this column.
 
 This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9890 (Subtotal:  Amounts Added to Tax Bills), column 13 (Municipal Taxes: Upper-tier).",,,
-28,13,Other Taxation Amounts,"For each lower-tier municipality, the Other Taxation Amounts should be reported in this column.
+28,13,Other Taxation Amounts,Taxation and Payments-in-Lieu,"For each lower-tier municipality, the Other Taxation Amounts should be reported in this column.
 
 This amount is reported by each lower-tier municipality, in Schedule 22, Municipal and School Board Taxation, line 9892 (Subtotal:  Other Taxation Amounts), column 13 (Municipal Taxes:  Upper-tier).",,,
-28,08,Payments-In-Lieu,"For each lower-tier municipality, the total Payments-In-Lieu of Taxation should be reported in this column.",,,
-28,09,5% Capping Limit Adjustment,"For each lower-tier municipality, the surplus or deficit of taxation for upper-tier purposes which occurs because of the 5% Capping Limit program should be reported (Refer to Instructions for Section 2 of Schedule 20 for further information).
+28,08,Payments-In-Lieu,Taxation and Payments-in-Lieu,"For each lower-tier municipality, the total Payments-In-Lieu of Taxation should be reported in this column.",,,
+28,09,5% Capping Limit Adjustment,Adjustments,"For each lower-tier municipality, the surplus or deficit of taxation for upper-tier purposes which occurs because of the 5% Capping Limit program should be reported (Refer to Instructions for Section 2 of Schedule 20 for further information).
 
 The School Tax Recovery amount should be included in the amounts shown for each lower-tier municipality.",,,
-28,10,PLUS:  UT Tax Adjustment Applied to Taxation,"For each lower-tier municipality, the Total Tax Adjustments Applied to Taxation should be reported.
+28,10,PLUS:  UT Tax Adjustment Applied to Taxation,Adjustments,"For each lower-tier municipality, the Total Tax Adjustments Applied to Taxation should be reported.
 
 This amount is reported by each lower-tier municipality in Schedule 72, Continuity of Taxes Receivable, on line 2899 (TOTAL Tax Adjustments before Adjustments) in column 8 (Upper-tier).",,,
-28,11,LESS:  UT Tax Adjustment Recovered from Allowances,Upper-tier municipalities should enter amounts in respect of allowance for doubtful accounts that pertain to each lower-tier municipality.,,,
-28,12,Total,"This automatically calculated amount is equal to the sum of the amounts in columns 4 to 10 and 13, less the amounts in column 11.
+28,11,LESS:  UT Tax Adjustment Recovered from Allowances,Adjustments,Upper-tier municipalities should enter amounts in respect of allowance for doubtful accounts that pertain to each lower-tier municipality.,,,
+28,12,Total,Adjustments,"This automatically calculated amount is equal to the sum of the amounts in columns 4 to 10 and 13, less the amounts in column 11.
 
 For each lower-tier municipality shown on this schedule, the TOTAL can be described by the following:",,,
-72,01,School Boards:  English Public,The tax adjustments recoverable from the English Public-school board should be reported in this column.,,,
-72,02,School Boards:  French Public,The tax adjustments recoverable from the French Public-school board should be reported in this column.,,,
-72,03,School Boards:  English Separate,The tax adjustments recoverable from the English   Separate school board should be reported in this column.,,,
-72,04,School Boards:  French Separate,The tax adjustments recoverable from the French   Separate school board should be reported in this column.,,,
-72,05,School Boards: Other,The tax adjustments recoverable from other school boards should be reported in this column.,,,
-72,06,Total Education,The tax adjustments recoverable from all school boards should be displayed in this column.  The Total Education amount in column 6 is equal to the sum of columns 1 through 5.,,,
-72,07,Lower Tier (Single Tier),This column records tax adjustment funded from the general accounts of the local municipality.,,,
-72,08,Upper Tier,"In a two-tier system, lower tiers use this column to record tax adjustments recoverable from the upper tier municipality.",,,
-72,09,Total Tax Adjustments,Total tax adjustments are equal to the sum of columns 6 through 8.,,,
-40,01,"Salaries, Wages, and Employee Benefits","Salaries, wages, and employee benefits include expenses incurred for the following purposes: full time, part time and temporary salaries and wages including, regular, overtime, shift premiums and other remuneration to employees.
+72,01,School Boards:  English Public,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from the English Public-school board should be reported in this column.,,,
+72,02,School Boards:  French Public,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from the French Public-school board should be reported in this column.,,,
+72,03,School Boards:  English Separate,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from the English   Separate school board should be reported in this column.,,,
+72,04,School Boards:  French Separate,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from the French   Separate school board should be reported in this column.,,,
+72,05,School Boards: Other,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from other school boards should be reported in this column.,,,
+72,06,Total Education,Tax Adjustments Applied to Taxation (Schedule 72B),The tax adjustments recoverable from all school boards should be displayed in this column.  The Total Education amount in column 6 is equal to the sum of columns 1 through 5.,,,
+72,07,Lower Tier (Single Tier),Tax Adjustments Applied to Taxation (Schedule 72B),This column records tax adjustment funded from the general accounts of the local municipality.,,,
+72,08,Upper Tier,Tax Adjustments Applied to Taxation (Schedule 72B),"In a two-tier system, lower tiers use this column to record tax adjustments recoverable from the upper tier municipality.",,,
+72,09,Total Tax Adjustments,Tax Adjustments Applied to Taxation (Schedule 72B),Total tax adjustments are equal to the sum of columns 6 through 8.,,,
+40,01,"Salaries, Wages, and Employee Benefits",0250 Corporate management 0260 Program support,"Salaries, wages, and employee benefits include expenses incurred for the following purposes: full time, part time and temporary salaries and wages including, regular, overtime, shift premiums and other remuneration to employees.
 
 Benefits include employer’s contribution payments to Canada Pension Plan (CPP), Ontario Municipal Employee Retirement System (OMERS), Employer’s Health Tax, Employment Insurance (EI), Workplace Safety and Insurance Board (WSIB) and any other insurance plans, such as supplementary health and dental.
 
 Include clothing, moving, tuition, housing and other employee benefits and allowances paid.
 
 Include funded and unfunded post employment benefits in the amount for salaries, wages, and employee benefits for each sub function.",,,
-40,02,Interest on Long-Term Debt,"This column records interest incurred on long term liabilities and for leased tangible capital assets.
+40,02,Interest on Long-Term Debt,0250 Corporate management 0260 Program support,"This column records interest incurred on long term liabilities and for leased tangible capital assets.
 
 Exclude interest payments made by unconsolidated entities.
 
 Exclude interest payments made from reserve funds.
 
 For tile drainage/shoreline assistance, only interest on long term debt is reported in Schedule 40. Corresponding revenue is reported in SLC 12 1850 04.  Principal repayments are not reported in Schedule 40 and the corresponding revenue is not reported in Schedule 12.  Note that the long-term receivable and long-term debt are reduced by the principal repayment in the year.",,,
-40,03,Materials (and all Other Expenses Not Reported in Other Columns),"This column is used to report materials purchased by a municipality for its own uses and/or disposal or resale.  Materials purchased by the municipality which are subsequently provided to a third party are also included in this column.
+40,03,Materials (and all Other Expenses Not Reported in Other Columns),0250 Corporate management 0260 Program support,"This column is used to report materials purchased by a municipality for its own uses and/or disposal or resale.  Materials purchased by the municipality which are subsequently provided to a third party are also included in this column.
 
 Please note that the purchase of hydro services and utilities including cell phone service are reported in column 3 as materials.
 
 Include all other expenses not reported in other columns as materials.  For example, include expenses for insurance, travel, reimbursement of mileage, and photocopying.",,,
-40,04,Contracted Services,"When a municipality is responsible for providing a service and contracts out service delivery; in part or in whole, to an arms length service provider, use column 4 to report payments to the service provider.
+40,04,Contracted Services,Tax Write-Offs,"When a municipality is responsible for providing a service and contracts out service delivery; in part or in whole, to an arms length service provider, use column 4 to report payments to the service provider.
 
 The arm’s length service provider may be a private contractor, another municipality, or another level of government.
 
@@ -499,7 +1096,7 @@ Examples of services that may be provided by way of a contract with an arms leng
 - Weed cutting.
 
 - MPAC Services",,,
-40,05,"Rents, Financial Expenses, &Accretion Expense","Rents and financial expenses paid to external parties are recorded in column 5. Include the rental of buildings, land, machinery, equipment, and engineering structures.
+40,05,"Rents, Financial Expenses, &Accretion Expense",Tax Write-Offs,"Rents and financial expenses paid to external parties are recorded in column 5. Include the rental of buildings, land, machinery, equipment, and engineering structures.
 
 Where a contracted service reported in column 4 (Contracted services) includes a separate and easily identifiable rental component, report the rental component in this column.
 
@@ -510,7 +1107,7 @@ Do not include interest paid on long term liabilities since interest should be r
 Do not include interdepartmental rents and financial expenses in column 5 since these are captured in column 10 (Inter functional adjustments).
 
 Report accretion expense in this column.  Accretion expense accounts for the increase in liability balances that results from the passage of time (e.g., asset retirement obligation liability). Any asset retirement liability costs that were expensed rather than capitalized should also be recorded in this column.",,,
-40,06,External transfers,"Include transfers to:
+40,06,External transfers,Tax Write-Offs,"Include transfers to:
 
 - **Charitable organizations, colleges, cultural or recreation organizations, hospitals, universities, and public health services (i.e., public health units).**
 
@@ -519,11 +1116,11 @@ Report accretion expense in this column.  Accretion expense accounts for the inc
 - **Individuals, i.e., social assistance**
 
 - **Unconsolidated local boards**",,,
-40,16,Amortization,"This column records the annual amortization expense for tangible capital assets. Amortization amounts are automatically populated from schedule 51A column 8. Amortization expense on schedule 40 column 16 may be adjusted based on the municipality’s functional costing.
+40,16,Amortization,Please report the amount of transient accommodation tax revenue (municipal accommodation tax) transferred to tourism organization(s). Please use line 1820 to record this transfer.,"This column records the annual amortization expense for tangible capital assets. Amortization amounts are automatically populated from schedule 51A column 8. Amortization expense on schedule 40 column 16 may be adjusted based on the municipality’s functional costing.
 
 Schedule 40-line 0260 column 16 - no amount should be entered for amortization under program support.",,,
-40,07,Total Expenses Before Adjustments,The subtotal is equal to the sum of columns one through six plus column 16.,,,
-40,12,Inter-Functional Adjustments,"For a complete discussion of the allocation of program support, please see section 14, Allocation of Indirect Costs, in the Introduction to the FIR instructions.
+40,07,Total Expenses Before Adjustments,Please report the amount of transient accommodation tax revenue (municipal accommodation tax) transferred to tourism organization(s). Please use line 1820 to record this transfer.,The subtotal is equal to the sum of columns one through six plus column 16.,,,
+40,12,Inter-Functional Adjustments,Please report the amount of transient accommodation tax revenue (municipal accommodation tax) transferred to tourism organization(s). Please use line 1820 to record this transfer.,"For a complete discussion of the allocation of program support, please see section 14, Allocation of Indirect Costs, in the Introduction to the FIR instructions.
 
 Column 12 is used only to record transfers between sub-functions below general government.  A separate column, column 13, is provided for the allocation of program support to other sub-functions.
 
@@ -534,82 +1131,83 @@ When the inter-functional adjustments column is used to record both inter depart
 Please note that the inter-functional adjustments column does not contain a formula for summing expenses for salaries, wages, and employee benefits; materials; and contracted services.  It is a stand-alone column separate from those expense categories.  Therefore, the content of expenses reported as inter-functional adjustments for governance in SLC 40 0240 12 and for corporate management in SLC 40 0250 12 is unknown.
 
 In addition, there is no standardized method for allocating inter-functional adjustments reported on the governance and corporate management lines to sub-functions.  Note that inter-functional adjustments reported on the program support line in SLC 40 0260 12 do form part of the total to be allocated to other sub-functions in SLC 40 0260 13.",,,
-40,13,Allocation of Program Support,"The program support line in Schedule 40, line 0260, is used to report indirect costs that can be easily allocated to other sub-functions.  In comparison, the corporate management line, line 0250, is used to record indirect costs that are not easily allocated to other sub-functions. Please see the chapter on Functional Categories for a discussion of the differences between these two lines.
+40,13,Allocation of Program Support,Total in Column 12,"The program support line in Schedule 40, line 0260, is used to report indirect costs that can be easily allocated to other sub-functions.  In comparison, the corporate management line, line 0250, is used to record indirect costs that are not easily allocated to other sub-functions. Please see the chapter on Functional Categories for a discussion of the differences between these two lines.
 
 Municipalities report the amount of program support to be allocated to other subfunctions in column 13.
 
 Please see section 14 on the Allocation of Indirect Costs in the Introduction to the FIR instructions for further details.",,,
-40,11,Total Expenses after Adjustments,Total expenses are equal to the sum of:,,,
-51A,01,Opening Net Book Value of Tangible Capital Assets,This column is automatically populated from the previous year’s closing Net Book Value of tangible capital assets.,,,
-51A,02,Opening Cost Balance,"Column 2 includes the opening balance of the cost of assets.  This column is automatically pre-populated from the previous year’s closing cost balance. However, the amounts in this column can be edited if needed (as described in the section above “Transfers between functional categories”).",,,
-51A,03,Additions and Betterments,"Column 3 includes all costs related to the purchase, construction, and development of tangible capital assets as per PS 3150 Tangible capital assets. This also includes donated/contributed tangible capital assets and betterments.",,,
-51A,14,ARO Increase in TCA Cost,"In column 14, record the asset retirement obligation costs for any tangible capital assets that are purchased, or constructed In the current year.
+40,11,Total Expenses after Adjustments,Determining the Amount of Program Support to be Allocated to Other Functions.,Total expenses are equal to the sum of:,,,
+40,07,Total Expenses before adjustments,Determining the Amount of Program Support to be Allocated to Other Functions.,**+ Column 12 - Inter functional adjustments. + Column 13 - Allocation of program support**,,,
+51A,01,Opening Net Book Value of Tangible Capital Assets,Schedule 51A: Tangible Capital Assets by Function,This column is automatically populated from the previous year’s closing Net Book Value of tangible capital assets.,,,
+51A,02,Opening Cost Balance,Cost of Tangible Capital Assets:,"Column 2 includes the opening balance of the cost of assets.  This column is automatically pre-populated from the previous year’s closing cost balance. However, the amounts in this column can be edited if needed (as described in the section above “Transfers between functional categories”).",,,
+51A,03,Additions and Betterments,Cost of Tangible Capital Assets:,"Column 3 includes all costs related to the purchase, construction, and development of tangible capital assets as per PS 3150 Tangible capital assets. This also includes donated/contributed tangible capital assets and betterments.",,,
+51A,14,ARO Increase in TCA Cost,Cost of Tangible Capital Assets:,"In column 14, record the asset retirement obligation costs for any tangible capital assets that are purchased, or constructed In the current year.
 
 Column 14 may also be used to record an increase in the carrying cost of a tangible capital asset that relates to an increase in the estimate of the asset retirement obligation liability.  A decrease in the estimate of the asset retirement obligation liability should be recorded in Column 5, Write Downs.
 
 IMPORTANT: Accretion expense is considered an operating expense rather than a capital expense.  Accretion expense is the non-cash cost due to the passage of time, resulting in the gradual increase of the present value of the asset retirement obligation liability.  Accretion expense should be recorded in Schedule 40, Statement of Operations: Expenses, in Column 5 Rents, Financial Expenses, & Accretion Expense, and not in this schedule.",,,
-51A,04,Disposals,"In Column 4, record the cost for assets that were sold, traded-in, destroyed, lost, or abandoned. These amounts should be recorded as positive values.",,,
-51A,05,Write Downs,"In Column 5, record the permanent decline in the value of tangible capital assets. These amounts should be recorded as positive values.
+51A,04,Disposals,Cost of Tangible Capital Assets:,"In Column 4, record the cost for assets that were sold, traded-in, destroyed, lost, or abandoned. These amounts should be recorded as positive values.",,,
+51A,05,Write Downs,Cost of Tangible Capital Assets:,"In Column 5, record the permanent decline in the value of tangible capital assets. These amounts should be recorded as positive values.
 
 This column should be used to record any decreases in the carrying value of a tangible capital assets that relate to a decrease in the estimate of the asset retirement obligation liability.",,,
-51A,06,Closing Cost Balance,"The year-end closing cost balance is automatically calculated as follows:
+51A,06,Closing Cost Balance,Cost of Tangible Capital Assets:,"The year-end closing cost balance is automatically calculated as follows:
 
 **Closing Cost Balance = Opening Cost Balance (Column 2) Plus:     Additions and Betterments (Column 3) Plus:     ARO Increase in TCA Cost (Column 14) Minus:   Disposals (Column 4) Minus:   Write Downs (Column 5)**",,,
-51A,07,Opening Amortization Balance,"Column 7 includes the opening accumulated amortization balance. This column is automatically pre-populated from the previous year’s closing accumulated amortization balance; however, these amounts can be edited if needed. Accumulated amortization is the cumulative amortization of assets up to a certain point in time.
+51A,07,Opening Amortization Balance,Amortization,"Column 7 includes the opening accumulated amortization balance. This column is automatically pre-populated from the previous year’s closing accumulated amortization balance; however, these amounts can be edited if needed. Accumulated amortization is the cumulative amortization of assets up to a certain point in time.
 
 If an asset retirement obligation relates to an existing tangible capital asset that is included in the opening cost balance for 2023 year, please see (c) above regarding adjustments to opening tangible capital asset cost and accumulated amortization balances.",,,
-51A,08,Annual amortization,"In Column 8, record the cost reported as an amortization expense in schedule 40 on column 16.",,,
-51A,09,Amortization Disposal,"In Column 9, report the sum of the accumulated amortization applicable to disposals or write downs. These amounts should be recorded as positive values.",,,
-51A,10,Closing Amortization Balance,"The year-end closing accumulated amortization balance is automatically calculated as follows:
+51A,08,Annual amortization,Amortization,"In Column 8, record the cost reported as an amortization expense in schedule 40 on column 16.",,,
+51A,09,Amortization Disposal,Amortization,"In Column 9, report the sum of the accumulated amortization applicable to disposals or write downs. These amounts should be recorded as positive values.",,,
+51A,10,Closing Amortization Balance,Amortization,"The year-end closing accumulated amortization balance is automatically calculated as follows:
 
 **Closing Amortization Balance = Opening Amortization Balance (Column 7)**
 
 **Plus:       Annual Amortization**
 
 **Minus:    Amortization Disposal**",,,
-51A,11,Closing Net Book Value,"The year-end closing net book value is automatically calculated as follows:
+51A,11,Closing Net Book Value,Amortization,"The year-end closing net book value is automatically calculated as follows:
 
 **Closing Cost Balance - Closing Amortization Balance = Closing Net Book Value Column 6 – Column 10 = Column 11**",,,
-51B,01,Opening Balance,"This column is automatically populated by the ending construction-in-progress balance from the previous year. However, amounts in this column can be adjusted if needed.",,,
-51B,02,Expenditures in Current Year,"In Column 2, enter the costs incurred in the current year for capital work not yet completed.",,,
-51B,03,Less: Assets Capitalized,"In Column 3, enter the tangible capital assets capitalized in the current year. These amounts should be recorded as positive values.",,,
-51B,04,Closing Balance,"This column is automatically calculated as follows:
+51B,01,Opening Balance,Line 2405 - Construction-In-Progress,"This column is automatically populated by the ending construction-in-progress balance from the previous year. However, amounts in this column can be adjusted if needed.",,,
+51B,02,Expenditures in Current Year,Line 2405 - Construction-In-Progress,"In Column 2, enter the costs incurred in the current year for capital work not yet completed.",,,
+51B,03,Less: Assets Capitalized,Line 2405 - Construction-In-Progress,"In Column 3, enter the tangible capital assets capitalized in the current year. These amounts should be recorded as positive values.",,,
+51B,04,Closing Balance,Line 2405 - Construction-In-Progress,"This column is automatically calculated as follows:
 
 **Closing Construction-in-Progress Balance = Opening Balance (Column 1) Plus:   Expenditures In Year (Column 2) Minus:   Assets Capitalized**",,,
-61A,24,"Total Opening Development Charges Receivables Balance, January 1","This column is automatically populated from the previous year’s ending Development Charges Receivables balance at year end.
+61A,24,"Total Opening Development Charges Receivables Balance, January 1",Development Charges Receivable:,"This column is automatically populated from the previous year’s ending Development Charges Receivables balance at year end.
 
 However, the amounts in this column can be changed, if needed, to adjust amounts across the various prescribed services.
 
 For column 1, the balance at the beginning of the year on Line 0299 should equal the amount reported in the previous year as the balance at the end of the year.",,,
-61A,17,New Development Charge Installments Receivable,Deferred (uncollected) development charges are funds that are recorded upon issuance of a building permit in the current year for specific types of developments as provided for under section 26.1 of the Development Charges Act (DCA) and are payable in equal annual instalments as per section 26.1 of the DCA. These amounts remain uncollected at year end.,,,
-61A,18,New Development Charge Interest Receivable,Enter the accrued interest charges in the current year for the uncollected development charges (deferred under section 26.1 of the DCA). These amounts have not yet been collected.,,,
-61A,19,Less: Prior Year Development Charges Installment Receivables and Interest Collected During the Year.,"Enter the portion of last year’s uncollected development charges, and any associated interest, which has been collected during the year. These amounts should be recorded as a positive value and will be subtracted to calculate Column 20.",,,
-61A,20,Net Development Charges Receivable,This is the total amount of uncollected development charges and accrued interest at year end as per section 26.1 in the DCA.,,,
-61A,25,Total Closing Development Charges Receivables Balance at December 31.,No description provided.,,,
-61B,26,Total opening Development Charges: Cash Collected Balance on January 1.,"This column is automatically populated from the previous year’s ending Development Charges at year end.
+61A,17,New Development Charge Installments Receivable,Development Charges Receivable:,Deferred (uncollected) development charges are funds that are recorded upon issuance of a building permit in the current year for specific types of developments as provided for under section 26.1 of the Development Charges Act (DCA) and are payable in equal annual instalments as per section 26.1 of the DCA. These amounts remain uncollected at year end.,,,
+61A,18,New Development Charge Interest Receivable,Development Charges Receivable:,Enter the accrued interest charges in the current year for the uncollected development charges (deferred under section 26.1 of the DCA). These amounts have not yet been collected.,,,
+61A,19,Less: Prior Year Development Charges Installment Receivables and Interest Collected During the Year.,Development Charges Receivable:,"Enter the portion of last year’s uncollected development charges, and any associated interest, which has been collected during the year. These amounts should be recorded as a positive value and will be subtracted to calculate Column 20.",,,
+61A,20,Net Development Charges Receivable,Development Charges Receivable:,This is the total amount of uncollected development charges and accrued interest at year end as per section 26.1 in the DCA.,,,
+61A,25,Total Closing Development Charges Receivables Balance at December 31.,(SLC 61 0299 17 + SLC 61 0299 18 – SLC 61 0299 19),No description provided.,,,
+61B,26,Total opening Development Charges: Cash Collected Balance on January 1.,Development Charges Cash Collected,"This column is automatically populated from the previous year’s ending Development Charges at year end.
 
 However, the amounts in this column can be changed, if needed, to adjust amounts across the various prescribed services.
 
 For column 1, the balance at the beginning of the year on Line 0299 should equal the amount reported in the previous year as the balance at the end of the year.",,,
-61B,02,Development Charges Cash Collected,Enter development charges cash collected in the current year for each prescribed service in development Charges reserve funds in Column 2. These amounts have been collected.,,,
-61B,03,Interest and Investment Income Earned,"Enter income from securities and other investments earned in each obligatory reserve fund during the year in Column 3. Please note that development charges reserve funds cannot be consolidated with other municipal reserve funds for investment purposes.
+61B,02,Development Charges Cash Collected,Development Charges Cash Collected,Enter development charges cash collected in the current year for each prescribed service in development Charges reserve funds in Column 2. These amounts have been collected.,,,
+61B,03,Interest and Investment Income Earned,Development Charges Cash Collected,"Enter income from securities and other investments earned in each obligatory reserve fund during the year in Column 3. Please note that development charges reserve funds cannot be consolidated with other municipal reserve funds for investment purposes.
 
 If reserve funds for various service categories were grouped, please enter proportional interest and investment income for each service.
 
 This section may also include unrealized gains (losses) from fair value measurement of restricted assets.  Please refer to PS 3450 Financial Instruments on how to account for unrealized gains (losses) for restricted assets.",,,
-61B,21,Repayment of Monies Borrowed from Development Charges Reserve Fund and Associated Interest,Enter the amount of borrowed development charges funds and associated interest that were paid back to each service in DC obligatory reserve funds in the current year in column 21.,,,
-61B,06,Net Development Charges Cash Collected,This line includes development charges collected in the year.,,,
-61B,27,"Total Development Charges Before Outflows: Cash Collected, Balance, December 31.",This line includes the opening balance of DC cash collected and the net development charges cash collected.,,,
-61B,07,Development Charges Outflows to Consolidated Statement of Operations,"In Column 7, enter the money in the reserve fund spent on costs that were included in the Consolidated Statement of Operations.
+61B,21,Repayment of Monies Borrowed from Development Charges Reserve Fund and Associated Interest,Development Charges Cash Collected,Enter the amount of borrowed development charges funds and associated interest that were paid back to each service in DC obligatory reserve funds in the current year in column 21.,,,
+61B,06,Net Development Charges Cash Collected,Development Charges Cash Collected,This line includes development charges collected in the year.,,,
+61B,27,"Total Development Charges Before Outflows: Cash Collected, Balance, December 31.",Development Charges Cash Collected,This line includes the opening balance of DC cash collected and the net development charges cash collected.,,,
+61B,07,Development Charges Outflows to Consolidated Statement of Operations,Development Charges Earned / Utilized,"In Column 7, enter the money in the reserve fund spent on costs that were included in the Consolidated Statement of Operations.
 
 This column is automatically carried forward to Schedule 60 Line 1026 Column 1.",,,
-61B,08,Development Charges Outflows to Tangible Capital Asset Acquisition,"In Column 8, enter money in the reserve fund spent to acquire, construct, or develop tangible capital assets.
+61B,08,Development Charges Outflows to Tangible Capital Asset Acquisition,Development Charges Earned / Utilized,"In Column 8, enter money in the reserve fund spent to acquire, construct, or develop tangible capital assets.
 
 This column is automatically carried forward to Schedule 60 Line 1025 Column 1.",,,
-61B,09,Other Disbursements,Enter Development Charges Disbursements in Column 9 that cannot be captured under other disbursements categories. Refunds of development charges can be recorded in this column.,,,
-61B,23,Monies Borrowed from Development Charges Reserve Funds,Enter the amount of borrowed funds from development charges reserve funds for other municipal purposes.,,,
-61B,11,Total Development Charges Outflows,"Total is automatically calculated. It is the sum of Development Charges Outflows in Columns 7, 8, 9 and 23.",,,
-61B,28,Total Ending Development Charges (DC Cash Collected) at Balance December 31,"This line is automatically calculated as the Balance Beginning of Year Plus Total Development Charges Inflows: Cash Collected less Total Development Charges Outflows.
+61B,09,Other Disbursements,Development Charges Earned / Utilized,Enter Development Charges Disbursements in Column 9 that cannot be captured under other disbursements categories. Refunds of development charges can be recorded in this column.,,,
+61B,23,Monies Borrowed from Development Charges Reserve Funds,Development Charges Earned / Utilized,Enter the amount of borrowed funds from development charges reserve funds for other municipal purposes.,,,
+61B,11,Total Development Charges Outflows,Development Charges Earned / Utilized,"Total is automatically calculated. It is the sum of Development Charges Outflows in Columns 7, 8, 9 and 23.",,,
+61B,28,Total Ending Development Charges (DC Cash Collected) at Balance December 31,Development Charges Earned / Utilized,"This line is automatically calculated as the Balance Beginning of Year Plus Total Development Charges Inflows: Cash Collected less Total Development Charges Outflows.
 
 For each prescribed service in each row:
 
@@ -620,44 +1218,60 @@ Balance, beginning of year (Column 26)
 **PLUS:** Total Development Charges Inflows: – Column 27 **LESS:** Total Development Charges Outflows – Column 11
 
 **Please note that the sum of 61B Column 28 ending balance (SLC 61B 0299 28) and 61A Column 25 ending balance (SLC 61A 0299 25) should agree to the yearend development charges reserve funds balance recorded in the financial statements.**",,,
-74,04,Contingent Liabilities,"Enter Y for “Yes” if you have a contingent liability.
+74,04,Contingent Liabilities,Section 8 – Contingent Liabilities,"Enter Y for “Yes” if you have a contingent liability.
 
 Enter N for “No” if you do not have a contingent liability.",,,
-74,01,Is Value in Column 2 Estimated?  (Y or N),"Enter Y for ""Yes"" if the value of the contingent liability reported in column 2 is estimated. Enter N for ""No"" if the value is not an estimate.",,,
-74,02,Value ($),Enter the value of each type of contingent liability listed.,,,
-74,03,Number of Years Payable Over,This column applies only to line 2640 (Outstanding loans guaranteed). Report the number of years as the time from the next reporting year to the year the last loan payment is due.,,,
-74,05,Increase in Liabilities Due to Accretion Expense,"Please use this column to record accretion expense related to ARO liabilities in the current year.
+74,01,Is Value in Column 2 Estimated?  (Y or N),Section 8 – Contingent Liabilities,"Enter Y for ""Yes"" if the value of the contingent liability reported in column 2 is estimated. Enter N for ""No"" if the value is not an estimate.",,,
+74,02,Value ($),Section 8 – Contingent Liabilities,Enter the value of each type of contingent liability listed.,,,
+74,03,Number of Years Payable Over,Section 8 – Contingent Liabilities,This column applies only to line 2640 (Outstanding loans guaranteed). Report the number of years as the time from the next reporting year to the year the last loan payment is due.,,,
+74,01,Liability for ARO at Beginning of Year,Asset Retirement Obligation Liability,Column 1 is automatically populated from the prior year’s closing balance.,,,
+74,03,Liability Incurred During the Year,Analysis By Functional Classification:,"Please use this column to record any liabilities that relate to assets that were newly purchased, constructed or developed in the current year.",,,
+74,04,Liability Settled During the Year,Analysis By Functional Classification:,Please use this column to record payments made to extinguish ARO liabilities in the current year. Please record this as a positive value.,,,
+74,05,Increase in Liabilities Due to Accretion Expense,Analysis By Functional Classification:,"Please use this column to record accretion expense related to ARO liabilities in the current year.
 
 New for 2025 - the total amount of accretion expense from line 9910 Column 5 will automatically populate line 2023 Accretion Expense in Schedule 54B Statement of Cash Flow – Indirect Method.
 
 According to PS 3280.08 (a), accretion expense is the increase in the carrying amount of a liability for asset retirement obligations due to the passage of time. Please note: accretion expense is considered an operating expense rather than a capital expense, so it should be recorded in Schedule 40, Statement of Operations: Expenses, in Column 5 Rents, Financial Expenses, & Accretion Expense rather than Schedule 51A Tangible Capital Assets.",,,
-74,06,Increase (Decrease) Reflecting Change in the Estimate of Liability,"PS 3280.49 to .53 guides public sector entities to reconsider the carrying amount of the liability for an asset retirement obligation at each financial reporting date.
+74,06,Increase (Decrease) Reflecting Change in the Estimate of Liability,Analysis By Functional Classification:,"PS 3280.49 to .53 guides public sector entities to reconsider the carrying amount of the liability for an asset retirement obligation at each financial reporting date.
 
 Please use this column to record any changes in the estimate of the liability that arise from a change in the timing of the settlement of the asset retirement obligation, the amount of the original estimate of undiscounted cash flows, or a change in the discount rate used to discount the cash flows that are needed to settle the liability in a future period.
 
 Increases should be reported as positive values and decreases should be reported as negative values.",,,
-74,07,Liabilities for ARO at End of Year,"For each line, the total is the sum of Column 1 to 6. This ending balance will become next year’s opening balance in Column 1. It also pre-populates SLC 70 2920 01, Liability for Asset Retirement Obligation Liabilities.",,,
-74E,01,Liability for ARO at Beginning of Year,Column 1 is automatically populated from the prior year’s closing balance.,,,
-74E,03,Liability Incurred During the Year,"Please use this column to record any liabilities that relate to assets that were newly purchased, constructed or developed in the current year.",,,
-74E,04,Liability Settled During the Year,Please use this column to record payments made to extinguish ARO liabilities in the current year. Please record this as a positive value.,,,
-74E,05,Increase in Liabilities Due to Accretion Expense,"Please use this column to record accretion expense related to ARO liabilities in the current year.
+74,07,Liabilities for ARO at End of Year,Analysis By Functional Classification:,"For each line, the total is the sum of Column 1 to 6. This ending balance will become next year’s opening balance in Column 1. It also pre-populates SLC 70 2920 01, Liability for Asset Retirement Obligation Liabilities.",,,
+74E,01,Liability for ARO at Beginning of Year,Asset Retirement Obligation Liability,Column 1 is automatically populated from the prior year’s closing balance.,,,
+74E,03,Liability Incurred During the Year,Analysis By Functional Classification:,"Please use this column to record any liabilities that relate to assets that were newly purchased, constructed or developed in the current year.",,,
+74E,04,Liability Settled During the Year,Analysis By Functional Classification:,Please use this column to record payments made to extinguish ARO liabilities in the current year. Please record this as a positive value.,,,
+74E,05,Increase in Liabilities Due to Accretion Expense,Analysis By Functional Classification:,"Please use this column to record accretion expense related to ARO liabilities in the current year.
 
 New for 2025 - the total amount of accretion expense from line 9910 Column 5 will automatically populate line 2023 Accretion Expense in Schedule 54B Statement of Cash Flow – Indirect Method.
 
 According to PS 3280.08 (a), accretion expense is the increase in the carrying amount of a liability for asset retirement obligations due to the passage of time. Please note: accretion expense is considered an operating expense rather than a capital expense, so it should be recorded in Schedule 40, Statement of Operations: Expenses, in Column 5 Rents, Financial Expenses, & Accretion Expense rather than Schedule 51A Tangible Capital Assets.",,,
-74E,06,Increase (Decrease) Reflecting Change in the Estimate of Liability,"PS 3280.49 to .53 guides public sector entities to reconsider the carrying amount of the liability for an asset retirement obligation at each financial reporting date.
+74E,06,Increase (Decrease) Reflecting Change in the Estimate of Liability,Analysis By Functional Classification:,"PS 3280.49 to .53 guides public sector entities to reconsider the carrying amount of the liability for an asset retirement obligation at each financial reporting date.
 
 Please use this column to record any changes in the estimate of the liability that arise from a change in the timing of the settlement of the asset retirement obligation, the amount of the original estimate of undiscounted cash flows, or a change in the discount rate used to discount the cash flows that are needed to settle the liability in a future period.
 
 Increases should be reported as positive values and decreases should be reported as negative values.",,,
-74E,07,Liabilities for ARO at End of Year,"For each line, the total is the sum of Column 1 to 6. This ending balance will become next year’s opening balance in Column 1. It also pre-populates SLC 70 2920 01, Liability for Asset Retirement Obligation Liabilities.",,,
-80,01,Full-Time Funded Positions,"Enter the number of full-time funded positions on a permanent or contractual basis, whether they are filled or not.",,,
-80,02,Part-Time Funded Positions,"Enter the number of funded positions where the employee works less than 30 hours a week, either on a permanent or contractual basis.  Include only filled positions.",,,
-80,03,Seasonal Employees,Please report the actual number of seasonal employees.  Seasonal positions are those where employment recurs each year but lasts less than a year.  Example:  Staff for summer recreational programs and crossing guards.,,,
-80,04,Federal,Enter the amount of sinking funds invested in federal debt.,,,
-80,05,Municipality's Share of Total Municipal Contributions ($),This column applies to part (I) only. Enter the dollar amount of contributions made by your municipality to the board or entity.,,,
-80,06,Municipality's Share of Total Fee Revenues,This column applies to part (I) only. Enter the dollar amount of fee revenues received by your municipality from the local board or entity.  This amount is equal to total fee revenues received by the local board or entity times the percentage reported in column 4.,,,
-80D,04,Method Used to Determine Construction Value.,"Since many municipal building departments charge building permit fees based on the floor area of the building or work requiring a building permit, it is necessary to convert the building area, usually in square meters, to construction value for that particular type of construction.
+74E,07,Liabilities for ARO at End of Year,Analysis By Functional Classification:,"For each line, the total is the sum of Column 1 to 6. This ending balance will become next year’s opening balance in Column 1. It also pre-populates SLC 70 2920 01, Liability for Asset Retirement Obligation Liabilities.",,,
+80,01,Full-Time Funded Positions,Line 0300 - Proportion of Municipal Employees Covered by 'Collective Agreements.',"Enter the number of full-time funded positions on a permanent or contractual basis, whether they are filled or not.",,,
+80,02,Part-Time Funded Positions,Line 0300 - Proportion of Municipal Employees Covered by 'Collective Agreements.',"Enter the number of funded positions where the employee works less than 30 hours a week, either on a permanent or contractual basis.  Include only filled positions.",,,
+80,03,Seasonal Employees,Do not include volunteer positions such as volunteer fire fighters.,Please report the actual number of seasonal employees.  Seasonal positions are those where employment recurs each year but lasts less than a year.  Example:  Staff for summer recreational programs and crossing guards.,,,
+80,01,Own Municipality,Line 0610 - Own Sinking Funds,Enter the amount of sinking funds invested in own debt.,,,
+80,02,"Other Municipalities, School Boards",Line 0610 - Own Sinking Funds,Enter the amount of sinking funds invested in the debt of school boards and other municipalities.,,,
+80,03,Provincial,Line 0610 - Own Sinking Funds,Enter the amount of sinking funds invested in provincial debt.,,,
+80,04,Federal,Line 0610 - Own Sinking Funds,Enter the amount of sinking funds invested in federal debt.,,,
+80,01,Number of Contracts,"Line 1020 - Construction Contracts Awarded at $100,000 or Greater.",Enter the number of construction contracts awarded by your municipality during the year for each category listed.,,,
+80,02,Value of Contracts,"Line 1020 - Construction Contracts Awarded at $100,000 or Greater.",Enter the value of contracts awarded by your municipality for each category listed.,,,
+80,01,Number of Building Permits,Line 1299 - Subtotal,Enter the total number of building permits for each property class identified.,,,
+80,02,Total Value of Building Permits,Line 1299 - Subtotal,Enter the total value of construction associated with the issuance of building permits for each property class identified.,,,
+80,01,Name of Board or Entity,Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,Enter the name of the local board or other local entity.,,,
+80,03,Board Description,Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,Select a board description from the drop-down List.,,,
+80,02,Board Code,Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,The board code corresponds to the board description selected in column 3. This is automatically populated.,,,
+80,04,Proportion of Total Municipal Contributions Consolidated.,Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,"In part (I), report the municipality's percentage share of total municipal contributions to the local board or entity.
+
+In part (II), 100% is automatically shown for each fully consolidated local board or entity.",,,
+80,05,Municipality's Share of Total Municipal Contributions ($),Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,This column applies to part (I) only. Enter the dollar amount of contributions made by your municipality to the board or entity.,,,
+80,06,Municipality's Share of Total Fee Revenues,Lines 0851 to 0899 - (II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality.,This column applies to part (I) only. Enter the dollar amount of fee revenues received by your municipality from the local board or entity.  This amount is equal to total fee revenues received by the local board or entity times the percentage reported in column 4.,,,
+80D,04,Method Used to Determine Construction Value.,"Line 1302 - If “Other Method” is Selected in Line 1300, Please Describe the Method Used to Determine Total Construction Value.","Since many municipal building departments charge building permit fees based on the floor area of the building or work requiring a building permit, it is necessary to convert the building area, usually in square meters, to construction value for that particular type of construction.
 
 Municipal methods of determining total construction value are typically based on:
 
@@ -672,14 +1286,59 @@ Toronto Real Estate Board’s Rough/Advanced Guide to Construction Costs - - htt
 - Estimation; and applicant’s declared value.
 
 A standard value schedule is the preferred method of determining construction value to improve consistency and comparability in reporting results.",,,
-80D,01,"Number of Complete Applications, by Category","In column 1, report the number of building permit applications which are submitted and accepted by the municipality as complete applications for each permit category on lines 1314 to 1320.
+80D,01,"Number of Complete Applications, by Category",Number of Building Permit Applications,"In column 1, report the number of building permit applications which are submitted and accepted by the municipality as complete applications for each permit category on lines 1314 to 1320.
 
 Zero (0) may be entered in column 1 for any line if no applications for a permit category were submitted and accepted by the municipality as complete.",,,
-80D,02,"Number of Incomplete Applications, by Category","In column 2, report the number of building permit applications submitted and accepted by the municipality as incomplete for each permit category on lines 1314 to 1320.
+80D,02,"Number of Incomplete Applications, by Category",Number of Building Permit Applications,"In column 2, report the number of building permit applications submitted and accepted by the municipality as incomplete for each permit category on lines 1314 to 1320.
 
 Zero (0) may be entered in column 2 for any line if no incomplete applications were submitted and accepted by the municipality for the permit category.",,,
-80D,03,Subtotal: Number of Complete and Incomplete Applications,"The subtotal for the number of complete and incomplete applications, by category, is automatically calculated in column 3 for lines 1314 to 1322.
+80D,03,Subtotal: Number of Complete and Incomplete Applications,Number of Building Permit Applications,"The subtotal for the number of complete and incomplete applications, by category, is automatically calculated in column 3 for lines 1314 to 1322.
 
 The total number of building permit applications is automatically calculated in SLC 80D 1322 03 and equals the sum of the total number of building permit applications submitted and accepted by the municipality as complete and as incomplete for all categories.
 
 The total number of building permit applications provides a measure of volume for the processing of building permit applications. Municipalities interested in comparing their results may wish to consider the volume and application status (complete/incomplete) of building permit applications in selecting comparators.",,,
+80D,01,Residential Units Within Settlement Areas,10. Planning and Development,"Use lines 1350 to 1356, column 1, to report new residential units within settlement areas which involve the construction of new buildings or structures as follows:",,,
+80D,02,Total Residential Units,Line 1350 - Number of Residential Units in New Detached Houses,"Use lines 1350 to 1356, column 2, to report total residential units which involve the construction of new buildings or structures as follows:",,,
+80D,03,Total Secondary Units,Line 1350 - Number of Residential Units in New Detached Houses,"Use lines 1350 to 1356, column 3, to report total secondary units which involve the construction of new buildings or structures as follows:
+
+**Line 1350 - Number of Residential Units in New Detached Houses Line 1352 - Number of Residential Units in New Semi-Detached Houses Line 1354 - Number of Residential Units in New Row Houses**
+
+**Line 1356 - Number of Residential Units in New Apartments / Condo Apartments**
+
+The subtotal in line 1358 is automatically calculated as the sum of lines 1350 to 1356.
+
+The number of new residential units should be based on building permit information.
+
+Do not report new residential construction for additions to existing residential buildings or reconstructions that do not involve the creation of additional residential units.
+
+Only the level of municipal government responsible for issuing building permits reports this information.
+
+A residential unit refers to a part of a property consisting of a room, or rooms designed and intended for use by one or more persons and usually containing cooking, eating, living, sleeping and sanitary facilities.
+
+Settlement area means areas within cities, towns, villages, or hamlets which have been designated for development in an approved municipal official plan. This includes areas designated for seasonal or shoreline development which have been identified by the municipality as being part of a settlement area.
+
+If no official plan exists in a municipality, settlement area means areas within cities, towns, villages, or hamlets where development is concentrated. It includes existing development, as well as vacant registered and draft approved lots, and immediately surrounding lands, within cities, towns, villages, or hamlets.
+
+Land designated for agricultural purposes in the official plan.
+
+Enter hectares of land designated for agricultural purposes in the Official Plan as of December 31, 2023, in line 1370.
+
+Report hectares of land specifically designated as agricultural land or bearing any other designation intended to preserve agricultural land in an Official plan as of December 31, 2023.
+
+Where there is no Official Plan, a municipality does not input data.
+
+In Planning Areas where there is a Planning Board, the appropriate information will need to be obtained from the Board to reflect new lot approvals within local municipal boundaries and unincorporated areas.",,,
+80D,01,"Number of Structures Where the Condition of the Primary Components is Rated as Good to Very Good, Requiring Only Repair.",Line 1760 - Bridges and Culverts: Total Square Meters of Surface Area on Bridges and Culverts,"The condition of a bridge or culvert in this measure means the condition of primary components which are the main load carrying components of the structure and includes: the deck, beams, girders, abutments, foundations, etc. Secondary and auxiliary components are not included.
+
+A bridge or culvert is rated as good to very good if distress to primary components is minimal, requiring only maintenance.
+
+Secondary components are any component which helps to distribute loads to primary components or carries wind loads or stabilizes primary components, such as: sidewalk, curb, sway bracing, ballast wall, wingwalls, etc.
+
+Auxiliary components are any component which does not share in the load carrying capacity of the structure and includes deck drains, gutters, catch-basins, etc.
+
+This measure assumes that all bridges and culverts in the municipal road system have been rated. In line 1768, please indicate whether all bridges and culverts in the municipal system have been rated or just a sample.
+
+The structural integrity, safety and condition of every bridge shall be determined through the performance of at least one inspection in every second calendar year under the direction of a professional engineer and in accordance with the Ontario Structure Inspection Manual, published by the Ministry of Transportation, as it may be amended from time to time.
+
+Please indicate the rating system used and year it was conducted in line 1769.",,,
+80D,02,Total number,"Line 1766 - Culverts: Enter the Number of Culverts Where the Condition of Primary Components is Rated as Good to Very Good, Requiring Only Repair.","Use lines 1765 and 1766, column 2, to report the total number of bridges and culverts as follows:",,,

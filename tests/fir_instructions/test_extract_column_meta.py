@@ -55,6 +55,7 @@ def _minimal_column_record(**overrides: Any) -> dict[str, Any]:
         "schedule": "12",
         "column_id": "01",
         "column_name": "Ontario Conditional Grants",
+        "section_name": None,
         "description": "Grants from the Province of Ontario.",
         "valid_from_year": None,
         "valid_to_year": None,
@@ -249,6 +250,66 @@ class TestExtractPerScheduleColumns:
         assert len(records) == 2
         assert records[0]["column_id"] == "01"
         assert records[0]["column_name"] == "Opening Net Book Value"
+
+    def test_multi_section_produces_separate_records(self, tmp_path: Path) -> None:
+        """The same column_id in two named sections produces two distinct records."""
+        md = tmp_path / "FIR2025 S20.md"
+        md.write_text(
+            "## Section A\n\n"
+            "## Column 1 - Amount Owing\n\nSection A description.\n\n"
+            "## Section B\n\n"
+            "## Column 1 - Amount Owing\n\nSection B description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "20")
+        assert len(records) == 2
+        section_names = {r["section_name"] for r in records}
+        assert section_names == {"Section A", "Section B"}
+
+    def test_section_name_set_from_parent_heading(self, tmp_path: Path) -> None:
+        """section_name is the last major non-boilerplate heading before each column."""
+        md = tmp_path / "FIR2025 S20.md"
+        md.write_text(
+            "## Capping Parameters\n\n"
+            "## Column 1 - Amount\n\nDescription.\n\n"
+            "## Tax Bands\n\n"
+            "## Column 2 - Rate\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "20")
+        assert len(records) == 2
+        assert records[0]["section_name"] == "Capping Parameters"
+        assert records[1]["section_name"] == "Tax Bands"
+
+    def test_boilerplate_headings_do_not_update_section(self, tmp_path: Path) -> None:
+        """'Description of Columns' heading does not override current_section_name."""
+        md = tmp_path / "FIR2025 S26.md"
+        md.write_text(
+            "## Municipal and School Board Taxation\n\n"
+            "## Description of Columns\n\n"
+            "## Column 1 - Levy\n\nLevy description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "26")
+        assert len(records) == 1
+        assert records[0]["section_name"] == "Municipal and School Board Taxation"
+
+    def test_body_text_column_extracted(self, tmp_path: Path) -> None:
+        """A column definition in body text (no ## heading) is extracted correctly."""
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Description of Columns\n\n"
+            "## Column 4 - Opening Balance\n\n"
+            "Column 5 - Closing Balance\n\n"
+            "Description of closing balance.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        ids = [r["column_id"] for r in records]
+        assert "04" in ids
+        assert "05" in ids
+        col5 = next(r for r in records if r["column_id"] == "05")
+        assert "Closing Balance" in col5["column_name"]
 
 
 # ---------------------------------------------------------------------------
@@ -476,12 +537,18 @@ class TestBaselineCSVContent:
     def test_no_duplicate_column_ids_per_schedule(
         self, records: list[dict[str, Any]]
     ) -> None:
-        """Each (schedule, column_id) combination is unique in the baseline."""
+        """Each (schedule, column_id, section_name) triple is unique in the baseline.
+
+        Some schedules (S20, S26, S80, S80D) legitimately reuse column IDs across
+        named sections — the section_name field distinguishes those records.
+        """
         from collections import Counter
 
-        counts = Counter((r["schedule"], r["column_id"]) for r in records)
+        counts = Counter(
+            (r["schedule"], r["column_id"], r.get("section_name")) for r in records
+        )
         dupes = [key for key, count in counts.items() if count > 1]
-        assert dupes == [], f"Duplicate (schedule, column_id) pairs: {dupes[:10]}"
+        assert dupes == [], f"Duplicate (schedule, column_id, section_name) triples: {dupes[:10]}"
 
     def test_year_fields_null_in_baseline(self, records: list[dict[str, Any]]) -> None:
         """All baseline rows have NULL valid_from_year and valid_to_year."""
@@ -536,6 +603,26 @@ class TestBaselineCSVContent:
         """Schedule 72 has exactly 9 column records."""
         s72 = [r for r in records if r["schedule"] == "72"]
         assert len(s72) == 9, f"Expected 9 columns for S72, got {len(s72)}"
+
+    def test_spot_check_s20_multi_section(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 20 has records in multiple named sections (column IDs are reused)."""
+        s20 = [r for r in records if r["schedule"] == "20"]
+        sections = {r["section_name"] for r in s20}
+        assert len(sections) > 1, f"Expected multiple sections for S20, got: {sections}"
+        assert len(s20) > 11, f"Expected >11 column records for S20, got {len(s20)}"
+
+    def test_spot_check_s26_multi_section(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 26 has records across at least two named sections."""
+        s26 = [r for r in records if r["schedule"] == "26"]
+        sections = {r["section_name"] for r in s26}
+        assert len(sections) > 1, f"Expected multiple sections for S26, got: {sections}"
+
+    def test_spot_check_s28_column05(self, records: list[dict[str, Any]]) -> None:
+        """S28 Column 05 is present (body-text definition, not a ## heading)."""
+        s28_col05 = [
+            r for r in records if r["schedule"] == "28" and r["column_id"] == "05"
+        ]
+        assert len(s28_col05) == 1, "S28 Column 05 should be extracted from body text"
 
 
 # ---------------------------------------------------------------------------

@@ -104,6 +104,7 @@ class FIRColumnMeta(SQLModel, table=True):
     schedule: str = Field()  # denormalized from fir_schedule_meta.schedule
     column_id: str = Field(max_length=2)  # 2-digit string, e.g. "01"
     column_name: str = Field()
+    section_name: Optional[str] = Field(default=None)  # parent section heading when column IDs repeat across sections
     description: Optional[str] = Field(default=None)
     valid_from_year: Optional[int] = Field(default=None)
     valid_to_year: Optional[int] = Field(default=None)
