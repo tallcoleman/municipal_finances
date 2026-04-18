@@ -1581,6 +1581,38 @@ class TestGetScheduleSections:
         sections = _get_schedule_sections(tmp_path, "74E")
         assert sections == []
 
+    def test_74d_single_heading_uses_fallback(self, tmp_path: Path) -> None:
+        """When only one 'Schedule 74D' heading exists, fallback uses it directly (branch 574->576 True)."""
+        content = dedent("""\
+            ## Schedule 74D
+            ## Line 0010 - Principal Payment
+
+            Description of principal payment.
+        """)
+        (tmp_path / "FIR2025 S74.md").write_text(content, encoding="utf-8")
+        sections = _get_schedule_sections(tmp_path, "74D")
+        headings = [s[0] for s in sections]
+        assert any("Schedule 74D" in h for h in headings)
+        assert any("Line 0010" in h for h in headings)
+
+    def test_74d_two_headings_uses_second(self, tmp_path: Path) -> None:
+        """When two exact 'Schedule 74D' headings exist, the second is used as content start (branch 574->576 False)."""
+        content = dedent("""\
+            ## Schedule 74D
+            Brief TOC mention of 74D.
+            ## Schedule 74D
+            ## Line 0010 - Principal Payment
+
+            Description of principal payment.
+        """)
+        (tmp_path / "FIR2025 S74.md").write_text(content, encoding="utf-8")
+        sections = _get_schedule_sections(tmp_path, "74D")
+        headings = [s[0] for s in sections]
+        # The second "Schedule 74D" heading should be included
+        assert "Schedule 74D" in headings
+        # Line 0010 should also be included (it follows the second heading)
+        assert any("Line 0010" in h for h in headings)
+
     def test_sub_schedule_is_last_section_in_parent(self, tmp_path: Path) -> None:
         """When the sub-schedule section is the last in the parent file, the sibling
         search range is empty and the section is returned as-is (no break needed)."""

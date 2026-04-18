@@ -22,6 +22,7 @@ from municipal_finances.fir_instructions.extract_schedule_meta import (
     _clean_md_content,
     _extract_regular_schedule,
     _extract_schedule_53,
+    _extract_schedule_74d,
     _extract_schedule_74e,
     _extract_sub_schedule,
     _extract_sub_schedule_name,
@@ -688,6 +689,55 @@ class TestExtractSchedule53:
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
         assert result["change_notes"] is None
+
+
+class TestExtractSchedule74D:
+    def test_no_s74d_heading_returns_empty_description(self, tmp_path: Path) -> None:
+        """When no 'Schedule 74D' heading is present, description is empty (branches 386->391, 393->398)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74C
+            Some other content.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert result["schedule_name"] == "Future Principal and Interest Payments on Existing Debt"
+        assert result["description"] == ""
+        assert result["valid_from_year"] is None
+        assert result["valid_to_year"] is None
+
+    def test_single_s74d_heading_no_section12_returns_empty_description(self, tmp_path: Path) -> None:
+        """Single 'Schedule 74D' heading with no 'Section 12' after it (branches 389, 395->398)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            Some content without a Section 12 heading.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert result["description"] == ""
+
+    def test_single_s74d_heading_with_section12_extracts_description(self, tmp_path: Path) -> None:
+        """Single 'Schedule 74D' heading fallback uses first occurrence; Section 12 body becomes description (branch 389)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            Intro content.
+            ## Section 12 - Future Principal and Interest
+            This describes future debt payments.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert "future debt payments" in result["description"].lower()
 
 
 class TestExtractSchedule74E:
