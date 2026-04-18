@@ -311,6 +311,39 @@ class TestExtractPerScheduleColumns:
         col5 = next(r for r in records if r["column_id"] == "05")
         assert "Closing Balance" in col5["column_name"]
 
+    def test_body_text_column_dedup_skips_already_seen(self, tmp_path: Path) -> None:
+        """A body-text column definition is skipped if the same key was already seen via a heading."""
+        # Column 4 appears first as a ## heading, then again in body text of the same section.
+        # The second occurrence should be silently dropped (dedup on (column_id, section_name)).
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Column 4 - Opening Balance\n\n"
+            "Column 4 - Duplicate in body\n\n"
+            "Should be ignored.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        col4_records = [r for r in records if r["column_id"] == "04"]
+        assert len(col4_records) == 1
+        assert col4_records[0]["column_name"] == "Opening Balance"
+
+    def test_body_text_description_stops_at_next_column(self, tmp_path: Path) -> None:
+        """Description collection in body text stops when the next column definition begins."""
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Some Section\n\n"
+            "Column 4 - Opening Balance\n\n"
+            "First description.\n\n"
+            "Column 5 - Closing Balance\n\n"
+            "Second description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        col4 = next(r for r in records if r["column_id"] == "04")
+        # Column 4's description must not bleed into Column 5's text.
+        assert "Second description" not in col4["description"]
+        assert len([r for r in records if r["column_id"] == "05"]) == 1
+
 
 # ---------------------------------------------------------------------------
 # 3. All-schedule extraction
