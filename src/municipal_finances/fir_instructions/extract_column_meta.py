@@ -57,10 +57,25 @@ _COLUMN_HEADING_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Headings that should NOT update current_section_name — boilerplate transitions
+# that appear within a section rather than introducing a new one.  Without this
+# skip-list, S26's repeated "Description of Columns" sub-heading would overwrite
+# the major section name and cause column records from different sections to share
+# the same section_name.
+_NON_SECTION_RE = re.compile(
+    r"^(Description of (Columns|Lines)|Descriptions of (Columns|Lines)|"
+    r"This section will be automatically pre-populated|"
+    r"Only .* municipalities should have values|"
+    r"IMPORTANT:|Note:|Please note|Total is automatically|"
+    r".*automatically calculated|.*should equal)",
+    re.IGNORECASE,
+)
+
 _CSV_FIELDS = [
     "schedule",
     "column_id",
     "column_name",
+    "section_name",
     "description",
     "valid_from_year",
     "valid_to_year",
@@ -104,14 +119,73 @@ def _parse_column_heading(heading: str) -> tuple[str, str] | None:
 # ---------------------------------------------------------------------------
 
 
+def _scan_body_for_columns(
+    content: list[str],
+    code: str,
+    current_section_name: str | None,
+    seen_keys: set[tuple[str, str | None]],
+    records: list[dict[str, Any]],
+) -> None:
+    """Scan section body text for plain-text column definitions.
+
+    Handles the rare case where a column definition appears as a plain line of
+    body text rather than a ``##`` heading (the only known occurrence is S28
+    Column 05, which is sandwiched between proper ``##`` headings but is itself
+    plain text).  Grep across all 31 schedules confirms this pattern appears
+    exactly once, so false-positive risk is negligible.
+
+    Args:
+        content:              Body lines of a section (list returned by
+                              :func:`_get_schedule_sections`).
+        code:                 Schedule code (used when appending a new record).
+        current_section_name: Section context active at the time this body is
+                              scanned.
+        seen_keys:            Mutable dedup set shared with the caller.
+        records:              Mutable result list shared with the caller.
+    """
+    lines = content
+    for i, line in enumerate(lines):
+        parsed = _parse_column_heading(line.strip())
+        if parsed is None:
+            continue
+        column_id, column_name = parsed
+        key = (column_id, current_section_name)
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        # Collect description lines until the next column definition or end.
+        desc_lines: list[str] = []
+        for j in range(i + 1, len(lines)):
+            if _parse_column_heading(lines[j].strip()) is not None:
+                break
+            desc_lines.append(lines[j])
+        text = _clean_md_content("\n".join(desc_lines))
+        records.append(
+            {
+                "schedule": code,
+                "column_id": column_id,
+                "column_name": column_name,
+                "section_name": current_section_name,
+                "description": text or "No description provided.",
+                "valid_from_year": None,
+                "valid_to_year": None,
+                "change_notes": None,
+            }
+        )
+
+
 def _extract_per_schedule_columns(
     markdown_dir: Path, code: str
 ) -> list[dict[str, Any]]:
     """Extract column metadata records from a schedule's instruction markdown.
 
-    Scans all section headings for ``Column N - Name`` patterns.  A parent
-    ``Description of Columns`` heading is not required — some schedules (e.g.
-    51A) place column headings directly in the document without a parent section.
+    Scans all section headings for ``Column N - Name`` patterns and tracks the
+    last major (non-boilerplate) heading as ``section_name`` so that the same
+    column ID can appear in multiple sections with distinct meanings (e.g. S20,
+    S26, S80, S80D).  A ``(column_id, section_name)`` pair is only emitted once.
+
+    Body text is also scanned for plain-text column definitions to catch S28's
+    Column 05, which lacks a ``##`` heading.
 
     Schedules with no column headings produce an empty list.
 
@@ -120,41 +194,54 @@ def _extract_per_schedule_columns(
         code:         Schedule code.
 
     Returns:
-        List of column metadata dicts.
+        List of column metadata dicts, one per unique ``(column_id, section_name)``.
     """
     sections = _get_schedule_sections(markdown_dir, code)
     if not sections:
         return []
 
     records: list[dict[str, Any]] = []
-    seen_col_ids: set[str] = set()
+    seen_keys: set[tuple[str, str | None]] = set()  # (column_id, section_name)
+    current_section_name: str | None = None
 
     for heading, content in sections:
         parsed = _parse_column_heading(heading)
+
         if parsed is None:
+            # Non-column heading: update section context unless it is boilerplate
+            # (e.g. "Description of Columns" appears in multiple S26 sections and
+            # must not overwrite the meaningful parent heading).
+            if not _NON_SECTION_RE.match(heading.strip()):
+                current_section_name = heading.strip()
+            # Also scan body text for plain-text column definitions (S28 col 05).
+            _scan_body_for_columns(
+                content, code, current_section_name, seen_keys, records
+            )
             continue
 
         column_id, column_name = parsed
-
-        # Keep first occurrence when the same column_id appears more than once.
-        if column_id in seen_col_ids:
+        key = (column_id, current_section_name)
+        if key in seen_keys:
             continue
-        seen_col_ids.add(column_id)
+        seen_keys.add(key)
 
         text = _clean_md_content(content)
-        description = text if text else "No description provided."
-
         records.append(
             {
                 "schedule": code,
                 "column_id": column_id,
                 "column_name": column_name,
-                "description": description,
+                "section_name": current_section_name,
+                "description": text or "No description provided.",
                 "valid_from_year": None,
                 "valid_to_year": None,
                 "change_notes": None,
             }
         )
+        # Also scan this section's body for plain-text column definitions.
+        # This handles S28 Column 05, which appears as plain text inside
+        # Column 04's body rather than as its own ## heading.
+        _scan_body_for_columns(content, code, current_section_name, seen_keys, records)
 
     return records
 
@@ -211,17 +298,19 @@ def insert_column_meta(engine: Any, records: list[dict[str, Any]]) -> int:
         return 0
 
     with Session(engine) as session:
-        # Fetch existing keys for deduplication.
+        # Fetch existing keys for deduplication.  section_name is included because
+        # the same column_id can legitimately appear in multiple named sections.
         existing = session.exec(
             select(
                 FIRColumnMeta.schedule,
                 FIRColumnMeta.column_id,
+                FIRColumnMeta.section_name,
                 FIRColumnMeta.valid_from_year,
                 FIRColumnMeta.valid_to_year,
             )
         ).all()
-        existing_keys: set[tuple[str, str, int | None, int | None]] = {
-            (row.schedule, row.column_id, row.valid_from_year, row.valid_to_year)
+        existing_keys: set[tuple[str, str, str | None, int | None, int | None]] = {
+            (row.schedule, row.column_id, row.section_name, row.valid_from_year, row.valid_to_year)
             for row in existing
         }
 
@@ -231,6 +320,7 @@ def insert_column_meta(engine: Any, records: list[dict[str, Any]]) -> int:
             if (
                 r["schedule"],
                 r["column_id"],
+                r.get("section_name"),
                 r.get("valid_from_year"),
                 r.get("valid_to_year"),
             )
@@ -300,7 +390,7 @@ def load_from_csv(csv_path: Path) -> list[dict[str, Any]]:
     Returns:
         List of metadata dicts suitable for :func:`insert_column_meta`.
     """
-    nullable_str_fields = {"description", "change_notes"}
+    nullable_str_fields = {"description", "change_notes", "section_name"}
     nullable_int_fields = {"valid_from_year", "valid_to_year"}
 
     records: list[dict[str, Any]] = []
