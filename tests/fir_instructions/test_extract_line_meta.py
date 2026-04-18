@@ -1217,14 +1217,14 @@ class TestBaselineCSVContent:
     def records(self) -> list[dict[str, Any]]:
         return _load_baseline()
 
-    def test_all_31_schedules_present(self, records: list[dict[str, Any]]) -> None:
+    def test_all_32_schedules_present(self, records: list[dict[str, Any]]) -> None:
         """Schedule codes with line-based instructions are present in the baseline CSV.
 
-        Column-format schedules (20, 22A, 22B, 28, 61A, 61B, 62, 74E, 81) legitimately
+        Column-format schedules (20, 22A, 22B, 28, 61A, 61B, 62, 74D, 74E, 81) legitimately
         produce zero records and are excluded from this check.
         """
         column_format_schedules: frozenset[str] = frozenset(
-            {"20", "22A", "22B", "28", "61A", "61B", "62", "74E", "81"}
+            {"20", "22A", "22B", "28", "61A", "61B", "62", "74D", "74E", "81"}
         )
         found = {r["schedule"] for r in records}
         line_based_codes = _EXPECTED_CODES - column_format_schedules
@@ -1249,6 +1249,7 @@ class TestBaselineCSVContent:
                 "61A",  # Development Charges Receivable — Column X structure
                 "61B",  # Development Charges Cash Collected — Column X structure
                 "62",  # Development Charges Rates — rate table, no named lines
+                "74D",  # Long Term Liabilities (paired columns) — Column X structure
                 "74E",  # Asset Retirement Obligation — Column X structure
                 "81",  # Annual Debt Repayment Limit — no instruction lines
             }

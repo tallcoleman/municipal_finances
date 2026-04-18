@@ -3890,6 +3890,34 @@ A report of long-term commitments at year end which are not readily convertible 
 Please include the amount incurred for cross border leases that are enabled by specific Ontario regulation.
 
 Please forward supporting documents by email to: FIR.mah@ontario.ca",False,False,,,,,
+74D,3210,Year 2025,Description of Lines,"On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually.
+
+**Line 3210 - Year 2025 Line 3220 - Year 2026 Line 3230 - Year 2027 Line 3240 - Year 2028 Line 3250 - Year 2029**",False,False,,,,,
+74D,3220,Year 2026,Description of Lines,"On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually.
+
+**Line 3210 - Year 2025 Line 3220 - Year 2026 Line 3230 - Year 2027 Line 3240 - Year 2028 Line 3250 - Year 2029**",False,False,,,,,
+74D,3230,Year 2027,Description of Lines,"On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually.
+
+**Line 3210 - Year 2025 Line 3220 - Year 2026 Line 3230 - Year 2027 Line 3240 - Year 2028 Line 3250 - Year 2029**",False,False,,,,,
+74D,3240,Year 2028,Description of Lines,"On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually.
+
+**Line 3210 - Year 2025 Line 3220 - Year 2026 Line 3230 - Year 2027 Line 3240 - Year 2028 Line 3250 - Year 2029**",False,False,,,,,
+74D,3250,Year 2029,Description of Lines,"On lines 3210 through 3270 identify recoverable principal and interest repayments by year.  The first five years are reported individually.
+
+**Line 3210 - Year 2025 Line 3220 - Year 2026 Line 3230 - Year 2027 Line 3240 - Year 2028 Line 3250 - Year 2029**",False,False,,,,,
+74D,3260,Years 2030 to 2034,Description of Lines,Year’s six to ten are aggregated.,False,False,,,,,
+74D,3270,Years 2035 Onwards,Description of Lines,Amounts beyond ten years are aggregated.,False,False,,,,,
+74D,3280,Interest to be Earned on Sinking Funds.,Description of Lines,"The estimated interest on sinking funds and the interest on debt retirement funds should be reported on the line for the appropriate year.  However, when the estimated interest cannot be readily assigned to a year, it should be reported on line 3280 in column 8 (Recoverable from all others   Interest).",False,False,,,,,
+74D,3299,Total,Description of Lines,"For each column, the total is equal to the sum of lines 3210 through 3280.",True,False,,,,,
+74D,3601,Other Notes,Section 13 – Other Notes,"Examples of supporting materials include:
+
+Explanatory notes which the municipal council or treasurer feels are required for adequate disclosure of the municipality's financial affairs.
+
+A report of long-term commitments at year end which are not readily convertible into dollar amounts which were not reported in section 7, Long term commitments at year end.
+
+Please include the amount incurred for cross border leases that are enabled by specific Ontario regulation.
+
+Please forward supporting documents by email to: FIR.mah@ontario.ca",False,False,,,,,
 76,0210,Current Assets,Assets:,Report all the current assets on this line for all entities deemed to be GBEs.,False,False,,,,,
 76,0220,Capital Assets,Assets:,Report all the capital assets on this line for all entities deemed to be GBEs.,False,False,,,,,
 76,0297,Other,Assets:,"Part of fill-in group Lines 0297 to 0298 — Other.

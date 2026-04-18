@@ -88,11 +88,11 @@ class TestBaselineCSVContent:
     def records(self) -> list[dict[str, Any]]:
         return _load_baseline()
 
-    def test_exactly_31_records(self, records: list[dict[str, Any]]) -> None:
-        """Baseline CSV must contain exactly 31 records (one per schedule code)."""
-        assert len(records) == 31
+    def test_exactly_32_records(self, records: list[dict[str, Any]]) -> None:
+        """Baseline CSV must contain exactly 32 records (one per schedule code)."""
+        assert len(records) == 32
 
-    def test_all_31_codes_present(self, records: list[dict[str, Any]]) -> None:
+    def test_all_32_codes_present(self, records: list[dict[str, Any]]) -> None:
         """Every expected schedule code must appear in the CSV."""
         found = {r["schedule"] for r in records}
         missing = _EXPECTED_CODES - found
@@ -218,16 +218,16 @@ class TestInsertScheduleMeta:
         assert row.valid_to_year is None
         assert row.change_notes is None
 
-    def test_insert_all_31_baseline_records(self, engine, session: Session) -> None:
-        """All 31 baseline records from the CSV can be inserted into the DB."""
+    def test_insert_all_32_baseline_records(self, engine, session: Session) -> None:
+        """All 32 baseline records from the CSV can be inserted into the DB."""
         records = _load_baseline()
         inserted = insert_schedule_meta(engine, records)
-        assert inserted == 31
+        assert inserted == 32
 
         db_rows = session.exec(select(FIRScheduleMeta)).all()
-        assert len(db_rows) == 31
+        assert len(db_rows) == 32
 
-    def test_all_31_codes_in_db(self, engine, session: Session) -> None:
+    def test_all_32_codes_in_db(self, engine, session: Session) -> None:
         """After inserting all baseline records, every expected code is present in the DB."""
         records = _load_baseline()
         insert_schedule_meta(engine, records)
@@ -952,13 +952,13 @@ class TestExtractScheduleRecordDispatcher:
 class TestExtractAllScheduleMeta:
     """Tests for extract_all_schedule_meta."""
 
-    def test_returns_31_records_from_real_files(self) -> None:
-        """extract_all_schedule_meta returns exactly 31 records when the real markdown files exist."""
+    def test_returns_32_records_from_real_files(self) -> None:
+        """extract_all_schedule_meta returns exactly 32 records when the real markdown files exist."""
         markdown_dir = Path("fir_instructions/source_files/2025/markdown")
         if not markdown_dir.exists():
             pytest.skip("Real FIR2025 markdown files not found")  # pragma: no cover
         records = extract_all_schedule_meta(markdown_dir)
-        assert len(records) == 31
+        assert len(records) == 32
         codes = {r["schedule"] for r in records}
         assert codes == set(SCHEDULE_CATEGORIES.keys())
 

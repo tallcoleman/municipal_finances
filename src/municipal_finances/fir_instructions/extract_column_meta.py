@@ -57,6 +57,13 @@ _COLUMN_HEADING_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Matches "Columns N & M: - GroupName" (S74D style) where two column numbers share
+# a group description.  Both columns receive the group name as their column_name.
+_PAIRED_COLUMN_HEADING_RE = re.compile(
+    r"Columns\s+(\d+)\s*&\s*(\d+):?\s*[-\u2013\u2014]\s*(.+)",
+    re.IGNORECASE,
+)
+
 # Headings that should NOT update current_section_name — boilerplate transitions
 # that appear within a section rather than introducing a new one.  Without this
 # skip-list, S26's repeated "Description of Columns" sub-heading would overwrite
@@ -89,6 +96,28 @@ _DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_column_meta.csv")
 # ---------------------------------------------------------------------------
 # Heading parser
 # ---------------------------------------------------------------------------
+
+
+def _parse_paired_column_heading(heading: str) -> tuple[str, str, str] | None:
+    """Parse a ``Columns N & M: - GroupName`` heading into ``(col_id_1, col_id_2, group_name)``.
+
+    Handles the S74D variant where two column numbers share a group description.
+    Both columns receive the group name as their ``column_name``.  Column IDs
+    are zero-padded to two digits.
+
+    Args:
+        heading: Section heading text (bold markers already stripped).
+
+    Returns:
+        ``(col_id_1, col_id_2, group_name)`` tuple, or ``None`` if not a paired heading.
+    """
+    m = _PAIRED_COLUMN_HEADING_RE.match(heading.strip())
+    if not m:
+        return None
+    col_id_1 = f"{int(m.group(1)):02d}"
+    col_id_2 = f"{int(m.group(2)):02d}"
+    name = m.group(3).strip().rstrip(":").strip()
+    return (col_id_1, col_id_2, name)
 
 
 def _parse_column_heading(heading: str) -> tuple[str, str] | None:
@@ -205,6 +234,30 @@ def _extract_per_schedule_columns(
     current_section_name: str | None = None
 
     for heading, content in sections:
+        # Check for paired heading first (S74D: "Columns N & M: - GroupName").
+        paired = _parse_paired_column_heading(heading)
+        if paired is not None:
+            col_id_1, col_id_2, group_name = paired
+            text = _clean_md_content(content)
+            for col_id in (col_id_1, col_id_2):
+                key = (col_id, current_section_name)
+                if key not in seen_keys:
+                    seen_keys.add(key)
+                    records.append(
+                        {
+                            "schedule": code,
+                            "column_id": col_id,
+                            "column_name": group_name,
+                            "section_name": current_section_name,
+                            "description": text or "No description provided.",
+                            "valid_from_year": None,
+                            "valid_to_year": None,
+                            "change_notes": None,
+                        }
+                    )
+            _scan_body_for_columns(content, code, current_section_name, seen_keys, records)
+            continue
+
         parsed = _parse_column_heading(heading)
 
         if parsed is None:
@@ -247,6 +300,49 @@ def _extract_per_schedule_columns(
 
 
 # ---------------------------------------------------------------------------
+# S51B inherited column synthesis
+# ---------------------------------------------------------------------------
+
+
+def _synthesize_s51b_inherited_columns(
+    records: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Synthesize S51B column records inherited from S51A.
+
+    S51B (Segmented by Asset Class) uses the same column structure as S51A for
+    its General Capital Assets and Infrastructure Assets sections but does not
+    redefine those columns in its own markdown.  This copies all S51A column
+    records to S51B with ``section_name=None`` (applicable across all non-CIP
+    asset sections).
+
+    CIP-specific columns (01–04 under
+    ``section_name='Line 2405 - Construction-In-Progress'``) are already
+    extracted from S51B's markdown; those have a non-``None`` ``section_name``
+    and will not conflict with the inherited records (dedup key is
+    ``(column_id, section_name)``).
+
+    Args:
+        records: Full list of extracted records from all schedules.
+
+    Returns:
+        New records to append for S51B inherited columns.
+    """
+    s51a_cols = [r for r in records if r["schedule"] == "51A"]
+    s51b_existing_keys: set[tuple[str, str | None]] = {
+        (r["column_id"], r.get("section_name"))
+        for r in records
+        if r["schedule"] == "51B"
+    }
+    new_records: list[dict[str, Any]] = []
+    for col in s51a_cols:
+        key = (col["column_id"], None)
+        if key in s51b_existing_keys:
+            continue
+        new_records.append({**col, "schedule": "51B", "section_name": None})
+    return new_records
+
+
+# ---------------------------------------------------------------------------
 # Top-level extraction
 # ---------------------------------------------------------------------------
 
@@ -267,6 +363,7 @@ def extract_all_column_meta(markdown_dir: str | Path) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     for code in SCHEDULE_CATEGORIES:
         records.extend(_extract_per_schedule_columns(markdown_dir, code))
+    records.extend(_synthesize_s51b_inherited_columns(records))
     return records
 
 

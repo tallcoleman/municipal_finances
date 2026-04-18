@@ -1224,6 +1224,18 @@ Enter N for “No” if you do not have a contingent liability.",,,
 74,01,Is Value in Column 2 Estimated?  (Y or N),Section 8 – Contingent Liabilities,"Enter Y for ""Yes"" if the value of the contingent liability reported in column 2 is estimated. Enter N for ""No"" if the value is not an estimate.",,,
 74,02,Value ($),Section 8 – Contingent Liabilities,Enter the value of each type of contingent liability listed.,,,
 74,03,Number of Years Payable Over,Section 8 – Contingent Liabilities,This column applies only to line 2640 (Outstanding loans guaranteed). Report the number of years as the time from the next reporting year to the year the last loan payment is due.,,,
+74,01,Recoverable from the Consolidated Statement of Operations,Section 12 – Future Principal and Interest Payments on Existing Debt,"Report the amount of principal and interest payments recoverable from the consolidated statement of operations in these columns.  Column 1 represents principal repayments and column 2 represents interest payments.
+
+Amounts recoverable from the consolidated statement of operations represent amounts to be recovered from taxes.",,,
+74,02,Recoverable from the Consolidated Statement of Operations,Section 12 – Future Principal and Interest Payments on Existing Debt,"Report the amount of principal and interest payments recoverable from the consolidated statement of operations in these columns.  Column 1 represents principal repayments and column 2 represents interest payments.
+
+Amounts recoverable from the consolidated statement of operations represent amounts to be recovered from taxes.",,,
+74,03,Recoverable from Reserve Funds,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from discretionary reserve funds in these columns.,,,
+74,04,Recoverable from Reserve Funds,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from discretionary reserve funds in these columns.,,,
+74,05,Recoverable from Unconsolidated Entities,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from unconsolidated entities in these columns.,,,
+74,06,Recoverable from Unconsolidated Entities,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from unconsolidated entities in these columns.,,,
+74,07,Recoverable from all Others,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest recoverable from all other sources.  This category includes debt recoverable from obligatory reserve funds/deferred revenue. This category also includes debt recoverable from interest on sinking funds.,,,
+74,08,Recoverable from all Others,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest recoverable from all other sources.  This category includes debt recoverable from obligatory reserve funds/deferred revenue. This category also includes debt recoverable from interest on sinking funds.,,,
 74,01,Liability for ARO at Beginning of Year,Asset Retirement Obligation Liability,Column 1 is automatically populated from the prior year’s closing balance.,,,
 74,03,Liability Incurred During the Year,Analysis By Functional Classification:,"Please use this column to record any liabilities that relate to assets that were newly purchased, constructed or developed in the current year.",,,
 74,04,Liability Settled During the Year,Analysis By Functional Classification:,Please use this column to record payments made to extinguish ARO liabilities in the current year. Please record this as a positive value.,,,
@@ -1238,6 +1250,18 @@ Please use this column to record any changes in the estimate of the liability th
 
 Increases should be reported as positive values and decreases should be reported as negative values.",,,
 74,07,Liabilities for ARO at End of Year,Analysis By Functional Classification:,"For each line, the total is the sum of Column 1 to 6. This ending balance will become next year’s opening balance in Column 1. It also pre-populates SLC 70 2920 01, Liability for Asset Retirement Obligation Liabilities.",,,
+74D,01,Recoverable from the Consolidated Statement of Operations,Section 12 – Future Principal and Interest Payments on Existing Debt,"Report the amount of principal and interest payments recoverable from the consolidated statement of operations in these columns.  Column 1 represents principal repayments and column 2 represents interest payments.
+
+Amounts recoverable from the consolidated statement of operations represent amounts to be recovered from taxes.",,,
+74D,02,Recoverable from the Consolidated Statement of Operations,Section 12 – Future Principal and Interest Payments on Existing Debt,"Report the amount of principal and interest payments recoverable from the consolidated statement of operations in these columns.  Column 1 represents principal repayments and column 2 represents interest payments.
+
+Amounts recoverable from the consolidated statement of operations represent amounts to be recovered from taxes.",,,
+74D,03,Recoverable from Reserve Funds,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from discretionary reserve funds in these columns.,,,
+74D,04,Recoverable from Reserve Funds,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from discretionary reserve funds in these columns.,,,
+74D,05,Recoverable from Unconsolidated Entities,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from unconsolidated entities in these columns.,,,
+74D,06,Recoverable from Unconsolidated Entities,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest payments recoverable from unconsolidated entities in these columns.,,,
+74D,07,Recoverable from all Others,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest recoverable from all other sources.  This category includes debt recoverable from obligatory reserve funds/deferred revenue. This category also includes debt recoverable from interest on sinking funds.,,,
+74D,08,Recoverable from all Others,Section 12 – Future Principal and Interest Payments on Existing Debt,Report the amount of principal and interest recoverable from all other sources.  This category includes debt recoverable from obligatory reserve funds/deferred revenue. This category also includes debt recoverable from interest on sinking funds.,,,
 74E,01,Liability for ARO at Beginning of Year,Asset Retirement Obligation Liability,Column 1 is automatically populated from the prior year’s closing balance.,,,
 74E,03,Liability Incurred During the Year,Analysis By Functional Classification:,"Please use this column to record any liabilities that relate to assets that were newly purchased, constructed or developed in the current year.",,,
 74E,04,Liability Settled During the Year,Analysis By Functional Classification:,Please use this column to record payments made to extinguish ARO liabilities in the current year. Please record this as a positive value.,,,
@@ -1342,3 +1366,33 @@ The structural integrity, safety and condition of every bridge shall be determin
 
 Please indicate the rating system used and year it was conducted in line 1769.",,,
 80D,02,Total number,"Line 1766 - Culverts: Enter the Number of Culverts Where the Condition of Primary Components is Rated as Good to Very Good, Requiring Only Repair.","Use lines 1765 and 1766, column 2, to report the total number of bridges and culverts as follows:",,,
+51B,01,Opening Net Book Value of Tangible Capital Assets,,This column is automatically populated from the previous year’s closing Net Book Value of tangible capital assets.,,,
+51B,02,Opening Cost Balance,,"Column 2 includes the opening balance of the cost of assets.  This column is automatically pre-populated from the previous year’s closing cost balance. However, the amounts in this column can be edited if needed (as described in the section above “Transfers between functional categories”).",,,
+51B,03,Additions and Betterments,,"Column 3 includes all costs related to the purchase, construction, and development of tangible capital assets as per PS 3150 Tangible capital assets. This also includes donated/contributed tangible capital assets and betterments.",,,
+51B,14,ARO Increase in TCA Cost,,"In column 14, record the asset retirement obligation costs for any tangible capital assets that are purchased, or constructed In the current year.
+
+Column 14 may also be used to record an increase in the carrying cost of a tangible capital asset that relates to an increase in the estimate of the asset retirement obligation liability.  A decrease in the estimate of the asset retirement obligation liability should be recorded in Column 5, Write Downs.
+
+IMPORTANT: Accretion expense is considered an operating expense rather than a capital expense.  Accretion expense is the non-cash cost due to the passage of time, resulting in the gradual increase of the present value of the asset retirement obligation liability.  Accretion expense should be recorded in Schedule 40, Statement of Operations: Expenses, in Column 5 Rents, Financial Expenses, & Accretion Expense, and not in this schedule.",,,
+51B,04,Disposals,,"In Column 4, record the cost for assets that were sold, traded-in, destroyed, lost, or abandoned. These amounts should be recorded as positive values.",,,
+51B,05,Write Downs,,"In Column 5, record the permanent decline in the value of tangible capital assets. These amounts should be recorded as positive values.
+
+This column should be used to record any decreases in the carrying value of a tangible capital assets that relate to a decrease in the estimate of the asset retirement obligation liability.",,,
+51B,06,Closing Cost Balance,,"The year-end closing cost balance is automatically calculated as follows:
+
+**Closing Cost Balance = Opening Cost Balance (Column 2) Plus:     Additions and Betterments (Column 3) Plus:     ARO Increase in TCA Cost (Column 14) Minus:   Disposals (Column 4) Minus:   Write Downs (Column 5)**",,,
+51B,07,Opening Amortization Balance,,"Column 7 includes the opening accumulated amortization balance. This column is automatically pre-populated from the previous year’s closing accumulated amortization balance; however, these amounts can be edited if needed. Accumulated amortization is the cumulative amortization of assets up to a certain point in time.
+
+If an asset retirement obligation relates to an existing tangible capital asset that is included in the opening cost balance for 2023 year, please see (c) above regarding adjustments to opening tangible capital asset cost and accumulated amortization balances.",,,
+51B,08,Annual amortization,,"In Column 8, record the cost reported as an amortization expense in schedule 40 on column 16.",,,
+51B,09,Amortization Disposal,,"In Column 9, report the sum of the accumulated amortization applicable to disposals or write downs. These amounts should be recorded as positive values.",,,
+51B,10,Closing Amortization Balance,,"The year-end closing accumulated amortization balance is automatically calculated as follows:
+
+**Closing Amortization Balance = Opening Amortization Balance (Column 7)**
+
+**Plus:       Annual Amortization**
+
+**Minus:    Amortization Disposal**",,,
+51B,11,Closing Net Book Value,,"The year-end closing net book value is automatically calculated as follows:
+
+**Closing Cost Balance - Closing Amortization Balance = Closing Net Book Value Column 6 – Column 10 = Column 11**",,,

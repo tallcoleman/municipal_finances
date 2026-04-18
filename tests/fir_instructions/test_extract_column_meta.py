@@ -21,6 +21,8 @@ from municipal_finances.fir_instructions.extract_column_meta import (
     _CSV_FIELDS,
     _extract_per_schedule_columns,
     _parse_column_heading,
+    _parse_paired_column_heading,
+    _synthesize_s51b_inherited_columns,
     app,
     extract_all_column_meta,
     insert_column_meta,
@@ -40,7 +42,7 @@ _BASELINE_CSV = Path("fir_instructions/exports/baseline_column_meta.csv")
 
 # Schedules confirmed to have column descriptions in FIR2025 markdown.
 _SCHEDULES_WITH_COLUMNS: frozenset[str] = frozenset(
-    {"12", "20", "22", "24", "26", "28", "40", "51A", "51B", "61A", "61B", "72", "74", "74E", "80", "80D"}
+    {"12", "20", "22", "24", "26", "28", "40", "51A", "51B", "61A", "61B", "72", "74", "74D", "74E", "80", "80D"}
 )
 
 
@@ -152,7 +154,53 @@ class TestParseColumnHeading:
 
 
 # ---------------------------------------------------------------------------
-# 2. Per-schedule extraction
+# 2. Paired column heading parser
+# ---------------------------------------------------------------------------
+
+
+class TestParsePairedColumnHeading:
+    def test_standard_paired_format(self) -> None:
+        """'Columns 1 & 2: - GroupName' parses to (col_id_1, col_id_2, name)."""
+        result = _parse_paired_column_heading(
+            "Columns 1 & 2: - Recoverable from the Consolidated Statement of Operations"
+        )
+        assert result == (
+            "01",
+            "02",
+            "Recoverable from the Consolidated Statement of Operations",
+        )
+
+    def test_zero_pads_both_column_ids(self) -> None:
+        """Both column IDs are zero-padded to 2 digits."""
+        result = _parse_paired_column_heading("Columns 7 & 8: - Recoverable from all Others")
+        assert result is not None
+        assert result[0] == "07"
+        assert result[1] == "08"
+
+    def test_non_paired_heading_returns_none(self) -> None:
+        """A singular 'Column N - Name' heading returns None."""
+        assert _parse_paired_column_heading("Column 1 - Name") is None
+
+    def test_non_column_heading_returns_none(self) -> None:
+        """A non-column heading like 'Description of Columns' returns None."""
+        assert _parse_paired_column_heading("Description of Columns") is None
+
+    def test_trailing_colon_stripped_from_name(self) -> None:
+        """Trailing colon on the group name is stripped."""
+        result = _parse_paired_column_heading("Columns 3 & 4: - Reserve Funds:")
+        assert result is not None
+        assert not result[2].endswith(":")
+
+    def test_case_insensitive(self) -> None:
+        """Matching is case-insensitive."""
+        result = _parse_paired_column_heading("columns 5 & 6: - Unconsolidated Entities")
+        assert result is not None
+        assert result[0] == "05"
+        assert result[1] == "06"
+
+
+# ---------------------------------------------------------------------------
+# 3. Per-schedule extraction
 # ---------------------------------------------------------------------------
 
 
@@ -344,9 +392,148 @@ class TestExtractPerScheduleColumns:
         assert "Second description" not in col4["description"]
         assert len([r for r in records if r["column_id"] == "05"]) == 1
 
+    def test_paired_heading_produces_two_records(self, tmp_path: Path) -> None:
+        """'Columns N & M: - GroupName' heading emits two separate column records."""
+        # S74D content is embedded in FIR2025 S74.md under a "Schedule 74D" section.
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Description of Columns\n\n"
+            "## Columns 1 & 2: - Recoverable from the Consolidated Statement of Operations\n\n"
+            "Both columns represent recoverable amounts.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 2
+        col_ids = {r["column_id"] for r in records}
+        assert col_ids == {"01", "02"}
+        for r in records:
+            assert r["column_name"] == "Recoverable from the Consolidated Statement of Operations"
+            assert "recoverable" in r["description"].lower()
+
+    def test_paired_heading_dedup(self, tmp_path: Path) -> None:
+        """The same paired heading appearing twice produces only 2 records, not 4."""
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Columns 1 & 2: - GroupName\n\nFirst occurrence.\n\n"
+            "## Columns 1 & 2: - GroupName\n\nDuplicate occurrence.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 2
+
+    def test_paired_and_single_headings_together(self, tmp_path: Path) -> None:
+        """A mix of paired and singular column headings in one file is all extracted."""
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Columns 1 & 2: - Recoverable from Operations\n\nPaired description.\n\n"
+            "## Column 3 - Other Amount\n\nSingle description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 3
+        col_ids = {r["column_id"] for r in records}
+        assert col_ids == {"01", "02", "03"}
+
 
 # ---------------------------------------------------------------------------
-# 3. All-schedule extraction
+# 4. S51B inherited column synthesis
+# ---------------------------------------------------------------------------
+
+
+class TestSynthesizeS51bInheritedColumns:
+    def _make_s51a_record(self, column_id: str, section_name: str | None = "Cost") -> dict[str, Any]:
+        return {
+            "schedule": "51A",
+            "column_id": column_id,
+            "column_name": f"Column {column_id} Name",
+            "section_name": section_name,
+            "description": "Some description.",
+            "valid_from_year": None,
+            "valid_to_year": None,
+            "change_notes": None,
+        }
+
+    def test_synthesizes_from_s51a(self) -> None:
+        """Each S51A record produces a matching S51B record with section_name=None."""
+        s51a_records = [
+            self._make_s51a_record("01", "Schedule 51A: Tangible Capital Assets by Function"),
+            self._make_s51a_record("02", "Cost of Tangible Capital Assets:"),
+            self._make_s51a_record("07", "Amortization"),
+        ]
+        result = _synthesize_s51b_inherited_columns(s51a_records)
+        assert len(result) == 3
+        for r in result:
+            assert r["schedule"] == "51B"
+            assert r["section_name"] is None
+
+    def test_copied_fields_match_s51a(self) -> None:
+        """Synthesized records copy column_id, column_name, and description from S51A."""
+        s51a_records = [self._make_s51a_record("02", "Cost of Tangible Capital Assets:")]
+        result = _synthesize_s51b_inherited_columns(s51a_records)
+        assert result[0]["column_id"] == "02"
+        assert result[0]["column_name"] == "Column 02 Name"
+        assert result[0]["description"] == "Some description."
+
+    def test_does_not_duplicate_existing_s51b_keys(self) -> None:
+        """S51B records with section_name=None already in the list are not duplicated."""
+        all_records = [
+            self._make_s51a_record("02"),
+            {
+                "schedule": "51B",
+                "column_id": "02",
+                "column_name": "Existing S51B col",
+                "section_name": None,
+                "description": "Already exists.",
+                "valid_from_year": None,
+                "valid_to_year": None,
+                "change_notes": None,
+            },
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert all(r["column_id"] != "02" for r in result)
+
+    def test_cip_columns_not_blocked(self) -> None:
+        """S51B CIP columns (section_name non-None) don't block inherited cols at section_name=None."""
+        all_records = [
+            self._make_s51a_record("02"),
+            {
+                "schedule": "51B",
+                "column_id": "02",
+                "column_name": "Expenditures",
+                "section_name": "Line 2405 - Construction-In-Progress",
+                "description": "CIP expenditures.",
+                "valid_from_year": None,
+                "valid_to_year": None,
+                "change_notes": None,
+            },
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        # col 02 with section_name=None is not in S51B yet → should be synthesized
+        assert any(r["column_id"] == "02" and r["section_name"] is None for r in result)
+
+    def test_returns_empty_when_no_s51a(self) -> None:
+        """Returns an empty list when there are no S51A records in the input."""
+        all_records = [
+            _minimal_column_record(schedule="12", column_id="01"),
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert result == []
+
+    def test_ignores_non_s51a_records(self) -> None:
+        """Records from other schedules are not synthesized into S51B."""
+        all_records = [
+            _minimal_column_record(schedule="40", column_id="01"),
+            _minimal_column_record(schedule="72", column_id="01"),
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert result == []
+
+
+# ---------------------------------------------------------------------------
+# 5. All-schedule extraction
 # ---------------------------------------------------------------------------
 
 
@@ -387,6 +574,30 @@ class TestExtractAllColumnMeta:
         for r in records:
             for field in _CSV_FIELDS:
                 assert field in r, f"Missing field '{field}' in record {r}"
+
+    def test_s51b_inherits_s51a_columns(self, tmp_path: Path) -> None:
+        """extract_all_column_meta synthesizes S51B records from S51A column definitions."""
+        # S51A and S51B content is embedded in FIR2025 S51.md, delimited by
+        # "Schedule 51A:" and "Schedule 51B:" headings (per _SUB_SCHEDULE_HEADING_PREFIXES).
+        (tmp_path / "FIR2025 S51.md").write_text(
+            "## Schedule 51A: Tangible Capital Assets by Function\n\n"
+            "## Cost of Tangible Capital Assets:\n\n"
+            "## Column 2: - Additions\n\nAdditions description.\n\n"
+            "## Column 3: - Disposals\n\nDisposals description.\n\n"
+            "## Schedule 51B: Tangible Capital Assets by Class\n\n"
+            "## Line 2405 - Construction-In-Progress\n\n"
+            "## Column 1: - Opening Balance\n\nCIP opening balance.\n",
+            encoding="utf-8",
+        )
+        records = extract_all_column_meta(tmp_path)
+        s51b = [r for r in records if r["schedule"] == "51B"]
+        s51b_ids = {r["column_id"] for r in s51b}
+        # CIP column (section_name non-None) + 2 inherited (section_name=None)
+        assert "01" in s51b_ids, "CIP column 01 should be present"
+        assert "02" in s51b_ids, "Inherited S51A column 02 should be present"
+        assert "03" in s51b_ids, "Inherited S51A column 03 should be present"
+        inherited = [r for r in s51b if r["section_name"] is None]
+        assert len(inherited) == 2, f"Expected 2 inherited records, got {len(inherited)}"
 
 
 # ---------------------------------------------------------------------------
@@ -656,6 +867,29 @@ class TestBaselineCSVContent:
             r for r in records if r["schedule"] == "28" and r["column_id"] == "05"
         ]
         assert len(s28_col05) == 1, "S28 Column 05 should be extracted from body text"
+
+    def test_spot_check_s74d_column_count(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 74D has exactly 8 column records (4 paired headings × 2 columns each)."""
+        s74d = [r for r in records if r["schedule"] == "74D"]
+        assert len(s74d) == 8, f"Expected 8 columns for S74D, got {len(s74d)}"
+
+    def test_spot_check_s51b_column_count(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 51B has 16 records: 4 CIP-specific + 12 inherited from S51A."""
+        s51b = [r for r in records if r["schedule"] == "51B"]
+        assert len(s51b) == 16, f"Expected 16 columns for S51B, got {len(s51b)}"
+
+    def test_s51b_has_inherited_columns_with_null_section(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """S51B has records with section_name=None for each of S51A's column_ids."""
+        s51a_col_ids = {r["column_id"] for r in records if r["schedule"] == "51A"}
+        s51b_inherited_ids = {
+            r["column_id"]
+            for r in records
+            if r["schedule"] == "51B" and r["section_name"] is None
+        }
+        missing = s51a_col_ids - s51b_inherited_ids
+        assert missing == set(), f"S51B missing inherited columns from S51A: {missing}"
 
 
 # ---------------------------------------------------------------------------
