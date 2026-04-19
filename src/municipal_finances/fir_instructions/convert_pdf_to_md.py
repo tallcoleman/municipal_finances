@@ -110,23 +110,29 @@ def fix_pdf_headings(
     toc_map = _build_toc_level_map(pdf_path)
     toc_count = len(toc_map)
     if toc_count <= 1:
-        typer.echo(typer.style(
-            f"WARNING: {pdf_path.name} has only {toc_count} TOC entr{'y' if toc_count == 1 else 'ies'} — skipping.",
-            fg=typer.colors.YELLOW, bold=True,
-        ))
+        typer.echo(
+            typer.style(
+                f"WARNING: {pdf_path.name} has only {toc_count} TOC entr{'y' if toc_count == 1 else 'ies'} — skipping.",
+                fg=typer.colors.YELLOW,
+                bold=True,
+            )
+        )
         return
     if toc_count <= 5:
-        typer.echo(typer.style(
-            f"WARNING: {pdf_path.name} has only {toc_count} TOC entries — proceeding, but results may be incomplete.",
-            fg=typer.colors.YELLOW, bold=True,
-        ))
+        typer.echo(
+            typer.style(
+                f"WARNING: {pdf_path.name} has only {toc_count} TOC entries — proceeding, but results may be incomplete.",
+                fg=typer.colors.YELLOW,
+                bold=True,
+            )
+        )
 
     md_name = pdf_path.with_suffix(".md").name
     clean_path = pdf_path.parent / output_folder / md_name
     raw_path = pdf_path.parent / input_folder / md_name
 
     input_path = clean_path if clean_path.exists() else raw_path
-    print(f"Reading from {input_path}")
+    print(f"Reading from {input_path} ({toc_count} TOC entries)")
 
     content = input_path.read_text(encoding="utf-8")
     fixed = _fix_heading_levels(content, toc_map)
@@ -149,4 +155,6 @@ def fix_folder_headings(
     pdf_paths = [*path.glob("*.pdf")]
     print(f"Found {len(pdf_paths)} PDFs to process.")
     for pdf_path in pdf_paths:
-        fix_pdf_headings(pdf_path, input_folder=input_folder, output_folder=output_folder)
+        fix_pdf_headings(
+            pdf_path, input_folder=input_folder, output_folder=output_folder
+        )
