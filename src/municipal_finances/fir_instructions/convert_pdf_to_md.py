@@ -110,10 +110,16 @@ def fix_pdf_headings(
     toc_map = _build_toc_level_map(pdf_path)
     toc_count = len(toc_map)
     if toc_count <= 1:
-        print(f"WARNING: {pdf_path.name} has only {toc_count} TOC entr{'y' if toc_count == 1 else 'ies'} — skipping.")
+        typer.echo(typer.style(
+            f"WARNING: {pdf_path.name} has only {toc_count} TOC entr{'y' if toc_count == 1 else 'ies'} — skipping.",
+            fg=typer.colors.YELLOW, bold=True,
+        ))
         return
     if toc_count <= 5:
-        print(f"WARNING: {pdf_path.name} has only {toc_count} TOC entries — proceeding, but results may be incomplete.")
+        typer.echo(typer.style(
+            f"WARNING: {pdf_path.name} has only {toc_count} TOC entries — proceeding, but results may be incomplete.",
+            fg=typer.colors.YELLOW, bold=True,
+        ))
 
     md_name = pdf_path.with_suffix(".md").name
     clean_path = pdf_path.parent / output_folder / md_name
