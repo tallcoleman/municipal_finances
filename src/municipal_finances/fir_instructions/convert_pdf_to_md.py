@@ -143,6 +143,20 @@ def fix_pdf_headings(
 
 
 @app.command()
+def count_pages(path: Path) -> None:
+    """Print the page count for each PDF in a folder, then a total. Excludes subdirectories."""
+    pdf_paths = sorted(path.glob("*.pdf"))
+    total = 0
+    for pdf_path in pdf_paths:
+        doc = pymupdf.open(pdf_path)
+        pages = len(doc)
+        doc.close()
+        print(f"{pdf_path.name}: {pages}")
+        total += pages
+    print(f"Total: {total} pages across {len(pdf_paths)} PDFs")
+
+
+@app.command()
 def fix_folder_headings(
     path: Path,
     input_folder: str = "markdown",

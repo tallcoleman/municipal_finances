@@ -14,11 +14,89 @@ from municipal_finances.fir_instructions.convert_pdf_to_md import (
     _normalize,
     convert_folder,
     convert_pdf,
+    count_pages,
     fix_folder_headings,
     fix_pdf_headings,
 )
 
 MOCK_MARKDOWN = "# FIR Instructions\n\nSome content here."
+
+
+# ---------------------------------------------------------------------------
+# count_pages
+# ---------------------------------------------------------------------------
+
+
+def _make_doc_mock(page_count: int) -> MagicMock:
+    """Return a mock pymupdf document with the given page count."""
+    doc = MagicMock()
+    doc.__len__ = MagicMock(return_value=page_count)
+    return doc
+
+
+class TestCountPages:
+    def test_prints_page_count_per_pdf(self, tmp_path: Path, capsys) -> None:
+        """Each PDF's name and page count are printed."""
+        (tmp_path / "a.pdf").write_bytes(b"%PDF-1.4")
+        (tmp_path / "b.pdf").write_bytes(b"%PDF-1.4")
+
+        doc_a = _make_doc_mock(3)
+        doc_b = _make_doc_mock(7)
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=[doc_a, doc_b],
+        ):
+            count_pages(tmp_path)
+
+        out = capsys.readouterr().out
+        assert "a.pdf: 3" in out
+        assert "b.pdf: 7" in out
+
+    def test_prints_total_page_count(self, tmp_path: Path, capsys) -> None:
+        """A total page count is printed at the end."""
+        (tmp_path / "a.pdf").write_bytes(b"%PDF-1.4")
+        (tmp_path / "b.pdf").write_bytes(b"%PDF-1.4")
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=[_make_doc_mock(3), _make_doc_mock(7)],
+        ):
+            count_pages(tmp_path)
+
+        out = capsys.readouterr().out
+        assert "Total: 10 pages across 2 PDFs" in out
+
+    def test_excludes_pdfs_in_subdirectories(self, tmp_path: Path, capsys) -> None:
+        """PDFs nested in subdirectories are not counted."""
+        (tmp_path / "top.pdf").write_bytes(b"%PDF-1.4")
+        sub = tmp_path / "sub"
+        sub.mkdir()
+        (sub / "nested.pdf").write_bytes(b"%PDF-1.4")
+
+        open_mock = MagicMock(return_value=_make_doc_mock(5))
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            open_mock,
+        ):
+            count_pages(tmp_path)
+
+        assert open_mock.call_count == 1
+        out = capsys.readouterr().out
+        assert "nested.pdf" not in out
+
+    def test_empty_folder(self, tmp_path: Path, capsys) -> None:
+        """An empty folder prints a zero total without error."""
+        open_mock = MagicMock()
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            open_mock,
+        ):
+            count_pages(tmp_path)
+
+        open_mock.assert_not_called()
+        out = capsys.readouterr().out
+        assert "Total: 0 pages across 0 PDFs" in out
 
 
 # ---------------------------------------------------------------------------
