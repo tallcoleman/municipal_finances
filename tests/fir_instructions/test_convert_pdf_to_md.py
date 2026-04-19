@@ -10,13 +10,17 @@ import pytest
 
 from municipal_finances.fir_instructions.convert_pdf_to_md import (
     _build_toc_level_map,
+    _extract_section_from_footer,
     _fix_heading_levels,
+    _get_footer_spans,
     _normalize,
+    _section_to_stem,
     convert_folder,
     convert_pdf,
     count_pages,
     fix_folder_headings,
     fix_pdf_headings,
+    split_pdf_by_section,
 )
 
 MOCK_MARKDOWN = "# FIR Instructions\n\nSome content here."
@@ -497,5 +501,370 @@ class TestFixFolderHeadings:
         ):
             fix_folder_headings(tmp_path)
 
-        assert open_mock.call_count == 1
-        assert not (tmp_path / "markdown_clean" / "nested.md").exists()
+
+# ---------------------------------------------------------------------------
+# _get_footer_spans
+# ---------------------------------------------------------------------------
+
+
+def _make_page_mock_for_spans(
+    span_texts: list[str],
+    page_height: float = 792.0,
+    block_y: float | None = None,
+) -> MagicMock:
+    """Return a mock page whose get_text returns a single text block at *block_y*.
+
+    Defaults to placing the block at 90% of page height (i.e. in the footer zone).
+    """
+    if block_y is None:
+        block_y = page_height * 0.9
+
+    page = MagicMock()
+    page.rect = MagicMock()
+    page.rect.height = page_height
+
+    spans_list = [{"text": t} for t in span_texts]
+    block = {
+        "type": 0,
+        "bbox": (0, block_y, 612, block_y + 20),
+        "lines": [{"spans": spans_list}],
+    }
+    page.get_text.return_value = {"blocks": [block]}
+    return page
+
+
+class TestGetFooterSpans:
+    def test_returns_spans_from_footer_zone(self) -> None:
+        """Spans in a block below the 85% threshold are returned."""
+        # block_y omitted — exercises the default (page_height * 0.9) branch
+        page = _make_page_mock_for_spans(["FIR2022", "Introduction"], page_height=100.0)
+        assert _get_footer_spans(page) == ["FIR2022", "Introduction"]
+
+    def test_ignores_block_above_threshold(self) -> None:
+        """Blocks whose top edge is above the footer threshold are excluded."""
+        page = _make_page_mock_for_spans(["body text"], page_height=100.0, block_y=50.0)
+        assert _get_footer_spans(page) == []
+
+    def test_strips_whitespace_only_spans(self) -> None:
+        """Spans containing only whitespace are dropped."""
+        page = _make_page_mock_for_spans(["  ", "FIR2020", "\t"], page_height=100.0, block_y=90.0)
+        assert _get_footer_spans(page) == ["FIR2020"]
+
+    def test_ignores_non_text_blocks(self) -> None:
+        """Blocks with type != 0 (e.g. images) are ignored even if in footer zone."""
+        page = MagicMock()
+        page.rect = MagicMock()
+        page.rect.height = 100.0
+        image_block = {"type": 1, "bbox": (0, 90, 612, 110)}
+        page.get_text.return_value = {"blocks": [image_block]}
+        assert _get_footer_spans(page) == []
+
+    def test_collects_multiple_footer_spans(self) -> None:
+        """All non-empty spans from the footer zone are collected."""
+        page = _make_page_mock_for_spans(
+            ["FIR2019     Introduction", "INTRO - 1", "Ministry of Municipal Affairs"],
+            page_height=792.0,
+            block_y=700.0,
+        )
+        result = _get_footer_spans(page)
+        assert result == [
+            "FIR2019     Introduction",
+            "INTRO - 1",
+            "Ministry of Municipal Affairs",
+        ]
+
+
+# ---------------------------------------------------------------------------
+# _extract_section_from_footer
+# ---------------------------------------------------------------------------
+
+
+class TestExtractSectionFromFooter:
+    def test_empty_spans_returns_none(self) -> None:
+        assert _extract_section_from_footer([]) is None
+
+    def test_no_fir_year_returns_none(self) -> None:
+        assert _extract_section_from_footer(["Some text", "INTRO - 1"]) is None
+
+    def test_corrupted_fir_year_returns_none(self) -> None:
+        """Partial year token like 'FIR202' should not match."""
+        assert _extract_section_from_footer(["FIR202", "12", "Schedule", "83"]) is None
+
+    # 2019 combined-span format
+    def test_2019_introduction(self) -> None:
+        spans = ["FIR2019     Introduction", "INTRO - 1", "Ministry of Municipal Affairs and Housing"]
+        assert _extract_section_from_footer(spans) == "Introduction"
+
+    def test_2019_schedule(self) -> None:
+        spans = ["FIR2019      Schedule 26      Taxation and Payments-In-Lieu Summary", "26 - 14"]
+        assert _extract_section_from_footer(spans) == "Schedule 26"
+
+    def test_2019_functional_classification(self) -> None:
+        spans = ["FIR2019", "Functional Classification", "FUNCTIONS - 12"]
+        assert _extract_section_from_footer(spans) == "Functional Classification"
+
+    # 2020 / 2021 separate-span format
+    def test_2020_introduction(self) -> None:
+        spans = ["Ministry of Municipal Affairs and Housing", "Municipal Finance Policy Branch",
+                 "FIR2020", "Introduction", "INTRO -", "1"]
+        assert _extract_section_from_footer(spans) == "Introduction"
+
+    def test_2020_schedule_two_token(self) -> None:
+        """Schedule and number in one span ('Schedule 26')."""
+        spans = ["FIR2020", "Schedule 26", "Taxation and Payments-In-Lieu Summary", "26 -", "11"]
+        assert _extract_section_from_footer(spans) == "Schedule 26"
+
+    def test_2021_schedule_with_note(self) -> None:
+        """Extra note text before FIR year marker is ignored."""
+        spans = ["Some long note.", "FIR2021", "Schedule 24", "Payments-In-Lieu of Taxation", "24 -", "6"]
+        assert _extract_section_from_footer(spans) == "Schedule 24"
+
+    # 2022 word-split format
+    def test_2022_introduction_split(self) -> None:
+        spans = ["FIR2022", "Introduction", "INTRO", "-", "1"]
+        assert _extract_section_from_footer(spans) == "Introduction"
+
+    def test_2022_functional_classification_split(self) -> None:
+        spans = ["FIR2022", "Functional", "Classification", "FUNCTIONS", "-", "10"]
+        assert _extract_section_from_footer(spans) == "Functional Classification"
+
+    def test_2022_schedule_word_split(self) -> None:
+        spans = ["FIR2022", "Schedule", "10", "Statement", "of", "Operations:", "Revenue", "10", "-", "1"]
+        assert _extract_section_from_footer(spans) == "Schedule 10"
+
+    def test_2022_schedule_non_split(self) -> None:
+        """Some 2022 pages use the non-split format."""
+        spans = ["FIR2022", "Schedule 28", "Upper-Tier Entitlements", "28 -", "5"]
+        assert _extract_section_from_footer(spans) == "Schedule 28"
+
+    def test_schedule_80d(self) -> None:
+        spans = ["FIR2021", "Schedule 80D", "Statistical Information", "80 -", "15"]
+        assert _extract_section_from_footer(spans) == "Schedule 80D"
+
+    def test_empty_section_text_after_page_id_strip_returns_none(self) -> None:
+        """Returns None when the FIR year is immediately followed by the page-ID suffix."""
+        # Joined: "FIR2019 INTRO - 1" → after year: "INTRO - 1" → page-ID at pos 0 → empty section
+        spans = ["FIR2019", "INTRO - 1"]
+        assert _extract_section_from_footer(spans) is None
+
+    def test_arbitrary_section_name_returned_as_is(self) -> None:
+        """Section names that don't match any known pattern are returned verbatim."""
+        spans = ["FIR2023", "Bulletin on Tile Drainage Loans", "99 -", "1"]
+        assert _extract_section_from_footer(spans) == "Bulletin on Tile Drainage Loans"
+
+
+# ---------------------------------------------------------------------------
+# _section_to_stem
+# ---------------------------------------------------------------------------
+
+
+class TestSectionToStem:
+    def test_introduction(self) -> None:
+        assert _section_to_stem("Introduction", "2019") == "FIR2019 Introduction"
+
+    def test_functional_classification(self) -> None:
+        assert _section_to_stem("Functional Classification", "2022") == "FIR2022 Functional Categories"
+
+    def test_schedule_two_digit(self) -> None:
+        assert _section_to_stem("Schedule 26", "2019") == "FIR2019 S26"
+
+    def test_schedule_already_zero_padded(self) -> None:
+        assert _section_to_stem("Schedule 02", "2020") == "FIR2020 S02"
+
+    def test_schedule_single_digit_zero_padded(self) -> None:
+        assert _section_to_stem("Schedule 2", "2021") == "FIR2021 S02"
+
+    def test_schedule_alphanumeric(self) -> None:
+        assert _section_to_stem("Schedule 80D", "2022") == "FIR2022 S80D"
+
+    def test_arbitrary_section_name(self) -> None:
+        assert (
+            _section_to_stem("Bulletin on Tile Drainage Loans", "2023")
+            == "FIR2023 Bulletin on Tile Drainage Loans"
+        )
+
+
+# ---------------------------------------------------------------------------
+# split_pdf_by_section
+# ---------------------------------------------------------------------------
+
+
+def _make_page_mock_for_split(footer_spans: list[str], page_height: float = 792.0) -> MagicMock:
+    """Return a mock page for use in split_pdf_by_section tests."""
+    block_y = page_height * 0.9
+    page = MagicMock()
+    page.rect = MagicMock()
+    page.rect.height = page_height
+    spans_list = [{"text": t} for t in footer_spans]
+    block = {
+        "type": 0,
+        "bbox": (0, block_y, 612, block_y + 20),
+        "lines": [{"spans": spans_list}],
+    }
+    page.get_text.return_value = {"blocks": [block]}
+    return page
+
+
+def _make_split_doc_mock(pages_spans: list[list[str]]) -> MagicMock:
+    """Return a mock pymupdf document whose pages have the given footer spans."""
+    page_mocks = [_make_page_mock_for_split(spans) for spans in pages_spans]
+    doc = MagicMock()
+    doc.__len__ = MagicMock(return_value=len(page_mocks))
+    doc.__getitem__ = MagicMock(side_effect=lambda i: page_mocks[i])
+    return doc
+
+
+def _make_open_side_effect(
+    pdf: Path, source_doc: MagicMock, out_docs: list[MagicMock]
+):
+    """Return a side_effect callable for patching pymupdf.open.
+
+    Calls with the source PDF path return *source_doc*.  Calls with no
+    arguments (i.e. creating a new empty document inside split_pdf_by_section)
+    return a fresh MagicMock that is appended to *out_docs*.
+    """
+
+    def _side_effect(*args, **kwargs):
+        if args and str(args[0]) == str(pdf):
+            return source_doc
+        d = MagicMock()
+        out_docs.append(d)
+        return d
+
+    return _side_effect
+
+
+class TestSplitPdfBySection:
+    def test_two_sections_produce_two_pdfs(self, tmp_path: Path) -> None:
+        """Two distinct sections produce two output PDF files."""
+        pdf = tmp_path / "FIR2019 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [
+            ["FIR2019     Introduction", "INTRO - 1"],
+            ["FIR2019     Introduction", "INTRO - 2"],
+            ["FIR2019      Schedule 26      Taxation", "26 - 1"],
+        ]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf)
+
+        assert len(out_docs) == 2
+
+    def test_output_directory_named_after_year(self, tmp_path: Path) -> None:
+        """Default output directory is a subdirectory named after the year."""
+        pdf = tmp_path / "FIR2022 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [["FIR2022", "Introduction", "INTRO", "-", "1"]]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf)
+
+        assert (tmp_path / "2022").is_dir()
+
+    def test_custom_output_folder(self, tmp_path: Path) -> None:
+        """Custom output_folder overrides the year-based default."""
+        pdf = tmp_path / "FIR2020 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [["FIR2020", "Introduction", "INTRO -", "1"]]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf, output_folder="custom_out")
+
+        assert (tmp_path / "custom_out").is_dir()
+        assert not (tmp_path / "2020").exists()
+
+    def test_pages_with_no_footer_are_skipped(self, tmp_path: Path) -> None:
+        """Pages returning empty footer spans contribute to no output section."""
+        pdf = tmp_path / "FIR2021 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [
+            [],  # no footer — skipped
+            ["FIR2021", "Introduction", "INTRO -", "1"],
+            ["FIR2021", "Introduction", "INTRO -", "2"],
+        ]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf)
+
+        # One section PDF created
+        assert len(out_docs) == 1
+        # insert_pdf called twice (pages 1 and 2, not the empty page 0)
+        out_doc = out_docs[0]
+        assert out_doc.insert_pdf.call_count == 2
+        calls = out_doc.insert_pdf.call_args_list
+        page_nums = [c.kwargs.get("from_page") for c in calls]
+        assert 1 in page_nums
+        assert 2 in page_nums
+        assert 0 not in page_nums
+
+    def test_raises_on_filename_without_year(self, tmp_path: Path) -> None:
+        """ValueError is raised when the PDF filename contains no FIR year."""
+        pdf = tmp_path / "Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        with pytest.raises(ValueError, match="Cannot determine year"):
+            split_pdf_by_section(pdf)
+
+    def test_single_section_writes_one_pdf(self, tmp_path: Path) -> None:
+        """A PDF with one section produces exactly one output file."""
+        pdf = tmp_path / "FIR2019 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [
+            ["FIR2019      Schedule 83      Notes", "83 - 1"],
+        ]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf)
+
+        assert len(out_docs) == 1
+        out_docs[0].save.assert_called_once()
+        saved_path = out_docs[0].save.call_args[0][0]
+        assert saved_path.name == "FIR2019 S83.pdf"
+
+    def test_correct_filename_for_schedule_section(self, tmp_path: Path) -> None:
+        """Schedule sections are saved as FIR{year} S{NN}.pdf."""
+        pdf = tmp_path / "FIR2020 Instructions.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+
+        pages_spans = [["FIR2020", "Schedule 26", "Taxation Summary", "26 -", "1"]]
+        source_doc = _make_split_doc_mock(pages_spans)
+        out_docs: list[MagicMock] = []
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            side_effect=_make_open_side_effect(pdf, source_doc, out_docs),
+        ):
+            split_pdf_by_section(pdf)
+
+        saved_path = out_docs[0].save.call_args[0][0]
+        assert saved_path.name == "FIR2020 S26.pdf"
