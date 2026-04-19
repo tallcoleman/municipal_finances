@@ -1,5 +1,7 @@
 # Pages to Check
 
+Also - check if you can split and keep the TOC metadata
+
 ## "fir_instructions/source_files/FIR2022 Instructions.pdf"
 
 Written FIR2022 Introduction.pdf (28 pages)
