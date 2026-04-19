@@ -1,7 +1,7 @@
 
 2025 Financial Information Return Instructions 
 
-## **Table of Contents** 
+**Table of Contents**
 
 Attachments .................................................................................................................................. 5 
 Introduction ................................................................................................................................... 7 
@@ -70,7 +70,7 @@ Accounting and Financial Reporting Requirements ................................
 		Schedule 70: Consolidated Financial Position ..................................................................... 41
 		Schedule 74: Long Term Liabilities and Commitments ....................................................... 41 
 
-## **Attachments** 
+## **Attachments**
 
 The following documents are attached: 
 
@@ -116,15 +116,15 @@ Financial Information Return (FIR) Schedules:**
 		Schedule 81: Annual Debt Repayment Limit (ARL) 
 		Schedule 83: Notes 
 
-## **Introduction** 
+## **Introduction**
 
-### **Role of the Ministry of Municipal Affairs and Housing** 
+### **Role of the Ministry of Municipal Affairs and Housing**
 
 The Ministry of Municipal Affairs and Housing is responsible for establishing requirements for municipal accounting, financial reporting, municipal auditing, and other matters related to the financial health of municipalities as set out in Section 3 of the Municipal Affairs Act. 
 
 Section 294(1) of the Municipal Act specifically states that each municipality will annually report on its financial affairs, accounts, and transactions. This takes the form of the annual Financial Information Return (FIR). 
 
-### **Purpose of the Financial Information Return** 
+### **Purpose of the Financial Information Return**
 
 Information reported in the Financial Information Return is extracted and stored in the Ministry’s database. The data is available to ministries, municipalities, other local government agencies and municipal associations for the following purposes: 
 
@@ -143,17 +143,17 @@ The Ministry of Municipal Affairs and Housing and other ministries are major use
 
 Because of the wide range of users and the provincial programs that make use of the data in the FIR, it is imperative that the Return be prepared accurately and completed promptly. 
 
-### **Intent** 
+### **Intent**
 
 The information included in the Financial Information Return should reflect the audited financial statements of the municipality (PSAB Standards). 
 
-### **Whom to Contact for Assistance** 
+### **Whom to Contact for Assistance**
 
 If you require advice or assistance regarding these instructions or the return, please call the FIR Co-ordinator in the Municipal Finance Policy Branch at (437) 833-9995 or email **FIR@Ontario.ca.** You may also contact a Municipal Services Office of the Ministry of Municipal Affairs and Housing. The contact information for the various Municipal Services Offices is listed below. 
 
-#### **Municipal Services Offices – Ministry of Municipal Affairs and Housing** 
+#### **Municipal Services Offices – Ministry of Municipal Affairs and Housing**
 
-##### **Central Municipal Services Office** 
+##### **Central Municipal Services Office**
 
 777 Bay St, 16th Floor 
 Toronto, ON M7A 2J3 
@@ -173,7 +173,7 @@ Fax: (613) 548 6822
 
 Servicing: City of Ottawa, City of Kawartha Lakes, Counties of Frontenac, Haliburton, Hastings, Lanark, Leeds and Grenville, Lennox and Addington, Northumberland, Peterborough, Prescott and Russell, Prince Edward, Renfrew and Stormont, Dundas, and Glengarry. 
 
-##### **Municipal Services Office North (Sudbury)** 
+##### **Municipal Services Office North (Sudbury)**
 
 159 Cedar Street, Suite 401 
 Sudbury, ON P3E 6A5 
@@ -182,7 +182,7 @@ Sudbury, ON P3E 6A5
 
 Servicing: City of Greater Sudbury, Districts of Algoma, Cochrane, Manitoulin, Nipissing, Parry Sound, Sudbury and Timiskaming. 
 
-##### **Municipal Services Office North (Thunder Bay)** 
+##### **Municipal Services Office North (Thunder Bay)**
 
 435 James Street South, Suite 223 
 Thunder Bay, ON P7E 6S7 
@@ -191,7 +191,7 @@ Thunder Bay, ON P7E 6S7
 
 Servicing: Districts of Kenora, Rainy River and Thunder Bay. 
 
-##### **Western Municipal Services Office** 
+##### **Western Municipal Services Office**
 
 659 Exeter Road, 2nd Floor 
 London, ON N6E 1L3 
@@ -200,19 +200,19 @@ London, ON N6E 1L3
 
 Servicing: Municipality of Chatham Kent, Region of Waterloo, Counties of Brant, Bruce, Dufferin Elgin, Essex, Grey, Haldimand, Huron, Lambton, Middlesex, Norfolk, Oxford, Perth, and Wellington. 
 
-### **Preparation and Submission of the FIR** 
+### **Preparation and Submission of the FIR**
 
-#### **Deadline for Completion** 
+#### **Deadline for Completion**
 
 The deadline for the completion of 2025 FIR is **May 31, 2026** . 
 
-#### **Completion Requirements** 
+#### **Completion Requirements**
 
 Data is entered in an Excel file which contains worksheets for each FIR schedule. Municipalities can submit their 2025 FIR by using the Smart FIR2025 template. A list of submission requirements is shown on the FIR website for each reporting year. 
 
 [Submission Requirements - Financial Information Return ](https://efis.fma.csc.gov.on.ca/fir/index.php/en/municipal-reporting/submission-requirements/)
 
-#### **Declaration of the Municipal Treasurer** 
+#### **Declaration of the Municipal Treasurer**
 
 The Declaration of the Municipal Treasurer is found on Schedule 02 of the FIR. 
 
@@ -222,7 +222,7 @@ All schedules should be prepared in conjunction with the audited financial state
 
 As part of the Declaration, municipalities should enter the name and details of a contact person for the information contained in the FIR.  Also, the date the schedules are completed should be entered (note that the date is automatically displayed but can be overwritten). 
 
-#### **Recommended Order for Completion of Schedules** 
+#### **Recommended Order for Completion of Schedules**
 
 It is recommended that municipalities complete the FIR schedules in the order given below.  Within each schedule, the sections should be completed sequentially, unless otherwise noted. 
 
@@ -251,7 +251,7 @@ Certain schedules (10, 70) are completed after others because they contain data 
 
 
 
-#### **Submission of the FIR** 
+#### **Submission of the FIR**
 
 A completed FIR is submitted electronically using the “Submit” functionality of the FIR excel template. Please refer to page 17 of the Smart FIR Municipal User Guide for more information on the use of the “Submit” function. 
 
@@ -261,7 +261,7 @@ It should be noted that all critical errors must be corrected, and an explanatio
 
 Municipalities retain the option to involve their auditor in the preparation of the FIR if they so desire. 
 
-### **Submission of Financial Statements** 
+### **Submission of Financial Statements**
 
 All municipalities are required to submit their audited Financial Statements including a signed auditor’s report to the Ministry. 
 
@@ -271,7 +271,7 @@ It is preferred that Municipalities submit a PDF (Portable Document Format) vers
 
 Please note that the Ministry no longer requires a report from the Municipal Auditor on the FIR since the FIR is not audited.  Nevertheless, the information provided in all schedules should be derived from and be able to be traced back to the audited financial statements. 
 
-### **Coding of Data points (SLC Number)** 
+### **Coding of Data points (SLC Number)**
 
 In the FIR, each data point is identified by a unique SLC Number.  The SLC Number identifies the Schedule, Line and Column where a data point is located.  SLC means “Schedule-Line-Column”. 
 
@@ -287,17 +287,17 @@ In the FIR, there are several cases where amounts are automatically carried-forw
 
 For example, Schedule 10, Line 0810 for Ontario conditional grants is automatically carried-forward from Schedule 12, Line 9910, Column 1.  Thus SLC 12 9910 01 is displayed on this Line, identifying the source of the carry-forward amount. 
 
-## **Accounting and Financial Reporting Requirements** 
+## **Accounting and Financial Reporting Requirements**
 
 Enter all amounts to the nearest dollar. 
 
-### **Full Accrual Basis of Accounting** 
+### **Full Accrual Basis of Accounting**
 
 Accrual basis of accounting recognizes the financial effects of transactions in the period(s) in which they occur irrespective of when the cash has been received or paid. It requires that tangible capital assets be reported on the balance sheet (Statement of Financial Position) at historical cost and expensed (amortized) in the annual results of operations over their estimated useful lives. 
 
-### **Highlights of Recent and Upcoming Public Sector Accounting Standard Changes** 
+### **Highlights of Recent and Upcoming Public Sector Accounting Standard Changes**
 
-#### **Effective by 2023 calendar year:** 
+#### **Effective by 2023 calendar year:**
 
 ##### **Financial Instruments (FIs) and the Statement of Remeasurement Gains and Losses** : 
 
@@ -318,7 +318,7 @@ An asset retirement obligation is a legal obligation that arises from the retire
 
 Before PS 3280 Asset Retirement Obligations was in effect, obligations regarding landfills were within the scope of PS 3270 Solid Waste Landfill Closure and PostClosure Liabilities.  When PS 3280 came into effect, PS 3270 was removed from the CPA Handbook and landfill liabilities are now accounted for as asset retirement obligation so that all asset retirement obligations can be accounted for in a consistent manner under the scope of PS 3280. Some municipalities may choose to account for their landfill liabilities as contaminated sites. 
 
-#### **Effective by 2024 calendar year:** 
+#### **Effective by 2024 calendar year:**
 
 ##### **Public-Private Partnerships:** 
 
@@ -336,7 +336,7 @@ Non-exchange revenue transactions arise when there is no performance obligation 
 
 New PS Guideline 8 Purchased Intangibles was effective for fiscal years beginning on or after April 1, 2023 (2024 calendar year for municipalities). This new guideline provided general guidance on the recognition of purchased intangibles.  Purchased intangibles are non-monetary economic resources without physical substance acquired through arms’ length exchange transactions. Examples include licenses, trademarks, and film rights. 
 
-#### **Effective by 2027 calendar year:** 
+#### **Effective by 2027 calendar year:**
 
 ##### **Conceptual Framework and new Reporting Model:** 
 
@@ -344,37 +344,37 @@ The new Conceptual Framework was issued in the CPA Canada Public Sector Accounti
 
 **Please note:** The 2025 FIR template does not reflect changes in effect for the 2027 calendar year. 
 
-### **Reporting of Loans from Reserve Funds** 
+### **Reporting of Loans from Reserve Funds**
 
 Loans from reserve funds are not included in the totals for schedules 70 and 74. 
 
 Section 2500.08 of the PSA Handbook requires that financial transactions in individual funds are to be combined and any inter-fund balances and transactions eliminated. 
 
-### **Reporting of Capital Grants** 
+### **Reporting of Capital Grants**
 
 Capital grants are reported directly in the consolidated statement of operations on Schedule 12 columns 5, 6 & 7. 
 
-### **Reporting of Provincial Gasoline Tax Revenue** 
+### **Reporting of Provincial Gasoline Tax Revenue**
 
 Provincial gasoline tax revenues are reported in the consolidated statement of operations: revenue, as a Conditional grant for Transit services if the gasoline tax revenues were utilized during the Year. Report Provincial Gas Tax revenue on Schedule 12 under the transit sub-function.  If the Provincial Gas Tax revenue has not been used in the current year, it should be reported in Schedule 60 (Obligatory Reserve Fund/Deferred Revenue column 1). 
 
 Reserve Funds established to retain provincial gasoline tax revenues are reported as deferred revenue on Schedule 60 (Schedule 60 lines 0860 & 5690 column 1). 
 
-### **Reporting of Canada Community-Building Fund (CCBF) (formally known as Federal Gasoline Tax) Revenue** 
+### **Reporting of Canada Community-Building Fund (CCBF) (formally known as Federal Gasoline Tax) Revenue**
 
 Canada Community-Building Fund (formerly known as Federal gasoline tax) revenues are reported in the consolidated statement of operations: revenue, on Schedule 12 column 6 as a conditional grant if the CCBM revenues were utilized during the year. The Federal grants are to be used across several project categories to address local priorities.  Information on the eligible project categories can be found at [Infrastructure Canada - The Canada Community-Building Fund](https://www.infrastructure.gc.ca/plan/gtf-fte-eng.html).  If the Canada Community-Building Fund revenue has not been used in the current year, it should be reported in Schedule 60 (Obligatory Reserve Fund/Deferred Revenue column 1). 
 
 Reserve Funds established to retain Canada Community-Building Fund (Federal gasoline tax) revenues are reported as deferred revenue on Schedule 60 (Schedule 60 lines 0862 and 5691 column 1). 
 
-### **Reserves, Reserve Funds, and Deferred Revenue** 
+### **Reserves, Reserve Funds, and Deferred Revenue**
 
 Reserves and reserve funds are comprised of funds set aside for specific purposes by Council and funds set aside for specific purposes by legislation, regulation, or agreement. For financial reporting purposes, reserve funds set aside by legislation, regulation or agreement are obligatory reserve funds and are reported as deferred revenue, a liability, on the Consolidated Statement of Financial Position. Other discretionary reserve funds and reserves are balances within the accumulated surplus. 
 
-#### **Reserve Fund:** 
+#### **Reserve Fund:**
 
 Monies set aside for a specific purpose as required by provincial legislation, a municipal by-law, or agreement. 
 
-#### **Obligatory Reserve Fund:** 
+#### **Obligatory Reserve Fund:**
 
 Monies set aside and legally restricted by provincial legislation, a municipal by-law, or agreement. The funds are raised for a specific purpose and cannot be used for any other purpose. The main Obligatory Reserve Funds are the Development Charges Reserve Funds that are regulated by the Development Charges Act, 1997. 
 
@@ -382,13 +382,13 @@ Section 26.1 of the Development Charges Act, 1997 has allowed for deferred payme
 
 have been updated to reflect these recent changes. The Notes section in Schedule 83 (Line 0070) can also be used to provide any additional information. 
 
-#### **Discretionary Reserve Fund:** 
+#### **Discretionary Reserve Fund:**
 
 Monies set aside for a specific purpose by Council and legislated by municipal by-law. If 
 
 council should decide to spend the money for purposes other than what it was originally intended for, then a new by-law must be passed under section 417(4) of the Municipal Act. 
 
-#### **Reserves:** 
+#### **Reserves:**
 
 Monies set aside by approval of Council and not restricted by legislation or municipal by-law. 
 
@@ -400,7 +400,7 @@ Schedule 60: Continuity of Reserves and Reserve Funds is provided to record allo
 
 Deferred revenue that is used in the current year is reported as revenue in Schedule 60, column 1 (Obligatory reserve funds and deferred revenue). Unspent deferred revenue is recorded as a liability in Schedule 70, SLC 70 2410 01. 
 
-### **Netting of Revenues and Expenses** 
+### **Netting of Revenues and Expenses**
 
 Generally, there is no netting of revenue against expenses with the following exceptions: 
 
@@ -409,7 +409,7 @@ Generally, there is no netting of revenue against expenses with the following ex
 
 In all other circumstances, transactions are to be reported on a gross basis.  The issue of debt instruments by upper tier municipalities on behalf of lower tier governments and lower tier agencies, boards and commissions, and for school boards are to be reported on the appropriate receivable line in Schedule 70 and as part of the upper tier debt in Schedule 70.  Debt charges pertaining to these debt instruments are however not to be reported on the upper tier municipality's schedule 10 and 40. 
 
-### **Transactions Involving Other Municipalities** 
+### **Transactions Involving Other Municipalities**
 
 Generally, all transactions involving other municipalities are to be reported on a gross basis.  For example, where a municipality provides firefighting services to a neighbouring municipality, the expenditure would be shown gross on Schedule 40, Consolidated Statement of Operations: expenses, and the amounts recovered would be reported in Schedule 12, Grants, User fees and service charges, column 3 (Other municipalities). 
 
@@ -417,7 +417,7 @@ There has been some confusion with respect to the reporting of water/wastewater 
 
 Where a particular function is a statutory responsibility of the upper tier municipality, then all amounts raised for the function by a lower tier through upper tier tax rates, or as amounts added to tax bills, are to be treated as amounts raised for upper tier purposes and reported on Schedule 22, Municipal and School Board Taxation.  In the case where revenues are raised through user fees or service charges, the lower tier reports the revenue in Schedule 12, Grants, User Fees and Service Charges, column 4 (User Fees and Service Charges).  The upper tier reports the revenue in Schedule 12, column 3 (Other municipalities). 
 
-### **Consolidation** 
+### **Consolidation**
 
 Subject to the exceptions noted below, all local boards of the municipality and all entities established by the municipality are to be consolidated. **IMPORTANT: All joint local boards are to be proportionally consolidated if the boards are controlled by the municipality per PS 1300 or if a government partnership exists whereby the municipality has shared control over the board per PS3060** . (Please refer to the section on proportional consolidation) 
 
@@ -435,7 +435,7 @@ Notwithstanding the instructions above, the following types of local boards are 
 - Provincial Area Library Boards 
 - School Boards 
 
-##### **Funds That Should Not Be Consolidated** 
+#### **Funds That Should Not Be Consolidated**
 
 Further, the following funds are not consolidated because they are **not deemed to be assets or revenues of the municipality** . 
 
@@ -443,11 +443,11 @@ Further, the following funds are not consolidated because they are **not deemed 
 - Pension funds 
 - Trust funds, including perpetual care funds for cemeteries. 
 
-#### **Gas and Telephone Utilities** 
+#### **Gas and Telephone Utilities**
 
 If gas and telephone utilities or other municipal service corporations are deemed to be government business enterprises, then they are to be consolidated in the same manner as a municipal electric utility.  They are to be consolidated using the modified equity method.  If deemed to be a local board or a department of a municipality then they are fully consolidated.  Please contact the FIR Co-ordinator by e-mail at FIR@Ontario.ca for further information. 
 
-#### **Consolidated Municipal Service Managers (CMSMs)** 
+#### **Consolidated Municipal Service Managers (CMSMs)**
 
 If the municipality designated as a Consolidated Municipal Service Manager is an upper tier which provides CMSM services to its lower tiers only, the upper tier consolidates the operations of the CMSM in its FIR. 
 
@@ -459,13 +459,13 @@ If the municipality designated as a CMSM has a purchase of service agreement wit
 
 If the Consolidated Municipal Service Manager is organized as a joint local board, the operations of the CMSM are proportionally consolidated among the municipalities which are a party to the consolidation agreement. 
 
-#### **District Social Services Administration Boards (DSSABs)** 
+#### **District Social Services Administration Boards (DSSABs)**
 
 District Social Services Administration Boards are not fully or proportionally consolidated. 
 
 Schedule 77 captures the financial position and operations of the District Social Services Administration Board. 
 
-#### **Proportional Consolidation** 
+#### **Proportional Consolidation**
 
 **IMPORTANT: Joint local boards and home for seniors are proportionally consolidated if the entities are controlled by the municipality per PS 1300 or if a government partnership exists whereby the municipality has shared control over the entity per PS 3060.** 
 
@@ -477,13 +477,13 @@ Material transactions between the municipality and its consolidated local entiti
 
 Where proportional consolidation of a local board is applicable, the municipality is to reflect its proportional share of the gross revenues and the gross expenses of the local board. 
 
-#### **Social Housing Consolidation Issues** 
+#### **Social Housing Consolidation Issues**
 
 Please refer to the MMAH Social Housing Treatment Document posted on the FIR website for further information. 
 
 https://efis.fma.csc.gov.on.ca/fir/wp-content/uploads/fir-files/municipal-reporting/additional-information/MAH%20-%20Social%20Housing%20Treatment.pdf
 
-#### **Local Housing Corporations** 
+#### **Local Housing Corporations**
 
 Local Housing Corporations (LHC) should be fully consolidated in the FIR of the municipal service manager.  The Ministry of Municipal Affairs and Housing commissioned KPMG to report on the transfer of social housing to Local Housing Corporations in November 2000. 
 
@@ -497,29 +497,29 @@ Mortgages transferred to Local Housing Corporations (LHCs) should be reported in
 
 Ontario Housing Corporation debentures which were not transferred to Local Housing Corporations should not be reflected as debt of municipalities in the FIR.  As the debentures are not assignable, the Ontario Housing Corporation will continue to hold the debentures. 
 
-#### **Municipal Non-Profit Housing Corporations** 
+#### **Municipal Non-Profit Housing Corporations**
 
 Municipal Non-Profit Housing Corporations should be fully consolidated in the FIR if the municipality acts as the service manager, effectively controlling the strategic financial and operating policies, and the municipality controls a majority of the appointments to the Board of Directors of the Municipal Non-Profit Corporation. 
 
 The November 2000 report by KPMG indicated that municipal financial statement preparers will need to examine the structure of any existing municipal non-profit housing corporations that are part of the municipal reporting entity to determine whether they are accountable to the service manager and are owned or controlled by it.  It is expected, given that the service manager will have authority over the municipal non-profit’s strategic financial and operating policies, either directly or through its control of the members appointed to serve as directors, that many of these organizations would be part of the reporting entity of their respective service manager and as such be consolidated with it. 
 
-#### **Private Non-Profits and Co-operative Housing Corporations** 
+#### **Private Non-Profits and Co-operative Housing Corporations**
 
 The financial activities of Private Non-Profits and Co-operative Housing Corporations should not be consolidated in the Financial Information Return. 
 
 The November 2000 KPMG report also did not make a recommendation regarding Private Non-Profits. In most cases, these bodies are not deemed to be local boards, i.e. part of the Municipal Service Manager, and municipalities do not control or hold ownership in the organizations.  It should be pointed out, however, that municipalities do provide funding to these organizations. 
 
-### **Sinking Funds** 
+### **Sinking Funds**
 
 Municipalities will report sinking funds in Schedule 70 of the FIR.  Please do not report the annual revenue of sinking funds on Schedule 10 and the payment of principal and interest on Schedule 40. 
 
-### **Municipal Electric Utilities & Municipal Service Corporations (Ontario Reg 599/06)** 
+### **Municipal Electric Utilities & Municipal Service Corporations (Ontario Reg 599/06)**
 
 The Energy Competition Act, 1998, requires municipalities choosing to continue providing hydro-electric services beyond November 7, 2000, to do so through an entity incorporated under the Ontario Business Corporations Act. 
 
 In the Financial Information Return, municipalities are to account for their ownership interests in municipal electric utilities and other municipal service corporations as government business enterprises, regardless of the method used to report municipal electric utilities in the annual Financial Statements.  To provide for consistent financial reporting in the FIR, municipalities are to account for ownership using the modified equity method. (Please see the CPA PSA Handbook, Government Reporting Entity, paragraph PSAB 1300.35 and PSAB 3070 Investments in Government Business Enterprises).  The modified equity method reports the net assets of the municipal electric utility as a one-line investment in the Financial Information Return. 
 
-#### **Reporting Municipal Electric Utilities & Municipal Service Corporations in the FIR** 
+#### **Reporting Municipal Electric Utilities & Municipal Service Corporations in the FIR**
 
 The annual net income (deficit) for the municipal electric utility is reported in Schedule 10 on SLC 10 6020 01 (Net Income for Government Business Enterprise for year). 
 
@@ -529,11 +529,11 @@ Government Business Enterprise Equity from SLC 10 6090 01 is carried forward to 
 
 For further information please refer to Accounting for Electric Utilities by Municipalities in Ontario, dated April 2000, Ontario Regulation 599/06: Municipal Service Corporations and PSAB 1300 Government Reporting Entity and PSAB 3070 Investments in Government Business Enterprises. 
 
-### **Tangible Capital Assets** 
+### **Tangible Capital Assets**
 
 Please follow the same accounting and financial reporting standards contained in the PSA Handbook: PS 3150 Tangible Capital Assets that are utilized to produce the annual financial statements.  PS 3150 provides the standards for recognizing tangible capital assets, the measurement of these assets and the requirement to amortize tangible capital assets. The cost of tangible capital assets less their accumulated amortization is reported under non-financial assets on the Consolidated Statement of Financial Position (Schedule 70 of the FIR).  In addition, tangible capital assets are reported on Schedule 51 of the FIR. 
 
-### **Asset Retirement Obligation Liability** 
+### **Asset Retirement Obligation Liability**
 
 Account for asset retirement obligations, including solid waste landfill closure and postclosure liabilities, as per PS 3280 Asset Retirement Obligations in the Public Sector Accounting (PSA) Handbook. 
 
@@ -541,7 +541,7 @@ PS 3280 guides municipalities to report asset retirement obligations in municipa
 
 Before PS 3280 Asset Retirement Obligations was in effect, obligations regarding landfills were within the scope of PS 3270 Solid Waste Landfill Closure and PostClosure Liabilities.  When PS 3280 came into effect, PS 3270 was removed from the PSA Handbook and landfill closure and post closure liabilities fell within the scope of PS 3280. 
 
-### **Capital Leases** 
+### **Capital Leases**
 
 Capital leases can be categorized as lease purchase agreements which are deemed leased tangible capital assets. 
 
@@ -549,23 +549,23 @@ For further details, please refer to PSAB guideline PSG 2, Leased Tangible Capit
 
 For information on financing leases beyond the life of Council, please see Ontario Regulation 46/94. 
 
-### **Lease Purchase Agreement (Tangible Capital Lease)** 
+### **Lease Purchase Agreement (Tangible Capital Lease)**
 
 A leased tangible capital asset is defined as a lease that, from the point of view of the lessee, transfers substantially all the benefits and risks incident to ownership of a tangible capital asset to the lessee.  A leased tangible capital asset is a non financial asset that has physical substance and a useful life extending beyond an accounting period, and is held under lease for use, on a continuing basis, in the production or supply of goods and services. Under the terms and conditions of the lease, substantially all of the benefits and risks incident to ownership are, in substance, transferred to the government without necessarily transferring legal ownership. 
 
 A leased tangible capital asset is reported in the following schedules: 
 
-#### **Schedule 74, Long Term Liabilities and Commitments** 
+#### **Schedule 74, Long Term Liabilities and Commitments**
 
 Report the leased tangible capital asset in the section - Debt burden of the municipality: Analysed by debt instrument, in SLC 74 1240 01 (Lease purchase agreements / Tangible capital assets). 
 
 Also, use Schedule 74E, Asset Retirement Obligation Liability, to report asset retirement obligations for the municipality by functional category. 
 
-#### **Schedule 51, Statement of Tangible Capital Assets** 
+#### **Schedule 51, Statement of Tangible Capital Assets**
 
 Report the value of leased tangible capital assets under the appropriate function and sub-function. 
 
-#### **Schedule 40, Consolidated Statement of Operations: Expenses** 
+#### **Schedule 40, Consolidated Statement of Operations: Expenses**
 
 Annual lease payments for the tangible capital asset are allocated between repayments of the liability, interest expense and any related executory costs. 
 
@@ -573,13 +573,13 @@ Accretion expense is functionalized in Schedule 40 in Column 5 (Rents, Financial
 
 The annual interest payments are functionalized in Schedule 40 in column 2 (Long Term Debt Charges - Interest). 
 
-### **Sale Leaseback Transaction** 
+### **Sale Leaseback Transaction**
 
 A Sale-Leaseback Transaction involves the sale of property by a government and the leasing of the same property, or a portion thereof, back to the government. The transaction may be affected through a series of concurrent sale transactions involving more than one external party or organization within the government reporting entity, with the end result being that the government retains the use of the property, or a portion thereof. 
 
 In substance a sale-leaseback transaction that results in a Leased Tangible Capital Asset is a financing arrangement as the government still retains substantially all the benefits and risks incidental to ownership of the property. When this is the case, follow the procedures for leased tangible capital assets. 
 
-### **Inter-functional Adjustments** 
+### **Inter-functional Adjustments**
 
 Beginning with the FIR2002, separate columns are provided in Schedule 40 for the reporting of Inter-Functional Adjustments and the Allocation of General Government: 
 
@@ -588,7 +588,7 @@ Beginning with the FIR2002, separate columns are provided in Schedule 40 for the
 
 By providing two separate columns it is possible to identify the amounts reported for each purpose. 
 
-#### **Interdepartmental Transfers** 
+#### **Interdepartmental Transfers**
 
 The inter-functional adjustments column in Schedule 40, column 12 is used to report the transfer of expenses between departments (sub-functions). 
 
@@ -601,11 +601,11 @@ Municipalities should report inter-functional adjustments if all the following c
 - A consistent method is used to determine the amount to be transferred between sub-functions 
 - The method used to determine the amount to be transferred is easily explainable. 
 
-#### **Column Total for Inter-Functional Adjustments** 
+#### **Column Total for Inter-Functional Adjustments**
 
 The column total for inter-functional adjustments in SLC 40 9910 12 will always be zero because each interdepartmental transfer entered as a negative amount in column 12 for one sub-function has a corresponding positive interdepartmental transfer entered for another sub-function. 
 
-### **Allocation of Indirect Costs (Reported on the Line for Program Support)** 
+### **Allocation of Indirect Costs (Reported on the Line for Program Support)**
 
 Municipalities are required to allocate indirect cost on the line for Program Support in Schedule 40 to other sub-functions, including Governance and Corporate Management.  In contrast, the line for Corporate Management is used to report indirect costs that would be difficult to allocate to sub-functions.  Expenses reported as Corporate Management are not allocated to other subfunctions.  Please see the chapter entitled “Functional Classifications” for definitions of Program Support and Corporate Management. **Please note that the line for Program Support is not intended for “adjustments”.** 
 
@@ -635,7 +635,7 @@ The amount of program support to be allocated in SLC 40 0260 13 equals the sum o
 
 The amount to be allocated is shown as a negative value in SLC 40 0260 13 while the amounts allocated to other sub-functions are shown as positive values.  The total for column 13 will be zero since the sum of the amounts allocated to individual sub-functions is a positive number which is equal to the negative number in SLC 40 0260 13. 
 
-#### **Allocation Methods for Municipalities of Different Sizes** 
+#### **Allocation Methods for Municipalities of Different Sizes**
 
 Municipalities are asked to use a standardized method of allocation for Program Support, based on population. 
 
@@ -644,7 +644,7 @@ Municipalities are asked to use a standardized method of allocation for Program 
 | **100,000+**      | **MBN Canada (OMBI method)**                                              | **Required** |
 | **Under 100,000** | **Percentage of Total Expenses OR Modified Percentage of Total Expenses** | **Required** |
 
-#### **Reporting Allocation Method Used** 
+#### **Reporting Allocation Method Used**
 
 Municipalities are asked to report the method used to allocate program support to other functions on Schedule 02, line 0777. 
 
@@ -658,9 +658,9 @@ The cell is a drop-down list.  Municipalities should select one of the following
 
 If Other Method is selected, please provide a description on line 078 below. 
 
-#### **Allocation Method:  Percentage of Total Expenses** 
+#### **Allocation Method:  Percentage of Total Expenses**
 
-##### **Summary of Method:** 
+##### **Summary of Method:**
 
 This method is used by municipalities with populations under 100,000.  Expenses for each service listed in Schedule 40, i.e., sub-function, are expressed as a percentage of Total Expenses. 
 
@@ -670,7 +670,7 @@ Expenses for each sub-function are divided by Total Expenses to determine a perc
 
 Total Expenses for the columns used from Schedule 40 are expressed net of program support. 
 
-##### **Steps:** 
+##### **Steps:**
 
 **1. The amount of program support to be allocated equals (SLC 40 0260 13) times (-1).** 
 
@@ -746,9 +746,9 @@ Column C – Amount of program support to be Allocated to SLC 40 xxxx 13 = SLC 4
 
 Subtotals for service areas, such as the Subtotal for General Government, are not allocated program support since program support is allocated only to individual sub-functions.  Subtotal lines end in xx99.  In this example, the Subtotal for General Government is SLC 40 0299 xx. 
 
-#### **Allocation Method:  Modified Percentage of Total Expenses** 
+#### **Allocation Method:  Modified Percentage of Total Expenses**
 
-##### **Summary of Method:** 
+##### **Summary of Method:**
 
 This method may be used by municipalities with populations under 100,000. 
 
@@ -756,7 +756,7 @@ This method is used when a municipality has already allocated to sub-functions a
 
 In the Modified Percentage of Total Expenses method, program support will be allocated only to sub-functions which have not been directly allocated indirect costs. 
 
-##### **Steps:** 
+##### **Steps:**
 
 This method is like the Percentage of Total Expenses method: 
 
@@ -813,9 +813,9 @@ For each sub-function, multiply the amount of program support in (SLC 40 0260 01
 
 **6. For each sub-function, enter the amount of program support as a positive value in column 13 (Allocation of Program Support).** 
 
-#### **Allocation Method:  MBN Canada (OMBI) Method** 
+#### **Allocation Method:  MBN Canada (OMBI) Method**
 
-##### **Summary of Method:** 
+##### **Summary of Method:**
 
 This method is used by municipalities with populations of 100,000 or more. 
 
@@ -857,7 +857,7 @@ In this example, expenses are allocated for printing and graphics, one of the 23
 
 The “driver” or type of unit specified for printing and graphics is the number of impressions.  In this example, $350,000 in printing and graphics expenses are to be allocated, representing salaries, wages and employee benefits; materials; contracted services; rents and financial expenses; and inter-functional adjustments.  If the roadway’s sub-function consumes 10% of impressions, it is allocated 10% of printing and graphics expenses or $35,000. 
 
-##### **Steps:  MBN Canada (OMBI) Method** 
+##### **Steps:  MBN Canada (OMBI) Method**
 
 **1. Total Program Support to be allocated equals (SLC 40 0260 13) times (-1).** 
 
@@ -887,7 +887,7 @@ In the Excel workbook this is done automatically.  For every sub-function, the a
 
 The municipality enters data from the Excel workbook in Schedule 40, by subfunction. 
 
-#### **Program Support Categories and Related “Driver” Units** 
+#### **Program Support Categories and Related “Driver” Units**
 
 | **Program Support Service Area** (Please see the chapter on Functional Classifications for definitions) | **Allocation “Driver** (type of units used to track usage by each sub-function)                                        |
 | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -916,9 +916,9 @@ The municipality enters data from the Excel workbook in Schedule 40, by subfunct
 
 
 
-### **Debt Burden of the Municipality** 
+### **Debt Burden of the Municipality**
 
-#### **Schedule 70: Consolidated Financial Position** 
+#### **Schedule 70: Consolidated Financial Position**
 
 Schedule 70: Consolidated Financial Position reflects all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities and all debt assumed from others including debt retirement funds and own sinking funds in SLC 70 2610 01, 70 2620 01 and 70 2630 01. 
 
@@ -926,7 +926,7 @@ If long term debt has been specifically issued on behalf of a Government Busines
 
 **Debt retirement funds and sinking fund debt is to be reported in SLC 70 0863 and 0864 respectively.** 
 
-#### **Schedule 74: Long Term Liabilities and Commitments** 
+#### **Schedule 74: Long Term Liabilities and Commitments**
 
 Schedule 74: Long Term Liabilities and Commitments reflects the gross and net debt burden of the municipality. 
 

@@ -2,7 +2,7 @@
 
 **Functional Classification of Expenses and Revenues** 
 
-## **Table of Contents** 
+**Table of Contents**
 
 FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES ........................................... 5                                         
   GENERAL GOVERNMENT ...................................................................................................... 5             
@@ -89,7 +89,7 @@ FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES ..............................
     Line 1910 - Other .................................................................................................................... 38 
     Line 9910 – TOTAL ................................................................................................................. 38 
 
-## **FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES** 
+## **FUNCTIONAL CLASSIFICATION OF REVENUE AND EXPENSES**
 
 The functional categories described below are used in the following schedules: 
 
@@ -97,13 +97,13 @@ The functional categories described below are used in the following schedules:
 - Schedule 40: Statement of Operations: Expenses 
 - Schedule 51: Schedule of Tangible Capital Assets 
 
-### **GENERAL GOVERNMENT** 
+### **GENERAL GOVERNMENT**
 
 General government in Schedule 40 consists of three categories: governance, corporate management, and program support. 
 
 Note that the general government function appears as a single line in Schedule 12, Grants, User Fees, and Service Charges for Specific Functions and in Schedule 51, Schedule of Tangible Capital Assets. 
 
-#### **Line 0240 - Governance** 
+#### **Line 0240 - Governance**
 
 **Election management** 
 Election night management 
@@ -121,7 +121,7 @@ Research for Council members
 Mayor/Chair
 Administrative support 
 
-#### **Line 0250 - Corporate Management** 
+#### **Line 0250 - Corporate Management**
 
 **CAO / City Manager** 
 CAO/City Manager 
@@ -197,7 +197,7 @@ Payments/receipts processing
 Tax write-offs which cannot be reported in Schedule 72 
 Increases to allowances for tax write-offs. 
 
-#### **Line 0260 - Program Support** 
+#### **Line 0260 - Program Support**
 
 All municipalities report program support.  Information on allocation drivers is provided for municipalities with populations of 100,000 or more which use the OMBI (MBN Canada) method of allocating program support to other functions.  Municipalities with populations under 100,000 use the percentage of total Expenses method or modified percentage of total Expenses method. 
 
@@ -231,13 +231,13 @@ In the OMBI (MBN Canada) method, an allocation driver is specified for each area
 | **Stores and Commodity Management**             | **Value of goods processed, or Number of stores requisitions processed**<br>Developing commodity management policies, procedures, and<br>standards.<br>Receiving, storing, and distributing the commodity.<br>Ensuring that adequate commodity stores are available.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | **Training and Development**                    | **Average headcount (full-time, part-time, and casual)**<br>Course needs analysis.<br>Course design<br>Facilitation of training sessions<br>Core competencies identification<br>Course evaluation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
-#### **Line 0299 - Subtotal** 
+#### **Line 0299 - Subtotal**
 
 The subtotal equals the sum of lines 0240, 0250 and 0260. 
 
-### **PROTECTION SERVICES** 
+### **PROTECTION SERVICES**
 
-#### **Line 0410 – Fire** 
+#### **Line 0410 – Fire**
 
 Administration 
 Alarm system 
@@ -249,7 +249,7 @@ Fire prevention and inspection
 Hydrant rental 
 Other fire protection expenses 
 
-#### **Line 0420 – Police** 
+#### **Line 0420 – Police**
 
 Administration 
 Police services boards 
@@ -263,7 +263,7 @@ Police communication systems
 Police service 
 OTHER police protection expenses 
 
-#### **Line 0421 - Court Security** 
+#### **Line 0421 - Court Security**
 
 **Perimeter Security** 
 Costs associated with external and or/internal police presence during regular hours to secure the perimeter of the facility, to respond to a specific threat or for high profile matters. 
@@ -292,7 +292,7 @@ Equipment that is unique to the member’s deployment within court security and 
 **Recruiting** 
 Recruiting that is relevant to the staffing of court security. Costs may include advertising for applicants, physical fitness and/or psychological testing, applicant screening, interviews or any other related human resources expense. 
 
-#### **Line 0422 - Prisoner Transportation** 
+#### **Line 0422 - Prisoner Transportation**
 
 **Prisoner Transport** 
 Costs associated with the movement of prisoners between correctional institutions and court locations for the purposes of attending trial. 
@@ -309,11 +309,11 @@ Equipment that is unique to prisoner transportation only.
 **Recruiting** 
 Recruiting that is relevant to the staffing of prisoner transportation only. Costs may include advertising for applicants, physical fitness and/or psychological testing, applicant screening, interviews or any other related human resources expense. 
 
-#### **Line 0430 - Conservation Authority** 
+#### **Line 0430 - Conservation Authority**
 
 Requisition of a Conservation Authority 
 
-#### **Line 0440 - Protective Inspection and Control** 
+#### **Line 0440 - Protective Inspection and Control**
 
 Administration, if applicable 
 Administrative monetary penalty system costs (by-law infraction system framework) 
@@ -327,7 +327,7 @@ Weigh scales
 Humane societies:  contributions to humane societies 
 OTHER by law enforcement (where not a public health function) expenses 
 
-#### **Line 0445 - Building Permit and Inspection Services** 
+#### **Line 0445 - Building Permit and Inspection Services**
 
 Building permit and inspection services include activities undertaken by the building department that relate to the issuance of permits for the construction, renovation, or demolition of buildings under Subsection 8(1) of the Building Code Act, 1992. 
 
@@ -342,7 +342,7 @@ Site inspections
 Staff training 
 OTHER building permits and inspection services 
 
-#### **Line 0450 - Emergency Measures** 
+#### **Line 0450 - Emergency Measures**
 
 Administration, if applicable 
 Flood control, 
@@ -351,21 +351,21 @@ Ice storm damage repairs
 911 Service 
 OTHER emergency measures expenses 
 
-#### **Line 0460 - Provincial Offences Act (POA)** 
+#### **Line 0460 - Provincial Offences Act (POA)**
 
 Report expenses incurred for Provincial Offences Act (POA) purposes on this line. 
 
-#### **Line 0498 – Other** 
+#### **Line 0498 – Other**
 
 Please specify expenses for protection services which are not reported on lines 0410 to 0460. 
 
-#### **Line 0499 – Subtotal** 
+#### **Line 0499 – Subtotal**
 
 The subtotal for protection services is equal to the sum of lines 0410 through 0498. 
 
-### **TRANSPORTATION SERVICES** 
+### **TRANSPORTATION SERVICES**
 
-#### **Line 0611 - Roads - Paved** 
+#### **Line 0611 - Roads - Paved**
 
 Paved (hard top) roads are defined as roads with an asphalt surface, concrete surface, composite pavement, portland cement or surface treatment. 
 
@@ -388,7 +388,7 @@ Hot mix overlay
 Surface treatment and double surface treatment 
 Include administration and direct overhead. 
 
-#### **Line 0612 - Roads – Unpaved** 
+#### **Line 0612 - Roads – Unpaved**
 
 Unpaved (loose top) roads are defined as roads with a gravel, stone, or other loose travelling surface. 
 
@@ -407,7 +407,7 @@ Gravel patching greater than municipal capitalization threshold.
 Loose top gravelling greater than municipal capitalization threshold Surface treatment 
 Include administration and direct overhead. 
 
-#### **Line 0613 - Roads - Bridges and Culverts** 
+#### **Line 0613 - Roads - Bridges and Culverts**
 
 **Bridges** 
 A bridge is a structure which provides a roadway or walkway for the passage of vehicles, pedestrians or cyclists across an obstruction, gap or facility and which is greater than or equal to three metres in span. 
@@ -434,7 +434,7 @@ Wash all surfaces of a bridge.
 Wash barrel of culvert 
 Expansion joint - maintain expansion joint, replace expansion joint seal. Repair de-lamination of exposed concrete deck 
 
-#### **Line 0614 - Roads - Traffic Operations & Roadside Maintenance** 
+#### **Line 0614 - Roads - Traffic Operations & Roadside Maintenance**
 
 **The following activities are considered traffic operations:** 
 
@@ -466,7 +466,7 @@ Noise wall maintenance
 Sidewalk maintenance 
 Vegetation management including roadside mowing, weed control, tree planting & removal, tree trimming. 
 
-#### **Line 0621 - Winter Control - except Sidewalks, Parking Lots** 
+#### **Line 0621 - Winter Control - except Sidewalks, Parking Lots**
 
 Exclude the clearing of sidewalks and parking lots. 
 
@@ -489,7 +489,7 @@ Winter drainage
 Winter patrol, winter standby, 
 Other winter control expenses 
 
-#### **Line 0622 - Winter Control - Sidewalks, Parking Lots only** 
+#### **Line 0622 - Winter Control - Sidewalks, Parking Lots only**
 
 Report only the expenses for clearing sidewalks and parking lots on this line. Include administration and direct overhead. 
 
@@ -502,7 +502,7 @@ Continuous and spot side sidewalk sanding/salting
 Continuous and spot combination sidewalk plowing/sanding/salting.
 Parking lot plowing, Parking lot sanding/salting 
 
-#### **Line 0631 - Transit - Conventional** 
+#### **Line 0631 - Transit - Conventional**
 
 Conventional transit is defined as all regular public transport services as opposed to specialized transit services for persons with disabilities who are unable to access regular public transport services. 
 
@@ -523,7 +523,7 @@ Transit debt charges met from taxation.
 Transportation operations: insurance premiums for fleet, purchased services including services purchased by private contract operators or other municipalities, uniforms, vehicle licenses and registration. 
 OTHER transit expenses 
 
-#### **Line 0632 - Transit – Accessible** 
+#### **Line 0632 - Transit – Accessible**
 
 Report only Expenses for accessible transit on this line. 
 
@@ -533,38 +533,38 @@ Administration and direct overhead
 Accessible transit services, including contract transportation services.
 OTHER transit expenses 
 
-#### **Line 0640 - Parking** 
+#### **Line 0640 - Parking**
 
 Administration, if applicable 
 Parking control officers 
 Operations of parking authorities 
 OTHER parking expenses 
 
-#### **Line 0650 - Street Lighting** 
+#### **Line 0650 - Street Lighting**
 
 Lighting of streets; roadways, bridges, underpasses, etc. 
 Street light maintenance, including the luminaries, mounting bracket, pole and base. 
 
-#### **Line 0660 - Air Transportation** 
+#### **Line 0660 - Air Transportation**
 
 Administration 
 Airport commissions 
 Landing strips and airports 
 OTHER air transportation expenses 
 
-#### **Line 0698 – Other** 
+#### **Line 0698 – Other**
 
 Please specify other functions related to transportation services.  Marinas are included under Recreation and cultural services. 
 
 **Please do not record “Public Works” into the Other line.  Please allocate “Public Works” into the corresponding functional lines i.e., costs related to paved roads should be recorded in line 0611 Roads – Paved, costs related to winter control of all municipal surfaces except for parking lots and sidewalks should be recorded in line 0621 Winter Control – except Sidewalks, Parking Lots etc.** 
 
-#### **Line 0699 – Subtotal** 
+#### **Line 0699 – Subtotal**
 
 The subtotal for transportation services is equal to the sum of lines 0611 through 0698. 
 
-### **ENVIRONMENTAL SERVICES** 
+### **ENVIRONMENTAL SERVICES**
 
-#### **Line 0811 - Wastewater Collection / Conveyance** 
+#### **Line 0811 - Wastewater Collection / Conveyance**
 
 Report separate-sanitary sewer systems and combined sanitary/storm sewer systems on this line. Do not include separate storm sewer systems. 
 
@@ -578,7 +578,7 @@ Pumping stations
 Sewage forcements 
 Trunk sewers 
 
-#### **Line 0812 Wastewater Treatment and Disposal** 
+#### **Line 0812 Wastewater Treatment and Disposal**
 
 This measure applies to separated sanitary systems and to combined sanitary/storm sewer systems. Separate storm sewer systems are not included. 
 
@@ -589,7 +589,7 @@ Discharge/effluent system
 Sludge disposal Treatment 
 Service operating agreements with the Ontario Clean Water Agency and other contractors / suppliers 
 
-#### **Line 0821 - Urban Storm Sewer System** 
+#### **Line 0821 - Urban Storm Sewer System**
 
 An urban storm sewer system is one where storm sewer is conveyed primarily through closed conduits located in roadways with an urban cross section (curb and gutter) which are located, in areas defined as urban in municipal official plans. An urban storm sewer system consists primarily of closed drains but may include ditches, especially where the urban area has grown up around a rural area. 
 
@@ -609,7 +609,7 @@ Storm inlet and outlet structure maintenance
 Storm pump station: operations and repairs 
 Wetland, wet and dry pond maintenance, cleaning, repairs 
 
-#### **Line 0822 - Rural Storm Sewer System** 
+#### **Line 0822 - Rural Storm Sewer System**
 
 A rural storm sewer system is one where storm sewer is conveyed primarily along side of roadways with a rural cross section (open ditches) located in areas defined as rural in municipal official plans. A rural system may include covered drains. 
 
@@ -631,7 +631,7 @@ Sediment trap: maintenance, clean-out
 Tiles: flush tile, repair tile including cave in, wrap joints, tile inspection (video) 
 Vegetation management: seeding, spraying. 
 
-#### **Line 0831 - Water Treatment** 
+#### **Line 0831 - Water Treatment**
 
 Treatment of drinking water is defined as all activities from supply source(s) to the completion of treatment (the point where water leaves the treatment plant)
 
@@ -641,7 +641,7 @@ Include operating agreements with the Ontario Clean Water Agency and other contr
 
 Include other waterworks system expenses that pertain to the treatment of drinking water. 
 
-#### **Line 0832 - Water Distribution / Transmission** 
+#### **Line 0832 - Water Distribution / Transmission**
 
 Distribution is defined as all activities from the point where water leaves the treatment plant and reaches private property lines. 
 
@@ -649,7 +649,7 @@ Include administration and direct overhead.
 
 Include the cost of connections and hydrant leads included in the denominator. 
 
-#### **Line 0840 - Solid Waste Collection** 
+#### **Line 0840 - Solid Waste Collection**
 
 Administration and direct overhead 
 Pickup of garbage 
@@ -657,7 +657,7 @@ Excludes pick up for diversion and recycling.
 Includes collection of garbage from all property classes 
 OTHER waste collection expenses 
 
-#### **Line 0850 - Solid Waste Disposal** 
+#### **Line 0850 - Solid Waste Disposal**
 
 Administration and direct overhead 
 Deposit of garbage from all property classes into a transfer station, landfill site, incineration facility or energy from waste facility 
@@ -667,7 +667,7 @@ Solid waste landfill closure and post closure
 Transfer station 
 OTHER waste disposal expenses 
 
-#### **Line 0860 Waste Diversion (Recycling)** 
+#### **Line 0860 Waste Diversion (Recycling)**
 
 Administration and direct overhead 
 Backyard composting programs. 
@@ -685,7 +685,7 @@ Promotional expenses
 Purchase and delivery of blue boxes and source separated organic bins. 
 OTHER recycling expenses 
 
-#### **Line 0898 – Other** 
+#### **Line 0898 – Other**
 
 Please specify other functions related to environmental services, including services previously reported as pollution control services: 
 
@@ -693,13 +693,13 @@ Derelict motor vehicle program
 Pollution control expenses 
 OTHER environmental expenses 
 
-#### **Line 0899 – Subtotal** 
+#### **Line 0899 – Subtotal**
 
 The subtotal for environmental services is equal to the sum of lines 0811 through 0898. 
 
-### **HEALTH SERVICES** 
+### **HEALTH SERVICES**
 
-#### **Line 1010 - Public Health Services** 
+#### **Line 1010 - Public Health Services**
 
 A public health service combines public health services and public health inspections and control. 
 
@@ -719,14 +719,14 @@ Sexually transmitted infection services
 Water, food, public eating places and other public health inspections
 OTHER public health expenses 
 
-#### **Line 1020 – Hospitals** 
+#### **Line 1020 – Hospitals**
 
 Contributions to municipally owned hospitals 
 Grants to public hospitals 
 Hospital debt met from municipal revenues. 
 OTHER hospital expenses 
 
-#### **Line 1030 - Ambulance Services** 
+#### **Line 1030 - Ambulance Services**
 
 Administration 
 Amounts billed by the province or upper tier. 
@@ -734,13 +734,13 @@ Contributions to privately operated ambulance services
 Municipally operated ambulance services 
 OTHER ambulance service expenses 
 
-#### **Line 1035 - Ambulance Dispatch** 
+#### **Line 1035 - Ambulance Dispatch**
 
 This is a provincial responsibility. However, for those municipalities that provides this service on behalf of the province, please report all Expenses related to this service in line 1035 and in the appropriate object of expense. 
 
 Revenues pertaining to this service are reported on Schedule 12, line 1035 column 1. 
 
-#### **Line 1040 – Cemeteries** 
+#### **Line 1040 – Cemeteries**
 
 Administration and direct overhead. 
 Cemetery boards. 
@@ -749,17 +749,17 @@ Contributions to private cemeteries.
 Morgues. 
 Other cemetery expenses 
 
-#### **Line 1098 – Other** 
+#### **Line 1098 – Other**
 
 Please specify other functions related to health services. 
 
-#### **Line 1099 – Subtotal** 
+#### **Line 1099 – Subtotal**
 
 The subtotal for health services is equal to the sum of lines 1010 through 1098. 
 
-### **SOCIAL AND FAMILY SERVICES** 
+### **SOCIAL AND FAMILY SERVICES**
 
-#### **Line 1210 - General Assistance** 
+#### **Line 1210 - General Assistance**
 
 Administration and direct overhead 
 Aid to support local immigrants and refugees 
@@ -774,7 +774,7 @@ Requisitions of District Social Services Administration Boards
 Supportive housing (Please note that for the 2026 FIR, this will be recorded in a new line 1450 Supportive Housing under the Housing & Homelessness Services functional category (previously Social Housing) 
 OTHER general assistance expenses 
 
-#### **Line 1220 - Assistance to Seniors** 
+#### **Line 1220 - Assistance to Seniors**
 
 Administration 
 Grants to voluntary organizations assisting the seniors. 
@@ -786,7 +786,7 @@ Social and recreational activities
 Transit subsidies for elderly persons 
 OTHER expenses for assistance to seniors 
 
-#### **Line 1230 - Childcare and Early Years Learning** 
+#### **Line 1230 - Childcare and Early Years Learning**
 
 Administration 
 Contributions to privately operated day nurseries 
@@ -795,50 +795,50 @@ Grants to voluntary organizations
 Requisitions of District Social Services Administration Boards 
 OTHER Expenses for assistance to children 
 
-#### **Line 1298 – Other** 
+#### **Line 1298 – Other**
 
 Please specify other functions related to social and family services. 
 
-#### **Line 1299 – Subtotal** 
+#### **Line 1299 – Subtotal**
 
 The subtotal for social and family services is equal to the sum of lines 1210 through lines 1298. 
 
-### **SOCIAL HOUSING** 
+### **SOCIAL HOUSING**
 
 **Please note that in next year’s FIR (for 2026 - to be released in 2027), the current classification of social housing will be updated.  The current classification of social housing reflects legacy definitions and categories. Hostels and supporting services will be included in this functional category. Updating these categories and definitions better reflect current service delivery practices and financial reporting at the municipal level** . 
 
-#### **Line 1410 - Public Housing** 
+#### **Line 1410 - Public Housing**
 
 Local Housing Corporations (LHC) – A new corporation created by the legislation and controlled by the Service Manager as sole shareholder, to take over the ownership and other responsibilities of Local Housing Authorities (LHAs). 
 
-#### **Line 1420 - Non-Profit / Cooperative Housing** 
+#### **Line 1420 - Non-Profit / Cooperative Housing**
 
 Municipal Non-Profit Housing Corporations (MNP): This is a non-profit housing corporation that was established at the initiative of a municipality. 
 Co-operative housing is a different form of social housing. It is not rental housing. The households who live in the project are all members of the cooperative corporation that owns and manages the building. 
 Grants to other non-profit housing corporations; Grants to co-op housing corporations 
 Grants to private non-profit housing corporations 
 
-#### **Line 1430 - Rent Supplement Programs** 
+#### **Line 1430 - Rent Supplement Programs**
 
 Rent supplements paid to a landlord to bridge the gap between a tenant’s rent geared-to-income and the market rent ceiling set by the municipality, to fill units in their building with applicants from social housing waiting list. Other rent supplement programs 
 
-#### **Line 1497 – Other** 
+#### **Line 1497 – Other**
 
 Please specify other functions related to social housing. 
 
-#### **Line 1498 – Other** 
+#### **Line 1498 – Other**
 
 Please specify other functions related to social housing. 
 
-#### **Line 1499 – Subtotal** 
+#### **Line 1499 – Subtotal**
 
 The subtotal for social housing is equal to the sum of lines 1410 through lines 1498. 
 
-### **RECREATION AND CULTURAL SERVICES** 
+### **RECREATION AND CULTURAL SERVICES**
 
 Parks and recreation are divided into four lines: parks, recreation programs and recreation facilities (2 lines). 
 
-#### **Line 1610 - Parks** 
+#### **Line 1610 - Parks**
 
 Administration and direct overhead. 
 Allotments (community gardens) 
@@ -859,7 +859,7 @@ Trails
 
 Include leased lands if there is a formal lease agreement and the lands are managed and controlled by the municipality and made available for public use. 
 
-#### **Line 1620 - Recreation Programs** 
+#### **Line 1620 - Recreation Programs**
 
 Administration and direct overhead 
 Assistance to sport teams 
@@ -869,7 +869,7 @@ Grants to voluntary organizations
 Public celebrations 
 OTHER recreation program expenses 
 
-#### **Line 1631 - Recreation Facilities - Golf Course, Marina, Ski Hill** 
+#### **Line 1631 - Recreation Facilities - Golf Course, Marina, Ski Hill**
 
 Golf Courses, Marinas and Ski Hills are reported separately from recreation facilities since only some municipalities have these facilities. 
 
@@ -880,7 +880,7 @@ Harbours
 Marinas (includes waterfront maintenance costs) 
 Ski Hills 
 
-#### **Line 1634 - Recreation Facilities - Other** 
+#### **Line 1634 - Recreation Facilities - Other**
 
 Administration and direct overhead 
 Arenas 
@@ -897,14 +897,14 @@ OTHER recreation facilities expenses
 
 Include joint use facilities if there is a joint use agreement and the facilities are open to the public the majority of the time and are managed and controlled by the municipality. 
 
-#### **Line 1640 - Libraries** 
+#### **Line 1640 - Libraries**
 
 Administration and direct overhead 
 Contributions to regional library boards 
 Library boards 
 OTHER library expenses 
 
-#### **Line 1645 - Museums** 
+#### **Line 1645 - Museums**
 
 Local museums are reported on this line. A local museum is an organization that is partly or wholly funded by a municipality that has the following characteristics: 
 
@@ -930,7 +930,7 @@ About museums that fall under the authority of a larger body such as a Conservat
 - (a) Expenses may be reported on another line in the FIR, such as “Conservation Authority”, “Cultural Services”, or “Recreation and Cultural Services: Other”. 
 - (b) Or the local museum component may be reported on the Museums line in Schedule 40 with the residual amount reported on another line in the FIR. An example is Black Creek Pioneer Village which is governed by the Toronto Regional Conservation Authority (TRCA). 
 
-#### **Line 1650 - Cultural Services** 
+#### **Line 1650 - Cultural Services**
 
 Administration 
 Art galleries 
@@ -951,17 +951,17 @@ Theatres
 Zoos 
 OTHER cultural service expenses 
 
-#### **Line 1698 - Other** 
+#### **Line 1698 - Other**
 
 Please specify other functions related to recreation and culture. 
 
-#### **Line 1699 - Subtotal** 
+#### **Line 1699 - Subtotal**
 
 The subtotal for recreation and cultural services is equal to the sum of lines 1610 through 1698. 
 
-### **PLANNING AND DEVELOPMENT** 
+### **PLANNING AND DEVELOPMENT**
 
-#### **Line 1810 - Planning and Zoning** 
+#### **Line 1810 - Planning and Zoning**
 
 Administration and direct overhead 
 Committees of adjustment 
@@ -975,7 +975,7 @@ Urban renewal surveys and studies
 Zoning by law 
 OTHER planning and zoning expenses 
 
-#### **Line 1820 - Commercial and Industrial** 
+#### **Line 1820 - Commercial and Industrial**
 
 Administration and direct overhead 
 Business improvement areas 
@@ -988,7 +988,7 @@ Tourist information and promotion
 Economic development 
 OTHER industrial and commercial development expenses 
 
-#### **Line 1830 - Residential Development** 
+#### **Line 1830 - Residential Development**
 
 Administration and direct overhead 
 Housing studies 
@@ -998,7 +998,7 @@ Residential portion of urban renewal program
 Trailer parks 
 OTHER residential development expenses 
 
-#### **Line 1840 - Agricultural and Reforestation** 
+#### **Line 1840 - Agricultural and Reforestation**
 
 Administration and direct overhead 
 Advancement of agriculture 
@@ -1008,23 +1008,23 @@ Reforestation
 Weed control and tree cutting. 
 OTHER agricultural and reforestation expenses 
 
-#### **Line 1850 - Tile Drainage / Shoreline Assistance** 
+#### **Line 1850 - Tile Drainage / Shoreline Assistance**
 
 Programs under the Shoreline Property Assistance Act 
 Tile drainage carried out under the Tile Drainage Act 
 
-#### **Line 1898 – Other** 
+#### **Line 1898 – Other**
 
 Please specify other functions related to planning and development. 
 
-#### **Line 1899 – Subtotal** 
+#### **Line 1899 – Subtotal**
 
 The subtotal for planning and development is equal to the sum of lines 1810 through 1898. 
 
-### **Line 1910 - Other** 
+### **Line 1910 - Other**
 
 This line is for those municipalities that have gas or telephone utilities and are deemed to be a local board or a department of the municipality. 
 
-### **Line 9910 – TOTAL** 
+### **Line 9910 – TOTAL**
 
 Total operating expense for each column is equal to the sum of the subtotals for all functional categories. 
