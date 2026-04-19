@@ -308,6 +308,76 @@ class TestFixPdfHeadings:
 
         assert (tmp_path / "markdown_clean" / "report.md").exists()
 
+    def test_skips_file_when_toc_is_empty(self, tmp_path: Path, capsys) -> None:
+        """Emits a warning and skips writing when the TOC has 0 entries."""
+        pdf = tmp_path / "report.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+        (tmp_path / "markdown").mkdir()
+        (tmp_path / "markdown" / "report.md").write_text("## **Schedule 02**\n")
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            _make_pymupdf_mock([]),
+        ):
+            fix_pdf_headings(pdf)
+
+        assert not (tmp_path / "markdown_clean" / "report.md").exists()
+        assert "WARNING" in capsys.readouterr().out
+
+    def test_skips_file_when_toc_has_one_entry(self, tmp_path: Path, capsys) -> None:
+        """Emits a warning and skips writing when the TOC has exactly 1 entry."""
+        pdf = tmp_path / "report.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+        (tmp_path / "markdown").mkdir()
+        (tmp_path / "markdown" / "report.md").write_text("## **Schedule 02**\n")
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            _make_pymupdf_mock([[1, "Schedule 02", 1]]),
+        ):
+            fix_pdf_headings(pdf)
+
+        assert not (tmp_path / "markdown_clean" / "report.md").exists()
+        assert "WARNING" in capsys.readouterr().out
+
+    def test_warns_but_processes_when_toc_has_few_entries(
+        self, tmp_path: Path, capsys
+    ) -> None:
+        """Emits a warning but still writes the file when the TOC has 2–5 entries."""
+        small_toc = [[1, "Schedule 02", 1], [2, "General Instructions", 2]]
+        pdf = tmp_path / "report.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+        (tmp_path / "markdown").mkdir()
+        (tmp_path / "markdown" / "report.md").write_text("## **Schedule 02**\n")
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            _make_pymupdf_mock(small_toc),
+        ):
+            fix_pdf_headings(pdf)
+
+        assert (tmp_path / "markdown_clean" / "report.md").exists()
+        assert "WARNING" in capsys.readouterr().out
+
+    def test_no_warning_when_toc_has_six_or_more_entries(
+        self, tmp_path: Path, capsys
+    ) -> None:
+        """No warning is emitted when the TOC has 6 or more entries."""
+        large_toc = [[1, f"Section {i}", i] for i in range(1, 7)]
+        pdf = tmp_path / "report.pdf"
+        pdf.write_bytes(b"%PDF-1.4")
+        (tmp_path / "markdown").mkdir()
+        (tmp_path / "markdown" / "report.md").write_text("## **Section 1**\n")
+
+        with patch(
+            "municipal_finances.fir_instructions.convert_pdf_to_md.pymupdf.open",
+            _make_pymupdf_mock(large_toc),
+        ):
+            fix_pdf_headings(pdf)
+
+        assert (tmp_path / "markdown_clean" / "report.md").exists()
+        assert "WARNING" not in capsys.readouterr().out
+
 
 # ---------------------------------------------------------------------------
 # fix_folder_headings
