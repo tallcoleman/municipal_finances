@@ -178,9 +178,13 @@ def _extract_section_from_footer(spans: list[str]) -> str | None:
 
     text = " ".join(spans)
 
-    year_match = re.search(r"FIR20\d\d", text)
-    if not year_match:
+    # Use the LAST FIR20XX occurrence so that footnotes containing "FIR20XX" as a
+    # cross-reference (e.g. "See the FIR2022 Tables document...") do not shadow the
+    # real section identifier, which always appears at the end of the footer.
+    year_matches = list(re.finditer(r"FIR20\d\d", text))
+    if not year_matches:
         return None
+    year_match = year_matches[-1]
 
     after = text[year_match.end() :].strip()
 

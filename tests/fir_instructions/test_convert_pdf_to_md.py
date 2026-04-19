@@ -652,6 +652,15 @@ class TestExtractSectionFromFooter:
         spans = ["FIR2023", "Bulletin on Tile Drainage Loans", "99 -", "1"]
         assert _extract_section_from_footer(spans) == "Bulletin on Tile Drainage Loans"
 
+    def test_footnote_fir_reference_does_not_shadow_section(self) -> None:
+        """When a footnote cites 'FIR20XX' before the real section identifier, the last
+        occurrence is used so the correct section name is extracted."""
+        spans = [
+            "See the FIR2022 Tables document for a complete list of RTC Codes.",
+            "FIR2022", "Schedule 26", "Taxation Summary", "26 -", "1",
+        ]
+        assert _extract_section_from_footer(spans) == "Schedule 26"
+
 
 # ---------------------------------------------------------------------------
 # _section_to_stem
