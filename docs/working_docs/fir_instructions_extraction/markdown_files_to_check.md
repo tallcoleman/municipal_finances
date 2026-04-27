@@ -7,7 +7,7 @@
 - Search and replace with `(\. \d+?) (\w)` --> `$1\n$2` to clean up in-document TOCs
 - Non-bulleted lists are a common error point
 
-## 2025
+## 2025 - DONE
 
 - Manual check to catch issues with non-bulleted lists and other things that look off (S12 and on) - best to do side by side with the original PDFs
 
