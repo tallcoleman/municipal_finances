@@ -1,6 +1,6 @@
-**==> picture [235 x 67] intentionally omitted <==**
+FIR Information Bulletin 1 
 
-FIR Information Bulletin 1 **Tile Drainage Loans**
+**Tile Drainage Loans**
 
 **Table of Contents**
 
@@ -43,4 +43,3 @@ Please email us at **FIR@ontario.ca** for more information.
 **Note:**
 
 Please consult with your municipal auditor with respect to your annual financial statement presentation on this issue and legal right of offset. 
-
