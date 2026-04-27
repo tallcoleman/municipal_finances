@@ -25,7 +25,7 @@ Usage::
     )
 
     records = extract_all_line_meta(
-        "fir_instructions/source_files/2025/markdown",
+        "fir_instructions/source_files/2025/markdown_clean",
     )
     insert_line_meta(engine, records)
     save_to_csv(records, Path("fir_instructions/exports/baseline_line_meta.csv"))
@@ -81,7 +81,7 @@ _CSV_FIELDS = [
     "change_notes",
 ]
 
-_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown")
+_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown_clean")
 _DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_line_meta.csv")
 
 # Matches "Line XXXX - Name" or "Line XXXX Name" (space-only separator).
@@ -112,6 +112,14 @@ _LINE_RANGE_RE = re.compile(
 _LINE_RANGE_SINGULAR_RE = re.compile(
     r"Line\s+(\w{4})\s+to\s+Line\s+(\w{4})"
     r"\s*[-\u2013\u2014]\s*(.+)",
+    re.IGNORECASE,
+)
+
+# Matches "Line X and Y - Name" paired headings (S80): two non-contiguous line IDs
+# sharing the same description.  Space-only separator handled for headings like
+# "Line 0228 and 0328 Ambulance - Uniform".
+_LINE_PAIRED_RE = re.compile(
+    r"Lines?\s+(\w{4})\s+and\s+(\w{4})\s*(?:[-–—]\s*|\s+)(.+)",
     re.IGNORECASE,
 )
 
@@ -195,6 +203,26 @@ def _parse_range_heading(heading: str) -> tuple[str, str, str] | None:
         if m:
             name = m.group(3).strip().rstrip(":").strip()
             return (m.group(1), m.group(2), name)
+    return None
+
+
+def _parse_paired_line_heading(heading: str) -> tuple[str, str, str] | None:
+    """Parse a paired heading into (id1, id2, name), or None.
+
+    Handles headings of the form ``Line 0205 and 0305 - Administration`` where
+    two non-contiguous line IDs share the same description (used in S80).
+    Space-only separator is also handled, e.g. ``Line 0228 and 0328 Ambulance - Uniform``.
+
+    Args:
+        heading: Section heading text (bold markers already stripped).
+
+    Returns:
+        ``(id1, id2, name)`` triple, or ``None`` if not a paired heading.
+    """
+    m = _LINE_PAIRED_RE.match(heading.strip())
+    if m:
+        name = m.group(3).strip().rstrip(":").strip()
+        return (m.group(1), m.group(2), name)
     return None
 
 
@@ -564,15 +592,9 @@ def _get_schedule_sections(
         sections = _parse_md_sections(md_path)
         if not sections:
             return []
-        # S74 has two "Schedule 74D" headings: one in the overview intro and one
-        # marking the actual 74D content.  Skip the first occurrence and use the
-        # second; if only one exists (e.g. in unit test stubs), use it directly.
-        first = _find_section(sections, "Schedule 74D", exact=True)
-        if first is None:
-            return []
-        idx = _find_section(sections, "Schedule 74D", exact=True, start=first + 1)
+        idx = _find_section(sections, "Schedule 74D", exact=True)
         if idx is None:
-            idx = first
+            return []
         end_idx = _find_section(sections, "Schedule 74E", exact=True)
         return sections[idx:end_idx] if end_idx is not None else sections[idx:]
 
@@ -614,10 +636,40 @@ def _extract_per_schedule_lines(markdown_dir: Path, code: str) -> list[dict[str,
     current_section: str | None = None
 
     for heading, content in sections:
-        range_parsed = _parse_range_heading(heading)
-        line_parsed = _parse_line_heading(heading) if not range_parsed else None
+        paired_parsed = _parse_paired_line_heading(heading)
+        range_parsed = _parse_range_heading(heading) if not paired_parsed else None
+        line_parsed = _parse_line_heading(heading) if not range_parsed and not paired_parsed else None
 
-        if range_parsed:
+        if paired_parsed:
+            id1, id2, pair_name = paired_parsed
+            text = _clean_md_content(content)
+            group_note = f"Part of paired group Lines {id1} and {id2} — {pair_name}."
+            description = f"{group_note}\n\n{text}" if text else group_note
+            for line_id in (id1, id2):
+                if line_id in seen_line_ids:
+                    continue
+                seen_line_ids.add(line_id)
+                is_auto, carry_fwd = _detect_auto_calculated(description)
+                is_sub, sub_notes = _detect_subtotal(line_id, pair_name, description)
+                applicability = _detect_applicability(description)
+                records.append(
+                    {
+                        "schedule": code,
+                        "line_id": line_id,
+                        "line_name": pair_name,
+                        "section": current_section,
+                        "description": description,
+                        "is_subtotal": is_sub,
+                        "is_auto_calculated": is_auto,
+                        "carry_forward_from": carry_fwd,
+                        "applicability": applicability,
+                        "valid_from_year": None,
+                        "valid_to_year": None,
+                        "change_notes": sub_notes,
+                    }
+                )
+
+        elif range_parsed:
             first_id, last_id, range_name = range_parsed
             text = _clean_md_content(content)
             try:

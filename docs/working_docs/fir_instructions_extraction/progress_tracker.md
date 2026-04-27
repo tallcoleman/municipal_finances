@@ -9,7 +9,7 @@
 - [x] 05_baseline_line_meta.md (https://github.com/tallcoleman/municipal_finances/pull/18)
 - [x] 06_baseline_column_meta.md (https://github.com/tallcoleman/municipal_finances/pull/20)
 - [x] Revisit 04_baseline_schedule_meta.md using `markdown_clean/` files (https://github.com/tallcoleman/municipal_finances/pull/24)
-- [ ] Revisit 05_baseline_line_meta.md using `markdown_clean/` files
+- [x] Revisit 05_baseline_line_meta.md using `markdown_clean/` files (https://github.com/tallcoleman/municipal_finances/pull/25)
 - [ ] Revisit 06_baseline_column_meta.md using `markdown_clean/` files
 - [ ] 07_apply_changes_backwards.md
 - [ ] 08a_reporting_completeness_inference.md
