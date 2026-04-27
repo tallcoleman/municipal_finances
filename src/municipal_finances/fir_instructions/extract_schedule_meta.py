@@ -2,7 +2,7 @@
 
 This module reads the per-schedule ``.md`` files produced by ``convert-folder``
 (one file per FIR schedule PDF) and extracts one metadata record per schedule code.
-The 32 schedule codes include 7 sub-schedules (22A/B/C, 51A/B, 61A/B) and 74D/74E
+The 35 schedule codes include 7 sub-schedules (22A/B/C, 51A/B, 61A/B) and 74A–74E
 whose descriptions are found within their parent schedule's file.
 
 Records are inserted into ``fir_schedule_meta`` and exported to a CSV file at
@@ -17,7 +17,7 @@ Usage::
     )
 
     records = extract_all_schedule_meta(
-        "fir_instructions/source_files/2025/markdown",
+        "fir_instructions/source_files/2025/markdown_clean",
     )
     insert_schedule_meta(engine, records)
     save_to_csv(records, Path("fir_instructions/exports/baseline_schedule_meta.csv"))
@@ -69,6 +69,9 @@ SCHEDULE_CATEGORIES: dict[str, str] = {
     "70": "Financial Position",
     "71": "Remeasurement Gains & Losses",
     "74": "Long Term Liabilities",
+    "74A": "Long Term Liabilities",
+    "74B": "Long Term Liabilities",
+    "74C": "Long Term Liabilities",
     "74D": "Long Term Liabilities",
     "74E": "Long Term Liabilities",
     "76": "Other Information",
@@ -79,9 +82,10 @@ SCHEDULE_CATEGORIES: dict[str, str] = {
     "83": "Other Information",
 }
 
-# Maps schedule codes to the parent code used to construct the markdown filename.
+# Maps sub-schedule codes to the parent code used to construct the markdown filename.
 # Codes in this map do not have their own ``FIR2025 S{code}.md`` file; their
-# content is embedded within the parent schedule's file.
+# content is embedded within the parent schedule's file.  74A–74E are not listed
+# here because ``_extract_schedule_74x`` hardcodes the S74 path directly.
 _MD_PARENT_FILE: dict[str, str] = {
     "22A": "22",
     "22B": "22",
@@ -90,14 +94,13 @@ _MD_PARENT_FILE: dict[str, str] = {
     "51B": "51",
     "61A": "61",
     "61B": "61",
-    "74E": "74",
 }
 
-# Public alias used by callers that check sub-schedule parentage (excludes 74E,
-# which behaves differently from the 22/51/61 sub-schedules).
-SUB_SCHEDULE_PARENTS: dict[str, str] = {
-    k: v for k, v in _MD_PARENT_FILE.items() if k != "74E"
-}
+# Public alias used by callers that check sub-schedule parentage.
+SUB_SCHEDULE_PARENTS: dict[str, str] = dict(_MD_PARENT_FILE)
+
+# All 74x sub-schedule codes dispatched to ``_extract_schedule_74x``.
+_74X_CODES: frozenset[str] = frozenset({"74A", "74B", "74C", "74D", "74E"})
 
 # Heading text prefixes used to locate each sub-schedule's section within its
 # parent file.  Matched case-insensitively using startswith.
@@ -122,7 +125,7 @@ _CSV_FIELDS = [
     "change_notes",
 ]
 
-_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown")
+_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown_clean")
 _DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_schedule_meta.csv")
 
 
@@ -362,86 +365,39 @@ def _extract_schedule_53(markdown_dir: Path) -> dict[str, Any]:
     }
 
 
-def _extract_schedule_74d(markdown_dir: Path) -> dict[str, Any]:
-    """Extract metadata for Schedule 74D from the S74 markdown file.
+_74X_NAME_PREFIX_RE = re.compile(r"^Section\s+\d+\s*[–\-]\s*", re.IGNORECASE)
 
-    ``FIR2025 S74.md`` contains two ``Schedule 74D`` headings: one in the
-    overview section and one that marks the actual 74D content.  This function
-    skips the first occurrence and uses the second, then extracts the schedule
-    name from the ``Section 12 –`` heading that immediately follows.
+
+def _extract_schedule_74x(markdown_dir: Path, code: str) -> dict[str, Any]:
+    """Extract metadata for a 74x sub-schedule (74A–74E) from the S74 markdown file.
+
+    All five sub-schedules are embedded in ``FIR2025 S74.md``.  Each has a
+    ``## Schedule 74X`` heading followed immediately by a subsection whose
+    heading is the schedule's name (optionally prefixed with ``Section N –``).
 
     Args:
         markdown_dir: Directory containing the per-schedule markdown files.
+        code:         74x schedule code (one of ``74A``, ``74B``, ``74C``,
+                      ``74D``, ``74E``).
 
     Returns:
-        Metadata dict for Schedule 74D.
+        Metadata dict for the schedule.
     """
     md_path = markdown_dir / "FIR2025 S74.md"
     sections = _parse_md_sections(md_path)
 
-    # S74 has two "Schedule 74D" headings: one in the TOC overview and one
-    # marking the actual 74D content.  Use the second occurrence.
-    first_idx = _find_section(sections, "Schedule 74D", exact=True)
-    s74d_idx = None
-    if first_idx is not None:
-        s74d_idx = _find_section(sections, "Schedule 74D", exact=True, start=first_idx + 1)
-        if s74d_idx is None:
-            s74d_idx = first_idx  # fallback for unit test stubs with a single occurrence
-
-    schedule_name = "Future Principal and Interest Payments on Existing Debt"
+    s74x_idx = _find_section(sections, f"Schedule {code}", exact=True)
+    schedule_name = ""
     description = ""
-    if s74d_idx is not None:
-        sec12_idx = _find_section(sections, "Section 12", exact=False, start=s74d_idx + 1)
-        if sec12_idx is not None:
-            description = _clean_md_content(sections[sec12_idx][1])
+    if s74x_idx is not None and s74x_idx + 1 < len(sections):
+        subsection_heading, content = sections[s74x_idx + 1]
+        schedule_name = _74X_NAME_PREFIX_RE.sub("", subsection_heading).strip()
+        description = _clean_md_content(content)
 
     return {
-        "schedule": "74D",
+        "schedule": code,
         "schedule_name": schedule_name,
-        "category": SCHEDULE_CATEGORIES["74D"],
-        "description": description,
-        "valid_from_year": None,
-        "valid_to_year": None,
-        "change_notes": None,
-    }
-
-
-def _extract_schedule_74e(markdown_dir: Path) -> dict[str, Any]:
-    """Extract metadata for Schedule 74E from the S74 markdown file.
-
-    ``FIR2025 S74.md`` contains two ``Schedule 74E`` headings: one in the
-    general S74 overview (with the full subtitle) and one that marks the actual
-    74E content section.  This function locates the shorter ``Schedule 74E``
-    heading (exact match) and then extracts the ``Asset Retirement Obligation
-    Liability`` sub-section that follows it.
-
-    Args:
-        markdown_dir: Directory containing the per-schedule markdown files.
-
-    Returns:
-        Metadata dict for Schedule 74E.
-    """
-    schedule_name = "Asset Retirement Obligation Liability"
-    md_path = markdown_dir / "FIR2025 S74.md"
-    sections = _parse_md_sections(md_path)
-
-    # Find "Schedule 74E" (exact — not "Schedule 74E - Asset Retirement...")
-    s74e_idx = _find_section(sections, "Schedule 74E", exact=True)
-    description = ""
-    if s74e_idx is not None:
-        aro_idx = _find_section(
-            sections,
-            "Asset Retirement Obligation Liability",
-            exact=True,
-            start=s74e_idx + 1,
-        )
-        if aro_idx is not None:
-            description = _clean_md_content(sections[aro_idx][1])
-
-    return {
-        "schedule": "74E",
-        "schedule_name": schedule_name,
-        "category": SCHEDULE_CATEGORIES["74E"],
+        "category": SCHEDULE_CATEGORIES.get(code, ""),
         "description": description,
         "valid_from_year": None,
         "valid_to_year": None,
@@ -519,8 +475,7 @@ def extract_schedule_record(markdown_dir: Path, code: str) -> dict[str, Any]:
 
     - Sub-schedules (22A/B/C, 51A/B, 61A/B): :func:`_extract_sub_schedule`
     - Schedule 53 (no GI heading): :func:`_extract_schedule_53`
-    - Schedule 74D (embedded in S74): :func:`_extract_schedule_74d`
-    - Schedule 74E (embedded in S74): :func:`_extract_schedule_74e`
+    - Schedules 74A–74E (embedded in S74): :func:`_extract_schedule_74x`
     - All others: :func:`_extract_regular_schedule`
 
     Args:
@@ -536,15 +491,13 @@ def extract_schedule_record(markdown_dir: Path, code: str) -> dict[str, Any]:
         return _extract_sub_schedule(markdown_dir, code)
     if code == "53":
         return _extract_schedule_53(markdown_dir)
-    if code == "74D":
-        return _extract_schedule_74d(markdown_dir)
-    if code == "74E":
-        return _extract_schedule_74e(markdown_dir)
+    if code in _74X_CODES:
+        return _extract_schedule_74x(markdown_dir, code)
     return _extract_regular_schedule(markdown_dir, code)
 
 
 def extract_all_schedule_meta(markdown_dir: str | Path) -> list[dict[str, Any]]:
-    """Extract metadata records for all 32 schedule codes from FIR2025.
+    """Extract metadata records for all 35 schedule codes from FIR2025.
 
     Reads per-schedule markdown files from *markdown_dir* and extracts one
     record per schedule code in :data:`SCHEDULE_CATEGORIES`.
@@ -553,7 +506,7 @@ def extract_all_schedule_meta(markdown_dir: str | Path) -> list[dict[str, Any]]:
         markdown_dir: Path to the folder containing ``FIR2025 S{code}.md`` files.
 
     Returns:
-        List of 32 dicts, one per schedule code, ordered by the key set of
+        List of 35 dicts, one per schedule code, ordered by the key set of
         :data:`SCHEDULE_CATEGORIES`.
     """
     markdown_dir = Path(markdown_dir)

@@ -1,5 +1,5 @@
 schedule,schedule_name,category,description,valid_from_year,valid_to_year,change_notes
-10,Revenues,Revenue,"Schedule 10 is divided into four sections. The first section reports total revenues of the municipality.
+10,Consolidate Statement of Operations: Revenues,Revenue,"Schedule 10 is divided into four sections. The first section reports total revenues of the municipality.
 
 The second section presents the continuity of accumulated surplus/deficit for the current year and the accumulated surplus or deficit at the beginning of the year and at the end of the year.
 
@@ -12,26 +12,25 @@ Schedule 10 is a summary schedule. It is completed after Schedules 20 to 28, 72 
 
 Other types of non-tax revenue which do not lend themselves to functional categories are reported on Schedule 10, Total Revenues.  These include:
 
-**Licences, permits, rent, etc. (Schedule 10, lines 1410 to 1499) Fines and penalties (Schedule 10, lines 1605 to 1699) Other revenue (Schedule 10, lines 1805 to 1899)**
+|                               |                                   |
+| ----------------------------- | --------------------------------- |
+| Licences, permits, rent, etc. | (Schedule 10, lines 1410 to 1499) |
+| Fines and penalties           | (Schedule 10, lines 1605 to 1699) |
+| Other revenue                 | (Schedule 10, lines 1805 to 1899) |
 
 Note that other revenue includes investment income, donations, sale of publications, equipment, etc., contributions from non-consolidated entities, government business enterprises and other.",,,
 20,Taxation Information,Taxation,"This schedule collects information on the property tax policies in effect in the municipality for the year.  These include:
 
-**1. Optional Property Classes**
-
-**2. Capping Parameters and Results**
-
-**3. Graduated Taxation (Tax Bands)**
-
-**4. Phase-In Program in Effect**
-
-**5. Rebates for Eligible Charities**
-
-**6. Property Tax Due Dates for Current Year**
+1. **Optional Property Classes**
+2. **Capping Parameters and Results**
+3. **Graduated Taxation (Tax Bands)**
+4. **Phase-In Program in Effect**
+5. **Rebates for Eligible Charities**
+6. **Property Tax Due Dates for Current Year**
 
 Property tax policy is determined by upper-tier and single-tiers municipalities, but all municipalities must complete these sections.  Lower tiers should consult the upper tier for the information if necessary.  Only single tier and lower-tier municipalities are required to complete the property tax due date table.
 
-Further information to that provided in the instructions below is also available in the OPTA Manual at the On-Line Property Tax Analysis (OPTA) website: hhtp://opta.reamined.on.ca",,,
+Further information to that provided in the instructions below is also available in the OPTA Manual at the On-Line Property Tax Analysis (OPTA) website: http://opta.reamined.on.ca",,,
 22,Municipal and School Board Taxation,Taxation,"All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 22.
 
 Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities.
@@ -40,39 +39,68 @@ This schedule collects taxation information on Taxable properties.  It is simply
 
 Municipal and Education taxation information in this schedule is organized by dividing the Schedule into the following nine sections:
 
-**1. General Purpose Levy**
-
-**2. Special Area Levies (Lower-tier/Single-tier)**
-
-**3. Special Area Levies (Upper tier)**
-
-**4. Adjustments to Taxation**
-
-**5. Supplementary Taxes**
-
-**6. Amount Levied by Tax Rate**
-
-**7. Amounts Added to Tax Bill**
-
-**8. Other Taxation Amounts**
-
-**9. Total Amount Levied**
+1. **General Purpose Levy**
+2. **Special Area Levies (Lower-tier/Single-tier)**
+3. **Special Area Levies (Upper tier)**
+4. **Adjustments to Taxation**
+5. **Supplementary Taxes**
+6. **Amount Levied by Tax Rate**
+7. **Amounts Added to Tax Bill**
+8. **Other Taxation Amounts**
+9. **Total Amount Levied**
 
 Also, the schedule contains several columns, which can be summarized into the following 3 categories:
 
 - **A. Property Class Description (Columns 1 to 4)**
-
-- **B. Assessment and Tax Rates (Columns 5 to 11) C. Taxes Levied (Columns 12 to 15)**
+- **B. Assessment and Tax Rates (Columns 5 to 11)**
+- **C. Taxes Levied (Columns 12 to 15)**
 
 Before explaining each of the sections and columns, the reporting treatment of several unique property types will be explained below.  Following this will be a description of each of the columns, and then a description of information reported in each section.",,,
-22A,General Purpose Levy Information,Taxation,"This section contains all General-Purpose tax rates by property class for municipal and education purposes.  For each property class in the municipality, the total taxable assessment is also shown here, and is used to calculate the taxes levied for that property class.",,,
+22A,General Purpose Levy Information,Taxation,"This section contains all General-Purpose tax rates by property class for municipal and education purposes.  For each property class in the municipality, the total taxable assessment is also shown here, and is used to calculate the taxes levied for that property class.
+
+**The following columns in this taxable general-purpose levy schedule are pre-populated:**
+
+- **RTC/RTQ codes (column 1)**
+- **Property Class (column 3)**
+- **Tax Rate Description (column 4)**
+- **Tax Ratio (column 5)**
+- **Percent of Full Rate % (column 6)**
+- **CVA Assessment (column 7)**
+- **Phase-In Taxable Assessment (column 16)**
+- **LT/ST Tax rate (column 08)**
+- **UT Tax rate (column 09)**
+- **Education Tax rate (column 10)**
+
+**To complete the schedule, the user must select the tax band (column 2), and the rest of the schedule will be automatically calculated.**
+
+It is important that **ALL** general-purpose tax rates and levies are reported in this section. General-purpose tax rates should not be shown in the special area tax rate sections.
+
+In cases where municipalities have a “Special Budgetary Levy” that is applied to all classes except those over the threshold, a special area rate should be entered on 22B or C.  The levy type of “Special Budgetary Levy” has been made available on the list of levy types.
+
+Most municipalities will have one set of uniform general-purpose tax rates that apply to every property in the municipality.  In this situation, the set of tax rates are reported in the table in this section.
+
+In some instances, municipalities may have more than one set of general-purpose tax rates.  In this scenario, a number of tables must be added to this section, and the concept of ‘Levy Area’ is introduced to accomplish this.  The municipality is split into separate parts called ‘Levy Areas’, where the sum of the parts makes up the entire municipality.  Each levy area has a corresponding table set-up in this section, and the municipality can then report separate sets of tax rates within each levy area.
+
+Municipalities with one set of uniform general-purpose tax rates that apply to every property in the municipality will report tax rates in the levy area of ‘0’.  Municipalities with more than one set of general-purpose tax rates will be assigned a unique code for each levy area.
+
+If a municipality has more than one set of general-purpose tax rates, a custom FIR must be set-up that includes ‘Levy Areas’ for each set of general-purpose tax rates. Municipalities can contact the Ministry by email at FIR@ontario.ca to arrange for this to be set-up.
+
+The need for multiple sets of general-purpose tax rates usually occurs in municipalities which have recently amalgamated.  In this situation, each of the former municipalities that make up the newly amalgamated municipality may have different general-purpose tax rates.  This accommodates the different service levels and needs that exist initially in an amalgamated municipality.  Eventually, the former municipalities will phase-in to a uniform general-purpose tax rate.
+
+Each property class, or RTC / RTQ and tax band combination can only be reported once within a levy area.  This means that each RTC / RTQ and tax band combination is unique within each set of general-purpose tax rates.
+
+If a municipality has more than one general-purpose tax rate for an RTC / RTQ and tax band combination, then multiple general-purpose levies exist within the municipality, and separate sets of tax rates must be entered into separate levy areas.
+
+Please recall that data points in this part of the FIR are referenced by levy area + SLC code.  It is also important to notice that each RTC / RTQ and tax band combination is associated with a unique line number.
+
+Subtotals are numbered sequentially based on the number of levy areas.  For example, if one levy area exists, the subtotal line is 9201.  If two levy areas exist, subtotal lines are 9201, and 9202.",,,
 22B,Lower-Tier / Single-Tier Special Area Levy Information,Taxation,"For lower-tier and single tier municipalities, completion of Schedule 22B is required where any special area tax rates for lower-tier / single-tier purpose have been applied within the municipality.
 
 Upper-tier municipalities should not enter any information into this schedule.",,,
 22C,Upper-Tier Special Area Levy Information,Taxation,"Only lower-tier and upper-tier municipalities should enter information in Schedule 22C.
 
 For lower-tier and upper-tier municipalities, completion of this section is required where any special area tax rates for upper-tier purpose have been applied within the municipality.",,,
-24,In-Lieu of Taxation,Taxation,"All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 24.
+24,Payments-In-Lieu of Taxation,Taxation,"All municipalities, including single-tier, lower-tier and upper-tier municipalities must complete Schedule 24.
 
 Upper-tiers report only Upper-tier tax rates that apply to the aggregated assessment of all lower-tiers.  Lower-tier and Education tax rates do not need to be entered by Uppertier municipalities.
 
@@ -82,55 +110,99 @@ In completing this schedule, it is important to notice that this schedule only c
 
 First, the amount of “PIL levied” on a property; is not necessarily the amount received by the municipality.  Second, in some cases the PIL amounts received for Education purposes are retained by the Municipality.
 
-Both unique situations are captured in Part 3 of Schedule 26, where the final PIL amount retained by the Municipality and PIL amounts distributed to School Boards is reported.  Since the final PIL entitlement is reported on Schedule 26, this total PIL amount will be carried-forward onto Schedule 10, Revenue Fund Revenues.",,,
-26,In-Lieu Summary,Taxation,"This schedule is used for reporting the final distribution of Education Taxes and Education PIL amounts by School Board.  To arrive at the final breakdown of Education amounts by School Board, the schedule has been set up with a summary of Property Tax and Payment-In-Lieu amounts reported on Schedules 22 and 24.
+Both unique situations are captured in Part 3 of Schedule 26, where the final PIL amount retained by the Municipality and PIL amounts distributed to School Boards is reported.  Since the final PIL entitlement is reported on Schedule 26, this total PIL amount will be carried-forward onto Schedule 10, Revenue Fund Revenues.
+
+**IMPORTANT:   This schedule only captures the PILS Levied, which is not necessarily the total amount of PIL retained by the Municipality and distributed for Education purposes.**
+
+Municipal and Education PIL information in this schedule is organized by dividing the Schedule into the following eight sections:
+
+1. **General Purpose PILS**
+2. **Special Area PILS (Lower-Tier / Single-Tier)**
+3. **Special Area PILS (Upper-Tier)**
+4. **Supplementary PILS**
+5. **PILS Levied by Tax Rate**
+6. **Amounts Added to PILS**
+7. **Other PILS Amounts**
+8. **Total PILS Levied**
+
+Also, the schedule contains several columns, which can be summarized into the following 3 categories:
+
+- **A. Property Class Description (columns 1 to 4)**
+- **B. Assessment and Tax Rates (columns 5 to 11)
+- **C. PILS Levied (columns 12 to 15)**
+
+Before explaining each of the Sections and Columns, the reporting treatment of several unique property types will be explained below.  Following this will be a description of each of the Columns, and then a description of information reported in each Section.",,,
+26,Taxation and Payments-In-Lieu Summary,Taxation,"This schedule is used for reporting the final distribution of Education Taxes and Education PIL amounts by School Board.  To arrive at the final breakdown of Education amounts by School Board, the schedule has been set up with a summary of Property Tax and Payment-In-Lieu amounts reported on Schedules 22 and 24.
 
 Municipal and Education totals are automatically calculated and summarized from the information entered on Schedule 22 and 24.  Education Totals are then distributed by School Board.
 
-Since Taxation and PIL are treated differently, the schedule has been divided into the following sections:",,,
-28,Tier Entitlements,Taxation,This schedule outlines the upper-tier Municipalities entitlements from each lower-tier municipality.,,,
+Since Taxation and PIL are treated differently, the schedule has been divided into the following sections:
+
+1. **Municipal and School Board Taxation**
+2. **Payments-In-Lieu of Taxation**
+3. **Payments-In-Lieu of Taxation - Distribution of Entitlements**
+
+Each of these sections facilitates the reporting of Education taxes by school board. Also, these sections provide a summary of the Property Taxation and Payment-In-lieu amounts levied in the municipality.
+
+Section 1 contains a summary of the Taxable properties within the municipality, and further, allows the municipalities to report the Education taxes by School Board.
+
+Section 2 contains a summary of the Payment-in-lieu amounts levied in the municipality. Remember, this PIL Levied amount, is not necessarily the amount received by the municipality.  Also, in some cases the PIL amounts received for Education purposes are retained by the Municipality.  Adjustments for both of these unique situations occur in Section 3.
+
+Section 3 first captures the PILS Levied by Source of the PIL.  Because the Municipality may not necessarily receive this “Levied” amount, a column is available to make any adjustments.  After making adjustments, the total PIL Entitlement, or final PIL received by the Municipality is shown, with amounts for Municipal and Education purposes reported.  Lastly, the Education portion is shown distributed by School Board.
+
+In summary, Schedule 24 and similarly Section 2 of Schedule 26 capture the PIL Levied, which may or may not equal the PIL amount received or retained by the Municipality.  The final PIL amount received and retained is reported in Section 3 of Schedule 26, Columns 8 to10.  For Lower-tier and Single-tier Municipalities, this amount will be carried-forward onto Schedule 10, Revenue Fund Revenues.",,,
+28,Upper-Tier Entitlements,Taxation,"This schedule outlines the upper-tier Municipalities entitlements from each lower-tier municipality.
+
+**This schedule must be completed by Upper-tier municipalities only.**
+
+Information contained in this schedule should be obtained from each lower-tier municipality within the upper-tier municipality.  Column 11, Upper-tier tax adjustments recovered from allowances, should be available from the upper-tier Municipalities records.
+
+Each line in the schedule is reserved for an individual lower-tier municipality.  The columns that appear across this schedule can be summarized into the following three categories:
+
+1. **Lower-tier Municipality Description (Columns 1 to 3)**
+2. **Taxation and Payments-In-Lieu (Columns 4 to 8, 13)**
+3. **Adjustments (Columns 9 to 11)**
+
+The following is a description of each of the columns that appear across this schedule:",,,
 72,Continuity of Taxes Receivable,Taxation,"This series of schedules is **only completed by Single Tier or Lower Tier municipalities** .  In a two-tier system, even though the Upper Tier municipality sets an upper tier tax rate, the Upper Tier municipality does not complete this schedule because taxes are collected by lower tier municipalities.
 
 This schedule provides information on adjustments to the statement of financial position item, taxes receivable, in SLC 70 0699 01.
 
 This schedule consists of the following sections:
 
-- **72A   Continuity of Taxes Receivable**
-
-- **72A   Cash Collections**
-
-- **72B – Tax Adjustments Applied to Taxation**
-
-- **72B   Tax Adjustments Not Applied to Taxation**
-
+**72A   Continuity of Taxes Receivable**
+**72A   Cash Collections**
+**72B – Tax Adjustments Applied to Taxation**
+**72B   Tax Adjustments Not Applied to Taxation**
 **72B   Additional Information**",,,
-40,Expenses,Expense,"Schedule 40 consists of operating expenses reported by object and function. This is supported by Schedule 42, Additional Operating Information. Schedule 42 isolates specific expenses for services which were reported as part of a total in Schedule 40.
+40,Consolidated Statement of Operations: Expenses,Expense,"Schedule 40 consists of operating expenses reported by object and function. This is supported by Schedule 42, Additional Operating Information. Schedule 42 isolates specific expenses for services which were reported as part of a total in Schedule 40.
 
 Expenses are grouped by object and by function as per PS1201 Financial statement presentation. Object expenses are presented in columns 1 through 7:
 
-**Column 1 Salaries, wages, and employee benefits**
-
-**Column 2 Interest on Long term debt**
-
-**Column 3 Materials**
-
-**Column 4 Contracted services**
-
-**Column 5 Rents, financial expenses, &Accretion Expense Column 6 External transfers Column 16 Amortization Column 7 Total Expenses before adjustments**
+**Column 1: Salaries, wages, and employee benefits**
+**Column 2: Interest on Long term debt**
+**Column 3: Materials**
+**Column 4: Contracted services**
+**Column 5: Rents, financial expenses, & Accretion Expense**
+**Column 6: External transfers**
+**Column 16: Amortization**
+**Column 7: Total Expenses before adjustments**
 
 The following additional columns contain information used for analytical purposes:
 
-**Column 12 Inter functional adjustments. Column 13 Allocation of program support Column 11 Total expenses**
+**Column 12: Inter functional adjustments.**
+**Column 13: Allocation of program support**
+**Column 11: Total expenses**
 
-Please note that column 11, Total Expenses, equals the sum of columns 7, 12, and 13.",,,
+Please note that column 11, Total Expenses, equals the sum of columns 7, 12, and 13.
+
+**Amortization expense in Column 16 is pre-populated from Schedule 51A Schedule of Tangible Capital Assets.**",,,
 42,Additional Information,Expense,"Schedule 42 analyzes information reported in Schedule 40, Statement of Operations: Expenses.
 
 This schedule isolates amounts which are included in a column total or row total.",,,
 51A,Tangible Capital Assets by Function,Tangible Capital Assets,"The Schedule 51 series collects the net book value of tangible capital assets by function (51A) and asset class (51B).
 
 Refer to the FIR Instructions section on functional categories for definitions of specific functions.
-
-**==> picture [37 x 37] intentionally omitted <==**
 
 **Ensure tangible capital assets are included in the appropriate functional categories. Ministries use information from the FIR, including Schedule 51, to determine eligibility and allocations for certain grants and programs.**
 
@@ -188,22 +260,64 @@ Report all municipal investments in government business enterprises using the mo
 2. Foreign currency exchange rate fluctuations. All financial assets or liabilities held in foreign currency should be converted to Canadian dollars at the financial statement reporting date. The annual fluctuations in exchange rates are reported in the FIR in the statement of remeasurement gains or losses.
 
 Once the asset is sold or liability paid, unrealized gains or losses become recognized, and the realized gain or loss is reallocated from the accumulated remeasurement gains and losses to the statement of operations.",,,
-74,Long Term Liabilities and Commitments,Long Term Liabilities,"Schedule 74 consists of 5 separate worksheets (74A, B, C, D, and E) and 12 sections. The worksheets and the sections within each are detailed below:",,,
+74,Long Term Liabilities and Commitments,Long Term Liabilities,"Schedule 74 consists of 5 separate worksheets (74A, B, C, D, and E) and 12 sections. The worksheets and the sections within each are detailed below:
+
+**Schedule 74A**
+
+Section 1 - Debt Burden of the Municipality
+Section 2 - Debt Burden of the Municipality Analysed by Debt Instrument.
+Section 3 - Debt burden of the Municipality Analysed by Function.
+
+**Schedule 74B**
+
+Section 4 - Debt Payable in Foreign Currencies (Net of Sinking Fund Holdings)
+Section 5 - Interest Earned on Sinking Funds and on Debt Retirement Funds During the Year.
+Section 6 - Details of Sinking Fund Balance
+Section 7 - Long Term Commitments at Year End
+
+**Schedule 74C**
+
+Section 8 - Contingent Liabilities
+Section 10 - Debt Charges for the Current Year
+Section 11 - Long Term Debt Refinanced.
+
+**Schedule 74D**
+
+Section 12 - Future Principal and Interest Payments on Existing debt Section 13 - Other Notes
+
+**Schedule 74E - Asset Retirement Obligation Liability**",,,
+74A,Debt Burden of the Municipality,Long Term Liabilities,"The total debt burden of the municipality reported in section 1 on line 9910 equals the amount reported in section 2 on line 9920 and the amount in section 3 on line 9930.  In each section, the debt is analysed in a different manner.
+
+**Please note that if a municipality has refinanced debt, the new debt is included in the liabilities reported in sections 1, 2 and 3.**
+
+The total debt burden of the municipality on line 9910 is equal to all outstanding debt issued by the municipality, predecessor municipalities and consolidated entities, plus all debt assumed by the municipality from others, less all debt assumed by others, less Ontario Clean Water Agency (OCWA) debt retirement funds, less the actual balances of own sinking funds.
+
+All outstanding debt issued by the municipality, predecessor municipalities and consolidated entities.
+
+**Include:**
+
+1. **All debt issued in the name of the municipality.**
+2. **Debt of predecessor municipalities**
+3. **Debt issued in the name of consolidated entities.**
+4. **Debt issued in the name of the municipality on behalf of school boards and local boards, whether consolidated or unconsolidated**",,,
+74B,Debt Payable in Foreign Currencies (Net of Sinking Fund Holdings),Long Term Liabilities,"In section 1 of Schedule 74A, “Debt Burden of the Municipality”, line 9910 may include debt payable in foreign currencies. Foreign debt is reported at its Canadian dollar equivalent.
+
+In this section, debt is recorded in both the original currency and its Canadian equivalent.  This information can be used to gauge the impact of exchange rate fluctuations.
+
+Record the amount of foreign held debt, net of sinking funds.",,,
+74C,Contingent Liabilities,Long Term Liabilities,"This section provides information on contingent liabilities to the extent that they are not already accrued in Schedule 70, Consolidated Financial Position.  If your municipality has one or more contingent liabilities, please enter the actual or estimated value for each type of contingent liability.",,,
 74D,Future Principal and Interest Payments on Existing Debt,Long Term Liabilities,"Section 12 identifies sources that will be used to recover debt charges for future years: from consolidated statement of operations (columns 1 and 2), reserve funds (columns 3 and 4), unconsolidated entities (columns 5 and 6) and all others (columns 7 and 8).",,,
 74E,Asset Retirement Obligation Liability,Long Term Liabilities,"PS 3280 Standard AROs guides municipalities to determine if a retirement or remediation obligation relating to an existing tangible capital asset should be recognized.   An asset retirement obligation is a legal obligation that arises from the retirement of a tangible capital asset, including solid waste or landfill liabilities.
 
 PS 3280.63 (d) states that a public sector entity should disclose a reconciliation of the beginning and ending aggregate carrying amount of the liability, showing separately the changes attributable to:
 
 - The liability incurred in the current period.
-
 - The liability settled in the current period.
-
--
-
-   - The change resulting from the passage of time (i.e., accretion expense); and
-
+- The change resulting from the passage of time (i.e., accretion expense); and
 - Any revisions in estimated cash flows.",,,
-76,Government Business Enterprises (GBE),Other Information,"Please report the requested financial data that pertains to all entities deemed to be Government Business Enterprises (GBEs) as defined by Section 1300 of the Public Sector Accounting Handbook.  These include entities established under Ontario Regulation 599/06, Municipal Services Corporations, or the Municipal Act, 2001.",,,
+76,Government Business Enterprises (GBE),Other Information,"Please report the requested financial data that pertains to all entities deemed to be Government Business Enterprises (GBEs) as defined by Section 1300 of the Public Sector Accounting Handbook.  These include entities established under Ontario Regulation 599/06, Municipal Services Corporations, or the Municipal Act, 2001.
+
+**Please indicate the name of the GBE in each column and then list the following for each GBE.**",,,
 77,"Other Entities (DSSABs, Health Units, etc.)",Other Information,"In the Schedule 77 series, report financial data that pertains to entities that were previously fully or proportionally consolidated in the FIR but not fully or proportionally consolidated in municipal financial statements.   This type of entity includes District Social Services Administration Boards (77A), Health Units (77B), and other entities (77C).
 
 In Schedules 77A through 77C, please complete column 1 and then enter the municipality’s share as a percent on column 3. Column 2 is automatically calculated by multiplying total expenses (Column 1) by % of municipality’s share (Column 3).
@@ -211,38 +325,25 @@ In Schedules 77A through 77C, please complete column 1 and then enter the munici
 Data entered in Schedules 77A through 77C is carried forward and consolidated in Schedule 77D.",,,
 80,Statistical Information,Other Information,"The Schedule 80 series collects statistical information that is not collected elsewhere. This schedule series consists of sections 1 through 8.
 
-**1. Municipal Workforce Profile**
-
-**2. Selected Investments of Own Sinking Funds as of December 31**
-
-**3. Municipal Procurement this Year**
-
-**4. Building Permit Information**
-
-**5. Insured Value of Physical Assets**
-
-**7. Vacant Home Tax**
-
-**8. Consolidated Local Boards Including Joint Local Boards and All Local Entities Set Up by the Municipality**
-
+1. **Municipal Workforce Profile**
+2. **Selected Investments of Own Sinking Funds as of December 31**
+3. **Municipal Procurement this Year**
+4. **Building Permit Information**
+5. **Insured Value of Physical Assets**
+6. **Vacant Home Tax**
+7. **Consolidated Local Boards Including Joint Local Boards and All Local Entities Set Up by the Municipality**
    - **(I) Proportionally Consolidated Joint Local Boards**
-
    - **(II) Fully Consolidated Local Boards and Any Local Entities Set Up by the Municipality**
 
 In Schedule 80, the number of columns and column headings change with each section to accommodate the information collected.",,,
 80D,Municipal Performance Statistical Information,Other Information,"Schedule 80D collects statistical information. Municipalities report the data when they are responsible for the service, whether provided by municipal staff or contracted out. This schedule consists of section 9 through 14.
 
-**9. Building Permit Information (Performance Measures)**
-
-**10. Planning and Development**
-
-**11. Transportation Services**
-
-**12. Environmental Services**
-
-**13. Recreation Services**
-
-**14. Other Revenue (Used for the Calculation of Operating Cost).**
+9. **Building Permit Information (Performance Measures)**
+10. **Planning and Development**
+11. **Transportation Services**
+12. **Environmental Services**
+13. **Recreation Services**
+14. **Other Revenue (Used for the Calculation of Operating Cost).**
 
 In Schedule 80D the number of columns and column headings change with each section to accommodate the information collected.",,,
 81,Annual Debt Repayment Limit (ARL),Other Information,"The annual debt and financial obligation limit for municipalities is determined under **ONTARIO REGULATION 403/02: Debt and Financial Obligation Limits.**
