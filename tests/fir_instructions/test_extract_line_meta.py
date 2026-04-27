@@ -31,6 +31,7 @@ from municipal_finances.fir_instructions.extract_line_meta import (
     _get_schedule_sections,
     _is_functional_area,
     _parse_line_heading,
+    _parse_paired_line_heading,
     _parse_range_heading,
     app,
     extract_line_records,
@@ -1584,8 +1585,8 @@ class TestGetScheduleSections:
         sections = _get_schedule_sections(tmp_path, "74E")
         assert sections == []
 
-    def test_74d_single_heading_uses_fallback(self, tmp_path: Path) -> None:
-        """When only one 'Schedule 74D' heading exists, fallback uses it directly (branch 574->576 True)."""
+    def test_74d_single_heading(self, tmp_path: Path) -> None:
+        """The cleaned S74.md has one 'Schedule 74D' heading; sections start from it."""
         content = dedent("""\
             ## Schedule 74D
             ## Line 0010 - Principal Payment
@@ -1596,24 +1597,6 @@ class TestGetScheduleSections:
         sections = _get_schedule_sections(tmp_path, "74D")
         headings = [s[0] for s in sections]
         assert any("Schedule 74D" in h for h in headings)
-        assert any("Line 0010" in h for h in headings)
-
-    def test_74d_two_headings_uses_second(self, tmp_path: Path) -> None:
-        """When two exact 'Schedule 74D' headings exist, the second is used as content start (branch 574->576 False)."""
-        content = dedent("""\
-            ## Schedule 74D
-            Brief TOC mention of 74D.
-            ## Schedule 74D
-            ## Line 0010 - Principal Payment
-
-            Description of principal payment.
-        """)
-        (tmp_path / "FIR2025 S74.md").write_text(content, encoding="utf-8")
-        sections = _get_schedule_sections(tmp_path, "74D")
-        headings = [s[0] for s in sections]
-        # The second "Schedule 74D" heading should be included
-        assert "Schedule 74D" in headings
-        # Line 0010 should also be included (it follows the second heading)
         assert any("Line 0010" in h for h in headings)
 
     def test_sub_schedule_is_last_section_in_parent(self, tmp_path: Path) -> None:
@@ -1649,6 +1632,72 @@ class TestDuplicateLineIdSkipped:
         matching = [r for r in records if r["line_id"] == "0299"]
         assert len(matching) == 1
         assert "First occurrence" in (matching[0]["description"] or "")
+
+
+class TestPairedLineHeadings:
+    """Cover _parse_paired_line_heading and its integration in _extract_per_schedule_lines."""
+
+    def test_parse_dash_separator(self) -> None:
+        """Standard dash-separated paired heading returns both IDs and name."""
+        result = _parse_paired_line_heading("Line 0205 and 0305 - Administration")
+        assert result == ("0205", "0305", "Administration")
+
+    def test_parse_space_only_separator(self) -> None:
+        """Space-only separator (no dash) is handled for headings like S80 line 0228."""
+        result = _parse_paired_line_heading("Line 0228 and 0328 Ambulance - Uniform")
+        assert result == ("0228", "0328", "Ambulance - Uniform")
+
+    def test_parse_returns_none_for_single_line(self) -> None:
+        """Single-line headings do not match the paired pattern."""
+        assert _parse_paired_line_heading("Line 0205 - Administration") is None
+
+    def test_parse_returns_none_for_range_heading(self) -> None:
+        """Range headings using 'to' do not match the paired pattern."""
+        assert _parse_paired_line_heading("Lines 0696 to 0698 - Other") is None
+
+    def test_extract_emits_two_records(self, tmp_path: Path) -> None:
+        """A paired heading produces exactly two records, one per line ID."""
+        content = dedent("""\
+            #### Line 0205 and 0305 - Administration
+
+            Include all professional staff involved in general administration.
+        """)
+        (tmp_path / "FIR2025 S80.md").write_text(content, encoding="utf-8")
+        records = _extract_per_schedule_lines(tmp_path, "80")
+        ids = [r["line_id"] for r in records]
+        assert "0205" in ids
+        assert "0305" in ids
+        assert len(ids) == 2
+
+    def test_extract_both_records_share_name_and_description(self, tmp_path: Path) -> None:
+        """Both records from a paired heading share the same line_name and description."""
+        content = dedent("""\
+            #### Line 0205 and 0305 - Administration
+
+            Include all professional staff.
+        """)
+        (tmp_path / "FIR2025 S80.md").write_text(content, encoding="utf-8")
+        records = _extract_per_schedule_lines(tmp_path, "80")
+        assert records[0]["line_name"] == records[1]["line_name"] == "Administration"
+        assert records[0]["description"] == records[1]["description"]
+        assert "Part of paired group" in (records[0]["description"] or "")
+
+    def test_duplicate_paired_id_skipped(self, tmp_path: Path) -> None:
+        """If one ID from a paired heading was already seen, only the new ID is emitted."""
+        content = dedent("""\
+            #### Line 0205 - Administration
+
+            First occurrence of 0205 as a single-line heading.
+
+            #### Line 0205 and 0305 - Administration
+
+            Paired heading where 0205 is already seen.
+        """)
+        (tmp_path / "FIR2025 S80.md").write_text(content, encoding="utf-8")
+        records = _extract_per_schedule_lines(tmp_path, "80")
+        ids = [r["line_id"] for r in records]
+        assert ids.count("0205") == 1
+        assert "0305" in ids
 
 
 class TestMergeFlagPropagation:
