@@ -4,10 +4,13 @@
 - [x] 02_slc_parsing_utility.md (https://github.com/tallcoleman/municipal_finances/pull/1)
 - [x] 02b_slc_format_verification.md (https://github.com/tallcoleman/municipal_finances/pull/7)
 - [x] 03_content_changes_extraction.md (https://github.com/tallcoleman/municipal_finances/pull/10)
-- [x] 04_baseline_schedule_meta.md
+- [x] 04_baseline_schedule_meta.md (https://github.com/tallcoleman/municipal_finances/pull/13)
 - [ ] 04a_add_authentication.md
 - [x] 05_baseline_line_meta.md (https://github.com/tallcoleman/municipal_finances/pull/18)
-- [ ] 06_baseline_column_meta.md
+- [x] 06_baseline_column_meta.md (https://github.com/tallcoleman/municipal_finances/pull/20)
+- [ ] Revisit 04_baseline_schedule_meta.md using `markdown_clean/` files
+- [ ] Revisit 05_baseline_line_meta.md using `markdown_clean/` files
+- [ ] Revisit 06_baseline_column_meta.md using `markdown_clean/` files
 - [ ] 07_apply_changes_backwards.md
 - [ ] 08a_reporting_completeness_inference.md
 - [ ] 08b_data_inference.md

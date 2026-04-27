@@ -22,6 +22,7 @@ from municipal_finances.fir_instructions.extract_schedule_meta import (
     _clean_md_content,
     _extract_regular_schedule,
     _extract_schedule_53,
+    _extract_schedule_74d,
     _extract_schedule_74e,
     _extract_sub_schedule,
     _extract_sub_schedule_name,
@@ -88,11 +89,11 @@ class TestBaselineCSVContent:
     def records(self) -> list[dict[str, Any]]:
         return _load_baseline()
 
-    def test_exactly_31_records(self, records: list[dict[str, Any]]) -> None:
-        """Baseline CSV must contain exactly 31 records (one per schedule code)."""
-        assert len(records) == 31
+    def test_exactly_32_records(self, records: list[dict[str, Any]]) -> None:
+        """Baseline CSV must contain exactly 32 records (one per schedule code)."""
+        assert len(records) == 32
 
-    def test_all_31_codes_present(self, records: list[dict[str, Any]]) -> None:
+    def test_all_32_codes_present(self, records: list[dict[str, Any]]) -> None:
         """Every expected schedule code must appear in the CSV."""
         found = {r["schedule"] for r in records}
         missing = _EXPECTED_CODES - found
@@ -218,16 +219,16 @@ class TestInsertScheduleMeta:
         assert row.valid_to_year is None
         assert row.change_notes is None
 
-    def test_insert_all_31_baseline_records(self, engine, session: Session) -> None:
-        """All 31 baseline records from the CSV can be inserted into the DB."""
+    def test_insert_all_32_baseline_records(self, engine, session: Session) -> None:
+        """All 32 baseline records from the CSV can be inserted into the DB."""
         records = _load_baseline()
         inserted = insert_schedule_meta(engine, records)
-        assert inserted == 31
+        assert inserted == 32
 
         db_rows = session.exec(select(FIRScheduleMeta)).all()
-        assert len(db_rows) == 31
+        assert len(db_rows) == 32
 
-    def test_all_31_codes_in_db(self, engine, session: Session) -> None:
+    def test_all_32_codes_in_db(self, engine, session: Session) -> None:
         """After inserting all baseline records, every expected code is present in the DB."""
         records = _load_baseline()
         insert_schedule_meta(engine, records)
@@ -690,6 +691,55 @@ class TestExtractSchedule53:
         assert result["change_notes"] is None
 
 
+class TestExtractSchedule74D:
+    def test_no_s74d_heading_returns_empty_description(self, tmp_path: Path) -> None:
+        """When no 'Schedule 74D' heading is present, description is empty (branches 386->391, 393->398)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74C
+            Some other content.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert result["schedule_name"] == "Future Principal and Interest Payments on Existing Debt"
+        assert result["description"] == ""
+        assert result["valid_from_year"] is None
+        assert result["valid_to_year"] is None
+
+    def test_single_s74d_heading_no_section12_returns_empty_description(self, tmp_path: Path) -> None:
+        """Single 'Schedule 74D' heading with no 'Section 12' after it (branches 389, 395->398)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            Some content without a Section 12 heading.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert result["description"] == ""
+
+    def test_single_s74d_heading_with_section12_extracts_description(self, tmp_path: Path) -> None:
+        """Single 'Schedule 74D' heading fallback uses first occurrence; Section 12 body becomes description (branch 389)."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            Intro content.
+            ## Section 12 - Future Principal and Interest
+            This describes future debt payments.
+        """,
+        )
+        result = _extract_schedule_74d(tmp_path)
+        assert result["schedule"] == "74D"
+        assert "future debt payments" in result["description"].lower()
+
+
 class TestExtractSchedule74E:
     def test_extracts_description_after_aro_heading(self, tmp_path: Path) -> None:
         """Finds the 'Schedule 74E' section (exact), then extracts the ARO sub-section."""
@@ -952,13 +1002,13 @@ class TestExtractScheduleRecordDispatcher:
 class TestExtractAllScheduleMeta:
     """Tests for extract_all_schedule_meta."""
 
-    def test_returns_31_records_from_real_files(self) -> None:
-        """extract_all_schedule_meta returns exactly 31 records when the real markdown files exist."""
+    def test_returns_32_records_from_real_files(self) -> None:
+        """extract_all_schedule_meta returns exactly 32 records when the real markdown files exist."""
         markdown_dir = Path("fir_instructions/source_files/2025/markdown")
         if not markdown_dir.exists():
             pytest.skip("Real FIR2025 markdown files not found")  # pragma: no cover
         records = extract_all_schedule_meta(markdown_dir)
-        assert len(records) == 31
+        assert len(records) == 32
         codes = {r["schedule"] for r in records}
         assert codes == set(SCHEDULE_CATEGORIES.keys())
 

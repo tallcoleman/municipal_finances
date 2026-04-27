@@ -559,6 +559,23 @@ def _get_schedule_sections(
 
         return sections[start:end]
 
+    if code == "74D":
+        md_path = markdown_dir / "FIR2025 S74.md"
+        sections = _parse_md_sections(md_path)
+        if not sections:
+            return []
+        # S74 has two "Schedule 74D" headings: one in the overview intro and one
+        # marking the actual 74D content.  Skip the first occurrence and use the
+        # second; if only one exists (e.g. in unit test stubs), use it directly.
+        first = _find_section(sections, "Schedule 74D", exact=True)
+        if first is None:
+            return []
+        idx = _find_section(sections, "Schedule 74D", exact=True, start=first + 1)
+        if idx is None:
+            idx = first
+        end_idx = _find_section(sections, "Schedule 74E", exact=True)
+        return sections[idx:end_idx] if end_idx is not None else sections[idx:]
+
     if code == "74E":
         md_path = markdown_dir / "FIR2025 S74.md"
         sections = _parse_md_sections(md_path)

@@ -1,0 +1,987 @@
+"""Tests for fir_instructions/extract_column_meta.py.
+
+Covers heading parser, per-schedule extraction, all-schedule extraction,
+CSV round-trip, DB insertion, baseline CSV content, and CLI commands.
+
+DB tests require the test PostgreSQL container (localhost:5433).
+Baseline CSV tests are skipped when the CSV has not yet been generated.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+from unittest.mock import MagicMock, patch
+
+import pytest
+from sqlmodel import Session, select
+from typer.testing import CliRunner
+
+from municipal_finances.fir_instructions.extract_column_meta import (
+    _CSV_FIELDS,
+    _extract_per_schedule_columns,
+    _parse_column_heading,
+    _parse_paired_column_heading,
+    _synthesize_s51b_inherited_columns,
+    app,
+    extract_all_column_meta,
+    insert_column_meta,
+    load_from_csv,
+    save_to_csv,
+)
+from municipal_finances.fir_instructions.extract_schedule_meta import (
+    SCHEDULE_CATEGORIES,
+)
+from municipal_finances.models import FIRColumnMeta, FIRScheduleMeta
+
+# ---------------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------------
+
+_BASELINE_CSV = Path("fir_instructions/exports/baseline_column_meta.csv")
+
+# Schedules confirmed to have column descriptions in FIR2025 markdown.
+_SCHEDULES_WITH_COLUMNS: frozenset[str] = frozenset(
+    {"12", "20", "22", "24", "26", "28", "40", "51A", "51B", "61A", "61B", "72", "74", "74D", "74E", "80", "80D"}
+)
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+
+def _minimal_column_record(**overrides: Any) -> dict[str, Any]:
+    """Build a minimal valid column metadata record."""
+    base: dict[str, Any] = {
+        "schedule": "12",
+        "column_id": "01",
+        "column_name": "Ontario Conditional Grants",
+        "section_name": None,
+        "description": "Grants from the Province of Ontario.",
+        "valid_from_year": None,
+        "valid_to_year": None,
+        "change_notes": None,
+    }
+    return {**base, **overrides}
+
+
+def _load_baseline() -> list[dict[str, Any]]:
+    """Load the pre-extracted baseline CSV; skip if it does not exist."""
+    if not _BASELINE_CSV.exists():
+        pytest.skip(f"Baseline CSV not found: {_BASELINE_CSV}")  # pragma: no cover
+    return load_from_csv(_BASELINE_CSV)
+
+
+def _insert_schedule_meta_for_test(engine: Any, schedules: list[str]) -> None:
+    """Insert minimal schedule rows so column meta FK can be resolved."""
+    from sqlalchemy.dialects.postgresql import insert as pg_insert
+
+    rows = [
+        {
+            "schedule": s,
+            "schedule_name": f"Schedule {s}",
+            "category": "Revenue",
+            "description": "Test.",
+            "valid_from_year": None,
+            "valid_to_year": None,
+            "change_notes": None,
+        }
+        for s in schedules
+    ]
+    with Session(engine) as sess:
+        stmt = pg_insert(FIRScheduleMeta).values(rows).on_conflict_do_nothing()
+        sess.execute(stmt)
+        sess.commit()
+
+
+# ---------------------------------------------------------------------------
+# 1. Heading parser
+# ---------------------------------------------------------------------------
+
+
+class TestParseColumnHeading:
+    def test_standard_dash_separator(self) -> None:
+        """'Column 1 - Ontario Conditional Grants' parses to (id, name)."""
+        result = _parse_column_heading("Column 1 - Ontario Conditional Grants")
+        assert result == ("01", "Ontario Conditional Grants")
+
+    def test_zero_padded_single_digit(self) -> None:
+        """Single-digit column numbers are zero-padded to 2 characters."""
+        result = _parse_column_heading("Column 3 - Materials")
+        assert result is not None
+        assert result[0] == "03"
+
+    def test_two_digit_column_number(self) -> None:
+        """Two-digit column numbers (e.g. 16) are preserved as-is."""
+        result = _parse_column_heading("Column 16 - Amortization")
+        assert result == ("16", "Amortization")
+
+    def test_colon_variant_s51a(self) -> None:
+        """'Column 1: - Name' (S51A variant) is parsed correctly."""
+        result = _parse_column_heading("Column 1: - Opening Net Book Value")
+        assert result == ("01", "Opening Net Book Value")
+
+    def test_en_dash_separator(self) -> None:
+        """En-dash (–) separator is handled."""
+        result = _parse_column_heading("Column 2 \u2013 Canada Conditional Grants")
+        assert result is not None
+        assert result[0] == "02"
+
+    def test_em_dash_separator(self) -> None:
+        """Em-dash (—) separator is handled."""
+        result = _parse_column_heading("Column 4 \u2014 Contracted Services")
+        assert result is not None
+        assert result[0] == "04"
+
+    def test_trailing_colon_stripped(self) -> None:
+        """Trailing colon on column_name is stripped."""
+        result = _parse_column_heading("Column 1 - Ontario Conditional Grants:")
+        assert result is not None
+        assert not result[1].endswith(":")
+
+    def test_non_column_heading_returns_none(self) -> None:
+        """A non-column heading returns None."""
+        assert _parse_column_heading("Description of Columns") is None
+        assert _parse_column_heading("Line 0299 - Taxation") is None
+        assert _parse_column_heading("General Notes") is None
+
+    def test_case_insensitive(self) -> None:
+        """Matching is case-insensitive."""
+        result = _parse_column_heading("column 5 - User Fees")
+        assert result is not None
+        assert result[0] == "05"
+
+
+# ---------------------------------------------------------------------------
+# 2. Paired column heading parser
+# ---------------------------------------------------------------------------
+
+
+class TestParsePairedColumnHeading:
+    def test_standard_paired_format(self) -> None:
+        """'Columns 1 & 2: - GroupName' parses to (col_id_1, col_id_2, name)."""
+        result = _parse_paired_column_heading(
+            "Columns 1 & 2: - Recoverable from the Consolidated Statement of Operations"
+        )
+        assert result == (
+            "01",
+            "02",
+            "Recoverable from the Consolidated Statement of Operations",
+        )
+
+    def test_zero_pads_both_column_ids(self) -> None:
+        """Both column IDs are zero-padded to 2 digits."""
+        result = _parse_paired_column_heading("Columns 7 & 8: - Recoverable from all Others")
+        assert result is not None
+        assert result[0] == "07"
+        assert result[1] == "08"
+
+    def test_non_paired_heading_returns_none(self) -> None:
+        """A singular 'Column N - Name' heading returns None."""
+        assert _parse_paired_column_heading("Column 1 - Name") is None
+
+    def test_non_column_heading_returns_none(self) -> None:
+        """A non-column heading like 'Description of Columns' returns None."""
+        assert _parse_paired_column_heading("Description of Columns") is None
+
+    def test_trailing_colon_stripped_from_name(self) -> None:
+        """Trailing colon on the group name is stripped."""
+        result = _parse_paired_column_heading("Columns 3 & 4: - Reserve Funds:")
+        assert result is not None
+        assert not result[2].endswith(":")
+
+    def test_case_insensitive(self) -> None:
+        """Matching is case-insensitive."""
+        result = _parse_paired_column_heading("columns 5 & 6: - Unconsolidated Entities")
+        assert result is not None
+        assert result[0] == "05"
+        assert result[1] == "06"
+
+
+# ---------------------------------------------------------------------------
+# 3. Per-schedule extraction
+# ---------------------------------------------------------------------------
+
+
+class TestExtractPerScheduleColumns:
+    def test_extracts_columns_from_schedule_file(self, tmp_path: Path) -> None:
+        """Column records are extracted from a markdown file with column headings."""
+        md = tmp_path / "FIR2025 S12.md"
+        md.write_text(
+            "## Description of Columns\n\n"
+            "## Column 1 - Ontario Conditional Grants\n\n"
+            "Grants from the Province of Ontario.\n\n"
+            "## Column 2 - Canada Conditional Grants\n\n"
+            "Grants from the Government of Canada.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "12")
+        assert len(records) == 2
+        assert records[0]["column_id"] == "01"
+        assert records[0]["column_name"] == "Ontario Conditional Grants"
+        assert records[0]["description"] == "Grants from the Province of Ontario."
+        assert records[1]["column_id"] == "02"
+        assert records[1]["column_name"] == "Canada Conditional Grants"
+
+    def test_empty_body_uses_default_description(self, tmp_path: Path) -> None:
+        """A column heading with no body text gets 'No description provided.'."""
+        md = tmp_path / "FIR2025 S12.md"
+        md.write_text(
+            "## Column 1 - Ontario Conditional Grants\n\n"
+            "## Column 2 - Canada Conditional Grants\n\n"
+            "Has some text.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "12")
+        assert records[0]["description"] == "No description provided."
+        assert records[1]["description"] == "Has some text."
+
+    def test_no_column_headings_returns_empty(self, tmp_path: Path) -> None:
+        """A schedule markdown with no Column headings produces no records."""
+        md = tmp_path / "FIR2025 S10.md"
+        md.write_text(
+            "## Line 0299 - Taxation Own Purposes\n\nTaxation description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "10")
+        assert records == []
+
+    def test_missing_file_returns_empty(self, tmp_path: Path) -> None:
+        """A missing markdown file produces no records."""
+        records = _extract_per_schedule_columns(tmp_path, "99")
+        assert records == []
+
+    def test_deduplicate_column_id(self, tmp_path: Path) -> None:
+        """Duplicate column_id headings keep only the first occurrence."""
+        md = tmp_path / "FIR2025 S12.md"
+        md.write_text(
+            "## Column 1 - First Name\n\nFirst description.\n\n"
+            "## Column 1 - Duplicate\n\nShould be ignored.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "12")
+        assert len(records) == 1
+        assert records[0]["column_name"] == "First Name"
+
+    def test_valid_from_to_year_null(self, tmp_path: Path) -> None:
+        """Baseline records have NULL year fields."""
+        md = tmp_path / "FIR2025 S12.md"
+        md.write_text(
+            "## Column 1 - Ontario Conditional Grants\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "12")
+        assert records[0]["valid_from_year"] is None
+        assert records[0]["valid_to_year"] is None
+
+    def test_schedule_code_set_on_record(self, tmp_path: Path) -> None:
+        """Each record carries the correct schedule code."""
+        md = tmp_path / "FIR2025 S40.md"
+        md.write_text(
+            "## Column 1 - Salaries, Wages, and Employee Benefits\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "40")
+        assert records[0]["schedule"] == "40"
+
+    def test_colon_variant_extracted(self, tmp_path: Path) -> None:
+        """Column headings using 'Column N: - Name' (S51A variant) are extracted."""
+        md = tmp_path / "FIR2025 S51.md"
+        md.write_text(
+            "## Schedule 51A: Tangible Capital Assets by Function\n\n"
+            "## Column 1: - Opening Net Book Value\n\nDescription.\n\n"
+            "## Column 2: - Opening Cost Balance\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "51A")
+        assert len(records) == 2
+        assert records[0]["column_id"] == "01"
+        assert records[0]["column_name"] == "Opening Net Book Value"
+
+    def test_multi_section_produces_separate_records(self, tmp_path: Path) -> None:
+        """The same column_id in two named sections produces two distinct records."""
+        md = tmp_path / "FIR2025 S20.md"
+        md.write_text(
+            "## Section A\n\n"
+            "## Column 1 - Amount Owing\n\nSection A description.\n\n"
+            "## Section B\n\n"
+            "## Column 1 - Amount Owing\n\nSection B description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "20")
+        assert len(records) == 2
+        section_names = {r["section_name"] for r in records}
+        assert section_names == {"Section A", "Section B"}
+
+    def test_section_name_set_from_parent_heading(self, tmp_path: Path) -> None:
+        """section_name is the last major non-boilerplate heading before each column."""
+        md = tmp_path / "FIR2025 S20.md"
+        md.write_text(
+            "## Capping Parameters\n\n"
+            "## Column 1 - Amount\n\nDescription.\n\n"
+            "## Tax Bands\n\n"
+            "## Column 2 - Rate\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "20")
+        assert len(records) == 2
+        assert records[0]["section_name"] == "Capping Parameters"
+        assert records[1]["section_name"] == "Tax Bands"
+
+    def test_boilerplate_headings_do_not_update_section(self, tmp_path: Path) -> None:
+        """'Description of Columns' heading does not override current_section_name."""
+        md = tmp_path / "FIR2025 S26.md"
+        md.write_text(
+            "## Municipal and School Board Taxation\n\n"
+            "## Description of Columns\n\n"
+            "## Column 1 - Levy\n\nLevy description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "26")
+        assert len(records) == 1
+        assert records[0]["section_name"] == "Municipal and School Board Taxation"
+
+    def test_body_text_column_extracted(self, tmp_path: Path) -> None:
+        """A column definition in body text (no ## heading) is extracted correctly."""
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Description of Columns\n\n"
+            "## Column 4 - Opening Balance\n\n"
+            "Column 5 - Closing Balance\n\n"
+            "Description of closing balance.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        ids = [r["column_id"] for r in records]
+        assert "04" in ids
+        assert "05" in ids
+        col5 = next(r for r in records if r["column_id"] == "05")
+        assert "Closing Balance" in col5["column_name"]
+
+    def test_body_text_column_dedup_skips_already_seen(self, tmp_path: Path) -> None:
+        """A body-text column definition is skipped if the same key was already seen via a heading."""
+        # Column 4 appears first as a ## heading, then again in body text of the same section.
+        # The second occurrence should be silently dropped (dedup on (column_id, section_name)).
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Column 4 - Opening Balance\n\n"
+            "Column 4 - Duplicate in body\n\n"
+            "Should be ignored.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        col4_records = [r for r in records if r["column_id"] == "04"]
+        assert len(col4_records) == 1
+        assert col4_records[0]["column_name"] == "Opening Balance"
+
+    def test_body_text_description_stops_at_next_column(self, tmp_path: Path) -> None:
+        """Description collection in body text stops when the next column definition begins."""
+        md = tmp_path / "FIR2025 S28.md"
+        md.write_text(
+            "## Some Section\n\n"
+            "Column 4 - Opening Balance\n\n"
+            "First description.\n\n"
+            "Column 5 - Closing Balance\n\n"
+            "Second description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "28")
+        col4 = next(r for r in records if r["column_id"] == "04")
+        # Column 4's description must not bleed into Column 5's text.
+        assert "Second description" not in col4["description"]
+        assert len([r for r in records if r["column_id"] == "05"]) == 1
+
+    def test_paired_heading_produces_two_records(self, tmp_path: Path) -> None:
+        """'Columns N & M: - GroupName' heading emits two separate column records."""
+        # S74D content is embedded in FIR2025 S74.md under a "Schedule 74D" section.
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Description of Columns\n\n"
+            "## Columns 1 & 2: - Recoverable from the Consolidated Statement of Operations\n\n"
+            "Both columns represent recoverable amounts.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 2
+        col_ids = {r["column_id"] for r in records}
+        assert col_ids == {"01", "02"}
+        for r in records:
+            assert r["column_name"] == "Recoverable from the Consolidated Statement of Operations"
+            assert "recoverable" in r["description"].lower()
+
+    def test_paired_heading_dedup(self, tmp_path: Path) -> None:
+        """The same paired heading appearing twice produces only 2 records, not 4."""
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Columns 1 & 2: - GroupName\n\nFirst occurrence.\n\n"
+            "## Columns 1 & 2: - GroupName\n\nDuplicate occurrence.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 2
+
+    def test_paired_and_single_headings_together(self, tmp_path: Path) -> None:
+        """A mix of paired and singular column headings in one file is all extracted."""
+        md = tmp_path / "FIR2025 S74.md"
+        md.write_text(
+            "## Schedule 74D\n\n"
+            "## Columns 1 & 2: - Recoverable from Operations\n\nPaired description.\n\n"
+            "## Column 3 - Other Amount\n\nSingle description.\n",
+            encoding="utf-8",
+        )
+        records = _extract_per_schedule_columns(tmp_path, "74D")
+        assert len(records) == 3
+        col_ids = {r["column_id"] for r in records}
+        assert col_ids == {"01", "02", "03"}
+
+
+# ---------------------------------------------------------------------------
+# 4. S51B inherited column synthesis
+# ---------------------------------------------------------------------------
+
+
+class TestSynthesizeS51bInheritedColumns:
+    def _make_s51a_record(self, column_id: str, section_name: str | None = "Cost") -> dict[str, Any]:
+        return {
+            "schedule": "51A",
+            "column_id": column_id,
+            "column_name": f"Column {column_id} Name",
+            "section_name": section_name,
+            "description": "Some description.",
+            "valid_from_year": None,
+            "valid_to_year": None,
+            "change_notes": None,
+        }
+
+    def test_synthesizes_from_s51a(self) -> None:
+        """Each S51A record produces a matching S51B record with section_name=None."""
+        s51a_records = [
+            self._make_s51a_record("01", "Schedule 51A: Tangible Capital Assets by Function"),
+            self._make_s51a_record("02", "Cost of Tangible Capital Assets:"),
+            self._make_s51a_record("07", "Amortization"),
+        ]
+        result = _synthesize_s51b_inherited_columns(s51a_records)
+        assert len(result) == 3
+        for r in result:
+            assert r["schedule"] == "51B"
+            assert r["section_name"] is None
+
+    def test_copied_fields_match_s51a(self) -> None:
+        """Synthesized records copy column_id, column_name, and description from S51A."""
+        s51a_records = [self._make_s51a_record("02", "Cost of Tangible Capital Assets:")]
+        result = _synthesize_s51b_inherited_columns(s51a_records)
+        assert result[0]["column_id"] == "02"
+        assert result[0]["column_name"] == "Column 02 Name"
+        assert result[0]["description"] == "Some description."
+
+    def test_does_not_duplicate_existing_s51b_keys(self) -> None:
+        """S51B records with section_name=None already in the list are not duplicated."""
+        all_records = [
+            self._make_s51a_record("02"),
+            {
+                "schedule": "51B",
+                "column_id": "02",
+                "column_name": "Existing S51B col",
+                "section_name": None,
+                "description": "Already exists.",
+                "valid_from_year": None,
+                "valid_to_year": None,
+                "change_notes": None,
+            },
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert all(r["column_id"] != "02" for r in result)
+
+    def test_cip_columns_not_blocked(self) -> None:
+        """S51B CIP columns (section_name non-None) don't block inherited cols at section_name=None."""
+        all_records = [
+            self._make_s51a_record("02"),
+            {
+                "schedule": "51B",
+                "column_id": "02",
+                "column_name": "Expenditures",
+                "section_name": "Line 2405 - Construction-In-Progress",
+                "description": "CIP expenditures.",
+                "valid_from_year": None,
+                "valid_to_year": None,
+                "change_notes": None,
+            },
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        # col 02 with section_name=None is not in S51B yet → should be synthesized
+        assert any(r["column_id"] == "02" and r["section_name"] is None for r in result)
+
+    def test_returns_empty_when_no_s51a(self) -> None:
+        """Returns an empty list when there are no S51A records in the input."""
+        all_records = [
+            _minimal_column_record(schedule="12", column_id="01"),
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert result == []
+
+    def test_ignores_non_s51a_records(self) -> None:
+        """Records from other schedules are not synthesized into S51B."""
+        all_records = [
+            _minimal_column_record(schedule="40", column_id="01"),
+            _minimal_column_record(schedule="72", column_id="01"),
+        ]
+        result = _synthesize_s51b_inherited_columns(all_records)
+        assert result == []
+
+
+# ---------------------------------------------------------------------------
+# 5. All-schedule extraction
+# ---------------------------------------------------------------------------
+
+
+class TestExtractAllColumnMeta:
+    def test_returns_records_for_schedules_with_columns(
+        self, tmp_path: Path
+    ) -> None:
+        """extract_all_column_meta returns records only for schedules with columns."""
+        # Provide column-format files for a couple of schedules
+        (tmp_path / "FIR2025 S12.md").write_text(
+            "## Column 1 - Ontario Conditional Grants\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        (tmp_path / "FIR2025 S40.md").write_text(
+            "## Column 1 - Salaries\n\nDescription.\n"
+            "## Column 2 - Interest\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        # All other schedule files are absent → skipped
+        records = extract_all_column_meta(tmp_path)
+        schedules_found = {r["schedule"] for r in records}
+        assert "12" in schedules_found
+        assert "40" in schedules_found
+        assert len(records) == 3
+
+    def test_empty_dir_returns_no_records(self, tmp_path: Path) -> None:
+        """When no markdown files exist, no records are produced."""
+        records = extract_all_column_meta(tmp_path)
+        assert records == []
+
+    def test_all_records_have_required_fields(self, tmp_path: Path) -> None:
+        """Every extracted record contains all required CSV fields."""
+        (tmp_path / "FIR2025 S12.md").write_text(
+            "## Column 1 - Ontario Conditional Grants\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        records = extract_all_column_meta(tmp_path)
+        for r in records:
+            for field in _CSV_FIELDS:
+                assert field in r, f"Missing field '{field}' in record {r}"
+
+    def test_s51b_inherits_s51a_columns(self, tmp_path: Path) -> None:
+        """extract_all_column_meta synthesizes S51B records from S51A column definitions."""
+        # S51A and S51B content is embedded in FIR2025 S51.md, delimited by
+        # "Schedule 51A:" and "Schedule 51B:" headings (per _SUB_SCHEDULE_HEADING_PREFIXES).
+        (tmp_path / "FIR2025 S51.md").write_text(
+            "## Schedule 51A: Tangible Capital Assets by Function\n\n"
+            "## Cost of Tangible Capital Assets:\n\n"
+            "## Column 2: - Additions\n\nAdditions description.\n\n"
+            "## Column 3: - Disposals\n\nDisposals description.\n\n"
+            "## Schedule 51B: Tangible Capital Assets by Class\n\n"
+            "## Line 2405 - Construction-In-Progress\n\n"
+            "## Column 1: - Opening Balance\n\nCIP opening balance.\n",
+            encoding="utf-8",
+        )
+        records = extract_all_column_meta(tmp_path)
+        s51b = [r for r in records if r["schedule"] == "51B"]
+        s51b_ids = {r["column_id"] for r in s51b}
+        # CIP column (section_name non-None) + 2 inherited (section_name=None)
+        assert "01" in s51b_ids, "CIP column 01 should be present"
+        assert "02" in s51b_ids, "Inherited S51A column 02 should be present"
+        assert "03" in s51b_ids, "Inherited S51A column 03 should be present"
+        inherited = [r for r in s51b if r["section_name"] is None]
+        assert len(inherited) == 2, f"Expected 2 inherited records, got {len(inherited)}"
+
+
+# ---------------------------------------------------------------------------
+# 4. CSV round-trip
+# ---------------------------------------------------------------------------
+
+
+class TestSaveLoadCSV:
+    def test_round_trip_preserves_all_fields(self, tmp_path: Path) -> None:
+        """save_to_csv + load_from_csv preserves all field values."""
+        records = [
+            _minimal_column_record(),
+            _minimal_column_record(
+                schedule="40",
+                column_id="02",
+                column_name="Interest on Long-Term Debt",
+                description="Interest description.",
+                valid_from_year=2023,
+                valid_to_year=None,
+                change_notes="Added in 2023.",
+            ),
+        ]
+        csv_path = tmp_path / "test.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+
+        assert len(loaded) == 2
+        assert loaded[0]["schedule"] == "12"
+        assert loaded[0]["column_id"] == "01"
+        assert loaded[0]["column_name"] == "Ontario Conditional Grants"
+        assert loaded[1]["valid_from_year"] == 2023
+        assert loaded[1]["valid_to_year"] is None
+        assert loaded[1]["change_notes"] == "Added in 2023."
+
+    def test_nullable_fields_round_trip_as_none(self, tmp_path: Path) -> None:
+        """Nullable fields stored as empty strings in CSV are loaded back as None."""
+        records = [_minimal_column_record(description=None, change_notes=None)]
+        csv_path = tmp_path / "test.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["description"] is None
+        assert loaded[0]["change_notes"] is None
+
+    def test_creates_parent_directories(self, tmp_path: Path) -> None:
+        """save_to_csv creates missing parent directories."""
+        csv_path = tmp_path / "nested" / "dir" / "output.csv"
+        save_to_csv([_minimal_column_record()], csv_path)
+        assert csv_path.exists()
+
+    def test_multiline_description_preserved(self, tmp_path: Path) -> None:
+        """Multi-line description text survives the CSV round-trip."""
+        desc = "First paragraph.\n\nSecond paragraph."
+        records = [_minimal_column_record(description=desc)]
+        csv_path = tmp_path / "test.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["description"] == desc
+
+    def test_null_year_integers_round_trip(self, tmp_path: Path) -> None:
+        """NULL year fields survive as Python None after CSV round-trip."""
+        records = [_minimal_column_record(valid_from_year=None, valid_to_year=None)]
+        csv_path = tmp_path / "test.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["valid_from_year"] is None
+        assert loaded[0]["valid_to_year"] is None
+
+    def test_integer_year_fields_loaded_as_int(self, tmp_path: Path) -> None:
+        """Non-null year fields are loaded back as Python ints, not strings."""
+        records = [_minimal_column_record(valid_from_year=2022, valid_to_year=2024)]
+        csv_path = tmp_path / "test.csv"
+        save_to_csv(records, csv_path)
+        loaded = load_from_csv(csv_path)
+        assert loaded[0]["valid_from_year"] == 2022
+        assert isinstance(loaded[0]["valid_from_year"], int)
+
+
+# ---------------------------------------------------------------------------
+# 5. Database insertion
+# ---------------------------------------------------------------------------
+
+
+class TestInsertColumnMeta:
+    def test_insert_single_record(self, engine: Any, session: Session) -> None:
+        """A single valid record can be inserted and retrieved from the DB."""
+        _insert_schedule_meta_for_test(engine, ["12"])
+        records = [_minimal_column_record()]
+        inserted = insert_column_meta(engine, records)
+        assert inserted == 1
+
+        rows = session.exec(select(FIRColumnMeta)).all()
+        assert len(rows) == 1
+        assert rows[0].schedule == "12"
+        assert rows[0].column_id == "01"
+        assert rows[0].column_name == "Ontario Conditional Grants"
+
+    def test_insert_returns_count(self, engine: Any, session: Session) -> None:
+        """insert_column_meta returns the number of rows actually inserted."""
+        _insert_schedule_meta_for_test(engine, ["12", "40"])
+        records = [
+            _minimal_column_record(schedule="12", column_id="01"),
+            _minimal_column_record(schedule="40", column_id="01", column_name="Salaries"),
+        ]
+        inserted = insert_column_meta(engine, records)
+        assert inserted == 2
+
+    def test_idempotent_insertion(self, engine: Any, session: Session) -> None:
+        """Re-inserting the same records returns 0 (application-layer dedup)."""
+        _insert_schedule_meta_for_test(engine, ["12"])
+        records = [_minimal_column_record()]
+        first = insert_column_meta(engine, records)
+        second = insert_column_meta(engine, records)
+        assert first == 1
+        assert second == 0
+        assert len(session.exec(select(FIRColumnMeta)).all()) == 1
+
+    def test_insert_empty_list(self, engine: Any, session: Session) -> None:
+        """Inserting an empty list is a no-op and returns 0."""
+        assert insert_column_meta(engine, []) == 0
+
+    def test_baseline_rows_have_null_year_fields(
+        self, engine: Any, session: Session
+    ) -> None:
+        """Baseline records have NULL year fields stored as NULL in the DB."""
+        _insert_schedule_meta_for_test(engine, ["12"])
+        insert_column_meta(engine, [_minimal_column_record()])
+        row = session.exec(select(FIRColumnMeta)).first()
+        assert row is not None
+        assert row.valid_from_year is None
+        assert row.valid_to_year is None
+
+    def test_schedule_id_fk_resolved(self, engine: Any, session: Session) -> None:
+        """schedule_id FK is populated from fir_schedule_meta."""
+        _insert_schedule_meta_for_test(engine, ["12"])
+        insert_column_meta(engine, [_minimal_column_record()])
+        row = session.exec(select(FIRColumnMeta)).first()
+        assert row is not None
+        assert row.schedule_id is not None
+
+    def test_multiple_schedules_inserted(self, engine: Any, session: Session) -> None:
+        """Records for multiple schedules are all inserted correctly."""
+        _insert_schedule_meta_for_test(engine, ["12", "40", "72"])
+        records = [
+            _minimal_column_record(schedule="12", column_id="01"),
+            _minimal_column_record(schedule="40", column_id="01", column_name="Salaries"),
+            _minimal_column_record(schedule="72", column_id="01", column_name="English Public"),
+        ]
+        inserted = insert_column_meta(engine, records)
+        assert inserted == 3
+
+
+# ---------------------------------------------------------------------------
+# 6. Baseline CSV content tests (skipped if CSV absent)
+# ---------------------------------------------------------------------------
+
+
+class TestBaselineCSVContent:
+    @pytest.fixture(scope="class")
+    def records(self) -> list[dict[str, Any]]:
+        return _load_baseline()
+
+    def test_schedules_with_columns_are_present(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """All schedules known to have column descriptions appear in the baseline CSV."""
+        found = {r["schedule"] for r in records}
+        missing = _SCHEDULES_WITH_COLUMNS - found
+        assert missing == set(), f"Expected schedule codes missing: {sorted(missing)}"
+
+    def test_column_id_format(self, records: list[dict[str, Any]]) -> None:
+        """All column_id values are 2-digit numeric strings."""
+        import re
+
+        bad = [
+            f"{r['schedule']}:{r['column_id']}"
+            for r in records
+            if not re.match(r"^\d{2}$", r.get("column_id", ""))
+        ]
+        assert bad == [], f"Invalid column_id values: {bad[:20]}"
+
+    def test_no_duplicate_column_ids_per_schedule(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """Each (schedule, column_id, section_name) triple is unique in the baseline.
+
+        Some schedules (S20, S26, S80, S80D) legitimately reuse column IDs across
+        named sections — the section_name field distinguishes those records.
+        """
+        from collections import Counter
+
+        counts = Counter(
+            (r["schedule"], r["column_id"], r.get("section_name")) for r in records
+        )
+        dupes = [key for key, count in counts.items() if count > 1]
+        assert dupes == [], f"Duplicate (schedule, column_id, section_name) triples: {dupes[:10]}"
+
+    def test_year_fields_null_in_baseline(self, records: list[dict[str, Any]]) -> None:
+        """All baseline rows have NULL valid_from_year and valid_to_year."""
+        non_null = [
+            f"{r['schedule']}:{r['column_id']}"
+            for r in records
+            if r.get("valid_from_year") is not None
+            or r.get("valid_to_year") is not None
+        ]
+        assert non_null == [], f"Non-null year fields on: {non_null}"
+
+    def test_no_empty_column_names(self, records: list[dict[str, Any]]) -> None:
+        """No column_name field is empty or whitespace-only."""
+        bad = [
+            f"{r['schedule']}:{r['column_id']}"
+            for r in records
+            if not r.get("column_name", "").strip()
+        ]
+        assert bad == [], f"Empty column_name on: {bad}"
+
+    def test_all_descriptions_non_empty(self, records: list[dict[str, Any]]) -> None:
+        """Every row has a non-empty description."""
+        missing = [
+            f"{r['schedule']}:{r['column_id']}"
+            for r in records
+            if not r.get("description", "").strip()
+        ]
+        assert missing == [], f"Empty description on: {missing}"
+
+    def test_spot_check_s12_column_count(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """Schedule 12 has at least 7 column records."""
+        s12 = [r for r in records if r["schedule"] == "12"]
+        assert len(s12) >= 7, f"Expected ≥7 columns for S12, got {len(s12)}"
+
+    def test_spot_check_s40_column_count(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """Schedule 40 has at least 10 column records."""
+        s40 = [r for r in records if r["schedule"] == "40"]
+        assert len(s40) >= 10, f"Expected ≥10 columns for S40, got {len(s40)}"
+
+    def test_spot_check_s51a_column_count(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """Schedule 51A has at least 11 column records."""
+        s51a = [r for r in records if r["schedule"] == "51A"]
+        assert len(s51a) >= 11, f"Expected ≥11 columns for S51A, got {len(s51a)}"
+
+    def test_spot_check_s72_columns(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 72 has exactly 9 column records."""
+        s72 = [r for r in records if r["schedule"] == "72"]
+        assert len(s72) == 9, f"Expected 9 columns for S72, got {len(s72)}"
+
+    def test_spot_check_s20_multi_section(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 20 has records in multiple named sections (column IDs are reused)."""
+        s20 = [r for r in records if r["schedule"] == "20"]
+        sections = {r["section_name"] for r in s20}
+        assert len(sections) > 1, f"Expected multiple sections for S20, got: {sections}"
+        assert len(s20) > 11, f"Expected >11 column records for S20, got {len(s20)}"
+
+    def test_spot_check_s26_multi_section(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 26 has records across at least two named sections."""
+        s26 = [r for r in records if r["schedule"] == "26"]
+        sections = {r["section_name"] for r in s26}
+        assert len(sections) > 1, f"Expected multiple sections for S26, got: {sections}"
+
+    def test_spot_check_s28_column05(self, records: list[dict[str, Any]]) -> None:
+        """S28 Column 05 is present (body-text definition, not a ## heading)."""
+        s28_col05 = [
+            r for r in records if r["schedule"] == "28" and r["column_id"] == "05"
+        ]
+        assert len(s28_col05) == 1, "S28 Column 05 should be extracted from body text"
+
+    def test_spot_check_s74d_column_count(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 74D has exactly 8 column records (4 paired headings × 2 columns each)."""
+        s74d = [r for r in records if r["schedule"] == "74D"]
+        assert len(s74d) == 8, f"Expected 8 columns for S74D, got {len(s74d)}"
+
+    def test_spot_check_s51b_column_count(self, records: list[dict[str, Any]]) -> None:
+        """Schedule 51B has 16 records: 4 CIP-specific + 12 inherited from S51A."""
+        s51b = [r for r in records if r["schedule"] == "51B"]
+        assert len(s51b) == 16, f"Expected 16 columns for S51B, got {len(s51b)}"
+
+    def test_s51b_has_inherited_columns_with_null_section(
+        self, records: list[dict[str, Any]]
+    ) -> None:
+        """S51B has records with section_name=None for each of S51A's column_ids."""
+        s51a_col_ids = {r["column_id"] for r in records if r["schedule"] == "51A"}
+        s51b_inherited_ids = {
+            r["column_id"]
+            for r in records
+            if r["schedule"] == "51B" and r["section_name"] is None
+        }
+        missing = s51a_col_ids - s51b_inherited_ids
+        assert missing == set(), f"S51B missing inherited columns from S51A: {missing}"
+
+
+# ---------------------------------------------------------------------------
+# 7. CLI tests
+# ---------------------------------------------------------------------------
+
+
+class TestCLI:
+    def test_extract_command_creates_csv(self, tmp_path: Path) -> None:
+        """extract-baseline-column-meta creates the CSV file."""
+        md_dir = tmp_path / "markdown"
+        md_dir.mkdir()
+        # Provide column files for a couple of schedules
+        (md_dir / "FIR2025 S12.md").write_text(
+            "## Column 1 - Ontario Conditional Grants\n\nDescription.\n",
+            encoding="utf-8",
+        )
+        for code in SCHEDULE_CATEGORIES:
+            path = md_dir / f"FIR2025 S{code}.md"
+            if not path.exists():
+                path.write_text("## General Notes\n\nNo columns here.\n", encoding="utf-8")
+
+        export_path = tmp_path / "exports" / "column_meta.csv"
+        runner = CliRunner()
+        with patch(
+            "municipal_finances.fir_instructions.extract_column_meta.get_engine"
+        ) as mock_engine_fn:
+            mock_engine = MagicMock()
+            mock_engine_fn.return_value = mock_engine
+            with patch(
+                "municipal_finances.fir_instructions.extract_column_meta.insert_column_meta",
+                return_value=1,
+            ):
+                result = runner.invoke(
+                    app,
+                    [
+                        "extract-baseline-column-meta",
+                        "--markdown-dir",
+                        str(md_dir),
+                        "--export-path",
+                        str(export_path),
+                    ],
+                )
+
+        assert result.exit_code == 0, result.output
+        assert export_path.exists(), "CSV file was not created"
+
+    def test_extract_command_no_db_skip(self, tmp_path: Path) -> None:
+        """extract-baseline-column-meta with --no-load-db skips DB insertion."""
+        md_dir = tmp_path / "markdown"
+        md_dir.mkdir()
+        export_path = tmp_path / "column_meta.csv"
+        runner = CliRunner()
+        with patch(
+            "municipal_finances.fir_instructions.extract_column_meta.get_engine"
+        ) as mock_engine_fn:
+            result = runner.invoke(
+                app,
+                [
+                    "extract-baseline-column-meta",
+                    "--markdown-dir",
+                    str(md_dir),
+                    "--export-path",
+                    str(export_path),
+                    "--no-load-db",
+                ],
+            )
+            mock_engine_fn.assert_not_called()
+
+        assert result.exit_code == 0, result.output
+
+    def test_load_command_inserts_rows(self, tmp_path: Path) -> None:
+        """load-baseline-column-meta reads CSV and calls insert_column_meta."""
+        records = [_minimal_column_record()]
+        csv_path = tmp_path / "column_meta.csv"
+        save_to_csv(records, csv_path)
+
+        runner = CliRunner()
+        with patch(
+            "municipal_finances.fir_instructions.extract_column_meta.get_engine"
+        ) as mock_engine_fn:
+            mock_engine = MagicMock()
+            mock_engine_fn.return_value = mock_engine
+            with patch(
+                "municipal_finances.fir_instructions.extract_column_meta.insert_column_meta",
+                return_value=1,
+            ) as mock_insert:
+                result = runner.invoke(
+                    app,
+                    ["load-baseline-column-meta", "--csv-path", str(csv_path)],
+                )
+                assert mock_insert.called
+
+        assert result.exit_code == 0, result.output
+        assert "Inserted 1" in result.output
