@@ -22,8 +22,7 @@ from municipal_finances.fir_instructions.extract_schedule_meta import (
     _clean_md_content,
     _extract_regular_schedule,
     _extract_schedule_53,
-    _extract_schedule_74d,
-    _extract_schedule_74e,
+    _extract_schedule_74x,
     _extract_sub_schedule,
     _extract_sub_schedule_name,
     _find_section,
@@ -89,11 +88,11 @@ class TestBaselineCSVContent:
     def records(self) -> list[dict[str, Any]]:
         return _load_baseline()
 
-    def test_exactly_32_records(self, records: list[dict[str, Any]]) -> None:
-        """Baseline CSV must contain exactly 32 records (one per schedule code)."""
-        assert len(records) == 32
+    def test_exactly_35_records(self, records: list[dict[str, Any]]) -> None:
+        """Baseline CSV must contain exactly 35 records (one per schedule code)."""
+        assert len(records) == 35
 
-    def test_all_32_codes_present(self, records: list[dict[str, Any]]) -> None:
+    def test_all_35_codes_present(self, records: list[dict[str, Any]]) -> None:
         """Every expected schedule code must appear in the CSV."""
         found = {r["schedule"] for r in records}
         missing = _EXPECTED_CODES - found
@@ -219,16 +218,16 @@ class TestInsertScheduleMeta:
         assert row.valid_to_year is None
         assert row.change_notes is None
 
-    def test_insert_all_32_baseline_records(self, engine, session: Session) -> None:
-        """All 32 baseline records from the CSV can be inserted into the DB."""
+    def test_insert_all_35_baseline_records(self, engine, session: Session) -> None:
+        """All 35 baseline records from the CSV can be inserted into the DB."""
         records = _load_baseline()
         inserted = insert_schedule_meta(engine, records)
-        assert inserted == 32
+        assert inserted == 35
 
         db_rows = session.exec(select(FIRScheduleMeta)).all()
-        assert len(db_rows) == 32
+        assert len(db_rows) == 35
 
-    def test_all_32_codes_in_db(self, engine, session: Session) -> None:
+    def test_all_35_codes_in_db(self, engine, session: Session) -> None:
         """After inserting all baseline records, every expected code is present in the DB."""
         records = _load_baseline()
         insert_schedule_meta(engine, records)
@@ -691,103 +690,100 @@ class TestExtractSchedule53:
         assert result["change_notes"] is None
 
 
-class TestExtractSchedule74D:
-    def test_no_s74d_heading_returns_empty_description(self, tmp_path: Path) -> None:
-        """When no 'Schedule 74D' heading is present, description is empty (branches 386->391, 393->398)."""
+class TestExtractSchedule74X:
+    def test_extracts_name_stripping_section_prefix(self, tmp_path: Path) -> None:
+        """schedule_name is derived from the subsection heading after stripping 'Section N –'."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74A
+            ### Section 1 - Debt Burden of the Municipality
+            This sub-schedule captures the total debt burden.
+        """,
+        )
+        result = _extract_schedule_74x(tmp_path, "74A")
+        assert result["schedule"] == "74A"
+        assert result["schedule_name"] == "Debt Burden of the Municipality"
+        assert "total debt burden" in result["description"].lower()
+
+    def test_extracts_name_with_em_dash_prefix(self, tmp_path: Path) -> None:
+        """Section prefix using em-dash '–' is also stripped from schedule_name."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            ### Section 12 – Future Principal and Interest Payments on Existing Debt
+            This describes future debt payments.
+        """,
+        )
+        result = _extract_schedule_74x(tmp_path, "74D")
+        assert result["schedule"] == "74D"
+        assert result["schedule_name"] == "Future Principal and Interest Payments on Existing Debt"
+        assert "future debt payments" in result["description"].lower()
+
+    def test_extracts_name_without_section_prefix(self, tmp_path: Path) -> None:
+        """A subsection heading with no 'Section N' prefix is returned as-is."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74E
+            ### Asset Retirement Obligation Liability
+            This section describes ARO liabilities for municipalities.
+        """,
+        )
+        result = _extract_schedule_74x(tmp_path, "74E")
+        assert result["schedule"] == "74E"
+        assert result["schedule_name"] == "Asset Retirement Obligation Liability"
+        assert "ARO liabilities" in result["description"]
+
+    def test_empty_when_schedule_heading_absent(self, tmp_path: Path) -> None:
+        """Returns empty name and description when 'Schedule 74X' heading is not found."""
         _write_md(
             tmp_path,
             "FIR2025 S74.md",
             """\
             ## Schedule 74C
-            Some other content.
+            ### Section 8 – Contingent Liabilities
+            Some contingent liability content.
         """,
         )
-        result = _extract_schedule_74d(tmp_path)
-        assert result["schedule"] == "74D"
-        assert result["schedule_name"] == "Future Principal and Interest Payments on Existing Debt"
+        result = _extract_schedule_74x(tmp_path, "74A")
+        assert result["schedule"] == "74A"
+        assert result["schedule_name"] == ""
         assert result["description"] == ""
+
+    def test_empty_when_no_subsection_after_heading(self, tmp_path: Path) -> None:
+        """Returns empty name and description when no section follows the Schedule 74X heading."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74B
+        """,
+        )
+        result = _extract_schedule_74x(tmp_path, "74B")
+        assert result["schedule"] == "74B"
+        assert result["schedule_name"] == ""
+        assert result["description"] == ""
+
+    def test_null_year_fields(self, tmp_path: Path) -> None:
+        """valid_from_year, valid_to_year, and change_notes are always None."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74C
+            ### Section 8 – Contingent Liabilities
+            Description.
+        """,
+        )
+        result = _extract_schedule_74x(tmp_path, "74C")
         assert result["valid_from_year"] is None
         assert result["valid_to_year"] is None
-
-    def test_single_s74d_heading_no_section12_returns_empty_description(self, tmp_path: Path) -> None:
-        """Single 'Schedule 74D' heading with no 'Section 12' after it (branches 389, 395->398)."""
-        _write_md(
-            tmp_path,
-            "FIR2025 S74.md",
-            """\
-            ## Schedule 74D
-            Some content without a Section 12 heading.
-        """,
-        )
-        result = _extract_schedule_74d(tmp_path)
-        assert result["schedule"] == "74D"
-        assert result["description"] == ""
-
-    def test_single_s74d_heading_with_section12_extracts_description(self, tmp_path: Path) -> None:
-        """Single 'Schedule 74D' heading fallback uses first occurrence; Section 12 body becomes description (branch 389)."""
-        _write_md(
-            tmp_path,
-            "FIR2025 S74.md",
-            """\
-            ## Schedule 74D
-            Intro content.
-            ## Section 12 - Future Principal and Interest
-            This describes future debt payments.
-        """,
-        )
-        result = _extract_schedule_74d(tmp_path)
-        assert result["schedule"] == "74D"
-        assert "future debt payments" in result["description"].lower()
-
-
-class TestExtractSchedule74E:
-    def test_extracts_description_after_aro_heading(self, tmp_path: Path) -> None:
-        """Finds the 'Schedule 74E' section (exact), then extracts the ARO sub-section."""
-        _write_md(
-            tmp_path,
-            "FIR2025 S74.md",
-            """\
-            ## Schedule 74E - Asset Retirement Obligation Liability
-            Overview mention of 74E here.
-            ## Schedule 74E
-            ## Asset Retirement Obligation Liability
-            This section describes ARO liabilities for municipalities.
-        """,
-        )
-        result = _extract_schedule_74e(tmp_path)
-        assert result["schedule"] == "74E"
-        assert result["schedule_name"] == "Asset Retirement Obligation Liability"
-        assert "ARO liabilities" in result["description"]
-
-    def test_empty_description_when_aro_heading_absent(self, tmp_path: Path) -> None:
-        """Returns empty description when 'Asset Retirement Obligation Liability' is not found."""
-        _write_md(
-            tmp_path,
-            "FIR2025 S74.md",
-            """\
-            ## Schedule 74E
-            Some content without the ARO heading.
-        """,
-        )
-        result = _extract_schedule_74e(tmp_path)
-        assert result["schedule"] == "74E"
-        assert result["description"] == ""
-        assert result["schedule_name"] == "Asset Retirement Obligation Liability"
-        assert result["valid_from_year"] is None
-        assert result["valid_to_year"] is None
-
-    def test_empty_when_s74e_section_absent(self, tmp_path: Path) -> None:
-        """Returns empty description when exact 'Schedule 74E' heading is not present."""
-        _write_md(
-            tmp_path,
-            "FIR2025 S74.md",
-            """\
-            ## Schedule 74E - Asset Retirement Obligation Liability
-            No exact bare 74E heading here.
-        """,
-        )
-        result = _extract_schedule_74e(tmp_path)
-        assert result["description"] == ""
+        assert result["change_notes"] is None
 
 
 class TestExtractSubSchedule:
@@ -933,19 +929,49 @@ class TestExtractScheduleRecordDispatcher:
         assert result["schedule"] == "53"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
-    def test_schedule_74e_routes_to_special_extractor(self, tmp_path: Path) -> None:
-        """Schedule 74E is dispatched to its dedicated extractor."""
+    def test_schedule_74e_routes_to_74x_extractor(self, tmp_path: Path) -> None:
+        """Schedule 74E is dispatched to _extract_schedule_74x."""
         _write_md(
             tmp_path,
             "FIR2025 S74.md",
             """\
             ## Schedule 74E
-            ## Asset Retirement Obligation Liability
+            ### Asset Retirement Obligation Liability
             Description text for 74E.
         """,
         )
         result = extract_schedule_record(tmp_path, "74E")
         assert result["schedule"] == "74E"
+        assert self._REQUIRED_KEYS.issubset(result.keys())
+
+    def test_schedule_74a_routes_to_74x_extractor(self, tmp_path: Path) -> None:
+        """Schedule 74A is dispatched to _extract_schedule_74x."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74A
+            ### Section 1 - Debt Burden of the Municipality
+            Debt burden description.
+        """,
+        )
+        result = extract_schedule_record(tmp_path, "74A")
+        assert result["schedule"] == "74A"
+        assert self._REQUIRED_KEYS.issubset(result.keys())
+
+    def test_schedule_74d_routes_to_74x_extractor(self, tmp_path: Path) -> None:
+        """Schedule 74D is dispatched to _extract_schedule_74x."""
+        _write_md(
+            tmp_path,
+            "FIR2025 S74.md",
+            """\
+            ## Schedule 74D
+            ### Section 12 – Future Principal and Interest Payments on Existing Debt
+            Future debt payment description.
+        """,
+        )
+        result = extract_schedule_record(tmp_path, "74D")
+        assert result["schedule"] == "74D"
         assert self._REQUIRED_KEYS.issubset(result.keys())
 
     def test_regular_schedule_routes_to_regular_extractor(self, tmp_path: Path) -> None:
@@ -1002,13 +1028,13 @@ class TestExtractScheduleRecordDispatcher:
 class TestExtractAllScheduleMeta:
     """Tests for extract_all_schedule_meta."""
 
-    def test_returns_32_records_from_real_files(self) -> None:
-        """extract_all_schedule_meta returns exactly 32 records when the real markdown files exist."""
-        markdown_dir = Path("fir_instructions/source_files/2025/markdown")
+    def test_returns_35_records_from_real_files(self) -> None:
+        """extract_all_schedule_meta returns exactly 35 records when the real markdown files exist."""
+        markdown_dir = Path("fir_instructions/source_files/2025/markdown_clean")
         if not markdown_dir.exists():
-            pytest.skip("Real FIR2025 markdown files not found")  # pragma: no cover
+            pytest.skip("Real FIR2025 markdown_clean files not found")  # pragma: no cover
         records = extract_all_schedule_meta(markdown_dir)
-        assert len(records) == 32
+        assert len(records) == 35
         codes = {r["schedule"] for r in records}
         assert codes == set(SCHEDULE_CATEGORIES.keys())
 
