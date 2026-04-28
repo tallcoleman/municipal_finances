@@ -1,0 +1,98 @@
+Found 53 distinct (schedule, column_id) pairs in 2025 firrecord data.
+
+37 gap(s) found across 24 schedule(s).
+For each gap, mark as:
+  [U] Genuinely undocumented — FIR instructions don't describe this column
+  [S] Script gap — extractor missed a documented column
+  [O] Other issue – see notes
+
+Schedule 02X  (1 gap(s)):
+  Column 01  —  53 records  [U]
+
+Schedule 10X  (1 gap(s)):
+  Column 01  —  100 records  [U]
+
+Schedule 22D  (1 gap(s)):
+  22D not being extracted into schedule meta
+  Column 01  —  52 records  [O] - output report tab for Schedule 22D does not have a Column 01 (only columns 12 to 15)
+
+Schedule 24D  (1 gap(s)):
+  24D not being extracted into schedule meta
+  Column 01  —  33 records  [O] - output report tab for Schedule 24D does not have a Column 01 (only columns 12 to 15)
+
+Schedule 26A  (2 gap(s)):
+  26A not being extracted into schedule meta
+  Column 01  —  352 records  [S] - there is a definition for "Column 1 - Property Class Group" in the document (unless it does not apply to this section?)
+  Column 02  —  146 records  [S] - there is a definition for "Column 2 - Taxable Assessment (Weighted and Discounted CVA)" in the document (unless it does not apply to this section?)
+
+Schedule 26B  (1 gap(s)):
+26B not being extracted into schedule meta
+  Column 01  —  110 records  [ ]
+
+Schedule 42X  (1 gap(s)):
+  Column 01  —  20 records  [ ]
+
+Schedule 51A  (1 gap(s)):
+  Column 99  —  141 records  [ ]
+
+Schedule 51B  (1 gap(s)):
+  Column 99  —  41 records  [ ]
+
+Schedule 53X  (1 gap(s)):
+  Column 01  —  56 records  [ ]
+
+Schedule 54B  (1 gap(s)):
+  Column 01  —  61 records  [ ]
+
+Schedule 60X  (1 gap(s)):
+  Column 01  —  82 records  [ ]
+
+Schedule 70X  (1 gap(s)):
+  Column 01  —  133 records  [ ]
+
+Schedule 71X  (1 gap(s)):
+  Column 01  —  10 records  [ ]
+
+Schedule 72A  (1 gap(s)):
+  Column 01  —  34 records  [ ]
+
+Schedule 72B  (1 gap(s)):
+  Column 01  —  55 records  [ ]
+
+Schedule 74A  (1 gap(s)):
+  Column 01  —  15 records  [ ]
+
+Schedule 74C  (1 gap(s)):
+  Column 03  —  8 records  [ ]
+
+Schedule 77A  (1 gap(s)):
+  Column 01  —  4 records  [ ]
+
+Schedule 77B  (1 gap(s)):
+  Column 01  —  4 records  [ ]
+
+Schedule 80A  (4 gap(s)):
+  80A not being extracted into schedule meta
+  Column 01  —  29 records  [ ]
+  Column 03  —  10 records  [ ]
+  Column 04  —  14 records  [ ]
+  Column 05  —  12 records  [ ]
+
+Schedule 80C  (1 gap(s)):
+  80C not being extracted into schedule meta
+  Column 01  —  153 records  [ ]
+
+Schedule 80D  (10 gap(s)):
+  Column 05  —  2 records  [ ]
+  Column 06  —  1 records  [ ]
+  Column 07  —  6 records  [ ]
+  Column 08  —  6 records  [ ]
+  Column 09  —  8 records  [ ]
+  Column 10  —  8 records  [ ]
+  Column 11  —  4 records  [ ]
+  Column 12  —  7 records  [ ]
+  Column 13  —  5 records  [ ]
+  Column 14  —  5 records  [ ]
+
+Schedule 81X  (1 gap(s)):
+  Column 01  —  40 records  [ ]
