@@ -161,19 +161,18 @@ Each reported gap should be triaged as either:
 ### Coverage report for 2025 data
 
 Running `uv run src/municipal_finances/app.py validate-column-coverage`
-against 2025 data (239 metadata records) found **45 gaps across 27 schedules**.
+against 2025 data (239 metadata records) found **37 gaps across 23 schedules**.
 All gaps are genuinely undocumented:
 
 | Pattern | Schedules | Explanation |
 |---|---|---|
-| "X"-suffix sub-schedules | 02X, 10X, 12X, 20X, 40X, 42X, 53X, 60X, 70X, 71X, 80C, 81X | Supplementary note schedules; col 01 is a text field with no instruction description |
+| Base-schedule X-suffix, col 01 | 02X, 42X, 53X, 60X, 70X, 71X, 80C, 81X | All base schedules use a trailing X in the SLC field (e.g. `10X`); col 01 is undocumented for these schedules. For schedules whose col 01 *is* documented (e.g. `10`, `12`, `20`, `40`), the validator normalises `10X` → `10` and finds coverage, so no gap is reported. |
 | "D"-suffix sub-schedules | 22D, 24D | Supplementary schedules; col 01 undocumented |
 | "A"/"B" sub-schedules | 26A, 26B, 54B, 72A, 72B, 74A, 77A, 77B | Sub-schedules documented under parent code; separate DB entries have no metadata |
 | S51A/S51B Column 99 | 51A, 51B | Administrative column; not described in instructions |
 | S74C Column 03 | 74C | Sub-schedule of S74; instructions use "74" code, DB uses "74C" |
 | S80A columns 01–05 | 80A | Sub-schedule; undocumented |
 | S80D columns 05–14 | 80D | Beyond the 4 columns documented in S80D instructions |
-| S20X columns 01–06 | 20X | Sub-schedule of S20; undocumented |
 
 ## Tests Updated
 
@@ -181,7 +180,7 @@ All gaps are genuinely undocumented:
   The prior version expected 18 (× 2 sections) due to TOC entries inflating the
   count; the correct number after the TOC fix is 9.
 - `tests/fir_instructions/test_validate_column_coverage.py` added with full
-  coverage of `validate_column_coverage.py` (29 tests, 100% branch coverage).
+  coverage of `validate_column_coverage.py` (34 tests, 100% branch coverage).
 
 ## Verification
 
