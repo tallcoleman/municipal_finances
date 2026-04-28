@@ -27,6 +27,7 @@ schedule catalogue from 32 to 35 codes (adding 74A, 74B, 74C).
 - [x] Update docstrings (32 → 35)
 - [x] Update tests (imports, counts, new/removed test classes)
 - [x] Regenerate `fir_instructions/exports/baseline_schedule_meta.csv` (35 rows)
+- [x] Add `validate_schedule_coverage.py` + `validate-schedule-coverage` CLI command
 
 ## Implementation Details
 
