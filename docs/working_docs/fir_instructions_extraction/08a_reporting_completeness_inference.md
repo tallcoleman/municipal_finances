@@ -45,6 +45,8 @@ The set of municipalities with zero matching rows for year Y, but rows in at lea
 
 For municipalities that have reported for a given year, determine which schedules are present by extracting the schedule component from the `slc` field (using the existing `parse_slc` utility or a SQL expression). Group by `(munid, marsyear, schedule)`.
 
+**X-suffix note:** base schedules appear as e.g. `"12X"` in the extracted schedule code, not `"12"`. When displaying schedule codes to users or comparing them against instruction metadata, strip a trailing `X` (e.g. `regexp_replace(schedule, 'X$', '')`) so they match the familiar schedule naming convention. The "expected but missing" logic should normalise both sides of the comparison consistently.
+
 To identify schedules that are expected but missing:
 
 1. For each municipality, find all schedules reported in each of the three prior years (Y-1, Y-2, Y-3).
