@@ -140,6 +140,11 @@ class TestParseColumnHeading:
         assert result is not None
         assert not result[1].endswith(":")
 
+    def test_toc_line_returns_none(self) -> None:
+        """A table-of-contents line ('Column N - Name ......... Page') returns None."""
+        assert _parse_column_heading("Column 1 - Ontario Conditional Grants ......... 4") is None
+        assert _parse_column_heading("Column 2 - Canada Conditional Grants .... 5") is None
+
     def test_non_column_heading_returns_none(self) -> None:
         """A non-column heading returns None."""
         assert _parse_column_heading("Description of Columns") is None
