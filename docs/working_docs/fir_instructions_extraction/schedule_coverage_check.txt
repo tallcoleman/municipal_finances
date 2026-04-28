@@ -1,0 +1,79 @@
+Output from `uv run src/municipal_finances/app.py validate-schedule-coverage`
+Added notes in square brackets [ ]
+
+---
+
+Loaded 35 schedule(s) from fir_instructions/exports/baseline_schedule_meta.csv.
+Found 29 distinct schedule code(s) in 2025 firrecord data.
+
+12 schedule(s) in DB but NOT in CSV (possible extractor gaps):
+  02  —  53 records [Script not extracting content under "General Instructions" heading in "FIR2025 S02.md"]
+  22D  —  52 records [Mentioned in some "FIR2025 S22.md" headings but does not have an overall description]
+  24D  —  33 records [Mentioned in some "FIR2025 S24.md" headings but does not have an overall description]
+  26A  —  498 records [Not documented in md, but contains "1.  Municipal and School Board Taxation" and "2.  Payments-In-Lieu of Taxation"]
+  26B  —  110 records [Not documented in md, but contains "3.  Payments-In-Lieu of Taxation:  Distribution of Entitlements"]
+  54B  —  61 records [Documented in md as "Indirect Method (Schedule 54B):". Actual description of what the indirect method entails is noted in the "General Information" section of the md and refers to an external document ("PSA Section 1202 Financial Statement Presentation").]
+  72A  —  34 records [General Information section of md describes which sub-sections correspond to 72A and 72B]
+  72B  —  55 records [General Information section of md describes which sub-sections correspond to 72A and 72B]
+  77A  —  4 records [Described in General Information section of md notes]
+  77B  —  4 records [Described in General Information section of md notes]
+  80A  —  65 records [Noted in some of the md headings]
+  80C  —  153 records [Noted in some of the md headings]
+
+  [Overall impression: Schedule 02 description was missed by the script. For all the others (with letter suffixes), the correct approach is probably to use the same general description as the overall schedule (if the general description mentions the sub-schedule) or to simply note the column headings in the md that mention the sub-schedule (e.g. for schedules 22, 24, 80, and any others where the sub-schedule code is not found in the general description part of the schedule instructions). Schedules 26A and 26B need to be handled as a special case since they are not mentioned in the instructions markdown.]
+
+18 schedule(s) in CSV but NOT in DB (unused codes or not yet loaded):
+  22 [Missing from the database and I don't know why]
+  22A [Missing from the database and I don't know why]
+  22B [Missing from the database and I don't know why]
+  22C [Missing from the database and I don't know why]
+  24 [Only 24D appears in the database, but it looks like there should be values for schedules 24A, 24B, and 24C]
+  26 [Only appears in the database as 26A or 26B. These values are mentioned in some headings / other parts of the md but not in the general description section.]
+  28 [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+  54 [Only appears in the database as 54A or 54B]
+  61A [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+  61B [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+  62 [Missing from the database and I don't know why]
+  72 [Only appears in the database as 72A or 74B]
+  74 [Only appears in the database as 74A, 74B, 74C, 74D, or 74E]
+  74B [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+  76 [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+  77 [Only appears in the database as 77A, 77B, 77C, or 77D]
+  80 [Only appears in the database as 80A, 80B, 80C, 80D, or 80T]
+  83 [Found in 2024, likely missing due to not enough data loaded yet for 2025]
+
+---
+
+Loaded 35 schedule(s) from fir_instructions/exports/baseline_schedule_meta.csv.
+Found 38 distinct schedule code(s) in 2024 firrecord data.
+
+15 schedule(s) in DB but NOT in CSV (possible extractor gaps):
+  02  —  13,730 records
+  22D  —  13,418 records
+  24D  —  10,166 records
+  26A  —  156,382 records
+  26B  —  30,468 records
+  54A  —  78 records [Documented in md as "Direct Method (Schedule 54A):". Actual description of what the direct method entails is noted in the "General Information" section of the md and refers to an external document ("PSA Section 1202 Financial Statement Presentation").]
+  54B  —  16,922 records
+  72A  —  7,780 records
+  72B  —  29,460 records
+  77A  —  39,688 records
+  77B  —  23,138 records
+  77C  —  4,226 records [Described in General Information section of md notes]
+  77D  —  35,856 records [Described in General Information section of md notes]
+  80A  —  25,848 records
+  80C  —  42,278 records
+
+12 schedule(s) in CSV but NOT in DB (unused codes or not yet loaded):
+  22
+  22A
+  22B
+  22C
+  24
+  26
+  54
+  62
+  72
+  74
+  77
+  80
