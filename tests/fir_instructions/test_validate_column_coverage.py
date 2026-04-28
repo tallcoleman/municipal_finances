@@ -184,7 +184,60 @@ class TestGapDetection:
 
 
 # ---------------------------------------------------------------------------
-# 3. Column ID parsing from col_raw
+# 3. X-suffix schedule normalisation
+# ---------------------------------------------------------------------------
+
+
+class TestXSuffixNormalisation:
+    def test_x_suffix_schedule_resolved_via_base_code(self, tmp_path: Path) -> None:
+        """'12X' in the DB is covered by a '12' entry in the metadata CSV."""
+        csv_path = tmp_path / "meta.csv"
+        _write_meta_csv(csv_path, [("12", "01")])
+        # DB returns 12X — should resolve to 12 and not appear as a gap
+        result = _invoke(csv_path, [("12X", "01.01", 105)])
+        assert result.exit_code == 0, result.output
+        assert "No gaps found" in result.output
+
+    def test_x_suffix_without_base_metadata_still_gaps(self, tmp_path: Path) -> None:
+        """'02X' is still a gap when schedule '02' also has no metadata."""
+        csv_path = tmp_path / "meta.csv"
+        _write_meta_csv(csv_path, [("12", "01")])
+        result = _invoke(csv_path, [("02X", "01.01", 53)])
+        assert "Schedule 02X" in result.output
+
+    def test_non_x_suffix_not_normalised(self, tmp_path: Path) -> None:
+        """'26A' is not stripped to '26'; it remains a gap if only '26' is in metadata."""
+        csv_path = tmp_path / "meta.csv"
+        _write_meta_csv(csv_path, [("26", "01")])
+        result = _invoke(csv_path, [("26A", "01.01", 352)])
+        assert "Schedule 26A" in result.output
+
+    def test_x_suffix_only_column_covered_no_gap(self, tmp_path: Path) -> None:
+        """Multiple columns for an X-suffix schedule are resolved when the base has them."""
+        csv_path = tmp_path / "meta.csv"
+        _write_meta_csv(csv_path, [("20", "01"), ("20", "02"), ("20", "03")])
+        result = _invoke(csv_path, [
+            ("20X", "01.01", 18),
+            ("20X", "02.01", 9),
+            ("20X", "03.01", 18),
+        ])
+        assert "No gaps found" in result.output
+
+    def test_x_suffix_partial_coverage_shows_remaining_gaps(self, tmp_path: Path) -> None:
+        """Only unmatched columns for an X-suffix schedule appear as gaps."""
+        csv_path = tmp_path / "meta.csv"
+        _write_meta_csv(csv_path, [("20", "01")])  # only col 01 covered
+        result = _invoke(csv_path, [
+            ("20X", "01.01", 18),
+            ("20X", "02.01", 9),
+        ])
+        assert "Schedule 20X" in result.output
+        assert "Column 02" in result.output
+        assert "Column 01" not in result.output
+
+
+# ---------------------------------------------------------------------------
+# 4. Column ID parsing from col_raw
 # ---------------------------------------------------------------------------
 
 

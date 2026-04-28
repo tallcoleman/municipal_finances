@@ -97,9 +97,13 @@ def validate_column_coverage(
     )
 
     # Find gaps.
+    # Base schedules are encoded with a trailing "X" in the SLC field (e.g. "12X")
+    # but stored without it in the metadata (e.g. "12").  Normalise by stripping
+    # a trailing X before the lookup so the two naming conventions align.
     gaps: dict[str, list[tuple[str, int]]] = {}
     for (schedule, column_id), count in sorted(db_pairs.items()):
-        if (schedule, column_id) not in meta_keys:
+        lookup = schedule[:-1] if schedule.endswith("X") else schedule
+        if (lookup, column_id) not in meta_keys and (schedule, column_id) not in meta_keys:
             gaps.setdefault(schedule, []).append((column_id, count))
 
     if not gaps:
