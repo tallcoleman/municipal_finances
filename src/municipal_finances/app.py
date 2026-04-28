@@ -18,6 +18,12 @@ from municipal_finances.fir_instructions.extract_line_meta import (
 from municipal_finances.fir_instructions.extract_column_meta import (
     app as extract_column_meta_app,
 )
+from municipal_finances.fir_instructions.validate_column_coverage import (
+    app as validate_column_coverage_app,
+)
+from municipal_finances.fir_instructions.validate_schedule_coverage import (
+    app as validate_schedule_coverage_app,
+)
 from municipal_finances.resources import app as resources_app
 
 app = typer.Typer()
@@ -30,6 +36,8 @@ app.add_typer(extract_schedule_meta_app)
 app.add_typer(pdf_conversion_app)
 app.add_typer(extract_line_meta_app)
 app.add_typer(extract_column_meta_app)
+app.add_typer(validate_column_coverage_app)
+app.add_typer(validate_schedule_coverage_app)
 app.add_typer(resources_app)
 
 if __name__ == "__main__":  # pragma: no cover

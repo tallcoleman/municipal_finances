@@ -4,7 +4,14 @@ The SLC field on ``firrecord`` encodes a schedule, line, and column as:
 
     slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}
 
-Example: ``slc.10.L9930.C01.01`` = Schedule 10, Line 9930, Column 01, Sub 01.
+Example: ``slc.10X.L9930.C01.01`` = Schedule 10, Line 9930, Column 01, Sub 01.
+
+**X-suffix convention:** base schedules (those without an alphabetic sub-schedule
+letter) use a trailing ``X`` in the schedule code.  So Schedule 10 appears as
+``10X``, Schedule 12 as ``12X``, etc.  Schedules with real letter suffixes keep them
+unchanged (``51A``, ``74D``, ``26B``, etc.).  Callers that need to join against
+instruction metadata (which stores codes without the X) must strip the trailing X
+before the lookup.
 
 The line ID is typically 4 digits (e.g. ``9930``) but some schedules (76X, 80C, 81X)
 use a 3-digit-plus-letter form (e.g. ``000A``, ``000B``). The sub field is always a
@@ -74,15 +81,17 @@ def parse_slc(slc: str) -> SLCComponents:
 
     Example::
 
-        >>> parse_slc("slc.10.L9930.C01.01")
-        {'schedule': '10', 'line_id': '9930', 'column_id': '01', 'sub': '01'}
+        >>> parse_slc("slc.10X.L9930.C01.01")
+        {'schedule': '10X', 'line_id': '9930', 'column_id': '01', 'sub': '01'}
 
     Args:
         slc: A database SLC string.
 
     Returns:
         A dict with keys ``schedule``, ``line_id``, ``column_id``, and ``sub``.
-        ``schedule`` matches ``fir_schedule_meta.schedule`` (e.g. ``"10"``, ``"51A"``).
+        ``schedule`` is the raw code from the SLC field (e.g. ``"10X"``, ``"51A"``).
+        To look up instruction metadata (which omits the trailing X), strip a
+        trailing ``X`` from base schedules before the join.
 
     Raises:
         ValueError: If the input does not match the expected format.

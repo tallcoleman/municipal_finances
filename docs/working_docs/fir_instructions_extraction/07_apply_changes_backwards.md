@@ -49,6 +49,8 @@ Resolve wildcards by querying `firrecord` (see Task 03 **Wildcard SLC Resolution
 - `new_*` or `updated_*` → query `marsyear = change_year`
 - `deleted_*` → query `marsyear = change_year - 1`
 
+**X-suffix note:** base schedules appear as e.g. `"12X"` in the `slc` field but are stored as `"12"` in `fir_instruction_changelog`. When filtering `firrecord` by schedule code, match against both the bare code and its X-suffixed form — e.g. `split_part(slc, '.', 2) IN (:code, :code || 'X')` — otherwise wildcard resolution will return zero rows for all base schedules.
+
 For each resolved (line_id, column_id) pair, either update the existing changelog row in place (if it maps to exactly one line/column) or insert additional resolved rows. Entries that cannot be resolved (e.g., `firrecord` has no data for the relevant year) should be logged and handled manually.
 
 ### Versioning Procedure

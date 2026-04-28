@@ -19,7 +19,7 @@ Usage::
     )
 
     records = extract_all_column_meta(
-        "fir_instructions/source_files/2025/markdown",
+        "fir_instructions/source_files/2025/markdown_clean",
     )
     insert_column_meta(engine, records)
     save_to_csv(records, Path("fir_instructions/exports/baseline_column_meta.csv"))
@@ -64,17 +64,12 @@ _PAIRED_COLUMN_HEADING_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Headings that should NOT update current_section_name — boilerplate transitions
-# that appear within a section rather than introducing a new one.  Without this
-# skip-list, S26's repeated "Description of Columns" sub-heading would overwrite
-# the major section name and cause column records from different sections to share
-# the same section_name.
+# Headings that should NOT update current_section_name.  S26 has repeated
+# "Description of Columns" sub-headings within each major section; allowing
+# those to overwrite current_section_name would collapse distinct sections
+# onto the same name.
 _NON_SECTION_RE = re.compile(
-    r"^(Description of (Columns|Lines)|Descriptions of (Columns|Lines)|"
-    r"This section will be automatically pre-populated|"
-    r"Only .* municipalities should have values|"
-    r"IMPORTANT:|Note:|Please note|Total is automatically|"
-    r".*automatically calculated|.*should equal)",
+    r"^(Description of (Columns|Lines)|Descriptions of (Columns|Lines))",
     re.IGNORECASE,
 )
 
@@ -89,7 +84,7 @@ _CSV_FIELDS = [
     "change_notes",
 ]
 
-_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown")
+_DEFAULT_MARKDOWN_DIR = Path("fir_instructions/source_files/2025/markdown_clean")
 _DEFAULT_EXPORT_PATH = Path("fir_instructions/exports/baseline_column_meta.csv")
 
 
@@ -138,8 +133,13 @@ def _parse_column_heading(heading: str) -> tuple[str, str] | None:
     m = _COLUMN_HEADING_RE.match(heading.strip())
     if not m:
         return None
-    col_num = int(m.group(1))
     col_name = m.group(2).strip().rstrip(":").strip()
+    # Table-of-contents lines have "Column N - Name ......... Page"; the
+    # captured name will contain a run of dots.  Reject them here so they
+    # are never mistaken for real column headings.
+    if "...." in col_name:
+        return None
+    col_num = int(m.group(1))
     return (f"{col_num:02d}", col_name)
 
 
@@ -157,11 +157,10 @@ def _scan_body_for_columns(
 ) -> None:
     """Scan section body text for plain-text column definitions.
 
-    Handles the rare case where a column definition appears as a plain line of
-    body text rather than a ``##`` heading (the only known occurrence is S28
-    Column 05, which is sandwiched between proper ``##`` headings but is itself
-    plain text).  Grep across all 31 schedules confirms this pattern appears
-    exactly once, so false-positive risk is negligible.
+    Serves as a failsafe for any column definition that appears as a plain line
+    of body text rather than a heading — for example, if a heading was
+    inadvertently omitted from a cleaned markdown file.  False-positive risk is
+    negligible because the ``Column N - Name`` pattern is highly specific.
 
     Args:
         content:              Body lines of a section (list returned by
@@ -213,8 +212,8 @@ def _extract_per_schedule_columns(
     column ID can appear in multiple sections with distinct meanings (e.g. S20,
     S26, S80, S80D).  A ``(column_id, section_name)`` pair is only emitted once.
 
-    Body text is also scanned for plain-text column definitions to catch S28's
-    Column 05, which lacks a ``##`` heading.
+    Body text is also scanned for plain-text column definitions as a failsafe
+    against any column heading inadvertently omitted from the markdown.
 
     Schedules with no column headings produce an empty list.
 
@@ -264,9 +263,9 @@ def _extract_per_schedule_columns(
             # Non-column heading: update section context unless it is boilerplate
             # (e.g. "Description of Columns" appears in multiple S26 sections and
             # must not overwrite the meaningful parent heading).
-            if not _NON_SECTION_RE.match(heading.strip()):
+            if heading.strip() and not _NON_SECTION_RE.match(heading.strip()):
                 current_section_name = heading.strip()
-            # Also scan body text for plain-text column definitions (S28 col 05).
+            # Also scan body text for plain-text column definitions.
             _scan_body_for_columns(
                 content, code, current_section_name, seen_keys, records
             )
@@ -291,9 +290,7 @@ def _extract_per_schedule_columns(
                 "change_notes": None,
             }
         )
-        # Also scan this section's body for plain-text column definitions.
-        # This handles S28 Column 05, which appears as plain text inside
-        # Column 04's body rather than as its own ## heading.
+        # Also scan this section's body for any plain-text column definitions.
         _scan_body_for_columns(content, code, current_section_name, seen_keys, records)
 
     return records
