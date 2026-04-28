@@ -844,9 +844,11 @@ class TestBaselineCSVContent:
         assert len(s51a) >= 11, f"Expected ≥11 columns for S51A, got {len(s51a)}"
 
     def test_spot_check_s72_columns(self, records: list[dict[str, Any]]) -> None:
-        """Schedule 72 has exactly 9 column records."""
+        """Schedule 72 has 9 column records under 1 named section."""
         s72 = [r for r in records if r["schedule"] == "72"]
         assert len(s72) == 9, f"Expected 9 columns for S72, got {len(s72)}"
+        sections = {r["section_name"] for r in s72}
+        assert len(sections) == 1, f"Expected 1 section for S72, got: {sections}"
 
     def test_spot_check_s20_multi_section(self, records: list[dict[str, Any]]) -> None:
         """Schedule 20 has records in multiple named sections (column IDs are reused)."""
