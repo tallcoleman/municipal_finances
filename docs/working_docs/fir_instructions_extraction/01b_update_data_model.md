@@ -25,9 +25,9 @@ In the open data CSVs and the database, the SLC (Schedule, Line, Column) format 
 Components:
 
 - `<schedule>`: two digits and a letter, either representing a schedule or one of its sub-schedules. Sub-schedules use a letter suffix (e.g. "A", "B", "C", etc.), and when a base schedule is represented, the letter suffix "X" is added to the schedule code.
-- `<line>`: four digits
-- `<column_section>`: two digits; denotes a group of columns within a schedule or sub-schedule that all have the same column headings. Some schedules or sub-schedules have more than one column sections, and some only have one.
-- `<column_id>`: two characters, generally two digits or one digit and a character; denotes a column within the specified column section. Two-digit column ids are used for normal "value" fields, whereas the one digit and one character variant is used for columns that represent fill-in labels for lines.
+- `<line>`: four alphanumeric characters, usually all digits (e.g. `9930`). Schedules 76X, 80C, and 81X use codes like `000A` and `000B`.
+- `<column_section>`: two digits; denotes a group of columns within a schedule or sub-schedule that all have the same column headings. Some schedules or sub-schedules have more than one column sections, and some only have one. In `slc.py`, `parse_slc()` captures this as the `column_section` field.
+- `<column_id>`: two characters, generally two digits or one digit and one letter; identifies a specific column or fill-in label within the column section. Two-digit values (e.g. `01`, `02`) are used for normal "value" fields, whereas the one-digit-one-letter form (e.g. `0A`, `0B`) is used for fill-in label columns. In `slc.py`, `parse_slc()` captures this as the `column_id` field. This field is never empty in real data.
 
 Not recorded:
 

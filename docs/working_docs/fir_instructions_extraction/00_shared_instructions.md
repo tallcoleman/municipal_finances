@@ -69,13 +69,13 @@ Instructions documents from 2018–2021 have not yet been analyzed in detail to 
 
 ## SLC Format
 
-The `slc` field on `firrecord` encodes schedule, line, and column as: `slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}`.
+The `slc` field on `firrecord` encodes schedule, line, and column as: `slc.{schedule_code}.L{line_4chars}.C{column_section}.{column_id}`.
 
-Example: `slc.10X.L9930.C01.01` = Schedule 10, Line 9930, Column 01, Sub 01.
+Example: `slc.10X.L9930.C01.01` = Schedule 10, Line 9930, Column Section 01, Column 01.
 
 **X-suffix convention:** base schedules (those without an alphabetic sub-schedule letter) use a trailing `X` in the SLC schedule code. So Schedule 10 appears as `10X`, Schedule 12 as `12X`, etc. Schedules with real letter suffixes keep them unchanged (`51A`, `74D`, `26B`, etc.). This means `parse_slc()` returns `"10X"`, not `"10"` — callers that need to join against instruction metadata (which stores codes without the X) must strip the trailing X before the lookup.
 
-The line ID is a 4-character alphanumeric code. It is usually 4 digits (e.g. `9930`), but schedules 76X, 80C, and 81X use codes like `000A` and `000B`. The sub field is always a non-empty 2-character alphanumeric code in practice (e.g. `01`, `0A`).
+The line ID is a 4-character alphanumeric code. It is usually 4 digits (e.g. `9930`), but schedules 76X, 80C, and 81X use codes like `000A` and `000B`. The `column_section` field is a 2-digit group number (e.g. `01` from `C01`) that identifies a set of columns sharing the same headings. The `column_id` field is always a non-empty 2-character alphanumeric code in practice (e.g. `01`, `0A`) identifying the specific column within the section.
 
 The PDF references use a different format: `SLC 10 9930 01` (space-separated).
 

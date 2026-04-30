@@ -9,6 +9,10 @@ non-standard SLC formats exist in the data, and update the parser if they do.
 This task must be completed before Task 03 (content changes extraction) and any other task
 that calls `parse_slc()` against real data.
 
+**Verification history:**
+- 2026-04-03: Verified against 2020–2024 data. Zero failing rows. Line ID broadened to `[0-9A-Z]{4}`.
+- 2026-04-29: Verified 2025 data (3,156 SLC rows from `fir_data_2025.csv`). Zero failing rows. 19 distinct sub values observed (01–18, 0A).
+
 ## Prerequisites
 
 - Task 02 complete (`slc.py` implemented and tested)
@@ -53,10 +57,11 @@ is the regex in `_SLC_PATTERN` — to test every row against it, use:
 
 ```sql
 -- 3. Count rows that would fail parse_slc() (no match for the strict regex).
+--    Uses [0-9A-Z]{4} for line_id to accommodate alphanumeric IDs on schedules 76X/80C/81X.
 SELECT count(*) AS failing_rows
 FROM firrecord
 WHERE slc IS NOT NULL
-  AND slc !~ '^slc\.[^.]+\.L\d{4}\.C\d{2}\..*$';
+  AND slc !~ '^slc\.[^.]+\.L[0-9A-Z]{4}\.C\d{2}\..*$';
 ```
 
 ## Expected Results
