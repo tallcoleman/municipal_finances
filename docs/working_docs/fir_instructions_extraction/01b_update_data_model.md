@@ -3,7 +3,7 @@
 ## Context
 
 The `firrecord` table has an `slc` column in the format
-`slc.<schedule>.L<line>.C<column_id>.<sub>`.  To query or filter records by
+`slc.<schedule>.L<line>.C<column_section>.<column_id>`.  To query or filter records by
 schedule you currently have to parse this string.  In addition, base schedules
 use a trailing `X` suffix in the SLC code (e.g. `12X`) that needs to be
 stripped before matching against schedule metadata.
@@ -16,6 +16,65 @@ This task adds indexed columns that expose the parsed schedule components
 directly, making it straightforward to filter, group, and join without string
 manipulation.
 
+## Notes on Column and database/csv slc Formats
+
+### SLC Formats
+
+In the open data CSVs and the database, the SLC (Schedule, Line, Column) format is `slc.<schedule>.L<line>.C<column_section>.<column_id>`.
+
+Components:
+
+- `<schedule>`: two digits and a letter, either representing a schedule or one of its sub-schedules. Sub-schedules use a letter suffix (e.g. "A", "B", "C", etc.), and when a base schedule is represented, the letter suffix "X" is added to the schedule code.
+- `<line>`: four digits
+- `<column_section>`: two digits; denotes a group of columns within a schedule or sub-schedule that all have the same column headings. Some schedules or sub-schedules have more than one column sections, and some only have one.
+- `<column_id>`: two characters, generally two digits or one digit and a character; denotes a column within the specified column section. Two-digit column ids are used for normal "value" fields, whereas the one digit and one character variant is used for columns that represent fill-in labels for lines.
+
+Not recorded:
+
+- Lines are also organized into their own sections. This is described in the documentation and in the Excel reports, but is not part of the SLC structure used by the CSV/database data.
+- Null values are simply omitted from the CSV records (and the database, in the current implementation), instead of recording an SLC with a null value.
+### Supporting Observations
+
+In the Excel report for Toronto C 2024, `slc.10X.L1891.C01.01` and `slc.10X.L1891.C01.0A` appear on the same row. `C01.01` is the main column with currency values and `C01.0A` is the fill-in text description on the same row.
+
+In the Excel report for Toronto C 2024, schedule 12 has row sub-headings, e.g. "Protection Services" for lines 0410 to 0499. These row sub-headings are not reflected in the database at all, though I believe they are part of the structure of the documentation. All of the columns are `C01.XX`, and all of the column headers are the same throughout.
+
+In the Excel report for Toronto C 2024, schedule 20 has sections of columns that have different column headings. Here, you start to see the pattern change: every time there is a new set of column headings, the first part of the column identifier goes up (e.g. `C01.XX`, then `C02.XX`, then `C03.XX`, etc.) The implied layout of columns generally matches the layout in the Excel report.
+
+When values are left blank in the Excel report, there is no database row at all.
+
+### How the FIR CSV documentation describes the SLC format
+
+From `'fir_instructions/source_files/Documentation for CSV files.pdf'` (cleaned up for formatting).
+
+SLC identifies the datapoint including Schedule, Line and Column. The SLC takes the following format: `slc.02X.L0020.C01.02`
+
+- all slc references begin with "slc."
+- 02X refers to the schedule number. In this example it is referring to Schedule 02. In most cases, the schedule number is followed by an X. i.e. Schedule 10 would be slc.10X. 
+- However, where a schedule is divided into different parts (i.e. Schedule 26 is divided into two tabs in the FIR template; Schedule 26A and Schedule 26B) the schedule portion of the slc will be slc.26A and slc.26B. Other schedules where this applies include: Schedule 51, Schedule 72 , Schedule 74, Schedule 77 andSchedule 80.
+- L0020 refers to the line number. In this example the line number is 0020.
+- C01.02 refers to the section and column number. In most cases the section will [be] 01. However where a schedule has distinct sections, the section number will change. For example, Schedule 20 is divided into different sections with varying number of columns in each section.
+- [shows an image of what schedule 20 looks like]
+- Line 0202 in section 1 would have an slc number of slc.20X.L0202.C01.02 (C01.02 = section 1 , column 02) 
+- Line 0320 Column 5 would have an slc number of slc.20X.L0320.C02.05 (Schedule 20, Line 0320, Section 2, Column 5)
+
+### SLC format used by the instructions documentation
+
+The FIR instructions documents use a different SLC format:
+
+> In the FIR, each data point is identified by a unique SLC Number.  The SLC Number identifies the Schedule, Line and Column where a data point is located.  SLC means “Schedule-Line-Column”. 
+ > 
+ > For example, SLC 10 9930 01 refers to Schedule 10, Line 9930, Column 1. 
+ > 
+ > Each Schedule is identified with a 2-Digit Number, which is displayed in the top righthand corner of each Schedule. 
+ > 
+ > Each Line is identified with a 4-Digit Line ID, which is displayed in the left margin beside every line on every Schedule. 
+ > 
+ > Each Column is identified with a 2-Digit Column Number, which is displayed in every column heading. 
+
+This format appears to omit the column section information that the CSV and database SLCs encode.
+
+The instructions documents also use a wildcard format in some cases to refer to an entire line or column, e.g. "SLC 40 xxxx 01" to refer to all values in column 01 in schedule 40.
 ## Goal
 
 Add `schedule_code` and `sub_schedule_code` (and optionally `line_id`,
