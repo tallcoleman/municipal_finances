@@ -1,8 +1,8 @@
 """Check schedule metadata coverage against 2025 FIR database records.
 
 Queries ``firrecord`` for all distinct schedule codes present in 2025 data
-(parsed from the ``slc`` column, with the trailing-X suffix normalised), then
-compares them against the extracted schedule metadata CSV.  Reports:
+using the pre-parsed ``base_schedule_code`` column, then compares them against
+the extracted schedule metadata CSV.  Reports:
 
 - Schedules in the database but missing from the CSV (possible extractor gaps).
 - Schedules in the CSV but absent from the database (may be unused or new codes
@@ -48,9 +48,7 @@ def validate_schedule_coverage(
 
     Reads the baseline CSV produced by ``extract-baseline-schedule-meta``, then
     queries the database for all distinct schedule codes present in the given
-    year's firrecord data.  The trailing-X suffix used in SLC codes (e.g.
-    ``12X`` for base schedules) is stripped before comparison so both sources
-    use the same naming convention.
+    year's firrecord data using the pre-parsed ``base_schedule_code`` column.
 
     Prints two lists:
 
@@ -66,29 +64,24 @@ def validate_schedule_coverage(
 
     typer.echo(f"Loaded {len(csv_schedules)} schedule(s) from {csv_path}.")
 
-    # Query DB for distinct schedule codes in the year's firrecord data.
-    # slc format: slc.<schedule>.L<line>.C<column_id>.<sub>
+    # Query DB for distinct base schedule codes using the pre-parsed column.
     engine = get_engine()
     with Session(engine) as session:
         result = session.execute(
             text("""
                 SELECT
-                    split_part(slc, '.', 2) AS schedule_raw,
-                    COUNT(*)                AS record_count
+                    base_schedule_code,
+                    COUNT(*) AS record_count
                 FROM firrecord
                 WHERE marsyear = :year
-                  AND slc IS NOT NULL
-                GROUP BY schedule_raw
-                ORDER BY schedule_raw
+                  AND base_schedule_code IS NOT NULL
+                GROUP BY base_schedule_code
+                ORDER BY base_schedule_code
             """),
             {"year": year},
         ).fetchall()
 
-    # Normalise trailing-X suffix (e.g. "12X" → "12") and accumulate counts.
-    db_schedules: dict[str, int] = {}
-    for schedule_raw, count in result:
-        normalised = schedule_raw[:-1] if schedule_raw.endswith("X") else schedule_raw
-        db_schedules[normalised] = db_schedules.get(normalised, 0) + count
+    db_schedules: dict[str, int] = {code: count for code, count in result}
 
     typer.echo(
         f"Found {len(db_schedules)} distinct schedule code(s) in "

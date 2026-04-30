@@ -1,9 +1,9 @@
 """Check column metadata coverage against 2025 FIR database records.
 
-Queries ``firrecord`` for all distinct (schedule, column_id) pairs present in
-2025 data, then compares them against the extracted column metadata CSV.  Prints
-a grouped report of any (schedule, column_id) combinations that appear in the
-live data but have no metadata entry.
+Queries ``firrecord`` for all distinct (schedule_code, column_section) pairs
+present in 2025 data using the pre-parsed columns, then compares them against
+the extracted column metadata CSV.  Prints a grouped report of any combinations
+that appear in the live data but have no metadata entry.
 
 Each gap should be triaged as either:
 
@@ -48,13 +48,13 @@ def validate_column_coverage(
         help="FIR year to check against (marsyear in firrecord)",
     ),
 ) -> None:
-    """Report (schedule, column_id) pairs in firrecord that have no column metadata entry.
+    """Report (schedule, column_section) pairs in firrecord that have no column metadata entry.
 
     Reads the baseline CSV produced by ``extract-baseline-column-meta``, then
-    queries the database for all distinct (schedule, column_id) combinations
-    present in the given year's firrecord data.  Prints a grouped report of
-    any gaps so they can be triaged as genuinely undocumented vs. extractor
-    bugs.
+    queries the database for all distinct (schedule_code, column_section)
+    combinations present in the given year's firrecord data using the pre-parsed
+    columns.  Prints a grouped report of any gaps so they can be triaged as
+    genuinely undocumented vs. extractor bugs.
     """
     # Load metadata keys from CSV.
     meta_keys: set[tuple[str, str]] = set()
@@ -64,47 +64,39 @@ def validate_column_coverage(
 
     typer.echo(f"Loaded {len(meta_keys)} (schedule, column_id) pairs from {csv_path}.")
 
-    # Query DB for distinct (schedule, column_id) in year's firrecord data.
-    # The slc field has format: slc.<schedule>.L<line>.C<column_id>.<sub>
-    # Use a regex split in SQL to avoid pulling all slc strings into Python.
+    # Query DB for distinct (schedule_code, column_section) pairs using pre-parsed columns.
     engine = get_engine()
     with Session(engine) as session:
         result = session.execute(
             text("""
                 SELECT
-                    split_part(slc, '.', 2)  AS schedule,
-                    split_part(slc, '.C', 2) AS col_raw,
-                    COUNT(*)                  AS record_count
+                    schedule_code,
+                    column_section,
+                    COUNT(*) AS record_count
                 FROM firrecord
                 WHERE marsyear = :year
-                  AND slc IS NOT NULL
-                GROUP BY schedule, col_raw
-                ORDER BY schedule, col_raw
+                  AND schedule_code IS NOT NULL
+                GROUP BY schedule_code, column_section
+                ORDER BY schedule_code, column_section
             """),
             {"year": year},
         ).fetchall()
 
-    # col_raw has the form "<column_id>.<sub>" — take only the first two chars.
-    db_pairs: dict[tuple[str, str], int] = {}
-    for schedule, col_raw, count in result:
-        column_id = col_raw[:2]
-        key = (schedule, column_id)
-        db_pairs[key] = db_pairs.get(key, 0) + count
+    db_pairs: dict[tuple[str, str], int] = {
+        (schedule_code, column_section): count
+        for schedule_code, column_section, count in result
+    }
 
     typer.echo(
-        f"Found {len(db_pairs)} distinct (schedule, column_id) pairs in "
+        f"Found {len(db_pairs)} distinct (schedule, column_section) pairs in "
         f"{year} firrecord data."
     )
 
     # Find gaps.
-    # Base schedules are encoded with a trailing "X" in the SLC field (e.g. "12X")
-    # but stored without it in the metadata (e.g. "12").  Normalise by stripping
-    # a trailing X before the lookup so the two naming conventions align.
     gaps: dict[str, list[tuple[str, int]]] = {}
-    for (schedule, column_id), count in sorted(db_pairs.items()):
-        lookup = schedule[:-1] if schedule.endswith("X") else schedule
-        if (lookup, column_id) not in meta_keys and (schedule, column_id) not in meta_keys:
-            gaps.setdefault(schedule, []).append((column_id, count))
+    for (schedule_code, column_section), count in sorted(db_pairs.items()):
+        if (schedule_code, column_section) not in meta_keys:
+            gaps.setdefault(schedule_code, []).append((column_section, count))
 
     if not gaps:
         typer.echo("\nNo gaps found — all (schedule, column_id) pairs have metadata.")
@@ -118,9 +110,9 @@ def validate_column_coverage(
         "  [S] Script gap — extractor missed a documented column\n"
     )
 
-    for schedule in sorted(gaps, key=lambda s: (len(s), s)):
-        cols = gaps[schedule]
-        typer.echo(f"Schedule {schedule}  ({len(cols)} gap(s)):")
-        for column_id, count in sorted(cols):
-            typer.echo(f"  Column {column_id}  —  {count:,} records  [ ]")
+    for schedule_code in sorted(gaps, key=lambda s: (len(s), s)):
+        cols = gaps[schedule_code]
+        typer.echo(f"Schedule {schedule_code}  ({len(cols)} gap(s)):")
+        for column_section, count in sorted(cols):
+            typer.echo(f"  Column {column_section}  —  {count:,} records  [ ]")
         typer.echo("")
