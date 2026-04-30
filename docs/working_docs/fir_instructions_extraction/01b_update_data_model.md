@@ -77,10 +77,10 @@ This format appears to omit the column section information that the CSV and data
 The instructions documents also use a wildcard format in some cases to refer to an entire line or column, e.g. "SLC 40 xxxx 01" to refer to all values in column 01 in schedule 40.
 ## Goal
 
-Add `schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and 
+Add `base_schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and 
 `column_id` as pre-parsed columns to `firrecord` so that:
 
-- Querying all records for a given schedule is a simple `WHERE schedule_code =
+- Querying all records for a given schedule is a simple `WHERE base_schedule_code =
   '12'`
 - Joining `firrecord` to `fir_schedule_meta` requires no runtime string parsing
 - Validation queries (e.g. `validate-schedule-coverage`) do not need SQL string
@@ -90,26 +90,25 @@ Add `schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and
 
 ### New columns on `firrecord`
 
-| Column                | Type          | Derivation                                                                                             |
-| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
-| `schedule_code`       | `VARCHAR(10)` | `split_part(slc, '.', 2)` with trailing `X` stripped                                                   |
-| `sub_schedule_letter` | `VARCHAR(10)` | `split_part(slc, '.', 2)` including just the trailing letter. Should be NULL if trailing letter is `X` |
-| `line_id`             | `VARCHAR(20)` | `split_part(slc, '.', 3)` with leading `L` stripped, or NULL if absent                                 |
-| `column_section`      | `VARCHAR(10)` | `split_part(slc, '.', 4)` with leading `C` stripped, or NULL if absent                                 |
-| `column_id`           | `VARCHAR(10)` | `split_part(slc, '.', 5)` or NULL if absent                                                            |
+| Column               | Type          | Derivation                                                                                             |
+| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| `base_schedule_code` | `VARCHAR(10)` | `split_part(slc, '.', 2)` with trailing letter stripped (e.g. `10X` → `"10"`, `22D` → `"22"`)          |
+| `sub_schedule_code`  | `VARCHAR(10)` | `split_part(slc, '.', 2)` including just the trailing letter. Should be NULL if trailing letter is `X` |
+| `line_id`            | `VARCHAR(20)` | `split_part(slc, '.', 3)` with leading `L` stripped                                                    |
+| `column_section`     | `VARCHAR(10)` | `split_part(slc, '.', 4)` with leading `C` stripped                                                    |
+| `column_id`          | `VARCHAR(10)` | `split_part(slc, '.', 5)`                                                                              |
 
-`schedule_code` should be NOT NULL (all valid records have an SLC) and indexed.
-`line_id`, `column_section`, and `column_id` can be nullable.
+`base_schedule_code`, `line_id`, `column_section`, and `column_id` should be NOT NULL (all valid records have an SLC). `base_schedule_code` should also be indexed.
 
 ### Migration
 
-1. Add columns via `ALTER TABLE firrecord ADD COLUMN ...`
-2. Populate with a single `UPDATE firrecord SET schedule_code = ...` using the
-   same string logic currently in `validate_schedule_coverage.py`
-3. Add index: `CREATE INDEX ix_firrecord_schedule_code ON firrecord (schedule_code)`
-4. Update `models.py` to reflect the new columns
-5. Update `db_management.py` / `load-data` pipeline to populate the columns
-   during future bulk loads (so re-loads do not need a separate migration step)
+1. Update `models.py` to add the new columns to `FIRRecord`.
+2. Generate a migration: `uv run alembic revision --autogenerate -m "add schedule columns to firrecord"`
+3. Review the generated migration file. Autogenerate produces the `ADD COLUMN` statements but does **not** generate the backfill or custom index, so add manually:
+   - A backfill `UPDATE firrecord SET base_schedule_code = ...` (and the other columns) using the same string logic as `validate_schedule_coverage.py`
+   - `CREATE INDEX ix_firrecord_base_schedule_code ON firrecord (base_schedule_code)`
+4. Apply: `uv run alembic upgrade head`
+5. Update `db_management.py` / `load-data` pipeline to populate the new columns during future bulk loads (so re-loads do not need a separate migration step).
 
 ### Separate `schedule` and `sub_schedule`
 
@@ -118,12 +117,12 @@ schedule 22, sub-schedule D).  To support filtering
 independently on base schedule vs. sub-schedule letter, two columns can be used:
 
 - `base_schedule_code` — numeric prefix (e.g. `"22"`)
-- `sub_schedule_letter` — letter suffix (e.g. `"D"`, NULL for base schedules)
+- `sub_schedule_code` — letter suffix (e.g. `"D"`, NULL for base schedules)
 
 ## Impact
 
 - `validate_schedule_coverage.py` can be simplified to query
-  `SELECT DISTINCT schedule_code ...` instead of parsing `slc` in SQL
+  `SELECT DISTINCT base_schedule_code ...` instead of parsing `slc` in SQL
 - `validate_column_coverage.py` similarly
 - Future API endpoints that filter by schedule gain a clean, indexed column
 
@@ -132,7 +131,7 @@ independently on base schedule vs. sub-schedule letter, two columns can be used:
 - [ ] Add migration script (Alembic or raw SQL)
 - [ ] Update `models.py` (`FIRRecord` class)
 - [ ] Update `db_management.py` to populate new columns during `load-data`
-- [ ] Simplify `validate_schedule_coverage.py` to use `schedule_code`
-- [ ] Simplify `validate_column_coverage.py` to use `schedule_code`
+- [ ] Simplify `validate_schedule_coverage.py` to use `base_schedule_code`
+- [ ] Simplify `validate_column_coverage.py` to use `base_schedule_code`
 - [ ] Update `CLAUDE.md` database section
 - [ ] Add tests for new column population logic
