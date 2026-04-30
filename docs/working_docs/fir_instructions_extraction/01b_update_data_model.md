@@ -77,8 +77,8 @@ This format appears to omit the column section information that the CSV and data
 The instructions documents also use a wildcard format in some cases to refer to an entire line or column, e.g. "SLC 40 xxxx 01" to refer to all values in column 01 in schedule 40.
 ## Goal
 
-Add `schedule_code` and `sub_schedule_code` (and optionally `line_id`,
-`column_id`) as pre-parsed columns to `firrecord` so that:
+Add `schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and 
+`column_id` as pre-parsed columns to `firrecord` so that:
 
 - Querying all records for a given schedule is a simple `WHERE schedule_code =
   '12'`
@@ -90,14 +90,16 @@ Add `schedule_code` and `sub_schedule_code` (and optionally `line_id`,
 
 ### New columns on `firrecord`
 
-| Column | Type | Derivation |
-|---|---|---|
-| `schedule_code` | `VARCHAR(10)` | `split_part(slc, '.', 2)` with trailing `X` stripped |
-| `line_id` | `VARCHAR(20)` | `split_part(slc, '.', 3)` with leading `L` stripped, or NULL if absent |
-| `column_id` | `VARCHAR(20)` | `split_part(slc, '.', 4)` with leading `C` stripped, or NULL if absent |
+| Column                | Type          | Derivation                                                                                             |
+| --------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| `schedule_code`       | `VARCHAR(10)` | `split_part(slc, '.', 2)` with trailing `X` stripped                                                   |
+| `sub_schedule_letter` | `VARCHAR(10)` | `split_part(slc, '.', 2)` including just the trailing letter. Should be NULL if trailing letter is `X` |
+| `line_id`             | `VARCHAR(20)` | `split_part(slc, '.', 3)` with leading `L` stripped, or NULL if absent                                 |
+| `column_section`      | `VARCHAR(10)` | `split_part(slc, '.', 4)` with leading `C` stripped, or NULL if absent                                 |
+| `column_id`           | `VARCHAR(10)` | `split_part(slc, '.', 5)` or NULL if absent                                                            |
 
 `schedule_code` should be NOT NULL (all valid records have an SLC) and indexed.
-`line_id` and `column_id` can be nullable.
+`line_id`, `column_section`, and `column_id` can be nullable.
 
 ### Migration
 
@@ -109,16 +111,14 @@ Add `schedule_code` and `sub_schedule_code` (and optionally `line_id`,
 5. Update `db_management.py` / `load-data` pipeline to populate the columns
    during future bulk loads (so re-loads do not need a separate migration step)
 
-### Optional: separate `schedule` and `sub_schedule`
+### Separate `schedule` and `sub_schedule`
 
 The raw SLC encodes the base schedule and sub-schedule together (e.g. `22D` is
-schedule 22, sub-schedule D).  If the data model needs to support filtering
+schedule 22, sub-schedule D).  To support filtering
 independently on base schedule vs. sub-schedule letter, two columns can be used:
 
 - `base_schedule_code` — numeric prefix (e.g. `"22"`)
 - `sub_schedule_letter` — letter suffix (e.g. `"D"`, NULL for base schedules)
-
-This decomposition can be deferred until there is a concrete query need.
 
 ## Impact
 
