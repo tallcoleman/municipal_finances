@@ -216,43 +216,42 @@ class TestInCSVNotDB:
 
 class TestXSuffixNormalisation:
     def test_x_suffix_resolved_to_base_code(self, tmp_path: Path) -> None:
-        """'12X' in the DB is covered by a '12' entry in the metadata CSV."""
+        """DB returns base_schedule_code '12' (X stripped by SQL); covered by '12' in CSV."""
         csv_path = tmp_path / "meta.csv"
         _write_schedule_csv(csv_path, ["12"])
-        result = _invoke(csv_path, [("12X", 105)])
+        result = _invoke(csv_path, [("12", 105)])
         assert result.exit_code == 0, result.output
         assert "No gaps found" in result.output
 
     def test_x_suffix_without_base_metadata_still_a_gap(self, tmp_path: Path) -> None:
-        """'99X' is still a gap when schedule '99' also has no metadata."""
+        """DB returns '99' (base_schedule_code); still a gap when '99' is not in the CSV."""
         csv_path = tmp_path / "meta.csv"
         _write_schedule_csv(csv_path, ["12"])
-        result = _invoke(csv_path, [("99X", 53)])
+        result = _invoke(csv_path, [("99", 53)])
         assert "99" in result.output
 
-    def test_non_x_suffix_not_normalised(self, tmp_path: Path) -> None:
-        """'26A' is not stripped to '26'; it remains a gap if only '26' is in the CSV."""
+    def test_sub_schedule_matched_to_base_in_csv(self, tmp_path: Path) -> None:
+        """A sub-schedule ('26A') returns base_schedule_code '26'; covered by '26' in CSV."""
         csv_path = tmp_path / "meta.csv"
         _write_schedule_csv(csv_path, ["26"])
-        result = _invoke(csv_path, [("26A", 352)])
-        assert "26A" in result.output
+        result = _invoke(csv_path, [("26", 352)])
+        assert "No gaps found" in result.output
 
-    def test_x_and_base_counts_merged(self, tmp_path: Path) -> None:
-        """When both '12X' and '12' appear in DB results, their counts are summed."""
+    def test_sql_aggregated_counts_shown(self, tmp_path: Path) -> None:
+        """SQL pre-aggregates by base_schedule_code; mock returns a single merged row."""
         csv_path = tmp_path / "meta.csv"
         _write_schedule_csv(csv_path, [])
-        # Both normalise to "12" — counts should add to 150
-        result = _invoke(csv_path, [("12", 100), ("12X", 50)])
+        # SQL GROUP BY base_schedule_code merges all sub-schedules before Python sees them
+        result = _invoke(csv_path, [("12", 150)])
         assert "150" in result.output
-        # Should appear as a single schedule entry, not two
         gap_lines = [line for line in result.output.splitlines() if "  12" in line]
         assert len(gap_lines) == 1, f"Expected 1 gap line for '12', got: {gap_lines}"
 
     def test_x_suffix_covered_base_in_csv_no_gap(self, tmp_path: Path) -> None:
-        """Multiple X-suffix DB entries are all resolved when the base is in the CSV."""
+        """DB returns base_schedule_codes without X suffix; all covered by CSV entries."""
         csv_path = tmp_path / "meta.csv"
         _write_schedule_csv(csv_path, ["20", "40"])
-        result = _invoke(csv_path, [("20X", 18), ("40X", 9)])
+        result = _invoke(csv_path, [("20", 18), ("40", 9)])
         assert "No gaps found" in result.output
 
 
@@ -381,15 +380,32 @@ def _seed_fir_records(
     rows: list[dict[str, Any]],
     munid: str = "TSTCOV",
 ) -> None:
-    """Insert FIRRecord rows into the test DB."""
+    """Insert FIRRecord rows with derived SLC columns into the test DB."""
+    import pandas as pd
     from sqlalchemy.dialects.postgresql import insert as pg_insert
+
+    from municipal_finances.db_management import _derive_slc_columns
+
+    df = _derive_slc_columns(pd.DataFrame({"slc": [r["slc"] for r in rows]}))
+
+    records = [
+        {
+            "munid": munid,
+            "marsyear": r["marsyear"],
+            "slc": r["slc"],
+            "schedule_code": df["schedule_code"][i],
+            "base_schedule_code": df["base_schedule_code"][i],
+            "sub_schedule_code": df["sub_schedule_code"][i],
+            "line_id": df["line_id"][i],
+            "column_section": df["column_section"][i],
+            "column_id": df["column_id"][i],
+        }
+        for i, r in enumerate(rows)
+    ]
 
     with session.get_bind().connect() as conn:
         conn.execute(
-            pg_insert(FIRRecord.__table__).values([
-                {"munid": munid, "marsyear": r["marsyear"], "slc": r["slc"]}
-                for r in rows
-            ]).on_conflict_do_nothing()
+            pg_insert(FIRRecord.__table__).values(records).on_conflict_do_nothing()
         )
         conn.commit()
 

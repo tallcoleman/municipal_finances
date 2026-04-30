@@ -85,8 +85,7 @@ class TestNoGaps:
         """'No gaps found' message is printed when every DB pair has metadata."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01"), ("22", "02")])
-        # DB returns the same two pairs
-        result = _invoke(csv_path, [("22", "01.01", 100), ("22", "02.01", 50)])
+        result = _invoke(csv_path, [("22", "01", 100), ("22", "02", 50)])
         assert result.exit_code == 0, result.output
         assert "No gaps found" in result.output
 
@@ -102,7 +101,7 @@ class TestNoGaps:
         """Exit code is 0 when there are no gaps."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("12", "01")])
-        result = _invoke(csv_path, [("12", "01.01", 10)])
+        result = _invoke(csv_path, [("12", "01", 10)])
         assert result.exit_code == 0
 
     def test_loaded_count_echoed(self, tmp_path: Path) -> None:
@@ -113,10 +112,10 @@ class TestNoGaps:
         assert "3" in result.output
 
     def test_db_pair_count_echoed(self, tmp_path: Path) -> None:
-        """The number of distinct (schedule, column_id) pairs found in DB is echoed."""
+        """The number of distinct (schedule, column_section) pairs found in DB is echoed."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01")])
-        result = _invoke(csv_path, [("22", "01.01", 5)])
+        result = _invoke(csv_path, [("22", "01", 5)])
         assert "1" in result.output
 
 
@@ -127,11 +126,10 @@ class TestNoGaps:
 
 class TestGapDetection:
     def test_gap_reported_for_missing_pair(self, tmp_path: Path) -> None:
-        """A (schedule, column_id) in DB but absent from CSV appears in the report."""
+        """A (schedule, column_section) in DB but absent from CSV appears in the report."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01")])
-        # DB also has column 02 for schedule 22, which has no metadata
-        result = _invoke(csv_path, [("22", "01.01", 100), ("22", "02.01", 50)])
+        result = _invoke(csv_path, [("22", "01", 100), ("22", "02", 50)])
         assert result.exit_code == 0, result.output
         assert "Schedule 22" in result.output
         assert "Column 02" in result.output
@@ -140,7 +138,7 @@ class TestGapDetection:
         """A pair that has metadata does not appear in the report."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01")])
-        result = _invoke(csv_path, [("22", "01.01", 100), ("51A", "99.01", 5)])
+        result = _invoke(csv_path, [("22", "01", 100), ("51A", "99", 5)])
         assert "Column 01" not in result.output.split("Schedule 51A")[0].split("Column 02")[-1] or True
         # The key assertion: Column 01 for 22 is covered, so gap header shows 51A not 22
         assert "Schedule 51A" in result.output
@@ -151,9 +149,9 @@ class TestGapDetection:
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
-            ("22", "01.01", 10),
-            ("22", "02.01", 20),
-            ("51A", "99.01", 5),
+            ("22", "01", 10),
+            ("22", "02", 20),
+            ("51A", "99", 5),
         ])
         assert "3 gap(s)" in result.output
 
@@ -162,8 +160,8 @@ class TestGapDetection:
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
-            ("22", "01.01", 10),
-            ("51A", "99.01", 5),
+            ("22", "01", 10),
+            ("51A", "99", 5),
         ])
         assert "2 schedule(s)" in result.output
 
@@ -171,14 +169,14 @@ class TestGapDetection:
         """Record count is shown next to each gap column."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 12345)])
+        result = _invoke(csv_path, [("22", "01", 12345)])
         assert "12,345" in result.output
 
     def test_empty_csv_all_db_pairs_are_gaps(self, tmp_path: Path) -> None:
         """Empty metadata CSV means all DB pairs appear as gaps."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 10), ("40", "03.01", 20)])
+        result = _invoke(csv_path, [("22", "01", 10), ("40", "03", 20)])
         assert "Schedule 22" in result.output
         assert "Schedule 40" in result.output
 
@@ -190,78 +188,49 @@ class TestGapDetection:
 
 class TestXSuffixNormalisation:
     def test_x_suffix_schedule_resolved_via_base_code(self, tmp_path: Path) -> None:
-        """'12X' in the DB is covered by a '12' entry in the metadata CSV."""
+        """DB returns schedule_code '12' (X stripped by SQL); covered by '12' in metadata CSV."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("12", "01")])
-        # DB returns 12X — should resolve to 12 and not appear as a gap
-        result = _invoke(csv_path, [("12X", "01.01", 105)])
+        result = _invoke(csv_path, [("12", "01", 105)])
         assert result.exit_code == 0, result.output
         assert "No gaps found" in result.output
 
     def test_x_suffix_without_base_metadata_still_gaps(self, tmp_path: Path) -> None:
-        """'02X' is still a gap when schedule '02' also has no metadata."""
+        """DB returns '02' (X stripped); still a gap when '02' has no metadata."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("12", "01")])
-        result = _invoke(csv_path, [("02X", "01.01", 53)])
-        assert "Schedule 02X" in result.output
+        result = _invoke(csv_path, [("02", "01", 53)])
+        assert "Schedule 02" in result.output
 
-    def test_non_x_suffix_not_normalised(self, tmp_path: Path) -> None:
-        """'26A' is not stripped to '26'; it remains a gap if only '26' is in metadata."""
+    def test_sub_schedule_remains_gap_without_base_metadata(self, tmp_path: Path) -> None:
+        """Sub-schedule '26A' keeps its schedule_code; it's a gap if only '26' is in metadata."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("26", "01")])
-        result = _invoke(csv_path, [("26A", "01.01", 352)])
+        result = _invoke(csv_path, [("26A", "01", 352)])
         assert "Schedule 26A" in result.output
 
     def test_x_suffix_only_column_covered_no_gap(self, tmp_path: Path) -> None:
-        """Multiple columns for an X-suffix schedule are resolved when the base has them."""
+        """DB returns base schedule_code '20' for all columns; all covered by metadata."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("20", "01"), ("20", "02"), ("20", "03")])
         result = _invoke(csv_path, [
-            ("20X", "01.01", 18),
-            ("20X", "02.01", 9),
-            ("20X", "03.01", 18),
+            ("20", "01", 18),
+            ("20", "02", 9),
+            ("20", "03", 18),
         ])
         assert "No gaps found" in result.output
 
     def test_x_suffix_partial_coverage_shows_remaining_gaps(self, tmp_path: Path) -> None:
-        """Only unmatched columns for an X-suffix schedule appear as gaps."""
+        """Only unmatched columns for the base schedule appear as gaps."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("20", "01")])  # only col 01 covered
         result = _invoke(csv_path, [
-            ("20X", "01.01", 18),
-            ("20X", "02.01", 9),
+            ("20", "01", 18),
+            ("20", "02", 9),
         ])
-        assert "Schedule 20X" in result.output
+        assert "Schedule 20" in result.output
         assert "Column 02" in result.output
         assert "Column 01" not in result.output
-
-
-# ---------------------------------------------------------------------------
-# 4. Column ID parsing from col_raw
-# ---------------------------------------------------------------------------
-
-
-class TestColRawParsing:
-    def test_sub_field_stripped_from_column_id(self, tmp_path: Path) -> None:
-        """'01.01' col_raw yields column_id '01'."""
-        csv_path = tmp_path / "meta.csv"
-        _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 5)])
-        assert "Column 01" in result.output
-
-    def test_alphanumeric_sub_stripped(self, tmp_path: Path) -> None:
-        """'13.0A' col_raw yields column_id '13'."""
-        csv_path = tmp_path / "meta.csv"
-        _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "13.0A", 3)])
-        assert "Column 13" in result.output
-
-    def test_two_digit_column_preserved(self, tmp_path: Path) -> None:
-        """'14.01' col_raw yields column_id '14' (not truncated to '1')."""
-        csv_path = tmp_path / "meta.csv"
-        _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("80D", "14.01", 5)])
-        assert "Column 14" in result.output
 
 
 # ---------------------------------------------------------------------------
@@ -271,27 +240,22 @@ class TestColRawParsing:
 
 class TestCountAggregation:
     def test_multiple_subs_aggregated(self, tmp_path: Path) -> None:
-        """Multiple rows with the same (schedule, col) but different subs sum their counts."""
+        """SQL GROUP BY (schedule_code, column_section) pre-aggregates counts."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        # Same schedule + column, two different sub values (DB returns them as separate rows)
-        result = _invoke(csv_path, [
-            ("22", "01.01", 100),
-            ("22", "01.0A", 50),
-        ])
-        # Should appear as one gap with 150 records
+        # DB returns one pre-aggregated row (both "01.01" and "01.0A" share column_section "01")
+        result = _invoke(csv_path, [("22", "01", 150)])
         assert "150" in result.output
-        # Should not appear as two separate Column 01 entries for schedule 22
         lines = [line for line in result.output.splitlines() if "Column 01" in line]
         assert len(lines) == 1, f"Expected 1 Column 01 line, got: {lines}"
 
     def test_different_columns_not_aggregated(self, tmp_path: Path) -> None:
-        """Rows for different column IDs within the same schedule remain separate."""
+        """Rows for different column_sections within the same schedule remain separate."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
-            ("22", "01.01", 100),
-            ("22", "02.01", 50),
+            ("22", "01", 100),
+            ("22", "02", 50),
         ])
         assert "Column 01" in result.output
         assert "Column 02" in result.output
@@ -307,14 +271,14 @@ class TestOutputFormatting:
         """Each schedule with gaps appears as a group header in the output."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 10)])
+        result = _invoke(csv_path, [("22", "01", 10)])
         assert "Schedule 22" in result.output
 
     def test_gap_placeholder_present(self, tmp_path: Path) -> None:
         """Each gap column line ends with '[ ]' triage placeholder."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 10)])
+        result = _invoke(csv_path, [("22", "01", 10)])
         assert "[ ]" in result.output
 
     def test_multiple_schedules_all_listed(self, tmp_path: Path) -> None:
@@ -322,9 +286,9 @@ class TestOutputFormatting:
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
-            ("12", "05.01", 10),
-            ("40", "03.01", 20),
-            ("72A", "01.01", 5),
+            ("12", "05", 10),
+            ("40", "03", 20),
+            ("72A", "01", 5),
         ])
         assert "Schedule 12" in result.output
         assert "Schedule 40" in result.output
@@ -335,8 +299,8 @@ class TestOutputFormatting:
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
-            ("22", "01.01", 10),
-            ("22", "02.01", 20),
+            ("22", "01", 10),
+            ("22", "02", 20),
         ])
         assert "2 gap(s)" in result.output
 
@@ -387,7 +351,7 @@ class TestCLIOptions:
         """Exit code is 0 even when gaps are found (gaps are informational, not an error)."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        result = _invoke(csv_path, [("22", "01.01", 5)])
+        result = _invoke(csv_path, [("22", "01", 5)])
         assert result.exit_code == 0
 
     def test_missing_csv_raises_error(self, tmp_path: Path) -> None:
@@ -427,15 +391,32 @@ def _seed_municipality(session: Session, munid: str = "TSTVAL") -> None:
 
 
 def _seed_fir_records(session: Session, rows: list[dict[str, Any]], munid: str = "TSTVAL") -> None:
-    """Insert FIRRecord rows into the test DB."""
+    """Insert FIRRecord rows with derived SLC columns into the test DB."""
+    import pandas as pd
     from sqlalchemy.dialects.postgresql import insert as pg_insert
+
+    from municipal_finances.db_management import _derive_slc_columns
+
+    df = _derive_slc_columns(pd.DataFrame({"slc": [r["slc"] for r in rows]}))
+
+    records = [
+        {
+            "munid": munid,
+            "marsyear": r["marsyear"],
+            "slc": r["slc"],
+            "schedule_code": df["schedule_code"][i],
+            "base_schedule_code": df["base_schedule_code"][i],
+            "sub_schedule_code": df["sub_schedule_code"][i],
+            "line_id": df["line_id"][i],
+            "column_section": df["column_section"][i],
+            "column_id": df["column_id"][i],
+        }
+        for i, r in enumerate(rows)
+    ]
 
     with session.get_bind().connect() as conn:
         conn.execute(
-            pg_insert(FIRRecord.__table__).values([
-                {"munid": munid, "marsyear": r["marsyear"], "slc": r["slc"]}
-                for r in rows
-            ]).on_conflict_do_nothing()
+            pg_insert(FIRRecord.__table__).values(records).on_conflict_do_nothing()
         )
         conn.commit()
 
@@ -460,16 +441,16 @@ class TestValidateColumnCoverageRealDB:
         _seed_municipality(session)
         _seed_fir_records(session, [
             {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.99X.L0010.C01.01"},  # no metadata for 99X
+            {"marsyear": 2025, "slc": "slc.99X.L0010.C01.01"},  # no metadata for 99 (X stripped)
         ])
 
         csv_path = tmp_path / "meta.csv"
-        _write_meta_csv(csv_path, [("22", "01")])  # covers 22/01 but not 99X/01
+        _write_meta_csv(csv_path, [("22", "01")])  # covers 22/01 but not 99/01
 
         result = self._invoke_with_engine(engine, csv_path)
 
         assert result.exit_code == 0, result.output
-        assert "Schedule 99X" in result.output
+        assert "Schedule 99" in result.output  # schedule_code strips X: "99X" → "99"
         assert "Schedule 22" not in result.output  # 22/01 is covered
 
     def test_no_gaps_when_all_covered_real_db(self, engine: Any, session: Session, tmp_path: Path) -> None:

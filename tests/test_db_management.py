@@ -5,7 +5,7 @@ from sqlmodel import SQLModel
 from typer.testing import CliRunner
 
 from municipal_finances.app import app
-from municipal_finances.db_management import _load_csv_into_db
+from municipal_finances.db_management import _derive_slc_columns, _load_csv_into_db
 
 runner = CliRunner()
 
@@ -682,3 +682,67 @@ def test_load_data_empty_parquet_skips_record_and_firdatasource_inserts(
     assert result.exit_code == 0
     assert mock_session.execute.call_count == 1  # muni upsert only
     mock_session.get.assert_not_called()  # no years → FIRDataSource loop skipped
+
+
+# ---------------------------------------------------------------------------
+# _derive_slc_columns
+# ---------------------------------------------------------------------------
+
+
+class TestDeriveSLCColumns:
+    """Unit tests for the SLC component derivation helper."""
+
+    def _df(self, slc_values):
+        return pd.DataFrame({"slc": slc_values})
+
+    def test_base_schedule_x_suffix(self):
+        """X-suffix schedule: schedule_code strips X; sub_schedule_code is None."""
+        df = _derive_slc_columns(self._df(["slc.10X.L9930.C01.01"]))
+        assert df["schedule_code"][0] == "10"
+        assert df["base_schedule_code"][0] == "10"
+        assert df["sub_schedule_code"][0] is None
+        assert df["line_id"][0] == "9930"
+        assert df["column_section"][0] == "01"
+        assert df["column_id"][0] == "01"
+
+    def test_sub_schedule_letter_suffix(self):
+        """Letter-suffix schedule: schedule_code keeps letter; sub_schedule_code is set."""
+        df = _derive_slc_columns(self._df(["slc.22D.L0010.C02.05"]))
+        assert df["schedule_code"][0] == "22D"
+        assert df["base_schedule_code"][0] == "22"
+        assert df["sub_schedule_code"][0] == "D"
+        assert df["line_id"][0] == "0010"
+        assert df["column_section"][0] == "02"
+        assert df["column_id"][0] == "05"
+
+    def test_alphanumeric_line_id(self):
+        """Line IDs with trailing letters (e.g. '000A') are preserved."""
+        df = _derive_slc_columns(self._df(["slc.76X.L000A.C01.01"]))
+        assert df["line_id"][0] == "000A"
+
+    def test_null_slc_yields_all_none(self):
+        """A row with slc=None produces None for all six derived columns."""
+        df = _derive_slc_columns(self._df([None]))
+        for col in ("schedule_code", "base_schedule_code", "sub_schedule_code",
+                    "line_id", "column_section", "column_id"):
+            assert df[col][0] is None
+
+    def test_non_slc_string_yields_all_none(self):
+        """A string without dots (like legacy 'SLC001') produces None for all columns."""
+        df = _derive_slc_columns(self._df(["SLC001"]))
+        for col in ("schedule_code", "base_schedule_code", "sub_schedule_code",
+                    "line_id", "column_section", "column_id"):
+            assert df[col][0] is None
+
+    def test_mixed_valid_and_null_rows(self):
+        """Valid rows get derived values; null rows stay None in the same DataFrame."""
+        df = _derive_slc_columns(self._df(["slc.10X.L9930.C01.01", None]))
+        assert df["schedule_code"][0] == "10"
+        assert df["schedule_code"][1] is None
+
+    def test_all_null_early_return(self):
+        """All-null slc DataFrame returns early without error."""
+        df = _derive_slc_columns(self._df([None, None]))
+        for col in ("schedule_code", "base_schedule_code", "sub_schedule_code",
+                    "line_id", "column_section", "column_id"):
+            assert list(df[col]) == [None, None]
