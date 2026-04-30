@@ -57,10 +57,10 @@ class PDFSLCComponents(TypedDict):
 #     other schedules use purely numeric 4-digit line IDs.
 #   - The column_id field is never empty in this data range; 30 distinct 2-character
 #     alphanumeric values were observed across 2020–2024 (e.g. 01–28, 0A, 0B);
-#     2025 data alone shows 19 distinct values. The pattern retains .* to stay
-#     permissive in case future data introduces other column_id values.
+#     2025 data alone shows 19 distinct values. The pattern requires exactly 2
+#     alphanumeric characters, matching what real data always produces.
 _SLC_PATTERN = re.compile(
-    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_section>\d{2})\.(?P<column_id>.*)$"
+    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_section>\d{2})\.(?P<column_id>[0-9A-Za-z]{2})$"
 )
 
 # Matches the PDF SLC format: [SLC ]<schedule> <line> <column>

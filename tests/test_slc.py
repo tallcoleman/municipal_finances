@@ -10,24 +10,19 @@ class TestParseSlc:
         assert result == {"schedule": "10X", "line_id": "9930", "column_section": "01", "column_id": "01"}
 
     def test_standard_slc(self):
-        """A well-formed numeric schedule SLC is parsed into all four components."""
-        result = parse_slc("slc.10.L9930.C01.")
-        assert result == {"schedule": "10", "line_id": "9930", "column_section": "01", "column_id": ""}
+        """A schedule code without X suffix is syntactically valid; column_id must be 2 chars."""
+        result = parse_slc("slc.10.L9930.C01.01")
+        assert result == {"schedule": "10", "line_id": "9930", "column_section": "01", "column_id": "01"}
 
     def test_lettered_schedule(self):
         """A schedule code with a letter suffix (e.g. 51A) is preserved exactly."""
-        result = parse_slc("slc.51A.L0410.C01.")
-        assert result == {"schedule": "51A", "line_id": "0410", "column_section": "01", "column_id": ""}
+        result = parse_slc("slc.51A.L0410.C01.01")
+        assert result == {"schedule": "51A", "line_id": "0410", "column_section": "01", "column_id": "01"}
 
     def test_other_lettered_schedules(self):
         """Multiple lettered schedule variants (22A, 74E) are each parsed correctly."""
-        assert parse_slc("slc.22A.L0210.C02.")["schedule"] == "22A"
-        assert parse_slc("slc.74E.L0110.C01.")["schedule"] == "74E"
-
-    def test_non_empty_column_id(self):
-        """A non-empty column_id (trailing segment after the last dot) is captured."""
-        result = parse_slc("slc.10.L9930.C01.A")
-        assert result == {"schedule": "10", "line_id": "9930", "column_section": "01", "column_id": "A"}
+        assert parse_slc("slc.22A.L0210.C02.01")["schedule"] == "22A"
+        assert parse_slc("slc.74E.L0110.C01.01")["schedule"] == "74E"
 
     def test_alphanumeric_line_id(self):
         """Schedules 76X, 80C, and 81X use line IDs like '000A'; the parser accepts them."""
@@ -57,7 +52,17 @@ class TestParseSlc:
     def test_invalid_short_column_section(self):
         """A column section with fewer than 2 digits raises ValueError."""
         with pytest.raises(ValueError, match="Invalid SLC format"):
-            parse_slc("slc.10.L9930.C1.")
+            parse_slc("slc.10.L9930.C1.01")
+
+    def test_invalid_empty_column_id(self):
+        """A missing column_id (trailing dot with nothing after) raises ValueError."""
+        with pytest.raises(ValueError, match="Invalid SLC format"):
+            parse_slc("slc.10.L9930.C01.")
+
+    def test_invalid_short_column_id(self):
+        """A column_id with fewer than 2 characters raises ValueError."""
+        with pytest.raises(ValueError, match="Invalid SLC format"):
+            parse_slc("slc.10.L9930.C01.0")
 
     def test_invalid_empty_string(self):
         """An empty string raises ValueError."""
@@ -158,23 +163,26 @@ class TestPdfSlcToComponents:
 
 class TestRoundTrip:
     def test_parse_then_to_pdf_then_parse(self):
-        """parse_slc -> slc_to_pdf_format -> pdf_slc_to_components produces consistent results."""
-        original = "slc.10.L9930.C01."
+        """parse_slc -> slc_to_pdf_format -> pdf_slc_to_components produces consistent results.
+
+        The round-trip is lossy: column_section is not encoded in the PDF SLC format.
+        """
+        original = "slc.10.L9930.C01.01"
         components = parse_slc(original)
-        pdf_ref = slc_to_pdf_format(components["schedule"], components["line_id"], components["column_section"])
+        pdf_ref = slc_to_pdf_format(components["schedule"], components["line_id"], components["column_id"])
         parsed_back = pdf_slc_to_components(pdf_ref)
 
         assert parsed_back["schedule"] == components["schedule"]
         assert parsed_back["line_id"] == components["line_id"]
-        assert parsed_back["column_id"] == components["column_section"]
+        assert parsed_back["column_id"] == components["column_id"]
 
     def test_round_trip_lettered_schedule(self):
         """Round-trip conversion preserves a lettered schedule code (51A) through both formats."""
-        original = "slc.51A.L0410.C03."
+        original = "slc.51A.L0410.C03.01"
         components = parse_slc(original)
-        pdf_ref = slc_to_pdf_format(components["schedule"], components["line_id"], components["column_section"])
+        pdf_ref = slc_to_pdf_format(components["schedule"], components["line_id"], components["column_id"])
         parsed_back = pdf_slc_to_components(pdf_ref)
 
         assert parsed_back["schedule"] == "51A"
         assert parsed_back["line_id"] == "0410"
-        assert parsed_back["column_id"] == "03"
+        assert parsed_back["column_id"] == "01"
