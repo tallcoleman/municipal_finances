@@ -1,7 +1,7 @@
 # Progress Tracker
 
 - [x] 01_database_models.md (https://github.com/tallcoleman/municipal_finances/pull/4)
-- [ ] 01b_update_data_model.md — add `schedule_code` column to `firrecord`
+- [ ] 01b_update_data_model.md — add `schedule_code` column to `firrecord` (PR pending)
 - [x] 02_slc_parsing_utility.md (https://github.com/tallcoleman/municipal_finances/pull/1)
 - [x] 02b_slc_format_verification.md (https://github.com/tallcoleman/municipal_finances/pull/7)
 - [x] 03_content_changes_extraction.md (https://github.com/tallcoleman/municipal_finances/pull/10)
