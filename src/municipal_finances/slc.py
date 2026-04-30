@@ -60,7 +60,7 @@ class PDFSLCComponents(TypedDict):
 #     2025 data alone shows 19 distinct values. The pattern requires exactly 2
 #     alphanumeric characters, matching what real data always produces.
 _SLC_PATTERN = re.compile(
-    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_section>\d{2})\.(?P<column_id>[0-9A-Za-z]{2})$"
+    r"^slc\.(?P<schedule>\d{2}[A-Za-z])\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_section>\d{2})\.(?P<column_id>[0-9A-Za-z]{2})$"
 )
 
 # Matches the PDF SLC format: [SLC ]<schedule> <line> <column>

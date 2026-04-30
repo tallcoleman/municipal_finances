@@ -9,10 +9,10 @@ class TestParseSlc:
         result = parse_slc("slc.10X.L9930.C01.01")
         assert result == {"schedule": "10X", "line_id": "9930", "column_section": "01", "column_id": "01"}
 
-    def test_standard_slc(self):
-        """A schedule code without X suffix is syntactically valid; column_id must be 2 chars."""
-        result = parse_slc("slc.10.L9930.C01.01")
-        assert result == {"schedule": "10", "line_id": "9930", "column_section": "01", "column_id": "01"}
+    def test_invalid_no_letter_suffix(self):
+        """A schedule code without a letter suffix (e.g. '10' instead of '10X') raises ValueError."""
+        with pytest.raises(ValueError, match="Invalid SLC format"):
+            parse_slc("slc.10.L9930.C01.01")
 
     def test_lettered_schedule(self):
         """A schedule code with a letter suffix (e.g. 51A) is preserved exactly."""
@@ -36,8 +36,8 @@ class TestParseSlc:
 
     def test_numeric_column_id(self):
         """A two-digit numeric column_id (the most common form in real data) is captured."""
-        result = parse_slc("slc.10.L9930.C01.01")
-        assert result == {"schedule": "10", "line_id": "9930", "column_section": "01", "column_id": "01"}
+        result = parse_slc("slc.10X.L9930.C01.01")
+        assert result == {"schedule": "10X", "line_id": "9930", "column_section": "01", "column_id": "01"}
 
     def test_invalid_missing_prefix(self):
         """A string missing the leading 'slc.' prefix raises ValueError."""
@@ -167,7 +167,7 @@ class TestRoundTrip:
 
         The round-trip is lossy: column_section is not encoded in the PDF SLC format.
         """
-        original = "slc.10.L9930.C01.01"
+        original = "slc.10X.L9930.C01.01"
         components = parse_slc(original)
         pdf_ref = slc_to_pdf_format(components["schedule"], components["line_id"], components["column_id"])
         parsed_back = pdf_slc_to_components(pdf_ref)
