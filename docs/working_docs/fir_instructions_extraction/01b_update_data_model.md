@@ -77,12 +77,14 @@ This format appears to omit the column section information that the CSV and data
 The instructions documents also use a wildcard format in some cases to refer to an entire line or column, e.g. "SLC 40 xxxx 01" to refer to all values in column 01 in schedule 40.
 ## Goal
 
-Add `base_schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and 
-`column_id` as pre-parsed columns to `firrecord` so that:
+Add `schedule_code`, `base_schedule_code`, `sub_schedule_code`, `line_id`,
+`column_section`, and `column_id` as pre-parsed columns to `firrecord` so that:
 
-- Querying all records for a given schedule is a simple `WHERE base_schedule_code =
-  '12'`
-- Joining `firrecord` to `fir_schedule_meta` requires no runtime string parsing
+- Querying all records for a given schedule (including all its sub-schedules) is
+  a simple `WHERE base_schedule_code = '12'`
+- Querying records for a specific sub-schedule is a simple `WHERE schedule_code = '74A'`
+- Joining `firrecord` to `fir_schedule_meta` is a direct equality on `schedule_code`
+  with no runtime string parsing
 - Validation queries (e.g. `validate-schedule-coverage`) do not need SQL string
   functions
 
@@ -90,45 +92,61 @@ Add `base_schedule_code`, `sub_schedule_code`, `line_id`, `column_section`, and
 
 ### New columns on `firrecord`
 
-| Column               | Type          | Derivation                                                                                             |
-| -------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
-| `base_schedule_code` | `VARCHAR(10)` | `split_part(slc, '.', 2)` with trailing letter stripped (e.g. `10X` → `"10"`, `22D` → `"22"`)          |
-| `sub_schedule_code`  | `VARCHAR(10)` | `split_part(slc, '.', 2)` including just the trailing letter. Should be NULL if trailing letter is `X` |
-| `line_id`            | `VARCHAR(20)` | `split_part(slc, '.', 3)` with leading `L` stripped                                                    |
-| `column_section`     | `VARCHAR(10)` | `split_part(slc, '.', 4)` with leading `C` stripped                                                    |
-| `column_id`          | `VARCHAR(10)` | `split_part(slc, '.', 5)`                                                                              |
+The raw SLC encodes the base schedule and sub-schedule together (e.g. `22D` is schedule
+22, sub-schedule D; `10X` is base schedule 10 with no sub-schedule). Three columns split
+this into independently queryable parts:
 
-`base_schedule_code`, `line_id`, `column_section`, and `column_id` should be NOT NULL (all valid records have an SLC). `base_schedule_code` should also be indexed.
+| Column               | Type         | Derivation                                                                                                                     |
+| -------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `schedule_code`      | `VARCHAR(3)` | `split_part(slc, '.', 2)` with trailing `X` stripped (e.g. `10X` → `"10"`, `22D` → `"22D"`). Joins to `fir_schedule_meta.schedule`. |
+| `base_schedule_code` | `VARCHAR(2)` | First two characters of `schedule_code` — always the 2-digit numeric portion (e.g. `"10"`, `"22"`).                           |
+| `sub_schedule_code`  | `VARCHAR(1)` | Third character of `split_part(slc, '.', 2)` if not `X`, else NULL (e.g. `"D"` for `22D`, NULL for `10X`).                   |
+| `line_id`            | `VARCHAR(4)` | `split_part(slc, '.', 3)` with leading `L` stripped.                                                                          |
+| `column_section`     | `VARCHAR(2)` | `split_part(slc, '.', 4)` with leading `C` stripped.                                                                          |
+| `column_id`          | `VARCHAR(2)` | `split_part(slc, '.', 5)`.                                                                                                     |
+
+All columns except `sub_schedule_code` should be NOT NULL (all valid records have an SLC
+with every component present). Indexed: `base_schedule_code` (primary filter for broad
+schedule queries) and `schedule_code` (joins to `fir_schedule_meta`, sub-schedule exact
+lookups). `sub_schedule_code` is not indexed separately — too few distinct values to be
+selective, and it is always covered by the other two indexes for any real query.
+
+**Query patterns:**
+
+```sql
+-- All records for schedule 74, including all sub-schedules
+WHERE base_schedule_code = '74'
+
+-- Records for sub-schedule 74A specifically
+WHERE schedule_code = '74A'
+
+-- Join to fir_schedule_meta (direct equality, no string functions)
+JOIN fir_schedule_meta ON firrecord.schedule_code = fir_schedule_meta.schedule
+```
 
 ### Migration
 
-1. Update `models.py` to add the new columns to `FIRRecord`.
+1. Update `models.py` to add the six new columns to `FIRRecord`.
 2. Generate a migration: `uv run alembic revision --autogenerate -m "add schedule columns to firrecord"`
-3. Review the generated migration file. Autogenerate produces the `ADD COLUMN` statements but does **not** generate the backfill or custom index, so add manually:
-   - A backfill `UPDATE firrecord SET base_schedule_code = ...` (and the other columns) using the same string logic as `validate_schedule_coverage.py`
+3. Review the generated migration file. Autogenerate produces the `ADD COLUMN` statements but does **not** generate the backfill or custom indexes, so add manually:
+   - A backfill `UPDATE firrecord SET schedule_code = ..., base_schedule_code = ..., sub_schedule_code = ...` (and the other columns) using the same string logic as `validate_schedule_coverage.py`
    - `CREATE INDEX ix_firrecord_base_schedule_code ON firrecord (base_schedule_code)`
+   - `CREATE INDEX ix_firrecord_schedule_code ON firrecord (schedule_code)`
 4. Apply: `uv run alembic upgrade head`
 5. Update `db_management.py` / `load-data` pipeline to populate the new columns during future bulk loads (so re-loads do not need a separate migration step).
-
-### Separate `schedule` and `sub_schedule`
-
-The raw SLC encodes the base schedule and sub-schedule together (e.g. `22D` is
-schedule 22, sub-schedule D).  To support filtering
-independently on base schedule vs. sub-schedule letter, two columns can be used:
-
-- `base_schedule_code` — numeric prefix (e.g. `"22"`)
-- `sub_schedule_code` — letter suffix (e.g. `"D"`, NULL for base schedules)
 
 ## Impact
 
 - `validate_schedule_coverage.py` can be simplified to query
   `SELECT DISTINCT base_schedule_code ...` instead of parsing `slc` in SQL
 - `validate_column_coverage.py` similarly
-- Future API endpoints that filter by schedule gain a clean, indexed column
+- Future API endpoints can filter by `base_schedule_code` (all sub-schedules included)
+  or `schedule_code` (specific sub-schedule), both using indexed equality predicates
+- Joins to `fir_schedule_meta` become a direct `ON schedule_code = fir_schedule_meta.schedule`
 
 ## Task List
 
-- [ ] Add migration script (Alembic or raw SQL)
+- [ ] Add Alembic migration script
 - [ ] Update `models.py` (`FIRRecord` class)
 - [ ] Update `db_management.py` to populate new columns during `load-data`
 - [ ] Simplify `validate_schedule_coverage.py` to use `base_schedule_code`
