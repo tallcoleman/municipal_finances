@@ -1,4 +1,4 @@
-# Task 06c: Clean Up FIR Markdown Files for 2019–2024
+# Task 07a: Clean Up FIR Markdown Files for 2019–2024
 
 ## Context
 
@@ -14,7 +14,7 @@ would cause the extractors (schedule meta, line meta, column meta) to fail or
 produce wrong results when applied to earlier years.
 
 This task produces clean, validated markdown files for 2019–2024 so that task
-07 (apply metadata extraction backwards) can proceed reliably.
+07b (apply metadata extraction backwards) can proceed reliably.
 
 ## Approach
 

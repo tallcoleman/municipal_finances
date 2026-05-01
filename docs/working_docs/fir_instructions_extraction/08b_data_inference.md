@@ -8,7 +8,7 @@ For FIR years without instructions PDFs, infer structural changes (new/deleted l
 
 - Task 01 (database models) complete
 - Task 02 (SLC parsing) complete
-- Task 07 (Phase 2 versioning) complete
+- Task 07b (Phase 2 versioning) complete
 - Task 08a (reporting completeness) complete — provides the set of municipalities that have reported for each year, used to filter inference queries
 - `firrecord` data loaded for the years being compared
 

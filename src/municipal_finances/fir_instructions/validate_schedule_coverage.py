@@ -1,8 +1,9 @@
 """Check schedule metadata coverage against 2025 FIR database records.
 
 Queries ``firrecord`` for all distinct schedule codes present in 2025 data
-(parsed from the ``slc`` column, with the trailing-X suffix normalised), then
-compares them against the extracted schedule metadata CSV.  Reports:
+using the pre-parsed ``base_schedule_code`` and ``schedule_code`` columns, then
+compares them against the extracted schedule metadata CSV.  Reports gaps
+separately for base schedules and sub-schedules:
 
 - Schedules in the database but missing from the CSV (possible extractor gaps).
 - Schedules in the CSV but absent from the database (may be unused or new codes
@@ -33,6 +34,38 @@ app = typer.Typer()
 _DEFAULT_YEAR = 2025
 
 
+def _report_gaps(
+    label: str,
+    db_codes: dict[str, int],
+    csv_codes: set[str],
+) -> bool:
+    """Print gap report for one schedule tier; return True if any gaps found."""
+    in_db_not_csv = sorted(set(db_codes) - csv_codes)
+    in_csv_not_db = sorted(csv_codes - set(db_codes))
+
+    if not in_db_not_csv and not in_csv_not_db:
+        typer.echo(f"  No gaps — {label} match exactly.")
+        return False
+
+    if in_db_not_csv:
+        typer.echo(
+            f"  {len(in_db_not_csv)} {label} in DB but NOT in CSV "
+            "(possible extractor gaps):"
+        )
+        for code in in_db_not_csv:
+            typer.echo(f"    {code}  —  {db_codes[code]:,} records")
+
+    if in_csv_not_db:
+        typer.echo(
+            f"  {len(in_csv_not_db)} {label} in CSV but NOT in DB "
+            "(unused codes or not yet loaded):"
+        )
+        for code in in_csv_not_db:
+            typer.echo(f"    {code}")
+
+    return True
+
+
 @app.command()
 def validate_schedule_coverage(
     csv_path: Path = typer.Option(
@@ -47,73 +80,62 @@ def validate_schedule_coverage(
     """Report schedules in firrecord or the CSV that are missing from the other.
 
     Reads the baseline CSV produced by ``extract-baseline-schedule-meta``, then
-    queries the database for all distinct schedule codes present in the given
-    year's firrecord data.  The trailing-X suffix used in SLC codes (e.g.
-    ``12X`` for base schedules) is stripped before comparison so both sources
-    use the same naming convention.
-
-    Prints two lists:
-
-    - **In DB, not in CSV** — schedules found in live data but no metadata row.
-    - **In CSV, not in DB** — metadata rows with no matching data (possibly
-      unused schedules or codes not yet loaded).
+    queries the database for distinct schedule codes in the given year's
+    firrecord data.  Reports gaps separately for base schedules (e.g. ``"10"``)
+    and sub-schedules (e.g. ``"22A"``).
     """
-    # Load schedule codes from CSV.
-    csv_schedules: set[str] = set()
+    # Partition CSV entries into base schedules (2-char) and sub-schedules (3-char).
+    csv_base: set[str] = set()
+    csv_sub: set[str] = set()
     with open(csv_path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            csv_schedules.add(row["schedule"])
+            code = row["schedule"]
+            (csv_sub if len(code) == 3 else csv_base).add(code)
 
-    typer.echo(f"Loaded {len(csv_schedules)} schedule(s) from {csv_path}.")
+    typer.echo(
+        f"Loaded {len(csv_base)} base schedule(s) and {len(csv_sub)} "
+        f"sub-schedule(s) from {csv_path}."
+    )
 
-    # Query DB for distinct schedule codes in the year's firrecord data.
-    # slc format: slc.<schedule>.L<line>.C<column_id>.<sub>
     engine = get_engine()
     with Session(engine) as session:
-        result = session.execute(
+        base_rows = session.execute(
             text("""
-                SELECT
-                    split_part(slc, '.', 2) AS schedule_raw,
-                    COUNT(*)                AS record_count
+                SELECT base_schedule_code, COUNT(*) AS record_count
                 FROM firrecord
                 WHERE marsyear = :year
-                  AND slc IS NOT NULL
-                GROUP BY schedule_raw
-                ORDER BY schedule_raw
+                  AND base_schedule_code IS NOT NULL
+                GROUP BY base_schedule_code
+                ORDER BY base_schedule_code
             """),
             {"year": year},
         ).fetchall()
 
-    # Normalise trailing-X suffix (e.g. "12X" → "12") and accumulate counts.
-    db_schedules: dict[str, int] = {}
-    for schedule_raw, count in result:
-        normalised = schedule_raw[:-1] if schedule_raw.endswith("X") else schedule_raw
-        db_schedules[normalised] = db_schedules.get(normalised, 0) + count
+        sub_rows = session.execute(
+            text("""
+                SELECT schedule_code, COUNT(*) AS record_count
+                FROM firrecord
+                WHERE marsyear = :year
+                  AND sub_schedule_code IS NOT NULL
+                GROUP BY schedule_code
+                ORDER BY schedule_code
+            """),
+            {"year": year},
+        ).fetchall()
+
+    db_base: dict[str, int] = {code: count for code, count in base_rows}
+    db_sub: dict[str, int] = {code: count for code, count in sub_rows}
 
     typer.echo(
-        f"Found {len(db_schedules)} distinct schedule code(s) in "
-        f"{year} firrecord data."
+        f"Found {len(db_base)} distinct base schedule(s) and "
+        f"{len(db_sub)} distinct sub-schedule(s) in {year} firrecord data."
     )
 
-    in_db_not_csv = sorted(set(db_schedules) - csv_schedules)
-    in_csv_not_db = sorted(csv_schedules - set(db_schedules))
+    typer.echo("\nBase schedules:")
+    base_gaps = _report_gaps("base schedule(s)", db_base, csv_base)
 
-    if not in_db_not_csv and not in_csv_not_db:
-        typer.echo("\nNo gaps found — DB schedules and CSV schedules match exactly.")
-        return
+    typer.echo("\nSub-schedules:")
+    sub_gaps = _report_gaps("sub-schedule(s)", db_sub, csv_sub)
 
-    if in_db_not_csv:
-        typer.echo(
-            f"\n{len(in_db_not_csv)} schedule(s) in DB but NOT in CSV "
-            "(possible extractor gaps):"
-        )
-        for code in in_db_not_csv:
-            typer.echo(f"  {code}  —  {db_schedules[code]:,} records")
-
-    if in_csv_not_db:
-        typer.echo(
-            f"\n{len(in_csv_not_db)} schedule(s) in CSV but NOT in DB "
-            "(unused codes or not yet loaded):"
-        )
-        for code in in_csv_not_db:
-            typer.echo(f"  {code}")
+    if not base_gaps and not sub_gaps:
+        typer.echo("\nNo gaps found overall.")

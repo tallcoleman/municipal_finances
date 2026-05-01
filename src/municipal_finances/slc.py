@@ -2,9 +2,9 @@
 
 The SLC field on ``firrecord`` encodes a schedule, line, and column as:
 
-    slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}
+    slc.{schedule_code}.L{line_4chars}.C{column_section}.{column_id}
 
-Example: ``slc.10X.L9930.C01.01`` = Schedule 10, Line 9930, Column 01, Sub 01.
+Example: ``slc.10X.L9930.C01.01`` = Schedule 10, Line 9930, Column Section 01, Column 01.
 
 **X-suffix convention:** base schedules (those without an alphabetic sub-schedule
 letter) use a trailing ``X`` in the schedule code.  So Schedule 10 appears as
@@ -13,9 +13,10 @@ unchanged (``51A``, ``74D``, ``26B``, etc.).  Callers that need to join against
 instruction metadata (which stores codes without the X) must strip the trailing X
 before the lookup.
 
-The line ID is typically 4 digits (e.g. ``9930``) but some schedules (76X, 80C, 81X)
-use a 3-digit-plus-letter form (e.g. ``000A``, ``000B``). The sub field is always a
-non-empty 2-character alphanumeric code in practice (e.g. ``01``, ``0A``).
+The line ID is a 4-character alphanumeric code, typically all digits (e.g. ``9930``),
+but schedules 76X, 80C, and 81X use codes like ``000A`` and ``000B``. The column_id
+field is always a non-empty 2-character alphanumeric code in practice (e.g. ``01``,
+``0A``).
 
 The FIR Instructions PDFs use a different, space-separated format:
 
@@ -35,8 +36,8 @@ class SLCComponents(TypedDict):
 
     schedule: str
     line_id: str
+    column_section: str
     column_id: str
-    sub: str
 
 
 class PDFSLCComponents(TypedDict):
@@ -46,18 +47,20 @@ class PDFSLCComponents(TypedDict):
     line_id: str | None
     column_id: str | None
 
-# Matches the database SLC format: slc.<schedule>.L<line>.C<column>.<sub>
+
+# Matches the database SLC format: slc.<schedule>.L<line>.C<column_section>.<column_id>
 #
-# Verification against firrecord (2020–2024 data, checked 2026-04-03):
+# Verification against firrecord (2020–2025 data, last checked 2026-04-29):
 #   - All SLC values match this pattern after the line_id was broadened from \d{4}
 #     to [0-9A-Z]{4}.
 #   - Schedules 76X, 80C, and 81X use alphanumeric line IDs (000A, 000B); all
 #     other schedules use purely numeric 4-digit line IDs.
-#   - The sub field is never empty in this data range; 30 distinct 2-character
-#     alphanumeric values were observed (e.g. 01–28, 0A, 0B). The pattern retains
-#     .* to stay permissive in case future data introduces other sub values.
+#   - The column_id field is never empty in this data range; 30 distinct 2-character
+#     alphanumeric values were observed across 2020–2024 (e.g. 01–28, 0A, 0B);
+#     2025 data alone shows 19 distinct values. The pattern requires exactly 2
+#     alphanumeric characters, matching what real data always produces.
 _SLC_PATTERN = re.compile(
-    r"^slc\.(?P<schedule>[^.]+)\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_id>\d{2})\.(?P<sub>.*)$"
+    r"^slc\.(?P<schedule>\d{2}[A-Za-z])\.L(?P<line_id>[0-9A-Z]{4})\.C(?P<column_section>\d{2})\.(?P<column_id>[0-9A-Za-z]{2})$"
 )
 
 # Matches the PDF SLC format: [SLC ]<schedule> <line> <column>
@@ -74,22 +77,26 @@ _WILDCARD_RE = re.compile(r"^x+$", re.IGNORECASE)
 def parse_slc(slc: str) -> SLCComponents:
     """Parse a database SLC string into its component parts.
 
-    Input format: ``slc.{schedule_code}.L{line_4chars}.C{column_2digits}.{sub}``
+    Input format: ``slc.{schedule_code}.L{line_4chars}.C{column_section}.{column_id}``
 
-    The line ID is usually 4 digits (e.g. ``9930``) but may be a 3-digit-plus-letter
-    code such as ``000A`` on schedules 76X, 80C, and 81X.
+    The line ID is a 4-character alphanumeric code, usually all digits (e.g. ``9930``),
+    but schedules 76X, 80C, and 81X use codes like ``000A`` and ``000B``.
 
     Example::
 
         >>> parse_slc("slc.10X.L9930.C01.01")
-        {'schedule': '10X', 'line_id': '9930', 'column_id': '01', 'sub': '01'}
+        {'schedule': '10X', 'line_id': '9930', 'column_section': '01', 'column_id': '01'}
 
     Args:
         slc: A database SLC string.
 
     Returns:
-        A dict with keys ``schedule``, ``line_id``, ``column_id``, and ``sub``.
+        A dict with keys ``schedule``, ``line_id``, ``column_section``, and ``column_id``.
         ``schedule`` is the raw code from the SLC field (e.g. ``"10X"``, ``"51A"``).
+        ``column_section`` is the 2-digit grouping number (from ``C01``, ``C02``, etc.)
+        that identifies a set of columns sharing the same headings.
+        ``column_id`` is the specific column or fill-in label within that section
+        (e.g. ``"01"``, ``"02"``, ``"0A"``).
         To look up instruction metadata (which omits the trailing X), strip a
         trailing ``X`` from base schedules before the join.
 
@@ -100,13 +107,13 @@ def parse_slc(slc: str) -> SLCComponents:
     if not match:
         raise ValueError(
             f"Invalid SLC format: {slc!r}. "
-            "Expected 'slc.<schedule>.L<line_4digits>.C<column_2digits>.<sub>'"
+            "Expected 'slc.<schedule>.L<line_4chars>.C<column_section>.<column_id>'"
         )
     return {
         "schedule": match.group("schedule"),
         "line_id": match.group("line_id"),
+        "column_section": match.group("column_section"),
         "column_id": match.group("column_id"),
-        "sub": match.group("sub"),
     }
 
 
@@ -120,7 +127,7 @@ def slc_to_pdf_format(schedule: str, line_id: str, column_id: str) -> str:
 
     Args:
         schedule: Schedule code, e.g. ``"10"`` or ``"51A"``.
-        line_id: 4-digit line ID string, e.g. ``"9930"``.
+        line_id: 4-character line ID string, e.g. ``"9930"``.
         column_id: 2-digit column ID string, e.g. ``"01"``.
 
     Returns:

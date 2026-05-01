@@ -1,12 +1,12 @@
 # Progress Tracker
 
 - [x] 01_database_models.md (https://github.com/tallcoleman/municipal_finances/pull/4)
-- [ ] 01b_update_data_model.md — add `schedule_code` column to `firrecord`
+- [ ] 01b_update_data_model.md — add `schedule_code` column to `firrecord` (https://github.com/tallcoleman/municipal_finances/pull/27)
 - [x] 02_slc_parsing_utility.md (https://github.com/tallcoleman/municipal_finances/pull/1)
 - [x] 02b_slc_format_verification.md (https://github.com/tallcoleman/municipal_finances/pull/7)
 - [x] 03_content_changes_extraction.md (https://github.com/tallcoleman/municipal_finances/pull/10)
 - [x] 04_baseline_schedule_meta.md (https://github.com/tallcoleman/municipal_finances/pull/13)
-- [ ] 04a_add_authentication.md (optional — may do before task 07)
+- [ ] 04a_add_authentication.md (optional — may do before task 07b)
 - [x] Revisit 04_baseline_schedule_meta.md using `markdown_clean/` files (https://github.com/tallcoleman/municipal_finances/pull/24)
 - [ ] 04c_extend_schedule_meta_50_codes.md — extend catalogue from 35 → 50 codes
 - [ ] 04d_fir_source_data_investigation.md — investigate 22D/24D encoding and Schedule 62 absence
@@ -15,8 +15,9 @@
 - [ ] 05c: revisit line meta — validate against actual DB entries (task doc TBD)
 - [x] 06_baseline_column_meta.md (https://github.com/tallcoleman/municipal_finances/pull/20)
 - [x] Revisit 06_baseline_column_meta.md using `markdown_clean/` files
-- [ ] 06c_markdown_cleanup_2019_2024.md — prepare earlier years for task 07
-- [ ] 07_apply_changes_backwards.md
+- [ ] 06c_update_extract_column_meta.md — add column_section inference and cross-validate with DB (depends on 04c, 05c)
+- [ ] 07a_markdown_cleanup_2019_2024.md — prepare earlier years for task 07b
+- [ ] 07b_apply_changes_backwards.md
 - [ ] 08a_reporting_completeness_inference.md
 - [ ] 08b_data_inference.md
 - [ ] 09_file_persistence.md

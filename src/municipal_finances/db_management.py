@@ -40,6 +40,34 @@ RECORD_COLUMN_MAP = {
 }
 
 
+def _derive_slc_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Add pre-parsed SLC component columns derived from the ``slc`` field.
+
+    For rows where ``slc`` is null or not a valid SLC string, all derived
+    columns are set to None (inserted as NULL).
+    """
+    for col in ("schedule_code", "base_schedule_code", "sub_schedule_code",
+                "line_id", "column_section", "column_id"):
+        df[col] = None
+
+    parts = df["slc"].str.split(".", expand=False)
+    schedule_raw = parts.str[1]  # NaN for null/short SLC, "10X"/"22D" for valid
+    valid = schedule_raw.notna()
+    if not valid.any():
+        return df
+
+    sr = schedule_raw[valid]
+    p = parts[valid]
+    has_x = sr.str[-1:] == "X"
+    df.loc[valid, "schedule_code"] = sr.where(~has_x, sr.str[:-1])
+    df.loc[valid, "base_schedule_code"] = sr.str[:2]
+    df.loc[valid, "sub_schedule_code"] = sr.str[2:].where(~has_x, None)
+    df.loc[valid, "line_id"] = p.str[2].str[1:]  # strip leading L
+    df.loc[valid, "column_section"] = p.str[3].str[1:]  # strip leading C
+    df.loc[valid, "column_id"] = p.str[4]
+    return df
+
+
 def _load_csv_into_db(csv_path: Path, engine, chunk_size: int) -> int:
     """Upsert municipalities and insert FIR records from a single cleaned CSV.
     Returns total number of FIR rows loaded."""
@@ -60,6 +88,7 @@ def _load_csv_into_db(csv_path: Path, engine, chunk_size: int) -> int:
     # Chunk-insert FIR records
     record_cols = list(RECORD_COLUMN_MAP.keys())
     records_df = df[record_cols].rename(columns=RECORD_COLUMN_MAP)
+    records_df = _derive_slc_columns(records_df)
     for i in range(0, total_rows, chunk_size):
         chunk = records_df.iloc[i : i + chunk_size]
         chunk = chunk.where(pd.notna(chunk), None)
@@ -104,7 +133,7 @@ def clear_db(
 @app.command()
 def load_data(
     parquet_path: Path,
-    chunk_size: int = typer.Option(5_000, help="Rows per insert batch"),
+    chunk_size: int = typer.Option(3_800, help="Rows per insert batch"),
 ):
     """Load FIR data from parquet file into the database using DATABASE_URL from environment."""
     engine = get_engine()
@@ -132,6 +161,7 @@ def load_data(
     typer.echo("Loading FIR records...")
     record_cols = list(RECORD_COLUMN_MAP.keys())
     records_df = df[record_cols].rename(columns=RECORD_COLUMN_MAP)
+    records_df = _derive_slc_columns(records_df)
 
     for i in range(0, total_rows, chunk_size):
         chunk = records_df.iloc[i : i + chunk_size]
@@ -173,7 +203,7 @@ def load_years(
     max_year: Optional[int] = typer.Option(None, help="Maximum year to load (inclusive)"),
     source_data_path: Path = typer.Option(Path("data/source_data"), help="Directory for downloaded zip/CSV files"),
     cleaned_data_path: Path = typer.Option(Path("data/cleaned_data"), help="Directory for cleaned CSV files"),
-    chunk_size: int = typer.Option(5_000, help="Rows per insert batch"),
+    chunk_size: int = typer.Option(3_800, help="Rows per insert batch"),
 ):
     """Download, clean, and load FIR data for one or more years.
 

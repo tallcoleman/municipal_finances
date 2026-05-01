@@ -1,5 +1,10 @@
 # Task 04c: Extend Baseline Schedule Metadata to 50 Codes
 
+## TODO - add the following
+
+The values for Schedule 22A, 22B, and 22C are definitely missing from the source CSVs.
+
+Need to validate the CSVs to make sure the cleaning is working.
 ## Context
 
 `validate-schedule-coverage` revealed 12 schedule codes present in the 2025 `firrecord` DB

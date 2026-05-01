@@ -44,6 +44,12 @@ class FIRRecord(SQLModel, table=True):
     amount: Optional[float] = Field(default=None)
     value_text: Optional[str] = Field(default=None)
     last_update_date: Optional[str] = Field(default=None)
+    schedule_code: Optional[str] = Field(default=None, max_length=3, index=True)
+    base_schedule_code: Optional[str] = Field(default=None, max_length=2, index=True)
+    sub_schedule_code: Optional[str] = Field(default=None, max_length=1)
+    line_id: Optional[str] = Field(default=None, max_length=4)
+    column_section: Optional[str] = Field(default=None, max_length=2)
+    column_id: Optional[str] = Field(default=None, max_length=2)
 
 
 class FIRScheduleMeta(SQLModel, table=True):
