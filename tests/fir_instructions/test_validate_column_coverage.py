@@ -112,7 +112,7 @@ class TestNoGaps:
         assert "3" in result.output
 
     def test_db_pair_count_echoed(self, tmp_path: Path) -> None:
-        """The number of distinct (schedule, column_section) pairs found in DB is echoed."""
+        """The number of distinct (schedule, column_id) pairs found in DB is echoed."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01")])
         result = _invoke(csv_path, [("22", "01", 5)])
@@ -126,13 +126,13 @@ class TestNoGaps:
 
 class TestGapDetection:
     def test_gap_reported_for_missing_pair(self, tmp_path: Path) -> None:
-        """A (schedule, column_section) in DB but absent from CSV appears in the report."""
+        """A (schedule, column_id) in DB but absent from CSV appears in the report."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [("22", "01")])
         result = _invoke(csv_path, [("22", "01", 100), ("22", "02", 50)])
         assert result.exit_code == 0, result.output
         assert "Schedule 22" in result.output
-        assert "Column 02" in result.output
+        assert "Column ID 02" in result.output
 
     def test_covered_pair_not_in_report(self, tmp_path: Path) -> None:
         """A pair that has metadata does not appear in the report."""
@@ -229,8 +229,8 @@ class TestXSuffixNormalisation:
             ("20", "02", 9),
         ])
         assert "Schedule 20" in result.output
-        assert "Column 02" in result.output
-        assert "Column 01" not in result.output
+        assert "Column ID 02" in result.output
+        assert "Column ID 01" not in result.output
 
 
 # ---------------------------------------------------------------------------
@@ -240,25 +240,25 @@ class TestXSuffixNormalisation:
 
 class TestCountAggregation:
     def test_multiple_subs_aggregated(self, tmp_path: Path) -> None:
-        """SQL GROUP BY (schedule_code, column_section) pre-aggregates counts."""
+        """SQL GROUP BY (schedule_code, column_id) pre-aggregates counts."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
-        # DB returns one pre-aggregated row (both "01.01" and "01.0A" share column_section "01")
+        # DB returns one pre-aggregated row for column_id "01"
         result = _invoke(csv_path, [("22", "01", 150)])
         assert "150" in result.output
-        lines = [line for line in result.output.splitlines() if "Column 01" in line]
-        assert len(lines) == 1, f"Expected 1 Column 01 line, got: {lines}"
+        lines = [line for line in result.output.splitlines() if "Column ID 01" in line]
+        assert len(lines) == 1, f"Expected 1 Column ID 01 line, got: {lines}"
 
     def test_different_columns_not_aggregated(self, tmp_path: Path) -> None:
-        """Rows for different column_sections within the same schedule remain separate."""
+        """Rows for different column_ids within the same schedule remain separate."""
         csv_path = tmp_path / "meta.csv"
         _write_meta_csv(csv_path, [])
         result = _invoke(csv_path, [
             ("22", "01", 100),
             ("22", "02", 50),
         ])
-        assert "Column 01" in result.output
-        assert "Column 02" in result.output
+        assert "Column ID 01" in result.output
+        assert "Column ID 02" in result.output
 
 
 # ---------------------------------------------------------------------------
@@ -458,7 +458,7 @@ class TestValidateColumnCoverageRealDB:
         _seed_municipality(session)
         _seed_fir_records(session, [
             {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.22X.L0020.C01.0A"},  # same schedule/col, different sub
+            {"marsyear": 2025, "slc": "slc.22X.L0020.C01.01"},  # same column_id, different line
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -502,12 +502,12 @@ class TestValidateColumnCoverageRealDB:
     def test_counts_aggregated_across_subs_real_db(
         self, engine: Any, session: Session, tmp_path: Path
     ) -> None:
-        """Multiple slc records with the same schedule+column but different subs → one gap entry."""
+        """Multiple slc records with same schedule+column_id but different lines → one gap entry."""
         _seed_municipality(session)
         _seed_fir_records(session, [
             {"marsyear": 2025, "slc": "slc.22X.L0010.C05.01"},
-            {"marsyear": 2025, "slc": "slc.22X.L0020.C05.02"},
-            {"marsyear": 2025, "slc": "slc.22X.L0030.C05.0A"},
+            {"marsyear": 2025, "slc": "slc.22X.L0020.C06.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0030.C07.01"},
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -516,9 +516,9 @@ class TestValidateColumnCoverageRealDB:
         result = self._invoke_with_engine(engine, csv_path)
 
         assert result.exit_code == 0, result.output
-        assert "Column 05" in result.output
-        # Count should be aggregated across all 3 rows
+        assert "Column ID 01" in result.output
+        # Count should be aggregated across all 3 rows sharing column_id "01"
         assert "3" in result.output
-        # Only one "Column 05" line for schedule 22
-        col05_lines = [line for line in result.output.splitlines() if "Column 05" in line]
-        assert len(col05_lines) == 1, f"Expected 1 Column 05 line, got: {col05_lines}"
+        # Only one "Column ID 01" line for schedule 22
+        col01_lines = [line for line in result.output.splitlines() if "Column ID 01" in line]
+        assert len(col01_lines) == 1, f"Expected 1 Column ID 01 line, got: {col01_lines}"
