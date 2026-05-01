@@ -1,4 +1,4 @@
-# Task 07: Apply Documented Changes Backwards (Phase 2)
+# Task 07b: Apply Documented Changes Backwards (Phase 2)
 
 ## Goal
 

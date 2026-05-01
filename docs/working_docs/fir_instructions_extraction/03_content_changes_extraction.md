@@ -16,7 +16,7 @@ The manually-extracted CSVs are available in `fir_instructions/change_logs/seman
 - [x] Parse and load `FIR2023 Changes.csv`
 - [x] Parse and load `FIR2024 Changes.csv`
 - [x] Parse and load `FIR2025 Changes.csv`
-- [x] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07
+- [x] Identify and tag entries that describe schedule-level changes (not specific lines/columns) — these should inform `fir_schedule_meta` versioning in Task 07b
 - [x] Store all entries in `fir_instruction_changelog`
 - [x] Verify loaded data against the source CSVs
 - [x] Write tests for the storage/loading logic
@@ -70,10 +70,10 @@ Some change types are inherently high-impact regardless of year:
 
 Scan the `Description` and `Section Description` fields for keywords:
 
-| Signal | Severity |
-|---|---|
-| "eliminated", "new schedule", "replaced with", "adoption of new accounting standard", "new section" | major |
-| "updated language", "referenced to", "linked from", "pre-populated", "calculated as", "restated as", "report the amount for", "is reported on" | minor |
+| Signal                                                                                                                                         | Severity |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| "eliminated", "new schedule", "replaced with", "adoption of new accounting standard", "new section"                                            | major    |
+| "updated language", "referenced to", "linked from", "pre-populated", "calculated as", "restated as", "report the amount for", "is reported on" | minor    |
 
 Apply the stronger signal if both appear. If signals conflict, prefer **Tier 4**.
 
@@ -102,10 +102,10 @@ Wildcard entries are stored in `fir_instruction_changelog` with `line_id = None`
 
 Resolution queries `firrecord` to find all distinct line or column IDs matching the wildcard. The appropriate year to query depends on the `change_type`:
 
-| `change_type` | Query year |
-|---|---|
-| `new_line`, `new_column`, `updated_line`, `updated_column` | `change_year` |
-| `deleted_line`, `deleted_column` | `change_year - 1` |
+| `change_type`                                              | Query year        |
+| ---------------------------------------------------------- | ----------------- |
+| `new_line`, `new_column`, `updated_line`, `updated_column` | `change_year`     |
+| `deleted_line`, `deleted_column`                           | `change_year - 1` |
 
 Use `parse_slc()` from `slc.py` to extract components from the `slc` field when processing results.
 
