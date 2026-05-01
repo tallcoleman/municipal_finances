@@ -440,7 +440,7 @@ class TestValidateColumnCoverageRealDB:
         """End-to-end: a firrecord slc that has no metadata entry appears as a gap."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
             {"marsyear": 2025, "slc": "slc.99X.L0010.C01.01"},  # no metadata for 99 (X stripped)
         ])
 
@@ -457,8 +457,8 @@ class TestValidateColumnCoverageRealDB:
         """No gaps when every firrecord slc is covered by the metadata CSV."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.22.L0020.C01.0A"},  # same schedule/col, different sub
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0020.C01.0A"},  # same schedule/col, different sub
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -505,9 +505,9 @@ class TestValidateColumnCoverageRealDB:
         """Multiple slc records with the same schedule+column but different subs → one gap entry."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C05.01"},
-            {"marsyear": 2025, "slc": "slc.22.L0020.C05.02"},
-            {"marsyear": 2025, "slc": "slc.22.L0030.C05.0A"},
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C05.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0020.C05.02"},
+            {"marsyear": 2025, "slc": "slc.22X.L0030.C05.0A"},
         ])
 
         csv_path = tmp_path / "meta.csv"

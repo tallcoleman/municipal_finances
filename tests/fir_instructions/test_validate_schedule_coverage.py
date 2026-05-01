@@ -449,8 +449,8 @@ class TestValidateScheduleCoverageRealDB:
         """A firrecord schedule with no metadata entry appears as a DB-only gap."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.99.L0010.C01.01"},  # no metadata for 99
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.99X.L0010.C01.01"},  # no metadata for 99
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -468,8 +468,8 @@ class TestValidateScheduleCoverageRealDB:
         """No gaps when every firrecord schedule is covered by the metadata CSV."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.22.L0020.C02.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0020.C02.01"},
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -503,7 +503,7 @@ class TestValidateScheduleCoverageRealDB:
         """Records from other years are excluded from the gap check."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2024, "slc": "slc.99.L0010.C01.01"},  # wrong year
+            {"marsyear": 2024, "slc": "slc.99X.L0010.C01.01"},  # wrong year
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -537,7 +537,7 @@ class TestValidateScheduleCoverageRealDB:
         """A schedule in the CSV but absent from DB data appears in the CSV-only list."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.22.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.22X.L0010.C01.01"},
         ])
 
         csv_path = tmp_path / "meta.csv"
@@ -555,9 +555,9 @@ class TestValidateScheduleCoverageRealDB:
         """Multiple firrecord rows for the same schedule contribute to a single count."""
         _seed_municipality(session)
         _seed_fir_records(session, [
-            {"marsyear": 2025, "slc": "slc.99.L0010.C01.01"},
-            {"marsyear": 2025, "slc": "slc.99.L0020.C02.01"},
-            {"marsyear": 2025, "slc": "slc.99.L0030.C03.01"},
+            {"marsyear": 2025, "slc": "slc.99X.L0010.C01.01"},
+            {"marsyear": 2025, "slc": "slc.99X.L0020.C02.01"},
+            {"marsyear": 2025, "slc": "slc.99X.L0030.C03.01"},
         ])
 
         csv_path = tmp_path / "meta.csv"

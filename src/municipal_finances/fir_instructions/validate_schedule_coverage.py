@@ -117,7 +117,6 @@ def validate_schedule_coverage(
                 FROM firrecord
                 WHERE marsyear = :year
                   AND sub_schedule_code IS NOT NULL
-                  AND sub_schedule_code != ''
                 GROUP BY schedule_code
                 ORDER BY schedule_code
             """),
