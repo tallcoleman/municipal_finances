@@ -49,16 +49,35 @@ def _write_schedule_csv(path: Path, schedules: list[str]) -> None:
             })
 
 
-def _mock_session(rows: list[tuple[str, int]]) -> MagicMock:
-    """Build a mock session whose execute().fetchall() returns the given rows."""
+def _mock_session(
+    base_rows: list[tuple[str, int]],
+    sub_rows: list[tuple[str, int]] | None = None,
+) -> MagicMock:
+    """Build a mock session whose execute().fetchall() returns base_rows then sub_rows.
+
+    The first call returns base schedule query results; the second returns
+    sub-schedule results (defaults to empty list).
+    """
     mock_sess = MagicMock()
-    mock_sess.execute.return_value.fetchall.return_value = rows
+    mock_sess.execute.return_value.fetchall.side_effect = [
+        base_rows,
+        sub_rows if sub_rows is not None else [],
+    ]
     return mock_sess
 
 
-def _invoke(csv_path: Path, db_rows: list[tuple[str, int]], year: int = 2025) -> Any:
-    """Invoke validate-schedule-coverage CLI with a mocked DB returning db_rows."""
-    mock_sess = _mock_session(db_rows)
+def _invoke(
+    csv_path: Path,
+    base_rows: list[tuple[str, int]],
+    sub_rows: list[tuple[str, int]] | None = None,
+    year: int = 2025,
+) -> Any:
+    """Invoke validate-schedule-coverage CLI with a mocked DB.
+
+    ``base_rows`` is returned for the base schedule query; ``sub_rows`` (default
+    empty) is returned for the sub-schedule query.
+    """
+    mock_sess = _mock_session(base_rows, sub_rows)
     with patch(_PATCH_GET_ENGINE, return_value=MagicMock()):
         with patch(_PATCH_SESSION) as MockSession:
             MockSession.return_value.__enter__.return_value = mock_sess
