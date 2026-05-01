@@ -48,10 +48,10 @@ def validate_column_coverage(
         help="FIR year to check against (marsyear in firrecord)",
     ),
 ) -> None:
-    """Report (schedule, column_section) pairs in firrecord that have no column metadata entry.
+    """Report (schedule, column_id) pairs in firrecord that have no column metadata entry.
 
     Reads the baseline CSV produced by ``extract-baseline-column-meta``, then
-    queries the database for all distinct (schedule_code, column_section)
+    queries the database for all distinct (schedule_code, column_id)
     combinations present in the given year's firrecord data using the pre-parsed
     columns.  Prints a grouped report of any gaps so they can be triaged as
     genuinely undocumented vs. extractor bugs.
@@ -64,39 +64,39 @@ def validate_column_coverage(
 
     typer.echo(f"Loaded {len(meta_keys)} (schedule, column_id) pairs from {csv_path}.")
 
-    # Query DB for distinct (schedule_code, column_section) pairs using pre-parsed columns.
+    # Query DB for distinct (schedule_code, column_id) pairs using pre-parsed columns.
     engine = get_engine()
     with Session(engine) as session:
         result = session.execute(
             text("""
                 SELECT
                     schedule_code,
-                    column_section,
+                    column_id,
                     COUNT(*) AS record_count
                 FROM firrecord
                 WHERE marsyear = :year
                   AND schedule_code IS NOT NULL
-                GROUP BY schedule_code, column_section
-                ORDER BY schedule_code, column_section
+                GROUP BY schedule_code, column_id
+                ORDER BY schedule_code, column_id
             """),
             {"year": year},
         ).fetchall()
 
     db_pairs: dict[tuple[str, str], int] = {
-        (schedule_code, column_section): count
-        for schedule_code, column_section, count in result
+        (schedule_code, column_id): count
+        for schedule_code, column_id, count in result
     }
 
     typer.echo(
-        f"Found {len(db_pairs)} distinct (schedule, column_section) pairs in "
+        f"Found {len(db_pairs)} distinct (schedule, column_id) pairs in "
         f"{year} firrecord data."
     )
 
     # Find gaps.
     gaps: dict[str, list[tuple[str, int]]] = {}
-    for (schedule_code, column_section), count in sorted(db_pairs.items()):
-        if (schedule_code, column_section) not in meta_keys:
-            gaps.setdefault(schedule_code, []).append((column_section, count))
+    for (schedule_code, column_id), count in sorted(db_pairs.items()):
+        if (schedule_code, column_id) not in meta_keys:
+            gaps.setdefault(schedule_code, []).append((column_id, count))
 
     if not gaps:
         typer.echo("\nNo gaps found — all (schedule, column_id) pairs have metadata.")
@@ -113,6 +113,6 @@ def validate_column_coverage(
     for schedule_code in sorted(gaps, key=lambda s: (len(s), s)):
         cols = gaps[schedule_code]
         typer.echo(f"Schedule {schedule_code}  ({len(cols)} gap(s)):")
-        for column_section, count in sorted(cols):
-            typer.echo(f"  Column {column_section}  —  {count:,} records  [ ]")
+        for column_id, count in sorted(cols):
+            typer.echo(f"  Column ID {column_id}  —  {count:,} records  [ ]")
         typer.echo("")

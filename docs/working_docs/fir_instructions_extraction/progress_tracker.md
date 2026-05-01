@@ -15,6 +15,7 @@
 - [ ] 05c: revisit line meta — validate against actual DB entries (task doc TBD)
 - [x] 06_baseline_column_meta.md (https://github.com/tallcoleman/municipal_finances/pull/20)
 - [x] Revisit 06_baseline_column_meta.md using `markdown_clean/` files
+- [ ] 06c_update_extract_column_meta.md — add column_section inference and cross-validate with DB (depends on 04c, 05c)
 - [ ] 07a_markdown_cleanup_2019_2024.md — prepare earlier years for task 07b
 - [ ] 07b_apply_changes_backwards.md
 - [ ] 08a_reporting_completeness_inference.md
