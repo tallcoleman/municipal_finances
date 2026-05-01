@@ -11,7 +11,7 @@ that calls `parse_slc()` against real data.
 
 **Verification history:**
 - 2026-04-03: Verified against 2020–2024 data. Zero failing rows. Line ID broadened to `[0-9A-Z]{4}`.
-- 2026-04-29: Verified 2025 data (3,156 SLC rows from `fir_data_2025.csv`). Zero failing rows. 19 distinct sub values observed (01–18, 0A).
+- 2026-04-29: Verified 2025 data (3,156 SLC rows from `fir_data_2025.csv`). Zero failing rows. 19 distinct `column_id` values observed (01–18, 0A).
 
 ## Prerequisites
 
