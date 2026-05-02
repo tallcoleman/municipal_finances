@@ -2,9 +2,9 @@
 
 ## TODO - add the following
 
-The values for Schedule 22A, 22B, and 22C are definitely missing from the source CSVs.
+The values for Schedule 22A, 22B, and 22C are definitely missing from the source CSVs. They will need to be loaded from another one of the open data sources on the FIR site. [add details]
 
-Need to validate the CSVs to make sure the cleaning is working.
+Need to validate the source CSVs to make sure the cleaning is working.
 ## Context
 
 `validate-schedule-coverage` revealed 12 schedule codes present in the 2025 `firrecord` DB
