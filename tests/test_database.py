@@ -1,4 +1,4 @@
-from municipal_finances.database import create_db_and_tables, get_engine, get_session
+from municipal_finances.database import get_engine, get_session
 
 
 def test_get_engine_uses_database_url(mocker, monkeypatch):
@@ -9,17 +9,6 @@ def test_get_engine_uses_database_url(mocker, monkeypatch):
     get_engine()
 
     mock_create_engine.assert_called_once_with("postgresql://user:pass@localhost/testdb")
-
-
-def test_create_db_and_tables_calls_create_all(mocker):
-    """create_db_and_tables calls SQLModel.metadata.create_all with the engine."""
-    mock_engine = mocker.MagicMock()
-    mocker.patch("municipal_finances.database.get_engine", return_value=mock_engine)
-    mock_create_all = mocker.patch("municipal_finances.database.SQLModel.metadata.create_all")
-
-    create_db_and_tables()
-
-    mock_create_all.assert_called_once_with(mock_engine)
 
 
 def test_get_session_yields_session(mocker, monkeypatch):

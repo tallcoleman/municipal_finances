@@ -497,18 +497,6 @@ def _make_simple_session(mocker):
 
 
 # ---------------------------------------------------------------------------
-# init_db
-# ---------------------------------------------------------------------------
-
-
-def test_init_db_calls_create_db_and_tables(mocker):
-    mock_create = mocker.patch("municipal_finances.db_management.create_db_and_tables")
-    result = runner.invoke(app, ["init-db"])
-    assert result.exit_code == 0
-    mock_create.assert_called_once()
-
-
-# ---------------------------------------------------------------------------
 # clear_db
 # ---------------------------------------------------------------------------
 

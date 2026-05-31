@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlmodel import Session, SQLModel
 
 from municipal_finances.data_cleanup import _fix_csv
-from municipal_finances.database import create_db_and_tables, get_engine
+from municipal_finances.database import get_engine
 from municipal_finances.models import FIRDataSource, FIRRecord, Municipality
 from municipal_finances.resources import download_fir_csv, get_fir_status_table
 
@@ -100,13 +100,6 @@ def _load_csv_into_db(csv_path: Path, engine, chunk_size: int) -> int:
         typer.echo(f"  {loaded:,} / {total_rows:,} rows loaded\r", nl=False)
 
     return total_rows
-
-
-@app.command()
-def init_db():
-    """Creates all database tables using DATABASE_URL from environment."""
-    create_db_and_tables()
-    typer.echo("Database initialized.")
 
 
 @app.command()

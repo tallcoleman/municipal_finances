@@ -76,7 +76,7 @@ src/municipal_finances/
     data_management.py  # Combine cleaned CSVs into a single parquet file
     models.py           # SQLModel database models
     database.py         # Engine / session factory (reads DATABASE_URL)
-    db_management.py    # CLI commands: init-db (manual fallback), clear-db, load-data, load-years
+    db_management.py    # CLI commands: clear-db, load-data, load-years
     slc.py              # SLC parsing utilities (parse_slc, slc_to_pdf_format, pdf_slc_to_components)
     api/
         main.py         # FastAPI app
