@@ -13,6 +13,7 @@ When making code changes, make sure that all key functions have descriptive docs
 - Use `uv run` to run Python scripts and tools — do not use `python` directly.
 - Dependencies are managed with `uv`. After changing `pyproject.toml`, run `uv sync` to update the lockfile.
 - The app requires a `DATABASE_URL` environment variable pointing to a PostgreSQL database. Store it in a `.env` file (see `.env.example`); it is loaded automatically via python-dotenv.
+- Three Keycloak environment variables are required for the API auth: `KEYCLOAK_URL`, `KEYCLOAK_REALM`, `KEYCLOAK_CLIENT_ID`. See `.env.example` for defaults (host-side values; the Docker Compose `api` service sets these automatically using the internal `keycloak` hostname).
 
 ## Common commands
 
@@ -26,11 +27,18 @@ uv run pytest
 # Run formatter
 uv run ruff check --fix
 
-# Start PostgreSQL + API containers
+# Start PostgreSQL + API + Keycloak containers
 docker compose up -d
 
 # Stop containers
 docker compose down
+
+# Obtain a dev access token from Keycloak (admin-dev / changeme)
+curl -s -X POST http://localhost:8080/realms/municipal-finances/protocol/openid-connect/token \
+  -d "grant_type=password&client_id=municipal-finances-api&username=admin-dev&password=changeme" \
+  | jq -r .access_token
+
+# Keycloak admin console: http://localhost:8080 (admin / admin)
 
 # Create database tables (requires DATABASE_URL in env or .env)
 uv run src/municipal_finances/app.py init-db
@@ -75,10 +83,13 @@ src/municipal_finances/
     slc.py              # SLC parsing utilities (parse_slc, slc_to_pdf_format, pdf_slc_to_components)
     api/
         main.py         # FastAPI app
+        auth.py         # JWT validation and role-checking dependencies (Keycloak)
         routes/
             municipalities.py
             fir_records.py
             fir_sources.py
+keycloak/
+    realm-export.json   # Keycloak realm config imported on first container start
 data/
     source_data/        # Raw downloaded zip + CSV files (not in version control)
     cleaned_data/       # Cleaned CSVs (not in version control)
@@ -103,3 +114,9 @@ Bulk inserts in `load-data` use SQLAlchemy Core (`pg_insert().values(...)`) in c
 ## API
 
 FastAPI app served by uvicorn inside Docker on port 8000. Docs at `http://localhost:8000/docs`. Root `/` redirects to `/docs`.
+
+All endpoints require a valid Bearer JWT issued by Keycloak. Obtain a dev token with the curl snippet in Common Commands above, then pass it as `Authorization: Bearer <token>`.
+
+**Dev credentials:**
+- Keycloak admin console: `http://localhost:8080` — username `admin`, password `admin`
+- Dev API user: username `admin-dev`, password `changeme`, role `administrator`

@@ -14,7 +14,8 @@ The app has two main components: a **data pipeline** (CLI tools for downloading 
 | Web API | [FastAPI](https://fastapi.tiangolo.com/) | Served via uvicorn |
 | ORM / models | [SQLModel](https://sqlmodel.tiangolo.com/) | Combines SQLAlchemy and Pydantic |
 | Database | PostgreSQL 17 | Runs in Docker |
-| Containers | Docker Compose | PostgreSQL + API service |
+| Containers | Docker Compose | PostgreSQL + API + Keycloak services |
+| Auth | Keycloak 26 + PyJWT | OAuth2 / RS256 JWT; JWKS endpoint for key distribution |
 | Data processing | pandas + pyarrow | CSV cleaning and parquet output |
 | HTML scraping | BeautifulSoup4 | FIR download page |
 | Testing | pytest | |
@@ -36,6 +37,19 @@ PostgreSQL was chosen over SQLite to better handle the scale of the dataset (~13
 ### Bulk inserts via SQLAlchemy Core
 
 Loading 13.5M rows via the ORM (`session.add()` in a loop) is too slow. The `load-years` and `load-data` commands use SQLAlchemy Core bulk inserts (`pg_insert().values(...)`) in chunks of 5,000 rows. This chunk size is constrained by PostgreSQL's limit of 65,535 bound parameters per query — with 11 columns per `FIRRecord` row, that gives a maximum of ~5,957 rows per insert.
+
+### Authentication via Keycloak and JWT
+
+All API endpoints require a Bearer JWT issued by Keycloak. The app validates tokens on each request using PyJWT with RS256 and Keycloak's JWKS endpoint — it never manages passwords or sessions itself.
+
+**Key design choices:**
+
+- **Keycloak as identity provider**: Keycloak handles account management, token issuance, and refresh-token rotation. This enables a shared login between the API and Apache Superset (both can be configured as Keycloak clients).
+- **No User table in the app database**: User identity and roles are trusted entirely from JWT claims (`realm_access.roles`). Adding a User table would duplicate Keycloak's authoritative state.
+- **Three realm roles**: `viewer` (read-only), `editor` (future mutation endpoints), `administrator` (all editor privileges). FastAPI dependency functions (`require_viewer`, `require_editor`, `require_administrator`) enforce these at the route level.
+- **Token TTLs**: Access tokens expire after 15 minutes (900 s); refresh tokens expire after 8 hours (28 800 s) with rotation enabled (each refresh issues a new token pair and invalidates the old one).
+- **JWKS caching**: `PyJWKClient` is cached with a 5-minute TTL to avoid re-fetching on every request, while still picking up Keycloak key rotations promptly via `PyJWKClient`'s built-in key-ID miss handling.
+- **Public client**: `municipal-finances-api` is configured as a public client (no client secret) with Direct Access Grants enabled. This is appropriate for a development-focused deployment; production would tighten redirect URIs and may use a confidential client.
 
 ### DATABASE_URL from environment
 
