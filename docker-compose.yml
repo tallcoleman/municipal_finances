@@ -17,6 +17,7 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://muni:muni@db:5432/municipal_finances
       KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_PUBLIC_URL: http://localhost:8080
       KEYCLOAK_REALM: municipal-finances
       KEYCLOAK_CLIENT_ID: municipal-finances-api
     depends_on:
