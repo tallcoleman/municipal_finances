@@ -1,0 +1,87 @@
+{
+  "_comment": "Synthetic realm export for Keycloak 26. Generated based on the Keycloak 26 realm schema rather than via the admin console export workflow. Verify via the Keycloak admin console at http://localhost:8080 on first start and adjust if any fields are rejected.",
+  "realm": "municipal-finances",
+  "enabled": true,
+  "displayName": "Municipal Finances",
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": false,
+  "accessTokenLifespan": 900,
+  "ssoSessionIdleTimeout": 28800,
+  "ssoSessionMaxLifespan": 28800,
+  "offlineSessionIdleTimeout": 2592000,
+  "accessCodeLifespan": 60,
+  "accessCodeLifespanUserAction": 300,
+  "accessCodeLifespanLogin": 1800,
+  "actionTokenGeneratedByAdminLifespan": 43200,
+  "actionTokenGeneratedByUserLifespan": 300,
+  "refreshTokenMaxReuse": 0,
+  "revokeRefreshToken": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "viewer",
+        "description": "Read-only access to all data endpoints",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "municipal-finances"
+      },
+      {
+        "name": "editor",
+        "description": "All viewer privileges plus data mutation",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "municipal-finances"
+      },
+      {
+        "name": "administrator",
+        "description": "All editor privileges plus user management via Keycloak admin console",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "municipal-finances"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "municipal-finances-api",
+      "name": "Municipal Finances API",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "authorizationServicesEnabled": false,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "900"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "admin-dev",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "Dev",
+      "email": "admin-dev@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "changeme",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["administrator"],
+      "clientRoles": {}
+    }
+  ]
+}
