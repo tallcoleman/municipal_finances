@@ -40,9 +40,6 @@ curl -s -X POST http://localhost:8080/realms/municipal-finances/protocol/openid-
 
 # Keycloak admin console: http://localhost:8080 (admin / admin)
 
-# Create database tables (requires DATABASE_URL in env or .env)
-uv run src/municipal_finances/app.py init-db
-
 # Delete all data from all tables (development use; prompts for confirmation)
 uv run src/municipal_finances/app.py clear-db
 uv run src/municipal_finances/app.py clear-db --yes  # skip confirmation

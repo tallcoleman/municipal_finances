@@ -14,14 +14,12 @@ See additional notes in the `docs/` folder
 
 ```bash
 # start containers (add -d to detach)
+# runs alembic upgrade head automatically, then starts the API
 # web API will be available at localhost:8000 once data is loaded
 docker compose up
 
 # stop and remove containers
 docker compose down
-
-# create database tables
-uv run src/municipal_finances/app.py init-db
 
 # download, clean, and load all available years in one step
 uv run src/municipal_finances/app.py load-years
