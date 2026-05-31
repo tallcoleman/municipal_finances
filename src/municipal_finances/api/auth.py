@@ -15,9 +15,12 @@ from fastapi.security import OAuth2PasswordBearer
 KEYCLOAK_URL = os.getenv("KEYCLOAK_URL", "http://localhost:8080")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM", "municipal-finances")
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID", "municipal-finances-api")
+# Public URL used only for the Swagger UI token form — must be reachable from the browser.
+# Defaults to localhost:8080; override if Keycloak is behind a proxy.
+_KEYCLOAK_PUBLIC_URL = os.getenv("KEYCLOAK_PUBLIC_URL", "http://localhost:8080")
 
 JWKS_URL = f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/certs"
-_TOKEN_URL = f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token"
+_TOKEN_URL = f"{_KEYCLOAK_PUBLIC_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=_TOKEN_URL)
 
