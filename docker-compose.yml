@@ -16,8 +16,24 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql+psycopg://muni:muni@db:5432/municipal_finances
+      KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_REALM: municipal-finances
+      KEYCLOAK_CLIENT_ID: municipal-finances-api
     depends_on:
       - db
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26
+    command: start-dev --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: dev-mem
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    ports:
+      - "8080:8080"
 
   db-test:
     image: postgres:17
