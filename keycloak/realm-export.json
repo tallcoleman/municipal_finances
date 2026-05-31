@@ -2,7 +2,7 @@
   "realm": "municipal-finances",
   "enabled": true,
   "displayName": "Municipal Finances",
-  "sslRequired": "external",
+  "sslRequired": "none",
   "registrationAllowed": false,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
