@@ -1,5 +1,4 @@
 {
-  "_comment": "Synthetic realm export for Keycloak 26. Generated based on the Keycloak 26 realm schema rather than via the admin console export workflow. Verify via the Keycloak admin console at http://localhost:8080 on first start and adjust if any fields are rejected.",
   "realm": "municipal-finances",
   "enabled": true,
   "displayName": "Municipal Finances",
