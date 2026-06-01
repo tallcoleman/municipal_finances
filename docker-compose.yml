@@ -33,6 +33,8 @@ services:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
       KC_DB: dev-mem
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_STRICT: "false"
     volumes:
       - ./keycloak:/opt/keycloak/data/import
     ports:
