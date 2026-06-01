@@ -13,7 +13,7 @@ When making code changes, make sure that all key functions have descriptive docs
 - Use `uv run` to run Python scripts and tools — do not use `python` directly.
 - Dependencies are managed with `uv`. After changing `pyproject.toml`, run `uv sync` to update the lockfile.
 - The app requires a `DATABASE_URL` environment variable pointing to a PostgreSQL database. Store it in a `.env` file (see `.env.example`); it is loaded automatically via python-dotenv.
-- Three Keycloak environment variables are required for the API auth: `KEYCLOAK_URL`, `KEYCLOAK_REALM`, `KEYCLOAK_CLIENT_ID`. See `.env.example` for defaults (host-side values; the Docker Compose `api` service sets these automatically using the internal `keycloak` hostname).
+- Four Keycloak environment variables are required for the API auth: `KEYCLOAK_URL`, `KEYCLOAK_REALM`, `KEYCLOAK_CLIENT_ID`, `KEYCLOAK_CLIENT_SECRET`. See `.env.example` for defaults (host-side values; the Docker Compose `api` service sets these automatically using the internal `keycloak` hostname).
 
 ## Common commands
 
@@ -35,7 +35,7 @@ docker compose down
 
 # Obtain a dev access token from Keycloak (admin-dev / changeme)
 curl -s -X POST http://localhost:8080/realms/municipal-finances/protocol/openid-connect/token \
-  -d "grant_type=password&client_id=municipal-finances-api&username=admin-dev&password=changeme" \
+  -d "grant_type=password&client_id=municipal-finances-api&client_secret=municipal-finances-secret&username=admin-dev&password=changeme" \
   | jq -r .access_token
 
 # Keycloak admin console: http://localhost:8080 (admin / admin)
@@ -80,7 +80,7 @@ src/municipal_finances/
     slc.py              # SLC parsing utilities (parse_slc, slc_to_pdf_format, pdf_slc_to_components)
     api/
         main.py         # FastAPI app
-        auth.py         # JWT validation and role-checking dependencies (Keycloak)
+        auth.py         # Token introspection and role-checking dependencies (Keycloak)
         routes/
             municipalities.py
             fir_records.py

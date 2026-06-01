@@ -21,6 +21,7 @@ services:
       KEYCLOAK_PUBLIC_URL: http://localhost:8080
       KEYCLOAK_REALM: municipal-finances
       KEYCLOAK_CLIENT_ID: municipal-finances-api
+      KEYCLOAK_CLIENT_SECRET: municipal-finances-secret
     depends_on:
       - db
       - keycloak

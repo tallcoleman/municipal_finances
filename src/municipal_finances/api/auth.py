@@ -1,71 +1,66 @@
-"""JWT authentication and role-checking dependencies for the FastAPI app.
+"""Keycloak token introspection and role-checking dependencies for the FastAPI app.
 
-Validates Bearer tokens issued by Keycloak, extracts realm roles from claims,
-and provides FastAPI dependency functions for each permission level.
+Validates Bearer tokens by calling Keycloak's introspection endpoint on every request,
+extracts realm roles from the introspection response claims, and provides FastAPI
+dependency functions for each permission level.
 """
 
 import os
-from threading import Lock
 
-import jwt
-from cachetools import TTLCache
+import httpx
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 
 KEYCLOAK_URL = os.getenv("KEYCLOAK_URL", "http://localhost:8080")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM", "municipal-finances")
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID", "municipal-finances-api")
+KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET", "")
 # Public URL used only for the Swagger UI token form — must be reachable from the browser.
 # Defaults to localhost:8080; override if Keycloak is behind a proxy.
 _KEYCLOAK_PUBLIC_URL = os.getenv("KEYCLOAK_PUBLIC_URL", "http://localhost:8080")
 
-JWKS_URL = f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/certs"
+INTROSPECTION_URL = f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token/introspect"
 _TOKEN_URL = f"{_KEYCLOAK_PUBLIC_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=_TOKEN_URL)
 
-_jwks_cache: TTLCache = TTLCache(maxsize=1, ttl=300)
-_jwks_lock = Lock()
 
+def introspect_token(token: str) -> dict:
+    """Validate a Bearer token via Keycloak's introspection endpoint; return claims.
 
-def get_jwks_client() -> jwt.PyJWKClient:
-    """Return a cached PyJWKClient pointed at Keycloak's JWKS endpoint.
-
-    Thread-safe: only one thread constructs the client on cache expiry.
-    PyJWKClient itself caches fetched keys and re-fetches on key-ID miss
-    (i.e., after Keycloak key rotation), so this avoids thundering-herd
-    on startup without risking stale keys post-rotation.
-    """
-    with _jwks_lock:
-        if "client" not in _jwks_cache:
-            _jwks_cache["client"] = jwt.PyJWKClient(JWKS_URL)
-        return _jwks_cache["client"]
-
-
-def decode_token(token: str) -> dict:
-    """Validate the JWT signature and expiry; return the claims dict.
-
-    Raises HTTP 401 on any validation failure (expired, bad signature,
-    wrong audience, malformed).
+    POSTs to Keycloak with client credentials and the token. Returns the full
+    claims dict (including realm_access.roles) when active. Raises HTTP 401 if
+    Keycloak marks the token inactive, if the HTTP call fails, or if Keycloak
+    returns a non-2xx response.
     """
     try:
-        signing_key = get_jwks_client().get_signing_key_from_jwt(token)
-        return jwt.decode(
-            token,
-            signing_key.key,
-            algorithms=["RS256"],
-            audience=KEYCLOAK_CLIENT_ID,
+        response = httpx.post(
+            INTROSPECTION_URL,
+            data={
+                "token": token,
+                "client_id": KEYCLOAK_CLIENT_ID,
+                "client_secret": KEYCLOAK_CLIENT_SECRET,
+            },
         )
-    except jwt.PyJWTError as exc:
+        response.raise_for_status()
+        claims = response.json()
+    except httpx.HTTPError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token validation failed",
+            headers={"WWW-Authenticate": "Bearer"},
+        ) from exc
+    if not claims.get("active"):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
             headers={"WWW-Authenticate": "Bearer"},
-        ) from exc
+        )
+    return claims
 
 
 def get_roles(claims: dict) -> list[str]:
-    """Extract realm roles from Keycloak JWT claims.
+    """Extract realm roles from Keycloak introspection response claims.
 
     Returns an empty list when realm_access is absent (e.g., service
     accounts or tokens without realm role claims).
@@ -75,7 +70,7 @@ def get_roles(claims: dict) -> list[str]:
 
 def require_viewer(token: str = Depends(oauth2_scheme)) -> dict:
     """FastAPI dependency: require viewer, editor, or administrator role."""
-    claims = decode_token(token)
+    claims = introspect_token(token)
     roles = get_roles(claims)
     if not any(r in roles for r in ["viewer", "editor", "administrator"]):
         raise HTTPException(
@@ -87,7 +82,7 @@ def require_viewer(token: str = Depends(oauth2_scheme)) -> dict:
 
 def require_editor(token: str = Depends(oauth2_scheme)) -> dict:
     """FastAPI dependency: require editor or administrator role."""
-    claims = decode_token(token)
+    claims = introspect_token(token)
     roles = get_roles(claims)
     if not any(r in roles for r in ["editor", "administrator"]):
         raise HTTPException(
@@ -99,7 +94,7 @@ def require_editor(token: str = Depends(oauth2_scheme)) -> dict:
 
 def require_administrator(token: str = Depends(oauth2_scheme)) -> dict:
     """FastAPI dependency: require administrator role."""
-    claims = decode_token(token)
+    claims = introspect_token(token)
     roles = get_roles(claims)
     if "administrator" not in roles:
         raise HTTPException(
