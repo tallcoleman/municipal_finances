@@ -3,6 +3,7 @@ from typing import Annotated, Optional
 from fastapi import APIRouter, Depends, Query
 from sqlmodel import Session, select
 
+from municipal_finances.api.auth import require_viewer
 from municipal_finances.database import get_session
 from municipal_finances.models import FIRRecord
 
@@ -14,6 +15,7 @@ SessionDep = Annotated[Session, Depends(get_session)]
 @router.get("/", response_model=list[FIRRecord])
 def list_fir_records(
     session: SessionDep,
+    _claims: dict = Depends(require_viewer),
     munid: Optional[str] = None,
     marsyear: Optional[int] = None,
     schedule_desc: Optional[str] = None,

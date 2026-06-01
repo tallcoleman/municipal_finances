@@ -3,6 +3,7 @@ from typing import Annotated, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
+from municipal_finances.api.auth import require_viewer
 from municipal_finances.database import get_session
 from municipal_finances.models import Municipality
 
@@ -14,6 +15,7 @@ SessionDep = Annotated[Session, Depends(get_session)]
 @router.get("/", response_model=list[Municipality])
 def list_municipalities(
     session: SessionDep,
+    _claims: dict = Depends(require_viewer),
     tier_code: Optional[str] = None,
     mtype_code: Optional[int] = None,
     offset: int = 0,
@@ -29,7 +31,11 @@ def list_municipalities(
 
 
 @router.get("/{munid}", response_model=Municipality)
-def get_municipality(munid: str, session: SessionDep):
+def get_municipality(
+    munid: str,
+    session: SessionDep,
+    _claims: dict = Depends(require_viewer),
+):
     municipality = session.get(Municipality, munid)
     if not municipality:
         raise HTTPException(status_code=404, detail="Municipality not found")

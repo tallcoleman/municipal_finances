@@ -12,12 +12,33 @@ services:
 
   api:
     build: .
+    command: sh -c "uv run alembic upgrade head && uv run uvicorn municipal_finances.api.main:app --host 0.0.0.0 --port 8000"
     ports:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql+psycopg://muni:muni@db:5432/municipal_finances
+      KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_PUBLIC_URL: http://localhost:8080
+      KEYCLOAK_REALM: municipal-finances
+      KEYCLOAK_CLIENT_ID: municipal-finances-api
+      KEYCLOAK_CLIENT_SECRET: municipal-finances-secret
     depends_on:
       - db
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_DB: dev-mem
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_STRICT: "false"
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    ports:
+      - "8080:8080"
 
   db-test:
     image: postgres:17

@@ -3,6 +3,7 @@ from sqlalchemy import text
 from sqlmodel import Session, SQLModel, create_engine
 from starlette.testclient import TestClient
 
+from municipal_finances.api.auth import require_viewer
 from municipal_finances.api.main import app
 from municipal_finances.database import get_session
 from municipal_finances.models import FIRDataSource, FIRRecord, Municipality  # noqa: F401
@@ -54,7 +55,11 @@ def client(session):
     def override_get_session():
         yield session
 
+    def override_require_viewer():
+        return {"sub": "test-user"}
+
     app.dependency_overrides[get_session] = override_get_session
+    app.dependency_overrides[require_viewer] = override_require_viewer
     with TestClient(app, follow_redirects=False) as c:
         yield c
     app.dependency_overrides.clear()

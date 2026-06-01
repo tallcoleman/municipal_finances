@@ -14,7 +14,8 @@ The app has two main components: a **data pipeline** (CLI tools for downloading 
 | Web API | [FastAPI](https://fastapi.tiangolo.com/) | Served via uvicorn |
 | ORM / models | [SQLModel](https://sqlmodel.tiangolo.com/) | Combines SQLAlchemy and Pydantic |
 | Database | PostgreSQL 17 | Runs in Docker |
-| Containers | Docker Compose | PostgreSQL + API service |
+| Containers | Docker Compose | PostgreSQL + API + Keycloak services |
+| Auth | Keycloak 26 + httpx | OAuth2 / OIDC; token introspection endpoint for per-request validation |
 | Data processing | pandas + pyarrow | CSV cleaning and parquet output |
 | HTML scraping | BeautifulSoup4 | FIR download page |
 | Testing | pytest | |
@@ -36,6 +37,19 @@ PostgreSQL was chosen over SQLite to better handle the scale of the dataset (~13
 ### Bulk inserts via SQLAlchemy Core
 
 Loading 13.5M rows via the ORM (`session.add()` in a loop) is too slow. The `load-years` and `load-data` commands use SQLAlchemy Core bulk inserts (`pg_insert().values(...)`) in chunks of 5,000 rows. This chunk size is constrained by PostgreSQL's limit of 65,535 bound parameters per query — with 11 columns per `FIRRecord` row, that gives a maximum of ~5,957 rows per insert.
+
+### Authentication via Keycloak token introspection
+
+All API endpoints require a Bearer JWT issued by Keycloak. The app validates tokens on each request by calling Keycloak's token introspection endpoint (`/realms/{realm}/protocol/openid-connect/token/introspect`) — it never manages passwords or sessions itself, and never validates JWT signatures locally.
+
+**Key design choices:**
+
+- **Keycloak as identity provider**: Keycloak handles account management, token issuance, and refresh-token rotation. This enables a shared login between the API and Apache Superset (both can be configured as Keycloak clients).
+- **No User table in the app database**: User identity and roles are trusted entirely from the introspection response (`realm_access.roles`). Adding a User table would duplicate Keycloak's authoritative state.
+- **Three realm roles**: `viewer` (read-only), `editor` (future mutation endpoints), `administrator` (all editor privileges). FastAPI dependency functions (`require_viewer`, `require_editor`, `require_administrator`) enforce these at the route level.
+- **Token TTLs**: Access tokens expire after 15 minutes (900 s); refresh tokens expire after 8 hours (28 800 s) with rotation enabled (each refresh issues a new token pair and invalidates the old one).
+- **Introspection over local validation**: Keycloak's introspection endpoint returns `active: true/false` plus the full claims (including `realm_access.roles`). This means revoked tokens are rejected immediately rather than remaining valid until JWT expiry, at the cost of one HTTP round-trip to Keycloak per API request.
+- **Confidential client**: `municipal-finances-api` is configured as a confidential client with a `KEYCLOAK_CLIENT_SECRET`. The introspection endpoint requires client credentials; public clients cannot use it. Direct Access Grants remain enabled for the dev password-grant flow.
 
 ### DATABASE_URL from environment
 

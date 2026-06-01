@@ -17,6 +17,11 @@
 - **Run Keycloak in production mode**: replace `start-dev` with `start` in the container command. This enforces HTTPS and disables development-only features.
 - **TLS**: Keycloak in production mode requires HTTPS. Put a reverse proxy (e.g., nginx, Caddy) in front.
 
+An additional note to check:
+```
+wildcard redirectUris: ["*"] in realm-export.json — was evaluated and **filtered**: it only affects the local dev Keycloak instance (in-memory, Docker Compose, localhost-only), and is not exploitable from outside the developer's machine. The configuration should be tightened before any production deployment, but it does not represent an exploitable vulnerability in the current context.
+```
+
 ## Token and Session Management
 
 - **Token introspection vs. offline validation**: Task 04a validates JWTs offline using JWKS. For higher-security scenarios (e.g., to support immediate token revocation), switch to token introspection (`/protocol/openid-connect/token/introspect`) at the cost of a network call per request.

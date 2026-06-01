@@ -4,7 +4,7 @@
 
 Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity provider:
 
-- Use Keycloak (via Docker Compose) to handle OAuth2 account management and token issuance
+- Use Keycloak (via Docker Compose) to handle OAuth2 account management and token issuance (this approach should allow for a shared login between the database and Apache Superset)
 - The API validates Bearer JWT tokens issued by Keycloak on each request
 - Three permission levels: Viewer, Editor, Administrator (see below)
 - All existing endpoints are protected — unauthenticated requests return 401
@@ -17,8 +17,9 @@ Add authentication to the FastAPI app using OAuth2 with Keycloak as the identity
 | Role          | Capabilities                                                                   |
 | ------------- | ------------------------------------------------------------------------------ |
 | Viewer        | Read-only access to all data endpoints; can manage their own Keycloak account  |
-| Editor        | All Viewer privileges; can mutate data (write endpoints added in a later task) |
+| Editor        | All Viewer privileges; can mutate data (endpoints to be added in a later task) |
 | Administrator | All Editor privileges; can manage users via Keycloak admin console             |
+ These permission levels may evolve in the future, for example to allow Viewer users to add annotations to certain data points. But this is outside of the scope of the current task. 
 
 ## Prerequisites
 
@@ -81,8 +82,8 @@ Create `keycloak/realm-export.json` to configure the realm on first start. Key e
   - Username: `admin-dev`
   - Password: `changeme` (temporary, documented)
   - Roles assigned: `administrator`
-- **Access token lifespan**: 300 seconds (5 minutes)
-- **Refresh token lifespan**: 30 minutes (configurable in realm settings)
+- **Access token lifespan**: 900 seconds (15 minutes)
+- **Refresh token lifespan**: 8 hours (configurable in realm settings)
 
 Generate the export JSON by standing up Keycloak manually once, configuring via the admin console, and exporting the realm. Commit the result as `keycloak/realm-export.json`. Document the manual export process briefly in a comment at the top of the file.
 
@@ -217,7 +218,7 @@ The lock ensures only one thread reconstructs the client on expiry. `PyJWKClient
 Keycloak issues both an access token and a refresh token when a user authenticates. The API does not handle refresh tokens directly — the client is responsible for using the refresh token to obtain a new access token before expiry.
 
 **Keycloak configuration** (in `realm-export.json`):
-- Refresh token TTL: 1800 seconds (30 minutes)
+- Refresh token TTL: 28800 seconds (8 hours)
 - Refresh token rotation: enabled (each use issues a new refresh token and invalidates the old one)
 
 **Client flow:**

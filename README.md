@@ -14,14 +14,12 @@ See additional notes in the `docs/` folder
 
 ```bash
 # start containers (add -d to detach)
+# runs alembic upgrade head automatically, then starts the API
 # web API will be available at localhost:8000 once data is loaded
 docker compose up
 
 # stop and remove containers
 docker compose down
-
-# create database tables
-uv run src/municipal_finances/app.py init-db
 
 # download, clean, and load all available years in one step
 uv run src/municipal_finances/app.py load-years
@@ -67,6 +65,22 @@ Re-export the table from the database (e.g. after manual edits):
 uv run src/municipal_finances/app.py export-changelog
 uv run src/municipal_finances/app.py export-changelog --export-dir path/to/exports
 ```
+
+### Authenticating with the API
+
+All API endpoints require a Bearer token issued by Keycloak. `docker compose up` starts Keycloak alongside the database and API.
+
+```bash
+# Obtain an access token using the pre-configured dev user
+TOKEN=$(curl -s -X POST http://localhost:8080/realms/municipal-finances/protocol/openid-connect/token \
+  -d "grant_type=password&client_id=municipal-finances-api&username=admin-dev&password=changeme" \
+  | jq -r .access_token)
+
+# Use the token in API requests
+curl -H "Authorization: Bearer $TOKEN" http://localhost:8000/municipalities/
+```
+
+The dev user (`admin-dev` / `changeme`) has the `administrator` role. The Keycloak admin console is at `http://localhost:8080` (username `admin`, password `admin`).
 
 ## Development
 
