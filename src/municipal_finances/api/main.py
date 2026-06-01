@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
-from municipal_finances.api.auth import KEYCLOAK_CLIENT_ID
+from municipal_finances.api.auth import KEYCLOAK_CLIENT_ID, KEYCLOAK_CLIENT_SECRET
 from municipal_finances.api.routes import fir_records, fir_sources, municipalities
 
 app = FastAPI(
     title="Municipal Finances API",
-    swagger_ui_init_oauth={"clientId": KEYCLOAK_CLIENT_ID},
+    swagger_ui_init_oauth={"clientId": KEYCLOAK_CLIENT_ID, "clientSecret": KEYCLOAK_CLIENT_SECRET},
 )
 
 
